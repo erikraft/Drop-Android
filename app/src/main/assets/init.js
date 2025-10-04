@@ -8,7 +8,7 @@
 //change ReceiveTextDialog._onCopy to connect to JavaScriptInterface (don't call super method as it will throw an NotAllowedError)
 try {
     ReceiveTextDialog.prototype._onCopy = function(){
-        SnapdropAndroid.copyToClipboard(this.$text.textContent);
+        ErikrafTdropAndroid.copyToClipboard(this.$text.textContent);
         Events.fire('notify-user', 'Copied to clipboard');
     };
 } catch (e) {
@@ -19,7 +19,7 @@ try {
 try {
     PeerUI.prototype.sP = PeerUI.prototype.setProgress;
     PeerUI.prototype.setProgress = function(progress){
-        SnapdropAndroid.setProgress(progress);
+        ErikrafTdropAndroid.setProgress(progress);
         this.sP(progress);
      };
 } catch (e) {
@@ -28,7 +28,7 @@ try {
 
 //change tweet link
 try {
-    document.querySelector('.icon-button[title~="Tweet"]').href = 'https://twitter.com/intent/tweet?text=@SnapdropAndroid%20-%20%22Snapdrop%20%26%20PairDrop%20for%20Android%22%20is%20an%20Android%20client%20for%20https://snapdrop.net%20and%20https://pairdrop.net%0A%0A%23snapdrop';
+    document.querySelector('.icon-button[title~="Tweet"]').href = 'https://twitter.com/intent/tweet?text=@ErikrafTdrop%20-%20%22ErikrafT%20Drop%22%20is%20an%20Android%20client%20for%20local%20file%20sharing%0A%0A%23erikraftdrop';
 } catch (e) {
     console.error(e);
 }

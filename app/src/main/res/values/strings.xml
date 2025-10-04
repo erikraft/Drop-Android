@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">PairDrop</string>
-    <string name="app_name_long">PairDrop for Android</string>
+    <string name="app_name" translatable="false">ErikrafT Drop</string>
+    <string name="app_name_long">ErikrafT Drop</string>
     <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
     <string name="err_no_browser">Can\'t open browser</string>
     <string name="err_no_app">No app installed to open this file</string>
@@ -12,11 +12,11 @@
     <string name="onboarding_button_finish">finish</string>
     <string name="onboarding_choose_server">Choose a server address</string>
     <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the web apps Snapdrop and PairDrop.\n\nNote: You have to choose the same URL on all devices.</string>
+    <string name="onboarding_choose_server_description">This app is an optimized client for local file sharing.\n\nNote: You have to choose the same URL on all devices.</string>
     <string name="onboarding_storage_permission">Storage permission</string>
     <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
     <string name="onboarding_server_pairdrop_summary">(recommended)\nPairing feature, internet transfer and focus on stability.</string>
-    <string name="onboarding_server_snapdrop_summary">The classic snapdrop. Clean and simple.</string>
+    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -40,7 +40,7 @@
 
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About PairDrop for Android</string>
+    <string name="title_activity_about">About ErikrafT Drop</string>
     <string name="pref_about_title">About this app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Settings</string>
