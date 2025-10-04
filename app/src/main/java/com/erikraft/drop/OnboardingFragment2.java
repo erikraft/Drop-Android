@@ -192,9 +192,7 @@ public class OnboardingFragment2 extends Fragment {
 
         final List<ServerItem> servers = new ArrayList<>();
         servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_pairdrop_summary), null));
-        // Keep the old servers commented out for reference but not active
-        // servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_pairdrop_summary), null));
-        // servers.add(new ServerItem("https://snapdrop.net", getString(R.string.onboarding_server_snapdrop_summary), null/*getString(R.string.onboarding_server_snapdrop_summary_server_warning)*/));
+        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_pairdrop_summary), null));
 
         for (String url : serverUrls) {
             servers.add(new ServerItem(url, null, null));
