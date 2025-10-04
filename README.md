@@ -44,26 +44,13 @@ However, even if it theoretically would fully work in your browser and you don't
 ## Contributing
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
-### Localization
-We use [Crowdin](https://crowdin.com/project/snapdrop-android) to manage all our translations. If you want to contribute, feel free to help translating **ErikrafT Drop for Android** into your favorite language. If your language does not yet exist and you want to contribute, please open an issue so we can discuss whether it is worth maintaining translations for that language. 
-
-<p align="center">
-  <a href="https://crowdin.com/project/snapdrop-android" rel="nofollow">
-    <img width="200" src="https://support.crowdin.com/assets/badges/localization-at-dark-rounded@1x.svg" alt="Crowdin | Agile localization for tech companies" />
-  </a>
-</p>
-
-One additional hint:
-Please do not change any translations manually in the `.xml` resource files. Nothing bad would happen though, but these changes would be deleted/overwritten automatically by Crowdin. If you add/change any resource strings within your PR, Crowdin will automatically take care of all related translations. 
-
 ### Development
-If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/fm-sys/snapdrop-android/issues) before hacking on your great new feature. 
+If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature. 
 
 ## Other software
-### related software
-- Firefox Add-on for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/ueen/ErikrafT DropWebExtension)
+### Related software
+- ErikrafT Drop Web Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Browser%20Extension)
 - And for sure, ErikrafT Drop directly inside the browser - just use it everywhere: https://drop.erikraft.com/
-- Serverless snapdrop desktop app: https://github.com/JustSch/node-snapdrop-electron
 
 ### Alternatives
 - Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
