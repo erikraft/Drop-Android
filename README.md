@@ -5,7 +5,7 @@
 [![Crowdin](https://badges.crowdin.net/snapdrop-android/localized.svg)](https://crowdin.com/project/snapdrop-android)
 [![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues) 
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
-[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40SnapdropAndroid)](https://twitter.com/SnapdropAndroid)
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
 
 # ErikrafT Drop for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
