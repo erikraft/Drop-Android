@@ -36,10 +36,10 @@ However, even if it theoretically would fully work in your browser and you don't
 </p>
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> 
+<img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_1.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_2.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_3.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_4.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_5.png" width="10%"></img> 
 
 ## Support ErikrafT Drop
-➡️ [See how you can support this app and the ErikrafT Drop community](https://github.com/fm-sys/snapdrop-android/blob/master/FUNDING.md)
+➡️ [See how you can support this app and the ErikrafT Drop community](https://github.com/erikraft/Drop-Android/blob/master/FUNDING.md)
 
 ## Contributing
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
