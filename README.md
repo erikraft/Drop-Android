@@ -22,6 +22,7 @@
 
 ErikrafT Drop is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
+However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## Where can I download the app?
 **ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.fmsys.snapdrop) and [F-Droid](https://f-droid.org/en/packages/com.fmsys.snapdrop/). 
