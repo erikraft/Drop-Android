@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.fmsys.snapdrop'
+    namespace 'com.erikraft.drop'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.fmsys.snapdrop"
+        applicationId "com.erikraft.drop"
         minSdkVersion 21
         targetSdkVersion 34
 
@@ -28,7 +28,7 @@ android {
         versionName "2.3.1"
         applicationVariants.all { variant ->
             variant.outputs.all {
-                outputFileName = "snapdrop_v${defaultConfig.versionName}.apk"
+                outputFileName = "erikraftdrop_v${defaultConfig.versionName}.apk"
             }
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -25,18 +25,18 @@ ErikrafT Drop is a local file sharing solution which completely works in your br
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## Where can I download the app?
-**ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.fmsys.snapdrop) and [F-Droid](https://f-droid.org/en/packages/com.fmsys.snapdrop/). 
+**ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/). 
 <p align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.fmsys.snapdrop">
+  <a href="https://play.google.com/store/apps/details?id=com.erikraft.drop">
     <img height="100" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png">
   </a>
-  <a href="https://f-droid.org/en/packages/com.fmsys.snapdrop/">
+  <a href="https://f-droid.org/en/packages/com.erikraft.drop/">
     <img height="100" alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png">
   </a>
 </p>
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/featureGraphic.png" width="43.3%"></img> <img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="10%"></img> <img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="10%"></img> <img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="10%"></img> <img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="10%"></img> <img src="https://raw.githubusercontent.com/fm-sys/snapdrop-android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="10%"></img> 
+<img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> <img src="https://raw.githubusercontent.com/erikraft/Drop-Android/refs/heads/master/app/src/main/res/drawable/tv_banner.png" width="10%"></img> 
 
 ## Support ErikrafT Drop
 ➡️ [See how you can support this app and the ErikrafT Drop community](https://github.com/fm-sys/snapdrop-android/blob/master/FUNDING.md)

@@ -122,10 +122,10 @@ public class OnboardingFragment2 extends Fragment {
 
         binding = FragmentOnboarding2Binding.bind(view);
         pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://pairdrop.net"));
+        tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://drop.erikraft.com/"));
 
-        if (tempUrl.getValue().equals("https://snapdrop.net")) {
-            tempUrl.setValue("https://pairdrop.net");
+        if (tempUrl.getValue().equals("https://snapdrop.net") || tempUrl.getValue().equals("https://pairdrop.net")) {
+            tempUrl.setValue("https://drop.erikraft.com/");
 
             binding.scrollview.setVisibility(View.INVISIBLE);
             binding.continueButton.setVisibility(View.INVISIBLE);
@@ -191,8 +191,10 @@ public class OnboardingFragment2 extends Fragment {
         final Set<String> serverUrls = pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>());
 
         final List<ServerItem> servers = new ArrayList<>();
-        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_pairdrop_summary), null));
-//        servers.add(new ServerItem("https://snapdrop.net", getString(R.string.onboarding_server_snapdrop_summary), null/*getString(R.string.onboarding_server_snapdrop_summary_server_warning)*/));
+        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_pairdrop_summary), null));
+        // Keep the old servers commented out for reference but not active
+        // servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_pairdrop_summary), null));
+        // servers.add(new ServerItem("https://snapdrop.net", getString(R.string.onboarding_server_snapdrop_summary), null/*getString(R.string.onboarding_server_snapdrop_summary_server_warning)*/));
 
         for (String url : serverUrls) {
             servers.add(new ServerItem(url, null, null));

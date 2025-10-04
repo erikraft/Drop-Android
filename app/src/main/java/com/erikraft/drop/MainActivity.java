@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -72,7 +72,7 @@ import com.anggrayudi.storage.file.DocumentFileType;
 import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
 import com.anggrayudi.storage.media.MediaFile;
-import com.fmsys.snapdrop.databinding.ActivityMainBinding;
+import com.erikraft.drop.databinding.ActivityMainBinding;
 import com.fmsys.snapdrop.utils.NetworkUtils;
 import com.fmsys.snapdrop.utils.Nullable;
 import com.fmsys.snapdrop.utils.ShareUtils;
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             // Fake to user argent to be able to inject a custom string into the Snapdrop device name
             webSettings.setUserAgentString("Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + "; Build/HUAWEI" + prefs.getString(getString(R.string.pref_device_name), getString(R.string.app_name)) + ") Version/" + BuildConfig.VERSION_NAME + (isTablet(this) ? " Tablet " : " Mobile ") + "Safari/537.36");
         }
-        binding.webview.addJavascriptInterface(new JavaScriptInterface(MainActivity.this), "SnapdropAndroid");
+        binding.webview.addJavascriptInterface(new JavaScriptInterface(MainActivity.this), "ErikrafTdropAndroid");
         binding.webview.setWebChromeClient(new MyWebChromeClient());
         binding.webview.setWebViewClient(new CustomWebViewClient());
 
@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshWebsite(final boolean pulled) {
-        Log.w("SnapdropAndroid", "refresh triggered");
+        Log.w("ErikrafTdropAndroid", "refresh triggered");
         if (NetworkUtils.isInternetAvailable() && !transfer.get() && !dialogVisible || forceRefresh) {
             binding.connectivityCard.setVisibility(NetworkUtils.isWifiAvailable() ? View.GONE : View.VISIBLE);
             binding.webview.loadUrl(baseURL);
