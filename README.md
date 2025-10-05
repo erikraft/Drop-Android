@@ -45,7 +45,16 @@ However, even if it theoretically would fully work in your browser and you don't
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
 ### Development
-If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature. 
+If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
+
+### Play Store automation
+This repository ships with a GitHub Actions workflow (`Publish to Google Play`) that automatically builds a release bundle and uploads it to the Google Play Store whenever changes are pushed to the `main` branch. To enable the workflow:
+
+1. Create a Google Cloud service account with access to the Google Play Developer API and download its JSON key.
+2. Base64 encode the JSON key file and store it as the `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` secret in the repository settings.
+3. Adjust the default track (`production`) or release status (`completed`) by editing the environment variables in `.github/workflows/play-store-publish.yml` if needed.
+
+The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
 
 ## Other software
 ### Related software
