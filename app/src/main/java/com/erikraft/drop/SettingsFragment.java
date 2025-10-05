@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.Manifest;
 import android.app.Activity;
@@ -32,11 +32,11 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.anggrayudi.storage.SimpleStorageHelper;
 import com.anggrayudi.storage.file.DocumentFileUtils;
-import com.fmsys.snapdrop.utils.ClipboardUtils;
-import com.fmsys.snapdrop.utils.Link;
-import com.fmsys.snapdrop.utils.LogUtils;
-import com.fmsys.snapdrop.utils.ShareUtils;
-import com.fmsys.snapdrop.utils.ViewUtils;
+import com.erikraft.drop.utils.ClipboardUtils;
+import com.erikraft.drop.utils.Link;
+import com.erikraft.drop.utils.LogUtils;
+import com.erikraft.drop.utils.ShareUtils;
+import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.snackbar.Snackbar;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.aboutlibraries.util.SpecialButton;

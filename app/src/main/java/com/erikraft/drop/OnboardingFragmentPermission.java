@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.fmsys.snapdrop.databinding.FragmentOnboardingPermissionBinding;
+import com.erikraft.drop.databinding.FragmentOnboardingPermissionBinding;
 
 public class OnboardingFragmentPermission extends Fragment {
 

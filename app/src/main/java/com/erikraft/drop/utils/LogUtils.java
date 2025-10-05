@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop.utils;
+package com.erikraft.drop.utils;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -7,9 +7,9 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
-import com.fmsys.snapdrop.BuildConfig;
-import com.fmsys.snapdrop.R;
-import com.fmsys.snapdrop.SnapdropApplication;
+import com.erikraft.drop.BuildConfig;
+import com.erikraft.drop.R;
+import com.erikraft.drop.SnapdropApplication;
 
 import java.io.BufferedReader;
 import java.io.IOException;

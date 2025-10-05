@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop.utils;
+package com.erikraft.drop.utils;
 
 import android.content.res.Resources;
 import android.view.ContextThemeWrapper;
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 
-import com.fmsys.snapdrop.R;
-import com.fmsys.snapdrop.SnapdropApplication;
+import com.erikraft.drop.R;
+import com.erikraft.drop.SnapdropApplication;
 
 public class ViewUtils {
 
