@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

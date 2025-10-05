@@ -12,7 +12,7 @@
         android:layout_marginTop="10dp"
         app:endIconMode="clear_text">
 
-        <com.fmsys.snapdrop.PrefixEditText
+        <com.erikraft.drop.PrefixEditText
             android:id="@+id/textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

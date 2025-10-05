@@ -10,7 +10,7 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.fmsys.snapdrop.AboutActivity"
-            android:targetPackage="com.fmsys.snapdrop" />
+            android:targetClass="com.erikraft.drop.AboutActivity"
+            android:targetPackage="com.erikraft.drop" />
     </shortcut>-->
 </shortcuts>
