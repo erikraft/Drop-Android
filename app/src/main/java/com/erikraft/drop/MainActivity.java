@@ -73,11 +73,11 @@ import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
 import com.anggrayudi.storage.media.MediaFile;
 import com.erikraft.drop.databinding.ActivityMainBinding;
-import com.fmsys.snapdrop.utils.NetworkUtils;
-import com.fmsys.snapdrop.utils.Nullable;
-import com.fmsys.snapdrop.utils.ShareUtils;
-import com.fmsys.snapdrop.utils.StateHandler;
-import com.fmsys.snapdrop.utils.ZipUtils;
+import com.erikraft.drop.utils.NetworkUtils;
+import com.erikraft.drop.utils.Nullable;
+import com.erikraft.drop.utils.ShareUtils;
+import com.erikraft.drop.utils.StateHandler;
+import com.erikraft.drop.utils.ZipUtils;
 import com.google.android.material.internal.ToolbarUtils;
 import com.google.android.material.snackbar.Snackbar;
 

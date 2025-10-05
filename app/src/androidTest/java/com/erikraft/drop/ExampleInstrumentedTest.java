@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.content.Context;
 

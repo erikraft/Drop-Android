@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
-import com.fmsys.snapdrop.utils.LogUtils;
+import com.erikraft.drop.utils.LogUtils;
 
 
 public class SnapdropApplication extends Application {

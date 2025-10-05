@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop.utils;
+package com.erikraft.drop.utils;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.net.Uri;
 
 import androidx.fragment.app.Fragment;
 
-import com.fmsys.snapdrop.OpenUrlActivity;
-import com.fmsys.snapdrop.R;
+import com.erikraft.drop.OpenUrlActivity;
+import com.erikraft.drop.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ShareUtils {

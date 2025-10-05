@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fmsys.snapdrop.databinding.FragmentOnboarding2Binding;
-import com.fmsys.snapdrop.utils.Link;
-import com.fmsys.snapdrop.utils.NetworkUtils;
-import com.fmsys.snapdrop.utils.ViewUtils;
+import com.erikraft.drop.databinding.FragmentOnboarding2Binding;
+import com.erikraft.drop.utils.Link;
+import com.erikraft.drop.utils.NetworkUtils;
+import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 

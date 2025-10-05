@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -18,7 +18,7 @@ import com.anggrayudi.storage.extension.UriUtils;
 import com.anggrayudi.storage.file.DocumentFileCompat;
 import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
-import com.fmsys.snapdrop.utils.ClipboardUtils;
+import com.erikraft.drop.utils.ClipboardUtils;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop.utils;
+package com.erikraft.drop.utils;
 
 import android.content.Context;
 import android.net.Uri;
