@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop.utils;
+package com.erikraft.drop.utils;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,8 +10,8 @@ import android.util.Log;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 
-import com.fmsys.snapdrop.R;
-import com.fmsys.snapdrop.SnapdropApplication;
+import com.erikraft.drop.R;
+import com.erikraft.drop.SnapdropApplication;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.jsoup.Jsoup;

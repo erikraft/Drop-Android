@@ -1,4 +1,4 @@
-package com.fmsys.snapdrop;
+package com.erikraft.drop;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
