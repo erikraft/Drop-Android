@@ -18,3 +18,7 @@
 !.idea/checkstyle-idea.xml
 *.iml
 *.lnk
+
+# fdroid workflow artifacts
+fdroid/keystore.jks
+fdroid/config.yml

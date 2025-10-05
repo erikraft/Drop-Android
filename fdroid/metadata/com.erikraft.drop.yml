@@ -1,0 +1,20 @@
+Categories:
+  - Internet
+  - System
+License: GPL-3.0-or-later
+SourceCode: https://github.com/erikraft/Drop-Android
+IssueTracker: https://github.com/erikraft/Drop-Android/issues
+Changelog: https://github.com/erikraft/Drop-Android/releases
+Donate: https://github.com/sponsors/erikraft
+Summary: Local file sharing with Drop
+Description: |-
+  ErikrafT Drop connects your Android devices with drop.erikraft.com so you can
+  send files, text snippets and clipboard contents across the local network
+  without configuring accounts or relying on the public Internet. The client is
+  open source, respects your privacy and is optimised for quick transfers between
+  phones, tablets and desktop browsers.
+AutoUpdateMode: None
+UpdateCheckMode: Tags
+CurrentVersion: 2.3.1
+CurrentVersionCode: 45
+Builds: []

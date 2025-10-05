@@ -1,0 +1,104 @@
+name: Publish to F-Droid
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  publish:
+    if: ${{ secrets.FDROID_SIGNING_KEY != '' && secrets.FDROID_KEY_ALIAS != '' && secrets.FDROID_KEYSTORE_PASS != '' && secrets.FDROID_KEY_PASS != '' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build release APK
+        run: |
+          chmod +x gradlew
+          ./gradlew clean assembleRelease
+
+      - name: Sign release APK
+        id: sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.FDROID_SIGNING_KEY }}
+          alias: ${{ secrets.FDROID_KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.FDROID_KEYSTORE_PASS }}
+          keyPassword: ${{ secrets.FDROID_KEY_PASS }}
+
+      - name: Extract version information
+        id: version
+        run: |
+          VERSION_NAME=$(grep 'versionName "' app/build.gradle | head -n 1 | sed -E 's/.*"([^"]+)".*/\1/')
+          VERSION_CODE=$(grep 'versionCode' app/build.gradle | head -n 1 | sed -E 's/[^0-9]*([0-9]+).*/\1/')
+          echo "version_name=${VERSION_NAME}" >> "$GITHUB_OUTPUT"
+          echo "version_code=${VERSION_CODE}" >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext-base
+          python3 -m pip install --user --upgrade fdroidserver
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Prepare F-Droid configuration
+        env:
+          FDROID_REPO_NAME: ${{ secrets.FDROID_REPO_NAME }}
+          FDROID_REPO_URL: ${{ secrets.FDROID_REPO_URL }}
+          FDROID_REPO_DESCRIPTION: ${{ secrets.FDROID_REPO_DESCRIPTION }}
+          FDROID_KEY_ALIAS: ${{ secrets.FDROID_KEY_ALIAS }}
+          FDROID_KEYSTORE_PASS: ${{ secrets.FDROID_KEYSTORE_PASS }}
+          FDROID_KEY_PASS: ${{ secrets.FDROID_KEY_PASS }}
+        run: |
+          mkdir -p fdroid/repo
+          : "${FDROID_REPO_NAME:=Drop self-hosted repo}"
+          : "${FDROID_REPO_URL:=https://example.com/fdroid}"
+          : "${FDROID_REPO_DESCRIPTION:=Self-hosted repository containing signed ErikrafT Drop builds.}"
+          export FDROID_REPO_NAME FDROID_REPO_URL FDROID_REPO_DESCRIPTION
+          envsubst < fdroid/config.yml.template > fdroid/config.yml
+
+      - name: Restore signing keystore for index
+        run: |
+          echo "${{ secrets.FDROID_SIGNING_KEY }}" | base64 --decode > fdroid/keystore.jks
+
+      - name: Stage metadata and APK
+        env:
+          VERSION_NAME: ${{ steps.version.outputs.version_name }}
+          VERSION_CODE: ${{ steps.version.outputs.version_code }}
+          SIGNED_APK: ${{ steps.sign.outputs.signedReleaseFile }}
+        run: |
+          sed -i "s/^CurrentVersion: .*/CurrentVersion: ${VERSION_NAME}/" fdroid/metadata/com.erikraft.drop.yml
+          sed -i "s/^CurrentVersionCode: .*/CurrentVersionCode: ${VERSION_CODE}/" fdroid/metadata/com.erikraft.drop.yml
+          rm -f fdroid/repo/com.erikraft.drop_*.apk
+          cp "${SIGNED_APK}" "fdroid/repo/com.erikraft.drop_${VERSION_CODE}.apk"
+
+      - name: Update F-Droid repository
+        run: |
+          cd fdroid
+          fdroid update --create-metadata --config config.yml
+
+      - name: Clean sensitive files
+        if: always()
+        run: |
+          rm -f fdroid/keystore.jks fdroid/config.yml
+
+      - name: Publish repository to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: fdroid/repo
+          force_orphan: true

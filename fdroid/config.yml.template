@@ -1,0 +1,12 @@
+# Template used by the fdroid-publish workflow to generate a runtime configuration.
+# Values are supplied via environment variables in the workflow before running
+# any F-Droid server commands.
+repo_name: "${FDROID_REPO_NAME}"
+repo_url: "${FDROID_REPO_URL}"
+repo_description: "${FDROID_REPO_DESCRIPTION}"
+repo_keyalias: "${FDROID_KEY_ALIAS}"
+keystore: keystore.jks
+keystorepass: "${FDROID_KEYSTORE_PASS}"
+keypass: "${FDROID_KEY_PASS}"
+make_current_version_link: false
+archive_older: 1

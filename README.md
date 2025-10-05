@@ -45,7 +45,59 @@ However, even if it theoretically would fully work in your browser and you don't
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
 ### Development
-If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature. 
+If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
+
+## Automated F-Droid publishing
+
+This repository ships with a GitHub Actions workflow that can turn every tagged
+release into a signed, self-hosted F-Droid repository. The workflow lives at
+`.github/workflows/fdroid-publish.yml` and performs the following tasks:
+
+1. builds the release variant of the app with Gradle;
+2. signs the APK with your provided keystore;
+3. refreshes the metadata contained in `fdroid/metadata/com.erikraft.drop.yml`;
+4. generates the F-Droid index with `fdroidserver`; and
+5. publishes the finished repository to the `gh-pages` branch so it can be
+   served via GitHub Pages.
+
+Enable GitHub Pages for the project and choose the `gh-pages` branch as source.
+After the first successful run the repository will be available at
+`https://<username>.github.io/Drop-Android/` (replace `<username>` with your
+GitHub handle). Add this URL inside the F-Droid client to install builds from
+the automated repository.
+
+### Required repository secrets
+
+The workflow depends on several GitHub secrets that are consumed both for
+signing the APK and for signing the repository index:
+
+| Secret | Purpose |
+| --- | --- |
+| `FDROID_SIGNING_KEY` | Base64 encoded keystore used to sign the APK and F-Droid index. |
+| `FDROID_KEY_ALIAS` | Alias of the key inside the keystore. |
+| `FDROID_KEYSTORE_PASS` | Password that unlocks the keystore. |
+| `FDROID_KEY_PASS` | Password for the private key. |
+
+You can create the Base64 string for the keystore by running
+`base64 -w0 my-release-key.jks`.
+
+### Optional secrets
+
+You can further customise the generated repository by defining the following
+secrets (defaults are used when they are not present):
+
+| Secret | Default |
+| --- | --- |
+| `FDROID_REPO_NAME` | `Drop self-hosted repo` |
+| `FDROID_REPO_URL` | `https://example.com/fdroid` |
+| `FDROID_REPO_DESCRIPTION` | `Self-hosted repository containing signed ErikrafT Drop builds.` |
+
+### Running the workflow
+
+The workflow runs automatically when a GitHub release is published and can be
+triggered manually from the Actions tab via the `workflow_dispatch` event. Once
+the required secrets are configured you can publish an updated build to F-Droid
+by pushing a release tag and creating a GitHub release.
 
 ## Other software
 ### Related software
