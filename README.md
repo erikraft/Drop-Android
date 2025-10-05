@@ -36,7 +36,7 @@ However, even if it theoretically would fully work in your browser and you don't
 </p>
 
 ## Screenshots
-<img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_1.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_2.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_3.png" width="10%"></img>
+<img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_1.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_10.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_2.png" width="10%"></img>
 
 ## Support ErikrafT Drop
 ➡️ [See how you can support this app and the ErikrafT Drop community](https://github.com/erikraft/Drop-Android/blob/master/FUNDING.md)
