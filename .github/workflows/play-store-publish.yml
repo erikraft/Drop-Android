@@ -1,0 +1,42 @@
+name: Publish to Google Play
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Build and publish release bundle
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_PLAY_TRACK: production
+      GOOGLE_PLAY_RELEASE_STATUS: completed
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Decode Play Store service account
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "${SERVICE_ACCOUNT_JSON}" ]; then
+            echo "The GOOGLE_PLAY_SERVICE_ACCOUNT_JSON secret is not configured." >&2
+            exit 1
+          fi
+          echo "${SERVICE_ACCOUNT_JSON}" | base64 --decode > "${{ runner.temp }}/service-account.json"
+
+      - name: Publish release bundle
+        env:
+          GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ runner.temp }}/service-account.json
+        run: ./gradlew publishReleaseBundle
