@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'checkstyle'
     id 'com.mikepenz.aboutlibraries.plugin'
+    id 'com.github.triplet.play'
 }
 
 android {
@@ -94,4 +95,14 @@ tasks.register('checkstyle', Checkstyle) {
 
 tasks.named('check') {
     dependsOn tasks.named('checkstyle')
+}
+
+def playServiceAccountPath = System.getenv("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON")
+if (playServiceAccountPath != null && !playServiceAccountPath.isBlank()) {
+    play {
+        serviceAccountCredentials.set(file(playServiceAccountPath))
+        track.set(System.getenv("GOOGLE_PLAY_TRACK") ?: "production")
+        releaseStatus.set(System.getenv("GOOGLE_PLAY_RELEASE_STATUS") ?: "completed")
+        defaultToAppBundles.set(true)
+    }
 }
