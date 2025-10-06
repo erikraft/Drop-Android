@@ -54,6 +54,18 @@ This repository ships with a GitHub Actions workflow (`Publish to Google Play`) 
 
 The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
 
+### Self-hosted F-Droid automation
+The project also includes a workflow (`Publish to self-hosted F-Droid repo`) that prepares an F-Droid compatible repository whenever a GitHub release is published (you can also trigger it manually through the *Actions* tab). The workflow builds the signed APK, updates the metadata under `fdroid/`, generates the F-Droid index using [`fdroidserver`](https://gitlab.com/fdroid/fdroidserver), and publishes the result to the `fdroid` branch which can be served through GitHub Pages or any static hosting provider.
+
+To enable the workflow:
+
+1. Base64-encode the keystore that is used to sign production releases and save it as the `FDROID_KEYSTORE_BASE64` secret.
+2. Add the passwords and alias of that keystore as repository secrets: `FDROID_KEYSTORE_PASSWORD`, `FDROID_KEY_PASSWORD`, and `FDROID_KEY_ALIAS`.
+3. (Optional) Provide custom repository metadata by defining the secrets `FDROID_REPO_URL`, `FDROID_REPO_NAME`, `FDROID_REPO_DESCRIPTION`, and `FDROID_REPO_ADDRESS`. Default values are used when they are not supplied.
+4. Enable GitHub Pages for the repository (or configure another static host) to serve the contents of the `fdroid` branch so that F-Droid clients can consume the index.
+
+After the first successful run you will have a fully automated, self-hosted F-Droid catalogue that mirrors the signed releases from this repository.
+
 ## Other software
 ### Related software
 - ErikrafT Drop Web Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Browser%20Extension)
