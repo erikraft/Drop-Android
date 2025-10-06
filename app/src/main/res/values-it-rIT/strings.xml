@@ -9,7 +9,7 @@
     <string name="onboarding_button_grant">concedi l\'autorizzazione</string>
     <string name="onboarding_button_finish">fine</string>
     <string name="onboarding_choose_server">Scegli un indirizzo del server</string>
-    <string name="onboarding_choose_server_description">Questa app è un client ottimizzato per le applicazioni web Snapdrop e PairDrop.\nScegli una delle seguenti istanze o specifica un URL personalizzato a cui connettersi.\n\nNota: Devi scegliere lo stesso URL su tutti i dispositivi.</string>
+    <string name="onboarding_choose_server_description">Questa app è un client ottimizzato per le applicazioni web ErikrafT Drop e PairDrop.\nScegli una delle seguenti istanze o specifica un URL personalizzato a cui connettersi.\n\nNota: Devi scegliere lo stesso URL su tutti i dispositivi.</string>
     <string name="onboarding_storage_permission">Autorizzazione di archiviazione</string>
     <string name="onboarding_storage_permission_description">Questa app è un\'utilità di condivisione di file. Pertanto, è richiesta l\'autorizzazione di archiviazione per utilizzarla.</string>
     <string name="onboarding_server_pairdrop_summary">(raccomandato)\nFunzionalità di collegamento, trasferimento internet e si concentra sulla stabilità.</string>
@@ -40,8 +40,8 @@
     <string name="keep_on_summary">(Consigliato) Molti dispositivi interrompono il trasferimento quando lo schermo si spegne</string>
     <string name="keep_on_title">Mantieni lo schermo attivo durante il trasferimento</string>
     <string name="floating_text_selection_title">Selezione testo fluttuante</string>
-    <string name="floating_text_selection_summary">Se selezioni il testo in altre app, comparirà un\'opzione \"invia con Snapdrop\"</string>
-    <string name="floating_text_selection_activity_label">Invia con Snapdrop</string>
+    <string name="floating_text_selection_summary">Se selezioni il testo in altre app, comparirà un\'opzione \"invia con ErikrafT Drop\"</string>
+    <string name="floating_text_selection_activity_label">Invia con ErikrafT Drop</string>
     <string name="settings_theme_title">Tema</string>
     <string-array name="darkmode_entries">
         <item>Predefinito</item>
