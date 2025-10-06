@@ -26,8 +26,8 @@
     <string name="keep_on_summary">(Препоръчително) Много устройства имат проблем с прекъсване при прехвърляне на файлове щом екрана се изключи</string>
     <string name="keep_on_title">Дръж екрана включен докато се прехвърлят файлове</string>
     <string name="floating_text_selection_title">Избор на плаващ текст</string>
-    <string name="floating_text_selection_summary">Когато избираш текст в друго приложение, ще се покаже опция \"Изпрати чрез Snapdrop\"</string>
-    <string name="floating_text_selection_activity_label">Изпрати чрез Snapdrop</string>
+    <string name="floating_text_selection_summary">Когато избираш текст в друго приложение, ще се покаже опция \"Изпрати чрез ErikrafT Drop\"</string>
+    <string name="floating_text_selection_activity_label">Изпрати чрез ErikrafT Drop</string>
     <string name="settings_theme_title">Тема</string>
     <string-array name="darkmode_entries">
         <item>По подразбиране</item>

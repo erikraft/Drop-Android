@@ -42,8 +42,8 @@
     <string name="keep_on_summary">(Recomandat) Multe dispozitive au probleme cu transferurile întrerupte atunci când ecranul se oprește</string>
     <string name="keep_on_title">Păstrează ecranul pornit în timpul transferului</string>
     <string name="floating_text_selection_title">Selecție de text plutitoare</string>
-    <string name="floating_text_selection_summary">La selectarea textului în alte aplicații, o opțiune \"Trimite cu Snapdrop\" va fi afișată</string>
-    <string name="floating_text_selection_activity_label">Trimite prin Snapdrop</string>
+    <string name="floating_text_selection_summary">La selectarea textului în alte aplicații, o opțiune \"Trimite cu ErikrafT Drop\" va fi afișată</string>
+    <string name="floating_text_selection_activity_label">Trimite prin ErikrafT Drop</string>
     <string name="permission_not_granted">vă rugăm să acordați permisiunea necesară</string>
     <string name="permission_not_granted_fallback">vă rugăm să acordați manual permisiunea necesară</string>
     <string name="open_settings">deschide setări</string>

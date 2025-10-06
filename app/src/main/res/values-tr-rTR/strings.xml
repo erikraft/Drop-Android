@@ -49,10 +49,10 @@
     <string name="keep_on_summary">(Önerilir) Bir çok cihaz ekranın transfer anında kapanması sebebiyle problem yaşamakta</string>
     <string name="keep_on_title">Transfer sırasında ekranı açık tut</string>
     <string name="floating_text_selection_title">Kayan metin seçimi</string>
-    <string name="floating_text_selection_summary">Diğer uygulamalarda metin seçerken \"Snapdrop ile gönder\" seçeneği gösterilecek</string>
+    <string name="floating_text_selection_summary">Diğer uygulamalarda metin seçerken \"ErikrafT Drop ile gönder\" seçeneği gösterilecek</string>
     <string name="show_connectivity_card_title">Bağlantı uyarısı</string>
     <string name="show_connectivity_card_summary"> Bir WiFi ağına bağlı olmadığında uyarı göster</string>
-    <string name="floating_text_selection_activity_label">Snapdrop ile gönder</string>
+    <string name="floating_text_selection_activity_label">ErikrafT Drop ile gönder</string>
     <string name="permission_not_granted">lütfen gerekli izni onaylayın</string>
     <string name="permission_not_granted_fallback">lütfen gerekli izni manuel olarak onaylayın</string>
     <string name="open_settings">ayarları aç</string>
