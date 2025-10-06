@@ -49,10 +49,10 @@
     <string name="keep_on_summary">(Recomendado) Muchos dispositivos tienen problemas con las interrupciones de transferencias cuando la pantalla se apaga</string>
     <string name="keep_on_title">Mantener la pantalla encendida mientras se transfiere</string>
     <string name="floating_text_selection_title">Selección de texto flotante</string>
-    <string name="floating_text_selection_summary">Al seleccionar texto en otras aplicaciones, se mostrará una opción \"Enviar con Snapdrop\"</string>
+    <string name="floating_text_selection_summary">Al seleccionar texto en otras aplicaciones, se mostrará una opción \"Enviar con ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Advertencia de conexión</string>
     <string name="show_connectivity_card_summary"> Mostrar una advertencia cuando no esté conectado a una red WiFi</string>
-    <string name="floating_text_selection_activity_label">Enviar con Snapdrop</string>
+    <string name="floating_text_selection_activity_label">Enviar con ErikrafT Drop</string>
     <string name="permission_not_granted">por favor conceda el permiso necesario</string>
     <string name="permission_not_granted_fallback">por favor conceda el permiso necesario manualmente</string>
     <string name="open_settings">abrir ajustes</string>

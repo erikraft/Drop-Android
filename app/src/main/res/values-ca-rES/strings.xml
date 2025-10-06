@@ -49,10 +49,10 @@
     <string name="keep_on_summary">(Recomanat) Molts dispositius tenen problemes amb transferiments detinguts degut a que la pantalla s\'apagui</string>
     <string name="keep_on_title">Deixa la pantalla encesa mentre es transfereix</string>
     <string name="floating_text_selection_title">Selecció del text flotant</string>
-    <string name="floating_text_selection_summary">Quan se seleccioni text en altres aplicacions, l\'opció \"Enviar amb snapdrop\" sortirà</string>
+    <string name="floating_text_selection_summary">Quan se seleccioni text en altres aplicacions, l\'opció \"Enviar amb ErikrafT Drop\" sortirà</string>
     <string name="show_connectivity_card_title">Avís de connectivitat</string>
     <string name="show_connectivity_card_summary"> Mostra un avís quan no estigueu connectat amb wifi</string>
-    <string name="floating_text_selection_activity_label">Envia amb Snapdrop</string>
+    <string name="floating_text_selection_activity_label">Envia amb ErikrafT Drop</string>
     <string name="permission_not_granted">concediu el permís necessari</string>
     <string name="permission_not_granted_fallback">concediu manualment el permís necessari</string>
     <string name="open_settings">obre la configuració</string>

@@ -47,10 +47,10 @@
     <string name="keep_on_summary">(推荐) 若遇到熄屏时传输中断的问题，请启用该项</string>
     <string name="keep_on_title">传输时保持屏幕开启</string>
     <string name="floating_text_selection_title">浮动文字选择</string>
-    <string name="floating_text_selection_summary">使用其他APP选中文本时，显示“使用Snapdrop发送”选项</string>
+    <string name="floating_text_selection_summary">使用其他APP选中文本时，显示“使用ErikrafT Drop发送”选项</string>
     <string name="show_connectivity_card_title">连接警告</string>
     <string name="show_connectivity_card_summary"> 当您没有连接到 WiFi 网络时显示警告</string>
-    <string name="floating_text_selection_activity_label">使用Snapdrop发送</string>
+    <string name="floating_text_selection_activity_label">使用ErikrafT Drop发送</string>
     <string name="permission_not_granted">请授予必要的权限</string>
     <string name="permission_not_granted_fallback">请手动授予必要的权限</string>
     <string name="open_settings">打开设定</string>

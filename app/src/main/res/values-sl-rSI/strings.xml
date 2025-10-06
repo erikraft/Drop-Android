@@ -49,10 +49,10 @@
     <string name="keep_on_summary">(Priporočeno) Številne naprave imajo težave s prekinitvijo prenosa, ko se zaslon izklopi</string>
     <string name="keep_on_title">Med prenosom ne izklopi zaslona</string>
     <string name="floating_text_selection_title">Lebdeči izbor besedila</string>
-    <string name="floating_text_selection_summary">Pri izbiri besedila v drugih aplikacijah se bo prikazala možnost \"Pošlji s Snapdrop-om\"</string>
+    <string name="floating_text_selection_summary">Pri izbiri besedila v drugih aplikacijah se bo prikazala možnost \"Pošlji s ErikrafT Drop-om\"</string>
     <string name="show_connectivity_card_title">Opozorilo o povezljivosti</string>
     <string name="show_connectivity_card_summary"> Opozori me, če nisem povezan z WiFi omrežjem</string>
-    <string name="floating_text_selection_activity_label">Pošlji s Snapdrop-om</string>
+    <string name="floating_text_selection_activity_label">Pošlji s ErikrafT Drop-om</string>
     <string name="permission_not_granted">prosimo omogočite potrebna dovoljenja</string>
     <string name="permission_not_granted_fallback">prosimo omogočite potrebna dovoljenja ročno</string>
     <string name="open_settings">odpri nastavitve</string>

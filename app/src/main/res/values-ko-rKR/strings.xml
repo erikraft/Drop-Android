@@ -47,10 +47,10 @@
     <string name="keep_on_summary">(권장함) 많은 기기에 화면이 꺼지면 전송이 중단되는 문제가 있습니다.</string>
     <string name="keep_on_title">전송 중일때 화면 켜짐 유지</string>
     <string name="floating_text_selection_title">선택된 텍스트 보내기</string>
-    <string name="floating_text_selection_summary">다른 애플리케이션에서 텍스트를 선택할 때, \"Snapdrop으로 보내기\" 옵션이 표시됩니다.</string>
+    <string name="floating_text_selection_summary">다른 애플리케이션에서 텍스트를 선택할 때, \"ErikrafT Drop으로 보내기\" 옵션이 표시됩니다.</string>
     <string name="show_connectivity_card_title">연결 안정성 경고</string>
     <string name="show_connectivity_card_summary"> WiFi 네트워크에 연결되어 있지 않을 때 경고를 표시합니다</string>
-    <string name="floating_text_selection_activity_label">Snapdrop으로 보내기</string>
+    <string name="floating_text_selection_activity_label">ErikrafT Drop으로 보내기</string>
     <string name="permission_not_granted">권한을 허용해주십시오</string>
     <string name="permission_not_granted_fallback">권한을 수동으로 허용해주십시오</string>
     <string name="open_settings">설정 열기</string>
