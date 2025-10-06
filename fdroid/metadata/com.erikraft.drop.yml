@@ -1,0 +1,27 @@
+Categories:
+  - Internet
+  - Multimedia
+License: GPL-3.0-only
+SourceCode: https://github.com/erikraft/Drop-Android
+IssueTracker: https://github.com/erikraft/Drop-Android/issues
+Changelog: https://github.com/erikraft/Drop-Android/releases
+Donate: https://github.com/sponsors/erikraft
+Liberapay: https://liberapay.com/ErikrafT/
+Name: ErikrafT Drop
+Summary: Local network file sharing client for ErikrafT Drop
+Description: |-
+  ErikrafT Drop for Android is the companion client for the open source
+  ErikrafT Drop web service. It streamlines sending and receiving files over
+  your local network without any external cloud service. Share content
+  directly from other applications, keep the connection private on your own
+  devices, and benefit from an interface that is optimised for daily use.
+
+  This metadata is used for the self-hosted F-Droid repository that is built
+  from GitHub Actions and contains the exact APKs produced from this
+  repository. Releases are signed with the same keystore as the Play Store
+  build so updates will install smoothly.
+CurrentVersion: 2.3.1
+CurrentVersionCode: 45
+AutoUpdateMode: None
+
+# Git commit: 8da7fd8
