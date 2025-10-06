@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">dokončiť</string>
     <string name="onboarding_choose_server">Vyberte adresu serveru</string>
     <string name="onboarding_choose_server_short">vybrať server</string>
-    <string name="onboarding_choose_server_description">Táto aplikácia je optimalizovaný klient pre webové aplikácie Snapdrop a PairDrop.\nVyberte si jednu z nasledujúcich inštancií alebo špecifikuje vlastnú url na pripojenie.\n\nPoznámka: Musíte si vybrať rovnakú URL na všetkých zariadeniach.</string>
+    <string name="onboarding_choose_server_description">Táto aplikácia je optimalizovaný klient pre webové aplikácie ErikrafT Drop a PairDrop.\nVyberte si jednu z nasledujúcich inštancií alebo špecifikuje vlastnú url na pripojenie.\n\nPoznámka: Musíte si vybrať rovnakú URL na všetkých zariadeniach.</string>
     <string name="onboarding_storage_permission">Povolenie prístupu k súborom</string>
     <string name="onboarding_storage_permission_description">Táto aplikácia je nástroj na zdieľanie súborov. Preto je pre použitie vyžadované povolenie prístupu k súborom.</string>
     <string name="onboarding_server_pairdrop_summary">(odporúčané)\nPárovacia funkcia, prenos cez internet a zameranie na stabilitu.</string>

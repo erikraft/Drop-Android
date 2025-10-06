@@ -10,7 +10,7 @@
     <string name="onboarding_button_finish">完了</string>
     <string name="onboarding_choose_server">サーバー選択</string>
     <string name="onboarding_choose_server_short">サーバー選択</string>
-    <string name="onboarding_choose_server_description">このアプリはウェブアプリのSnapdropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
+    <string name="onboarding_choose_server_description">このアプリはウェブアプリのErikrafT DropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
     <string name="onboarding_storage_permission">ストレージ権限</string>
     <string name="onboarding_storage_permission_description">このアプリはファイル共有ツールです。そのため、ストレージへのアクセス許可が必要です。</string>
     <string name="onboarding_server_pairdrop_summary">(推奨)\nペアリングやインターネット上での転送機能があり、安定しています。</string>
