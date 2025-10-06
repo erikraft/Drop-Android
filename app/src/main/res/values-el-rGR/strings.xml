@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">ολοκλήρωση</string>
     <string name="onboarding_choose_server">Επιλέξτε διεύθυνση διακομιστή</string>
     <string name="onboarding_choose_server_short">επιλέξτε διακομιστή</string>
-    <string name="onboarding_choose_server_description">Αυτή η εφαρμογή είναι ένας βελτιστοποιημένος client για τις web εφαρμογές Snapdrop και PairDrop.\nΕπιλέξτε μία από τις ακόλουθες επιλογές ή καθορίστε μια προσαρμοσμένη διεύθυνση URL για να συνδεθίιτε.\n\nΣημείωση: Πρέπει να επιλέξετε το ίδιο URL σε όλες τις συσκευές.</string>
+    <string name="onboarding_choose_server_description">Αυτή η εφαρμογή είναι ένας βελτιστοποιημένος client για τις web εφαρμογές ErikrafT Drop και PairDrop.\nΕπιλέξτε μία από τις ακόλουθες επιλογές ή καθορίστε μια προσαρμοσμένη διεύθυνση URL για να συνδεθίιτε.\n\nΣημείωση: Πρέπει να επιλέξετε το ίδιο URL σε όλες τις συσκευές.</string>
     <string name="onboarding_storage_permission">Άδεια αποθήκευσης</string>
     <string name="onboarding_storage_permission_description">Αυτή η εφαρμογή είναι ένα πρόγραμμα κοινής χρήσης αρχείων. Ως εκ τούτου, απαιτείται άδεια αποθήκευσης για να μπορεί να χρησιμοποιηθεί.</string>
     <string name="onboarding_server_pairdrop_summary">(συνιστάται)\nΛειτουργία σύζευξης, μεταφορά μέσω διαδικτύου με στόχο τη σταθερότητα.</string>

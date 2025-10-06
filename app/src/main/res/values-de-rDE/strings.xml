@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">fertigstellen</string>
     <string name="onboarding_choose_server">Serveradresse wählen</string>
     <string name="onboarding_choose_server_short">Server wählen</string>
-    <string name="onboarding_choose_server_description">Diese App ist ein optimierter Client für die Webanwendungen Snapdrop und PairDrop.\nWählen Sie eine der folgenden Instanzen oder geben Sie eine benutzerdefinierte URL an, mit der Sie sich verbinden möchten.\n\nHinweis: Sie müssen auf allen Geräten die gleiche URL wählen.</string>
+    <string name="onboarding_choose_server_description">Diese App ist ein optimierter Client für die Webanwendungen ErikrafT Drop und PairDrop.\nWählen Sie eine der folgenden Instanzen oder geben Sie eine benutzerdefinierte URL an, mit der Sie sich verbinden möchten.\n\nHinweis: Sie müssen auf allen Geräten die gleiche URL wählen.</string>
     <string name="onboarding_storage_permission">Speicherberechtigung</string>
     <string name="onboarding_storage_permission_description">Diese App ist ein Datei-Freigabe-Programm. Daher ist die Speicher-Berechtigung erforderlich, um funktionieren zu können.</string>
     <string name="onboarding_server_pairdrop_summary">(empfohlen)\nKopplungsfunktion, Internet-Übertragung und Fokus auf Stabilität.</string>
