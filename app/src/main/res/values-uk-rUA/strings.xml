@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">завершити</string>
     <string name="onboarding_choose_server">Виберіть адресу сервера</string>
     <string name="onboarding_choose_server_short">вибрати сервер</string>
-    <string name="onboarding_choose_server_description">Цей застосунок є оптимізованим клієнтом для вебзастосунків Snapdrop і PairDrop.\nВиберіть один із наведених нижче екземплярів або вкажіть спеціальну URL-адресу для підключення.\n\nПримітка: Вам потрібно вибрати однакову URL-адресу на всіх пристроях.</string>
+    <string name="onboarding_choose_server_description">Цей застосунок є оптимізованим клієнтом для вебзастосунків ErikrafT Drop і PairDrop.\nВиберіть один із наведених нижче екземплярів або вкажіть спеціальну URL-адресу для підключення.\n\nПримітка: Вам потрібно вибрати однакову URL-адресу на всіх пристроях.</string>
     <string name="onboarding_storage_permission">Дозвіл на зберігання</string>
     <string name="onboarding_storage_permission_description">Цей застосунок є засобом для обміну файлами. Тому для його використання потрібен дозвіл на зберігання.</string>
     <string name="onboarding_server_pairdrop_summary">(рекомендовано)\nФункція створення пари, передавання через інтернет та зосередженість на стабільності.</string>

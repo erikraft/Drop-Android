@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">voltooien</string>
     <string name="onboarding_choose_server">Kies een serveradres</string>
     <string name="onboarding_choose_server_short">kies een server</string>
-    <string name="onboarding_choose_server_description">Deze app is een geoptimaliseerde client voor de webapps Snapdrop en PairDrop.\nKies een van de volgende instanties of specificeer een aangepaste url om verbinding mee te maken.\n\nOpmerking: Kies dezelfde URL op alle apparaten.</string>
+    <string name="onboarding_choose_server_description">Deze app is een geoptimaliseerde client voor de webapps ErikrafT Drop en PairDrop.\nKies een van de volgende instanties of specificeer een aangepaste url om verbinding mee te maken.\n\nOpmerking: Kies dezelfde URL op alle apparaten.</string>
     <string name="onboarding_storage_permission">Toegang tot bestanden</string>
     <string name="onboarding_storage_permission_description">Deze app is bedoeld voor het delen van bestanden. Daarom is toestemming tot bestanden vereist om deze te gebruiken.</string>
     <string name="onboarding_server_pairdrop_summary">(aanbevolen)\nKoppeling functie, overdracht via internet en focus op stabiliteit.</string>

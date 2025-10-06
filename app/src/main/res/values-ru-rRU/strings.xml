@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">Завершить</string>
     <string name="onboarding_choose_server">Выберите адрес сервера</string>
     <string name="onboarding_choose_server_short">Выберите сервер</string>
-    <string name="onboarding_choose_server_description">Это приложение оптимизировано для веб-приложений Snapdrop и PairDrop.\nВыберите один из следующих экземпляров или укажите пользовательский URL для подключения.\n\nПримечание: вы должны выбрать один и тот же URL на всех устройствах.</string>
+    <string name="onboarding_choose_server_description">Это приложение оптимизировано для веб-приложений ErikrafT Drop и PairDrop.\nВыберите один из следующих экземпляров или укажите пользовательский URL для подключения.\n\nПримечание: вы должны выбрать один и тот же URL на всех устройствах.</string>
     <string name="onboarding_storage_permission">Разрешение на работу с файлами</string>
     <string name="onboarding_storage_permission_description">Это приложение является утилитой для обмена файлами. Поэтому для его использования требуется разрешение на работу с файлами.</string>
     <string name="onboarding_server_pairdrop_summary">(Рекомендуется)\nВозможность сопряжения, интернет-передача и фокус на стабильности.</string>
