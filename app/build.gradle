@@ -29,7 +29,7 @@ android {
         versionName "2.3.1"
         applicationVariants.all { variant ->
             variant.outputs.all {
-                outputFileName = "erikraftdrop_v${defaultConfig.versionName}.apk"
+                outputFileName = "Drop-Android.apk"
             }
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
