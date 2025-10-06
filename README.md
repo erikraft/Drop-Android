@@ -24,14 +24,14 @@ However, even if it theoretically would fully work in your browser and you don't
 
 ## Where can I download the app?
 **ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/). 
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.erikraft.drop">
-    <img height="100" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png">
+<div align='center' style='display: inline_block; gap: 10px;'><br>
+  <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
+    <img alt='Get it on Google Play' height='80' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'>
   </a>
-  <a href="https://f-droid.org/en/packages/com.erikraft.drop/">
-    <img height="100" alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png">
+  <a href='https://f-droid.org/en/packages/com.erikraft.drop/' target='_blank'>
+    <img alt='Get it on F-Droid' height='80' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'>
   </a>
-</p>
+</div>
 
 ## Screenshots
 <img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_1.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_10.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_2.png" width="10%"></img>
