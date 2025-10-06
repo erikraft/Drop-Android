@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">konec</string>
     <string name="onboarding_choose_server">Izberite naslov strežnika</string>
     <string name="onboarding_choose_server_short">izberite strežnik</string>
-    <string name="onboarding_choose_server_description">Ta aplikacija je optimiziran odjemalec za spletni aplikaciji Snapdrop in PairDrop.\nIzberite enega od naslednjih primerov ali pa vnesite lasten URL za povezavo.\n\nOpomba: v vseh napravah morate izbrati isti URL.</string>
+    <string name="onboarding_choose_server_description">Ta aplikacija je optimiziran odjemalec za spletni aplikaciji ErikrafT Drop in PairDrop.\nIzberite enega od naslednjih primerov ali pa vnesite lasten URL za povezavo.\n\nOpomba: v vseh napravah morate izbrati isti URL.</string>
     <string name="onboarding_storage_permission">Dovoljenje za shrambo</string>
     <string name="onboarding_storage_permission_description">Ta aplikacija je orodje za deljenje datotek. Zato je potrebno dovoljenje za shranjevanje, da jo lahko uporabljate.</string>
     <string name="onboarding_server_pairdrop_summary">(priporočeno)\nZnačilnosti povezovanja, prenosa prek interneta in poudarek na stabilnosti.</string>

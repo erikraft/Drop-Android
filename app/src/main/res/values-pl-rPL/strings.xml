@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">zakończ</string>
     <string name="onboarding_choose_server">Wybierz adres serwera</string>
     <string name="onboarding_choose_server_short">wybierz serwer</string>
-    <string name="onboarding_choose_server_description">Ta aplikacja jest zoptymalizowanym klientem aplikacji webowych Snapdrop i PairDrop.\nWybierz jedną z następujących instancji lub określ niestandardowy adres url do połączenia\n\nUwaga: musisz wybrać ten sam URL na wszystkich urządzeniach.</string>
+    <string name="onboarding_choose_server_description">Ta aplikacja jest zoptymalizowanym klientem aplikacji webowych ErikrafT Drop i PairDrop.\nWybierz jedną z następujących instancji lub określ niestandardowy adres url do połączenia\n\nUwaga: musisz wybrać ten sam URL na wszystkich urządzeniach.</string>
     <string name="onboarding_storage_permission">Uprawnienia do przechowywania danych</string>
     <string name="onboarding_storage_permission_description">Ta aplikacja jest narzędziem udostępniania plików. W związku z tym wymagane jest pozwolenie na przechowywanie plików, aby z niej korzystać.</string>
     <string name="onboarding_server_pairdrop_summary">(zalecane)\nFunkcja parowania, transfer Internetu i koncentracja na stabilności.</string>
