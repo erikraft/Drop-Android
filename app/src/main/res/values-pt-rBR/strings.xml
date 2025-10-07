@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Sobre Snapdrop &amp; PairDrop para Android</string>
+    <string name="app_name_long">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
     <string name="app_name_slogan">Transfira arquivos perfeitamente entre todos os seus dispositivos.</string>
     <string name="err_no_browser">Não foi possível abrir o navegador</string>
     <string name="err_no_app">Nenhum app instalado que pode abrir este arquivo</string>
@@ -34,7 +34,7 @@
     <string name="retry">repetir</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Informações sobre o \'app\'</string>
-    <string name="title_activity_about">Sobre Snapdrop &amp; PairDrop para Android</string>
+    <string name="title_activity_about">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
     <string name="pref_about_title">Sobre este \'app\'</string>
     <string name="view_downloads">Ver downloads</string>
     <string name="pref_category_settings">Configurações</string>
