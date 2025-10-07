@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">zakończ</string>
     <string name="onboarding_choose_server">Wybierz adres serwera</string>
     <string name="onboarding_choose_server_short">wybierz serwer</string>
-    <string name="onboarding_choose_server_description">Ta aplikacja jest zoptymalizowanym klientem aplikacji webowych Snapdrop i PairDrop.\nWybierz jedną z następujących instancji lub określ niestandardowy adres url do połączenia\n\nUwaga: musisz wybrać ten sam URL na wszystkich urządzeniach.</string>
+    <string name="onboarding_choose_server_description">Ta aplikacja jest zoptymalizowanym klientem aplikacji webowych ErikrafT Drop i PairDrop.\nWybierz jedną z następujących instancji lub określ niestandardowy adres url do połączenia\n\nUwaga: musisz wybrać ten sam URL na wszystkich urządzeniach.</string>
     <string name="onboarding_storage_permission">Uprawnienia do przechowywania danych</string>
     <string name="onboarding_storage_permission_description">Ta aplikacja jest narzędziem udostępniania plików. W związku z tym wymagane jest pozwolenie na przechowywanie plików, aby z niej korzystać.</string>
     <string name="onboarding_server_pairdrop_summary">(zalecane)\nFunkcja parowania, transfer Internetu i koncentracja na stabilności.</string>
@@ -49,10 +49,10 @@
     <string name="keep_on_summary">(Zalecane) Wiele urządzeń ma problemy z przerywaniem transferu po wyłączeniu ekranu</string>
     <string name="keep_on_title">Pozostaw włączony ekran podczas przesyłania</string>
     <string name="floating_text_selection_title">Wybór pływającego tekstu</string>
-    <string name="floating_text_selection_summary">Podczas wybierania tekstu w innych aplikacjach zostanie wyświetlona opcja \"Wyślij za pomocą Snapdrop\"</string>
+    <string name="floating_text_selection_summary">Podczas wybierania tekstu w innych aplikacjach zostanie wyświetlona opcja \"Wyślij za pomocą ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Ostrzeżenie o połączeniu</string>
     <string name="show_connectivity_card_summary"> Pokaż ostrzeżenie, gdy nie jesteś połączony z siecią WiFi</string>
-    <string name="floating_text_selection_activity_label">Wyślij przez Snapdrop</string>
+    <string name="floating_text_selection_activity_label">Wyślij przez ErikrafT Drop</string>
     <string name="permission_not_granted">Proszę udzielić odpowiednich uprawnień</string>
     <string name="permission_not_granted_fallback">udziel niezbędnych uprawnień ręcznie</string>
     <string name="open_settings">otwórz ustawienia</string>
