@@ -1,5 +1,5 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/releases/latest) 
-[![CI build](https://github.com/erikraft/Drop-Android/workflows/APK%20Build/badge.svg?branch=master)](https://github.com/erikraft/Drop-Android) 
+[![Build and Upload APK to Release](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml/badge.svg?branch=master)](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml)
 [![Uptime status page](https://img.shields.io/uptimerobot/status/m794250124-e911aac785f4e3425de6b894?label=ErikrafT%20Drop%20uptime)](https://stats.uptimerobot.com/YcoqxlIOj8/801513796)
 [![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues) 
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
