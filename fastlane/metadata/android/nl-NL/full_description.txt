@@ -1,4 +1,4 @@
-Snapdrop voor Android is een Android™-client voor de gratis en open source oplossing voor het lokaal delen van bestanden https://snapdrop.net/.
+ErikrafT Drop voor Android is een Android™-client voor de gratis en open source oplossing voor het lokaal delen van bestanden https://snapdrop.net/.
 
 Heeft u soms ook het probleem dat u alleen maar snel een bestand van uw telefoon naar uw PC wilt overzetten?
 
@@ -6,16 +6,16 @@ USB? - Oubollig!
 Bluetooth? - Veel te omslachtig en traag!
 E-mail? - Alsjeblieft, niet wéér een e-mail naar mezelf schrijven!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop is een lokale oplossing voor het delen van bestanden die volledig werkt in uw browser. Een beetje zoals Apple's Airdrop, maar niet alleen voor Apple apparaten. Windows, Linux, Android, iPhone, Mac - helemaal geen probleem!
+ErikrafT Drop is een lokale oplossing voor het delen van bestanden die volledig werkt in uw browser. Een beetje zoals Apple's Airdrop, maar niet alleen voor Apple apparaten. Windows, Linux, Android, iPhone, Mac - helemaal geen probleem!
 
-Maar zelfs als het theoretisch gezien volledig in uw browser werkt, zult u deze app geweldig vinden als u Snapdrop vaak gebruikt in uw dagelijks leven. Dankzij de perfecte integratie in het Android™ besturingssysteem worden bestanden nog sneller verzonden. Vanuit andere apps kunt u Snapdrop selecteren om te delen.
+Maar zelfs als het theoretisch gezien volledig in uw browser werkt, zult u deze app geweldig vinden als u ErikrafT Drop vaak gebruikt in uw dagelijks leven. Dankzij de perfecte integratie in het Android™ besturingssysteem worden bestanden nog sneller verzonden. Vanuit andere apps kunt u ErikrafT Drop selecteren om te delen.
 
-Dankzij zijn eenvoud maakt "Snapdrop voor Android" het dagelijkse leven van duizenden gebruikers gemakkelijker. Als open source project hebben we geen commerciële belangen, maar willen we de wereld een beetje beter maken. Doe mee en overtuig jezelf!
+Dankzij zijn eenvoud maakt "ErikrafT Drop voor Android" het dagelijkse leven van duizenden gebruikers gemakkelijker. Als open source project hebben we geen commerciële belangen, maar willen we de wereld een beetje beter maken. Doe mee en overtuig jezelf!
 
 SOURCE CODE:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 CREDIT:
-De app is gebaseerd op het Snapdrop Open Source project, dat wordt gehost en onderhouden door RobinLinus. Zie ook https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.

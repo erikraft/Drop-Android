@@ -1,4 +1,4 @@
-Snapdrop for Androidは無料でオープンソースのローカルファイルシェアリングソリューションのhttps://snapdrop.net/のAndroid™クライエントです。
+ErikrafT Drop for Androidは無料でオープンソースのローカルファイルシェアリングソリューションのhttps://snapdrop.net/のAndroid™クライエントです。
 
 あなたもたまに携帯からPCにファイルを転送することに問題がありましたか?
 
@@ -6,16 +6,16 @@ USB? - 古すぎます!
 Bluetooth? - 面倒で遅いです!
 メール? - また自分を宛先にしてメールを送るつもりですか?
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdropはあなたのブラウザで完璧に動作するローカルファイルシェアリングソリューションです。 AppleのAirdropに似ていますが、Appleのデバイスだけではありません。 Windows、Linux、Android、iPhone、Mac - 全然問題ありません!
+ErikrafT Dropはあなたのブラウザで完璧に動作するローカルファイルシェアリングソリューションです。 AppleのAirdropに似ていますが、Appleのデバイスだけではありません。 Windows、Linux、Android、iPhone、Mac - 全然問題ありません!
 
-しかし、理論的にあなたのブラウザで完璧に作動するとしてもSnapdropをよく使うならこのアプリが気にいるでしょう。 Android OSとの完璧な統合により、ファイルはさらに早く送信されます。 他のアプリでSnapdropでシェアすることができます。
+しかし、理論的にあなたのブラウザで完璧に作動するとしてもErikrafT Dropをよく使うならこのアプリが気にいるでしょう。 Android OSとの完璧な統合により、ファイルはさらに早く送信されます。 他のアプリでErikrafT Dropでシェアすることができます。
 
-Snapdrop for Android は究極のシンプルさにより、何千人ものユーザーの日常生活を向上させます。 オープンソースプロジェクトなので商業的利益を出しませんが、私たちは世界をより良くしたいです。 使用してみてください!
+ErikrafT Drop for Android は究極のシンプルさにより、何千人ものユーザーの日常生活を向上させます。 オープンソースプロジェクトなので商業的利益を出しませんが、私たちは世界をより良くしたいです。 使用してみてください!
 
 ソースコード:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 クレジット:
-このアプリはRobinLinusにより維持されているSnapdropオープンソースプロジェクトに基づきます。 https://www.github.com/robinlinus/snapdropをご参照ください
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.

@@ -1,4 +1,4 @@
-Snapdrop para Android™ es un cliente de Android™ para la solución de intercambio de archivos locales gratuita y de código abierto https://snapdrop.net/.
+ErikrafT Drop para Android™ es un cliente de Android™ para la solución de intercambio de archivos locales gratuita y de código abierto https://snapdrop.net/.
 
 ¿A veces también tienes el problema de que sólo necesitas transferir rápidamente un archivo desde tu teléfono al PC?
 
@@ -6,16 +6,16 @@ Snapdrop para Android™ es un cliente de Android™ para la solución de interc
 ¿Bluetooth? - ¡Demasiado engorroso y lento!
 ¿Correo electrónico? - ¡Por favor! ¡No otro correo electrónico que deba escribir a mí mismo!
 
-¡Snapdrop!
+¡ErikrafT Drop!
 
-Snapdrop es una solución local para compartir archivos que funciona completamente en tu navegador. Algo así como Airdrop de Apple, pero no sólo para dispositivos Apple. Windows, Linux, Android, IPhone, Mac - ¡no hay ningún problema!
+ErikrafT Drop es una solución local para compartir archivos que funciona completamente en tu navegador. Algo así como Airdrop de Apple, pero no sólo para dispositivos Apple. Windows, Linux, Android, IPhone, Mac - ¡no hay ningún problema!
 
-Sin embargo, incluso si teóricamente funcionaría completamente en tu navegador, te encantará esta aplicación si quieres usar Snapdrop más a menudo en tu vida diaria. Gracias a la perfecta integración en el sistema operativo Android, los archivos se envían aún más rápido. Directamente desde otras aplicaciones con las que puedes seleccionar Snapdrop para compartir.
+Sin embargo, incluso si teóricamente funcionaría completamente en tu navegador, te encantará esta aplicación si quieres usar ErikrafT Drop más a menudo en tu vida diaria. Gracias a la perfecta integración en el sistema operativo Android, los archivos se envían aún más rápido. Directamente desde otras aplicaciones con las que puedes seleccionar ErikrafT Drop para compartir.
 
-Gracias a su simplicidad radical, "Snapdrop para Android" facilita la vida cotidiana de cientos de usuarios. Como proyecto de código abierto, no tenemos ningún interés comercial, sino que queremos hacer el mundo un poco mejor. ¡Únase y convénzase a si mismo!
+Gracias a su simplicidad radical, "ErikrafT Drop para Android" facilita la vida cotidiana de cientos de usuarios. Como proyecto de código abierto, no tenemos ningún interés comercial, sino que queremos hacer el mundo un poco mejor. ¡Únase y convénzase a si mismo!
 
 CÓDIGO FUENTE:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 CRÉDITOS:
-La aplicación y su icono se basan en el proyecto de codigo abierto Snapdrop, que es alojado y mantenido por RobinLinus. Vea también https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
