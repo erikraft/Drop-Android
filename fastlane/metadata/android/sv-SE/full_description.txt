@@ -1,4 +1,4 @@
-Snapdrop för Android är en Android™-klient för den lokala fildelningslösningen för öppen källkod https://snapdrop.net/.
+ErikrafT Drop för Android är en Android™-klient för den lokala fildelningslösningen för öppen källkod https://snapdrop.net/.
 
 Har du också behovet att snabbt kunna föra över filer från mobilen till datorn?
 
@@ -6,17 +6,17 @@ USB? - Gammaldags!
 Bluetooth? - Alltför besvärligt och långsamt!
 E-post? - Snälla inte ett till email, skriver jag till mig själv!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop är en lokal fildelningslösning som fungerar helt i din webbläsare. Lite som Apples Airdrop, fast inte bara för Apple-enheter. Windows, Linux, Android, iPhone, Mac - inga problem alls!
+ErikrafT Drop är en lokal fildelningslösning som fungerar helt i din webbläsare. Lite som Apples Airdrop, fast inte bara för Apple-enheter. Windows, Linux, Android, iPhone, Mac - inga problem alls!
 
-Men även om det teoretiskt skulle fungera fullt ut i din webbläsare, du kommer att älska denna app om du vill använda Snapdrop oftare i ditt dagliga liv. Tack vare perfekt integration i Android-operativsystemet, skickas filer ännu snabbare. Direkt från andra appar kan du välja Snapdrop att dela med.
+Men även om det teoretiskt skulle fungera fullt ut i din webbläsare, du kommer att älska denna app om du vill använda ErikrafT Drop oftare i ditt dagliga liv. Tack vare perfekt integration i Android-operativsystemet, skickas filer ännu snabbare. Direkt från andra appar kan du välja ErikrafT Drop att dela med.
 
-Tack vare sin radikala enkelhet, gör "Snapdrop för Android" vardagen enklare för tusentals användare. Som ett öppen-källkodsprojekt har vi inga kommersiella intressen men vill göra världen lite bättre. Gå med och övertyga dig själv!
+Tack vare sin radikala enkelhet, gör "ErikrafT Drop för Android" vardagen enklare för tusentals användare. Som ett öppen-källkodsprojekt har vi inga kommersiella intressen men vill göra världen lite bättre. Gå med och övertyga dig själv!
 
 KÄLLKOD:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 CREDIT:
-Appen drivs av projektet Snapdrop Open Source, som drivs och underhålls av RobinLinus. Se även
-https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
+https://github.com/erikraft/Drop-Android/

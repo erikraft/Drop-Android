@@ -1,4 +1,4 @@
-Snapdrop & PairDrop for Android is an Android™ client for the free and open source local file sharing solutions https://snapdrop.net/ and https://pairdrop.net/.
+ErikrafT Drop & PairDrop for Android is an Android™ client for the free and open source local file sharing solutions https://snapdrop.net/ and https://pairdrop.net/.
 
 Do you also sometimes have the problem that you just need to quickly transfer a file from your phone to the PC?
 
@@ -6,16 +6,16 @@ USB? - Old fashioned!
 Bluetooth? - Much too cumbersome and slow!
 E-mail? - Please not another email I write to myself!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop (as well as the enhanced version "PairDrop") is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
+ErikrafT Drop (as well as the enhanced version "PairDrop") is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
-However, even if it theoretically would fully work in your browser, you will love this app if you want to use Snapdrop or PairDrop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select Snapdrop to share with.
+However, even if it theoretically would fully work in your browser, you will love this app if you want to use ErikrafT Drop or PairDrop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with.
 
-Thanks to its radical simplicity, "Snapdrop & PairDrop for Android" makes the everyday life of thousands of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
+Thanks to its radical simplicity, "ErikrafT Drop & PairDrop for Android" makes the everyday life of thousands of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 SOURCE CODE:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 CREDIT:
-The app is powered by the Snapdrop Open Source project, which is hosted and maintained by RobinLinus. See also https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
