@@ -1,18 +1,22 @@
 name: Publish to Google Play
 
 on:
+  release:
+    types: [published]   # 🔹 Executa automaticamente quando uma release é publicada
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main             # 🔹 Também executa se houver push na branch principal
+  workflow_dispatch:      # 🔹 Permite executar manualmente pelo GitHub Actions
 
 jobs:
   publish:
     name: Build and publish release bundle
     runs-on: ubuntu-latest
+
     env:
       GOOGLE_PLAY_TRACK: production
       GOOGLE_PLAY_RELEASE_STATUS: completed
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -31,12 +35,22 @@ jobs:
           SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
         run: |
           if [ -z "${SERVICE_ACCOUNT_JSON}" ]; then
-            echo "The GOOGLE_PLAY_SERVICE_ACCOUNT_JSON secret is not configured." >&2
+            echo "❌ The GOOGLE_PLAY_SERVICE_ACCOUNT_JSON secret is not configured." >&2
             exit 1
           fi
           echo "${SERVICE_ACCOUNT_JSON}" | base64 --decode > "${{ runner.temp }}/service-account.json"
+          echo "✅ Service account decoded successfully."
 
-      - name: Publish release bundle
+      - name: Build release bundle
+        run: |
+          chmod +x gradlew
+          ./gradlew clean
+          ./gradlew bundleRelease
+
+      - name: Publish release bundle to Google Play
         env:
           GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ runner.temp }}/service-account.json
-        run: ./gradlew publishReleaseBundle
+        run: |
+          echo "🚀 Uploading AAB to Google Play..."
+          ./gradlew publishReleaseBundle
+          echo "✅ Release bundle uploaded successfully!"
