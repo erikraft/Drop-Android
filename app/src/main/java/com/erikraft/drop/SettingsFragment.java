@@ -90,7 +90,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             storageHelper.onRestoreInstanceState(savedInstanceState);
         }
 
-        initUrlPreference(R.string.pref_support, "https://github.com/fm-sys/snapdrop-android/blob/master/FUNDING.md");
+        initUrlPreference(R.string.pref_support, "https://ko-fi.com/erikraft/");
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         openSourceComponents.setOnPreferenceClickListener(pref -> {
@@ -99,14 +99,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     .withAboutIconShown(true)
                     .withAboutVersionShownName(true)
                     .withAboutDescription("<big><b>Credits</b></big><br><br>" +
-                            "This app and its launcher icon is based on the snapdrop.net project by RobinLinus<br>" +
-                            "<a href=\"https://github.com/RobinLinus/snapdrop\">github.com/RobinLinus/snapdrop</a><br><br>" +
+                            "This app and its launcher icon are based on the PairDrop project by schlagmichdoch<br>" +
+                            "<a href=\"https://github.com/schlagmichdoch/PairDrop/\">github.com/schlagmichdoch/PairDrop</a><br><br>" +
+                            "It uses the official ErikrafT Drop codebase as its foundation<br>" +
+                            "<a href=\"https://github.com/erikraft/Drop\">github.com/erikraft/Drop</a><br>" +
+                            "with the Android client maintained at<br>" +
+                            "<a href=\"https://github.com/erikraft/Drop-Android\">github.com/erikraft/Drop-Android</a><br><br>" +
                             "<big><b>" + getString(R.string.support_us) + "</b></big><br><br>" +
                             getString(R.string.support_us_summary) + "<br>" +
-                            "<a href=\"https://github.com/fm-sys/snapdrop-android/blob/master/FUNDING.md\">" + getString(R.string.read_more) + "</a>")
+                            "<a href=\"https://ko-fi.com/erikraft/\">" + getString(R.string.read_more) + "</a>")
                     .withAboutSpecial1("GitHub")
                     .withAboutSpecial2("Twitter/X")
-                    .withAboutSpecial3("Crowdin")
                     .withListener(new AboutLibrariesListener() {
                         @Override
                         public boolean onIconLongClicked(final @NonNull View view) {
@@ -134,17 +137,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                         @Override
                         public void onIconClicked(final @NonNull View view) {
-                            ShareUtils.openUrl(SettingsFragment.this, "https://github.com/fm-sys/snapdrop-android");
+                            ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
                         }
 
                         @Override
                         public boolean onExtraClicked(final @NonNull View view, final @NonNull SpecialButton specialButton) {
                             if (specialButton == SpecialButton.SPECIAL1) {
-                                ShareUtils.openUrl(SettingsFragment.this, "https://github.com/fm-sys/snapdrop-android");
+                                ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
                             } else if (specialButton == SpecialButton.SPECIAL2) {
-                                ShareUtils.openUrl(SettingsFragment.this, "https://twitter.com/intent/tweet?text=@SnapdropAndroid%20-%20%22Snapdrop%20%26%20PairDrop%20for%20Android%22%20is%20an%20Android%20client%20for%20https://snapdrop.net%20and%20https://pairdrop.net%0A%0A%23snapdrop");
-                            } else if (specialButton == SpecialButton.SPECIAL3) {
-                                ShareUtils.openUrl(SettingsFragment.this, "https://crowdin.com/project/snapdrop-android");
+                                ShareUtils.openUrl(SettingsFragment.this, "https://x.com/ErikrafTbr");
                             }
                             return true;
                         }
