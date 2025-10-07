@@ -15,8 +15,8 @@ Bluetooth? - מסורבל ואיטי!
 תודות לפשטות השימוש, "סנאפדרופ לאנדרואיד" מיקל על חיי אלפי המשתמשים ביישום. פרויקט בקוד פתוח ואין לנו שום מניעים אישיים אלא רוצים לעשות את העולם קצת טוב יותר. הצטרף ושכנע את עצמך!
 
 קוד מקור:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 קרדיט:
-היישום מונע ע"י פרויקט בקוד פתוח סנאפדרופ, שמאוחסן ומתוחזק על ידי RobinLinus. ראה עוד
-https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
+https://github.com/erikraft/Drop-Android/

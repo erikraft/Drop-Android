@@ -1,4 +1,4 @@
-Snapdrop za Android je aplikacija na platformi Android™ za brezplačno in odprtokodno lokalno deljenje datotek https://snapdrop.net/.
+ErikrafT Drop za Android je aplikacija na platformi Android™ za brezplačno in odprtokodno lokalno deljenje datotek https://snapdrop.net/.
 
 Ali imate tudi vi včasih težavo, da morate na hitro prenesti datoteko iz telefona na računalnik?
 
@@ -6,16 +6,16 @@ USB? - Staromodno!
 Bluetooth? - Preveč okorno in počasno!
 E-pošta? - Prosim ne še eno e-poštno sporočilo, ki ga pišem sam/a sebi!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop je rešitev za lokalno deljenje datotek, ki deluje celotno v vašem brskalniku. Podobno kot Applov Airdrop, vendar ne samo za Apple naprave. Windows, Linux, Android, IPhone, Mac - sploh ni problema!
+ErikrafT Drop je rešitev za lokalno deljenje datotek, ki deluje celotno v vašem brskalniku. Podobno kot Applov Airdrop, vendar ne samo za Apple naprave. Windows, Linux, Android, IPhone, Mac - sploh ni problema!
 
-Kakorkoli, tudi če teoretično v celoti deluje v vašem brskalniku, vam bo ta aplikacija všeč, če želite Snapdrop pogosteje uporabljati v vsakdanjem življenju. Zahvaljujoč popolni integraciji v operacijski sistem Android se datoteke pošiljajo še hitreje. V drugih aplikacijah lahko neposredno izberete Snapdrop kot način deljenja.
+Kakorkoli, tudi če teoretično v celoti deluje v vašem brskalniku, vam bo ta aplikacija všeč, če želite ErikrafT Drop pogosteje uporabljati v vsakdanjem življenju. Zahvaljujoč popolni integraciji v operacijski sistem Android se datoteke pošiljajo še hitreje. V drugih aplikacijah lahko neposredno izberete ErikrafT Drop kot način deljenja.
 
-Zahvaljujoč svoji radikalni preprostosti "Snapdrop za Android" olajša vsakdanje življenje tisočem uporabnikov. Kot odprtokodni projekt nimamo nobenih komercialnih interesov, ampak želimo svet malo izboljšati. Pridružite se nam in se prepričajte!
+Zahvaljujoč svoji radikalni preprostosti "ErikrafT Drop za Android" olajša vsakdanje življenje tisočem uporabnikov. Kot odprtokodni projekt nimamo nobenih komercialnih interesov, ampak želimo svet malo izboljšati. Pridružite se nam in se prepričajte!
 
 IZVORNA KODA:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 ZASLUGE:
-Aplikacijo poganja odprtokodni projekt Snapdrop, ki ga gosti in vzdržuje RobinLinus. Poglejte tudi https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
