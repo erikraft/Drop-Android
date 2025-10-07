@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">fertigstellen</string>
     <string name="onboarding_choose_server">Serveradresse wählen</string>
     <string name="onboarding_choose_server_short">Server wählen</string>
-    <string name="onboarding_choose_server_description">Diese App ist ein optimierter Client für die Webanwendungen Snapdrop und PairDrop.\nWählen Sie eine der folgenden Instanzen oder geben Sie eine benutzerdefinierte URL an, mit der Sie sich verbinden möchten.\n\nHinweis: Sie müssen auf allen Geräten die gleiche URL wählen.</string>
+    <string name="onboarding_choose_server_description">Diese App ist ein optimierter Client für die Webanwendungen ErikrafT Drop und PairDrop.\nWählen Sie eine der folgenden Instanzen oder geben Sie eine benutzerdefinierte URL an, mit der Sie sich verbinden möchten.\n\nHinweis: Sie müssen auf allen Geräten die gleiche URL wählen.</string>
     <string name="onboarding_storage_permission">Speicherberechtigung</string>
     <string name="onboarding_storage_permission_description">Diese App ist ein Datei-Freigabe-Programm. Daher ist die Speicher-Berechtigung erforderlich, um funktionieren zu können.</string>
     <string name="onboarding_server_pairdrop_summary">(empfohlen)\nKopplungsfunktion, Internet-Übertragung und Fokus auf Stabilität.</string>
@@ -52,10 +52,10 @@
     <string name="keep_on_summary">(Empfohlen) Viele Geräte haben Probleme mit Übertragungen, wenn der Bildschirm ausgeschaltet wird</string>
     <string name="keep_on_title">Bildschirm während der Übertragung angeschaltet lassen</string>
     <string name="floating_text_selection_title">Schwebende Textauswahl</string>
-    <string name="floating_text_selection_summary">Bei der Auswahl von Text in anderen Apps wird die Option \"Mit Snapdrop senden\" angezeigt</string>
+    <string name="floating_text_selection_summary">Bei der Auswahl von Text in anderen Apps wird die Option \"Mit ErikrafT Drop senden\" angezeigt</string>
     <string name="show_connectivity_card_title">Verbindungswarnung</string>
     <string name="show_connectivity_card_summary"> Warnung anzeigen, wenn nicht mit einem WLAN-Netzwerk verbunden</string>
-    <string name="floating_text_selection_activity_label">Mit Snapdrop senden</string>
+    <string name="floating_text_selection_activity_label">Mit ErikrafT Drop senden</string>
     <string name="permission_not_granted">Bitte erteilen Sie die notwendige Berechtigung</string>
     <string name="permission_not_granted_fallback">Bitte erteilen Sie die notwendige Berechtigung manuell</string>
     <string name="open_settings">Einstellungen öffnen</string>

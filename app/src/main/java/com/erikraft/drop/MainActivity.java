@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             return; // all this doesn't make sense if we have no base URL
         }
 
-        if (baseURL.equals("https://snapdrop.net")) {
+        if (baseURL.startsWith("https://snapdrop.net")) {
             openSettingsResultLauncher.launch(OnboardingActivity.getServerSelectionIntent(this));
         }
 
@@ -307,7 +307,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isPairDrop() {
-        return baseURL.equals(getString(R.string.onboarding_server_pairdrop));
+        return baseURL != null && (baseURL.startsWith(getString(R.string.onboarding_server_pairdrop))
+                || baseURL.startsWith("https://drop.erikraft.com"));
     }
 
     @Override

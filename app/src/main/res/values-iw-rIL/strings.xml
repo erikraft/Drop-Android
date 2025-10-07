@@ -22,8 +22,8 @@
     <string name="keep_on_summary">(מומלץ) להמון מכשירים יש בעיות שהעברת הקבצים נקטעת כשמכבים את מסך המכשיר</string>
     <string name="keep_on_title">השאר מסך דולק במשך העברת הקבצים</string>
     <string name="floating_text_selection_title">בחירת טקסט צף</string>
-    <string name="floating_text_selection_summary">כשתבחר שורת טקסט ביישום אחר, יפתח אפשרות של \"שתף עם סנאפדרופ\"</string>
-    <string name="floating_text_selection_activity_label">שתף עם סנאפדרופ</string>
+    <string name="floating_text_selection_summary">כשתבחר שורת טקסט ביישום אחר, יפתח אפשרות של \"שתף עם ErikrafT Drop\"</string>
+    <string name="floating_text_selection_activity_label">שתף עם ErikrafT Drop</string>
     <string name="settings_theme_title">ערכת נושא</string>
     <string-array name="darkmode_entries">
         <item>ברירת מחדל של המערכת</item>
