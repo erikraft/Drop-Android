@@ -1,4 +1,4 @@
-Snapdrop per a Android és un client de Android™ per la solució d'intercanvi local d'arxius lliure i de codi obert https://snapdrop.net.
+ErikrafT Drop per a Android és un client de Android™ per la solució d'intercanvi local d'arxius lliure i de codi obert https://snapdrop.net.
 
 De vegades també tens el problema de necessitar transferir un arxiu rapidament del teu telèfon al teu PC?
 
@@ -6,16 +6,16 @@ USB? - Passat de moda!
 Bluetooth? - Massa complicat i lent!
 E-mail? - Si us plau no un altre correu que m'envio a mi mateix!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop és una solució de transferència de fitxers local que funciona completament al teu navegador. Una mica com el Airdrop de Apple, pero no només per els dispositius d'Apple. Windows, Linux, Android, iPhone, Mac - cap mena de problema!
+ErikrafT Drop és una solució de transferència de fitxers local que funciona completament al teu navegador. Una mica com el Airdrop de Apple, pero no només per els dispositius d'Apple. Windows, Linux, Android, iPhone, Mac - cap mena de problema!
 
-Tot i així, encara que en teoria funciona completament en el teu navegador, aquesta aplicació t'encantarà si vols fer servir Snapdrop sovint. Gràcies a la perfecte integració amb el sistema operatiu Android, els fitxers són enviats encara més rapidament. Directament des de dins d'altres aplicacions pots selccionar per compartir amb Snapdrop.
+Tot i així, encara que en teoria funciona completament en el teu navegador, aquesta aplicació t'encantarà si vols fer servir ErikrafT Drop sovint. Gràcies a la perfecte integració amb el sistema operatiu Android, els fitxers són enviats encara més rapidament. Directament des de dins d'altres aplicacions pots selccionar per compartir amb ErikrafT Drop.
 
-Gràcies a la seva gran simplicitat, "Snapdrop per a Android" fa la vida quotidiana més fàcil per a milers d'usuaris. Com a projecte de codi obert no tenim cap interés comercial pero volem fer el mon una mica millor. Uneix-te i convence't!
+Gràcies a la seva gran simplicitat, "ErikrafT Drop per a Android" fa la vida quotidiana més fàcil per a milers d'usuaris. Com a projecte de codi obert no tenim cap interés comercial pero volem fer el mon una mica millor. Uneix-te i convence't!
 
 CODI FONT:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 CRÈDITS:
-Aquesta aplicació està impulsada pel projecte de codi obert Snapdrop, el qual està mantingut i allotjat per RobinLinus. Vegeu també https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.

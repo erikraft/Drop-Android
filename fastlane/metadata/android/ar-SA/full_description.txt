@@ -15,7 +15,7 @@
 بفضل بساطتها الجذرية، "Snaplow for Android" يجعل الحياة اليومية لآلاف المستخدمين أسهل. كَمشروعٌ مَفتوحُ المَصدَر ليسَ لَدينا أيُّ مَصاِلحَ تِجاريَّة، لكِن نُريدُ جَعلَ العالم أفضَلَ قليلاً. اِنضَم وَاقنِع نَفسَك!
 
 مَصدَرُ التَعليمَاتِ البَرمَجِيَّة:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 شكر:
-التطبيق مدعوم من قبل مشروع Snapdrop Open Source ، الذي يتم استضافته وصيانته من قبل RobinLinus. ألقِ نَظرَتًا عَلَى https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.

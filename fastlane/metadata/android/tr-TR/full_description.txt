@@ -1,4 +1,4 @@
-Android için Snapdrop; Android™ için ücretsiz ve açık kaynak kodlu  yerel dosya paylaşım çözümüdür
+Android için ErikrafT Drop; Android™ için ücretsiz ve açık kaynak kodlu  yerel dosya paylaşım çözümüdür
 https://snapdrop.net/.
 
 Sen de telefondan PC'ye hızlıca dosya transfer etmek istediğinde problem yaşıyor musun?
@@ -7,16 +7,16 @@ USB? - Eski moda!
 Bluetooth? - Çok hantal ve yavaş!
 E-posta? - Lütfen kendime başka bir e-posta daha atmayayım!
 
-Snapdrop!
+ErikrafT Drop!
 
-Snapdrop tamamen tarayıcıda çalışan bir yerel paylaşım çözümüdür. Apple'ın Airdrop'u gibi fakat sadece Apple cihazları için değil. Windows, Linux, Android, IPhone, Mac - hiç problem değil!
+ErikrafT Drop tamamen tarayıcıda çalışan bir yerel paylaşım çözümüdür. Apple'ın Airdrop'u gibi fakat sadece Apple cihazları için değil. Windows, Linux, Android, IPhone, Mac - hiç problem değil!
 
-Aslında teorik olarak tarayıcınızda tam olarak çalışsa bile, Snapdrop'u günlük yaşamınızda daha sık kullanmak istiyorsanız bu uygulamayı seveceksiniz. Android işletim sistemi ile olan harika uyumu sayesinde dosya göndermek çok daha hızlı. Diğer uygulamaların paylaşım seçenekleri içinden doğrudan paylaşım yapmak için Snapdrop'u seçebilirsiniz.
+Aslında teorik olarak tarayıcınızda tam olarak çalışsa bile, ErikrafT Drop'u günlük yaşamınızda daha sık kullanmak istiyorsanız bu uygulamayı seveceksiniz. Android işletim sistemi ile olan harika uyumu sayesinde dosya göndermek çok daha hızlı. Diğer uygulamaların paylaşım seçenekleri içinden doğrudan paylaşım yapmak için ErikrafT Drop'u seçebilirsiniz.
 
 "Android için Snapdroid" radikal sadeliği sayesinde binlerce kullanıcının günlük hayatını kolaylaştırmakta. Açık kaynak kodlu bir proje olarak herhangi bir ticari çıkarımız yok ama dünyayı biraz daha iyi hale getirmek istiyoruz. Katılın ve kendinizi ikna edin!
 
 KAYNAK KODU:
-https://github.com/fm-sys/snapdrop-android
+https://github.com/erikraft/Drop-Android/
 
 KREDİ:
-Bu uygulama RobinLinus tarafından barındırılan ve sürdürülen Snapdrop Açık Kaynak projesi ile hayat bulmuştur. Ayrıca bakın https://www.github.com/robinlinus/snapdrop
+ErikrafT Drop was inspired by the PairDrop and SnapDrop projects.
