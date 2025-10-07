@@ -10,7 +10,7 @@
     <string name="onboarding_button_finish">完了</string>
     <string name="onboarding_choose_server">サーバー選択</string>
     <string name="onboarding_choose_server_short">サーバー選択</string>
-    <string name="onboarding_choose_server_description">このアプリはウェブアプリのSnapdropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
+    <string name="onboarding_choose_server_description">このアプリはウェブアプリのErikrafT DropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
     <string name="onboarding_storage_permission">ストレージ権限</string>
     <string name="onboarding_storage_permission_description">このアプリはファイル共有ツールです。そのため、ストレージへのアクセス許可が必要です。</string>
     <string name="onboarding_server_pairdrop_summary">(推奨)\nペアリングやインターネット上での転送機能があり、安定しています。</string>
@@ -48,10 +48,10 @@
     <string name="keep_on_summary">(推奨) 多くのデバイスで画面の消灯時に転送が中止される問題が発生します</string>
     <string name="keep_on_title">転送時に画面を点灯したままにする</string>
     <string name="floating_text_selection_title">テキスト選択メニューに表示</string>
-    <string name="floating_text_selection_summary">他のアプリでテキストを選択すると､「Snapdropで送信」オプションが表示されます</string>
+    <string name="floating_text_selection_summary">他のアプリでテキストを選択すると､「ErikrafT Dropで送信」オプションが表示されます</string>
     <string name="show_connectivity_card_title">接続警告</string>
     <string name="show_connectivity_card_summary"> WiFiに接続していない場合に警告を表示する</string>
-    <string name="floating_text_selection_activity_label">Snapdropで送信</string>
+    <string name="floating_text_selection_activity_label">ErikrafT Dropで送信</string>
     <string name="permission_not_granted">必要な権限を許可してください</string>
     <string name="permission_not_granted_fallback">必要な権限を手動で許可してください</string>
     <string name="open_settings">設定を開く</string>

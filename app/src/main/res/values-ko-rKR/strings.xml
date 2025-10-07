@@ -11,7 +11,7 @@
     <string name="onboarding_button_finish">완료</string>
     <string name="onboarding_choose_server">서버 주소를 선택하세요</string>
     <string name="onboarding_choose_server_short">서버 선택</string>
-    <string name="onboarding_choose_server_description">이 애플리케이션은 Snapdrop과 PairDrop 웹 앱에 대응되는 최적화된 클라이언트 입니다.\n다음 중 하나의 인스턴스를 고르거나, 연결할 커스텀 URL을 입력하세요.\n\n메모: 사용할 모든 기기가 같은 URL에 연결되어야 합니다.</string>
+    <string name="onboarding_choose_server_description">이 애플리케이션은 ErikrafT Drop과 PairDrop 웹 앱에 대응되는 최적화된 클라이언트 입니다.\n다음 중 하나의 인스턴스를 고르거나, 연결할 커스텀 URL을 입력하세요.\n\n메모: 사용할 모든 기기가 같은 URL에 연결되어야 합니다.</string>
     <string name="onboarding_storage_permission">저장소 권한</string>
     <string name="onboarding_storage_permission_description">이 앱은 파일 공유 유틸리티입니다. 파일에 접근하기 위해 저장소 접근 권한이 필요합니다.</string>
     <string name="onboarding_server_pairdrop_summary">(추천)\n페어링 기능, 인터넷을 통한 전송 그리고 더 높은 안정성.</string>
@@ -47,10 +47,10 @@
     <string name="keep_on_summary">(권장함) 많은 기기에 화면이 꺼지면 전송이 중단되는 문제가 있습니다.</string>
     <string name="keep_on_title">전송 중일때 화면 켜짐 유지</string>
     <string name="floating_text_selection_title">선택된 텍스트 보내기</string>
-    <string name="floating_text_selection_summary">다른 애플리케이션에서 텍스트를 선택할 때, \"Snapdrop으로 보내기\" 옵션이 표시됩니다.</string>
+    <string name="floating_text_selection_summary">다른 애플리케이션에서 텍스트를 선택할 때, \"ErikrafT Drop으로 보내기\" 옵션이 표시됩니다.</string>
     <string name="show_connectivity_card_title">연결 안정성 경고</string>
     <string name="show_connectivity_card_summary"> WiFi 네트워크에 연결되어 있지 않을 때 경고를 표시합니다</string>
-    <string name="floating_text_selection_activity_label">Snapdrop으로 보내기</string>
+    <string name="floating_text_selection_activity_label">ErikrafT Drop으로 보내기</string>
     <string name="permission_not_granted">권한을 허용해주십시오</string>
     <string name="permission_not_granted_fallback">권한을 수동으로 허용해주십시오</string>
     <string name="open_settings">설정 열기</string>

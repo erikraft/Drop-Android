@@ -28,7 +28,7 @@ try {
 
 //change tweet link
 try {
-    document.querySelector('.icon-button[title~="Tweet"]').href = 'https://twitter.com/intent/tweet?text=@ErikrafTdrop%20-%20%22ErikrafT%20Drop%22%20is%20an%20Android%20client%20for%20local%20file%20sharing%0A%0A%23erikraftdrop';
+    document.querySelector('.icon-button[title~="Tweet"]').href = 'https://x.com/ErikrafTbr';
 } catch (e) {
     console.error(e);
 }
@@ -57,7 +57,7 @@ try {
 
 //retarget donation button (play guidelines)
 try {
-    document.querySelector('.icon-button[href*="paypal"]').href = 'https://github.com/fm-sys/snapdrop-android/blob/master/FUNDING.md';
+    document.querySelector('.icon-button[href*="paypal"]').href = 'https://ko-fi.com/erikraft/';
 } catch (e) {
     console.error(e);
 }
