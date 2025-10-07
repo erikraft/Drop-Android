@@ -5,6 +5,8 @@
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
 
+<img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
+
 # ErikrafT Drop for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
 
