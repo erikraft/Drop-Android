@@ -42,6 +42,22 @@ android {
         }
     }
 
+    flavorDimensions "device"
+
+    productFlavors {
+        mobile {
+            dimension "device"
+        }
+
+        tv {
+            dimension "device"
+        }
+
+        xr {
+            dimension "device"
+        }
+    }
+
     buildFeatures {
         viewBinding true
     }
