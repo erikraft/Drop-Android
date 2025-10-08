@@ -81,4 +81,10 @@ After the first successful run you will have a fully automated, self-hosted F-Dr
 
 🙏 Thank you everyone's support :)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date)](https://www.star-history.com/#erikraft/Drop-Android&Date)
+<a href="https://www.star-history.com/#erikraft/Drop-Android&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
+ </picture>
+</a>
