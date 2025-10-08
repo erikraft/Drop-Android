@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
@@ -32,6 +33,7 @@ import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean forceRefresh = false;
     public ObservableProperty<Boolean> transfer = new ObservableProperty<>(false); // todo: use view model
     public boolean onlyText = false;
+    private boolean isTelevision = false;
 
     public final List<JavaScriptInterface.FileHeader> downloadFilesList = Collections.synchronizedList(new ArrayList<>());
     private boolean dialogVisible = false;
@@ -208,8 +211,14 @@ public class MainActivity extends AppCompatActivity {
 
         getOnBackPressedDispatcher().addCallback(this, onBackpressedCallback);
 
+        isTelevision = isTelevisionDevice();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        if (isTelevision) {
+            configureTelevisionUi();
+        }
 
         binding.connectivityTextview.setText(isPairDrop() ? R.string.error_network_no_wifi : R.string.error_network);
         binding.retryButton.setOnClickListener(v -> {
@@ -304,6 +313,30 @@ public class MainActivity extends AppCompatActivity {
         });
         loadAnimationDrawable.start();
 
+    }
+
+    private boolean isTelevisionDevice() {
+        final UiModeManager uiModeManager = (UiModeManager) getSystemService(UI_MODE_SERVICE);
+        return uiModeManager != null && uiModeManager.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION;
+    }
+
+    private void configureTelevisionUi() {
+        binding.pullToRefresh.setEnabled(false);
+        binding.toolbar.setFocusable(false);
+        binding.toolbar.setFocusableInTouchMode(false);
+        binding.webview.setFocusable(true);
+        binding.webview.setFocusableInTouchMode(false);
+        binding.webview.requestFocus();
+        binding.webview.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() != KeyEvent.ACTION_DOWN) {
+                return false;
+            }
+            if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER) {
+                v.performClick();
+                return false;
+            }
+            return false;
+        });
     }
 
     private boolean isPairDrop() {
