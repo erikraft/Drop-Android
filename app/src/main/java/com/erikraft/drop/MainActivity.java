@@ -32,10 +32,12 @@ import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
@@ -73,6 +75,7 @@ import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
 import com.anggrayudi.storage.media.MediaFile;
 import com.erikraft.drop.databinding.ActivityMainBinding;
+import com.erikraft.drop.utils.DeviceUtils;
 import com.erikraft.drop.utils.NetworkUtils;
 import com.erikraft.drop.utils.Nullable;
 import com.erikraft.drop.utils.ShareUtils;
@@ -212,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.connectivityTextview.setText(isPairDrop() ? R.string.error_network_no_wifi : R.string.error_network);
+        configureForLargeScreensIfNecessary();
         binding.retryButton.setOnClickListener(v -> {
             binding.noConnectionScreen.setVisibility(View.GONE);
             refreshWebsite();
@@ -304,6 +308,46 @@ public class MainActivity extends AppCompatActivity {
         });
         loadAnimationDrawable.start();
 
+    }
+
+    private void configureForLargeScreensIfNecessary() {
+        if (!DeviceUtils.isTvOrXr(this)) {
+            return;
+        }
+
+        binding.pullToRefresh.setEnabled(false);
+        binding.pullToRefresh.setNestedScrollingEnabled(false);
+        binding.pullToRefresh.setFocusable(false);
+        binding.pullToRefresh.setFocusableInTouchMode(false);
+        binding.pullToRefresh.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+
+        binding.toolbar.setFocusable(false);
+        binding.toolbar.setFocusableInTouchMode(false);
+
+        binding.webview.setVerticalScrollBarEnabled(true);
+        binding.webview.setScrollbarFadingEnabled(false);
+        binding.webview.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+        binding.webview.setFocusable(true);
+        binding.webview.setFocusableInTouchMode(true);
+        binding.webview.requestFocus();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.webview.setDefaultFocusHighlightEnabled(true);
+        }
+
+        binding.webview.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() != KeyEvent.ACTION_DOWN) {
+                return false;
+            }
+
+            if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN || keyCode == KeyEvent.KEYCODE_PAGE_DOWN) {
+                binding.webview.pageDown(false);
+                return true;
+            } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_PAGE_UP) {
+                binding.webview.pageUp(false);
+                return true;
+            }
+            return false;
+        });
     }
 
     private boolean isPairDrop() {

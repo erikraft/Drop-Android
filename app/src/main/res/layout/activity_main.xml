@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/colorBackground"
+        android:descendantFocusability="afterDescendants"
         tools:context=".MainActivity">
 
         <RelativeLayout
@@ -50,6 +51,8 @@
                 android:layout_height="fill_parent"
                 android:layout_below="@id/connectivity_card"
                 android:alpha="0"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:scrollbars="none"
                 android:textCursorDrawable="@color/colorAccent" />
 
