@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.erikraft.drop'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.erikraft.drop"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
 
         // ToDo list - Update Instruction
         //  -   As first step, always check if unmerged crowdin updates are available and/or sync crowdin (https://crowdin.com/project/snapdrop-android/apps/system/github)
@@ -25,8 +25,8 @@ android {
         //  -                         Optional: Post release info to X/Twitter
         //  -   Otherwise:          - `git tag vX.X.X` and `git push origin vX.X.X`
 
-        versionCode 45
-        versionName "2.3.1"
+        versionCode 1
+        versionName "1.0.0"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -37,7 +37,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -98,7 +98,7 @@ android {
         buildTypes {
             release {
                 // preserve existing release configuration
-                minifyEnabled false
+                minifyEnabled true
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                 signingConfig signingConfigs.release
             }
