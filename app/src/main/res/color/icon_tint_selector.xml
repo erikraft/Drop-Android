@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Cor quando o fundo for azul (ícone branco) -->
+    <item android:color="@android:color/white" android:state_selected="true" />
+    <item android:color="@android:color/white" android:state_activated="true" />
+    
+    <!-- Cor padrão quando o fundo for branco (ícone azul #3C74C7) -->
+    <item android:color="#3C74C7" />
+</selector>
