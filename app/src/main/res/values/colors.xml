@@ -13,4 +13,5 @@
 
     <!-- color accent from Snapdrop website -->
     <color name="colorAccent">#4285F4</color>
+    <color name="icon_color">#000000</color>
 </resources>
