@@ -1,7 +1,7 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/releases/latest) 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/releases/latest)
 [![Build and Upload APK to Release](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml/badge.svg?branch=master)](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml)
 [![Uptime status page](https://img.shields.io/uptimerobot/status/m794250124-e911aac785f4e3425de6b894?label=ErikrafT%20Drop%20uptime)](https://stats.uptimerobot.com/YcoqxlIOj8/801513796)
-[![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues) 
+[![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues)
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/erikraft/Drop-Android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
@@ -11,7 +11,7 @@
 # ErikrafT Drop for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp">
 
-**ErikrafT Drop for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/. 
+**ErikrafT Drop for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/.
 
 >[!TIP]
 >Do you also sometimes have the problem that you just need to quickly transfer a file from your phone to the PC?
@@ -26,7 +26,7 @@ ErikrafT Drop is a local file sharing solution which completely works in your br
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## Where can I download the app?
-**ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/). 
+**ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/).
 <div align='center' style='display: inline_block; gap: 10px;'><br>
   <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
     <img alt='Get it on Google Play' height='80' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'>
@@ -75,7 +75,7 @@ After the first successful run you will have a fully automated, self-hosted F-Dr
 - And for sure, ErikrafT Drop directly inside the browser - just use it everywhere: https://drop.erikraft.com/
 
 ### Alternatives
-- Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
+- Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux)
 - Google Nearby Share (Android, Chrome OS and [Windows](https://www.android.com/better-together/nearby-share-app/), plus an unofficial [macOS client](https://github.com/grishka/NearDrop))
 - Windows Nearby Sharing (Windows only, there is a [FLOSS implementation](https://github.com/ShortDevelopment/Nearby-Sharing-Windows) for android)
 - Link to Windows (Your Android phone will be mounted as storage directly in your Windows file explorer, [read more](https://blogs.windows.com/windows-insider/2024/07/25/ability-to-access-your-android-phone-in-file-explorer-begins-rolling-out-to-windows-insiders/))

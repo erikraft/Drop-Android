@@ -5,10 +5,15 @@
     - There are many Snapdrop forks with minor tweaks, so put every independent code part into a try-catch
 */
 
+// Use a consistent name for the interface
+const AndroidInterface = window.SnapdropAndroid || window.ErikrafTdropAndroid;
+
 //change ReceiveTextDialog._onCopy to connect to JavaScriptInterface (don't call super method as it will throw an NotAllowedError)
 try {
     ReceiveTextDialog.prototype._onCopy = function(){
-        ErikrafTdropAndroid.copyToClipboard(this.$text.textContent);
+        if (AndroidInterface) {
+            AndroidInterface.copyToClipboard(this.$text.textContent);
+        }
         Events.fire('notify-user', 'Copied to clipboard');
     };
 } catch (e) {
@@ -19,9 +24,11 @@ try {
 try {
     PeerUI.prototype.sP = PeerUI.prototype.setProgress;
     PeerUI.prototype.setProgress = function(progress){
-        ErikrafTdropAndroid.setProgress(progress);
+        if (AndroidInterface) {
+            AndroidInterface.setProgress(progress);
+        }
         this.sP(progress);
-     };
+    };
 } catch (e) {
     console.error(e);
 }
@@ -92,7 +99,7 @@ try {
     PeerUI.prototype._oTE = PeerUI.prototype._onTouchEnd;
     PeerUI.prototype._onTouchEnd = function(e){
         this._oTE(e);
-        if ((Date.now() - this._touchStart < 500) && SnapdropAndroid.shouldOpenSendTextDialog()) {
+        if ((Date.now() - this._touchStart < 500) && AndroidInterface && AndroidInterface.shouldOpenSendTextDialog()) {
             if (document.querySelector('meta[name="application-name"]')?.content == "PairDrop") {
                 // no fix yet, cause they have changed the data format
             } else {
@@ -108,14 +115,18 @@ try {
 try {
     Peer.prototype._oFH = Peer.prototype._onFileHeader;
     Peer.prototype._onFileHeader = function(header){
-        SnapdropAndroid.newFile(header.name,header.mime, header.size);
+        if (AndroidInterface) {
+            AndroidInterface.newFile(header.name,header.mime, header.size);
+        }
         this._oFH(header);
     };
 
     Peer.prototype._oCR = Peer.prototype._onChunkReceived;
     Peer.prototype._onChunkReceived = function(chunk){
         let decoder = new TextDecoder('iso-8859-1');
-        SnapdropAndroid.onBytes(decoder.decode(chunk));
+        if (AndroidInterface) {
+            AndroidInterface.onBytes(decoder.decode(chunk));
+        }
         this._oCR(chunk);
     };
 } catch (e) {
@@ -126,13 +137,17 @@ try {
 try {
     Dialog.prototype._shw = Dialog.prototype.show;
     Dialog.prototype.show = function(){
-        SnapdropAndroid.dialogShown();
+        if (AndroidInterface) {
+            AndroidInterface.dialogShown();
+        }
         this._shw();
     };
 
     Dialog.prototype._hde = Dialog.prototype.hide;
     Dialog.prototype.hide = function(){
-        SnapdropAndroid.dialogHidden();
+        if (AndroidInterface) {
+            AndroidInterface.dialogHidden();
+        }
         this._hde();
     };
 } catch (e) {
@@ -142,15 +157,27 @@ try {
 //register ignoreClickedListener
 try {
     let downloadCancel = document.querySelector("#receiveDialog>x-background>x-paper>div.row-reverse>button");
-    downloadCancel.addEventListener("click", function() { SnapdropAndroid.ignoreClickedListener(); });
+    downloadCancel.addEventListener("click", function() { if (AndroidInterface) { AndroidInterface.ignoreClickedListener(); } });
 } catch (e) {
     console.error(e);
 }
 
-//avoid redundant pairdrop.net dialog
+//avoid redundant pairdrop.net and drop.erikraft.com dialog
 try {
-    ReceiveFileDialog.prototype._shw = Dialog.prototype.show;
-    ReceiveFileDialog.prototype.show = function(){ };
+    // Only suppress web receive dialog if Android explicitly prefers native dialogs
+    var shouldSuppressReceive = false;
+    try {
+        if (AndroidInterface && AndroidInterface.prefersNativeDialogs) {
+            shouldSuppressReceive = AndroidInterface.prefersNativeDialogs();
+        }
+    } catch (e) {
+        console.error(e);
+    }
+
+    if (shouldSuppressReceive) {
+        ReceiveFileDialog.prototype._shw = Dialog.prototype.show;
+        ReceiveFileDialog.prototype.show = function(){ };
+    }
 } catch (e) {
     console.error(e);
 }
@@ -163,8 +190,8 @@ try {
         let localizeDisplayName = function(str){
             const displayNameNode = document.getElementById('displayName');
             // don't change it e.g. for pairdrop.net
-            if (displayNameNode.textContent.substring(0, 17) === "You are known as ") {
-                displayNameNode.textContent = SnapdropAndroid.getYouAreKnownAsTranslationString(str);
+            if (displayNameNode.textContent.substring(0, 17) === "You are known as " && AndroidInterface) {
+                displayNameNode.textContent = AndroidInterface.getYouAreKnownAsTranslationString(str);
             }
         };
 
@@ -180,23 +207,29 @@ try {
 }
 
 window.addEventListener('file-received', e => {
-    SnapdropAndroid.saveDownloadFileName(e.detail.name, e.detail.size);
+    if (AndroidInterface) {
+        AndroidInterface.saveDownloadFileName(e.detail.name, e.detail.size);
+    }
 }, false);
 
 window.addEventListener('files-received', e => {
     // vibrates after receiving all files (supported only on PairDrop)
-    SnapdropAndroid.vibrate();
+    if (AndroidInterface) {
+        AndroidInterface.vibrate();
+    }
 }, false);
 
 window.addEventListener('files-sent', e => {
     // vibrates after sending all files (supported only on PairDrop)
-    SnapdropAndroid.vibrate();
+    if (AndroidInterface) {
+        AndroidInterface.vibrate();
+    }
 }, false);
 
 window.addEventListener('share-mode-changed', e => {
     // remove upload intent on canceling share mode (supported only on PairDrop)
-    if (!e.detail.active) {
-        SnapdropAndroid.resetUploadIntent();
+    if (!e.detail.active && AndroidInterface) {
+        AndroidInterface.resetUploadIntent();
     }
 }, false);
 
