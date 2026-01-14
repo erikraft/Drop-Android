@@ -16,7 +16,6 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-permission-sdk-23 android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- Needed to prompt the user to give permission to install a downloaded apk -->
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
