@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
-import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 
 
 /**
  * Custom view for adding a prefix to EditText
- * code by: https://medium.com/@ali.muzaffar/adding-a-prefix-to-an-edittext-2a17a62c77e1
+ * Based on code from Ali Muzaffar (Medium article about adding a prefix to EditText)
  **/
-public class PrefixEditText extends TextInputEditText {
+public class PrefixEditText extends AppCompatEditText {
     private float mOriginalLeftPadding = -1;
 
     public PrefixEditText(final Context context) {
