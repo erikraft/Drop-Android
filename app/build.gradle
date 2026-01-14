@@ -71,6 +71,50 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // Load keystore properties (optional). Supports a `keystore.properties` file at project root
+    // or environment variables (KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD).
+    def keystorePropertiesFile = rootProject.file('keystore.properties')
+    def keystoreProperties = new Properties()
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+
+    def keystorePath = keystoreProperties.containsKey('storeFile') ? keystoreProperties.getProperty('storeFile') : System.getenv('KEYSTORE_PATH')
+    def keystorePassword = keystoreProperties.containsKey('storePassword') ? keystoreProperties.getProperty('storePassword') : System.getenv('KEYSTORE_PASSWORD')
+    def keyAlias = keystoreProperties.containsKey('keyAlias') ? keystoreProperties.getProperty('keyAlias') : System.getenv('KEY_ALIAS')
+    def keyPassword = keystoreProperties.containsKey('keyPassword') ? keystoreProperties.getProperty('keyPassword') : System.getenv('KEY_PASSWORD')
+
+    if (keystorePath != null && !keystorePath.toString().isEmpty()) {
+        signingConfigs {
+            release {
+                storeFile file(keystorePath)
+                if (keystorePassword != null) storePassword keystorePassword
+                if (keyAlias != null) keyAlias keyAlias
+                if (keyPassword != null) keyPassword keyPassword
+            }
+        }
+
+        buildTypes {
+            release {
+                // preserve existing release configuration
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    lintOptions {
+        // Ignore warnings about missing translations and extra translations
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+
+    // use Java 8 to make use of lamda-expressions, etc.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
