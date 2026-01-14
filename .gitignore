@@ -18,3 +18,6 @@
 !.idea/checkstyle-idea.xml
 *.iml
 *.lnk
+
+# local keystore properties (do not commit keystore secrets)
+keystore.properties
