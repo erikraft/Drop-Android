@@ -13,14 +13,19 @@ RepoType: git
 Repo: https://github.com/ErikrafT/Drop-Android.git
 
 Builds:
-  - versionName: 6.0.0
-    versionCode: 6
-    commit: v6.0.0
+  - versionName: 7.0.0
+    versionCode: 7
+    commit: v7.0.0
     subdir: app
     gradle:
       - mobile
+    binaries:
+      - gradlew
+
+AllowedAPKSigningKeys:
+  - 08:5E:22:7B:59:02:94:1C:A3:AB:AC:1A:57:B6:E6:37:AC:55:08:E0:50:09:F5:97:4D:E2:42:D0:EB:A9:83:F6
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 6.0.0
-CurrentVersionCode: 6
+CurrentVersion: 7.0.0
+CurrentVersionCode: 7
