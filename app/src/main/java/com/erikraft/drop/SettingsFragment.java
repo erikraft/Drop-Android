@@ -24,7 +24,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import java.util.function.Consumer;
+import androidx.core.util.Consumer;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -45,128 +45,121 @@ import java.util.concurrent.Executors;
 
 
 public class SettingsFragment extends PreferenceFragmentCompat {
-    private SimpleStorageHelper storageHelper;
+    private final SimpleStorageHelper storageHelper = new SimpleStorageHelper(this);
     private SharedPreferences prefs;
 
-    private ActivityResultLauncher<String> storagePermissionLauncher;
-    private ActivityResultLauncher<String> notificationsPermissionLauncher;
+    private final ActivityResultLauncher<String> storagePpermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+        final SwitchPreferenceCompat retainLocationMetadataPref = findPreference(getString(R.string.pref_retain_location_metadata));
+        retainLocationMetadataPref.setChecked(result);
+        if (result) {
+            retainLocationMetadataPref.setEnabled(false);
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_MEDIA_LOCATION)) {
+            Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
+        } else {
+            Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.open_settings, v ->
+                            startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                    .setData(Uri.fromParts("package", requireContext().getPackageName(), null))))
+                    .show();
+        }
+    });
+
+    private final ActivityResultLauncher<String> notificationsPpermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+        final SwitchPreferenceCompat notificationsPref = findPreference(getString(R.string.pref_notifications));
+        if (result) {
+            notificationsPref.setChecked(true);
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.POST_NOTIFICATIONS)) {
+            Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
+        } else {
+            Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.open_settings, v ->
+                            startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    .putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().getPackageName())))
+                    .show();
+        }
+    });
 
     @Override
     public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
-        // initialize helpers and permission launchers here (after fragment is attached)
-        storageHelper = new SimpleStorageHelper(this);
-        prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        storagePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
-            final SwitchPreferenceCompat retainLocationMetadataPref = findPreference(getString(R.string.pref_retain_location_metadata));
-            if (retainLocationMetadataPref != null) {
-                retainLocationMetadataPref.setChecked(Boolean.TRUE.equals(result));
-                if (Boolean.TRUE.equals(result)) {
-                    retainLocationMetadataPref.setEnabled(false);
-                } else if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_MEDIA_LOCATION)) {
-                    Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
-                } else {
-                    Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.open_settings, v ->
-                                    startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                            .setData(Uri.fromParts("package", requireContext().getPackageName(), null))))
-                            .show();
-                }
-            }
-        });
-
-        notificationsPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
-            final SwitchPreferenceCompat notificationsPref = findPreference(getString(R.string.pref_notifications));
-            if (notificationsPref != null) {
-                if (Boolean.TRUE.equals(result)) {
-                    notificationsPref.setChecked(true);
-                } else if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.POST_NOTIFICATIONS)) {
-                    Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
-                } else {
-                    Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.open_settings, v ->
-                                    startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                            .putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().getPackageName())))
-                            .show();
-                }
-            }
-        });
+        if (savedInstanceState != null) {
+            storageHelper.onRestoreInstanceState(savedInstanceState);
+        }
 
         initUrlPreference(R.string.pref_support, "https://ko-fi.com/erikraft/");
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
-        if (openSourceComponents != null) {
-            openSourceComponents.setOnPreferenceClickListener(pref -> {
-                new LibsBuilder()
-                        .withAboutAppName(getString(R.string.app_name_long))
-                        .withAboutIconShown(true)
-                        .withAboutVersionShownName(true)
-                        .withAboutDescription("<big><b>Credits</b></big><br><br>" +
-                                "This app and its launcher icon are based on the PairDrop project by schlagmichdoch<br>" +
-                                "<a href=\"https://github.com/schlagmichdoch/PairDrop/\">github.com/schlagmichdoch/PairDrop</a><br><br>" +
-                                "It uses the official ErikrafT Drop codebase as its foundation<br>" +
-                                "<a href=\"https://github.com/erikraft/Drop\">github.com/erikraft/Drop</a><br>" +
-                                "with the Android client maintained at<br>" +
-                                "<a href=\"https://github.com/erikraft/Drop-Android\">github.com/erikraft/Drop-Android</a><br><br>" +
-                                "<big><b>" + getString(R.string.support_us) + "</b></big><br><br>" +
-                                getString(R.string.support_us_summary) + "<br>" +
-                                "<a href=\"https://ko-fi.com/erikraft/\">" + getString(R.string.read_more) + "</a>")
-                        .withAboutSpecial1("GitHub")
-                        .withAboutSpecial2("Twitter/X")
-                        .withListener(new AboutLibrariesListener() {
-                            @Override
-                            public boolean onIconLongClicked(final @NonNull View view) {
-                                final Dialog dialog = new Dialog(view.getContext());
-                                dialog.setContentView(R.layout.progress_dialog);
-                                dialog.show();
+        openSourceComponents.setOnPreferenceClickListener(pref -> {
+            new LibsBuilder()
+                    .withAboutAppName(getString(R.string.app_name_long))
+                    .withAboutIconShown(true)
+                    .withAboutVersionShownName(true)
+                    .withAboutDescription("<big><b>Credits</b></big><br><br>" +
+                            "This app and its launcher icon are based on the PairDrop project by schlagmichdoch<br>" +
+                            "<a href=\"https://github.com/schlagmichdoch/PairDrop/\">github.com/schlagmichdoch/PairDrop</a><br><br>" +
+                            "It uses the official ErikrafT Drop codebase as its foundation<br>" +
+                            "<a href=\"https://github.com/erikraft/Drop\">github.com/erikraft/Drop</a><br>" +
+                            "with the Android client maintained at<br>" +
+                            "<a href=\"https://github.com/erikraft/Drop-Android\">github.com/erikraft/Drop-Android</a><br><br>" +
+                            "<big><b>" + getString(R.string.support_us) + "</b></big><br><br>" +
+                            getString(R.string.support_us_summary) + "<br>" +
+                            "<a href=\"https://ko-fi.com/erikraft/\">" + getString(R.string.read_more) + "</a>")
+                    .withAboutSpecial1("GitHub")
+                    .withAboutSpecial2("Twitter/X")
+                    .withListener(new AboutLibrariesListener() {
+                        @Override
+                        public boolean onIconLongClicked(final @NonNull View view) {
+                            final Dialog dialog = new Dialog(view.getContext());
+                            dialog.setContentView(R.layout.progress_dialog);
+                            dialog.show();
 
-                                Executors.newSingleThreadExecutor().submit(() -> {
-                                    final View dialogView = SettingsFragment.this.getLayoutInflater().inflate(R.layout.debug_logs_dialog, null);
-                                    final TextView textView = dialogView.findViewById(R.id.textview);
-                                    textView.setText(LogUtils.getLogs(prefs, true));
-                                    dialog.dismiss();
+                            Executors.newSingleThreadExecutor().submit(() -> {
+                                final View dialogView = SettingsFragment.this.getLayoutInflater().inflate(R.layout.debug_logs_dialog, null);
+                                final TextView textView = dialogView.findViewById(R.id.textview);
+                                textView.setText(LogUtils.getLogs(prefs, true));
+                                dialog.dismiss();
 
-                                    view.post(() -> new AlertDialog.Builder(view.getContext())
-                                            .setIcon(R.drawable.pref_debug)
-                                            .setTitle(R.string.logs)
-                                            .setView(dialogView)
-                                            .setPositiveButton(android.R.string.ok, null)
-                                            .setNeutralButton(R.string.copy, (d, id) -> ClipboardUtils.copy(view.getContext(), LogUtils.getLogs(prefs, false)))
-                                            .show());
-                                });
+                                view.post(() -> new AlertDialog.Builder(view.getContext())
+                                        .setIcon(R.drawable.pref_debug)
+                                        .setTitle(R.string.logs)
+                                        .setView(dialogView)
+                                        .setPositiveButton(android.R.string.ok, null)
+                                        .setNeutralButton(R.string.copy, (d, id) -> ClipboardUtils.copy(view.getContext(), LogUtils.getLogs(prefs, false)))
+                                        .show());
+                            });
 
-                                return true;
-                            }
+                            return true;
+                        }
 
-                            @Override
-                            public void onIconClicked(final @NonNull View view) {
+                        @Override
+                        public void onIconClicked(final @NonNull View view) {
+                            ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
+                        }
+
+                        @Override
+                        public boolean onExtraClicked(final @NonNull View view, final @NonNull SpecialButton specialButton) {
+                            if (specialButton == SpecialButton.SPECIAL1) {
                                 ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
+                            } else if (specialButton == SpecialButton.SPECIAL2) {
+                                ShareUtils.openUrl(SettingsFragment.this, "https://x.com/ErikrafTbr");
                             }
-
-                            @Override
-                            public boolean onExtraClicked(final @NonNull View view, final @NonNull SpecialButton specialButton) {
-                                if (specialButton == SpecialButton.SPECIAL1) {
-                                    ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
-                                } else if (specialButton == SpecialButton.SPECIAL2) {
-                                    ShareUtils.openUrl(SettingsFragment.this, "https://x.com/ErikrafTbr");
-                                }
-                                return true;
-                            }
-                        })
-                        .start(requireContext());
-                return true;
-            });
-        }
+                            return true;
+                        }
+                    })
+                    .start(requireContext());
+            return true;
+        });
 
         final Preference floatingTextSelectionPref = findPreference(getString(R.string.pref_floating_text_selection));
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && floatingTextSelectionPref != null) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             floatingTextSelectionPref.setVisible(true);
             floatingTextSelectionPref.setOnPreferenceChangeListener((pref, newValue) -> {
-                requireContext().getPackageManager().setComponentEnabledSetting(
-                        new ComponentName(requireContext(), FloatingTextActivity.class),
+                getContext().getPackageManager().setComponentEnabledSetting(
+                        new ComponentName(getContext(), FloatingTextActivity.class),
                         (Boolean) newValue ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                         PackageManager.DONT_KILL_APP);
                 return true;
@@ -174,84 +167,74 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         }
 
         final Preference notificationsPref = findPreference(getString(R.string.pref_notifications));
-        if (notificationsPref != null) {
-            notificationsPref.setOnPreferenceChangeListener((pref, newValue) -> {
-                if ((boolean) newValue) {
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                        if (isNotificationsCorrectlyEnabled()) {
-                            return true;
-                        } else {
-                            final Intent settingsIntent = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
-                                    new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                            .putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().getPackageName()) :
-                                    new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                            .setData(Uri.fromParts("package", requireContext().getPackageName(), null));
-
-                            startActivity(settingsIntent);
-                            return true;
-                        }
+        notificationsPref.setOnPreferenceChangeListener((pref, newValue) -> {
+            if ((boolean) newValue) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                    if (isNotificationsCorrectlyEnabled()) {
+                        return true;
                     } else {
-                        notificationsPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
-                        return false;
+                        final Intent settingsIntent = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
+                                new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        .putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName()) :
+                                new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        .setData(Uri.fromParts("package", getContext().getPackageName(), null));
+
+                        startActivity(settingsIntent);
+                        return true;
                     }
+                } else {
+                    notificationsPpermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                    return false;
                 }
-                return true;
-            });
-        }
+            }
+            return true;
+        });
 
 
         final Preference deviceNamePref = findPreference(getString(R.string.pref_device_name));
-        if (deviceNamePref != null) {
-            deviceNamePref.setOnPreferenceClickListener(pref -> showEditTextPreferenceWithResetPossibility(pref, "Android ", "", null, newValue -> updateDeviceNameSummary(deviceNamePref)));
-            updateDeviceNameSummary(deviceNamePref);
-        }
+        deviceNamePref.setOnPreferenceClickListener(pref -> showEditTextPreferenceWithResetPossibility(pref, "Android ", "", null, newValue -> updateDeviceNameSummary(deviceNamePref)));
+        updateDeviceNameSummary(deviceNamePref);
 
         final Preference baseUrlPref = findPreference(getString(R.string.pref_baseurl));
-        if (baseUrlPref != null) {
-            baseUrlPref.setOnPreferenceClickListener(pref -> {
-                startActivity(OnboardingActivity.getServerSelectionIntent(requireActivity()));
-                return true;
-            });
-        }
+        baseUrlPref.setOnPreferenceClickListener(pref -> {
+            startActivity(OnboardingActivity.getServerSelectionIntent(requireActivity()));
+            return true;
+        });
 
         final Preference saveLocationPref = findPreference(getString(R.string.pref_save_location));
-        if (saveLocationPref != null) {
-            saveLocationPref.setOnPreferenceClickListener(preference -> {
-                storageHelper.openFolderPicker();
-                return true;
-            });
-            final String downloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
-            saveLocationPref.setSummary(prefs.getString(saveLocationPref.getKey(), downloadsFolder));
-            storageHelper.setOnFolderSelected((requestCode, folder) -> {
-                final String path = DocumentFileUtils.getAbsolutePath(folder, requireContext());
-                setPreferenceValue(saveLocationPref.getKey(), path, null);
-                saveLocationPref.setSummary(path);
-                return null;
-            });
-        }
+        saveLocationPref.setOnPreferenceClickListener(preference -> {
+            storageHelper.openFolderPicker();
+            return true;
+        });
+        final String downloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
+        saveLocationPref.setSummary(prefs.getString(saveLocationPref.getKey(), downloadsFolder));
+        storageHelper.setOnFolderSelected((requestCode, folder) -> {
+            final String path = DocumentFileUtils.getAbsolutePath(folder, requireContext());
+            setPreferenceValue(saveLocationPref.getKey(), path, null);
+            saveLocationPref.setSummary(path);
+            return null;
+        });
 
         final Preference themePref = findPreference(getString(R.string.pref_theme_setting));
-        if (themePref != null) {
-            themePref.setOnPreferenceChangeListener((Preference preference, Object newValue) -> {
-                final DarkModeSetting darkTheme = DarkModeSetting.valueOf((String) newValue);
-                SnapdropApplication.setAppTheme(darkTheme);
-                requireActivity().setResult(Activity.RESULT_OK);
-                requireActivity().recreate();
-                return true;
-            });
-        }
+        themePref.setOnPreferenceChangeListener((Preference preference, Object newValue) -> {
+            final DarkModeSetting darkTheme = DarkModeSetting.valueOf((String) newValue);
+            SnapdropApplication.setAppTheme(darkTheme);
+            requireActivity().setResult(Activity.RESULT_OK);
+            requireActivity().recreate();
+            return true;
+        });
 
         final SwitchPreferenceCompat locationMetadataPref = findPreference(getString(R.string.pref_retain_location_metadata));
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && locationMetadataPref != null) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             locationMetadataPref.setVisible(true);
-            final boolean granted = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED;
+            final boolean granted = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED;
             locationMetadataPref.setChecked(granted);
             if (!granted) {
                 locationMetadataPref.setOnPreferenceChangeListener((pref, newValue) -> {
                     if ((Boolean) newValue) {
-                        storagePermissionLauncher.launch(Manifest.permission.ACCESS_MEDIA_LOCATION);
+                        storagePpermissionLauncher.launch(Manifest.permission.ACCESS_MEDIA_LOCATION);
                     }
                     return false;
                 });
@@ -262,7 +245,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private boolean isNotificationsCorrectlyEnabled() {
-        final NotificationManager notificationManager = (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         final boolean enabled = (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || notificationManager.areNotificationsEnabled()) &&
                 (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || notificationManager.getNotificationChannel("MYCHANNEL") == null || notificationManager.getNotificationChannel("MYCHANNEL").getImportance() != NotificationManager.IMPORTANCE_NONE);
@@ -270,7 +253,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void setPreferenceValue(final String preferenceKey, final String s, final Consumer<String> onPreferenceChangeCallback) {
-        PreferenceManager.getDefaultSharedPreferences(requireContext()).edit().putString(preferenceKey, s).apply();
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString(preferenceKey, s).apply();
 
         if (onPreferenceChangeCallback != null) {
             onPreferenceChangeCallback.accept(s);
@@ -278,7 +261,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void updateDeviceNameSummary(final Preference pref) {
-        if (prefs != null && prefs.contains(getString(R.string.pref_device_name))) {
+        if (prefs.contains(getString(R.string.pref_device_name))) {
             pref.setSummary("Android " + prefs.getString(getString(R.string.pref_device_name), getString(R.string.app_name)));
         } else {
             pref.setSummary(R.string.pref_device_name_summary);
@@ -314,13 +297,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         final boolean enabled = isNotificationsCorrectlyEnabled();
         final SwitchPreferenceCompat notificationsPref = findPreference(getString(R.string.pref_notifications));
 
-        if (!enabled && notificationsPref != null && notificationsPref.isChecked()) {
+        if (!enabled && notificationsPref.isChecked()) {
             notificationsPref.setChecked(false);
         }
 
         final Preference baseUrlPref = findPreference(getString(R.string.pref_baseurl));
-        if (baseUrlPref != null) {
-            baseUrlPref.setSummary(prefs.getString(baseUrlPref.getKey(), getString(R.string.baseurl_not_set)));
-        }
+        baseUrlPref.setSummary(prefs.getString(baseUrlPref.getKey(), getString(R.string.baseurl_not_set)));
     }
 }

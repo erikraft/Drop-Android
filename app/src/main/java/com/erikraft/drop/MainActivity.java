@@ -247,10 +247,7 @@ public class MainActivity extends AppCompatActivity {
             // Fake to user argent to be able to inject a custom string into the Snapdrop device name
             webSettings.setUserAgentString("Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + "; Build/HUAWEI" + prefs.getString(getString(R.string.pref_device_name), getString(R.string.app_name)) + ") Version/" + BuildConfig.VERSION_NAME + (isTablet(this) ? " Tablet " : " Mobile ") + "Safari/537.36");
         }
-
-        // Add both for compatibility as init.js uses both ErikrafTdropAndroid and SnapdropAndroid
         binding.webview.addJavascriptInterface(new JavaScriptInterface(MainActivity.this), "ErikrafTdropAndroid");
-        binding.webview.addJavascriptInterface(new JavaScriptInterface(MainActivity.this), "SnapdropAndroid");
         binding.webview.setWebChromeClient(new MyWebChromeClient());
         binding.webview.setWebViewClient(new CustomWebViewClient());
 

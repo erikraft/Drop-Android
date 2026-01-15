@@ -6,15 +6,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class OnboardingViewModel extends ViewModel {
-    private final MutableLiveData<Fragment> fragment = new MutableLiveData<>();
+    private final MutableLiveData<Class<? extends Fragment>> fragment = new MutableLiveData<>();
     private final MutableLiveData<String> url = new MutableLiveData<>();
     private boolean onlyServerSelection;
 
-    public void launchFragment(final Fragment item) {
+    public void launchFragment(final Class<? extends Fragment> item) {
         fragment.setValue(item);
     }
 
-    public LiveData<Fragment> getFragment() {
+    public LiveData<Class<? extends Fragment>> getFragment() {
         return fragment;
     }
 

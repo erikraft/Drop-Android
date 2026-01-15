@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Objects;
 
 public class OnboardingFragment2 extends Fragment {
 
@@ -79,14 +78,18 @@ public class OnboardingFragment2 extends Fragment {
 
             final ServerItemViewHolder holder = new ServerItemViewHolder(view);
 
-            holder.itemView.setOnClickListener(v -> tempUrl.setValue(holder.urlTextView.getText().toString()));
+            holder.itemView.setOnClickListener(v -> {
+                tempUrl.setValue(holder.urlTextView.getText().toString());
+            });
 
             holder.itemView.setOnLongClickListener(v -> {
                 removeServer(holder.urlTextView.getText().toString());
                 return true;
             });
 
-            tempUrl.observe(requireActivity(), url -> ((MaterialCardView) holder.itemView).setChecked(holder.urlTextView.getText().toString().equals(url)));
+            tempUrl.observe(requireActivity(), url -> {
+                ((MaterialCardView) holder.itemView).setChecked(holder.urlTextView.getText().toString().equals(url));
+            });
 
             return holder;
         }
@@ -94,7 +97,7 @@ public class OnboardingFragment2 extends Fragment {
         @Override
         public void onBindViewHolder(final @NonNull ServerItemViewHolder holder, final int position) {
             holder.bind(items.get(position));
-            ((MaterialCardView) holder.itemView).setChecked(Objects.equals(holder.urlTextView.getText().toString(), tempUrl.getValue()));
+            ((MaterialCardView) holder.itemView).setChecked(holder.urlTextView.getText().toString().equals(tempUrl.getValue()));
         }
 
         @Override
@@ -121,8 +124,7 @@ public class OnboardingFragment2 extends Fragment {
         pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
         tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://drop.erikraft.com/"));
 
-        final String currentTempUrl = tempUrl.getValue();
-        if (Objects.equals(currentTempUrl, "https://snapdrop.net") || Objects.equals(currentTempUrl, "https://pairdrop.net")) {
+        if (tempUrl.getValue().equals("https://snapdrop.net") || tempUrl.getValue().equals("https://pairdrop.net")) {
             tempUrl.setValue("https://drop.erikraft.com/");
 
             binding.scrollview.setVisibility(View.INVISIBLE);
@@ -130,7 +132,7 @@ public class OnboardingFragment2 extends Fragment {
 
             new MaterialAlertDialogBuilder(requireContext())
                     .setTitle("Important Update")
-                    .setMessage("The snapdrop.net website has been acquired by a company with unclear security and privacy practices. \n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to PairDrop, a more secure alternative.  \n\nThank you for your understanding!")
+                    .setMessage("The snapdrop.net website has been acquired by a company with unclear security and privacy practices. \n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop, a more secure alternative.  \n\nThank you for your understanding!")
                     .setPositiveButton("OK", null)
                     .setOnDismissListener(dialog -> {
                         binding.scrollview.setVisibility(View.VISIBLE);
@@ -141,51 +143,45 @@ public class OnboardingFragment2 extends Fragment {
 
         reloadServerList();
 
-        binding.add.setOnClickListener(v -> {
-            ViewUtils.showEditTextWithResetPossibility(OnboardingFragment2.this,
-                    "Custom URL",
-                    null,
-                    null,
-                    Link.bind("https://github.com/RobinLinus/snapdrop/blob/master/docs/faq.md#inofficial-instances", R.string.baseurl_unofficial_instances),
-                    url -> {
-                        if (url == null) {
-                            return;
-                        }
+        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null, Link.bind("https://github.com/RobinLinus/snapdrop/blob/master/docs/faq.md#inofficial-instances", R.string.baseurl_unofficial_instances), url -> {
+            if (url == null) {
+                return;
+            }
 
-                        if (url.startsWith("!!")) { // hidden feature to force a different url
-                            newServer(url.substring("!!".length()));
-                        } else if (url.startsWith("http")) {
-                            NetworkUtils.checkInstance(OnboardingFragment2.this, url, result -> {
-                                if (Boolean.TRUE.equals(result)) {
-                                    newServer(url);
-                                }
-                            });
-                        } else {
-                            // do some magic in case user forgot to specify the protocol
-                            String mightBeHttpsUrl = "https://" + url;
-                            NetworkUtils.checkInstance(OnboardingFragment2.this, mightBeHttpsUrl, resultHttps -> {
-                                if (Boolean.TRUE.equals(resultHttps)) {
-                                    newServer(mightBeHttpsUrl);
-                                } else {
-                                    String mightBeHttpUrl = "http://" + url;
-                                    NetworkUtils.checkInstance(OnboardingFragment2.this, mightBeHttpUrl, resultHttp -> {
-                                        if (Boolean.TRUE.equals(resultHttp)) {
-                                            newServer(mightBeHttpUrl);
-                                        }
-                                    });
-                                }
-                            });
-                        }
+            if (url.startsWith("!!")) { // hidden feature to force a different url
+                newServer(url.substring("!!".length()));
+            } else if (url.startsWith("http")) {
+                NetworkUtils.checkInstance(this, url, result -> {
+                    if (result) {
+                        newServer(url);
                     }
-            );
-        });
+                });
+            } else {
+
+                // do some magic in case user forgot to specify the protocol
+
+                String mightBeHttpsUrl = "https://" + url;
+                NetworkUtils.checkInstance(this, mightBeHttpsUrl, resultHttps -> {
+                    if (resultHttps) {
+                        newServer(mightBeHttpsUrl);
+                    } else {
+                        String mightBeHttpUrl = "http://" + url;
+                        NetworkUtils.checkInstance(this, mightBeHttpUrl, resultHttp -> {
+                            if (resultHttp) {
+                                newServer(mightBeHttpUrl);
+                            }
+                        });
+                    }
+                });
+            }
+        }));
 
         binding.continueButton.setOnClickListener(v -> {
             viewModel.url(tempUrl.getValue());
             if (viewModel.isOnlyServerSelection()) {
                 requireActivity().finish();
             } else {
-                viewModel.launchFragment(new OnboardingFragment3());
+                viewModel.launchFragment(OnboardingFragment3.class);
             }
         });
         binding.continueButton.requestFocus();
@@ -195,8 +191,8 @@ public class OnboardingFragment2 extends Fragment {
         final Set<String> serverUrls = pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>());
 
         final List<ServerItem> servers = new ArrayList<>();
-        servers.add(new ServerItem("https://drop.erikraft.com/",getString(R.string.onboarding_server_pairdrop_summary), null));
-        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_snapdrop_summary), null));
+        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_pairdrop_summary), null));
+        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_snapdrop_summary_server_warning), null));
 
         for (String url : serverUrls) {
             servers.add(new ServerItem(url, null, null));
