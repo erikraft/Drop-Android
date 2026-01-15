@@ -122,19 +122,32 @@ try {
     console.error(e);
 }
 
+// ensure Android JS bridge is available under a common name when possible
+try {
+    if (typeof ErikrafTdropAndroid !== 'undefined' && typeof SnapdropAndroid === 'undefined') {
+        window.SnapdropAndroid = ErikrafTdropAndroid;
+    }
+} catch (e) {
+    console.error(e);
+}
+
 //detect dialogs
 try {
-    Dialog.prototype._shw = Dialog.prototype.show;
-    Dialog.prototype.show = function(){
-        SnapdropAndroid.dialogShown();
-        this._shw();
-    };
+    // Only override dialog methods when an Android bridge exists. Preserve originals if present.
+    const _androidBridge = (typeof ErikrafTdropAndroid !== 'undefined') ? ErikrafTdropAndroid : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
+    if (_androidBridge) {
+        if (!Dialog.prototype._shw) Dialog.prototype._shw = Dialog.prototype.show;
+        Dialog.prototype.show = function(){
+            try { _androidBridge.dialogShown(); } catch (e) { /* ignore bridge errors */ }
+            this._shw();
+        };
 
-    Dialog.prototype._hde = Dialog.prototype.hide;
-    Dialog.prototype.hide = function(){
-        SnapdropAndroid.dialogHidden();
-        this._hde();
-    };
+        if (!Dialog.prototype._hde) Dialog.prototype._hde = Dialog.prototype.hide;
+        Dialog.prototype.hide = function(){
+            try { _androidBridge.dialogHidden(); } catch (e) { /* ignore bridge errors */ }
+            this._hde();
+        };
+    }
 } catch (e) {
     console.error(e);
 }
@@ -143,14 +156,6 @@ try {
 try {
     let downloadCancel = document.querySelector("#receiveDialog>x-background>x-paper>div.row-reverse>button");
     downloadCancel.addEventListener("click", function() { SnapdropAndroid.ignoreClickedListener(); });
-} catch (e) {
-    console.error(e);
-}
-
-//avoid redundant pairdrop.net dialog
-try {
-    ReceiveFileDialog.prototype._shw = Dialog.prototype.show;
-    ReceiveFileDialog.prototype.show = function(){ };
 } catch (e) {
     console.error(e);
 }
