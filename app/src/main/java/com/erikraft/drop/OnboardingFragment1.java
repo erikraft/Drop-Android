@@ -35,9 +35,9 @@ public class OnboardingFragment1 extends Fragment {
             viewModel.url("https://pairdrop.net");
             if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
                     && (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-                viewModel.launchFragment(new OnboardingFragmentPermission());
+                viewModel.launchFragment(OnboardingFragmentPermission.class);
             } else {
-                viewModel.launchFragment(new OnboardingFragment3());
+                viewModel.launchFragment(OnboardingFragment3.class);
             }
         });
         binding.continueButton.requestFocus();

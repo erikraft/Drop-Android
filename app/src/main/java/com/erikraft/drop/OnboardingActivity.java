@@ -16,7 +16,7 @@ public class OnboardingActivity extends AppCompatActivity {
     OnboardingViewModel viewModel;
 
     public OnboardingActivity() {
-        super();
+        super(R.layout.activity_onboarding);
     }
 
     public static void launchOnboarding(final Activity context) {
@@ -33,7 +33,6 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding);
 
         viewModel = new ViewModelProvider(this).get(OnboardingViewModel.class);
         viewModel.setOnlyServerSelection(getIntent().getBooleanExtra(EXTRA_ONLY_SERVER_SELECTION, false));
@@ -51,9 +50,9 @@ public class OnboardingActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             if (viewModel.isOnlyServerSelection()) {
-                viewModel.launchFragment(new OnboardingFragment2());
+                viewModel.launchFragment(OnboardingFragment2.class);
             } else {
-                viewModel.launchFragment(new OnboardingFragment1());
+                viewModel.launchFragment(OnboardingFragment1.class);
             }
         }
 

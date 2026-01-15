@@ -139,12 +139,6 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
-    public boolean prefersNativeDialogs() {
-        // Default: false => prefer web dialogs. Change to read from preferences if you want a toggle.
-        return false;
-    }
-
-    @JavascriptInterface
     public void dialogShown() {
         context.setDialogVisible(true);
     }

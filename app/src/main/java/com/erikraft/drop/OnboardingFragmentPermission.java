@@ -20,7 +20,7 @@ public class OnboardingFragmentPermission extends Fragment {
     OnboardingViewModel viewModel;
     private final ActivityResultLauncher<String> permissionResult = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
         if (granted) {
-            viewModel.launchFragment(new OnboardingFragment2());
+            viewModel.launchFragment(OnboardingFragment2.class);
         }
     });
 
@@ -38,7 +38,7 @@ public class OnboardingFragmentPermission extends Fragment {
                     && (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
                 permissionResult.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             } else {
-                viewModel.launchFragment(new OnboardingFragment2());
+                viewModel.launchFragment(OnboardingFragment2.class);
             }
         });
         binding.continueButton.requestFocus();
