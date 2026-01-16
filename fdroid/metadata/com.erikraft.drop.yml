@@ -1,7 +1,7 @@
 Categories:
   - Internet
 License: GPL-3.0-only
-WebSite: https://drop.erikraft.com
+WebSite: https://drop.erikkraft.com
 SourceCode: https://github.com/ErikrafT/Drop-Android
 IssueTracker: https://github.com/ErikrafT/Drop-Android/issues
 Changelog: https://github.com/ErikrafT/Drop-Android/releases
@@ -11,6 +11,12 @@ AutoName: ErikrafT Drop
 
 RepoType: git
 Repo: https://github.com/ErikrafT/Drop-Android.git
+
+Binaries:
+  - https://github.com/erikraft/Drop-Android/releases/download/v8.0.0/Drop-Android.apk
+
+AllowedAPKSigningKeys:
+  - 085E227B5902941CA3ABAC1A57B6E637AC5508E05009F5974DE242D0EBA983F6
 
 Builds:
   - versionName: 8.0.0
