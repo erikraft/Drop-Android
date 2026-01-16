@@ -12,21 +12,15 @@ AutoName: ErikrafT Drop
 RepoType: git
 Repo: https://github.com/ErikrafT/Drop-Android.git
 
-Binaries:
-  - https://github.com/erikraft/Drop-Android/releases/download/v7.0.0/Drop-Android.apk
-
-AllowedAPKSigningKeys:
-  - 085E227B5902941CA3ABAC1A57B6E637AC5508E05009F5974DE242D0EBA983F6
-
 Builds:
-  - versionName: 7.0.0
-    versionCode: 7
-    commit: v7.0.0
+  - versionName: 8.0.0
+    versionCode: 8
+    commit: v8.0.0
     subdir: app
     gradle:
       - mobile
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 7.0.0
-CurrentVersionCode: 7
+CurrentVersion: 8.0.0
+CurrentVersionCode: 8
