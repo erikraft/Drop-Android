@@ -45,6 +45,13 @@ However, even if it theoretically would fully work in your browser and you don't
 ## Contributing
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
+### Translation Help
+Want to help translate **ErikrafT Drop for Android** into your language? You can contribute to translations on our Crowdin project:
+
+🌐 [Help translate ErikrafT Drop for Android on Crowdin](https://crowdin.com/project/erikraft-drop-android)
+
+Your contributions help make the app accessible to users worldwide!
+
 ### Development
 If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
 
