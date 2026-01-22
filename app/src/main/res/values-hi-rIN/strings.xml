@@ -1,48 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="err_no_browser">ब्राउज़र नहीं खुल रहा</string>
-    <string name="err_no_app">इस फ़ाइल को खोलने के लिए कोई ऐप मौजूद नहीं है</string>
-    <string name="open_url">url_खोलें</string>
+    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="err_no_browser">Can\'t open browser</string>
+    <string name="err_no_app">No app installed to open this file</string>
+    <string name="open_url">Open URL</string>
     <!-- Onboarding -->
+    <string name="onboarding_button_continue">continue</string>
+    <string name="onboarding_button_grant">grant permission</string>
+    <string name="onboarding_button_finish">finish</string>
+    <string name="onboarding_choose_server">Choose a server address</string>
+    <string name="onboarding_choose_server_short">choose server</string>
+    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
+    <string name="onboarding_storage_permission">Storage permission</string>
+    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_server_pairdrop_summary">(recommended)\nPairing feature, internet transfer and focus on stability.</string>
+    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
+    <string name="onboarding_server_custom">Custom URL</string>
+    <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
+    <string name="onboarding_howto">How to use</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
     <!-- Download -->
-    <string name="download_save_pending">फ़ाइल संग्रहीत करना। कृपया थोड़ा धैर्य रखें...</string>
-    <string name="download_successful">डाउनलोड पूरा हुआ है</string>
-    <string name="notification_channel_name">डाउनलोड सम्पन्न हुआ</string>
+    <string name="download_save_pending">Storing the file. Please have a little patience…</string>
+    <string name="download_successful">Download successful</string>
+    <string name="notification_channel_name">Download completed</string>
     <!-- Action Buttons -->
-    <string name="open">खोलें</string>
-    <string name="reset">रीसेट करें</string>
-    <string name="copy">नकल बनाएँ</string>
+    <string name="open">open</string>
+    <string name="install">install</string>
+    <string name="reset">reset</string>
+    <string name="copy">copy</string>
+    <string name="retry">retry</string>
     <!-- Settings / About -->
-    <string name="logs">डीबग लॉग</string>
-    <string name="version">रूपांतर</string>
-    <string name="pref_device_name_title">डिवाइस का नाम</string>
-    <string name="pref_device_name_summary">अपनी पसंद का डिवाइस नेम रखें</string>
-    <string name="keep_on_summary">(अनुशंसित) स्क्रीन बंद होने पर कई उपकरणों में स्थानांतरण बाधित होने की समस्या होती है</string>
-    <string name="keep_on_title">ट्रांसफर करते समय स्क्रीन ऑन रखें।</string>
-    <string name="floating_text_selection_title">फ्लोटिंग टेक्स्ट सिलेक्शन</string>
-    <string name="floating_text_selection_summary">अन्य ऐप्स में टेक्स्ट को सिलेक्ट करते समय, \"ErikrafT Drop के साथ भेजें\" विकल्प दिखाया जाएगा।</string>
-    <string name="floating_text_selection_activity_label">ErikrafT Drop के साथ भेजें</string>
-    <string name="settings_theme_title">थीम</string>
+    <string name="home_as_up_indicator_about">About</string>
+    <string name="title_activity_about">About ErikrafT Drop</string>
+    <string name="pref_about_title">About this app</string>
+    <string name="view_downloads">View downloads</string>
+    <string name="pref_category_settings">Settings</string>
+    <string name="logs">Debug Logs</string>
+    <string name="components_summary">Tap to display</string>
+    <string name="support_us">Support us</string>
+    <string name="support_us_summary">See, how you can support this project</string>
+    <string name="read_more">read more</string>
+    <string name="version">Version</string>
+    <string name="pref_device_name_title">Device name</string>
+    <string name="pref_device_name_summary">Set a user-defined device name</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
+    <string name="keep_on_title">Keep screen on while transferring</string>
+    <string name="floating_text_selection_title">Floating text selection</string>
+    <string name="floating_text_selection_summary">When selecting text in other apps, an option \"Send with ErikrafT Drop\" will be shown</string>
+    <string name="show_connectivity_card_title">Connectivity warning</string>
+    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
+    <string name="floating_text_selection_activity_label">Send with ErikrafT Drop</string>
+    <string name="permission_not_granted">please grant the necessary permission</string>
+    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
+    <string name="open_settings">open settings</string>
+    <string name="retain_location_metadata_title">Retain location metadata</string>
+    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
+    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="settings_theme_title">Theme</string>
     <string-array name="darkmode_entries">
-        <item>सिस्टम डिफ़ॉल्ट का इस्तेमाल करें</item>
-        <item>प्रकाश</item>
-        <item>डार्क</item>
+        <item>System Default</item>
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
-    <string name="save_location">स्थान सहेजें</string>
+    <string name="baseurl_title">Change server address</string>
+    <string name="baseurl_not_set">Not set</string>
+    <string name="baseurl_instance_verified">Instance was successfully verified</string>
+    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
+    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="save_location">Save location</string>
     <!-- File sharing -->
-    <string name="intent_file">साझा करने के लिए एक फ़ाइल का चयन किया गया है</string>
-    <string name="intent_files">फ़ाइलें साझा करने के लिए चुनी गई हैं</string>
-    <string name="intent_content">सामग्री को साझा करने के लिए चुना गया है</string>
-    <string name="error_filechooser">फ़ाइल चयनकर्ता खोला नहीं जा सकता</string>
-    <string name="error_network">कृपया सत्यापित करें कि आप वाईफाई नेटवर्क से जुड़े हुए हैं</string>
-    <string name="ignore_error_network">मुझे वैसे भी आने दो</string>
-    <string name="error_not_reachable_title">क्षमा करें!</string>
+    <string name="intent_file">A file is selected for sharing</string>
+    <string name="intent_files">Files are selected for sharing</string>
+    <string name="intent_content">Content is selected for sharing</string>
+    <string name="error_filechooser">Cannot open file chooser</string>
+    <string name="error_network">Please verify that you are connected with a WiFi network</string>
+    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
+    <string name="error_network_offline">You are offline</string>
+    <string name="ignore_error_network">Let me in anyway</string>
+    <string name="error_not_reachable_title">Ups, sorry!</string>
+    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
     <!-- Website Localization -->
-    <string name="website_instruction">फ़ाइलें भेजने के लिए टैप करें या संदेश भेजने के लिए लंबा टैप करें</string>
-    <string name="website_file_received">फाइल प्राप्त हुई</string>
-    <string name="website_file_ask_before_download">फ़ाइल सहेजने से पहले हमेशा पूछें</string>
-    <string name="website_file_download">बचाना</string>
-    <string name="website_footer_discovery">आप इस नेटवर्क पर सभी के द्वारा खोजे जा सकते हैं</string>
-    <string name="website_footer_known_as">आप %s के नाम से जाने जाते हैं</string>
-    <string name="website_about_subheading">सभी डिवाइस में फ़ाइलें स्थानांतरित करने का सबसे आसान तरीका</string>
+    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_instruction">Tap to send files or long tap to send a message</string>
+    <string name="website_file_received">File Received</string>
+    <string name="website_file_ask_before_download">Always ask before saving a file</string>
+    <string name="website_file_download">Save</string>
+    <string name="website_footer_discovery">You can be discovered by everyone on this network</string>
+    <string name="website_footer_known_as">You are known as %s</string>
+    <string name="website_about_subheading">The easiest way to transfer files across devices</string>
 </resources>
