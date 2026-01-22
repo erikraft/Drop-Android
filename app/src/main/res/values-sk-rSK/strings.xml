@@ -1,93 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Snapdrop &amp; PairDrop pre Android</string>
-    <string name="app_name_slogan">Bezproblémovo prenášajte súbory medzi všetkými vašimi zariadeniami.</string>
-    <string name="err_no_browser">Nemožno otvoriť prehliadač</string>
-    <string name="err_no_app">Nebola nájdená žiadna nainštalovaná aplikácia na otvorenie tohto súboru</string>
-    <string name="open_url">Otvoriť URL</string>
+    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="err_no_browser">Can\'t open browser</string>
+    <string name="err_no_app">No app installed to open this file</string>
+    <string name="open_url">Open URL</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">pokračovať</string>
-    <string name="onboarding_button_grant">udeliť povolenie</string>
-    <string name="onboarding_button_finish">dokončiť</string>
-    <string name="onboarding_choose_server">Vyberte adresu serveru</string>
-    <string name="onboarding_choose_server_short">vybrať server</string>
-    <string name="onboarding_choose_server_description">Táto aplikácia je optimalizovaný klient pre webové aplikácie ErikrafT Drop a PairDrop.\nVyberte si jednu z nasledujúcich inštancií alebo špecifikuje vlastnú url na pripojenie.\n\nPoznámka: Musíte si vybrať rovnakú URL na všetkých zariadeniach.</string>
-    <string name="onboarding_storage_permission">Povolenie prístupu k súborom</string>
-    <string name="onboarding_storage_permission_description">Táto aplikácia je nástroj na zdieľanie súborov. Preto je pre použitie vyžadované povolenie prístupu k súborom.</string>
-    <string name="onboarding_server_pairdrop_summary">(odporúčané)\nPárovacia funkcia, prenos cez internet a zameranie na stabilitu.</string>
-    <string name="onboarding_server_snapdrop_summary">Klasický SnapDrop. Prehľadný a jednoduchý.</string>
-    <string name="onboarding_server_custom">Vlastná URL</string>
-    <string name="onboarding_server_custom_summary">Experti môžu taktiež sprevádzkovať svoje vlastné servery.</string>
-    <string name="onboarding_howto">Ako používať</string>
-    <string name="onboarding_howto_troubleshoot">Pripomienka: Zariadenia musia byť pripojené na rovnakú WiFi sieť. Nemusí to fungovať, ak je zapnutá VPN.</string>
+    <string name="onboarding_button_continue">continue</string>
+    <string name="onboarding_button_grant">grant permission</string>
+    <string name="onboarding_button_finish">finish</string>
+    <string name="onboarding_choose_server">Choose a server address</string>
+    <string name="onboarding_choose_server_short">choose server</string>
+    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
+    <string name="onboarding_storage_permission">Storage permission</string>
+    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_server_pairdrop_summary">(recommended)\nPairing feature, internet transfer and focus on stability.</string>
+    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
+    <string name="onboarding_server_custom">Custom URL</string>
+    <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
+    <string name="onboarding_howto">How to use</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
     <!-- Download -->
-    <string name="download_save_pending">Ukladanie súboru. Trochu strpenia, prosím…</string>
-    <string name="download_successful">Sťahovanie bolo úspešné</string>
-    <string name="notification_channel_name">Sťahovanie dokončené</string>
+    <string name="download_save_pending">Storing the file. Please have a little patience…</string>
+    <string name="download_successful">Download successful</string>
+    <string name="notification_channel_name">Download completed</string>
     <!-- Action Buttons -->
-    <string name="open">otvoriť</string>
-    <string name="install">inštalovať</string>
-    <string name="reset">obnoviť</string>
-    <string name="copy">kopírovať</string>
-    <string name="retry">skúsiť znova</string>
+    <string name="open">open</string>
+    <string name="install">install</string>
+    <string name="reset">reset</string>
+    <string name="copy">copy</string>
+    <string name="retry">retry</string>
     <!-- Settings / About -->
-    <string name="home_as_up_indicator_about">O</string>
-    <string name="title_activity_about">O Snapdrope &amp; PairDrope pre Android</string>
-    <string name="pref_about_title">O tejto aplikácii</string>
-    <string name="view_downloads">Zobraziť stiahnuté súbory</string>
-    <string name="pref_category_settings">Nastavenia</string>
-    <string name="logs">Záznamy ladení</string>
-    <string name="components_summary">Klepnutím zobrazíte</string>
-    <string name="support_us">Podporte nás</string>
-    <string name="support_us_summary">Pozrite sa, ako môžete podporiť tento projekt</string>
-    <string name="read_more">čítať viac</string>
-    <string name="version">Verzia</string>
-    <string name="pref_device_name_title">Názov zariadenia</string>
-    <string name="pref_device_name_summary">Nastaviť si vlastný názov zariadenia</string>
-    <string name="keep_on_summary">(Odporúčané) Mnohé zariadenia majú problémy s prerušovaním prenosov, keď majú vypnutú obrazovku</string>
-    <string name="keep_on_title">Nechať obrazovku zapnutú počas prenosu</string>
-    <string name="floating_text_selection_title">Výber plávajúceho textu</string>
-    <string name="floating_text_selection_summary">Keď budete označovať text v iných aplikáciách, zobrazí sa možnosť \"Poslať cez ErikrafT Drop\"</string>
-    <string name="show_connectivity_card_title">Upozornení na pripojení</string>
-    <string name="show_connectivity_card_summary"> Zobrazenie upozornení, ak nie ste pripojení k sieti Wi-Fi</string>
-    <string name="floating_text_selection_activity_label">Poslať cez ErikrafT Drop</string>
-    <string name="permission_not_granted">prosím udeľte potrebné povolenia</string>
-    <string name="permission_not_granted_fallback">prosím udeľte potrebné povolenia manuálne</string>
-    <string name="open_settings">otvoriť nastavenia</string>
-    <string name="retain_location_metadata_title">Zachovať metaúdaje lokácie</string>
-    <string name="retain_location_metadata_summary_off">Niektoré mediálne súbory môžu obsahovať údaje o polohe, ktoré sú predvolené odstránené. Udeľte povolenie na zahrnutie úplných metaúdajov</string>
-    <string name="retain_location_metadata_summary_on">Aplikácia má momentálne plný prístup k súborom</string>
-    <string name="settings_theme_title">Motív</string>
+    <string name="home_as_up_indicator_about">About</string>
+    <string name="title_activity_about">About ErikrafT Drop</string>
+    <string name="pref_about_title">About this app</string>
+    <string name="view_downloads">View downloads</string>
+    <string name="pref_category_settings">Settings</string>
+    <string name="logs">Debug Logs</string>
+    <string name="components_summary">Tap to display</string>
+    <string name="support_us">Support us</string>
+    <string name="support_us_summary">See, how you can support this project</string>
+    <string name="read_more">read more</string>
+    <string name="version">Version</string>
+    <string name="pref_device_name_title">Device name</string>
+    <string name="pref_device_name_summary">Set a user-defined device name</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
+    <string name="keep_on_title">Keep screen on while transferring</string>
+    <string name="floating_text_selection_title">Floating text selection</string>
+    <string name="floating_text_selection_summary">When selecting text in other apps, an option \"Send with ErikrafT Drop\" will be shown</string>
+    <string name="show_connectivity_card_title">Connectivity warning</string>
+    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
+    <string name="floating_text_selection_activity_label">Send with ErikrafT Drop</string>
+    <string name="permission_not_granted">please grant the necessary permission</string>
+    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
+    <string name="open_settings">open settings</string>
+    <string name="retain_location_metadata_title">Retain location metadata</string>
+    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
+    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="settings_theme_title">Theme</string>
     <string-array name="darkmode_entries">
-        <item>Predvolený systémom</item>
-        <item>Svetlý</item>
-        <item>Tmavý</item>
+        <item>System Default</item>
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
-    <string name="baseurl_title">Zmeniť adresu serveru</string>
-    <string name="baseurl_not_set">Nenastavené</string>
-    <string name="baseurl_instance_verified">Inštancia bola úspešne overená</string>
-    <string name="baseurl_no_snapdrop_instance">Inštancia sa zdá byť nepodporovaná</string>
-    <string name="baseurl_check_instance_failed">Nepodarilo sa overiť inštanciu</string>
-    <string name="baseurl_unofficial_instances">Pozrite si <a href="">FAQ</a> pre zoznam neoficiálnych inštancií. Prosím vedzte, že niektoré inštancie nemusia správne fungovať v aplikácii.</string>
-    <string name="save_location">Uložiť umiestnenie</string>
+    <string name="baseurl_title">Change server address</string>
+    <string name="baseurl_not_set">Not set</string>
+    <string name="baseurl_instance_verified">Instance was successfully verified</string>
+    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
+    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="save_location">Save location</string>
     <!-- File sharing -->
-    <string name="intent_file">Súbor je označený pre zdieľanie</string>
-    <string name="intent_files">Súbory sú označené pre zdieľanie</string>
-    <string name="intent_content">Obsah je označený pre zdieľanie</string>
-    <string name="error_filechooser">Nemožno otvoriť výber súborov</string>
-    <string name="error_network">Prosím, skontrolujte, či ste pripojení k WiFi sieti</string>
-    <string name="error_network_no_wifi">Prosím pripojte sa k WiFi sieti alebo spárujte zariadenia</string>
-    <string name="error_network_offline">Ste offline</string>
-    <string name="ignore_error_network">Napriek tomu pokračovať</string>
-    <string name="error_not_reachable_title">Ups, prepáčte!</string>
-    <string name="error_server_not_reachable">Server je nedostupný. \n\nAk vaše internetové pripojenie funguje a toto sa stane aj tak, prosím skúste zvoliť inú adresu serveru.</string>
+    <string name="intent_file">A file is selected for sharing</string>
+    <string name="intent_files">Files are selected for sharing</string>
+    <string name="intent_content">Content is selected for sharing</string>
+    <string name="error_filechooser">Cannot open file chooser</string>
+    <string name="error_network">Please verify that you are connected with a WiFi network</string>
+    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
+    <string name="error_network_offline">You are offline</string>
+    <string name="ignore_error_network">Let me in anyway</string>
+    <string name="error_not_reachable_title">Ups, sorry!</string>
+    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
     <!-- Website Localization -->
-    <string name="website_no_peers_info">Pre zasielanie súborov, otvorte aplikáciu alebo stránku na ďalších zariadeniach</string>
-    <string name="website_instruction">Klepnutím pošlete súbory a podržaním pošlete správu</string>
-    <string name="website_file_received">Súbor bol prijatý</string>
-    <string name="website_file_ask_before_download">Vždy sa opýtať pred ukladaním súboru</string>
-    <string name="website_file_download">Uložiť</string>
-    <string name="website_footer_discovery">Ste viditeľný všetkým na tejto sieti</string>
-    <string name="website_footer_known_as">Ste tu pod menom %s</string>
-    <string name="website_about_subheading">Najjednoduchší spôsob prenášania súborov medzi zariadeniami</string>
+    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_instruction">Tap to send files or long tap to send a message</string>
+    <string name="website_file_received">File Received</string>
+    <string name="website_file_ask_before_download">Always ask before saving a file</string>
+    <string name="website_file_download">Save</string>
+    <string name="website_footer_discovery">You can be discovered by everyone on this network</string>
+    <string name="website_footer_known_as">You are known as %s</string>
+    <string name="website_about_subheading">The easiest way to transfer files across devices</string>
 </resources>
