@@ -19,6 +19,7 @@
     <string name="onboarding_server_snapdrop_summary_server_warning">Предупреждение: Нестабильность сервера</string>
     <string name="onboarding_server_custom">Пользовательский URL</string>
     <string name="onboarding_server_custom_summary">Эксперты также могут размещать свои собственные серверы.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">Как пользоваться</string>
     <string name="onboarding_howto_summary">1. Откройте это приложение или %s на любом другом устройстве в локальной сети WiFi.\n\n2. Нажмите на устройство и выберите файлы, которые вы хотите отправить.\n\n3. Готово! Файлы будут отправлены…</string>
     <string name="onboarding_howto_troubleshoot">Подсказка: Устройства должны быть подключены к одной и той же сети WiFi. Это может не работать, если включен VPN.</string>
@@ -46,6 +47,8 @@
     <string name="version">Версия</string>
     <string name="pref_device_name_title">Имя устройства</string>
     <string name="pref_device_name_summary">Задать имя устройства</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Рекомендуется) На многих устройствах наблюдаются проблемы с прерыванием передачи при выключенном экране</string>
     <string name="keep_on_title">Не выключать экран во время передачи</string>
     <string name="floating_text_selection_title">Поделиться выделенным текстом</string>
