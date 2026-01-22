@@ -1,39 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="err_no_browser">Не може да се отвори прелистувачот</string>
-    <string name="err_no_app">Нема апликација инсталирана за да се отвори оваа датотека</string>
-    <string name="open_url">Отвори URL</string>
+    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="err_no_browser">Can\'t open browser</string>
+    <string name="err_no_app">No app installed to open this file</string>
+    <string name="open_url">Open URL</string>
     <!-- Onboarding -->
+    <string name="onboarding_button_continue">continue</string>
+    <string name="onboarding_button_grant">grant permission</string>
+    <string name="onboarding_button_finish">finish</string>
+    <string name="onboarding_choose_server">Choose a server address</string>
+    <string name="onboarding_choose_server_short">choose server</string>
+    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
+    <string name="onboarding_storage_permission">Storage permission</string>
+    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_server_pairdrop_summary">(recommended)\nPairing feature, internet transfer and focus on stability.</string>
+    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
+    <string name="onboarding_server_custom">Custom URL</string>
+    <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
+    <string name="onboarding_howto">How to use</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
     <!-- Download -->
-    <string name="download_save_pending">Се зачувува датотеката. Ве молиме имајте стрплење…</string>
-    <string name="download_successful">Преземањето е успешно</string>
-    <string name="notification_channel_name">Преземањето е завршено</string>
+    <string name="download_save_pending">Storing the file. Please have a little patience…</string>
+    <string name="download_successful">Download successful</string>
+    <string name="notification_channel_name">Download completed</string>
     <!-- Action Buttons -->
-    <string name="open">отвори</string>
-    <string name="reset">ресетирај</string>
-    <string name="copy">копирај</string>
+    <string name="open">open</string>
+    <string name="install">install</string>
+    <string name="reset">reset</string>
+    <string name="copy">copy</string>
+    <string name="retry">retry</string>
     <!-- Settings / About -->
-    <string name="pref_category_settings">Поставки</string>
-    <string name="logs">Дебагирани влезови</string>
-    <string name="components_summary">Допрете за да се прикаже</string>
-    <string name="version">Верзија</string>
-    <string name="pref_device_name_title">Име на уредот</string>
-    <string name="pref_device_name_summary">Поставете сопствено име на уредот</string>
-    <string name="keep_on_summary">Овозможете ја оваа опција ако имате проблеми со прекинување на трансферите кога екранот е исклучен</string>
-    <string name="keep_on_title">Чувајте го екранот вклучен</string>
-    <string name="settings_theme_title">Тема</string>
+    <string name="home_as_up_indicator_about">About</string>
+    <string name="title_activity_about">About ErikrafT Drop</string>
+    <string name="pref_about_title">About this app</string>
+    <string name="view_downloads">View downloads</string>
+    <string name="pref_category_settings">Settings</string>
+    <string name="logs">Debug Logs</string>
+    <string name="components_summary">Tap to display</string>
+    <string name="support_us">Support us</string>
+    <string name="support_us_summary">See, how you can support this project</string>
+    <string name="read_more">read more</string>
+    <string name="version">Version</string>
+    <string name="pref_device_name_title">Device name</string>
+    <string name="pref_device_name_summary">Set a user-defined device name</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
+    <string name="keep_on_title">Keep screen on while transferring</string>
+    <string name="floating_text_selection_title">Floating text selection</string>
+    <string name="floating_text_selection_summary">When selecting text in other apps, an option \"Send with ErikrafT Drop\" will be shown</string>
+    <string name="show_connectivity_card_title">Connectivity warning</string>
+    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
+    <string name="floating_text_selection_activity_label">Send with ErikrafT Drop</string>
+    <string name="permission_not_granted">please grant the necessary permission</string>
+    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
+    <string name="open_settings">open settings</string>
+    <string name="retain_location_metadata_title">Retain location metadata</string>
+    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
+    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="settings_theme_title">Theme</string>
     <string-array name="darkmode_entries">
-        <item>Системски одбрано</item>
-        <item>Светла</item>
-        <item>Темна</item>
+        <item>System Default</item>
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
-    <string name="save_location">Зачувај локација</string>
+    <string name="baseurl_title">Change server address</string>
+    <string name="baseurl_not_set">Not set</string>
+    <string name="baseurl_instance_verified">Instance was successfully verified</string>
+    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
+    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="save_location">Save location</string>
     <!-- File sharing -->
-    <string name="intent_file">Датотека е избрана за споделување</string>
-    <string name="intent_files">Датотеките се избрани за споделување</string>
-    <string name="intent_content">Содржината е избрана за споделување</string>
-    <string name="error_filechooser">Не може да се отвори избирачот на датотеки</string>
-    <string name="error_network">Ве молиме, проверете дали сте поврзани со WiFi мрежа</string>
-    <string name="ignore_error_network">Игнорирај и продолжи</string>
+    <string name="intent_file">A file is selected for sharing</string>
+    <string name="intent_files">Files are selected for sharing</string>
+    <string name="intent_content">Content is selected for sharing</string>
+    <string name="error_filechooser">Cannot open file chooser</string>
+    <string name="error_network">Please verify that you are connected with a WiFi network</string>
+    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
+    <string name="error_network_offline">You are offline</string>
+    <string name="ignore_error_network">Let me in anyway</string>
+    <string name="error_not_reachable_title">Ups, sorry!</string>
+    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
     <!-- Website Localization -->
+    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_instruction">Tap to send files or long tap to send a message</string>
+    <string name="website_file_received">File Received</string>
+    <string name="website_file_ask_before_download">Always ask before saving a file</string>
+    <string name="website_file_download">Save</string>
+    <string name="website_footer_discovery">You can be discovered by everyone on this network</string>
+    <string name="website_footer_known_as">You are known as %s</string>
+    <string name="website_about_subheading">The easiest way to transfer files across devices</string>
 </resources>
