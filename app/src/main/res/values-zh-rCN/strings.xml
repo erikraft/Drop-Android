@@ -16,9 +16,12 @@
     <string name="onboarding_storage_permission_description">此应用是一个共享文件的工具。因此，需要存储权限才能使用。</string>
     <string name="onboarding_server_pairdrop_summary">(推荐)\n配对功能、互联网传输并侧重于稳定性。</string>
     <string name="onboarding_server_snapdrop_summary">经典的 SnapDrop。简洁而干净。</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
     <string name="onboarding_server_custom">自定义URL</string>
     <string name="onboarding_server_custom_summary">专家们也可以搭建他们自己的服务器。</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">如何使用</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
     <string name="onboarding_howto_troubleshoot">提示：设备需要连接到同一个WiFi网络。如果启用了VPN，它可能无法工作。</string>
     <!-- Download -->
     <string name="download_save_pending">存储文件。请稍等…</string>
@@ -44,6 +47,8 @@
     <string name="version">版本</string>
     <string name="pref_device_name_title">设备名称</string>
     <string name="pref_device_name_summary">自定义设备名称</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(推荐) 若遇到熄屏时传输中断的问题，请启用该项</string>
     <string name="keep_on_title">传输时保持屏幕开启</string>
     <string name="floating_text_selection_title">浮动文字选择</string>
