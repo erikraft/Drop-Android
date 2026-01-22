@@ -19,6 +19,7 @@
     <string name="onboarding_server_snapdrop_summary_server_warning">Advertencia: Inestabilidades del servidor</string>
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Los expertos también pueden alojar sus propios servidores.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">Cómo usar</string>
     <string name="onboarding_howto_summary">1. Abre esta aplicación o %s en cualquier otro dispositivo en tu red WiFi local.\n\n2. Toca el dispositivo y selecciona los archivos que quieres enviar.\n\n3. ¡Listo! Los archivos se enviarán…</string>
     <string name="onboarding_howto_troubleshoot">Sugerencia: Los dispositivos necesitan estar conectados a la misma red WiFi. Puede que no funcione si una VPN está habilitada.</string>
@@ -46,6 +47,8 @@
     <string name="version">Versión</string>
     <string name="pref_device_name_title">Nombre del dispositivo</string>
     <string name="pref_device_name_summary">Establece un nombre de dispositivo definido por el usuario</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Recomendado) Muchos dispositivos tienen problemas con las interrupciones de transferencias cuando la pantalla se apaga</string>
     <string name="keep_on_title">Mantener la pantalla encendida mientras se transfiere</string>
     <string name="floating_text_selection_title">Selección de texto flotante</string>
