@@ -68,7 +68,7 @@ This repository ships with a GitHub Actions workflow (`Publish to Google Play`) 
 
 The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
 
-### Self-hosted F-Droid automation
+### 🤖｜Self-hosted F-Droid automation
 The project also includes a workflow (`Publish to self-hosted F-Droid repo`) that prepares an F-Droid compatible repository whenever a GitHub release is published (you can also trigger it manually through the *Actions* tab). The workflow builds the signed APK, updates the metadata under `fdroid/`, generates the F-Droid index using [`fdroidserver`](https://gitlab.com/fdroid/fdroidserver), and publishes the result to the `fdroid` branch which can be served through GitHub Pages or any static hosting provider.
 
 To enable the workflow:
@@ -81,9 +81,11 @@ To enable the workflow:
 After the first successful run you will have a fully automated, self-hosted F-Droid catalogue that mirrors the signed releases from this repository.
 
 ## ⚙️｜Other software
-### Related software
-- ErikrafT Drop Web Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Browser%20Extension)
-- And for sure, ErikrafT Drop directly inside the browser - just use it everywhere: https://drop.erikraft.com/
+### ✨｜Related software
+- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
+- ErikrafT Drop Discord integration: https://github.com/erikraft/Drop/tree/master/Discord
+- ErikrafT Drop Apple Shortcut integration: https://github.com/erikraft/Drop/tree/master/Shortcut
+- And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
 
 ### ⁉️｜Alternatives
 - Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
