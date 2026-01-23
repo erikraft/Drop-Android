@@ -82,7 +82,7 @@ After the first successful run you will have a fully automated, self-hosted F-Dr
 
 ## ⚙️｜Other software
 ### ✨｜Related software
-- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
+- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
 - ErikrafT Drop Discord integration: https://github.com/erikraft/Drop/tree/master/Discord
 - ErikrafT Drop Apple Shortcut integration: https://github.com/erikraft/Drop/tree/master/Shortcut
 - And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
