@@ -35,6 +35,9 @@ However, even if it theoretically would fully work in your browser and you don't
   <a href='https://f-droid.org/en/packages/com.erikraft.drop/' target='_blank'>
     <img alt='Get it on F-Droid' height='80' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'>
   </a>
+  <a href="https://apkpure.com/p/com.erikraft.drop" target="_blank">
+    <img alt="Get it on APKPure" style="height: 60px;" src="https://raw.githubusercontent.com/erikraft/Drop/master/public/images/badges/Get_it_on_APKPure_English.png">
+  </a>
 </div>
 
 ## 📲｜Screenshots
