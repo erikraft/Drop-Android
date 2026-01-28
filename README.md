@@ -4,6 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues) 
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/erikraft/Drop-Android)
+[![Crowdin](https://badges.crowdin.net/erikraft-drop-android/localized.svg)](https://crowdin.com/project/erikraft-drop-android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
 
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
@@ -25,7 +26,7 @@ ErikrafT Drop is a local file sharing solution which completely works in your br
 
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
-## Where can I download the app?
+## ⏬｜Where can I download the app?
 **ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/). 
 <div align='center' style='display: inline_block; gap: 10px;'><br>
   <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
@@ -34,21 +35,31 @@ However, even if it theoretically would fully work in your browser and you don't
   <a href='https://f-droid.org/en/packages/com.erikraft.drop/' target='_blank'>
     <img alt='Get it on F-Droid' height='80' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'>
   </a>
+  <a href="https://apkpure.com/p/com.erikraft.drop" target="_blank">
+    <img alt="Get it on APKPure" style="height: 60px;" src="https://raw.githubusercontent.com/erikraft/Drop/master/public/images/badges/Get_it_on_APKPure_English.png">
+  </a>
 </div>
 
-## Screenshots
-<img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_1.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_10.png" width="10%"></img> <img src=".screenshot/ErikrafTdrop_screenshot_mobile_2.png" width="10%"></img>
+## 📲｜Screenshots
+<img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_1.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_2.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_3.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_4.png" width="10%"></img> <img src=".screenshot/erikraftdrop_screenshot_mobile.gif" width="10%"></img>
 
-## Support ErikrafT Drop
+## 💰｜Support ErikrafT Drop
 ➡️ [See how you can support this app and the ErikrafT Drop community](https://ko-fi.com/erikraft/)
 
-## Contributing
+## 🙏🏻｜Contributing
 **ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
-### Development
+### 🌎｜Translation Help
+Want to help translate **ErikrafT Drop for Android** into your language? You can contribute to translations on our Crowdin project:
+
+- [Help translate ErikrafT Drop for Android on Crowdin](https://crowdin.com/project/erikraft-drop-android)
+
+Your contributions help make the app accessible to users worldwide!
+
+### ✍🏻｜Development
 If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
 
-### Play Store automation
+### 🤖｜Play Store automation
 This repository ships with a GitHub Actions workflow (`Publish to Google Play`) that automatically builds a release bundle and uploads it to the Google Play Store whenever changes are pushed to the `main` branch. To enable the workflow:
 
 1. Create a Google Cloud service account with access to the Google Play Developer API and download its JSON key.
@@ -57,7 +68,7 @@ This repository ships with a GitHub Actions workflow (`Publish to Google Play`) 
 
 The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
 
-### Self-hosted F-Droid automation
+### 🤖｜Self-hosted F-Droid automation
 The project also includes a workflow (`Publish to self-hosted F-Droid repo`) that prepares an F-Droid compatible repository whenever a GitHub release is published (you can also trigger it manually through the *Actions* tab). The workflow builds the signed APK, updates the metadata under `fdroid/`, generates the F-Droid index using [`fdroidserver`](https://gitlab.com/fdroid/fdroidserver), and publishes the result to the `fdroid` branch which can be served through GitHub Pages or any static hosting provider.
 
 To enable the workflow:
@@ -69,12 +80,14 @@ To enable the workflow:
 
 After the first successful run you will have a fully automated, self-hosted F-Droid catalogue that mirrors the signed releases from this repository.
 
-## Other software
-### Related software
-- ErikrafT Drop Web Extension for desktop platforms: [ErikrafT Drop Web Extension](https://github.com/erikraft/Drop/tree/master/Browser%20Extension)
-- And for sure, ErikrafT Drop directly inside the browser - just use it everywhere: https://drop.erikraft.com/
+## ⚙️｜Other software
+### ✨｜Related software
+- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
+- ErikrafT Drop Discord integration: [ErikrafT Drop Discord Bot and Activity](https://github.com/erikraft/Drop/tree/master/Discord)
+- ErikrafT Drop Apple Shortcut integration: [ErikrafT Drop Apple Shortcut](https://github.com/erikraft/Drop/tree/master/Shortcut)
+- And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
 
-### Alternatives
+### ⁉️｜Alternatives
 - Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
 - Google Nearby Share (Android, Chrome OS and [Windows](https://www.android.com/better-together/nearby-share-app/), plus an unofficial [macOS client](https://github.com/grishka/NearDrop))
 - Windows Nearby Sharing (Windows only, there is a [FLOSS implementation](https://github.com/ShortDevelopment/Nearby-Sharing-Windows) for android)

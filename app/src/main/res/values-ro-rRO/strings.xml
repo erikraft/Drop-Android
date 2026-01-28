@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name_long">ErikrafT Drop</string>
     <string name="app_name_slogan">Transferă fișiere între dispozitive, fără efort.</string>
     <string name="err_no_browser">Nu se poate deschide browser-ul</string>
     <string name="err_no_app">Nicio aplicație instalată pentru a deschide acest fișier</string>
@@ -9,14 +10,18 @@
     <string name="onboarding_button_grant">Acordă permisiuni</string>
     <string name="onboarding_button_finish">Finalizare</string>
     <string name="onboarding_choose_server">Alege o adresă de server</string>
+    <string name="onboarding_choose_server_short">choose server</string>
     <string name="onboarding_choose_server_description">Această aplicație este un client optimizat pentru aplicația web ErikrafT Drop și PairDrop.\nAlege una dintre următoarele instanțe sau specifică un URL personalizat la care să te conectezi.\n\nNotă: Trebuie să alegeți același URL pe toate dispozitivele.</string>
     <string name="onboarding_storage_permission">Permisiuni pentru stocare</string>
     <string name="onboarding_storage_permission_description">Această aplicație este pentru partajări. De aceea sunt necesare permisiuni pentru stocare.</string>
     <string name="onboarding_server_pairdrop_summary">(recomandat)\nFuncția de asociere, transfer internet și concentrare asupra stabilității.</string>
     <string name="onboarding_server_snapdrop_summary">Snapdrop classic. Simplu și curat.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
     <string name="onboarding_server_custom">URL personalizat</string>
     <string name="onboarding_server_custom_summary">Experţii îşi pot găzdui şi propriile servere.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">Instrucțiuni de folosire</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
     <string name="onboarding_howto_troubleshoot">Sugestie: Dispozitivele trebuie să fie conectate la aceeași rețea WiFi. Nu va funcționa dacă un VPN este activat.</string>
     <!-- Download -->
     <string name="download_save_pending">Se stochează fișierul. Vă rugăm să aveți puțină răbdare...</string>
@@ -27,9 +32,12 @@
     <string name="install">instalează</string>
     <string name="reset">resetează</string>
     <string name="copy">copiați</string>
+    <string name="retry">retry</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Despre</string>
+    <string name="title_activity_about">About ErikrafT Drop</string>
     <string name="pref_about_title">Despre această aplicație</string>
+    <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Setări</string>
     <string name="logs">Jurnal Depanare</string>
     <string name="components_summary">Atinge pentru a afișa</string>
@@ -39,10 +47,14 @@
     <string name="version">Versiune</string>
     <string name="pref_device_name_title">Numele dispozitivului</string>
     <string name="pref_device_name_summary">Setează un nume de dispozitiv definit de utilizator</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Recomandat) Multe dispozitive au probleme cu transferurile întrerupte atunci când ecranul se oprește</string>
     <string name="keep_on_title">Păstrează ecranul pornit în timpul transferului</string>
     <string name="floating_text_selection_title">Selecție de text plutitoare</string>
     <string name="floating_text_selection_summary">La selectarea textului în alte aplicații, o opțiune \"Trimite cu ErikrafT Drop\" va fi afișată</string>
+    <string name="show_connectivity_card_title">Connectivity warning</string>
+    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
     <string name="floating_text_selection_activity_label">Trimite prin ErikrafT Drop</string>
     <string name="permission_not_granted">vă rugăm să acordați permisiunea necesară</string>
     <string name="permission_not_granted_fallback">vă rugăm să acordați manual permisiunea necesară</string>
@@ -56,7 +68,11 @@
         <item>Luminos</item>
         <item>Întunecat</item>
     </string-array>
+    <string name="baseurl_title">Change server address</string>
     <string name="baseurl_not_set">Nesetat</string>
+    <string name="baseurl_instance_verified">Instance was successfully verified</string>
+    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
+    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
     <string name="baseurl_unofficial_instances">Verificați <a href="">FAQ</a> pentru o listă de instanțe neoficiale. Vă rugăm să rețineți că unele cazuri ar putea să nu funcționeze corect în interiorul aplicației.</string>
     <string name="save_location">Locaţia pentru salvare</string>
     <!-- File sharing -->
@@ -65,10 +81,13 @@
     <string name="intent_content">Conținutul este selectat pentru partajare</string>
     <string name="error_filechooser">Nu se poate deschide selecția fișierului</string>
     <string name="error_network">Te rugăm să verifici dacă ești conectat la o rețea WiFi</string>
+    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
+    <string name="error_network_offline">You are offline</string>
     <string name="ignore_error_network">Lasă-mă să intru oricum</string>
     <string name="error_not_reachable_title">Ups, scuze!</string>
     <string name="error_server_not_reachable">Serverul nu poate fi accesat. \n\nDacă conexiunea la internet este bună și tot se întâmplă, încearcă să selectezi alt server.</string>
     <!-- Website Localization -->
+    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
     <string name="website_instruction">Atingeți pentru a trimite fișiere sau atingeți lung pentru a trimite un mesaj</string>
     <string name="website_file_received">Fișier primit</string>
     <string name="website_file_ask_before_download">Întreabă întotdeauna înainte de a salva un fișier</string>

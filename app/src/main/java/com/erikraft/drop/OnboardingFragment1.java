@@ -32,7 +32,7 @@ public class OnboardingFragment1 extends Fragment {
         }, 500);
 
         binding.continueButton.setOnClickListener(v -> {
-            viewModel.url("https://pairdrop.net");
+            viewModel.url("https://drop.erikraft.com");
             if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
                     && (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
                 viewModel.launchFragment(OnboardingFragmentPermission.class);

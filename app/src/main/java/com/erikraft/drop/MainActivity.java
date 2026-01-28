@@ -351,8 +351,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isPairDrop() {
-        return baseURL != null && (baseURL.startsWith(getString(R.string.onboarding_server_pairdrop))
-                || baseURL.startsWith("https://drop.erikraft.com"));
+        return baseURL != null && baseURL.startsWith(getString(R.string.onboarding_server_pairdrop));
     }
 
     @Override

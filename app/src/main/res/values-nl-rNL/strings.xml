@@ -16,9 +16,12 @@
     <string name="onboarding_storage_permission_description">Deze app is bedoeld voor het delen van bestanden. Daarom is toestemming tot bestanden vereist om deze te gebruiken.</string>
     <string name="onboarding_server_pairdrop_summary">(aanbevolen)\nKoppeling functie, overdracht via internet en focus op stabiliteit.</string>
     <string name="onboarding_server_snapdrop_summary">De klassieke snapdrop. Sober en simpel.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
     <string name="onboarding_server_custom">Aangepaste URL</string>
     <string name="onboarding_server_custom_summary">Experts kunnen ook hun eigen servers hosten.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">Zo werkt het</string>
+    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
     <string name="onboarding_howto_troubleshoot">Tip: Apparaten moeten verbonden zijn met hetzelfde WiFi-netwerk. Het werkt mogelijk niet als een VPN ingeschakeld is.</string>
     <!-- Download -->
     <string name="download_save_pending">Het bestand opslaan. Even geduld…</string>
@@ -44,6 +47,8 @@
     <string name="version">Versie</string>
     <string name="pref_device_name_title">Apparaatnaam</string>
     <string name="pref_device_name_summary">Stel een apparaatnaam in</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Aanbevolen) Veel apparaten hebben problemen met onderbroken overdrachten waneer het scherm wordt uitgeschakeld</string>
     <string name="keep_on_title">Houd het scherm aan tijdens de overdracht</string>
     <string name="floating_text_selection_title">Zwevende-tekstselectie</string>
