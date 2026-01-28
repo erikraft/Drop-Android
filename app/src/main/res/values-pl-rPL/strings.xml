@@ -19,6 +19,7 @@
     <string name="onboarding_server_snapdrop_summary_server_warning">Ostrzeżenie: Niestabilność serwera</string>
     <string name="onboarding_server_custom">Niestandardowy URL</string>
     <string name="onboarding_server_custom_summary">Eksperci mogą również hostować swoje własne serwery.</string>
+    <string name="onboarding_server_custom_add">Add server</string>
     <string name="onboarding_howto">Jak używać</string>
     <string name="onboarding_howto_summary">1. Otwórz tę aplikację lub %s na innym urządzeniu w lokalnej sieci WiFi.\n\n2. Dotknij urządzenia, z którym chcesz udostępnić plik(i). \n\n3 Gotowe! Pliki zostaną wysłane…</string>
     <string name="onboarding_howto_troubleshoot">Wskazówka: Urządzenia muszą być podłączone do tej samej sieci WiFi. Może to nie działać, jeśli VPN jest włączony.</string>
@@ -46,6 +47,8 @@
     <string name="version">Wersja</string>
     <string name="pref_device_name_title">Nazwa urządzenia</string>
     <string name="pref_device_name_summary">Ustaw nazwę urządzenia zdefiniowaną przez użytkownika</string>
+    <string name="notifications_summary">Show notification when download is completed</string>
+    <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Zalecane) Wiele urządzeń ma problemy z przerywaniem transferu po wyłączeniu ekranu</string>
     <string name="keep_on_title">Pozostaw włączony ekran podczas przesyłania</string>
     <string name="floating_text_selection_title">Wybór pływającego tekstu</string>
