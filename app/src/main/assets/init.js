@@ -7,7 +7,7 @@
 
 //change ReceiveTextDialog._onCopy to connect to JavaScriptInterface (don't call super method as it will throw an NotAllowedError)
 try {
-    ReceiveTextDialog.prototype._onCopy = function(){
+    ReceiveTextDialog.prototype._onCopy = function () {
         ErikrafTdropAndroid.copyToClipboard(this.$text.textContent);
         Events.fire('notify-user', 'Copied to clipboard');
     };
@@ -18,10 +18,10 @@ try {
 //change PeerUI.setProgress(progress) to connect to JavaScriptInterface
 try {
     PeerUI.prototype.sP = PeerUI.prototype.setProgress;
-    PeerUI.prototype.setProgress = function(progress){
+    PeerUI.prototype.setProgress = function (progress) {
         ErikrafTdropAndroid.setProgress(progress);
         this.sP(progress);
-     };
+    };
 } catch (e) {
     console.error(e);
 }
@@ -71,8 +71,8 @@ try {
 
 //avoid text overflow (receive dialog) - might not be necessary anymore (see #393)
 try {
-    document.getElementById('fileName').style.textOverflow='ellipsis';
-    document.getElementById('fileName').style.overflow='hidden';
+    document.getElementById('fileName').style.textOverflow = 'ellipsis';
+    document.getElementById('fileName').style.overflow = 'hidden';
 } catch (e) {
     console.error(e);
 }
@@ -90,7 +90,7 @@ try {
 //change PeerUI._onTouchEnd(e) to connect to JavaScriptInterface
 try {
     PeerUI.prototype._oTE = PeerUI.prototype._onTouchEnd;
-    PeerUI.prototype._onTouchEnd = function(e){
+    PeerUI.prototype._onTouchEnd = function (e) {
         this._oTE(e);
         if ((Date.now() - this._touchStart < 500) && SnapdropAndroid.shouldOpenSendTextDialog()) {
             if (document.querySelector('meta[name="application-name"]')?.content == "PairDrop") {
@@ -106,16 +106,22 @@ try {
 
 //catch chunks
 try {
-    Peer.prototype._oFH = Peer.prototype._onFileHeader;
-    Peer.prototype._onFileHeader = function(header){
-        SnapdropAndroid.newFile(header.name,header.mime, header.size);
+    Peer.prototype._onFileHeader = function (header) {
+        this._isToAndroidBase64 = header.mime.startsWith("text/") || header.name.toLowerCase().endsWith(".txt");
+        let mimeInfo = this._isToAndroidBase64 ? "base64:" + header.mime : header.mime;
+        SnapdropAndroid.newFile(header.name, mimeInfo, header.size);
         this._oFH(header);
     };
 
-    Peer.prototype._oCR = Peer.prototype._onChunkReceived;
-    Peer.prototype._onChunkReceived = function(chunk){
+    Peer.prototype._onChunkReceived = function (chunk) {
         let decoder = new TextDecoder('iso-8859-1');
-        SnapdropAndroid.onBytes(decoder.decode(chunk));
+        let rawString = decoder.decode(chunk);
+
+        if (this._isToAndroidBase64) {
+            SnapdropAndroid.onBytes(btoa(rawString));
+        } else {
+            SnapdropAndroid.onBytes(rawString);
+        }
         this._oCR(chunk);
     };
 } catch (e) {
@@ -137,13 +143,13 @@ try {
     const _androidBridge = (typeof ErikrafTdropAndroid !== 'undefined') ? ErikrafTdropAndroid : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
     if (_androidBridge) {
         if (!Dialog.prototype._shw) Dialog.prototype._shw = Dialog.prototype.show;
-        Dialog.prototype.show = function(){
+        Dialog.prototype.show = function () {
             try { _androidBridge.dialogShown(); } catch (e) { /* ignore bridge errors */ }
             this._shw();
         };
 
         if (!Dialog.prototype._hde) Dialog.prototype._hde = Dialog.prototype.hide;
-        Dialog.prototype.hide = function(){
+        Dialog.prototype.hide = function () {
             try { _androidBridge.dialogHidden(); } catch (e) { /* ignore bridge errors */ }
             this._hde();
         };
@@ -155,7 +161,7 @@ try {
 //register ignoreClickedListener
 try {
     let downloadCancel = document.querySelector("#receiveDialog>x-background>x-paper>div.row-reverse>button");
-    downloadCancel.addEventListener("click", function() { SnapdropAndroid.ignoreClickedListener(); });
+    downloadCancel.addEventListener("click", function () { SnapdropAndroid.ignoreClickedListener(); });
 } catch (e) {
     console.error(e);
 }
@@ -165,7 +171,7 @@ try {
     const localizationBuiltIn = !!document.getElementById('language-selector');
 
     if (!localizationBuiltIn) {
-        let localizeDisplayName = function(str){
+        let localizeDisplayName = function (str) {
             const displayNameNode = document.getElementById('displayName');
             // don't change it e.g. for pairdrop.net
             if (displayNameNode.textContent.substring(0, 17) === "You are known as ") {
@@ -176,7 +182,7 @@ try {
         window.addEventListener('display-name', e => window.setTimeout(_ => localizeDisplayName(e.detail.message.displayName), 100), false);
 
         let currentText = document.getElementById('displayName').textContent;
-        if(currentText.startsWith("You are known as ")){
+        if (currentText.startsWith("You are known as ")) {
             localizeDisplayName(currentText.split("You are known as ")[1]);
         }
     }
