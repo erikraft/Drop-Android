@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 
@@ -33,13 +34,23 @@ public class JavaScriptInterface {
     private OutputStream fileOutputStream;
     private FileHeader fileHeader;
 
+    private boolean isBase64 = false;
+
     public JavaScriptInterface(final MainActivity context) {
         this.context = context;
     }
 
     @JavascriptInterface
     public void newFile(final String fileName, final String mimeType, final String fileSize) throws IOException {
-        final FileWrapper fileWrapper = createFileWrapper(fileName, mimeType);
+        String finalMime = mimeType;
+        if (mimeType.startsWith("base64:")) {
+            isBase64 = true;
+            finalMime = mimeType.substring(7);
+        } else {
+            isBase64 = false;
+        }
+
+        final FileWrapper fileWrapper = createFileWrapper(fileName, finalMime);
         if (fileWrapper == null) {
             throw new IOException("Missing storage permissions");
         }
@@ -47,35 +58,43 @@ public class JavaScriptInterface {
         if (fileOutputStream == null) {
             throw new IOException("Cannot write target file");
         }
-        fileHeader = new FileHeader(fileName, mimeType, fileSize, fileWrapper);
+        fileHeader = new FileHeader(fileName, finalMime, fileSize, fileWrapper);
     }
 
-    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException {
+    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException { // ...
+                                                                                                             // existing
+                                                                                                             // code ...
         if (Build.VERSION.SDK_INT > 28) {
             /*
-            Make file transfer faster 2x on scoped storage by writing to media store database directly,
-            instead of writing to temporary file first. It could save storage lifetime because
-            the file is written once only.
+             * Make file transfer faster 2x on scoped storage by writing to media store
+             * database directly,
+             * instead of writing to temporary file first. It could save storage lifetime
+             * because
+             * the file is written once only.
              */
             final DocumentFile saveLocation = MainActivity.getSaveLocation();
             if (saveLocation != null) {
-                final DocumentFile file = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(), fileName, mimeType);
+                final DocumentFile file = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(),
+                        fileName, mimeType);
                 if (file != null) {
                     return new FileWrapper.Document(file);
                 }
             }
             final FileDescription description = new FileDescription(fileName, "", mimeType);
-            return DocumentFileCompat.createDownloadWithMediaStoreFallback(context.getApplicationContext(), description);
+            return DocumentFileCompat.createDownloadWithMediaStoreFallback(context.getApplicationContext(),
+                    description);
         } else {
             /*
-            Prior to scoped storage restriction, SimpleStorage will use File#renameTo(), so no need to worry
-            about the storage's lifetime.
+             * Prior to scoped storage restriction, SimpleStorage will use File#renameTo(),
+             * so no need to worry
+             * about the storage's lifetime.
              */
             final String[] nameSplit = fileName.split("\\.");
             while (nameSplit[0].length() < 3) {
                 nameSplit[0] += nameSplit[0];
             }
-            final DocumentFile file = DocumentFile.fromFile(File.createTempFile(nameSplit[0], "." + nameSplit[nameSplit.length - 1], context.getCacheDir()));
+            final DocumentFile file = DocumentFile.fromFile(
+                    File.createTempFile(nameSplit[0], "." + nameSplit[nameSplit.length - 1], context.getCacheDir()));
             return new FileWrapper.Document(file);
         }
     }
@@ -85,8 +104,13 @@ public class JavaScriptInterface {
         if (fileOutputStream == null) {
             return;
         }
-        //https://stackoverflow.com/questions/27034897/is-there-a-way-to-pass-an-arraybuffer-from-javascript-to-java-on-android
-        final byte[] bytes = dec.getBytes("windows-1252");
+        // https://stackoverflow.com/questions/27034897/is-there-a-way-to-pass-an-arraybuffer-from-javascript-to-java-on-android
+        byte[] bytes;
+        if (isBase64) {
+            bytes = Base64.decode(dec, Base64.NO_WRAP);
+        } else {
+            bytes = dec.getBytes(StandardCharsets.ISO_8859_1);
+        }
         fileOutputStream.write(bytes);
         fileOutputStream.flush();
     }
@@ -95,16 +119,17 @@ public class JavaScriptInterface {
     public void saveDownloadFileName(final String name, final String size) throws IOException {
         fileOutputStream.flush();
         fileOutputStream.close();
+        isBase64 = false;
 
         context.downloadFilesList.add(fileHeader);
     }
 
-
     public static String getSendTextDialogWithPreInsertedString(final String text) {
         return "javascript: " +
-                // snapdrop
+        // snapdrop
                 "try {" +
-                "    document.getElementById(\"textInput\").innerHTML=\"" + TextUtils.htmlEncode(text).replaceAll("\\n", "<br />") + "\";" +
+                "    document.getElementById(\"textInput\").innerHTML=\""
+                + TextUtils.htmlEncode(text).replaceAll("\\n", "<br />") + "\";" +
                 "    console.log(\"successfully set pre-inserted text (snapdrop based)\");" +
                 "} catch (e) {" +
                 "    console.error(\"Error setting pre-inserted text (snapdrop based): \" + e);" +
@@ -151,10 +176,12 @@ public class JavaScriptInterface {
     @JavascriptInterface
     public void ignoreClickedListener() {
         IOUtils.closeStreamQuietly(fileOutputStream);
+        isBase64 = false;
         if (fileHeader != null && fileHeader.file.delete()) {
             Log.d("ignoreClickListener", "File was deleted from SAF database");
         } else {
-            Log.d("ignoreClickListener", "Ignore was clicked, however we haven't recognized that a file was downloaded at all");
+            Log.d("ignoreClickListener",
+                    "Ignore was clicked, however we haven't recognized that a file was downloaded at all");
         }
     }
 
@@ -164,7 +191,8 @@ public class JavaScriptInterface {
             context.transfer.set(true);
         } else {
             context.transfer.set(false);
-            context.forceRefresh = false; //reset forceRefresh after transfer finished so pullToRefresh doesn't unexpectedly force refreshes by "first time"
+            context.forceRefresh = false; // reset forceRefresh after transfer finished so pullToRefresh doesn't
+                                          // unexpectedly force refreshes by "first time"
         }
     }
 
@@ -175,7 +203,8 @@ public class JavaScriptInterface {
             final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             if (vibrator.hasVibrator()) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    final VibrationEffect effect = VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE);
+                    final VibrationEffect effect = VibrationEffect.createOneShot(500,
+                            VibrationEffect.DEFAULT_AMPLITUDE);
                     vibrator.vibrate(effect);
                 } else {
                     vibrator.vibrate(500);
@@ -229,11 +258,13 @@ public class JavaScriptInterface {
     }
 
     public static String getAssetsJS(final Context context, final String fileName) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName), StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(context.getAssets().open(fileName), StandardCharsets.UTF_8))) {
             final StringBuilder text = new StringBuilder("javascript:");
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
-                if (!currentLine.trim().startsWith("//")) { // should support inline comments as well, however keep in mind that '//' might occur inside a string as well
+                if (!currentLine.trim().startsWith("//")) { // should support inline comments as well, however keep in
+                                                            // mind that '//' might occur inside a string as well
                     text.append(currentLine);
                 }
             }

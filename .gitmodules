@@ -1,0 +1,3 @@
+[submodule "ErikrafT-Drop"]
+	path = ErikrafT-Drop
+	url = https://github.com/erikraft/Drop.git
