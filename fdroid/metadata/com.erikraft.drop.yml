@@ -20,5 +20,5 @@ AllowedAPKSigningKeys:
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 9.0.1
-CurrentVersionCode: 10
+CurrentVersion: 9.0.2
+CurrentVersionCode: 11
