@@ -218,6 +218,11 @@ public class JavaScriptInterface {
         context.resetUploadIntent();
     }
 
+    @JavascriptInterface
+    public void showChatNotification(final String title, final String body) {
+        context.showChatNotification(title, body);
+    }
+
     public static class FileHeader {
         private final String name;
         private final String mime;
