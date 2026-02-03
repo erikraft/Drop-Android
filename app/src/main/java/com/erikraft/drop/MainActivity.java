@@ -889,4 +889,50 @@ public class MainActivity extends AppCompatActivity {
         resetUploadIntent();
     }
 
+    public void showChatNotification(final String title, final String body) {
+        if (!prefs.getBoolean(getString(R.string.pref_notifications), true)) {
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        final String channelId = "CHAT";
+        final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager == null) {
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            final NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    getString(R.string.notification_channel_name),
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        final Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                2,
+                intent,
+                Build.VERSION.SDK_INT >= 23 ? PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT : PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        final Notification notification = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(android.R.drawable.stat_notify_chat)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(body))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .build();
+
+        notificationManager.notify((int) SystemClock.uptimeMillis(), notification);
+    }
+
 }

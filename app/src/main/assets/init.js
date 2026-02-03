@@ -246,3 +246,156 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+// Android WebView fallback for chat room select (custom picker overlay)
+try {
+    const chatRoomSelect = document.getElementById('chat-room-select');
+    if (chatRoomSelect && (typeof SnapdropAndroid !== 'undefined' || typeof ErikrafTdropAndroid !== 'undefined')) {
+        const overlayId = 'android-chat-room-picker';
+        let overlay = document.getElementById(overlayId);
+
+        const buildOverlay = () => {
+            if (overlay) return overlay;
+            overlay = document.createElement('div');
+            overlay.id = overlayId;
+            overlay.style.cssText = [
+                'position:fixed',
+                'inset:0',
+                'z-index:9999',
+                'background:rgba(0,0,0,0.45)',
+                'display:none',
+                'align-items:flex-end',
+                'justify-content:center'
+            ].join(';');
+
+            const sheet = document.createElement('div');
+            // Derive colors from existing CSS variables when possible
+            const rootStyle = getComputedStyle(document.documentElement);
+            const dialogBg = rootStyle.getPropertyValue('--dialog-bg-color')?.trim();
+            const textColor = rootStyle.getPropertyValue('--text-color')?.trim();
+            const shadowRgb = rootStyle.getPropertyValue('--shadow-color-dialog-rgb')?.trim();
+            const surface = dialogBg || (document.body.classList.contains('dark-theme') ? '#1f1f1f' : '#ffffff');
+            const text = textColor ? `rgb(${textColor})` : (document.body.classList.contains('dark-theme') ? '#ffffff' : '#111111');
+            const shadow = shadowRgb ? `rgba(${shadowRgb}, 0.25)` : 'rgba(0,0,0,0.25)';
+
+            sheet.style.cssText = [
+                'width:min(520px, 92vw)',
+                'margin:16px',
+                `background:${surface}`,
+                `color:${text}`,
+                'border-radius:16px',
+                `box-shadow:0 12px 24px ${shadow}`,
+                'padding:12px',
+                'max-height:70vh',
+                'overflow:auto'
+            ].join(';');
+
+            const title = document.createElement('div');
+            title.style.cssText = 'font-weight:600;font-size:14px;margin:4px 8px 8px;';
+            title.textContent = (typeof Localization !== 'undefined' && Localization.getTranslation)
+                ? Localization.getTranslation('chat.room_select_title') || 'Select room'
+                : 'Select room';
+
+            const list = document.createElement('div');
+            list.style.cssText = 'display:flex;flex-direction:column;gap:6px;';
+            list.id = 'android-chat-room-picker-list';
+
+            sheet.appendChild(title);
+            sheet.appendChild(list);
+            overlay.appendChild(sheet);
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+            document.body.appendChild(overlay);
+            return overlay;
+        };
+
+        const buildList = () => {
+            const list = document.getElementById('android-chat-room-picker-list');
+            if (!list) return;
+            list.innerHTML = '';
+            const options = Array.from(chatRoomSelect.options || []);
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = opt.textContent || opt.label || opt.value;
+                btn.style.cssText = [
+                    'text-align:left',
+                    'padding:10px 12px',
+                    'border-radius:10px',
+                    'border:1px solid rgba(0,0,0,0.15)',
+                    'background:rgba(255,255,255,0.06)',
+                    'color:inherit'
+                ].join(';');
+                if (opt.value === chatRoomSelect.value) {
+                    btn.style.border = '1px solid rgba(var(--accent-color, 255,255,255), 0.6)';
+                }
+                btn.addEventListener('click', () => {
+                    chatRoomSelect.value = opt.value;
+                    chatRoomSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    overlay.style.display = 'none';
+                });
+                list.appendChild(btn);
+            });
+        };
+
+        const openPicker = e => {
+            if (chatRoomSelect.disabled) return;
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            buildOverlay();
+            buildList();
+            overlay.style.display = 'flex';
+        };
+
+        chatRoomSelect.addEventListener('click', openPicker);
+        chatRoomSelect.addEventListener('mousedown', openPicker);
+        chatRoomSelect.addEventListener('touchstart', openPicker, { passive: false });
+    }
+} catch (e) {
+    console.error(e);
+}
+
+// Android chat notifications via bridge (local notification)
+try {
+    const bridge = (typeof SnapdropAndroid !== 'undefined') ? SnapdropAndroid : (typeof ErikrafTdropAndroid !== 'undefined' ? ErikrafTdropAndroid : null);
+    if (bridge && typeof Events !== 'undefined') {
+        Events.on('chat-message-received', e => {
+            try {
+                const message = e?.detail?.message;
+                if (!message || !message.senderId) return;
+                // Only notify when app isn't visible to avoid duplicate signals
+                if (document.visibilityState === 'visible') return;
+
+                const peerDisplayName = message.senderName || message.senderId;
+                const title = (typeof Localization !== 'undefined' && Localization.getTranslation)
+                    ? Localization.getTranslation("notifications.message-received", null, { name: peerDisplayName })
+                    : `Message from ${peerDisplayName}`;
+
+                let body = message.text || '';
+                if (!body && message.attachment) {
+                    if (typeof Localization !== 'undefined' && Localization.getTranslation) {
+                        body = message.attachment.name
+                            || (message.attachment.kind === 'video'
+                                ? Localization.getTranslation("dialogs.title-file")
+                                : Localization.getTranslation("dialogs.title-image"));
+                    } else {
+                        body = message.attachment.name || 'Attachment';
+                    }
+                }
+
+                if (typeof bridge.showChatNotification === 'function') {
+                    bridge.showChatNotification(title, body);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+} catch (e) {
+    console.error(e);
+}
