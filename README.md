@@ -1,11 +1,16 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/releases/latest) 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/releases/latest)
 [![Build and Upload APK to Release](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml/badge.svg?branch=master)](https://github.com/erikraft/Drop-Android/actions/workflows/ci_build.yaml)
 [![Uptime status page](https://img.shields.io/uptimerobot/status/m794250124-e911aac785f4e3425de6b894?label=ErikrafT%20Drop%20uptime)](https://stats.uptimerobot.com/YcoqxlIOj8/801513796)
-[![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues) 
+[![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues)
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/erikraft/Drop-Android)
 [![Crowdin](https://badges.crowdin.net/erikraft-drop-android/localized.svg)](https://crowdin.com/project/erikraft-drop-android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
+
+![Stars](https://img.shields.io/github/stars/erikraft/Drop-Android?style=social)
+![Forks](https://custom-icon-badges.demolab.com/github/forks/erikraft/Drop-Android?logo=fork&style=social&logoColor=000000)
+![Watchers](https://custom-icon-badges.demolab.com/github/watchers/erikraft/Drop-Android?logo=eye&style=social&logoColor=000000)
+
 
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 

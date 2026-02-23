@@ -20,5 +20,10 @@ AllowedAPKSigningKeys:
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
+<<<<<<< HEAD
 CurrentVersion: 9.0.4
 CurrentVersionCode: 13
+=======
+CurrentVersion: 9.0.5
+CurrentVersionCode: 14
+>>>>>>> 5daade2679d9bf6c422a8fb5beb8d6898c7bca4a
