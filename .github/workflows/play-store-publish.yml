@@ -1,5 +1,8 @@
 name: Publish to Google Play
 
+permissions:
+  contents: read
+
 on:
   release:
     types: [published]   # 🔹 Executa automaticamente quando uma release é publicada
