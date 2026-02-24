@@ -3,7 +3,7 @@
 [![Uptime status page](https://img.shields.io/uptimerobot/status/m794250124-e911aac785f4e3425de6b894?label=ErikrafT%20Drop%20uptime)](https://stats.uptimerobot.com/YcoqxlIOj8/801513796)
 [![GitHub issues](https://img.shields.io/github/issues/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/issues)
 [![GitHub license](https://img.shields.io/github/license/erikraft/Drop-Android)](https://github.com/erikraft/Drop-Android/blob/master/LICENSE)
-[![Documentation](https://custom-icon-badges.demolab.com/badge/Documentation-4287f5?style=for-the-badge&logo=erikraft-drop&logoColor=FFFFFF)](https://docdrop.erikraft.com/)
+[![Documentation](https://custom-icon-badges.demolab.com/badge/Documentation-4287f5?style=for-the-badge&logo=erikraft-drop&logoColor=FFFFFF)](https://docsdrop.erikraft.com/)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/erikraft/Drop-Android)
 [![Crowdin](https://badges.crowdin.net/erikraft-drop-android/localized.svg)](https://crowdin.com/project/erikraft-drop-android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
@@ -91,7 +91,7 @@ After the first successful run you will have a fully automated, self-hosted F-Dr
 - 🧩｜ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
 - 🤖｜ErikrafT Drop Discord integration: [ErikrafT Drop Discord Bot and Activity](https://github.com/erikraft/Drop/tree/master/Discord)
 - 🍎｜ErikrafT Drop Apple Shortcut integration: [ErikrafT Drop Apple Shortcut](https://github.com/erikraft/Drop/tree/master/Shortcut)
-- ✍🏻｜ErikrafT Drop Documentation: [Documentation](https://docdrop.erikraft.com/)
+- ✍🏻｜ErikrafT Drop Documentation: [Documentation](https://docsdrop.erikraft.com/)
 - 🌐｜And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
 
 ### ⁉️｜Alternatives
