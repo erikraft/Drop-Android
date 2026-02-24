@@ -25,13 +25,8 @@ android {
         //  -                         Optional: Post release info to X/Twitter
         //  -   Otherwise:          - `git tag vX.X.X` and `git push origin vX.X.X`
 
-<<<<<<< HEAD
         versionCode 13
         versionName "9.0.4"
-=======
-        versionCode 14
-        versionName "9.0.5"
->>>>>>> 5daade2679d9bf6c422a8fb5beb8d6898c7bca4a
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -137,8 +132,8 @@ dependencies {
     implementation "com.mikepenz:aboutlibraries-core:13.2.1"
     implementation "com.mikepenz:aboutlibraries:13.2.1"
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     implementation 'com.anggrayudi:storage:2.2.0'
 }
