@@ -57,7 +57,7 @@
             android:name=".OnboardingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:theme="@style/AppTheme.Fullscreen" />
+            android:theme="@style/AppTheme" />
         <!-- Opt out to do not share WebView usage statistics -->
         <meta-data
             android:name="android.webkit.WebView.MetricsOptOut"
