@@ -1,4 +1,4 @@
-ErikrafT Drop for Androidは無料でオープンソースのローカルファイルシェアリングソリューションのhttps://snapdrop.net/のAndroid™クライエントです。
+ErikrafT Drop™ for Androidは無料でオープンソースのローカルファイルシェアリングソリューションのhttps://snapdrop.net/のAndroid™クライエントです。
 
 あなたもたまに携帯からPCにファイルを転送することに問題がありましたか?
 
@@ -12,7 +12,7 @@ ErikrafT Dropはあなたのブラウザで完璧に動作するローカルフ�
 
 しかし、理論的にあなたのブラウザで完璧に作動するとしてもErikrafT Dropをよく使うならこのアプリが気にいるでしょう。 Android OSとの完璧な統合により、ファイルはさらに早く送信されます。 他のアプリでErikrafT Dropでシェアすることができます。
 
-ErikrafT Drop for Android は究極のシンプルさにより、何千人ものユーザーの日常生活を向上させます。 オープンソースプロジェクトなので商業的利益を出しませんが、私たちは世界をより良くしたいです。 使用してみてください!
+ErikrafT Drop™ for Android は究極のシンプルさにより、何千人ものユーザーの日常生活を向上させます。 オープンソースプロジェクトなので商業的利益を出しませんが、私たちは世界をより良くしたいです。 使用してみてください!
 
 ソースコード:
 https://github.com/erikraft/Drop-Android/

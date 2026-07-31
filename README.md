@@ -14,10 +14,10 @@
 
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
-# ErikrafT Drop for Android
+# ErikrafT Drop™ for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
 
-**ErikrafT Drop for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/. 
+**ErikrafT Drop™ for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/.
 
 >[!TIP]
 >Do you also sometimes have the problem that you just need to quickly transfer a file from your phone to the PC?
@@ -29,10 +29,10 @@
 
 ErikrafT Drop is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
-However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
+However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop™ for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## ⏬｜Where can I download the app?
-**ErikrafT Drop for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/). 
+**ErikrafT Drop™ for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/).
 <div align='center' style='display: inline_block; gap: 10px;'><br>
   <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
     <img alt='Get it on Google Play' height='80' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'>
@@ -52,12 +52,12 @@ However, even if it theoretically would fully work in your browser and you don't
 ➡️ [See how you can support this app and the ErikrafT Drop community](https://ko-fi.com/erikraft/)
 
 ## 🙏🏻｜Contributing
-**ErikrafT Drop for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
+**ErikrafT Drop™ for Android** would like to become a community project. I invite your participation through issues and pull requests! Also bug reports are very welcome! But note that this is **not** the right place to report bugs regarding the **ErikrafT Drop website** which occur independently of this app.
 
 ### 🌎｜Translation Help
-Want to help translate **ErikrafT Drop for Android** into your language? You can contribute to translations on our Crowdin project:
+Want to help translate **ErikrafT Drop™ for Android** into your language? You can contribute to translations on our Crowdin project:
 
-- [Help translate ErikrafT Drop for Android on Crowdin](https://crowdin.com/project/erikraft-drop-android)
+- [Help translate ErikrafT Drop™ for Android on Crowdin](https://crowdin.com/project/erikraft-drop-android)
 
 Your contributions help make the app accessible to users worldwide!
 

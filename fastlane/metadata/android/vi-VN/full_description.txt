@@ -12,7 +12,7 @@ ErikrafT Drop là một giải pháp chia sẻ tệp tin nội bộ hoạt độ
 
 Tuy nhiên, ngay cả khi nó hoàn toàn hoạt động trên nền web, bạn sẽ thích ứng dụng này nếu bạn muốn sử dụng ErikrafT Drop thường xuyên hơn trong cuộc sống của mình. Nhờ tích hợp hoàn hảo vào hệ điều hành Android, các tệp được gửi nhanh hơn. Trực tiếp ở ứng dụng khác, bạn có thể chọn ErikrafT Drop để chia sẻ.
 
-Nhờ tính đơn giản, "ErikrafT Drop for Android" giúp cuộc sống hằng ngày của hàng trăm người dùng trở nên dễ dàng hơn. Là một dự án mã nguồn mở, chúng tôi không có bất kỳ lợi ích thương mại nào mà muốn làm cho thế giới tốt đẹp hơn một chút. Hãy dùng thử nó!
+Nhờ tính đơn giản, "ErikrafT Drop™ for Android" giúp cuộc sống hằng ngày của hàng trăm người dùng trở nên dễ dàng hơn. Là một dự án mã nguồn mở, chúng tôi không có bất kỳ lợi ích thương mại nào mà muốn làm cho thế giới tốt đẹp hơn một chút. Hãy dùng thử nó!
 
 MÃ NGUỒN:
 https://github.com/erikraft/Drop-Android/

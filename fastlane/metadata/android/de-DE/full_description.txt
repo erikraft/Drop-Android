@@ -12,7 +12,7 @@ ErikrafT Drop ist eine Lösung für den Austausch von Dateien im Heimnetzwerk, d
 
 Aber selbst wenn es theoretisch vollständig in Ihrem Browser funktionieren würde, werden Sie diese App dennoch lieben, wenn Sie ErikrafT Drop häufiger in ihrem täglichen Leben verwenden möchten. Dank perfekter Integration in das Android-Betriebssystem, können sie ihre Dateien noch schneller versenden. Direkt von anderen Apps aus können Sie ErikrafT Drop zum Teilen auswählen.
 
-Dank seiner radikalen Einfachheit erleichtert "ErikrafT Drop for Android" den Alltag von tausenden Benutzern. Als Open-Source-Projekt haben wir keinerlei kommerzielles Interesse, sondern wollen viel lieber die Welt ein Stückchen besser machen. Schließen Sie sich an und überzeugen Sie sich selbst!
+Dank seiner radikalen Einfachheit erleichtert "ErikrafT Drop™ for Android" den Alltag von tausenden Benutzern. Als Open-Source-Projekt haben wir keinerlei kommerzielles Interesse, sondern wollen viel lieber die Welt ein Stückchen besser machen. Schließen Sie sich an und überzeugen Sie sich selbst!
 
 QUELLCODE:
 https://github.com/erikraft/Drop-Android/

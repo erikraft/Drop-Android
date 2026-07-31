@@ -1,4 +1,4 @@
-ErikrafT Drop for Android er en gratis fildelingsløsning fra åpen kildekode
+ErikrafT Drop™ for Android er en gratis fildelingsløsning fra åpen kildekode
 https://snapdrop.net/.
 
 Må du også noen ganger raskt overføre filer fra telefonen til PC-en?
@@ -13,7 +13,7 @@ ErikrafT Drop er en lokal fildelingsløsning som fungerer i nettleseren. Litt so
 
 Men selv om det teoretisk sett ville fungere fint i nettleseren, vil du elske denne appen hvis du ønsker å bruke ErikrafT Drop oftere i ditt daglige liv. Takket være perfekt integrering i Android operativsystemet, sendes filer enda raskere. Du kan dele filer direkte fra andre apper via ErikrafT Drop.
 
-Takket være den radikale enkelheten gjør "ErikrafT Drop for Android" hverdagen til tusenvis av brukere enklere. Som et åpent kildekode-prosjekt har vi ikke noen kommersielle interesser, men ønsker å gjøre verden litt bedre. Bli med og overbevis deg selv!
+Takket være den radikale enkelheten gjør "ErikrafT Drop™ for Android" hverdagen til tusenvis av brukere enklere. Som et åpent kildekode-prosjekt har vi ikke noen kommersielle interesser, men ønsker å gjøre verden litt bedre. Bli med og overbevis deg selv!
 
 KILDEKODE:
 https://github.com/erikraft/Drop-Android/
