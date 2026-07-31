@@ -1,4 +1,4 @@
-ErikrafT Drop for Android je Android™ klient pro bezplatné a open source lokální sdílení souborů https://snapdrop.net/.
+ErikrafT Drop™ for Android je Android™ klient pro bezplatné a open source lokální sdílení souborů https://snapdrop.net/.
 
 Taky míváte problém, kdy potřebujete rychle přesunout soubor z telefonu do počítače?
 

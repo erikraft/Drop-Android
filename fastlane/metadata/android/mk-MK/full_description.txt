@@ -12,7 +12,7 @@ ErikrafT Drop е локално решение за споделување да�
 
 Сепак, дури и теоретски да работи целосно во вашиот прелистувач, оваа апликација ќе ја обожавате доколку сакате да користите ErikrafT Drop почесто во вашиот секојдневен живот. Благодарение на совршената интеграција во оперативниот систем Android, датотеките се испраќаат уште побрзо. Директно од другите апликации можете да изберете ErikrafT Drop за споделување.
 
-Thanks to its radical simplicity, "ErikrafT Drop for Android" makes the everyday life of thousands of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Придружете се и убедете се!
+Thanks to its radical simplicity, "ErikrafT Drop™ for Android" makes the everyday life of thousands of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Придружете се и убедете се!
 
 ИЗВОРЕН КОД:
 https://github.com/erikraft/Drop-Android/

@@ -1,4 +1,4 @@
-ErikrafT Drop for Android 是免费且开源的本地文件共享解决方案的Android™客户端。访问 https://snapdrop.net/ 来了解 ErikrafT Drop。
+ErikrafT Drop™ for Android 是免费且开源的本地文件共享解决方案的Android™客户端。访问 https://snapdrop.net/ 来了解 ErikrafT Drop。
 
 您是否总是为无法便捷地将文件从您的手机传输到PC而苦恼？
 
