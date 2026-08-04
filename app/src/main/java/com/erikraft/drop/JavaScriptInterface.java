@@ -42,6 +42,7 @@ public class JavaScriptInterface {
 
     @JavascriptInterface
     public void newFile(final String fileName, final String mimeType, final String fileSize) throws IOException {
+        Log.i("DropAndroidJS", "Transfer Start: Receiving file. fileName=" + fileName + ", mimeType=" + mimeType + ", fileSize=" + fileSize);
         String finalMime = mimeType;
         if (mimeType.startsWith("base64:")) {
             isBase64 = true;
@@ -52,10 +53,12 @@ public class JavaScriptInterface {
 
         final FileWrapper fileWrapper = createFileWrapper(fileName, finalMime);
         if (fileWrapper == null) {
+            Log.e("DropAndroidJS", "Transfer Failure: Missing storage permissions for " + fileName);
             throw new IOException("Missing storage permissions");
         }
         fileOutputStream = UriUtils.openOutputStream(fileWrapper.getUri(), context.getApplicationContext());
         if (fileOutputStream == null) {
+            Log.e("DropAndroidJS", "Transfer Failure: Cannot write target file: " + fileWrapper.getUri());
             throw new IOException("Cannot write target file");
         }
         fileHeader = new FileHeader(fileName, finalMime, fileSize, fileWrapper);
@@ -102,24 +105,37 @@ public class JavaScriptInterface {
     @JavascriptInterface
     public void onBytes(final String dec) throws IOException {
         if (fileOutputStream == null) {
+            Log.e("DropAndroidJS", "Transfer Failure: fileOutputStream is null during onBytes");
             return;
         }
-        // https://stackoverflow.com/questions/27034897/is-there-a-way-to-pass-an-arraybuffer-from-javascript-to-java-on-android
-        byte[] bytes;
-        if (isBase64) {
-            bytes = Base64.decode(dec, Base64.NO_WRAP);
-        } else {
-            bytes = dec.getBytes(StandardCharsets.ISO_8859_1);
+        try {
+            // https://stackoverflow.com/questions/27034897/is-there-a-way-to-pass-an-arraybuffer-from-javascript-to-java-on-android
+            byte[] bytes;
+            if (isBase64) {
+                bytes = Base64.decode(dec, Base64.NO_WRAP);
+            } else {
+                bytes = dec.getBytes(StandardCharsets.ISO_8859_1);
+            }
+            fileOutputStream.write(bytes);
+            fileOutputStream.flush();
+        } catch (IOException e) {
+            Log.e("DropAndroidJS", "Transfer Failure: Exception during write of file bytes", e);
+            throw e;
         }
-        fileOutputStream.write(bytes);
-        fileOutputStream.flush();
     }
 
     @JavascriptInterface
     public void saveDownloadFileName(final String name, final String size) throws IOException {
-        fileOutputStream.flush();
-        fileOutputStream.close();
-        isBase64 = false;
+        Log.i("DropAndroidJS", "Transfer Complete: Saved file " + name + " (size: " + size + ")");
+        try {
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            Log.e("DropAndroidJS", "Transfer Failure: Exception during flush/close of file output stream", e);
+            throw e;
+        } finally {
+            isBase64 = false;
+        }
 
         context.downloadFilesList.add(fileHeader);
     }
@@ -175,6 +191,7 @@ public class JavaScriptInterface {
 
     @JavascriptInterface
     public void ignoreClickedListener() {
+        Log.i("DropAndroidJS", "Transfer Canceled: Ignore clicked by user.");
         IOUtils.closeStreamQuietly(fileOutputStream);
         isBase64 = false;
         if (fileHeader != null && fileHeader.file.delete()) {
@@ -187,6 +204,7 @@ public class JavaScriptInterface {
 
     @JavascriptInterface
     public void setProgress(final float progress) {
+        Log.d("DropAndroidJS", "Transfer Progress: " + progress);
         if (progress > 0) {
             context.transfer.set(true);
         } else {

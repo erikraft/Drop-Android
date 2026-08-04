@@ -106,6 +106,7 @@ try {
 
 //catch chunks
 try {
+    Peer.prototype._oFH = Peer.prototype._onFileHeader;
     Peer.prototype._onFileHeader = function (header) {
         this._isToAndroidBase64 = header.mime.startsWith("text/") || header.name.toLowerCase().endsWith(".txt");
         let mimeInfo = this._isToAndroidBase64 ? "base64:" + header.mime : header.mime;
@@ -113,6 +114,7 @@ try {
         this._oFH(header);
     };
 
+    Peer.prototype._oCR = Peer.prototype._onChunkReceived;
     Peer.prototype._onChunkReceived = function (chunk) {
         let decoder = new TextDecoder('iso-8859-1');
         let rawString = decoder.decode(chunk);
