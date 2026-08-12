@@ -90,7 +90,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             storageHelper.onRestoreInstanceState(savedInstanceState);
         }
 
-        initUrlPreference(R.string.pref_support, "https://ko-fi.com/erikraft/");
+        initUrlPreference(R.string.pref_support, "https://biodrop.erikraft.com/donation.html");
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         openSourceComponents.setOnPreferenceClickListener(pref -> {
@@ -106,8 +106,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                             "with the Android client maintained at<br>" +
                             "<a href=\"https://github.com/erikraft/Drop-Android\">github.com/erikraft/Drop-Android</a><br><br>" +
                             "<big><b>" + getString(R.string.support_us) + "</b></big><br><br>" +
-                            getString(R.string.support_us_summary) + "<br>" +
-                            "<a href=\"https://ko-fi.com/erikraft/\">" + getString(R.string.read_more) + "</a>")
+                            getString(R.string.support_us_description) + "<br><br>" +
+                            "<b>" + getString(R.string.support_us_option_kofi) + "</b><br>" +
+                            "<a href=\"https://ko-fi.com/erikraft/\">https://ko-fi.com/erikraft/</a><br><br>" +
+                            "<b>" + getString(R.string.support_us_option_pix_kofi) + "</b><br>" +
+                            "<a href=\"https://biodrop.erikraft.com/donation.html\">" + getString(R.string.open_url) + "</a>")
                     .withAboutSpecial1("GitHub")
                     .withAboutSpecial2("Twitter/X")
                     .withListener(new AboutLibrariesListener() {
