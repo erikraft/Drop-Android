@@ -43,6 +43,9 @@
     <string name="components_summary">輕觸以顯示</string>
     <string name="support_us">支持我們</string>
     <string name="support_us_summary">看一看，您能如何支持本專案</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">瞭解更多</string>
     <string name="version">版本</string>
     <string name="pref_device_name_title">裝置名稱</string>
