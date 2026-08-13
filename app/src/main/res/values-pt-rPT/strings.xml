@@ -41,9 +41,9 @@
     <string name="pref_category_settings">Configurações</string>
     <string name="logs">Dados de Depuração</string>
     <string name="components_summary">Pressione para exibir</string>
-    <string name="support_us">Nos ajude</string>
-    <string name="support_us_summary">Veja como pode apoiar este projeto</string>
-    <string name="support_us_description">Ajude a manter o ErikrafT Drop™</string>
+    <string name="support_us">Nos ajude</string> 
+     <string name="support_us_summary">Veja como pode apoiar este projeto</string> 
+     <string name="support_us_description">Ajude a manter o ErikrafT Drop™</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">read more</string>

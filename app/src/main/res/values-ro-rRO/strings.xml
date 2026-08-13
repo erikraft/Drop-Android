@@ -43,6 +43,9 @@
     <string name="components_summary">Atinge pentru a afișa</string>
     <string name="support_us">Susține-ne</string>
     <string name="support_us_summary">Vezi, cum poți sprijini acest proiect</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">citește mai mult</string>
     <string name="version">Versiune</string>
     <string name="pref_device_name_title">Numele dispozitivului</string>

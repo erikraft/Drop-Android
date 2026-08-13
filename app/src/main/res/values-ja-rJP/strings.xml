@@ -43,6 +43,9 @@
     <string name="components_summary">タップして表示</string>
     <string name="support_us">支援</string>
     <string name="support_us_summary">このプロジェクトを支援方法について</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">もっと読む</string>
     <string name="version">バージョン</string>
     <string name="pref_device_name_title">デバイス名</string>
