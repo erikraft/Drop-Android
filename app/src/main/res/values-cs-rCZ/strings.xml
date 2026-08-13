@@ -43,6 +43,9 @@
     <string name="components_summary">Klepněte pro zobrazení</string>
     <string name="support_us">Podpořte nás</string>
     <string name="support_us_summary">Podívejte se, jak můžete podpořit tento projekt</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">zobrazit více</string>
     <string name="version">Verze</string>
     <string name="pref_device_name_title">Název zařízení</string>
