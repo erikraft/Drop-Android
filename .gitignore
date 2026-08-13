@@ -21,3 +21,8 @@
 
 # local keystore properties (do not commit keystore secrets)
 keystore.properties
+
+# Private signing files
+*.jks
+*.keystore
+*.p12

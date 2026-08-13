@@ -1,0 +1,140 @@
+name: Signed APK + AAB Release Pipeline
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and Sign Release Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Get tag version
+        id: get_version
+        run: |
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=v-manual" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reconstruct Keystore
+        id: decode_keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "❌ ANDROID_KEYSTORE_BASE64 secret is missing!"
+            exit 1
+          fi
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "${{ runner.temp }}/erikraft-release.jks"
+          echo "✅ Keystore reconstructed successfully."
+
+      - name: Make Gradlew Executable
+        run: chmod +x gradlew
+
+      - name: Run Tests
+        run: ./gradlew test
+
+      - name: Build Signed Release APK and AAB
+        env:
+          KEYSTORE_PATH: ${{ runner.temp }}/erikraft-release.jks
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          ./gradlew clean assembleRelease bundleRelease
+
+      - name: Copy and Rename Artifacts
+        run: |
+          # Copy the mobile flavor artifacts to their standard generic and tagged names
+          cp app/build/outputs/apk/mobile/release/Drop-Android.apk ErikrafT-Drop-release.apk
+          cp app/build/outputs/bundle/mobileRelease/app-mobile-release.aab ErikrafT-Drop-release.aab
+
+          # Copy to tagged name
+          TAG_NAME="${{ steps.get_version.outputs.tag }}"
+          cp ErikrafT-Drop-release.apk "ErikrafT-Drop-${TAG_NAME}.apk"
+          cp ErikrafT-Drop-release.aab "ErikrafT-Drop-${TAG_NAME}.aab"
+
+          echo "✅ Artifacts copied and renamed."
+
+      - name: Verify and Validate Artifacts
+        run: |
+          # Ensure artifacts exist and are not zero bytes
+          for artifact in ErikrafT-Drop-release.apk ErikrafT-Drop-release.aab "ErikrafT-Drop-${{ steps.get_version.outputs.tag }}.apk" "ErikrafT-Drop-${{ steps.get_version.outputs.tag }}.aab"; do
+            if [ ! -f "$artifact" ]; then
+              echo "❌ Error: $artifact does not exist!"
+              exit 1
+            fi
+            if [ ! -s "$artifact" ]; then
+              echo "❌ Error: $artifact is empty (0 bytes)!"
+              exit 1
+            fi
+          done
+
+          # Find apksigner
+          APKSIGNER_PATH=$(find $ANDROID_HOME/build-tools -name "apksigner" | sort -V | tail -n 1)
+          if [ -z "$APKSIGNER_PATH" ]; then
+            echo "❌ Error: apksigner not found in Android SDK!"
+            exit 1
+          fi
+
+          # Verify APK signing
+          echo "Verifying APK signing status..."
+          "$APKSIGNER_PATH" verify --verbose ErikrafT-Drop-release.apk
+
+          # Verify AAB signing with jarsigner
+          echo "Verifying AAB signing status..."
+          jarsigner -verify ErikrafT-Drop-release.aab
+
+          echo "✅ All artifacts successfully verified and signed!"
+
+      - name: Clean up Keystore
+        if: always()
+        run: |
+          if [ -f "${{ runner.temp }}/erikraft-release.jks" ]; then
+            rm -f "${{ runner.temp }}/erikraft-release.jks"
+            echo "🧹 Reconstructed keystore deleted."
+          fi
+
+      - name: Upload Signed APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: erikraft-drop-apk
+          path: ErikrafT-Drop-release.apk
+          if-no-files-found: error
+
+      - name: Upload Signed AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: erikraft-drop-aab
+          path: ErikrafT-Drop-release.aab
+          if-no-files-found: error
+
+      - name: Create GitHub Release and Upload Assets
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ErikrafT-Drop-${{ steps.get_version.outputs.tag }}.apk
+            ErikrafT-Drop-${{ steps.get_version.outputs.tag }}.aab
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
