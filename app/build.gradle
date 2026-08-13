@@ -87,12 +87,20 @@ android {
 
     def isReleaseTaskRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
     if (isReleaseTaskRequested) {
-        if (keystorePath == null || keystorePath.toString().isEmpty() ||
-            keystorePassword == null || keystorePassword.toString().isEmpty() ||
-            keyAlias == null || keyAlias.toString().isEmpty() ||
-            keyPassword == null || keyPassword.toString().isEmpty()) {
-            throw new GradleException("Release build requested but signing configuration is incomplete. " +
-                "Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are set.")
+        def anyCredentialProvided = (keystorePath != null && !keystorePath.toString().isEmpty()) ||
+                                    (keystorePassword != null && !keystorePassword.toString().isEmpty()) ||
+                                    (keyAlias != null && !keyAlias.toString().isEmpty()) ||
+                                    (keyPassword != null && !keyPassword.toString().isEmpty())
+        def signingRequired = System.getenv('SIGNING_REQUIRED') == 'true'
+
+        if (signingRequired || anyCredentialProvided) {
+            if (keystorePath == null || keystorePath.toString().isEmpty() ||
+                keystorePassword == null || keystorePassword.toString().isEmpty() ||
+                keyAlias == null || keyAlias.toString().isEmpty() ||
+                keyPassword == null || keyPassword.toString().isEmpty()) {
+                throw new GradleException("Release build requested but signing configuration is incomplete. " +
+                    "Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are set.")
+            }
         }
     }
 
