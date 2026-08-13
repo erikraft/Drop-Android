@@ -43,6 +43,9 @@
     <string name="components_summary">Appuyer pour afficher</string>
     <string name="support_us">Soutenez-nous</string>
     <string name="support_us_summary">Voir, comment vous pouvez soutenir ce projet</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">voir plus</string>
     <string name="version">Version</string>
     <string name="pref_device_name_title">Nom de l\'appareil</string>
