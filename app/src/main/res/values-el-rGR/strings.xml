@@ -43,6 +43,9 @@
     <string name="components_summary">Πιέστε για προβολή</string>
     <string name="support_us">Στηρίξτε μας</string>
     <string name="support_us_summary">Δείτε πώς μπορείτε να υποστηρίξετε αυτό το έργο</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_option_kofi">Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">διαβαστε περισσοτερα</string>
     <string name="version">Έκδοση</string>
     <string name="pref_device_name_title">Όνομα συσκευής</string>
