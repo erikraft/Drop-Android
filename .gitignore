@@ -26,3 +26,5 @@ keystore.properties
 *.jks
 *.keystore
 *.p12
+*.pk8
+*.pem
