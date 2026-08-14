@@ -72,45 +72,57 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Load keystore properties (optional). Supports a `keystore.properties` file at project root
-    // or environment variables (KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD).
+    // Load keystore properties from Gradle properties, optional keystore.properties, or environment variables.
     def keystorePropertiesFile = rootProject.file('keystore.properties')
     def keystoreProperties = new Properties()
     if (keystorePropertiesFile.exists()) {
         keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
     }
 
-    def keystorePath = keystoreProperties.containsKey('storeFile') ? keystoreProperties.getProperty('storeFile') : System.getenv('KEYSTORE_PATH')
-    def keystorePassword = keystoreProperties.containsKey('storePassword') ? keystoreProperties.getProperty('storePassword') : System.getenv('KEYSTORE_PASSWORD')
-    def keyAlias = keystoreProperties.containsKey('keyAlias') ? keystoreProperties.getProperty('keyAlias') : System.getenv('KEY_ALIAS')
-    def keyPassword = keystoreProperties.containsKey('keyPassword') ? keystoreProperties.getProperty('keyPassword') : System.getenv('KEY_PASSWORD')
-
-    def isReleaseTaskRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
-    if (isReleaseTaskRequested) {
-        def anyCredentialProvided = (keystorePath != null && !keystorePath.toString().isEmpty()) ||
-                                    (keystorePassword != null && !keystorePassword.toString().isEmpty()) ||
-                                    (keyAlias != null && !keyAlias.toString().isEmpty()) ||
-                                    (keyPassword != null && !keyPassword.toString().isEmpty())
-        def signingRequired = System.getenv('SIGNING_REQUIRED') == 'true'
-
-        if (signingRequired || anyCredentialProvided) {
-            if (keystorePath == null || keystorePath.toString().isEmpty() ||
-                keystorePassword == null || keystorePassword.toString().isEmpty() ||
-                keyAlias == null || keyAlias.toString().isEmpty() ||
-                keyPassword == null || keyPassword.toString().isEmpty()) {
-                throw new GradleException("Release build requested but signing configuration is incomplete. " +
-                    "Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are set.")
+    def resolveSigningValue = { List<String> propertyNames, String envName ->
+        for (propertyName in propertyNames) {
+            def propertyValue = project.findProperty(propertyName)
+            if (propertyValue != null && !propertyValue.toString().trim().isEmpty()) {
+                return propertyValue.toString().trim()
+            }
+            def fileValue = keystoreProperties.getProperty(propertyName)
+            if (fileValue != null && !fileValue.trim().isEmpty()) {
+                return fileValue.trim()
             }
         }
+        def envValue = System.getenv(envName)
+        return envValue != null ? envValue.toString().trim() : null
     }
 
-    if (keystorePath != null && !keystorePath.toString().isEmpty()) {
+    def keystorePath = resolveSigningValue(['KEYSTORE_PATH', 'storeFile'], 'KEYSTORE_PATH')
+    def keystorePassword = resolveSigningValue(['KEYSTORE_PASSWORD', 'storePassword'], 'KEYSTORE_PASSWORD')
+    def signingKeyAlias = resolveSigningValue(['KEY_ALIAS', 'keyAlias'], 'KEY_ALIAS')
+    def signingKeyPassword = resolveSigningValue(['KEY_PASSWORD', 'keyPassword'], 'KEY_PASSWORD')
+
+    def isReleaseTaskRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
+    def signingValues = [keystorePath, keystorePassword, signingKeyAlias, signingKeyPassword]
+    def hasAnySigningValue = signingValues.any { it != null && !it.isEmpty() }
+    def hasCompleteSigningConfig = signingValues.every { it != null && !it.isEmpty() }
+
+    if (hasAnySigningValue && !hasCompleteSigningConfig) {
+        throw new GradleException("Signing configuration is incomplete. Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are all set.")
+    }
+
+    if (isReleaseTaskRequested && !hasCompleteSigningConfig) {
+        throw new GradleException("Release build requested without signing credentials. Configure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD.")
+    }
+
+    if (hasCompleteSigningConfig && !file(keystorePath).exists()) {
+        throw new GradleException("Configured KEYSTORE_PATH does not exist.")
+    }
+
+    if (hasCompleteSigningConfig) {
         signingConfigs {
             release {
                 storeFile file(keystorePath)
-                if (keystorePassword != null) storePassword = keystorePassword
-                if (keyAlias != null) keyAlias = keyAlias
-                if (keyPassword != null) keyPassword = keyPassword
+                storePassword keystorePassword
+                keyAlias signingKeyAlias
+                keyPassword signingKeyPassword
             }
         }
 
