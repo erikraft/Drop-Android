@@ -112,13 +112,15 @@ jobs:
       - name: Reconstruct Keystore
         id: decode_keystore
         env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+          KEYSTORE_BASE64_PRIMARY: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_BASE64_FALLBACK: ${{ secrets.KEYSTORE_FILE }}
         run: |
-          if [ -z "$KEYSTORE_FILE" ]; then
-            echo "❌ KEYSTORE_FILE secret is missing!"
+          KEYSTORE_BASE64="${KEYSTORE_BASE64_PRIMARY:-$KEYSTORE_BASE64_FALLBACK}"
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "❌ ANDROID_KEYSTORE_BASE64 (or KEYSTORE_FILE) secret is missing!"
             exit 1
           fi
-          echo "$KEYSTORE_FILE" | base64 --decode > "${{ runner.temp }}/erikraft-release.jks"
+          echo "$KEYSTORE_BASE64" | base64 --decode > "${{ runner.temp }}/erikraft-release.jks"
           echo "✅ Keystore reconstructed successfully."
 
       - name: Make Gradlew Executable
@@ -127,11 +129,17 @@ jobs:
       - name: Build Signed Release APK and AAB
         env:
           KEYSTORE_PATH: ${{ runner.temp }}/erikraft-release.jks
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEYSTORE_PASSWORD_PRIMARY: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEYSTORE_PASSWORD_FALLBACK: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS_PRIMARY: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_ALIAS_FALLBACK: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD_PRIMARY: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          KEY_PASSWORD_FALLBACK: ${{ secrets.KEY_PASSWORD }}
           SIGNING_REQUIRED: "true"
         run: |
+          export KEYSTORE_PASSWORD="${KEYSTORE_PASSWORD_PRIMARY:-$KEYSTORE_PASSWORD_FALLBACK}"
+          export KEY_ALIAS="${KEY_ALIAS_PRIMARY:-$KEY_ALIAS_FALLBACK}"
+          export KEY_PASSWORD="${KEY_PASSWORD_PRIMARY:-$KEY_PASSWORD_FALLBACK}"
           ./gradlew clean assembleRelease bundleRelease
 
       - name: Copy and Rename Artifacts
