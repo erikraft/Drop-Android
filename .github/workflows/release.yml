@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -52,13 +53,17 @@ jobs:
 
       - name: Decode signing keystore
         env:
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
         run: |
-          if [ -z "${ANDROID_KEYSTORE_BASE64}" ]; then
-            echo "ANDROID_KEYSTORE_BASE64 secret is not configured." >&2
+          if [ -z "${KEYSTORE_FILE}" ]; then
+            echo "KEYSTORE_FILE secret is not configured." >&2
             exit 1
           fi
-          printf '%s' "${ANDROID_KEYSTORE_BASE64}" | base64 --decode > "${{ runner.temp }}/erikraft-release.jks"
+
+          printf '%s' "${KEYSTORE_FILE}" \
+            | base64 --decode \
+            > "${{ runner.temp }}/erikraft-release.jks"
+
           if [ ! -s "${{ runner.temp }}/erikraft-release.jks" ]; then
             echo "Decoded keystore is missing or empty." >&2
             exit 1
@@ -67,9 +72,9 @@ jobs:
       - name: Build signed mobile release APK and AAB
         env:
           KEYSTORE_PATH: ${{ runner.temp }}/erikraft-release.jks
-          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           ./gradlew clean assembleMobileRelease bundleMobileRelease
 
@@ -83,6 +88,7 @@ jobs:
               echo "Missing artifact: ${artifact}" >&2
               exit 1
             fi
+
             if [ ! -s "${artifact}" ]; then
               echo "Zero-byte artifact: ${artifact}" >&2
               exit 1
@@ -92,7 +98,12 @@ jobs:
           cp "${APK_PATH}" ErikrafT-Drop-release.apk
           cp "${AAB_PATH}" ErikrafT-Drop-release.aab
 
-          APKSIGNER_PATH=$(find "${ANDROID_HOME}/build-tools" -type f -name apksigner | sort -V | tail -n 1)
+          APKSIGNER_PATH=$(find "${ANDROID_HOME}/build-tools" \
+            -type f \
+            -name apksigner \
+            | sort -V \
+            | tail -n 1)
+
           if [ -z "${APKSIGNER_PATH}" ]; then
             echo "Unable to locate apksigner in Android SDK." >&2
             exit 1
@@ -102,8 +113,11 @@ jobs:
           jarsigner -verify -strict ErikrafT-Drop-release.aab
 
           if [ "${{ steps.meta.outputs.is_tag }}" = "true" ]; then
-            cp ErikrafT-Drop-release.apk "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.apk"
-            cp ErikrafT-Drop-release.aab "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.aab"
+            cp ErikrafT-Drop-release.apk \
+              "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.apk"
+
+            cp ErikrafT-Drop-release.aab \
+              "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.aab"
           fi
 
       - name: Upload signed APK artifact
@@ -130,4 +144,5 @@ jobs:
 
       - name: Remove temporary keystore
         if: always()
-        run: rm -f "${{ runner.temp }}/erikraft-release.jks"
+        run: |
+          rm -f "${{ runner.temp }}/erikraft-release.jks"
