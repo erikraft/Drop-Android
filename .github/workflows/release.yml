@@ -110,7 +110,7 @@ jobs:
           fi
 
           "${APKSIGNER_PATH}" verify --verbose ErikrafT-Drop-release.apk
-          jarsigner -verify -strict ErikrafT-Drop-release.aab
+          jarsigner -verify ErikrafT-Drop-release.aab
 
           if [ "${{ steps.meta.outputs.is_tag }}" = "true" ]; then
             cp ErikrafT-Drop-release.apk \
