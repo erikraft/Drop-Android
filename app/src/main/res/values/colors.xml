@@ -8,6 +8,10 @@
     <bool name="isLightTheme">true</bool>
 
     <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#1F1F1F</color>
+    <color name="textColorPrimary">#1F1F1F</color>
+    <color name="textColorSecondary">#5F6368</color>
     <color name="snackbarBackground">#323232</color>
     <color name="dialogBackground">#FFFFFF</color>
 

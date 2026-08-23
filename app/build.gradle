@@ -5,6 +5,12 @@ plugins {
     id 'com.github.triplet.play'
 }
 
+aboutLibraries {
+    android {
+        registerAndroidTasks = true
+    }
+}
+
 android {
     namespace 'com.erikraft.drop'
     compileSdk 35
@@ -14,19 +20,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 35
 
-        // ToDo list - Update Instruction
-        //  -   As first step, always check if unmerged crowdin updates are available and/or sync crowdin (https://crowdin.com/project/snapdrop-android/apps/system/github)
-        //  -   Don't forget to always **pull** changes into the local repo!!!
-        //  -   Change version code and name when releasing a new version
-        //  -   Afterwards, build a new version via Build > Generate Signed Bundle / APK...
-        //  -   Upload and publish APK to Google Play
-        //  -   Push release-commit to GitHub
-        //  -   If feature release: - Write Changelog at GitHub and create release tag there
-        //  -                         Optional: Post release info to X/Twitter
-        //  -   Otherwise:          - `git tag vX.X.X` and `git push origin vX.X.X`
-
-        versionCode 16
-        versionName "9.0.7"
+        versionCode 17
+        versionName "10.0.0"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -167,6 +162,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     implementation 'com.anggrayudi:storage:1.5.6'
+    implementation 'com.google.zxing:core:3.5.3'
 }
 
 /*
