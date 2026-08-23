@@ -98,4 +98,13 @@
     <string name="website_footer_discovery">Bạn có thể được tìn thấy bởi bất kì ai trong cùng mạng bạn đang kết nối</string>
     <string name="website_footer_known_as">Tên hiển thị của bạn là %s</string>
     <string name="website_about_subheading">Cách dễ nhất để truyền các tập tin giữa các thiết bị</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">Transferência por QR</string>
+    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
+    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
+    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
+    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
+    <string name="pause">Pausar</string>
+    <string name="resume">Retomar</string>
+    <string name="cancel">Cancelar</string>
 </resources>
