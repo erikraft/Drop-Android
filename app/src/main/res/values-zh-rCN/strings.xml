@@ -98,4 +98,13 @@
     <string name="website_footer_discovery">您可以在这个网络上被所有人发现</string>
     <string name="website_footer_known_as">您的设备昵称为 %s</string>
     <string name="website_about_subheading">跨设备传输文件的最简单方法</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">Transferência por QR</string>
+    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
+    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
+    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
+    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
+    <string name="pause">Pausar</string>
+    <string name="resume">Retomar</string>
+    <string name="cancel">Cancelar</string>
 </resources>
