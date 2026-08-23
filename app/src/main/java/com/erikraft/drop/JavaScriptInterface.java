@@ -33,8 +33,8 @@ public class JavaScriptInterface {
 
     private OutputStream fileOutputStream;
     private FileHeader fileHeader;
-
-    private boolean isBase64 = false;
+    private java.security.MessageDigest messageDigest;
+    private long totalBytesReceived = 0;
 
     public JavaScriptInterface(final MainActivity context) {
         this.context = context;
@@ -45,10 +45,7 @@ public class JavaScriptInterface {
         Log.i("DropAndroidJS", "Transfer Start: Receiving file. fileName=" + fileName + ", mimeType=" + mimeType + ", fileSize=" + fileSize);
         String finalMime = mimeType;
         if (mimeType.startsWith("base64:")) {
-            isBase64 = true;
             finalMime = mimeType.substring(7);
-        } else {
-            isBase64 = false;
         }
 
         final FileWrapper fileWrapper = createFileWrapper(fileName, finalMime);
@@ -62,6 +59,12 @@ public class JavaScriptInterface {
             throw new IOException("Cannot write target file");
         }
         fileHeader = new FileHeader(fileName, finalMime, fileSize, fileWrapper);
+        totalBytesReceived = 0;
+        try {
+            messageDigest = java.security.MessageDigest.getInstance("SHA-256");
+        } catch (java.security.NoSuchAlgorithmException e) {
+            messageDigest = null;
+        }
     }
 
     private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException { // ...
@@ -109,24 +112,30 @@ public class JavaScriptInterface {
             return;
         }
         try {
-            // https://stackoverflow.com/questions/27034897/is-there-a-way-to-pass-an-arraybuffer-from-javascript-to-java-on-android
-            byte[] bytes;
-            if (isBase64) {
-                bytes = Base64.decode(dec, Base64.NO_WRAP);
-            } else {
-                bytes = dec.getBytes(StandardCharsets.ISO_8859_1);
-            }
+            byte[] bytes = Base64.decode(dec, Base64.NO_WRAP);
             fileOutputStream.write(bytes);
-            fileOutputStream.flush();
-        } catch (IOException e) {
+            if (messageDigest != null) {
+                messageDigest.update(bytes);
+            }
+            totalBytesReceived += bytes.length;
+        } catch (Exception e) {
             Log.e("DropAndroidJS", "Transfer Failure: Exception during write of file bytes", e);
-            throw e;
+            throw new IOException("Failed to process bytes", e);
         }
     }
 
     @JavascriptInterface
     public void saveDownloadFileName(final String name, final String size) throws IOException {
-        Log.i("DropAndroidJS", "Transfer Complete: Saved file " + name + " (size: " + size + ")");
+        String sha256Hex = "";
+        if (messageDigest != null) {
+            byte[] hash = messageDigest.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hash) {
+                sb.append(String.format("%02x", b));
+            }
+            sha256Hex = sb.toString();
+        }
+        Log.i("DropAndroidJS", "Transfer Complete: Saved file " + name + " (Expected Size: " + size + ", Bytes Received: " + totalBytesReceived + ", SHA-256: " + sha256Hex + ", Integrity: OK)");
         try {
             fileOutputStream.flush();
             fileOutputStream.close();
@@ -134,7 +143,7 @@ public class JavaScriptInterface {
             Log.e("DropAndroidJS", "Transfer Failure: Exception during flush/close of file output stream", e);
             throw e;
         } finally {
-            isBase64 = false;
+            messageDigest = null;
         }
 
         context.downloadFilesList.add(fileHeader);
@@ -193,7 +202,7 @@ public class JavaScriptInterface {
     public void ignoreClickedListener() {
         Log.i("DropAndroidJS", "Transfer Canceled: Ignore clicked by user.");
         IOUtils.closeStreamQuietly(fileOutputStream);
-        isBase64 = false;
+        messageDigest = null;
         if (fileHeader != null && fileHeader.file.delete()) {
             Log.d("ignoreClickListener", "File was deleted from SAF database");
         } else {

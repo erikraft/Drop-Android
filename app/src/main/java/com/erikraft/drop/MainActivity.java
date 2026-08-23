@@ -42,6 +42,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -158,6 +159,19 @@ public class MainActivity extends AppCompatActivity {
     private final ActivityResultLauncher<String> permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             prefs.edit().putBoolean(getString(R.string.pref_notifications), ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED);
+        }
+    });
+
+    private PermissionRequest pendingPermissionRequest = null;
+
+    private final ActivityResultLauncher<String> cameraPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+        if (pendingPermissionRequest != null) {
+            if (result) {
+                pendingPermissionRequest.grant(pendingPermissionRequest.getResources());
+            } else {
+                pendingPermissionRequest.deny();
+            }
+            pendingPermissionRequest = null;
         }
     });
 
@@ -373,6 +387,9 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             toggleAbout();
             return true;
+        } else if (item.getItemId() == R.id.menu_qr_transfer) {
+            startActivity(new Intent(this, com.erikraft.drop.qr.QRTransferActivity.class));
+            return true;
         } else if (item.getItemId() == R.id.menu_settings) {
             final Intent browserIntent = new Intent(MainActivity.this, SettingsActivity.class);
             openSettingsResultLauncher.launch(browserIntent);
@@ -570,6 +587,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     class MyWebChromeClient extends WebChromeClient {
+
+        @Override
+        public void onPermissionRequest(final PermissionRequest request) {
+            for (String resource : request.getResources()) {
+                if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        request.grant(new String[]{PermissionRequest.RESOURCE_VIDEO_CAPTURE});
+                    } else {
+                        pendingPermissionRequest = request;
+                        cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+                    }
+                    return;
+                }
+            }
+            request.deny();
+        }
 
         public boolean onShowFileChooser(final WebView mWebView, final ValueCallback<Uri[]> filePathCallback, final FileChooserParams fileChooserParams) {
             if (uploadMessage != null) {

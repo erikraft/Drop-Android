@@ -29,6 +29,11 @@
 
 ErikrafT Drop is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
+### 📱 Features
+- **ERIKRAFT-QR Protocol**: Offline animated QR transfer (Send File, Send Text, Receive Animated QR) using Fountain FEC, CRC32, and SHA-256 integrity verification. Works completely offline in Airplane mode without Wi-Fi, Bluetooth, or server connection.
+- **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with https://drop.erikraft.com and PairDrop (https://pairdrop.net).
+- **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration (plain HTTP on Android System WebView does not bypass system proxy settings to preserve TLS/SSL security).
+
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop™ for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## ⏬｜Where can I download the app?

@@ -5,8 +5,20 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorLink">@color/colorAccent</item>
+
+        <!-- AboutLibraries theme support -->
+        <item name="aboutLibrariesCardBackground">@color/colorSurface</item>
+        <item name="aboutLibrariesDescriptionTitle">@color/textColorPrimary</item>
+        <item name="aboutLibrariesDescriptionText">@color/textColorSecondary</item>
+        <item name="aboutLibrariesOpenSourceTitle">@color/textColorPrimary</item>
+        <item name="aboutLibrariesOpenSourceText">@color/textColorSecondary</item>
+        <item name="aboutLibrariesSpecialButtonText">@color/colorPrimary</item>
 
         <!-- Styles -->
         <item name="snackbarStyle">@style/SnackBarStyle</item>

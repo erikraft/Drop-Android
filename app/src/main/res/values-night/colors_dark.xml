@@ -3,5 +3,9 @@
     <bool name="isLightTheme">false</bool>
 
     <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorOnSurface">#E3E3E3</color>
+    <color name="textColorPrimary">#E3E3E3</color>
+    <color name="textColorSecondary">#C4C7C5</color>
     <color name="dialogBackground">#424242</color>
 </resources>

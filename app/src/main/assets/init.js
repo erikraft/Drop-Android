@@ -108,22 +108,21 @@ try {
 try {
     Peer.prototype._oFH = Peer.prototype._onFileHeader;
     Peer.prototype._onFileHeader = function (header) {
-        this._isToAndroidBase64 = header.mime.startsWith("text/") || header.name.toLowerCase().endsWith(".txt");
-        let mimeInfo = this._isToAndroidBase64 ? "base64:" + header.mime : header.mime;
-        SnapdropAndroid.newFile(header.name, mimeInfo, header.size);
+        SnapdropAndroid.newFile(header.name, header.mime, header.size);
         this._oFH(header);
     };
 
     Peer.prototype._oCR = Peer.prototype._onChunkReceived;
     Peer.prototype._onChunkReceived = function (chunk) {
-        let decoder = new TextDecoder('iso-8859-1');
-        let rawString = decoder.decode(chunk);
-
-        if (this._isToAndroidBase64) {
-            SnapdropAndroid.onBytes(btoa(rawString));
-        } else {
-            SnapdropAndroid.onBytes(rawString);
+        let bytes = new Uint8Array(chunk);
+        let binary = '';
+        let len = bytes.byteLength;
+        for (let i = 0; i < len; i += 8192) {
+            let sub = bytes.subarray(i, Math.min(i + 8192, len));
+            binary += String.fromCharCode.apply(null, sub);
         }
+        let base64 = btoa(binary);
+        SnapdropAndroid.onBytes(base64);
         this._oCR(chunk);
     };
 } catch (e) {
