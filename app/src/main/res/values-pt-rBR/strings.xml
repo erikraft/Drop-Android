@@ -43,7 +43,7 @@
     <string name="components_summary">Toque para exibir</string>
     <string name="support_us">Nos ajude</string>
     <string name="support_us_summary">Veja, como você pode apoiar este projeto</string>
-    <string name="support_us_description">Ajude a manter o ErikrafT Drop™</string>
+    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
     <string name="read_more">Acesse mais informações</string>
@@ -98,4 +98,13 @@
     <string name="website_footer_discovery">Você pode ser descoberto por todas as pessoas nesta rede</string>
     <string name="website_footer_known_as">Você é identificado como %s</string>
     <string name="website_about_subheading">O modo mais fácil para transferir arquivos entre dispositivos</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">Transferência por QR</string>
+    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
+    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
+    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
+    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
+    <string name="pause">Pausar</string>
+    <string name="resume">Retomar</string>
+    <string name="cancel">Cancelar</string>
 </resources>
