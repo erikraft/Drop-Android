@@ -11,13 +11,12 @@
 ![Forks](https://custom-icon-badges.demolab.com/github/forks/erikraft/Drop-Android?logo=fork&style=social&logoColor=000000)
 ![Watchers](https://custom-icon-badges.demolab.com/github/watchers/erikraft/Drop-Android?logo=eye&style=social&logoColor=000000)
 
-
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
 # ErikrafT Drop™ for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
 
-**ErikrafT Drop™ for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/.
+**ErikrafT Drop™ for Android** is an Android client for the free and open source local file sharing solution https://drop.erikraft.com/.
 
 >[!TIP]
 >Do you also sometimes have the problem that you just need to quickly transfer a file from your phone to the PC?
@@ -69,46 +68,18 @@ Your contributions help make the app accessible to users worldwide!
 ### ✍🏻｜Development
 If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
 
-### 🤖｜Play Store automation
-This repository ships with a GitHub Actions workflow (`Publish to Google Play`) that automatically builds a release bundle and uploads it to the Google Play Store whenever changes are pushed to the `main` branch. To enable the workflow:
+### 🤖｜Release and Play Store automation
+This repository includes a manual GitHub Actions release pipeline at `.github/workflows/release.yml` that builds and signs the mobile APK and AAB. It can also run automatically for version tags (`v*`).
 
-1. Create a Google Cloud service account with access to the Google Play Developer API and download its JSON key.
-2. Base64 encode the JSON key file and store it as the `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` secret in the repository settings.
-3. Adjust the default track (`production`) or release status (`completed`) by editing the environment variables in `.github/workflows/play-store-publish.yml` if needed.
+For a signed release, configure these repository/environment secrets:
 
-The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
+- `KEYSTORE_FILE`: Base64-encoded Android keystore file.
+- `KEY_ALIAS`: Alias of the signing key.
+- `KEYSTORE_PASSWORD`: Keystore password.
+- `KEY_PASSWORD`: Signing key password.
 
-### 🤖｜Self-hosted F-Droid automation
-The project also includes a workflow (`Publish to self-hosted F-Droid repo`) that prepares an F-Droid compatible repository whenever a GitHub release is published (you can also trigger it manually through the *Actions* tab). The workflow builds the signed APK, updates the metadata under `fdroid/`, generates the F-Droid index using [`fdroidserver`](https://gitlab.com/fdroid/fdroidserver), and publishes the result to the `fdroid` branch which can be served through GitHub Pages or any static hosting provider.
+The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch so the Android WebView client stays aligned with the current web application.
 
-To enable the workflow:
+> **Current Android app version:** `10.0.1` (version code `18`).
 
-1. Base64-encode the keystore that is used to sign production releases and save it as the `FDROID_KEYSTORE_BASE64` secret.
-2. Add the passwords and alias of that keystore as repository secrets: `FDROID_KEYSTORE_PASSWORD`, `FDROID_KEY_PASSWORD`, and `FDROID_KEY_ALIAS`.
-3. (Optional) Provide custom repository metadata by defining the secrets `FDROID_REPO_URL`, `FDROID_REPO_NAME`, `FDROID_REPO_DESCRIPTION`, and `FDROID_REPO_ADDRESS`. Default values are used when they are not supplied.
-4. Enable GitHub Pages for the repository (or configure another static host) to serve the contents of the `fdroid` branch so that F-Droid clients can consume the index.
-
-After the first successful run you will have a fully automated, self-hosted F-Droid catalogue that mirrors the signed releases from this repository.
-
-## ⚙️｜Other software
-### ✨｜Related software
-- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
-- ErikrafT Drop Discord integration: [ErikrafT Drop Discord Bot and Activity](https://github.com/erikraft/Drop/tree/master/Discord)
-- ErikrafT Drop Apple Shortcut integration: [ErikrafT Drop Apple Shortcut](https://github.com/erikraft/Drop/tree/master/Shortcut)
-- And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
-
-### ⁉️｜Alternatives
-- Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
-- Google Nearby Share (Android, Chrome OS and [Windows](https://www.android.com/better-together/nearby-share-app/), plus an unofficial [macOS client](https://github.com/grishka/NearDrop))
-- Windows Nearby Sharing (Windows only, there is a [FLOSS implementation](https://github.com/ShortDevelopment/Nearby-Sharing-Windows) for android)
-- Link to Windows (Your Android phone will be mounted as storage directly in your Windows file explorer, [read more](https://blogs.windows.com/windows-insider/2024/07/25/ability-to-access-your-android-phone-in-file-explorer-begins-rolling-out-to-windows-insiders/))
-
-🙏 Thank you everyone's support :)
-
-<a href="https://www.star-history.com/#erikraft/Drop-Android&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
- </picture>
-</a>
+The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.
