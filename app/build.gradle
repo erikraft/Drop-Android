@@ -13,15 +13,15 @@ aboutLibraries {
 
 android {
     namespace 'com.erikraft.drop'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.erikraft.drop"
         minSdkVersion 21
-        targetSdkVersion 35
+        targetSdkVersion 36
 
-        versionCode 17
-        versionName "10.0.0"
+        versionCode 18
+        versionName "10.0.1"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -61,7 +61,7 @@ android {
         disable 'MissingTranslation', 'ExtraTranslation'
     }
 
-    // use Java 8 to make use of lamda-expressions, etc.
+    // use Java 8 to make use of lambda-expressions, etc.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -134,12 +134,6 @@ android {
     lintOptions {
         // Ignore warnings about missing translations and extra translations
         disable 'MissingTranslation', 'ExtraTranslation'
-    }
-
-    // use Java 8 to make use of lamda-expressions, etc.
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
