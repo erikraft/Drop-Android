@@ -20,8 +20,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 36
 
-        versionCode 20
-        versionName "10.0.3"
+        versionCode 21
+        versionName "10.0.4"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -61,13 +61,11 @@ android {
         disable 'MissingTranslation', 'ExtraTranslation'
     }
 
-    // use Java 8 to make use of lambda-expressions, etc.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Load keystore properties from Gradle properties, optional keystore.properties, or environment variables.
     def keystorePropertiesFile = rootProject.file('keystore.properties')
     def keystoreProperties = new Properties()
     if (keystorePropertiesFile.exists()) {
