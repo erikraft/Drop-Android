@@ -29,11 +29,12 @@ public class ErikrafTQRProtocolTest {
 
         String encoded = ErikrafTQRProtocol.encodeFrame(frame);
         assertTrue(encoded.contains("\"h\":\"EKQR\""));
-        assertTrue(encoded.contains("\"sz\":" + data.length));
+        assertTrue(encoded.contains("\"sz\":"));
 
         ErikrafTQRProtocol.Frame decoded = ErikrafTQRProtocol.decodeFrame(encoded);
         assertNotNull(decoded);
         assertEquals("TEST1234", decoded.id);
+        assertEquals(data.length, decoded.size);
         assertEquals("text.txt", decoded.name);
         assertEquals(ErikrafTQRProtocol.computeSHA256(data), decoded.sha256);
         assertArrayEquals(data, ErikrafTQRProtocol.decodeBase64(decoded.data));
