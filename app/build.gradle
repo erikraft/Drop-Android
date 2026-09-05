@@ -20,8 +20,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 36
 
-        versionCode 19
-        versionName "10.0.2"
+        versionCode 20
+        versionName "10.0.3"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -123,7 +123,6 @@ android {
 
         buildTypes {
             release {
-                // preserve existing release configuration
                 minifyEnabled true
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                 signingConfig signingConfigs.release
@@ -132,7 +131,6 @@ android {
     }
 
     lintOptions {
-        // Ignore warnings about missing translations and extra translations
         disable 'MissingTranslation', 'ExtraTranslation'
     }
 }
@@ -154,15 +152,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-
     implementation 'com.anggrayudi:storage:1.5.6'
     implementation 'com.google.zxing:core:3.5.3'
 }
-
-/*
- * own checkstyle configuration
- * Android plugin doesn't interoperate with the Checkstyle plugin
- */
 
 tasks.register('checkstyle', Checkstyle) {
     configFile file("${project.rootDir}/checkstyle.xml")
@@ -170,7 +162,6 @@ tasks.register('checkstyle', Checkstyle) {
     source '../test/java'
     source '../androidTest/java'
     include '**/*.java'
-
     classpath = files()
 }
 
