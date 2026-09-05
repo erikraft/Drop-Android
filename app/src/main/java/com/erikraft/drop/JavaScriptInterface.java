@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -23,6 +24,7 @@ import com.erikraft.drop.utils.ClipboardUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -67,17 +69,8 @@ public class JavaScriptInterface {
         }
     }
 
-    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException { // ...
-                                                                                                             // existing
-                                                                                                             // code ...
+    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException {
         if (Build.VERSION.SDK_INT > 28) {
-            /*
-             * Make file transfer faster 2x on scoped storage by writing to media store
-             * database directly,
-             * instead of writing to temporary file first. It could save storage lifetime
-             * because
-             * the file is written once only.
-             */
             final DocumentFile saveLocation = MainActivity.getSaveLocation();
             if (saveLocation != null) {
                 final DocumentFile file = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(),
@@ -90,11 +83,6 @@ public class JavaScriptInterface {
             return DocumentFileCompat.createDownloadWithMediaStoreFallback(context.getApplicationContext(),
                     description);
         } else {
-            /*
-             * Prior to scoped storage restriction, SimpleStorage will use File#renameTo(),
-             * so no need to worry
-             * about the storage's lifetime.
-             */
             final String[] nameSplit = fileName.split("\\.");
             while (nameSplit[0].length() < 3) {
                 nameSplit[0] += nameSplit[0];
@@ -103,6 +91,62 @@ public class JavaScriptInterface {
                     File.createTempFile(nameSplit[0], "." + nameSplit[nameSplit.length - 1], context.getCacheDir()));
             return new FileWrapper.Document(file);
         }
+    }
+
+    /**
+     * Handles downloads generated entirely by the WebChat UI, including blob: and data:
+     * URLs. WebView's normal DownloadListener cannot consume those URLs directly, so the
+     * page converts the payload to Base64 and calls this bridge method.
+     */
+    @JavascriptInterface
+    public void downloadBase64File(final String requestedName, final String requestedMime, final String base64Data) {
+        if (base64Data == null || base64Data.isEmpty()) {
+            Log.w("DropAndroidJS", "Web download ignored: empty payload");
+            return;
+        }
+
+        final String name = sanitizeDownloadName(requestedName);
+        final String mime = TextUtils.isEmpty(requestedMime) ? "application/octet-stream" : requestedMime;
+
+        try {
+            final byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+            final FileWrapper wrapper = createFileWrapper(name, mime);
+            if (wrapper == null) {
+                throw new IOException("Unable to create download target");
+            }
+
+            final OutputStream outputStream = UriUtils.openOutputStream(wrapper.getUri(), context.getApplicationContext());
+            if (outputStream == null) {
+                throw new IOException("Unable to open download target");
+            }
+
+            try {
+                outputStream.write(bytes);
+                outputStream.flush();
+            } finally {
+                IOUtils.closeStreamQuietly(outputStream);
+            }
+
+            final FileHeader header = new FileHeader(name, mime, String.valueOf(bytes.length), wrapper);
+            Log.i("DropAndroidJS", "Web download saved: " + name + " (" + bytes.length + " bytes)");
+            context.runOnUiThread(() -> {
+                context.downloadFilesList.add(header);
+                context.copyTempToDownloads(header);
+            });
+        } catch (Exception e) {
+            Log.e("DropAndroidJS", "Web download failed: " + name, e);
+            context.runOnUiThread(() -> android.widget.Toast.makeText(context,
+                    "Falha ao baixar " + name, android.widget.Toast.LENGTH_LONG).show());
+        }
+    }
+
+    private String sanitizeDownloadName(final String requestedName) {
+        String name = TextUtils.isEmpty(requestedName) ? "download" : requestedName;
+        name = name.replace('\\', '_').replace('/', '_').replace('\n', '_').replace('\r', '_');
+        if (name.equals(".") || name.equals("..")) {
+            return "download";
+        }
+        return name;
     }
 
     @JavascriptInterface
@@ -151,7 +195,6 @@ public class JavaScriptInterface {
 
     public static String getSendTextDialogWithPreInsertedString(final String text) {
         return "javascript: " +
-        // snapdrop
                 "try {" +
                 "    document.getElementById(\"textInput\").innerHTML=\""
                 + TextUtils.htmlEncode(text).replaceAll("\\n", "<br />") + "\";" +
@@ -159,7 +202,6 @@ public class JavaScriptInterface {
                 "} catch (e) {" +
                 "    console.error(\"Error setting pre-inserted text (snapdrop based): \" + e);" +
                 "}" +
-                // PairDrop
                 "Events.fire('activate-share-mode', {text: SnapdropAndroid.getTextFromUploadIntent()});";
     }
 
@@ -218,8 +260,7 @@ public class JavaScriptInterface {
             context.transfer.set(true);
         } else {
             context.transfer.set(false);
-            context.forceRefresh = false; // reset forceRefresh after transfer finished so pullToRefresh doesn't
-                                          // unexpectedly force refreshes by "first time"
+            context.forceRefresh = false;
         }
     }
 
@@ -290,8 +331,7 @@ public class JavaScriptInterface {
             final StringBuilder text = new StringBuilder("javascript:");
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
-                if (!currentLine.trim().startsWith("//")) { // should support inline comments as well, however keep in
-                                                            // mind that '//' might occur inside a string as well
+                if (!currentLine.trim().startsWith("//")) {
                     text.append(currentLine);
                 }
             }
