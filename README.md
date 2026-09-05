@@ -11,13 +11,12 @@
 ![Forks](https://custom-icon-badges.demolab.com/github/forks/erikraft/Drop-Android?logo=fork&style=social&logoColor=000000)
 ![Watchers](https://custom-icon-badges.demolab.com/github/watchers/erikraft/Drop-Android?logo=eye&style=social&logoColor=000000)
 
-
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
 # ErikrafT Drop™ for Android
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
 
-**ErikrafT Drop™ for Android** is an android client for the free and open source local file sharing solution https://drop.erikraft.com/.
+**ErikrafT Drop™ for Android** is an Android client for the free and open source local file sharing solution https://drop.erikraft.com/.
 
 >[!TIP]
 >Do you also sometimes have the problem that you just need to quickly transfer a file from your phone to the PC?
@@ -30,25 +29,16 @@
 ErikrafT Drop is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
 ### 📱 Features
+- **Server fallback priority**: `https://drop.erikraft.com/` (Primary), `https://drop-fallback.erikraft.com/` (Secondary), `https://dropfallback.erikraft.com/` (Tertiary), `https://pairdrop.net/` (Quaternary / competitor). Custom servers remain supported.
+- **P2P file transfer integrity**: Android-to-Web transfers continue to use the native file picker/WebView file input path without an additional byte-conversion layer. Web-to-Android receiving uses the existing WebRTC chunks and Android bridge, now with serialized writes and an expected-size check before a received file is finalized; incomplete/mismatched files are deleted instead of being presented as valid downloads.
 - **ERIKRAFT-QR Protocol**: Offline animated QR transfer (Send File, Send Text, Receive Animated QR) using Fountain FEC, CRC32, and SHA-256 integrity verification. Works completely offline in Airplane mode without Wi-Fi, Bluetooth, or server connection.
-- **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with https://drop.erikraft.com and PairDrop (https://pairdrop.net).
-- **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration (plain HTTP on Android System WebView does not bypass system proxy settings to preserve TLS/SSL security).
+- **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with the official ErikrafT Drop instances and PairDrop.
+- **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration.
 
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop™ for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## ⏬｜Where can I download the app?
 **ErikrafT Drop™ for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/).
-<div align='center' style='display: inline_block; gap: 10px;'><br>
-  <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
-    <img alt='Get it on Google Play' height='80' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'>
-  </a>
-  <a href='https://f-droid.org/en/packages/com.erikraft.drop/' target='_blank'>
-    <img alt='Get it on F-Droid' height='80' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'>
-  </a>
-  <a href="https://apkpure.com/p/com.erikraft.drop" target="_blank">
-    <img alt="Get it on APKPure" style="height: 60px;" src="https://raw.githubusercontent.com/erikraft/Drop/master/public/images/badges/Get_it_on_APKPure_English.png">
-  </a>
-</div>
 
 ## 📲｜Screenshots
 <img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_1.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_2.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_3.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_4.png" width="10%"></img> <img src=".screenshot/erikraftdrop_screenshot_mobile.gif" width="10%"></img>
@@ -69,46 +59,19 @@ Your contributions help make the app accessible to users worldwide!
 ### ✍🏻｜Development
 If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
 
-### 🤖｜Play Store automation
-This repository ships with a GitHub Actions workflow (`Publish to Google Play`) that automatically builds a release bundle and uploads it to the Google Play Store whenever changes are pushed to the `main` branch. To enable the workflow:
+### 🤖｜Release and Play Store automation
+This repository includes a manual GitHub Actions release pipeline at `.github/workflows/release.yml` that builds and signs the mobile APK and AAB. It can also run automatically for version tags (`v*`).
 
-1. Create a Google Cloud service account with access to the Google Play Developer API and download its JSON key.
-2. Base64 encode the JSON key file and store it as the `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` secret in the repository settings.
-3. Adjust the default track (`production`) or release status (`completed`) by editing the environment variables in `.github/workflows/play-store-publish.yml` if needed.
+For a signed release, configure these repository/environment secrets:
 
-The workflow relies on the Gradle Play Publisher plugin and will run `./gradlew publishReleaseBundle` to upload the generated app bundle to the selected track.
+- `KEYSTORE_FILE`: Base64-encoded Android keystore file.
+- `KEY_ALIAS`: Alias of the signing key.
+- `KEYSTORE_PASSWORD`: Keystore password.
+- `KEY_PASSWORD`: Signing key password.
 
-### 🤖｜Self-hosted F-Droid automation
-The project also includes a workflow (`Publish to self-hosted F-Droid repo`) that prepares an F-Droid compatible repository whenever a GitHub release is published (you can also trigger it manually through the *Actions* tab). The workflow builds the signed APK, updates the metadata under `fdroid/`, generates the F-Droid index using [`fdroidserver`](https://gitlab.com/fdroid/fdroidserver), and publishes the result to the `fdroid` branch which can be served through GitHub Pages or any static hosting provider.
+The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch.
 
-To enable the workflow:
+> **Current Android app version:** `10.0.4` (version code `21`).
+> **Target/Compile SDK:** Android 16 / API 36.
 
-1. Base64-encode the keystore that is used to sign production releases and save it as the `FDROID_KEYSTORE_BASE64` secret.
-2. Add the passwords and alias of that keystore as repository secrets: `FDROID_KEYSTORE_PASSWORD`, `FDROID_KEY_PASSWORD`, and `FDROID_KEY_ALIAS`.
-3. (Optional) Provide custom repository metadata by defining the secrets `FDROID_REPO_URL`, `FDROID_REPO_NAME`, `FDROID_REPO_DESCRIPTION`, and `FDROID_REPO_ADDRESS`. Default values are used when they are not supplied.
-4. Enable GitHub Pages for the repository (or configure another static host) to serve the contents of the `fdroid` branch so that F-Droid clients can consume the index.
-
-After the first successful run you will have a fully automated, self-hosted F-Droid catalogue that mirrors the signed releases from this repository.
-
-## ⚙️｜Other software
-### ✨｜Related software
-- ErikrafT Drop Extension for desktop platforms: [ErikrafT Drop Extension](https://github.com/erikraft/Drop/tree/master/Extensions)
-- ErikrafT Drop Discord integration: [ErikrafT Drop Discord Bot and Activity](https://github.com/erikraft/Drop/tree/master/Discord)
-- ErikrafT Drop Apple Shortcut integration: [ErikrafT Drop Apple Shortcut](https://github.com/erikraft/Drop/tree/master/Shortcut)
-- And for sure, ErikrafT Drop directly inside the browser – just use it everywhere: https://drop.erikraft.com/
-
-### ⁉️｜Alternatives
-- Apple Airdrop (Mac and IOS only, plus an unofficial [open source implementation](https://github.com/seemoo-lab/opendrop) for Linux) 
-- Google Nearby Share (Android, Chrome OS and [Windows](https://www.android.com/better-together/nearby-share-app/), plus an unofficial [macOS client](https://github.com/grishka/NearDrop))
-- Windows Nearby Sharing (Windows only, there is a [FLOSS implementation](https://github.com/ShortDevelopment/Nearby-Sharing-Windows) for android)
-- Link to Windows (Your Android phone will be mounted as storage directly in your Windows file explorer, [read more](https://blogs.windows.com/windows-insider/2024/07/25/ability-to-access-your-android-phone-in-file-explorer-begins-rolling-out-to-windows-insiders/))
-
-🙏 Thank you everyone's support :)
-
-<a href="https://www.star-history.com/#erikraft/Drop-Android&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=erikraft/Drop-Android&type=Date" />
- </picture>
-</a>
+The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.

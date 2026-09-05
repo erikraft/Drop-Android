@@ -1,48 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
+    <string name="app_name_long">Sobre o ErikrafT Drop</string>
     <string name="app_name_slogan">Transfira arquivos perfeitamente entre todos os seus dispositivos.</string>
     <string name="err_no_browser">Não foi possível abrir o navegador</string>
     <string name="err_no_app">Nenhum app instalado que pode abrir este arquivo</string>
     <string name="open_url">Abrir URL</string>
-    <!-- Onboarding -->
     <string name="onboarding_button_continue">continuar</string>
     <string name="onboarding_button_grant">fornecer permissão</string>
     <string name="onboarding_button_finish">terminar</string>
     <string name="onboarding_choose_server">Escolha o endereço do servidor</string>
     <string name="onboarding_choose_server_short">escolher servidor</string>
-    <string name="onboarding_choose_server_description">Este app é um cliente otimizado para o ErikrafT Drop e o PairDrop.\nEscolha uma das seguintes instâncias ou especifique uma url personalizada para se conectar.\n\nNota: Você tem que escolher a mesma URL em todos os dispositivos.</string>
+    <string name="onboarding_choose_server_description">Este app é um cliente otimizado para o ErikrafT Drop e o PairDrop.\nEscolha uma das seguintes instâncias ou especifique uma URL personalizada para se conectar.\n\nNota: você precisa escolher a mesma URL em todos os dispositivos.</string>
     <string name="onboarding_storage_permission">Permissão de armazenamento</string>
     <string name="onboarding_storage_permission_description">Este aplicativo é usado para compartilhamento de arquivos. Portanto, a permissão de armazenamento é necessária para usá-lo.</string>
-    <string name="onboarding_server_pairdrop_summary">(recomendado)\nrecurso de emparelhamento, transferência de internet e foco na estabilidade.</string>
-    <string name="onboarding_server_snapdrop_summary">O snapdrop clássico. Limpo e simples.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Atenção: Instabilidade no servidor</string>
+    <string name="onboarding_server_primary_summary">(1) Padrão — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secundário — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Terciário — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — PairDrop (concorrente)</string>
+    <string name="onboarding_server_pairdrop_summary">Servidor padrão do ErikrafT Drop.</string>
+    <string name="onboarding_server_snapdrop_summary">Compartilhamento de arquivos simples e limpo.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Fallback do PairDrop.</string>
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Especialistas também podem hospedar seus próprios servidores.</string>
-    <string name="onboarding_server_custom_add">Add server</string>
+    <string name="onboarding_server_custom_add">Adicionar servidor</string>
     <string name="onboarding_howto">Como usar</string>
     <string name="onboarding_howto_summary">1. Abra este aplicativo ou %s em qualquer outro dispositivo na sua rede Wi-Fi local.\n\n2. Toque no dispositivo e selecione os arquivos que deseja enviar.\n\n3. Pronto! Os arquivos serão enviados…</string>
-    <string name="onboarding_howto_troubleshoot">Dica: Dispositivos precisam estar conectados na mesma rede Wi-Fi. Pode não funcionar se um VPN estiver ativado.</string>
-    <!-- Download -->
-    <string name="download_save_pending">Armazenando o arquivo. Por favor, tenha um pouco de paciência…</string>
-    <string name="download_successful">Transferência feita com sucesso</string>
-    <string name="notification_channel_name">Transferência concluída</string>
-    <!-- Action Buttons -->
+    <string name="onboarding_howto_troubleshoot">Dica: os dispositivos precisam estar conectados à mesma rede Wi-Fi. Pode não funcionar se uma VPN estiver ativada.</string>
+    <string name="download_save_pending">Armazenando o arquivo. Por favor, aguarde…</string>
+    <string name="download_successful">Download concluído</string>
+    <string name="notification_channel_name">Download concluído</string>
     <string name="open">Abrir</string>
     <string name="install">instalar</string>
     <string name="reset">Redefinir</string>
     <string name="copy">Copiar</string>
-    <string name="retry">repetir</string>
-    <!-- Settings / About -->
-    <string name="home_as_up_indicator_about">Informações sobre o \'app\'</string>
-    <string name="title_activity_about">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
-    <string name="pref_about_title">Sobre este \'app\'</string>
+    <string name="retry">tentar novamente</string>
+    <string name="home_as_up_indicator_about">Informações sobre o app</string>
+    <string name="title_activity_about">Sobre o ErikrafT Drop</string>
+    <string name="pref_about_title">Sobre este app</string>
     <string name="view_downloads">Ver downloads</string>
     <string name="pref_category_settings">Configurações</string>
     <string name="logs">Logs de depuração</string>
     <string name="components_summary">Toque para exibir</string>
-    <string name="support_us">Nos ajude</string>
-    <string name="support_us_summary">Veja, como você pode apoiar este projeto</string>
+    <string name="support_us">Apoie-nos</string>
+    <string name="support_us_summary">Veja como você pode apoiar este projeto</string>
     <string name="support_us_description">Ajude a manter o ErikrafT Drop™</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
@@ -50,20 +49,20 @@
     <string name="version">Versão</string>
     <string name="pref_device_name_title">Nome do dispositivo</string>
     <string name="pref_device_name_summary">Utilizar um nome de dispositivo definido pelo usuário</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="keep_on_summary">(Recomendado) Muitos dispositivos têm problemas com transferências interrompidas quando a tela for desligada</string>
+    <string name="notifications_summary">Mostrar notificação quando o download for concluído</string>
+    <string name="notifications_title">Notificações</string>
+    <string name="keep_on_summary">(Recomendado) Muitos dispositivos têm problemas com transferências interrompidas quando a tela é desligada</string>
     <string name="keep_on_title">Manter a tela ligada durante a transferência</string>
     <string name="floating_text_selection_title">Seleção de texto flutuante</string>
     <string name="floating_text_selection_summary">Ao selecionar texto em outros apps, será exibida uma opção \"Enviar via ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Aviso de conectividade</string>
-    <string name="show_connectivity_card_summary"> Mostra um aviso quando você não está conectado a uma rede Wi-Fi</string>
+    <string name="show_connectivity_card_summary">Mostrar um aviso quando você não estiver conectado a uma rede Wi-Fi</string>
     <string name="floating_text_selection_activity_label">Enviar via ErikrafT Drop</string>
     <string name="permission_not_granted">Por favor, conceda as permissões necessárias</string>
-    <string name="permission_not_granted_fallback">por favor, conceda a permissão necessária manualmente</string>
+    <string name="permission_not_granted_fallback">Por favor, conceda a permissão necessária manualmente</string>
     <string name="open_settings">Abrir configurações</string>
     <string name="retain_location_metadata_title">Manter metadados de localização</string>
-    <string name="retain_location_metadata_summary_off">Alguns arquivos de mídia podem conter dados de local descarregados por padrão. Conceda permissão para incluir metadados completos</string>
+    <string name="retain_location_metadata_summary_off">Alguns arquivos de mídia podem conter dados de localização que são removidos por padrão. Conceda permissão para incluir metadados completos</string>
     <string name="retain_location_metadata_summary_on">O aplicativo tem acesso total aos arquivos no momento</string>
     <string name="settings_theme_title">Tema</string>
     <string-array name="darkmode_entries">
@@ -75,25 +74,23 @@
     <string name="baseurl_not_set">Não definido</string>
     <string name="baseurl_instance_verified">A instância foi verificada com sucesso</string>
     <string name="baseurl_no_snapdrop_instance">A instância parece não ser suportada</string>
-    <string name="baseurl_check_instance_failed">Falha ao verificar instância</string>
-    <string name="baseurl_unofficial_instances">Verifique <a href="">FAQ</a> para uma lista de versões não oficiais. Atenção, observe que algumas versões podem não funcionar corretamente dentro do \'app\'.</string>
-    <string name="save_location">Salvar localização</string>
-    <!-- File sharing -->
+    <string name="baseurl_check_instance_failed">Falha ao verificar a instância</string>
+    <string name="baseurl_unofficial_instances">Consulte a <a href="">FAQ</a> para obter uma lista de instâncias não oficiais. Algumas podem não funcionar corretamente dentro do app.</string>
+    <string name="save_location">Local para salvar</string>
     <string name="intent_file">Um arquivo foi selecionado para compartilhar</string>
     <string name="intent_files">Arquivos foram selecionados para compartilhar</string>
     <string name="intent_content">O conteúdo foi selecionado para compartilhar</string>
     <string name="error_filechooser">Não é possível abrir o gerenciador de arquivos</string>
-    <string name="error_network">Por favor, certifique-se de que você está conectado a uma rede WiFi</string>
+    <string name="error_network">Verifique se você está conectado a uma rede Wi-Fi</string>
     <string name="error_network_no_wifi">Conecte-se a uma rede Wi-Fi ou pareie dispositivos</string>
     <string name="error_network_offline">Você está desconectado</string>
     <string name="ignore_error_network">Deixe-me prosseguir</string>
     <string name="error_not_reachable_title">Opa, desculpa!</string>
-    <string name="error_server_not_reachable">O servidor não pode ser alcançado. \n\nSe sua conexão de internet está funcionando e isso acontece sempre, por favor, tente selecionar um servidor diferente.</string>
-    <!-- Website Localization -->
+    <string name="error_server_not_reachable">O servidor não pode ser alcançado. \n\nSe sua conexão com a internet estiver funcionando e isso continuar acontecendo, tente selecionar um endereço de servidor diferente.</string>
     <string name="website_no_peers_info">Abra o aplicativo ou site em outros dispositivos para enviar arquivos</string>
-    <string name="website_instruction">Toque para enviar arquivos ou faça toque longo para enviar uma mensagem</string>
+    <string name="website_instruction">Toque para enviar arquivos ou mantenha pressionado para enviar uma mensagem</string>
     <string name="website_file_received">Arquivo recebido</string>
-    <string name="website_file_ask_before_download">Sempre pergunte antes de salvar um arquivo</string>
+    <string name="website_file_ask_before_download">Sempre perguntar antes de salvar um arquivo</string>
     <string name="website_file_download">Salvar</string>
     <string name="website_footer_discovery">Você pode ser descoberto por todas as pessoas nesta rede</string>
     <string name="website_footer_known_as">Você é identificado como %s</string>

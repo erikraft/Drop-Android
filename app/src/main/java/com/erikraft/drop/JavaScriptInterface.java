@@ -35,18 +35,27 @@ public class JavaScriptInterface {
     private FileHeader fileHeader;
     private java.security.MessageDigest messageDigest;
     private long totalBytesReceived = 0;
+    private long expectedBytes = -1;
+    private boolean transferActive = false;
 
     public JavaScriptInterface(final MainActivity context) {
         this.context = context;
     }
 
     @JavascriptInterface
-    public void newFile(final String fileName, final String mimeType, final String fileSize) throws IOException {
+    public synchronized void newFile(final String fileName, final String mimeType, final String fileSize) throws IOException {
         Log.i("DropAndroidJS", "Transfer Start: Receiving file. fileName=" + fileName + ", mimeType=" + mimeType + ", fileSize=" + fileSize);
         String finalMime = mimeType;
         if (mimeType.startsWith("base64:")) {
             finalMime = mimeType.substring(7);
         }
+
+        IOUtils.closeStreamQuietly(fileOutputStream);
+        fileOutputStream = null;
+        fileHeader = null;
+        totalBytesReceived = 0;
+        expectedBytes = parseExpectedBytes(fileSize);
+        transferActive = false;
 
         final FileWrapper fileWrapper = createFileWrapper(fileName, finalMime);
         if (fileWrapper == null) {
@@ -59,7 +68,6 @@ public class JavaScriptInterface {
             throw new IOException("Cannot write target file");
         }
         fileHeader = new FileHeader(fileName, finalMime, fileSize, fileWrapper);
-        totalBytesReceived = 0;
         try {
             messageDigest = java.security.MessageDigest.getInstance("SHA-256");
         } catch (java.security.NoSuchAlgorithmException e) {
@@ -67,17 +75,20 @@ public class JavaScriptInterface {
         }
     }
 
-    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException { // ...
-                                                                                                             // existing
-                                                                                                             // code ...
+    private long parseExpectedBytes(final String fileSize) {
+        if (TextUtils.isEmpty(fileSize)) {
+            return -1;
+        }
+        try {
+            return Long.parseLong(fileSize.trim());
+        } catch (NumberFormatException e) {
+            Log.w("DropAndroidJS", "Unable to parse expected file size: " + fileSize);
+            return -1;
+        }
+    }
+
+    private FileWrapper createFileWrapper(final String fileName, final String mimeType) throws IOException {
         if (Build.VERSION.SDK_INT > 28) {
-            /*
-             * Make file transfer faster 2x on scoped storage by writing to media store
-             * database directly,
-             * instead of writing to temporary file first. It could save storage lifetime
-             * because
-             * the file is written once only.
-             */
             final DocumentFile saveLocation = MainActivity.getSaveLocation();
             if (saveLocation != null) {
                 final DocumentFile file = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(),
@@ -90,11 +101,6 @@ public class JavaScriptInterface {
             return DocumentFileCompat.createDownloadWithMediaStoreFallback(context.getApplicationContext(),
                     description);
         } else {
-            /*
-             * Prior to scoped storage restriction, SimpleStorage will use File#renameTo(),
-             * so no need to worry
-             * about the storage's lifetime.
-             */
             final String[] nameSplit = fileName.split("\\.");
             while (nameSplit[0].length() < 3) {
                 nameSplit[0] += nameSplit[0];
@@ -106,18 +112,77 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void onBytes(final String dec) throws IOException {
-        if (fileOutputStream == null) {
-            Log.e("DropAndroidJS", "Transfer Failure: fileOutputStream is null during onBytes");
+    public void downloadBase64File(final String requestedName, final String requestedMime, final String base64Data) {
+        if (base64Data == null || base64Data.isEmpty()) {
+            Log.w("DropAndroidJS", "Web download ignored: empty payload");
+            return;
+        }
+
+        final String name = sanitizeDownloadName(requestedName);
+        final String mime = TextUtils.isEmpty(requestedMime) ? "application/octet-stream" : requestedMime;
+
+        try {
+            final byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+            final DocumentFile saveLocation = MainActivity.getSaveLocation();
+            if (saveLocation == null) {
+                throw new IOException("Unable to access Android Downloads location");
+            }
+
+            final DocumentFile target = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(),
+                    name, mime);
+            if (target == null) {
+                throw new IOException("Unable to create Android download file");
+            }
+
+            final OutputStream outputStream = UriUtils.openOutputStream(target.getUri(), context.getApplicationContext());
+            if (outputStream == null) {
+                throw new IOException("Unable to open Android download file");
+            }
+
+            try {
+                outputStream.write(bytes);
+                outputStream.flush();
+            } finally {
+                IOUtils.closeStreamQuietly(outputStream);
+            }
+
+            Log.i("DropAndroidJS", "Web download saved: " + name + " (" + bytes.length + " bytes)");
+            context.runOnUiThread(() -> android.widget.Toast.makeText(context,
+                    "Baixado: " + name, android.widget.Toast.LENGTH_LONG).show());
+        } catch (Exception e) {
+            Log.e("DropAndroidJS", "Web download failed: " + name, e);
+            context.runOnUiThread(() -> android.widget.Toast.makeText(context,
+                    "Falha ao baixar " + name, android.widget.Toast.LENGTH_LONG).show());
+        }
+    }
+
+    private String sanitizeDownloadName(final String requestedName) {
+        String name = TextUtils.isEmpty(requestedName) ? "download" : requestedName;
+        name = name.replace('\\', '_').replace('/', '_').replace('\n', '_').replace('\r', '_');
+        if (name.equals(".") || name.equals("..")) {
+            return "download";
+        }
+        return name;
+    }
+
+    /**
+     * Writes each binary WebRTC chunk exactly once. The synchronized bridge prevents
+     * concurrent JavaScript-interface calls from interleaving writes to the same stream.
+     */
+    @JavascriptInterface
+    public synchronized void onBytes(final String dec) throws IOException {
+        if (fileOutputStream == null || fileHeader == null || !transferActive && totalBytesReceived > 0) {
+            Log.e("DropAndroidJS", "Transfer Failure: no active file stream during onBytes");
             return;
         }
         try {
-            byte[] bytes = Base64.decode(dec, Base64.NO_WRAP);
+            final byte[] bytes = Base64.decode(dec, Base64.NO_WRAP);
             fileOutputStream.write(bytes);
             if (messageDigest != null) {
                 messageDigest.update(bytes);
             }
             totalBytesReceived += bytes.length;
+            transferActive = true;
         } catch (Exception e) {
             Log.e("DropAndroidJS", "Transfer Failure: Exception during write of file bytes", e);
             throw new IOException("Failed to process bytes", e);
@@ -125,17 +190,26 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void saveDownloadFileName(final String name, final String size) throws IOException {
+    public synchronized void saveDownloadFileName(final String name, final String size) throws IOException {
+        if (fileOutputStream == null || fileHeader == null) {
+            Log.e("DropAndroidJS", "Transfer Failure: completion received without an active file");
+            return;
+        }
+
+        final long completedExpectedBytes = parseExpectedBytes(size);
+        final long expected = completedExpectedBytes >= 0 ? completedExpectedBytes : expectedBytes;
+        final boolean sizeMatches = expected < 0 || expected == totalBytesReceived;
+
         String sha256Hex = "";
         if (messageDigest != null) {
-            byte[] hash = messageDigest.digest();
-            StringBuilder sb = new StringBuilder();
+            final byte[] hash = messageDigest.digest();
+            final StringBuilder sb = new StringBuilder();
             for (byte b : hash) {
                 sb.append(String.format("%02x", b));
             }
             sha256Hex = sb.toString();
         }
-        Log.i("DropAndroidJS", "Transfer Complete: Saved file " + name + " (Expected Size: " + size + ", Bytes Received: " + totalBytesReceived + ", SHA-256: " + sha256Hex + ", Integrity: OK)");
+
         try {
             fileOutputStream.flush();
             fileOutputStream.close();
@@ -143,15 +217,37 @@ public class JavaScriptInterface {
             Log.e("DropAndroidJS", "Transfer Failure: Exception during flush/close of file output stream", e);
             throw e;
         } finally {
+            fileOutputStream = null;
             messageDigest = null;
+            transferActive = false;
         }
 
+        if (!sizeMatches) {
+            Log.e("DropAndroidJS", "Transfer Failure: Size mismatch for " + name
+                    + " (Expected: " + expected + ", Received: " + totalBytesReceived
+                    + ", SHA-256: " + sha256Hex + ")");
+            if (fileHeader.file.delete()) {
+                Log.w("DropAndroidJS", "Corrupted/incomplete file deleted: " + name);
+            }
+            fileHeader = null;
+            expectedBytes = -1;
+            totalBytesReceived = 0;
+            context.runOnUiThread(() -> android.widget.Toast.makeText(context,
+                    "Transferência incompleta: " + name, android.widget.Toast.LENGTH_LONG).show());
+            return;
+        }
+
+        Log.i("DropAndroidJS", "Transfer Complete: Saved file " + name
+                + " (Expected Size: " + expected + ", Bytes Received: " + totalBytesReceived
+                + ", SHA-256: " + sha256Hex + ", Integrity: Size OK)");
         context.downloadFilesList.add(fileHeader);
+        fileHeader = null;
+        expectedBytes = -1;
+        totalBytesReceived = 0;
     }
 
     public static String getSendTextDialogWithPreInsertedString(final String text) {
         return "javascript: " +
-        // snapdrop
                 "try {" +
                 "    document.getElementById(\"textInput\").innerHTML=\""
                 + TextUtils.htmlEncode(text).replaceAll("\\n", "<br />") + "\";" +
@@ -159,7 +255,6 @@ public class JavaScriptInterface {
                 "} catch (e) {" +
                 "    console.error(\"Error setting pre-inserted text (snapdrop based): \" + e);" +
                 "}" +
-                // PairDrop
                 "Events.fire('activate-share-mode', {text: SnapdropAndroid.getTextFromUploadIntent()});";
     }
 
@@ -199,16 +294,21 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void ignoreClickedListener() {
+    public synchronized void ignoreClickedListener() {
         Log.i("DropAndroidJS", "Transfer Canceled: Ignore clicked by user.");
         IOUtils.closeStreamQuietly(fileOutputStream);
+        fileOutputStream = null;
         messageDigest = null;
+        transferActive = false;
+        expectedBytes = -1;
+        totalBytesReceived = 0;
         if (fileHeader != null && fileHeader.file.delete()) {
             Log.d("ignoreClickListener", "File was deleted from SAF database");
         } else {
             Log.d("ignoreClickListener",
                     "Ignore was clicked, however we haven't recognized that a file was downloaded at all");
         }
+        fileHeader = null;
     }
 
     @JavascriptInterface
@@ -218,8 +318,7 @@ public class JavaScriptInterface {
             context.transfer.set(true);
         } else {
             context.transfer.set(false);
-            context.forceRefresh = false; // reset forceRefresh after transfer finished so pullToRefresh doesn't
-                                          // unexpectedly force refreshes by "first time"
+            context.forceRefresh = false;
         }
     }
 
@@ -290,8 +389,7 @@ public class JavaScriptInterface {
             final StringBuilder text = new StringBuilder("javascript:");
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
-                if (!currentLine.trim().startsWith("//")) { // should support inline comments as well, however keep in
-                                                            // mind that '//' might occur inside a string as well
+                if (!currentLine.trim().startsWith("//")) {
                     text.append(currentLine);
                 }
             }
