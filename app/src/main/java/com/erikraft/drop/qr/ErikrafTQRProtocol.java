@@ -11,7 +11,7 @@ import java.util.zip.CRC32;
 
 /**
  * EKQR v1 wire protocol shared with the ErikrafT Drop web client.
- * The JSON field names intentionally match public/scripts/erikraft-qr.js.
+ * The canonical field names intentionally match public/scripts/erikraft-qr.js.
  */
 public class ErikrafTQRProtocol {
 
@@ -67,9 +67,9 @@ public class ErikrafTQRProtocol {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(data);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(hash.length * 2);
             for (byte b : hash) {
-                sb.append(String.format("%02x", b));
+                sb.append(String.format("%02x", b & 0xff));
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -77,6 +77,7 @@ public class ErikrafTQRProtocol {
         }
     }
 
+    /** Encodes only the canonical v1 Web-compatible schema. */
     public static String encodeFrame(Frame frame) {
         try {
             JSONObject json = new JSONObject();
@@ -106,33 +107,58 @@ public class ErikrafTQRProtocol {
         }
     }
 
+    /**
+     * Decodes canonical Web v1 frames and the pre-canonical Android schema used by
+     * older app builds. Legacy input is normalized into the current Frame model so
+     * the receiver/FEC layer does not need separate code paths.
+     */
     public static Frame decodeFrame(String frameStr) {
         if (frameStr == null || frameStr.trim().isEmpty()) return null;
         try {
             JSONObject json = new JSONObject(frameStr);
-            if (!MAGIC.equals(json.optString("h"))) return null;
-            if (json.optInt("v", -1) != VERSION) return null;
+            boolean canonical = MAGIC.equals(json.optString("h"));
+            boolean legacy = !canonical && MAGIC.equals(json.optString("m"));
+            if (!canonical && !legacy) return null;
+
+            int version = json.optInt("v", -1);
+            if (version != VERSION) return null;
 
             Frame frame = new Frame();
             frame.magic = MAGIC;
             frame.version = VERSION;
-            frame.id = json.optString("id", "");
-            frame.type = json.optString("t", "file");
-            frame.name = json.optString("name", "file.bin");
-            frame.mime = json.optString("mime", "application/octet-stream");
-            frame.size = json.optLong("sz", -1);
-            frame.seq = json.optInt("i", -1);
-            frame.k = json.optInt("n", -1);
-            frame.compressed = json.optInt("c", 0);
-            frame.crc = json.optLong("crc", -1);
-            frame.sha256 = json.optString("sha", "");
-            frame.data = json.optString("d", "");
 
-            if (json.has("fec")) {
-                org.json.JSONArray fec = json.optJSONArray("fec");
-                if (fec != null && fec.length() == 2) {
-                    frame.fec = new int[]{fec.optInt(0, -1), fec.optInt(1, -1)};
+            if (canonical) {
+                frame.id = json.optString("id", "");
+                frame.type = json.optString("t", "file");
+                frame.name = json.optString("name", "file.bin");
+                frame.mime = json.optString("mime", "application/octet-stream");
+                frame.size = json.optLong("sz", -1);
+                frame.seq = json.optInt("i", -1);
+                frame.k = json.optInt("n", -1);
+                frame.compressed = json.optInt("c", 0);
+                frame.crc = json.optLong("crc", -1);
+                frame.sha256 = json.optString("sha", "");
+                frame.data = json.optString("d", "");
+
+                if (json.has("fec")) {
+                    org.json.JSONArray fec = json.optJSONArray("fec");
+                    if (fec != null && fec.length() == 2) {
+                        frame.fec = new int[]{fec.optInt(0, -1), fec.optInt(1, -1)};
+                    }
                 }
+            } else {
+                // Legacy Android v1 field mapping: m/id/t/n/mime/s/k/seq/hash/d/crc.
+                frame.id = json.optString("id", "");
+                frame.type = json.optString("t", "file");
+                frame.name = json.optString("n", "file.bin");
+                frame.mime = json.optString("mime", "application/octet-stream");
+                frame.size = json.optLong("s", -1);
+                frame.k = json.optInt("k", -1);
+                frame.seq = json.optInt("seq", -1);
+                frame.compressed = json.optInt("c", 0);
+                frame.crc = json.optLong("crc", -1);
+                frame.sha256 = json.optString("hash", "");
+                frame.data = json.optString("d", "");
             }
 
             if (frame.id.isEmpty() || frame.size < 0 || frame.k <= 0 || frame.k > 100000
