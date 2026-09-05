@@ -29,25 +29,15 @@
 ErikrafT Drop is a local file sharing solution which completely works in your browser. A bit like Apple's Airdrop, but not only for Apple devices. Windows, Linux, Android, IPhone, Mac - no problem at all!
 
 ### 📱 Features
+- **Server fallback priority**: `https://drop.erikraft.com/` (Primary), `https://drop-fallback.erikraft.com/` (Secondary), `https://dropfallback.erikraft.com/` (Tertiary), `https://pairdrop.net/` (Quaternary / competitor). Custom servers remain supported.
 - **ERIKRAFT-QR Protocol**: Offline animated QR transfer (Send File, Send Text, Receive Animated QR) using Fountain FEC, CRC32, and SHA-256 integrity verification. Works completely offline in Airplane mode without Wi-Fi, Bluetooth, or server connection.
-- **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with https://drop.erikraft.com and PairDrop (https://pairdrop.net).
-- **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration (plain HTTP on Android System WebView does not bypass system proxy settings to preserve TLS/SSL security).
+- **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with the official ErikrafT Drop instances and PairDrop.
+- **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration.
 
 However, even if it theoretically would fully work in your browser and you don't have to install anything, you will love this app if you want to use ErikrafT Drop more often in your daily life. Thanks to perfect integration into the Android operating system, files are sent even faster. Directly from within other apps you can select ErikrafT Drop to share with. Thanks to its radical simplicity, "ErikrafT Drop™ for Android" makes the everyday life of hundreds of users easier. As an open source project we don't have any commercial interests but want to make the world a little bit better. Join and convince yourself!
 
 ## ⏬｜Where can I download the app?
 **ErikrafT Drop™ for Android** is available on [Google Play](https://play.google.com/store/apps/details?id=com.erikraft.drop) and [F-Droid](https://f-droid.org/en/packages/com.erikraft.drop/).
-<div align='center' style='display: inline_block; gap: 10px;'><br>
-  <a href='https://play.google.com/store/apps/details?id=com.erikraft.drop' target='_blank'>
-    <img alt='Get it on Google Play' height='80' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'>
-  </a>
-  <a href='https://f-droid.org/en/packages/com.erikraft.drop/' target='_blank'>
-    <img alt='Get it on F-Droid' height='80' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'>
-  </a>
-  <a href="https://apkpure.com/p/com.erikraft.drop" target="_blank">
-    <img alt="Get it on APKPure" style="height: 60px;" src="https://raw.githubusercontent.com/erikraft/Drop/master/public/images/badges/Get_it_on_APKPure_English.png">
-  </a>
-</div>
 
 ## 📲｜Screenshots
 <img src="app/src/main/res/drawable/tv_banner.png" width="43.3%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_1.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_2.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_3.png" width="10%"></img> <img src=".screenshot/ErikrafT-Drop_Screenshots_4.png" width="10%"></img> <img src=".screenshot/erikraftdrop_screenshot_mobile.gif" width="10%"></img>
@@ -78,8 +68,9 @@ For a signed release, configure these repository/environment secrets:
 - `KEYSTORE_PASSWORD`: Keystore password.
 - `KEY_PASSWORD`: Signing key password.
 
-The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch so the Android WebView client stays aligned with the current web application.
+The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch.
 
-> **Current Android app version:** `10.0.2` (version code `19`).
+> **Current Android app version:** `10.0.3` (version code `20`).
+> **Target/Compile SDK:** Android 16 / API 36.
 
 The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.
