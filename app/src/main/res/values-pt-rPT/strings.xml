@@ -80,7 +80,10 @@
     <string name="baseurl_instance_verified">Instance was successfully verified</string>
     <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
     <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="important_update_title">Important Update</string>
+    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="important_update_ok">OK</string>
     <string name="save_location">Guardar localização</string>
     <!-- File sharing -->
     <string name="intent_file">O arquivo é selecionado para ser compartilhado</string>
