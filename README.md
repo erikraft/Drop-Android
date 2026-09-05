@@ -30,6 +30,7 @@ ErikrafT Drop is a local file sharing solution which completely works in your br
 
 ### 📱 Features
 - **Server fallback priority**: `https://drop.erikraft.com/` (Primary), `https://drop-fallback.erikraft.com/` (Secondary), `https://dropfallback.erikraft.com/` (Tertiary), `https://pairdrop.net/` (Quaternary / competitor). Custom servers remain supported.
+- **P2P file transfer integrity**: Android-to-Web transfers continue to use the native file picker/WebView file input path without an additional byte-conversion layer. Web-to-Android receiving uses the existing WebRTC chunks and Android bridge, now with serialized writes and an expected-size check before a received file is finalized; incomplete/mismatched files are deleted instead of being presented as valid downloads.
 - **ERIKRAFT-QR Protocol**: Offline animated QR transfer (Send File, Send Text, Receive Animated QR) using Fountain FEC, CRC32, and SHA-256 integrity verification. Works completely offline in Airplane mode without Wi-Fi, Bluetooth, or server connection.
 - **Advanced WebView & WebRTC**: Full WebRTC and WebSocket peer-to-peer file sharing and chat compatible with the official ErikrafT Drop instances and PairDrop.
 - **Tor .onion Network**: Supports accessing .onion addresses through system SOCKS5 proxy / Orbot configuration.
@@ -70,7 +71,7 @@ For a signed release, configure these repository/environment secrets:
 
 The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch.
 
-> **Current Android app version:** `10.0.3` (version code `20`).
+> **Current Android app version:** `10.0.4` (version code `21`).
 > **Target/Compile SDK:** Android 16 / API 36.
 
 The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.
