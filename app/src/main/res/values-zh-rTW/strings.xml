@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">這個應用程式是專為 Web 應用程式 ErikrafT Drop 和 PairDrop 最佳化的用戶端。\n選擇以下執行個體或指定一個自訂 URL 以進行連線。\n\n注意：您必須在所有裝置上選擇相同的 URL。</string>
     <string name="onboarding_storage_permission">儲存空間權限</string>
     <string name="onboarding_storage_permission_description">這是一個用於檔案分享的公用程式，因此，若要使用它，需要授予儲存空間權限。</string>
-    <string name="onboarding_server_pairdrop_summary">(建議)\n配對功能，網際網路傳輸並專注於穩定性。</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">傳統 Snapdrop，簡單易用。</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">警告：伺服器不穩定</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">自訂 URL</string>
     <string name="onboarding_server_custom_summary">專家也可以託管個人所有的伺服器。</string>
     <string name="onboarding_server_custom_add">新增伺服器</string>
@@ -99,12 +103,12 @@
     <string name="website_footer_known_as">您會顯示為 %s</string>
     <string name="website_about_subheading">最簡單的跨裝置檔案傳輸方案</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">Transferência por QR</string>
-    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
-    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
-    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
-    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
-    <string name="pause">Pausar</string>
-    <string name="resume">Retomar</string>
-    <string name="cancel">Cancelar</string>
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
