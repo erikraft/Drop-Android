@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">このアプリはウェブアプリのErikrafT DropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
     <string name="onboarding_storage_permission">ストレージ権限</string>
     <string name="onboarding_storage_permission_description">このアプリはファイル共有ツールです。そのため、ストレージへのアクセス許可が必要です。</string>
-    <string name="onboarding_server_pairdrop_summary">(推奨)\nペアリングやインターネット上での転送機能があり、安定しています。</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">シンプルな従来通りのSnapdropです。</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">警告: サーバーが不安定なことがあります</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">カスタムサーバー</string>
     <string name="onboarding_server_custom_summary">知識がある方はご自身でサーバーを立てることも可能です。</string>
     <string name="onboarding_server_custom_add">Add server</string>
@@ -99,12 +103,12 @@
     <string name="website_footer_known_as">他のデバイスに表示される名前: %s</string>
     <string name="website_about_subheading">デバイス間のファイル共有を手軽に実現します</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">Transferência por QR</string>
-    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
-    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
-    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
-    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
-    <string name="pause">Pausar</string>
-    <string name="resume">Retomar</string>
-    <string name="cancel">Cancelar</string>
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
