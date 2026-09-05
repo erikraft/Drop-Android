@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">Αυτή η εφαρμογή είναι ένας βελτιστοποιημένος client για τις web εφαρμογές ErikrafT Drop και PairDrop.\nΕπιλέξτε μία από τις ακόλουθες επιλογές ή καθορίστε μια προσαρμοσμένη διεύθυνση URL για να συνδεθίιτε.\n\nΣημείωση: Πρέπει να επιλέξετε το ίδιο URL σε όλες τις συσκευές.</string>
     <string name="onboarding_storage_permission">Άδεια αποθήκευσης</string>
     <string name="onboarding_storage_permission_description">Αυτή η εφαρμογή είναι ένα πρόγραμμα κοινής χρήσης αρχείων. Ως εκ τούτου, απαιτείται άδεια αποθήκευσης για να μπορεί να χρησιμοποιηθεί.</string>
-    <string name="onboarding_server_pairdrop_summary">(συνιστάται)\nΛειτουργία σύζευξης, μεταφορά μέσω διαδικτύου με στόχο τη σταθερότητα.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Το κλασσικό snapdrop. Απλό και λιτό.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Προειδοποίηση: αστάθειες διακομιστή</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Προσαρμοσμένο URL</string>
     <string name="onboarding_server_custom_summary">Οι ειδικοί μπορούν επιπλέον να το κάνουν host σε δικό τους servers.</string>
     <string name="onboarding_server_custom_add">Προσθήκη διακομιστή</string>
@@ -99,12 +103,12 @@
     <string name="website_footer_known_as">Είστε γνωστοί ως %s</string>
     <string name="website_about_subheading">Ο ευκολότερος τρόπος μεταφοράς αρχείων σε όλες τις συσκευές</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">Transferência por QR</string>
-    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
-    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
-    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
-    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
-    <string name="pause">Pausar</string>
-    <string name="resume">Retomar</string>
-    <string name="cancel">Cancelar</string>
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
