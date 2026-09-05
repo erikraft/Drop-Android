@@ -7,10 +7,6 @@
 [![Crowdin](https://badges.crowdin.net/erikraft-drop-android/localized.svg)](https://crowdin.com/project/erikraft-drop-android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
 
-![Stars](https://img.shields.io/github/stars/erikraft/Drop-Android?style=social)
-![Forks](https://custom-icon-badges.demolab.com/github/forks/erikraft/Drop-Android?logo=fork&style=social&logoColor=000000)
-![Watchers](https://custom-icon-badges.demolab.com/github/watchers/erikraft/Drop-Android?logo=eye&style=social&logoColor=000000)
-
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
 # ErikrafT Drop™ for Android
