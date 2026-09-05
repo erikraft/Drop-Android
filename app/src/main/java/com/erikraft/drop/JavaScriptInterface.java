@@ -4,7 +4,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -24,7 +23,6 @@ import com.erikraft.drop.utils.ClipboardUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
