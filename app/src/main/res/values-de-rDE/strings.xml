@@ -80,7 +80,10 @@
     <string name="baseurl_instance_verified">Instanz wurde erfolgreich verifiziert</string>
     <string name="baseurl_no_snapdrop_instance">Instanz scheint nicht unterstützt zu werden</string>
     <string name="baseurl_check_instance_failed">Fehler beim Überprüfen der Instanz</string>
-    <string name="baseurl_unofficial_instances">Schauen Sie sich die <a href="">FAQ</a> für eine Liste inoffizieller Instanzen an. Bitte beachten Sie, dass einige Instanzen möglicherweise nicht korrekt innerhalb der App funktionieren.</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="important_update_title">Important Update</string>
+    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="important_update_ok">OK</string>
     <string name="save_location">Speicherort</string>
     <!-- File sharing -->
     <string name="intent_file">Datei ausgewählt</string>
