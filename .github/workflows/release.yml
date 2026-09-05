@@ -57,7 +57,7 @@ jobs:
           fi
 
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew clean test --no-build-cache --rerun-tasks
 
       - name: Decode signing keystore
         env:
