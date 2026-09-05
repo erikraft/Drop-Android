@@ -208,7 +208,7 @@ window.addEventListener('share-mode-changed', e => {
 
 // Android WebView does not reliably handle blob:/data: downloads by itself.
 // Route download anchors through the native bridge so WebChat images, text files,
-// and other client-generated downloads can be saved to the Android Downloads location.
+// compressed images, metadata exports, and other client-generated downloads can be saved.
 try {
     const androidDownloadBridge = (typeof ErikrafTdropAndroid !== 'undefined')
         ? ErikrafTdropAndroid
@@ -274,6 +274,30 @@ try {
     console.error('Unable to install Android WebView download bridge', e);
 }
 
+// Route WebView clipboard writes through Android when available. This covers
+// SHA-256 copy buttons and other client dialogs that use navigator.clipboard.writeText.
+try {
+    const androidClipboardBridge = (typeof ErikrafTdropAndroid !== 'undefined')
+        ? ErikrafTdropAndroid
+        : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
+    if (androidClipboardBridge && navigator.clipboard && typeof navigator.clipboard.writeText === 'function'
+            && !navigator.clipboard.__erikraftAndroidBridge) {
+        const originalWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);
+        const androidWriteText = text => {
+            try {
+                androidClipboardBridge.copyToClipboard(String(text ?? ''));
+                return Promise.resolve();
+            } catch (error) {
+                return originalWriteText(text);
+            }
+        };
+        androidWriteText.__erikraftAndroidBridge = true;
+        navigator.clipboard.writeText = androidWriteText;
+    }
+} catch (e) {
+    console.error('Unable to install Android clipboard bridge', e);
+}
+
 //hide unnecessary web toolbar buttons
 try {
     document.querySelector('#theme').style.display = "none";
@@ -295,12 +319,6 @@ try {
 }
 try {
     document.getElementById('expand').style.display = "none";
-} catch (e) {
-    console.error(e);
-}
-try {
-    document.querySelector('.icon-button[href="#about"]').style.display = "none";
-    document.querySelector('.icon-button[href="#"]').style.display = "none";
 } catch (e) {
     console.error(e);
 }
