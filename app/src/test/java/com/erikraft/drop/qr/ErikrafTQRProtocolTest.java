@@ -3,7 +3,7 @@ package com.erikraft.drop.qr;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
@@ -28,15 +28,21 @@ public class ErikrafTQRProtocolTest {
         frame.sha256 = ErikrafTQRProtocol.computeSHA256(data);
 
         String encoded = ErikrafTQRProtocol.encodeFrame(frame);
-        assertTrue(encoded.contains("\"h\":\"EKQR\""));
-        assertTrue(encoded.contains("\"sz\":"));
-
         ErikrafTQRProtocol.Frame decoded = ErikrafTQRProtocol.decodeFrame(encoded);
+
         assertNotNull(decoded);
+        assertEquals(ErikrafTQRProtocol.MAGIC, decoded.magic);
+        assertEquals(ErikrafTQRProtocol.VERSION, decoded.version);
         assertEquals("TEST1234", decoded.id);
-        assertEquals(data.length, decoded.size);
+        assertEquals("text", decoded.type);
         assertEquals("text.txt", decoded.name);
-        assertEquals(ErikrafTQRProtocol.computeSHA256(data), decoded.sha256);
+        assertEquals("text/plain", decoded.mime);
+        assertEquals(data.length, decoded.size);
+        assertEquals(1, decoded.k);
+        assertEquals(0, decoded.seq);
+        assertEquals(0, decoded.compressed);
+        assertEquals(frame.crc, decoded.crc);
+        assertEquals(frame.sha256, decoded.sha256);
         assertArrayEquals(data, ErikrafTQRProtocol.decodeBase64(decoded.data));
     }
 
@@ -57,12 +63,18 @@ public class ErikrafTQRProtocolTest {
         frame.sha256 = ErikrafTQRProtocol.computeSHA256(data);
 
         String encoded = ErikrafTQRProtocol.encodeFrame(frame);
-        assertNotNull(encoded);
-        assertNotNull(ErikrafTQRProtocol.decodeFrame(encoded));
-        assertTrue(encoded.contains("\"name\":\"text.txt\""));
-        assertTrue(encoded.contains("\"i\":0"));
-        assertTrue(encoded.contains("\"n\":1"));
-        assertTrue(encoded.contains("\"sha\":\""));
+        ErikrafTQRProtocol.Frame decoded = ErikrafTQRProtocol.decodeFrame(encoded);
+
+        assertNotNull(decoded);
+        assertEquals("TEST1234", decoded.id);
+        assertEquals("text.txt", decoded.name);
+        assertEquals("text/plain", decoded.mime);
+        assertEquals(data.length, decoded.size);
+        assertEquals(0, decoded.seq);
+        assertEquals(1, decoded.k);
+        assertEquals(0, decoded.compressed);
+        assertEquals(frame.sha256, decoded.sha256);
+        assertArrayEquals(data, ErikrafTQRProtocol.decodeBase64(decoded.data));
     }
 
     @Test
@@ -77,6 +89,12 @@ public class ErikrafTQRProtocolTest {
         ErikrafTQRProtocol.Frame decoded = ErikrafTQRProtocol.decodeFrame(json);
         assertNotNull(decoded);
         assertEquals("WEB12345", decoded.id);
+        assertEquals("text", decoded.type);
+        assertEquals("text.txt", decoded.name);
+        assertEquals("text/plain", decoded.mime);
+        assertEquals(5, decoded.size);
+        assertEquals(0, decoded.seq);
+        assertEquals(1, decoded.k);
         assertEquals(0, decoded.compressed);
         assertEquals(sha, decoded.sha256);
         assertArrayEquals("Hello".getBytes(StandardCharsets.UTF_8),
@@ -95,8 +113,21 @@ public class ErikrafTQRProtocolTest {
         ErikrafTQRProtocol.Frame decoded = ErikrafTQRProtocol.decodeFrame(json);
         assertNotNull(decoded);
         assertEquals("LEGACY1", decoded.id);
+        assertEquals("text", decoded.type);
         assertEquals("legacy.txt", decoded.name);
+        assertEquals("text/plain", decoded.mime);
+        assertEquals(6, decoded.size);
+        assertEquals(0, decoded.seq);
+        assertEquals(1, decoded.k);
+        assertEquals(0, decoded.compressed);
         assertArrayEquals("Legacy".getBytes(StandardCharsets.UTF_8),
                 ErikrafTQRProtocol.decodeBase64(decoded.data));
+    }
+
+    @Test
+    public void malformedOrWrongProtocolFramesAreRejected() {
+        assertNull(ErikrafTQRProtocol.decodeFrame("{\"h\":\"NOT_EKQR\",\"v\":1}"));
+        assertNull(ErikrafTQRProtocol.decodeFrame("{\"h\":\"EKQR\",\"v\":2}"));
+        assertNull(ErikrafTQRProtocol.decodeFrame("not json"));
     }
 }
