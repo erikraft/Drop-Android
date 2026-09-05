@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">Ta aplikacja jest zoptymalizowanym klientem aplikacji webowych ErikrafT Drop i PairDrop.\nWybierz jedną z następujących instancji lub określ niestandardowy adres url do połączenia\n\nUwaga: musisz wybrać ten sam URL na wszystkich urządzeniach.</string>
     <string name="onboarding_storage_permission">Uprawnienia do przechowywania danych</string>
     <string name="onboarding_storage_permission_description">Ta aplikacja jest narzędziem udostępniania plików. W związku z tym wymagane jest pozwolenie na przechowywanie plików, aby z niej korzystać.</string>
-    <string name="onboarding_server_pairdrop_summary">(zalecane)\nFunkcja parowania, transfer Internetu i koncentracja na stabilności.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Klasyczny snapdrop. Czysty i prosty.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Ostrzeżenie: Niestabilność serwera</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Niestandardowy URL</string>
     <string name="onboarding_server_custom_summary">Eksperci mogą również hostować swoje własne serwery.</string>
     <string name="onboarding_server_custom_add">Add server</string>
@@ -99,12 +103,12 @@
     <string name="website_footer_known_as">Jesteś widoczny jako %s</string>
     <string name="website_about_subheading">Najprostszy sposób na przesyłanie plików przez urządzenia</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">Transferência por QR</string>
-    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
-    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
-    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
-    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
-    <string name="pause">Pausar</string>
-    <string name="resume">Retomar</string>
-    <string name="cancel">Cancelar</string>
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
