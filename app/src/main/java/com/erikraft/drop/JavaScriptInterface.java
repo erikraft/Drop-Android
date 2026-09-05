@@ -108,14 +108,20 @@ public class JavaScriptInterface {
 
         try {
             final byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
-            final FileWrapper wrapper = createFileWrapper(name, mime);
-            if (wrapper == null) {
-                throw new IOException("Unable to create download target");
+            final DocumentFile saveLocation = MainActivity.getSaveLocation();
+            if (saveLocation == null) {
+                throw new IOException("Unable to access Android Downloads location");
             }
 
-            final OutputStream outputStream = UriUtils.openOutputStream(wrapper.getUri(), context.getApplicationContext());
+            final DocumentFile target = DocumentFileUtils.makeFile(saveLocation, context.getApplicationContext(),
+                    name, mime);
+            if (target == null) {
+                throw new IOException("Unable to create Android download file");
+            }
+
+            final OutputStream outputStream = UriUtils.openOutputStream(target.getUri(), context.getApplicationContext());
             if (outputStream == null) {
-                throw new IOException("Unable to open download target");
+                throw new IOException("Unable to open Android download file");
             }
 
             try {
@@ -125,12 +131,9 @@ public class JavaScriptInterface {
                 IOUtils.closeStreamQuietly(outputStream);
             }
 
-            final FileHeader header = new FileHeader(name, mime, String.valueOf(bytes.length), wrapper);
             Log.i("DropAndroidJS", "Web download saved: " + name + " (" + bytes.length + " bytes)");
-            context.runOnUiThread(() -> {
-                context.downloadFilesList.add(header);
-                context.copyTempToDownloads(header);
-            });
+            context.runOnUiThread(() -> android.widget.Toast.makeText(context,
+                    "Baixado: " + name, android.widget.Toast.LENGTH_LONG).show());
         } catch (Exception e) {
             Log.e("DropAndroidJS", "Web download failed: " + name, e);
             context.runOnUiThread(() -> android.widget.Toast.makeText(context,
