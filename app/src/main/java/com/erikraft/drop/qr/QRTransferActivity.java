@@ -1,13 +1,17 @@
 package com.erikraft.drop.qr;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -37,13 +41,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
 public class QRTransferActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
-    public static final String EXTRA_MODE = "mode"; // "send_file", "send_text", "receive"
+    public static final String EXTRA_MODE = "mode";
     public static final String EXTRA_TEXT = "text";
     public static final String EXTRA_URI = "uri";
     private static final int PERMISSION_REQUEST_CAMERA = 101;
@@ -62,13 +67,11 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
     private boolean isPaused = false;
     private boolean isCancelled = false;
 
-    // Send variables
     private byte[][] sendChunks;
     private ErikrafTQRProtocol.Frame baseFrame;
     private int currentChunkIndex = 0;
     private Runnable animationRunnable;
 
-    // Receive variables
     private Camera camera;
     private SurfaceHolder surfaceHolder;
     private QRDecoder qrDecoder = new QRDecoder();
@@ -181,7 +184,7 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
                         Bitmap qrBitmap = QREncoder.generateQRCode(encodedStr, 400, 400);
                         qrImageView.setImageBitmap(qrBitmap);
                     } catch (Exception e) {
-                        // ignore
+                        // ignore rendering errors and continue the animation
                     }
 
                     currentChunkIndex = (currentChunkIndex + 1) % sendChunks.length;
@@ -286,7 +289,7 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
         if ("text".equals(result.type)) {
             String text = new String(result.finalData, StandardCharsets.UTF_8);
             ClipboardUtils.copy(this, text);
-            Toast.makeText(this, "Texto recebido e copiado para a área de transferência!", Toast.LENGTH_LONG).show();
+            saveReceivedTextFile(result.name, result.finalData);
         } else {
             try {
                 File file = new File(getExternalFilesDir(null), result.name != null ? result.name : "received_file");
@@ -297,6 +300,59 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
             } catch (Exception e) {
                 Toast.makeText(this, "Falha ao salvar arquivo recebido", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private void saveReceivedTextFile(String requestedName, byte[] data) {
+        String name = requestedName;
+        if (name == null || name.trim().isEmpty()) {
+            name = "received_text.txt";
+        }
+        if (!name.toLowerCase().endsWith(".txt")) {
+            name += ".txt";
+        }
+        name = name.replace('/', '_').replace('\\', '_');
+
+        try {
+            Uri uri;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Downloads.DISPLAY_NAME, name);
+                values.put(MediaStore.Downloads.MIME_TYPE, "text/plain");
+                values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+                values.put(MediaStore.Downloads.IS_PENDING, 1);
+
+                uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                if (uri == null) throw new IllegalStateException("MediaStore insert failed");
+
+                try (OutputStream outputStream = getContentResolver().openOutputStream(uri)) {
+                    if (outputStream == null) throw new IllegalStateException("Unable to open download");
+                    outputStream.write(data);
+                }
+
+                values.clear();
+                values.put(MediaStore.Downloads.IS_PENDING, 0);
+                getContentResolver().update(uri, values, null, null);
+            } else {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CAMERA + 1);
+                    Toast.makeText(this, "Permissão de armazenamento necessária para salvar o TXT", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                File downloads = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                if (!downloads.exists() && !downloads.mkdirs()) {
+                    throw new IllegalStateException("Unable to create Downloads directory");
+                }
+                File target = new File(downloads, name);
+                try (OutputStream outputStream = new FileOutputStream(target)) {
+                    outputStream.write(data);
+                }
+                uri = Uri.fromFile(target);
+            }
+
+            Toast.makeText(this, "TXT salvo em Downloads: " + name, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Falha ao salvar TXT em Downloads", Toast.LENGTH_LONG).show();
         }
     }
 
