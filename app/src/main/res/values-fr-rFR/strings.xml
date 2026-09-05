@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">Cette application est un client optimisé pour les applications web ErikrafT Drop et PairDrop.\nChoisissez l\'une des instances suivantes ou spécifiez un URL personnalisé à laquelle vous devez vous connecter.\n\nNote : Vous devez choisir le même URL sur tous les appareils.</string>
     <string name="onboarding_storage_permission">Autorisation d\'accès au stockage</string>
     <string name="onboarding_storage_permission_description">Cette application est un utilitaire de partage de fichiers. Par conséquent, une autorisation de stockage est nécessaire pour l\'utiliser.</string>
-    <string name="onboarding_server_pairdrop_summary">(recommandé)\nFonctionnalité d\'appairage, transfert par internet et priorité à la stabilité.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Le Snapdrop classique. Simple et épuré.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Attention : Serveur instable</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personnalisé</string>
     <string name="onboarding_server_custom_summary">Les experts peuvent aussi héberger leurs propres serveurs.</string>
     <string name="onboarding_server_custom_add">Ajouter serveur</string>
@@ -99,12 +103,12 @@
     <string name="website_footer_known_as">Vous êtes identifié en tant que %s</string>
     <string name="website_about_subheading">Le moyen le plus simple de transférer des fichiers sur tous les appareils</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">Transferência por QR</string>
-    <string name="qr_transfer_send_title">Enviar por QR Animado</string>
-    <string name="qr_transfer_receive_title">Receber por QR Animado</string>
-    <string name="qr_transfer_instruction">Mantenha o outro dispositivo apontado para este QR Code</string>
-    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
-    <string name="pause">Pausar</string>
-    <string name="resume">Retomar</string>
-    <string name="cancel">Cancelar</string>
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
