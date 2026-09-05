@@ -7,11 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * EKQR receiver. The current web protocol uses base chunks plus optional
- * two-source XOR parity frames. This class supports both the base chunks and
- * that parity format so Android can receive animated QR transfers from Web.
- */
+/** EKQR receiver for base chunks and the web client's two-source XOR parity frames. */
 public class FountainFEC {
 
     public static final int DEFAULT_CHUNK_SIZE = 256;
@@ -38,7 +34,7 @@ public class FountainFEC {
         private final long expectedSize;
         private final String expectedHash;
         private final Map<Integer, byte[]> receivedChunks = new HashMap<>();
-        private final Map<Integer, byte[]> fecChunks = new HashMap<>();
+        private final Map<Integer, ErikrafTQRProtocol.Frame> parityFrames = new HashMap<>();
         private final Set<Integer> receivedSymbols = new HashSet<>();
         private int totalSymbolsReceived = 0;
 
@@ -50,13 +46,9 @@ public class FountainFEC {
 
         public synchronized boolean processFrame(ErikrafTQRProtocol.Frame frame) {
             if (frame == null) return false;
-            if (frame.id == null) return false;
+            if (receivedSymbols.add(frame.seq)) totalSymbolsReceived++;
 
-            if (receivedSymbols.add(frame.seq)) {
-                totalSymbolsReceived++;
-            }
-
-            byte[] rawChunk;
+            final byte[] rawChunk;
             try {
                 rawChunk = ErikrafTQRProtocol.decodeBase64(frame.data);
             } catch (Exception e) {
@@ -64,83 +56,41 @@ public class FountainFEC {
             }
 
             if (frame.fec != null && frame.fec.length == 2) {
-                if (!fecChunks.containsKey(frame.seq)) {
-                    fecChunks.put(frame.seq, rawChunk);
-                }
+                if (!parityFrames.containsKey(frame.seq)) parityFrames.put(frame.seq, frame);
             } else if (frame.seq >= 0 && frame.seq < totalChunks) {
-                if (!receivedChunks.containsKey(frame.seq)) {
-                    receivedChunks.put(frame.seq, rawChunk);
-                }
+                if (!receivedChunks.containsKey(frame.seq)) receivedChunks.put(frame.seq, rawChunk);
             } else {
                 return false;
             }
 
-            applyFec();
+            recoverAvailableParity();
             return true;
         }
 
-        private void applyFec() {
-            boolean changed;
-            do {
-                changed = false;
-                for (Map.Entry<Integer, byte[]> entry : fecChunks.entrySet()) {
-                    // The frame itself is not enough to know the source indexes;
-                    // indexes are supplied by the caller through processParityFrame.
-                    // This map is retained for compatibility with older callers.
-                }
-            } while (changed);
-        }
-
-        /** Process a validated XOR parity frame with its two source indexes. */
-        public synchronized boolean processParityFrame(ErikrafTQRProtocol.Frame frame) {
-            if (frame == null || frame.fec == null || frame.fec.length != 2) return false;
-            if (frame.fec[0] < 0 || frame.fec[0] >= totalChunks || frame.fec[1] < 0 || frame.fec[1] >= totalChunks) return false;
-            if (receivedSymbols.add(frame.seq)) totalSymbolsReceived++;
-
-            final byte[] parity;
-            try {
-                parity = ErikrafTQRProtocol.decodeBase64(frame.data);
-            } catch (Exception e) {
-                return false;
-            }
-
-            fecChunks.put(frame.seq, parity);
-            return applyParityFrames();
-        }
-
-        private boolean applyParityFrames() {
-            boolean any = false;
+        private void recoverAvailableParity() {
             boolean progress;
             do {
                 progress = false;
-                for (Map.Entry<Integer, byte[]> entry : fecChunks.entrySet()) {
-                    // Parity source indexes are stored separately by QRDecoder; this
-                    // method is intentionally a no-op unless addParityMetadata is used.
+                for (ErikrafTQRProtocol.Frame parityFrame : parityFrames.values()) {
+                    int first = parityFrame.fec[0];
+                    int second = parityFrame.fec[1];
+                    byte[] firstData = receivedChunks.get(first);
+                    byte[] secondData = receivedChunks.get(second);
+                    if ((firstData == null) == (secondData == null)) continue;
+
+                    int missing = firstData == null ? first : second;
+                    byte[] known = firstData == null ? secondData : firstData;
+                    byte[] parity = ErikrafTQRProtocol.decodeBase64(parityFrame.data);
+                    byte[] recovered = new byte[parity.length];
+                    for (int i = 0; i < recovered.length; i++) {
+                        recovered[i] = (byte) ((i < known.length ? known[i] : 0) ^ parity[i]);
+                    }
+                    if (!receivedChunks.containsKey(missing)) {
+                        receivedChunks.put(missing, recovered);
+                        progress = true;
+                    }
                 }
             } while (progress);
-            return any;
-        }
-
-        /** Recover a missing source chunk from a two-source XOR parity payload. */
-        public synchronized boolean recoverFromParity(int firstIndex, int secondIndex, byte[] parity) {
-            if (firstIndex < 0 || secondIndex < 0 || firstIndex >= totalChunks || secondIndex >= totalChunks || parity == null) {
-                return false;
-            }
-            byte[] first = receivedChunks.get(firstIndex);
-            byte[] second = receivedChunks.get(secondIndex);
-            if ((first == null) == (second == null)) return false;
-
-            final int missingIndex = first == null ? firstIndex : secondIndex;
-            final byte[] known = first == null ? second : first;
-            byte[] recovered = new byte[parity.length];
-            for (int i = 0; i < recovered.length; i++) {
-                recovered[i] = (byte) ((known != null && i < known.length ? known[i] : 0) ^ parity[i]);
-            }
-            if (!receivedChunks.containsKey(missingIndex)) {
-                receivedChunks.put(missingIndex, recovered);
-                return true;
-            }
-            return false;
         }
 
         public synchronized int getReceivedSymbolsCount() {
@@ -164,37 +114,43 @@ public class FountainFEC {
             return receivedChunks.size() >= totalChunks;
         }
 
-        public synchronized byte[] reassemble() throws IOException {
+        /** Returns the encoded payload bytes before optional deflate decompression. */
+        public synchronized byte[] reassemblePayload() throws IOException {
             if (!isComplete()) throw new IOException("Transfer incomplete");
-
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             for (int i = 0; i < totalChunks; i++) {
                 byte[] chunk = receivedChunks.get(i);
                 if (chunk == null) throw new IOException("Missing chunk " + i);
                 bos.write(chunk);
             }
+            return bos.toByteArray();
+        }
 
-            byte[] reassembled = bos.toByteArray();
-            // sz is the original size. For uncompressed transfers this also removes
-            // any zero padding introduced when an XOR parity frame recovered a short final chunk.
-            if (reassembled.length > expectedSize && expectedSize >= 0) {
+        public long getExpectedSize() {
+            return expectedSize;
+        }
+
+        public String getExpectedHash() {
+            return expectedHash;
+        }
+
+        public synchronized byte[] reassemble() throws IOException {
+            byte[] data = reassemblePayload();
+            if (expectedSize >= 0 && data.length > expectedSize) {
                 byte[] exact = new byte[(int) expectedSize];
-                System.arraycopy(reassembled, 0, exact, 0, exact.length);
-                reassembled = exact;
+                System.arraycopy(data, 0, exact, 0, exact.length);
+                data = exact;
             }
-
-            if (expectedHash != null && !expectedHash.isEmpty()) {
-                String actualHash = ErikrafTQRProtocol.computeSHA256(reassembled);
-                if (!expectedHash.equalsIgnoreCase(actualHash)) {
-                    throw new IOException("Integrity check failed: SHA-256 hash mismatch");
-                }
+            if (expectedHash != null && !expectedHash.isEmpty()
+                    && !expectedHash.equalsIgnoreCase(ErikrafTQRProtocol.computeSHA256(data))) {
+                throw new IOException("Integrity check failed: SHA-256 hash mismatch");
             }
-            return reassembled;
+            return data;
         }
 
         public synchronized void reset() {
             receivedChunks.clear();
-            fecChunks.clear();
+            parityFrames.clear();
             receivedSymbols.clear();
             totalSymbolsReceived = 0;
         }
