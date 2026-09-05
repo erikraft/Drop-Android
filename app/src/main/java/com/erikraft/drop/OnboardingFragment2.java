@@ -148,7 +148,7 @@ public class OnboardingFragment2 extends Fragment {
                 return;
             }
 
-            if (url.startsWith("!!")) { // hidden feature to force a different url
+            if (url.startsWith("!!")) {
                 newServer(url.substring("!!".length()));
             } else if (url.startsWith("http")) {
                 NetworkUtils.checkInstance(this, url, result -> {
@@ -157,9 +157,6 @@ public class OnboardingFragment2 extends Fragment {
                     }
                 });
             } else {
-
-                // do some magic in case user forgot to specify the protocol
-
                 String mightBeHttpsUrl = "https://" + url;
                 NetworkUtils.checkInstance(this, mightBeHttpsUrl, resultHttps -> {
                     if (resultHttps) {
@@ -190,12 +187,22 @@ public class OnboardingFragment2 extends Fragment {
     private void reloadServerList() {
         final Set<String> serverUrls = pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>());
 
+        // Keep official ErikrafT instances in a deterministic priority order.
+        // PairDrop remains available only as the fourth/final fallback.
         final List<ServerItem> servers = new ArrayList<>();
-        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_pairdrop_summary), null));
-        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_snapdrop_summary_server_warning), null));
+        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_primary_summary), null));
+        servers.add(new ServerItem("https://drop-fallback.erikraft.com/", getString(R.string.onboarding_server_secondary_summary), null));
+        servers.add(new ServerItem("https://dropfallback.erikraft.com/", getString(R.string.onboarding_server_tertiary_summary), null));
+        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quaternary_summary), null));
 
         for (String url : serverUrls) {
-            servers.add(new ServerItem(url, null, null));
+            if (!url.equals("https://drop.erikraft.com/")
+                    && !url.equals("https://drop-fallback.erikraft.com/")
+                    && !url.equals("https://dropfallback.erikraft.com/")
+                    && !url.equals("https://pairdrop.net/")
+                    && !url.equals("https://pairdrop.net")) {
+                servers.add(new ServerItem(url, null, null));
+            }
         }
 
         binding.listview.setAdapter(new ServerItemCardAdapter(servers));
