@@ -124,31 +124,19 @@ public class OnboardingFragment2 extends Fragment {
         pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
         tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://drop.erikraft.com/"));
 
-        if (tempUrl.getValue().equals("https://snapdrop.net") || tempUrl.getValue().equals("https://pairdrop.net")) {
-            tempUrl.setValue("https://drop.erikraft.com/");
-
-            binding.scrollview.setVisibility(View.INVISIBLE);
-            binding.continueButton.setVisibility(View.INVISIBLE);
-
-            new MaterialAlertDialogBuilder(requireContext())
-                    .setTitle("Important Update")
-                    .setMessage("The snapdrop.net website has been acquired by a company with unclear security and privacy practices. \n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop, a more secure alternative.  \n\nThank you for your understanding!")
-                    .setPositiveButton("OK", null)
-                    .setOnDismissListener(dialog -> {
-                        binding.scrollview.setVisibility(View.VISIBLE);
-                        binding.continueButton.setVisibility(View.VISIBLE);
-                    })
-                    .show();
-        }
-
         reloadServerList();
 
-        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null, Link.bind("https://github.com/RobinLinus/snapdrop/blob/master/docs/faq.md#inofficial-instances", R.string.baseurl_unofficial_instances), url -> {
+        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null, Link.bind("https://github.com/erikraft/Drop/blob/master/docs/FAQ.md", R.string.baseurl_unofficial_instances), url -> {
             if (url == null) {
                 return;
             }
 
-            if (url.startsWith("!!")) { // hidden feature to force a different url
+            if (isSnapdropNet(url)) {
+                showSnapdropUpdateNotice();
+                return;
+            }
+
+            if (url.startsWith("!!")) {
                 newServer(url.substring("!!".length()));
             } else if (url.startsWith("http")) {
                 NetworkUtils.checkInstance(this, url, result -> {
@@ -157,9 +145,6 @@ public class OnboardingFragment2 extends Fragment {
                     }
                 });
             } else {
-
-                // do some magic in case user forgot to specify the protocol
-
                 String mightBeHttpsUrl = "https://" + url;
                 NetworkUtils.checkInstance(this, mightBeHttpsUrl, resultHttps -> {
                     if (resultHttps) {
@@ -187,15 +172,54 @@ public class OnboardingFragment2 extends Fragment {
         binding.continueButton.requestFocus();
     }
 
+    private boolean isSnapdropNet(final String value) {
+        if (value == null) {
+            return false;
+        }
+
+        String normalized = value.trim();
+        if (normalized.startsWith("!!")) {
+            normalized = normalized.substring(2).trim();
+        }
+        if (!normalized.contains("://")) {
+            normalized = "https://" + normalized;
+        }
+        normalized = normalized.replaceFirst("^http://", "https://");
+        while (normalized.endsWith("/")) {
+            normalized = normalized.substring(0, normalized.length() - 1);
+        }
+        return "https://snapdrop.net".equalsIgnoreCase(normalized)
+                || "https://www.snapdrop.net".equalsIgnoreCase(normalized);
+    }
+
+    private void showSnapdropUpdateNotice() {
+        new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.important_update_title)
+                .setMessage(R.string.important_update_message)
+                .setPositiveButton(R.string.important_update_ok, (dialog, which) ->
+                        tempUrl.setValue("https://drop.erikraft.com/"))
+                .show();
+    }
+
     private void reloadServerList() {
         final Set<String> serverUrls = pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>());
 
+        // Keep official ErikrafT instances in a deterministic priority order.
+        // PairDrop remains available only as the fourth/final fallback.
         final List<ServerItem> servers = new ArrayList<>();
-        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_pairdrop_summary), null));
-        servers.add(new ServerItem("https://pairdrop.net", getString(R.string.onboarding_server_snapdrop_summary_server_warning), null));
+        servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_primary_summary), null));
+        servers.add(new ServerItem("https://drop-fallback.erikraft.com/", getString(R.string.onboarding_server_secondary_summary), null));
+        servers.add(new ServerItem("https://dropfallback.erikraft.com/", getString(R.string.onboarding_server_tertiary_summary), null));
+        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quaternary_summary), null));
 
         for (String url : serverUrls) {
-            servers.add(new ServerItem(url, null, null));
+            if (!url.equals("https://drop.erikraft.com/")
+                    && !url.equals("https://drop-fallback.erikraft.com/")
+                    && !url.equals("https://dropfallback.erikraft.com/")
+                    && !url.equals("https://pairdrop.net/")
+                    && !url.equals("https://pairdrop.net")) {
+                servers.add(new ServerItem(url, null, null));
+            }
         }
 
         binding.listview.setAdapter(new ServerItemCardAdapter(servers));

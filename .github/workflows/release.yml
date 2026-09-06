@@ -20,6 +20,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update ErikrafT Drop web submodule
+        run: git submodule update --init --remote --depth 1 ErikrafT-Drop
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -29,6 +34,9 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Install Android 16 SDK
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
       - name: Set up Gradle cache
         uses: gradle/actions/setup-gradle@v4
@@ -49,7 +57,7 @@ jobs:
           fi
 
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew clean test --no-build-cache --rerun-tasks
 
       - name: Decode signing keystore
         env:
@@ -68,6 +76,19 @@ jobs:
             echo "Decoded keystore is missing or empty." >&2
             exit 1
           fi
+
+      - name: Validate signing secrets
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          for value in KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [ -z "${!value}" ]; then
+              echo "${value} secret is not configured." >&2
+              exit 1
+            fi
+          done
 
       - name: Build signed mobile release APK and AAB
         env:

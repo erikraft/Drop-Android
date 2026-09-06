@@ -13,15 +13,15 @@ aboutLibraries {
 
 android {
     namespace 'com.erikraft.drop'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.erikraft.drop"
         minSdkVersion 21
-        targetSdkVersion 35
+        targetSdkVersion 36
 
-        versionCode 17
-        versionName "10.0.0"
+        versionCode 22
+        versionName "10.0.5"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -61,13 +61,11 @@ android {
         disable 'MissingTranslation', 'ExtraTranslation'
     }
 
-    // use Java 8 to make use of lamda-expressions, etc.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Load keystore properties from Gradle properties, optional keystore.properties, or environment variables.
     def keystorePropertiesFile = rootProject.file('keystore.properties')
     def keystoreProperties = new Properties()
     if (keystorePropertiesFile.exists()) {
@@ -123,7 +121,6 @@ android {
 
         buildTypes {
             release {
-                // preserve existing release configuration
                 minifyEnabled true
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                 signingConfig signingConfigs.release
@@ -132,14 +129,7 @@ android {
     }
 
     lintOptions {
-        // Ignore warnings about missing translations and extra translations
         disable 'MissingTranslation', 'ExtraTranslation'
-    }
-
-    // use Java 8 to make use of lamda-expressions, etc.
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -157,18 +147,13 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.18.1'
     implementation "com.mikepenz:aboutlibraries-core:11.2.3"
     implementation "com.mikepenz:aboutlibraries:11.2.3"
+    implementation 'com.google.code.gson:gson:2.13.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-
     implementation 'com.anggrayudi:storage:1.5.6'
     implementation 'com.google.zxing:core:3.5.3'
 }
-
-/*
- * own checkstyle configuration
- * Android plugin doesn't interoperate with the Checkstyle plugin
- */
 
 tasks.register('checkstyle', Checkstyle) {
     configFile file("${project.rootDir}/checkstyle.xml")
@@ -176,7 +161,6 @@ tasks.register('checkstyle', Checkstyle) {
     source '../test/java'
     source '../androidTest/java'
     include '**/*.java'
-
     classpath = files()
 }
 

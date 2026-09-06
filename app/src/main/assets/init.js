@@ -54,7 +54,6 @@ try {
     console.error(e);
 }
 
-
 //retarget donation button (play guidelines)
 try {
     document.querySelector('.icon-button[href*="paypal"]').href = 'https://ko-fi.com/erikraft/';
@@ -140,7 +139,6 @@ try {
 
 //detect dialogs
 try {
-    // Only override dialog methods when an Android bridge exists. Preserve originals if present.
     const _androidBridge = (typeof ErikrafTdropAndroid !== 'undefined') ? ErikrafTdropAndroid : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
     if (_androidBridge) {
         if (!Dialog.prototype._shw) Dialog.prototype._shw = Dialog.prototype.show;
@@ -174,7 +172,6 @@ try {
     if (!localizationBuiltIn) {
         let localizeDisplayName = function (str) {
             const displayNameNode = document.getElementById('displayName');
-            // don't change it e.g. for pairdrop.net
             if (displayNameNode.textContent.substring(0, 17) === "You are known as ") {
                 displayNameNode.textContent = SnapdropAndroid.getYouAreKnownAsTranslationString(str);
             }
@@ -196,31 +193,118 @@ window.addEventListener('file-received', e => {
 }, false);
 
 window.addEventListener('files-received', e => {
-    // vibrates after receiving all files (supported only on PairDrop)
     SnapdropAndroid.vibrate();
 }, false);
 
 window.addEventListener('files-sent', e => {
-    // vibrates after sending all files (supported only on PairDrop)
     SnapdropAndroid.vibrate();
 }, false);
 
 window.addEventListener('share-mode-changed', e => {
-    // remove upload intent on canceling share mode (supported only on PairDrop)
     if (!e.detail.active) {
         SnapdropAndroid.resetUploadIntent();
     }
 }, false);
 
+// Android WebView does not reliably handle blob:/data: downloads by itself.
+// Route download anchors through the native bridge so WebChat images, text files,
+// compressed images, metadata exports, and other client-generated downloads can be saved.
+try {
+    const androidDownloadBridge = (typeof ErikrafTdropAndroid !== 'undefined')
+        ? ErikrafTdropAndroid
+        : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
+
+    if (androidDownloadBridge && !window.__erikraftAndroidDownloadBridgeInstalled) {
+        window.__erikraftAndroidDownloadBridgeInstalled = true;
+
+        const downloadAnchor = async (anchor, event) => {
+            const href = anchor && (anchor.href || anchor.getAttribute('href'));
+            if (!anchor || !anchor.hasAttribute('download') || !href) return false;
+            if (!href.startsWith('blob:') && !href.startsWith('data:') && !href.startsWith('http:') && !href.startsWith('https:')) return false;
+
+            if (event) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+
+            try {
+                const response = await fetch(href, { credentials: 'include' });
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const blob = await response.blob();
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const result = String(reader.result || '');
+                    const separator = result.indexOf(',');
+                    const base64 = separator >= 0 ? result.substring(separator + 1) : result;
+                    androidDownloadBridge.downloadBase64File(
+                        anchor.getAttribute('download') || 'download',
+                        blob.type || 'application/octet-stream',
+                        base64
+                    );
+                };
+                reader.readAsDataURL(blob);
+                return true;
+            } catch (error) {
+                console.error('Android WebView download bridge failed', error);
+                return false;
+            }
+        };
+
+        document.addEventListener('click', event => {
+            const target = event.target instanceof Element ? event.target.closest('a[download]') : null;
+            if (target) {
+                const href = target.href || target.getAttribute('href') || '';
+                if (href.startsWith('blob:') || href.startsWith('data:') || href.startsWith('http:') || href.startsWith('https:')) {
+                    downloadAnchor(target, event);
+                }
+            }
+        }, true);
+
+        const originalAnchorClick = HTMLAnchorElement.prototype.click;
+        HTMLAnchorElement.prototype.click = function () {
+            const href = this.href || this.getAttribute('href') || '';
+            if (this.hasAttribute('download') && (href.startsWith('blob:') || href.startsWith('data:') || href.startsWith('http:') || href.startsWith('https:'))) {
+                downloadAnchor(this, null);
+                return;
+            }
+            return originalAnchorClick.apply(this, arguments);
+        };
+    }
+} catch (e) {
+    console.error('Unable to install Android WebView download bridge', e);
+}
+
+// Route WebView clipboard writes through Android when available. This covers
+// SHA-256 copy buttons and other client dialogs that use navigator.clipboard.writeText.
+try {
+    const androidClipboardBridge = (typeof ErikrafTdropAndroid !== 'undefined')
+        ? ErikrafTdropAndroid
+        : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
+    if (androidClipboardBridge && navigator.clipboard && typeof navigator.clipboard.writeText === 'function'
+            && !navigator.clipboard.__erikraftAndroidBridge) {
+        const originalWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);
+        const androidWriteText = text => {
+            try {
+                androidClipboardBridge.copyToClipboard(String(text ?? ''));
+                return Promise.resolve();
+            } catch (error) {
+                return originalWriteText(text);
+            }
+        };
+        androidWriteText.__erikraftAndroidBridge = true;
+        navigator.clipboard.writeText = androidWriteText;
+    }
+} catch (e) {
+    console.error('Unable to install Android clipboard bridge', e);
+}
+
 //hide unnecessary web toolbar buttons
 try {
-    // snapdrop.net - theme
     document.querySelector('#theme').style.display = "none";
 } catch (e) {
     console.error(e);
 }
 try {
-    // pairdrop.net - theme
     document.querySelector('#theme-wrapper').style.display = "none";
     localStorage.removeItem('theme');
     document.body.classList.remove('dark-theme');
@@ -229,21 +313,12 @@ try {
     console.error(e);
 }
 try {
-    // remove pairdrop language selector
     document.getElementById('language-selector').style.display = "none";
 } catch (e) {
     console.error(e);
 }
 try {
-    // remove pairdrop overflow menu
     document.getElementById('expand').style.display = "none";
-} catch (e) {
-    console.error(e);
-}
-try {
-    // other items
-    document.querySelector('.icon-button[href="#about"]').style.display = "none";
-    document.querySelector('.icon-button[href="#"]').style.display = "none";
 } catch (e) {
     console.error(e);
 }
