@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">Bu uygulama ErikrafT Drop ve PairDrop web uygulamaları için optimize edilmiş bir istemcidir.\nAşağıdaki örneklerden birini seçin veya bağlanılacak özel bir URL belirtin.\n\nNot: Tüm cihazlarda aynı URL\'yi seçmelisiniz.</string>
     <string name="onboarding_storage_permission">Depolama izni</string>
     <string name="onboarding_storage_permission_description">Bu uygulama bir dosya aktarım aracıdır. Uygulamayı kullanabilmek için depolama izni gerekir.</string>
-    <string name="onboarding_server_pairdrop_summary">(önerilir)\nEşleştirme özelliği, internet aktarımı ve stabilite üzerine odaklı.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Klasik snapdrop. Temiz ve basit.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Uyarı: Sunucu kararsızlığı</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Özel URL</string>
     <string name="onboarding_server_custom_summary">Uzman kullanıcılar kendi serverlarını depolayabilir.</string>
     <string name="onboarding_server_custom_add">Add server</string>
@@ -76,7 +80,10 @@
     <string name="baseurl_instance_verified">İstemci başarıyla onaylandı</string>
     <string name="baseurl_no_snapdrop_instance">Görünüşe göre istemci desteklenmiyor</string>
     <string name="baseurl_check_instance_failed">İstemci doğrulaması başarısız oldu</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="important_update_title">Important Update</string>
+    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="important_update_ok">OK</string>
     <string name="save_location">Kayıt konumu</string>
     <!-- File sharing -->
     <string name="intent_file">Bir dosya paylaşım için seçildi</string>
@@ -98,4 +105,13 @@
     <string name="website_footer_discovery">Bu ağda bulunan herkes sizi keşfedebilir</string>
     <string name="website_footer_known_as">%s olarak görünüyorsunuz</string>
     <string name="website_about_subheading">Cihazlar arası dosya transferinin en kolay yolu</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>

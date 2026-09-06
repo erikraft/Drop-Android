@@ -14,9 +14,13 @@
     <string name="onboarding_choose_server_description">Questa app è un client ottimizzato per le applicazioni web ErikrafT Drop e PairDrop.\nScegli una delle seguenti istanze o specifica un URL personalizzato a cui connettersi.\n\nNota: Devi scegliere lo stesso URL su tutti i dispositivi.</string>
     <string name="onboarding_storage_permission">Autorizzazione di archiviazione</string>
     <string name="onboarding_storage_permission_description">Questa app è un\'utilità di condivisione di file. Pertanto, è richiesta l\'autorizzazione di archiviazione per utilizzarla.</string>
-    <string name="onboarding_server_pairdrop_summary">(raccomandato)\nFunzionalità di collegamento, trasferimento internet e si concentra sulla stabilità.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Il classico snapdrop. Pulito e semplice.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Warning: Server instabilities</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personalizzato</string>
     <string name="onboarding_server_custom_summary">Gli esperti possono anche utilizzare i propri server.</string>
     <string name="onboarding_server_custom_add">Add server</string>
@@ -76,7 +80,10 @@
     <string name="baseurl_instance_verified">Instance was successfully verified</string>
     <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
     <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Dai un\'occhiata alle <a href="">FAQ</a> per una lista di istanze non ufficiali. Si informa che alcune istanze potrebbero non funzionare correttamente all\'interno dell\'app.</string>
+    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
+    <string name="important_update_title">Important Update</string>
+    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="important_update_ok">OK</string>
     <string name="save_location">Percorso di salvataggio</string>
     <!-- File sharing -->
     <string name="intent_file">Un file è selezionato per la condivisione</string>
@@ -98,4 +105,13 @@
     <string name="website_footer_discovery">Potresti essere individuato da tutti su questa rete</string>
     <string name="website_footer_known_as">Il tuo soprannome è %s</string>
     <string name="website_about_subheading">Il modo più semplice per trasferire file tra dispositivi</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>

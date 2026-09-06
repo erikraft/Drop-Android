@@ -95,4 +95,13 @@
     <string name="website_footer_discovery">Você pode ser descoberto por todas as pessoas nesta rede</string>
     <string name="website_footer_known_as">Você é identificado como %s</string>
     <string name="website_about_subheading">O modo mais fácil para transferir arquivos entre dispositivos</string>
+    <!-- QR Transfer -->
+    <string name="qr_transfer_title">QR Transfer</string>
+    <string name="qr_transfer_send_title">Send via Animated QR</string>
+    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
+    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
+    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="cancel">Cancel</string>
 </resources>
