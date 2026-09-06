@@ -5,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -132,41 +135,20 @@ public class ErikrafTQRProtocolTest {
     }
 
     private static String extractJsonString(String json, String key) {
-        String marker = "\"" + key + "\":\"";
-        int start = json.indexOf(marker);
-        if (start < 0) {
+        try {
+            JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
+            return obj.has(key) && !obj.get(key).isJsonNull() ? obj.get(key).getAsString() : null;
+        } catch (Exception e) {
             return null;
         }
-        start += marker.length();
-        StringBuilder value = new StringBuilder();
-        boolean escaped = false;
-        for (int i = start; i < json.length(); i++) {
-            char ch = json.charAt(i);
-            if (escaped) {
-                value.append(ch);
-                escaped = false;
-            } else if (ch == '\\') {
-                escaped = true;
-            } else if (ch == '"') {
-                return value.toString();
-            } else {
-                value.append(ch);
-            }
-        }
-        return null;
     }
 
     private static long extractJsonLong(String json, String key) {
-        String marker = "\"" + key + "\":";
-        int start = json.indexOf(marker);
-        if (start < 0) {
+        try {
+            JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
+            return obj.has(key) && !obj.get(key).isJsonNull() ? obj.get(key).getAsLong() : Long.MIN_VALUE;
+        } catch (Exception e) {
             return Long.MIN_VALUE;
         }
-        start += marker.length();
-        int end = start;
-        while (end < json.length() && "-0123456789".indexOf(json.charAt(end)) >= 0) {
-            end++;
-        }
-        return Long.parseLong(json.substring(start, end));
     }
 }

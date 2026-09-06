@@ -29,7 +29,8 @@ public class ErikrafTQRProtocolTest {
 
         String jsonEncoded = ErikrafTQRProtocol.encodeFrame(frame);
         Assert.assertNotNull(jsonEncoded);
-        Assert.assertTrue(jsonEncoded.contains("EKQR1"));
+        Assert.assertTrue(jsonEncoded.contains("\"h\":\"EKQR\""));
+        Assert.assertTrue(jsonEncoded.contains("\"v\":1"));
     }
 
     @Test
