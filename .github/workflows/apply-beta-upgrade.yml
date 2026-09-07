@@ -1,0 +1,27 @@
+name: Apply ErikrafT Drop Android beta upgrade
+
+on:
+  push:
+    branches:
+      - feat/webtorrent-onion-webview-beta
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply Android changes
+        run: python3 .github/workflows/apply_android_upgrade.py
+      - name: Commit generated changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/build.gradle app/src/main/AndroidManifest.xml app/src/main/java app/src/main/assets/init.js app/src/main/res/menu/actionbar.xml app/src/main/res/values/strings.xml
+          git diff --cached --quiet || git commit -m 'feat: add beta Onion mode and WebView improvements'
+          git push
