@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_qr_transfer"
+        android:id="@+id/menu_onion_transfer"
         android:icon="@drawable/pref_about"
-        android:title="@string/qr_transfer_title"
-        app:showAsAction="always" />
+        android:title="@string/onion_transfer_title"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_view_downloads"
         android:icon="@drawable/ic_download"

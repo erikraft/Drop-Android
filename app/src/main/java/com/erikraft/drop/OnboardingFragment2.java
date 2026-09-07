@@ -138,6 +138,10 @@ public class OnboardingFragment2 extends Fragment {
 
             if (url.startsWith("!!")) {
                 newServer(url.substring("!!".length()));
+            } else if (url.toLowerCase().contains(".onion")) {
+                String onionUrl = url.contains("://") ? url : "http://" + url;
+                if (!onionUrl.endsWith("/")) onionUrl += "/";
+                newServer(onionUrl);
             } else if (url.startsWith("http")) {
                 NetworkUtils.checkInstance(this, url, result -> {
                     if (result) {
@@ -210,12 +214,14 @@ public class OnboardingFragment2 extends Fragment {
         servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_primary_summary), null));
         servers.add(new ServerItem("https://drop-fallback.erikraft.com/", getString(R.string.onboarding_server_secondary_summary), null));
         servers.add(new ServerItem("https://dropfallback.erikraft.com/", getString(R.string.onboarding_server_tertiary_summary), null));
+        servers.add(new ServerItem("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/", "ErikrafT Drop™ Onion Service (Beta)", "Requer Tor. O PairDrop fica como quinto servidor."));
         servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quaternary_summary), null));
 
         for (String url : serverUrls) {
             if (!url.equals("https://drop.erikraft.com/")
                     && !url.equals("https://drop-fallback.erikraft.com/")
                     && !url.equals("https://dropfallback.erikraft.com/")
+                    && !url.equals("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/")
                     && !url.equals("https://pairdrop.net/")
                     && !url.equals("https://pairdrop.net")) {
                 servers.add(new ServerItem(url, null, null));

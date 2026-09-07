@@ -322,3 +322,45 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+// Android WebView: About is exposed by the native action bar, so keep only one entry point.
+try {
+    if (!window.__erikraftHideNativeAbout) {
+        window.__erikraftHideNativeAbout = true;
+        const aboutButton = document.querySelector('body > header a[href="#about"]');
+        if (aboutButton) aboutButton.style.display = 'none';
+    }
+} catch (e) { console.error(e); }
+
+// QR controls: ensure a user gesture reaches getUserMedia so the native WebView camera permission dialog is shown.
+try {
+    const askCamera = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
+            stream.getTracks().forEach(track => track.stop());
+        } catch (e) { console.warn('Camera permission/request was not granted', e); }
+    };
+    ['#openQRScanner', '#animated-qr-btn'].forEach(selector => {
+        const node = document.querySelector(selector);
+        if (node && !node.dataset.erikraftCameraPermissionHooked) {
+            node.dataset.erikraftCameraPermissionHooked = 'true';
+            node.addEventListener('click', () => { askCamera(); }, { capture: true });
+        }
+    });
+} catch (e) { console.error(e); }
+
+// Replace the QR scanner icon with the requested Material icon path while preserving the existing button behavior.
+try {
+    const scanner = document.querySelector('#openQRScanner svg');
+    if (scanner) {
+        scanner.setAttribute('viewBox', '0 -960 960 960');
+        scanner.setAttribute('width', '24');
+        scanner.setAttribute('height', '24');
+        scanner.innerHTML = '<path d="M120-680q-17 0-28.5-11.5T80-720v-120q0-17 11.5-28.5T120-880h120q17 0 28.5 11.5T280-840q0 17-11.5 28.5T240-800h-80v80q0 17-11.5 28.5T120-680Zm0 600q-17 0-28.5-11.5T80-120v-120q0-17 11.5-28.5T120-280q17 0 28.5 11.5T160-240v80h80q17 0 28.5 11.5T280-120q0 17-11.5 28.5T240-80H120Zm600 0q-17 0-28.5-11.5T680-120q0-17 11.5-28.5T720-160h80v-80q0-17 11.5-28.5T840-280q17 0 28.5 11.5T880-240v120q0 17-11.5 28.5T840-80H720Zm91.5-611.5Q800-703 800-720v-80h-80q-17 0-28.5-11.5T680-840q0-17 11.5-28.5T720-880h120q17 0 28.5 11.5T880-840v120q0 17-11.5 28.5T840-680q-17 0-28.5-11.5ZM700-200v-60h60v60h-60Zm0-120v-60h60v60h-60Zm-60 60v-60h60v60h-60Zm-60 60v-60h60v60h-60Zm-60-60v-60h60v60h-60Zm120-120v-60h60v60h-60Zm-60 60v-60h60v60h-60Zm-60-60v-60h60v60h-60Zm40-140q-17 0-28.5-11.5T520-560v-160q0-17 11.5-28.5T560-760h160q17 0 28.5 11.5T760-720v160q0 17-11.5 28.5T720-520H560ZM240-200q-17 0-28.5-11.5T200-240v-160q0-17 11.5-28.5T240-440h160q17 0 28.5 11.5T440-400v160q0 17-11.5 28.5T400-200H240Zm0-320q-17 0-28.5-11.5T200-560v-160q0-17 11.5-28.5T240-760h160q17 0 28.5 11.5T440-720v160q0 17-11.5 28.5T400-520H240Zm20 260h120v-120H260v120Zm0-320h120v-120H260v120Zm320 0h120v-120H580v120Z" fill="currentColor"/>';
+    }
+} catch (e) { console.error(e); }
+
+// Do not wipe the native light/dark selection. MainActivity controls WebView force-dark explicitly.
+try {
+    localStorage.removeItem('theme');
+} catch (e) { console.error(e); }
