@@ -20,8 +20,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 36
 
-        versionCode 22
-        versionName "10.0.5"
+        versionCode 23
+        versionName "10.1.0"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -55,6 +55,12 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 
     lint {
@@ -142,7 +148,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'androidx.webkit:webkit:1.14.0'
+    implementation 'androidx.webkit:webkit:1.17.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'org.jsoup:jsoup:1.18.1'
     implementation "com.mikepenz:aboutlibraries-core:11.2.3"
@@ -153,6 +159,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     implementation 'com.anggrayudi:storage:1.5.6'
     implementation 'com.google.zxing:core:3.5.3'
+    implementation 'org.nanohttpd:nanohttpd:2.3.1'
+    implementation 'org.briarproject:dont-kill-me-lib:0.2.8'
+    implementation 'org.briarproject:tor-android:0.4.9.11'
+    implementation 'org.briarproject:onionwrapper-android:0.1.4'
 }
 
 tasks.register('checkstyle', Checkstyle) {

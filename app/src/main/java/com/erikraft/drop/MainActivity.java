@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (SnapdropApplication.isDarkTheme(this) && WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
-            WebSettingsCompat.setForceDark(binding.webview.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+            WebSettingsCompat.setForceDark(binding.webview.getSettings(), SnapdropApplication.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
         }
 
         CookieManager.getInstance().setAcceptThirdPartyCookies(binding.webview, true);
@@ -387,8 +387,8 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             toggleAbout();
             return true;
-        } else if (item.getItemId() == R.id.menu_qr_transfer) {
-            startActivity(new Intent(this, com.erikraft.drop.qr.QRTransferActivity.class));
+        } else if (item.getItemId() == R.id.menu_onion_transfer) {
+            startActivity(new Intent(this, OnionTransferActivity.class));
             return true;
         } else if (item.getItemId() == R.id.menu_settings) {
             final Intent browserIntent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -419,13 +419,16 @@ public class MainActivity extends AppCompatActivity {
     private void refreshWebsite(final boolean pulled) {
         Log.w("ErikrafTdropAndroid", "refresh triggered");
         if (NetworkUtils.isInternetAvailable() && !transfer.get() && !dialogVisible || forceRefresh) {
-            binding.connectivityCard.setVisibility(NetworkUtils.isWifiAvailable() ? View.GONE : View.VISIBLE);
-            binding.webview.loadUrl(baseURL);
-            forceRefresh = false;
-            binding.webview.animate().alpha(0).start();
+            final Runnable load = () -> {
+                binding.connectivityCard.setVisibility(NetworkUtils.isWifiAvailable() ? View.GONE : View.VISIBLE);
+                binding.webview.loadUrl(baseURL);
+                forceRefresh = false;
+                binding.webview.animate().alpha(0).start();
+            };
+            TorController.configureWebViewProxyForUrl(this, baseURL, load);
         } else if (transfer.get() || dialogVisible) {
             binding.pullToRefresh.setRefreshing(false);
-            forceRefresh = pulled; //reset forceRefresh if after pullToRefresh the refresh request did come from another source eg onResume, so pullToRefresh doesn't unexpectedly force refreshes by "first time"
+            forceRefresh = pulled;
         } else {
             binding.pullToRefresh.setRefreshing(false);
             state.setCurrentlyLoading(false);
@@ -533,6 +536,7 @@ public class MainActivity extends AppCompatActivity {
             binding.webview.loadUrl("about:blank");
         }
         CookieManager.getInstance().flush();
+        TorController.shutdown(this);
         super.onDestroy();
     }
 
