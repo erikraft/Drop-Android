@@ -114,4 +114,13 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
+    <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
+    <string name="onion_transfer_select_files">Selecionar arquivos</string>
+    <string name="onion_transfer_start">Iniciar Onion Service</string>
+    <string name="onion_transfer_stop">Parar</string>
+    <string name="onion_transfer_waiting">Iniciando Tor e publicando Onion Service…</string>
+    <string name="onion_transfer_ready">Compartilhe este endereço Onion:</string>
+    <string name="onion_transfer_copy">Copiar link</string>
+    <string name="onion_transfer_share">Compartilhar</string>
+    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo.</string>
 </resources>
