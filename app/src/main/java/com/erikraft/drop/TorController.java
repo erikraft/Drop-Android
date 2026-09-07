@@ -6,7 +6,6 @@ import android.os.Build;
 import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.webkit.ProxyConfig;
 import androidx.webkit.ProxyController;
 import androidx.webkit.WebViewFeature;
@@ -43,7 +42,7 @@ public final class TorController implements TorWrapper.Observer {
         this.app = app;
         AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(app);
         ThreadPoolExecutor ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
-        mainExecutor = ContextCompat.getMainExecutor(app);
+        mainExecutor = app.getMainExecutor();
         tor = new AndroidTorWrapper(app, wakeLockManager, ioExecutor, mainExecutor, architecture(), app.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
         tor.setObserver(this);
     }
