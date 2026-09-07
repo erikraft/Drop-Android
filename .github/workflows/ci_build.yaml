@@ -7,10 +7,11 @@ on:
   push:
     branches:
       - master
+      - feat/webtorrent-onion-webview-beta
   pull_request:
   workflow_dispatch:
   release:
-    types: [published]  # ← dispara quando uma release é publicada
+    types: [published]
 
 jobs:
   build:
