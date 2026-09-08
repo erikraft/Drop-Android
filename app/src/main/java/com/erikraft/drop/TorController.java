@@ -1,9 +1,7 @@
 package com.erikraft.drop;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.Build;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.webkit.ProxyConfig;
@@ -15,8 +13,6 @@ import org.briarproject.android.dontkillmelib.wakelock.AndroidWakeLockManagerFac
 import org.briarproject.onionwrapper.AndroidTorWrapper;
 import org.briarproject.onionwrapper.TorWrapper;
 
-import java.io.File;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
@@ -29,26 +25,26 @@ public final class TorController implements TorWrapper.Observer {
     private static final int CONTROL_PORT = 53055;
     private static TorController instance;
 
-    private final Application app;
+    private final Context appContext;
     private final AndroidTorWrapper tor;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private final Executor mainExecutor;
+    private final java.util.concurrent.Executor mainExecutor;
     private volatile boolean started;
     private volatile boolean connected;
     private volatile Runnable pendingConnected;
     private volatile OnionCallback pendingOnion;
 
-    private TorController(@NonNull Application app) {
-        this.app = app;
-        AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(app);
+    private TorController(@NonNull Context context) {
+        appContext = context.getApplicationContext();
+        AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(appContext);
         ThreadPoolExecutor ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
-        mainExecutor = app.getMainExecutor();
-        tor = new AndroidTorWrapper(app, wakeLockManager, ioExecutor, mainExecutor, architecture(), app.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
+        mainExecutor = appContext.getMainExecutor();
+        tor = new AndroidTorWrapper(appContext, wakeLockManager, ioExecutor, mainExecutor, architecture(), appContext.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
         tor.setObserver(this);
     }
 
     public static synchronized TorController get(@NonNull Context context) {
-        if (instance == null) instance = new TorController(context.getApplicationContext());
+        if (instance == null) instance = new TorController(context);
         return instance;
     }
 

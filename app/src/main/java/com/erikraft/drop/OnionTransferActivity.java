@@ -16,21 +16,18 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 
-import org.nanohttpd.protocols.http.NanoHTTPD;
+import fi.iki.elonen.NanoHTTPD;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +58,7 @@ public class OnionTransferActivity extends AppCompatActivity {
         picker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
             files.clear();
-            android.content.Intent data = result.getData();
+            Intent data = result.getData();
             ClipData clip = data.getClipData();
             try {
                 if (clip != null) for (int i = 0; i < clip.getItemCount(); i++) files.add(copyToCache(clip.getItemAt(i).getUri()));
@@ -120,7 +117,7 @@ public class OnionTransferActivity extends AppCompatActivity {
             String uri = session.getUri();
             if ("/".equals(uri)) {
                 StringBuilder html = new StringBuilder("<html><meta name='viewport' content='width=device-width'><body><h1>ErikrafT Drop™ Onion</h1><p>Arquivos disponíveis:</p><ul>");
-                for (int i = 0; i < files.size(); i++) { File f = files.get(i); html.append("<li><a download href='/file/").append(i).append("'>").append(escape(f.getName())).append("</a> (" ).append(f.length()).append(" bytes)</li>"); }
+                for (int i = 0; i < files.size(); i++) { File f = files.get(i); html.append("<li><a download href='/file/").append(i).append("'>").append(escape(f.getName())).append("</a> (").append(f.length()).append(" bytes)</li>"); }
                 html.append("</ul></body></html>");
                 return newFixedLengthResponse(Response.Status.OK, "text/html; charset=utf-8", html.toString());
             }
