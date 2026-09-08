@@ -148,8 +148,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    // 1.17.0 requires minSdk 24; keep the app's API 21+ support intact.
-    implementation 'androidx.webkit:webkit:1.16.0'
+    // 1.15.0 requires minSdk 23; 1.14.0 is the newest stable WebKit release that keeps API 21 support.
+    implementation 'androidx.webkit:webkit:1.14.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'org.jsoup:jsoup:1.18.1'
     implementation "com.mikepenz:aboutlibraries-core:11.2.3"
