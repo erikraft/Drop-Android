@@ -1,7 +1,10 @@
 package com.erikraft.drop;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.webkit.ProxyConfig;
@@ -25,7 +28,7 @@ public final class TorController implements TorWrapper.Observer {
     private static final int CONTROL_PORT = 53055;
     private static TorController instance;
 
-    private final Context appContext;
+    private final Application application;
     private final AndroidTorWrapper tor;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final java.util.concurrent.Executor mainExecutor;
@@ -35,11 +38,11 @@ public final class TorController implements TorWrapper.Observer {
     private volatile OnionCallback pendingOnion;
 
     private TorController(@NonNull Context context) {
-        appContext = context.getApplicationContext();
-        AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(appContext);
+        application = (Application) context.getApplicationContext();
+        AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(application);
         ThreadPoolExecutor ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
-        mainExecutor = appContext.getMainExecutor();
-        tor = new AndroidTorWrapper(appContext, wakeLockManager, ioExecutor, mainExecutor, architecture(), appContext.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
+        mainExecutor = command -> new Handler(Looper.getMainLooper()).post(command);
+        tor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(), application.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
         tor.setObserver(this);
     }
 
@@ -65,19 +68,20 @@ public final class TorController implements TorWrapper.Observer {
     }
 
     public static void configureWebViewProxyForUrl(@NonNull Context context, String url, @NonNull Runnable afterProxy) {
+        TorController controller = get(context);
         if (!isOnionUrl(url) || !WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
             if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-                ProxyController.getInstance().clearProxyOverride(context.getMainExecutor(), afterProxy);
+                ProxyController.getInstance().clearProxyOverride(controller.mainExecutor, afterProxy);
             } else {
                 afterProxy.run();
             }
             return;
         }
-        get(context).start(() -> {
+        controller.start(() -> {
             ProxyConfig config = new ProxyConfig.Builder()
                     .addProxyRule("socks://127.0.0.1:" + SOCKS_PORT, ProxyConfig.MATCH_ALL_SCHEMES)
                     .build();
-            ProxyController.getInstance().setProxyOverride(config, context.getMainExecutor(), afterProxy);
+            ProxyController.getInstance().setProxyOverride(config, controller.mainExecutor, afterProxy);
         });
     }
 
@@ -128,7 +132,7 @@ public final class TorController implements TorWrapper.Observer {
         if (instance == null) return;
         try { instance.tor.stop(); } catch (Exception ignored) { }
         if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-            ProxyController.getInstance().clearProxyOverride(context.getMainExecutor(), () -> { });
+            ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });
         }
         instance.executor.shutdownNow();
         instance = null;
