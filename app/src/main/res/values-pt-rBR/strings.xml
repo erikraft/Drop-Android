@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
+    <string name="app_name_long">Sobre ErikrafT Drop™ &amp; PairDrop para Android</string>
     <string name="app_name_slogan">Transfira arquivos perfeitamente entre todos os seus dispositivos.</string>
     <string name="err_no_browser">Não foi possível abrir o navegador</string>
     <string name="err_no_app">Nenhum app instalado que pode abrir este arquivo</string>
@@ -14,13 +14,13 @@
     <string name="onboarding_choose_server_description">Este app é um cliente otimizado para o ErikrafT Drop e o PairDrop.\nEscolha uma das seguintes instâncias ou especifique uma url personalizada para se conectar.\n\nNota: Você tem que escolher a mesma URL em todos os dispositivos.</string>
     <string name="onboarding_storage_permission">Permissão de armazenamento</string>
     <string name="onboarding_storage_permission_description">Este aplicativo é usado para compartilhamento de arquivos. Portanto, a permissão de armazenamento é necessária para usá-lo.</string>
-    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
-    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">O snapdrop clássico. Limpo e simples.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
+    <string name="onboarding_server_primary_summary">(1) Padrão — ErikrafT Drop</string>
+    <string name="onboarding_server_secondary_summary">(2) Secundário — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Terciário — ErikrafT Drop fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — PairDrop (concorrente)</string>
+    <string name="onboarding_server_pairdrop_summary">Servidor padrão do ErikrafT Drop.</string>
+    <string name="onboarding_server_snapdrop_summary">Compartilhamento de arquivos simples e limpo.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">Fallback do PairDrop.</string>
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Especialistas também podem hospedar seus próprios servidores.</string>
     <string name="onboarding_server_custom_add">Add server</string>
