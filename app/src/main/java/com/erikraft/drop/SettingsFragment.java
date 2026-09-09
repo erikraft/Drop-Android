@@ -2,7 +2,6 @@ package com.erikraft.drop;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -38,11 +36,6 @@ import com.erikraft.drop.utils.LogUtils;
 import com.erikraft.drop.utils.ShareUtils;
 import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.snackbar.Snackbar;
-import com.mikepenz.aboutlibraries.LibsBuilder;
-import com.mikepenz.aboutlibraries.util.SpecialButton;
-
-import java.util.concurrent.Executors;
-
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private final SimpleStorageHelper storageHelper = new SimpleStorageHelper(this);
@@ -57,9 +50,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
-                    .setAction(R.string.open_settings, v ->
-                            startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                    .setData(Uri.fromParts("package", requireContext().getPackageName(), null))))
+                    .setAction(R.string.open_settings, v -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                            .setData(Uri.fromParts("package", requireContext().getPackageName(), null))))
                     .show();
         }
     });
@@ -72,10 +64,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             Snackbar.make(requireView(), R.string.permission_not_granted, Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(requireView(), R.string.permission_not_granted_fallback, Snackbar.LENGTH_LONG)
-                    .setAction(R.string.open_settings, v ->
-                            startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    .putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().getPackageName())))
+                    .setAction(R.string.open_settings, v -> startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().getPackageName())))
                     .show();
         }
     });
@@ -83,79 +74,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
-
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        if (savedInstanceState != null) {
-            storageHelper.onRestoreInstanceState(savedInstanceState);
-        }
+        if (savedInstanceState != null) storageHelper.onRestoreInstanceState(savedInstanceState);
 
         initUrlPreference(R.string.pref_support, "https://biodrop.erikraft.com/donation.html");
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
-        openSourceComponents.setOnPreferenceClickListener(pref -> {
-            new LibsBuilder()
-                    .withAboutAppName(getString(R.string.app_name_long))
-                    .withAboutIconShown(true)
-                    .withAboutVersionShownName(true)
-                    .withAboutDescription("<big><b>Credits</b></big><br><br>" +
-                            "This app and its launcher icon are based on the PairDrop project by schlagmichdoch<br>" +
-                            "<a href=\"https://github.com/schlagmichdoch/PairDrop/\">github.com/schlagmichdoch/PairDrop</a><br><br>" +
-                            "It uses the official ErikrafT Drop codebase as its foundation<br>" +
-                            "<a href=\"https://github.com/erikraft/Drop\">github.com/erikraft/Drop</a><br>" +
-                            "with the Android client maintained at<br>" +
-                            "<a href=\"https://github.com/erikraft/Drop-Android\">github.com/erikraft/Drop-Android</a><br><br>" +
-                            "<big><b>" + getString(R.string.support_us) + "</b></big><br><br>" +
-                            getString(R.string.support_us_description) + "<br><br>" +
-                            "<b>" + getString(R.string.support_us_option_kofi) + "</b><br>" +
-                            "<a href=\"https://ko-fi.com/erikraft/\">https://ko-fi.com/erikraft/</a><br><br>" +
-                            "<b>" + getString(R.string.support_us_option_pix_kofi) + "</b><br>" +
-                            "<a href=\"https://biodrop.erikraft.com/donation.html\">" + getString(R.string.open_url) + "</a>")
-                    .withAboutSpecial1("GitHub")
-                    .withAboutSpecial2("Twitter/X")
-                    .withListener(new AboutLibrariesListener() {
-                        @Override
-                        public boolean onIconLongClicked(final @NonNull View view) {
-                            final Dialog dialog = new Dialog(view.getContext());
-                            dialog.setContentView(R.layout.progress_dialog);
-                            dialog.show();
-
-                            Executors.newSingleThreadExecutor().submit(() -> {
-                                final View dialogView = SettingsFragment.this.getLayoutInflater().inflate(R.layout.debug_logs_dialog, null);
-                                final TextView textView = dialogView.findViewById(R.id.textview);
-                                textView.setText(LogUtils.getLogs(prefs, true));
-                                dialog.dismiss();
-
-                                view.post(() -> new AlertDialog.Builder(view.getContext())
-                                        .setIcon(R.drawable.pref_debug)
-                                        .setTitle(R.string.logs)
-                                        .setView(dialogView)
-                                        .setPositiveButton(android.R.string.ok, null)
-                                        .setNeutralButton(R.string.copy, (d, id) -> ClipboardUtils.copy(view.getContext(), LogUtils.getLogs(prefs, false)))
-                                        .show());
-                            });
-
-                            return true;
-                        }
-
-                        @Override
-                        public void onIconClicked(final @NonNull View view) {
-                            ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
-                        }
-
-                        @Override
-                        public boolean onExtraClicked(final @NonNull View view, final @NonNull SpecialButton specialButton) {
-                            if (specialButton == SpecialButton.SPECIAL1) {
-                                ShareUtils.openUrl(SettingsFragment.this, "https://github.com/erikraft/Drop-Android");
-                            } else if (specialButton == SpecialButton.SPECIAL2) {
-                                ShareUtils.openUrl(SettingsFragment.this, "https://x.com/ErikrafTbr");
-                            }
-                            return true;
-                        }
-                    })
-                    .start(requireContext());
-            return true;
-        });
+        if (openSourceComponents != null) {
+            openSourceComponents.setOnPreferenceClickListener(pref -> {
+                startActivity(new Intent(requireContext(), AboutActivity.class));
+                return true;
+            });
+        }
 
         final Preference floatingTextSelectionPref = findPreference(getString(R.string.pref_floating_text_selection));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -173,28 +104,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         notificationsPref.setOnPreferenceChangeListener((pref, newValue) -> {
             if ((boolean) newValue) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                    if (isNotificationsCorrectlyEnabled()) {
-                        return true;
-                    } else {
-                        final Intent settingsIntent = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
-                                new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        .putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName()) :
-                                new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        .setData(Uri.fromParts("package", getContext().getPackageName(), null));
-
-                        startActivity(settingsIntent);
-                        return true;
-                    }
-                } else {
-                    notificationsPpermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
-                    return false;
+                    if (isNotificationsCorrectlyEnabled()) return true;
+                    Intent settingsIntent = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                            ? new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName())
+                            : new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).setData(Uri.fromParts("package", getContext().getPackageName(), null));
+                    startActivity(settingsIntent);
+                    return true;
                 }
+                notificationsPpermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                return false;
             }
             return true;
         });
-
 
         final Preference deviceNamePref = findPreference(getString(R.string.pref_device_name));
         deviceNamePref.setOnPreferenceClickListener(pref -> showEditTextPreferenceWithResetPossibility(pref, "Android ", "", null, newValue -> updateDeviceNameSummary(deviceNamePref)));
@@ -221,7 +142,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         });
 
         final Preference themePref = findPreference(getString(R.string.pref_theme_setting));
-        themePref.setOnPreferenceChangeListener((Preference preference, Object newValue) -> {
+        themePref.setOnPreferenceChangeListener((preference, newValue) -> {
             final DarkModeSetting darkTheme = DarkModeSetting.valueOf((String) newValue);
             SnapdropApplication.setAppTheme(darkTheme);
             requireActivity().setResult(Activity.RESULT_OK);
@@ -236,9 +157,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             locationMetadataPref.setChecked(granted);
             if (!granted) {
                 locationMetadataPref.setOnPreferenceChangeListener((pref, newValue) -> {
-                    if ((Boolean) newValue) {
-                        storagePpermissionLauncher.launch(Manifest.permission.ACCESS_MEDIA_LOCATION);
-                    }
+                    if ((Boolean) newValue) storagePpermissionLauncher.launch(Manifest.permission.ACCESS_MEDIA_LOCATION);
                     return false;
                 });
             } else {
@@ -249,18 +168,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private boolean isNotificationsCorrectlyEnabled() {
         final NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-
-        final boolean enabled = (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || notificationManager.areNotificationsEnabled()) &&
+        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || notificationManager.areNotificationsEnabled()) &&
                 (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || notificationManager.getNotificationChannel("MYCHANNEL") == null || notificationManager.getNotificationChannel("MYCHANNEL").getImportance() != NotificationManager.IMPORTANCE_NONE);
-        return enabled;
     }
 
-    private void setPreferenceValue(final String preferenceKey, final String s, final Consumer<String> onPreferenceChangeCallback) {
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString(preferenceKey, s).apply();
-
-        if (onPreferenceChangeCallback != null) {
-            onPreferenceChangeCallback.accept(s);
-        }
+    private void setPreferenceValue(final String preferenceKey, final String value, final Consumer<String> onPreferenceChangeCallback) {
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString(preferenceKey, value).apply();
+        if (onPreferenceChangeCallback != null) onPreferenceChangeCallback.accept(value);
     }
 
     private void updateDeviceNameSummary(final Preference pref) {
@@ -296,13 +210,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-
         final boolean enabled = isNotificationsCorrectlyEnabled();
         final SwitchPreferenceCompat notificationsPref = findPreference(getString(R.string.pref_notifications));
-
-        if (!enabled && notificationsPref.isChecked()) {
-            notificationsPref.setChecked(false);
-        }
+        if (!enabled && notificationsPref.isChecked()) notificationsPref.setChecked(false);
 
         final Preference baseUrlPref = findPreference(getString(R.string.pref_baseurl));
         baseUrlPref.setSummary(prefs.getString(baseUrlPref.getKey(), getString(R.string.baseurl_not_set)));
