@@ -14,11 +14,13 @@
     <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
     <string name="onboarding_storage_permission">Storage permission</string>
     <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
-    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
-    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
     <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
@@ -39,7 +41,7 @@
     <string name="retry">retry</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Om</string>
-    <string name="title_activity_about">About ErikrafT Drop</string>
+    <string name="title_activity_about">About ErikrafT Drop™</string>
     <string name="pref_about_title">Om denna app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Inställningar</string>
@@ -114,13 +116,20 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
+    <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
+    <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
     <string name="onion_transfer_select_files">Selecionar arquivos</string>
+    <string name="onion_transfer_send_text">Enviar texto</string>
+    <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
     <string name="onion_transfer_start">Iniciar Onion Service</string>
     <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando Onion Service…</string>
-    <string name="onion_transfer_ready">Compartilhe este endereço Onion:</string>
+    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
+    <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
     <string name="onion_transfer_copy">Copiar link</string>
     <string name="onion_transfer_share">Compartilhar</string>
-    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo.</string>
+    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
+    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
+    <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
+    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
 </resources>
