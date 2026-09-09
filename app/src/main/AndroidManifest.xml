@@ -17,24 +17,12 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-feature
-        android:name="android.hardware.wifi"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.type.television"
-        android:required="false" />
-    <uses-feature
-        android:name="android.software.vr.mode"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.vr.high_performance"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.type.xr"
-        android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.type.television" android:required="false" />
+    <uses-feature android:name="android.software.vr.mode" android:required="false" />
+    <uses-feature android:name="android.hardware.vr.high_performance" android:required="false" />
+    <uses-feature android:name="android.hardware.type.xr" android:required="false" />
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -59,7 +47,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <!-- Opt out to do not share WebView usage statistics -->
         <meta-data
             android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />
@@ -75,10 +62,13 @@
             android:label="@string/pref_category_settings">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:label="Sobre este app" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
@@ -88,68 +78,43 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="*/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="*/*" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="snapdrop.net"
-                    android:scheme="http" />
-                <data
-                    android:host="snapdrop.net"
-                    android:scheme="https" />
+                <data android:host="snapdrop.net" android:scheme="http" />
+                <data android:host="snapdrop.net" android:scheme="https" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="pairdrop.net"
-                    android:scheme="http" />
-                <data
-                    android:host="pairdrop.net"
-                    android:scheme="https" />
+                <data android:host="pairdrop.net" android:scheme="http" />
+                <data android:host="pairdrop.net" android:scheme="https" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="drop.erikraft.com"
-                    android:scheme="https" />
+                <data android:host="drop.erikraft.com" android:scheme="https" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".FloatingTextActivity"
@@ -159,9 +124,7 @@
             android:theme="@style/TransparentBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
@@ -171,7 +134,6 @@
             android:exported="false"
             android:label="@string/qr_transfer_title"
             android:theme="@style/AppTheme" />
-
         <service
             android:name=".QuickTileService"
             android:exported="true"
@@ -183,7 +145,6 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -193,7 +154,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-            <activity android:name=".OnionTransferActivity" android:exported="false" />
+        <activity android:name=".OnionTransferActivity" android:exported="false" />
     </application>
-
 </manifest>
