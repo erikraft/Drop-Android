@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.InputType;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,8 +37,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,15 +101,18 @@ public class OnionTransferActivity extends AppCompatActivity {
         selectionSummary = text("Nenhum arquivo selecionado.", 14);
         shareContent.addView(selectionSummary);
 
+        TextView sendTextLabel = text(getString(R.string.onion_transfer_send_text), 14);
+        shareContent.addView(sendTextLabel, lpTop(dp(14)));
+
         TextInputLayout textLayout = new TextInputLayout(this);
-        textLayout.setHint(getString(R.string.onion_transfer_send_text));
+        textLayout.setHintEnabled(false);
         textInput = new TextInputEditText(this);
         textInput.setHint(getString(R.string.onion_transfer_text_hint));
         textInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         textInput.setMinLines(4);
         textInput.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
         textLayout.addView(textInput, new LinearLayout.LayoutParams(-1, -2));
-        shareContent.addView(textLayout, lpTop(dp(14)));
+        shareContent.addView(textLayout);
 
         MaterialButton useText = button(getString(R.string.onion_transfer_send_text));
         useText.setOnClickListener(v -> {
@@ -252,7 +252,7 @@ public class OnionTransferActivity extends AppCompatActivity {
                 if (server != null && address.getText().length() == 0) {
                     status.setText(getString(R.string.onion_transfer_error));
                     Toast.makeText(this, "O Tor não respondeu a tempo. Verifique se o dispositivo permite executar o Tor.", Toast.LENGTH_LONG).show();
-                    stopOnion();
+                    stopOnion(true);
                 }
             };
             handler.postDelayed(startupTimeout, 120000);
@@ -278,7 +278,7 @@ public class OnionTransferActivity extends AppCompatActivity {
                 @Override public void onError(Exception error) {
                     if (startupTimeout != null) handler.removeCallbacks(startupTimeout);
                     status.setText(getString(R.string.onion_transfer_error) + " " + (error.getMessage() == null ? "" : error.getMessage()));
-                    stopOnion();
+                    stopOnion(true);
                 }
             });
         } catch (IOException e) {
@@ -287,6 +287,10 @@ public class OnionTransferActivity extends AppCompatActivity {
     }
 
     private void stopOnion() {
+        stopOnion(false);
+    }
+
+    private void stopOnion(boolean preserveStatus) {
         if (startupTimeout != null) handler.removeCallbacks(startupTimeout);
         if (server != null) {
             server.stop();
@@ -300,7 +304,7 @@ public class OnionTransferActivity extends AppCompatActivity {
         progress.setVisibility(View.GONE);
         address.setText("");
         qr.setVisibility(View.GONE);
-        status.setText("Serviço Onion parado.");
+        if (!preserveStatus) status.setText("Serviço Onion parado.");
     }
 
     private void copyLink() {
