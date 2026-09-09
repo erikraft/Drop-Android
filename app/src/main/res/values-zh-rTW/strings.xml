@@ -14,11 +14,13 @@
     <string name="onboarding_choose_server_description">這個應用程式是專為 Web 應用程式 ErikrafT Drop 和 PairDrop 最佳化的用戶端。\n選擇以下執行個體或指定一個自訂 URL 以進行連線。\n\n注意：您必須在所有裝置上選擇相同的 URL。</string>
     <string name="onboarding_storage_permission">儲存空間權限</string>
     <string name="onboarding_storage_permission_description">這是一個用於檔案分享的公用程式，因此，若要使用它，需要授予儲存空間權限。</string>
-    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
-    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
     <string name="onboarding_server_snapdrop_summary">傳統 Snapdrop，簡單易用。</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">自訂 URL</string>
@@ -39,7 +41,7 @@
     <string name="retry">重試</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">關於</string>
-    <string name="title_activity_about">關於 Snapdrop &amp; PairDrop for Android</string>
+    <string name="title_activity_about">About ErikrafT Drop™</string>
     <string name="pref_about_title">關於這個應用程式</string>
     <string name="view_downloads">檢視下載</string>
     <string name="pref_category_settings">設定</string>
@@ -114,13 +116,20 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
+    <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
+    <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
     <string name="onion_transfer_select_files">Selecionar arquivos</string>
+    <string name="onion_transfer_send_text">Enviar texto</string>
+    <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
     <string name="onion_transfer_start">Iniciar Onion Service</string>
     <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando Onion Service…</string>
-    <string name="onion_transfer_ready">Compartilhe este endereço Onion:</string>
+    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
+    <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
     <string name="onion_transfer_copy">Copiar link</string>
     <string name="onion_transfer_share">Compartilhar</string>
-    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo.</string>
+    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
+    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
+    <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
+    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
 </resources>

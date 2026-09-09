@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Sobre ErikrafT Drop™ &amp; PairDrop para Android</string>
+    <string name="app_name_long">Sobre ErikrafT Drop &amp; PairDrop para Android</string>
     <string name="app_name_slogan">Transfira arquivos perfeitamente entre todos os seus dispositivos.</string>
     <string name="err_no_browser">Não foi possível abrir o navegador</string>
     <string name="err_no_app">Nenhum app instalado que pode abrir este arquivo</string>
@@ -14,13 +14,15 @@
     <string name="onboarding_choose_server_description">Este app é um cliente otimizado para o ErikrafT Drop e o PairDrop.\nEscolha uma das seguintes instâncias ou especifique uma url personalizada para se conectar.\n\nNota: Você tem que escolher a mesma URL em todos os dispositivos.</string>
     <string name="onboarding_storage_permission">Permissão de armazenamento</string>
     <string name="onboarding_storage_permission_description">Este aplicativo é usado para compartilhamento de arquivos. Portanto, a permissão de armazenamento é necessária para usá-lo.</string>
-    <string name="onboarding_server_primary_summary">(1) Padrão — ErikrafT Drop</string>
-    <string name="onboarding_server_secondary_summary">(2) Secundário — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_tertiary_summary">(3) Terciário — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — PairDrop (concorrente)</string>
-    <string name="onboarding_server_pairdrop_summary">Servidor padrão do ErikrafT Drop.</string>
-    <string name="onboarding_server_snapdrop_summary">Compartilhamento de arquivos simples e limpo.</string>
-    <string name="onboarding_server_snapdrop_summary_server_warning">Fallback do PairDrop.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
+    <string name="onboarding_server_snapdrop_summary">O snapdrop clássico. Limpo e simples.</string>
+    <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Especialistas também podem hospedar seus próprios servidores.</string>
     <string name="onboarding_server_custom_add">Add server</string>
@@ -39,7 +41,7 @@
     <string name="retry">repetir</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Informações sobre o \'app\'</string>
-    <string name="title_activity_about">Sobre ErikrafT Drop™ &amp; PairDrop para Android</string>
+    <string name="title_activity_about">About ErikrafT Drop™</string>
     <string name="pref_about_title">Sobre este \'app\'</string>
     <string name="view_downloads">Ver downloads</string>
     <string name="pref_category_settings">Configurações</string>
@@ -114,13 +116,20 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
+    <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
+    <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
     <string name="onion_transfer_select_files">Selecionar arquivos</string>
+    <string name="onion_transfer_send_text">Enviar texto</string>
+    <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
     <string name="onion_transfer_start">Iniciar Onion Service</string>
     <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando Onion Service…</string>
-    <string name="onion_transfer_ready">Compartilhe este endereço Onion:</string>
+    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
+    <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
     <string name="onion_transfer_copy">Copiar link</string>
     <string name="onion_transfer_share">Compartilhar</string>
-    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo.</string>
+    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
+    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
+    <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
+    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
 </resources>

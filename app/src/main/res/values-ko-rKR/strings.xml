@@ -14,11 +14,13 @@
     <string name="onboarding_choose_server_description">이 애플리케이션은 ErikrafT Drop과 PairDrop 웹 앱에 대응되는 최적화된 클라이언트 입니다.\n다음 중 하나의 인스턴스를 고르거나, 연결할 커스텀 URL을 입력하세요.\n\n메모: 사용할 모든 기기가 같은 URL에 연결되어야 합니다.</string>
     <string name="onboarding_storage_permission">저장소 권한</string>
     <string name="onboarding_storage_permission_description">이 앱은 파일 공유 유틸리티입니다. 파일에 접근하기 위해 저장소 접근 권한이 필요합니다.</string>
-    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop</string>
-    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quaternary — PairDrop (competitor)</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop primary server.</string>
+    <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
+    <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
     <string name="onboarding_server_snapdrop_summary">기본적인 Snapdrop. 간단하고 깨끗합니다.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">커스텀 URL</string>
@@ -39,7 +41,7 @@
     <string name="retry">다시 시도</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">정보</string>
-    <string name="title_activity_about">Android 용 Snapdrop 및 PairDrop에 대해</string>
+    <string name="title_activity_about">About ErikrafT Drop™</string>
     <string name="pref_about_title">앱 소개</string>
     <string name="view_downloads">다운로드 보기</string>
     <string name="pref_category_settings">설정</string>
@@ -114,13 +116,20 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
+    <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
+    <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
     <string name="onion_transfer_select_files">Selecionar arquivos</string>
+    <string name="onion_transfer_send_text">Enviar texto</string>
+    <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
     <string name="onion_transfer_start">Iniciar Onion Service</string>
     <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando Onion Service…</string>
-    <string name="onion_transfer_ready">Compartilhe este endereço Onion:</string>
+    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
+    <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
     <string name="onion_transfer_copy">Copiar link</string>
     <string name="onion_transfer_share">Compartilhar</string>
-    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo.</string>
+    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
+    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
+    <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
+    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
 </resources>
