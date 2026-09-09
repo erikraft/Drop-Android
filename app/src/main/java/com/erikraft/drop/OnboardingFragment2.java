@@ -38,7 +38,6 @@ public class OnboardingFragment2 extends Fragment {
             this.description = description;
             this.warning = warning;
         }
-
     }
 
     public static class ServerItemViewHolder extends RecyclerView.ViewHolder {
@@ -63,7 +62,6 @@ public class OnboardingFragment2 extends Fragment {
     }
 
     public class ServerItemCardAdapter extends RecyclerView.Adapter<ServerItemViewHolder> {
-
         private final List<ServerItem> items;
 
         public ServerItemCardAdapter(final List<ServerItem> items) {
@@ -73,24 +71,15 @@ public class OnboardingFragment2 extends Fragment {
         @NonNull
         @Override
         public ServerItemViewHolder onCreateViewHolder(final @NonNull ViewGroup parent, final int viewType) {
-            final View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.servercard, parent, false);
-
+            final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.servercard, parent, false);
             final ServerItemViewHolder holder = new ServerItemViewHolder(view);
-
-            holder.itemView.setOnClickListener(v -> {
-                tempUrl.setValue(holder.urlTextView.getText().toString());
-            });
-
+            holder.itemView.setOnClickListener(v -> tempUrl.setValue(holder.urlTextView.getText().toString()));
             holder.itemView.setOnLongClickListener(v -> {
                 removeServer(holder.urlTextView.getText().toString());
                 return true;
             });
-
-            tempUrl.observe(requireActivity(), url -> {
-                ((MaterialCardView) holder.itemView).setChecked(holder.urlTextView.getText().toString().equals(url));
-            });
-
+            tempUrl.observe(requireActivity(), url -> ((MaterialCardView) holder.itemView)
+                    .setChecked(holder.urlTextView.getText().toString().equals(url)));
             return holder;
         }
 
@@ -107,7 +96,6 @@ public class OnboardingFragment2 extends Fragment {
     }
 
     final MutableLiveData<String> tempUrl = new MutableLiveData<>();
-
     FragmentOnboarding2Binding binding;
     SharedPreferences pref;
 
@@ -117,85 +105,59 @@ public class OnboardingFragment2 extends Fragment {
 
     @Override
     public void onViewCreated(final @NonNull View view, final Bundle savedInstanceState) {
-
         final OnboardingViewModel viewModel = new ViewModelProvider(requireActivity()).get(OnboardingViewModel.class);
-
         binding = FragmentOnboarding2Binding.bind(view);
         pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
         tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://drop.erikraft.com/"));
-
         reloadServerList();
 
-        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null, Link.bind("https://github.com/erikraft/Drop/blob/master/docs/FAQ.md", R.string.baseurl_unofficial_instances), url -> {
-            if (url == null) {
-                return;
-            }
-
-            if (isSnapdropNet(url)) {
-                showSnapdropUpdateNotice();
-                return;
-            }
-
-            if (url.startsWith("!!")) {
-                newServer(url.substring("!!".length()));
-            } else if (url.toLowerCase().contains(".onion")) {
-                String onionUrl = url.contains("://") ? url : "http://" + url;
-                if (!onionUrl.endsWith("/")) onionUrl += "/";
-                newServer(onionUrl);
-            } else if (url.toLowerCase().contains(".onion")) {
-                String onionUrl = url.contains("://") ? url : "http://" + url;
-                if (!onionUrl.endsWith("/")) onionUrl += "/";
-                newServer(onionUrl);
-            } else if (url.startsWith("http")) {
-                NetworkUtils.checkInstance(this, url, result -> {
-                    if (result) {
-                        newServer(url);
+        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null,
+                Link.bind("https://github.com/erikraft/Drop/blob/master/docs/FAQ.md", R.string.baseurl_unofficial_instances), url -> {
+                    if (url == null) return;
+                    if (isSnapdropNet(url)) {
+                        showSnapdropUpdateNotice();
+                        return;
                     }
-                });
-            } else {
-                String mightBeHttpsUrl = "https://" + url;
-                NetworkUtils.checkInstance(this, mightBeHttpsUrl, resultHttps -> {
-                    if (resultHttps) {
-                        newServer(mightBeHttpsUrl);
+                    if (url.startsWith("!!")) {
+                        newServer(url.substring("!!".length()));
+                    } else if (url.toLowerCase().contains(".onion")) {
+                        String onionUrl = url.contains("://") ? url : "http://" + url;
+                        if (!onionUrl.endsWith("/")) onionUrl += "/";
+                        newServer(onionUrl);
+                    } else if (url.startsWith("http")) {
+                        NetworkUtils.checkInstance(this, url, result -> {
+                            if (result) newServer(url);
+                        });
                     } else {
-                        String mightBeHttpUrl = "http://" + url;
-                        NetworkUtils.checkInstance(this, mightBeHttpUrl, resultHttp -> {
-                            if (resultHttp) {
-                                newServer(mightBeHttpUrl);
+                        String mightBeHttpsUrl = "https://" + url;
+                        NetworkUtils.checkInstance(this, mightBeHttpsUrl, resultHttps -> {
+                            if (resultHttps) {
+                                newServer(mightBeHttpsUrl);
+                            } else {
+                                String mightBeHttpUrl = "http://" + url;
+                                NetworkUtils.checkInstance(this, mightBeHttpUrl, resultHttp -> {
+                                    if (resultHttp) newServer(mightBeHttpUrl);
+                                });
                             }
                         });
                     }
-                });
-            }
-        }));
+                }));
 
         binding.continueButton.setOnClickListener(v -> {
             viewModel.url(tempUrl.getValue());
-            if (viewModel.isOnlyServerSelection()) {
-                requireActivity().finish();
-            } else {
-                viewModel.launchFragment(OnboardingFragment3.class);
-            }
+            if (viewModel.isOnlyServerSelection()) requireActivity().finish();
+            else viewModel.launchFragment(OnboardingFragment3.class);
         });
         binding.continueButton.requestFocus();
     }
 
     private boolean isSnapdropNet(final String value) {
-        if (value == null) {
-            return false;
-        }
-
+        if (value == null) return false;
         String normalized = value.trim();
-        if (normalized.startsWith("!!")) {
-            normalized = normalized.substring(2).trim();
-        }
-        if (!normalized.contains("://")) {
-            normalized = "https://" + normalized;
-        }
+        if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
+        if (!normalized.contains("://")) normalized = "https://" + normalized;
         normalized = normalized.replaceFirst("^http://", "https://");
-        while (normalized.endsWith("/")) {
-            normalized = normalized.substring(0, normalized.length() - 1);
-        }
+        while (normalized.endsWith("/")) normalized = normalized.substring(0, normalized.length() - 1);
         return "https://snapdrop.net".equalsIgnoreCase(normalized)
                 || "https://www.snapdrop.net".equalsIgnoreCase(normalized);
     }
@@ -204,29 +166,25 @@ public class OnboardingFragment2 extends Fragment {
         new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.important_update_title)
                 .setMessage(R.string.important_update_message)
-                .setPositiveButton(R.string.important_update_ok, (dialog, which) ->
-                        tempUrl.setValue("https://drop.erikraft.com/"))
+                .setPositiveButton(R.string.important_update_ok, (dialog, which) -> tempUrl.setValue("https://drop.erikraft.com/"))
                 .show();
     }
 
     private void reloadServerList() {
         final Set<String> serverUrls = pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>());
-
-        // Keep official ErikrafT instances in a deterministic priority order.
-        // PairDrop remains available only as the fourth/final fallback.
         final List<ServerItem> servers = new ArrayList<>();
+
         servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_primary_summary), null));
         servers.add(new ServerItem("https://drop-fallback.erikraft.com/", getString(R.string.onboarding_server_secondary_summary), null));
         servers.add(new ServerItem("https://dropfallback.erikraft.com/", getString(R.string.onboarding_server_tertiary_summary), null));
-        servers.add(new ServerItem("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/", "ErikrafT Drop™ Onion Service (Beta)", "Requer Tor. O PairDrop fica como quinto servidor."));
-        servers.add(new ServerItem("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/", "ErikrafT Drop™ Onion Service (Beta)", "Requer Tor. O PairDrop fica como quinto servidor."));
-        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quaternary_summary), null));
+        servers.add(new ServerItem("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/",
+                getString(R.string.onboarding_server_quaternary_summary), getString(R.string.onboarding_server_onion_warning)));
+        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quinary_summary), null));
 
         for (String url : serverUrls) {
             if (!url.equals("https://drop.erikraft.com/")
                     && !url.equals("https://drop-fallback.erikraft.com/")
                     && !url.equals("https://dropfallback.erikraft.com/")
-                    && !url.equals("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/")
                     && !url.equals("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/")
                     && !url.equals("https://pairdrop.net/")
                     && !url.equals("https://pairdrop.net")) {
@@ -251,5 +209,4 @@ public class OnboardingFragment2 extends Fragment {
         pref.edit().putStringSet(getString(R.string.pref_custom_servers), serverUrls).apply();
         reloadServerList();
     }
-
 }

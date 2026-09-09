@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_onion_transfer"
-        android:icon="@drawable/pref_about"
+        android:icon="@drawable/ic_onion"
         android:title="@string/onion_transfer_title"
         app:showAsAction="ifRoom" />
     <item

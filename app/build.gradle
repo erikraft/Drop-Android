@@ -20,8 +20,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 36
 
-        versionCode 23
-        versionName "10.1.0"
+        versionCode 24
+        versionName "10.1.1"
         applicationVariants.all { variant ->
             variant.outputs.all {
                 outputFileName = "Drop-Android.apk"
@@ -81,13 +81,9 @@ android {
     def resolveSigningValue = { List<String> propertyNames, String envName ->
         for (propertyName in propertyNames) {
             def propertyValue = project.findProperty(propertyName)
-            if (propertyValue != null && !propertyValue.toString().trim().isEmpty()) {
-                return propertyValue.toString().trim()
-            }
+            if (propertyValue != null && !propertyValue.toString().trim().isEmpty()) return propertyValue.toString().trim()
             def fileValue = keystoreProperties.getProperty(propertyName)
-            if (fileValue != null && !fileValue.trim().isEmpty()) {
-                return fileValue.trim()
-            }
+            if (fileValue != null && !fileValue.trim().isEmpty()) return fileValue.trim()
         }
         def envValue = System.getenv(envName)
         return envValue != null ? envValue.toString().trim() : null
@@ -148,7 +144,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    // 1.15.0 requires minSdk 23; 1.14.0 is the newest stable WebKit release that keeps API 21 support.
     implementation 'androidx.webkit:webkit:1.14.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'org.jsoup:jsoup:1.18.1'
