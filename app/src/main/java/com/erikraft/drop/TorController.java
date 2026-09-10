@@ -26,15 +26,20 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /** Android Tor controller used by Onion mode and .onion WebView instances. */
-public final class TorController implements TorWrapper.Observer {
+public final class TorController {
+    private static final String TAG = "ErikrafT-Tor";
+    private static final int PORT_ALLOCATION_ATTEMPTS = 8;
     private static TorController instance;
 
     private final Application application;
-    private final AndroidTorWrapper tor;
-    private final int socksPort;
-    private final int controlPort;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final AndroidWakeLockManager wakeLockManager;
+    private final ThreadPoolExecutor ioExecutor;
     private final java.util.concurrent.Executor mainExecutor;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile AndroidTorWrapper tor;
+    private volatile int socksPort;
+    private volatile int controlPort;
+    private volatile long torGeneration;
     private volatile boolean started;
     private volatile boolean connected;
     private volatile Runnable pendingConnected;
@@ -42,17 +47,10 @@ public final class TorController implements TorWrapper.Observer {
 
     private TorController(@NonNull Context context) {
         application = (Application) context.getApplicationContext();
-        AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(application);
-        ThreadPoolExecutor ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
+        wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(application);
+        ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
         mainExecutor = command -> new Handler(Looper.getMainLooper()).post(command);
-
-        int[] ports = findAvailablePortPair();
-        socksPort = ports[0];
-        controlPort = ports[1];
-
-        tor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
-                application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
-        tor.setObserver(this);
+        recreateTorWrapper();
     }
 
     public static synchronized TorController get(@NonNull Context context) {
@@ -60,17 +58,63 @@ public final class TorController implements TorWrapper.Observer {
         return instance;
     }
 
+    /**
+     * Allocate two distinct local ports. The sockets are deliberately held open only during
+     * discovery because AndroidTorWrapper owns the actual listeners. Startup therefore retries
+     * with a fresh pair if another process wins the small allocation race.
+     */
     private static int[] findAvailablePortPair() {
-        for (int attempt = 0; attempt < 8; attempt++) {
+        for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try (ServerSocket socks = new ServerSocket(0); ServerSocket control = new ServerSocket(0)) {
+                socks.setReuseAddress(false);
+                control.setReuseAddress(false);
                 int socksPort = socks.getLocalPort();
                 int controlPort = control.getLocalPort();
-                if (socksPort != controlPort) return new int[]{socksPort, controlPort};
-            } catch (IOException ignored) {
-                // Retry with another pair. The final failure is reported explicitly below.
+                if (socksPort > 0 && controlPort > 0 && socksPort != controlPort) {
+                    return new int[]{socksPort, controlPort};
+                }
+            } catch (IOException e) {
+                if (attempt == PORT_ALLOCATION_ATTEMPTS) {
+                    throw new IllegalStateException("Unable to allocate local ports for Tor", e);
+                }
             }
         }
         throw new IllegalStateException("Unable to allocate local ports for Tor");
+    }
+
+    private synchronized void recreateTorWrapper() {
+        int[] ports = findAvailablePortPair();
+        socksPort = ports[0];
+        controlPort = ports[1];
+        final long generation = ++torGeneration;
+        AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
+                application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
+        newTor.setObserver(new TorWrapper.Observer() {
+            private boolean isCurrent() {
+                return generation == torGeneration;
+            }
+
+            @Override
+            public void onState(TorWrapper.TorState state) {
+                if (isCurrent()) handleState(state);
+            }
+
+            @Override
+            public void onBootstrapPercentage(int percentage) {
+                if (isCurrent()) handleBootstrapPercentage(percentage);
+            }
+
+            @Override
+            public void onHsDescriptorUpload(String onion) {
+                if (isCurrent()) handleHsDescriptorUpload(onion);
+            }
+
+            @Override
+            public void onClockSkewDetected(long skewSeconds) {
+                if (isCurrent()) handleClockSkewDetected(skewSeconds);
+            }
+        });
+        tor = newTor;
     }
 
     private static String architecture() {
@@ -119,17 +163,34 @@ public final class TorController implements TorWrapper.Observer {
         pendingConnected = callback;
         if (started) return;
         started = true;
-        executor.execute(() -> {
+        executor.execute(this::startTorWithRetry);
+    }
+
+    private void startTorWithRetry() {
+        Exception lastError = null;
+        for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try {
-                tor.start();
-                tor.enableNetwork(true);
+                AndroidTorWrapper currentTor = tor;
+                currentTor.start();
+                currentTor.enableNetwork(true);
+                return;
             } catch (Exception e) {
-                started = false;
-                connected = false;
-                Log.e("ErikrafT-Tor", "Unable to start Tor", e);
-                failPending(e);
+                lastError = e;
+                Log.w(TAG, "Tor start failed on attempt " + attempt + "/" + PORT_ALLOCATION_ATTEMPTS + "; reallocating ports", e);
+                try {
+                    AndroidTorWrapper currentTor = tor;
+                    try { currentTor.stop(); } catch (Exception ignored) { }
+                    recreateTorWrapper();
+                } catch (Exception allocationError) {
+                    lastError = allocationError;
+                    break;
+                }
             }
-        });
+        }
+        started = false;
+        connected = false;
+        if (lastError == null) lastError = new IllegalStateException("Unable to start Tor");
+        failPending(lastError);
     }
 
     private void failPending(final Exception error) {
@@ -148,14 +209,13 @@ public final class TorController implements TorWrapper.Observer {
                 tor.publishHiddenService(localPort, 80, null);
             } catch (Exception e) {
                 pendingOnion = null;
-                Log.e("ErikrafT-Tor", "Unable to publish Onion service", e);
+                Log.e(TAG, "Unable to publish Onion service", e);
                 mainExecutor.execute(() -> callback.onError(e));
             }
         }));
     }
 
-    @Override
-    public void onState(TorWrapper.TorState state) {
+    private void handleState(TorWrapper.TorState state) {
         if (state == TorWrapper.TorState.CONNECTED) {
             connected = true;
             Runnable cb = pendingConnected;
@@ -167,14 +227,12 @@ public final class TorController implements TorWrapper.Observer {
         }
     }
 
-    @Override
-    public void onBootstrapPercentage(int percentage) {
+    private void handleBootstrapPercentage(int percentage) {
         final OnionCallback callback = pendingOnion;
         if (callback != null) mainExecutor.execute(() -> callback.onProgress(Math.max(0, Math.min(100, percentage))));
     }
 
-    @Override
-    public void onHsDescriptorUpload(String onion) {
+    private void handleHsDescriptorUpload(String onion) {
         OnionCallback cb = pendingOnion;
         pendingOnion = null;
         if (cb != null) mainExecutor.execute(() -> {
@@ -183,15 +241,17 @@ public final class TorController implements TorWrapper.Observer {
         });
     }
 
-    @Override public void onClockSkewDetected(long skewSeconds) { }
+    private void handleClockSkewDetected(long skewSeconds) { }
 
     public static synchronized void shutdown(@NonNull Context context) {
         if (instance == null) return;
+        instance.torGeneration++;
         try { instance.tor.stop(); } catch (Exception ignored) { }
         if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
             ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });
         }
         instance.executor.shutdownNow();
+        instance.ioExecutor.shutdownNow();
         instance = null;
     }
 
