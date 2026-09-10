@@ -17,6 +17,8 @@ import org.briarproject.android.dontkillmelib.wakelock.AndroidWakeLockManagerFac
 import org.briarproject.onionwrapper.AndroidTorWrapper;
 import org.briarproject.onionwrapper.TorWrapper;
 
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
@@ -25,12 +27,12 @@ import java.util.concurrent.TimeUnit;
 
 /** Android Tor controller used by Onion mode and .onion WebView instances. */
 public final class TorController implements TorWrapper.Observer {
-    private static final int SOCKS_PORT = 53054;
-    private static final int CONTROL_PORT = 53055;
     private static TorController instance;
 
     private final Application application;
     private final AndroidTorWrapper tor;
+    private final int socksPort;
+    private final int controlPort;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final java.util.concurrent.Executor mainExecutor;
     private volatile boolean started;
@@ -43,14 +45,32 @@ public final class TorController implements TorWrapper.Observer {
         AndroidWakeLockManager wakeLockManager = AndroidWakeLockManagerFactory.createAndroidWakeLockManager(application);
         ThreadPoolExecutor ioExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
         mainExecutor = command -> new Handler(Looper.getMainLooper()).post(command);
+
+        int[] ports = findAvailablePortPair();
+        socksPort = ports[0];
+        controlPort = ports[1];
+
         tor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
-                application.getDir("tor", Context.MODE_PRIVATE), SOCKS_PORT, CONTROL_PORT);
+                application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
         tor.setObserver(this);
     }
 
     public static synchronized TorController get(@NonNull Context context) {
         if (instance == null) instance = new TorController(context);
         return instance;
+    }
+
+    private static int[] findAvailablePortPair() {
+        for (int attempt = 0; attempt < 8; attempt++) {
+            try (ServerSocket socks = new ServerSocket(0); ServerSocket control = new ServerSocket(0)) {
+                int socksPort = socks.getLocalPort();
+                int controlPort = control.getLocalPort();
+                if (socksPort != controlPort) return new int[]{socksPort, controlPort};
+            } catch (IOException ignored) {
+                // Retry with another pair. The final failure is reported explicitly below.
+            }
+        }
+        throw new IllegalStateException("Unable to allocate local ports for Tor");
     }
 
     private static String architecture() {
@@ -85,7 +105,7 @@ public final class TorController implements TorWrapper.Observer {
         }
         controller.start(() -> {
             ProxyConfig config = new ProxyConfig.Builder()
-                    .addProxyRule("socks://127.0.0.1:" + SOCKS_PORT, ProxyConfig.MATCH_ALL_SCHEMES)
+                    .addProxyRule("socks://127.0.0.1:" + controller.socksPort, ProxyConfig.MATCH_ALL_SCHEMES)
                     .build();
             ProxyController.getInstance().setProxyOverride(config, controller.mainExecutor, afterProxy);
         });
@@ -128,6 +148,7 @@ public final class TorController implements TorWrapper.Observer {
                 tor.publishHiddenService(localPort, 80, null);
             } catch (Exception e) {
                 pendingOnion = null;
+                Log.e("ErikrafT-Tor", "Unable to publish Onion service", e);
                 mainExecutor.execute(() -> callback.onError(e));
             }
         }));
