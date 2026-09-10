@@ -397,8 +397,24 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        // Do not retain the camera or keep decoding while this Activity is backgrounded.
+        if (isReceiving) stopCamera();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Surface callbacks are not guaranteed when returning from the background.
+        if (isReceiving && !isCancelled && surfaceHolder != null && camera == null) {
+            startCameraPreview();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
-        super.onDestroy();
         cancelTransfer();
+        super.onDestroy();
     }
 }
