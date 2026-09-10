@@ -231,20 +231,28 @@ try {
                 const response = await fetch(href, { credentials: 'include' });
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 const blob = await response.blob();
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    const result = String(reader.result || '');
-                    const separator = result.indexOf(',');
-                    const base64 = separator >= 0 ? result.substring(separator + 1) : result;
-                    androidDownloadBridge.downloadBase64File(
-                        anchor.getAttribute('download') || 'download',
-                        blob.type || 'application/octet-stream',
-                        base64
-                    );
-                };
-                reader.readAsDataURL(blob);
+                // Keep each bridge call bounded. Passing an entire Blob as one Base64 string can
+                // exceed a WebView binder/heap limit and makes large WebTorrent downloads fail.
+                const name = anchor.getAttribute('download') || 'download';
+                const mime = blob.type || 'application/octet-stream';
+                const chunkSize = 192 * 1024; // Base64 is about 256 KiB per bridge invocation.
+                androidDownloadBridge.newFile(name, mime, String(blob.size));
+                for (let offset = 0; offset < blob.size; offset += chunkSize) {
+                    const buffer = await blob.slice(offset, offset + chunkSize).arrayBuffer();
+                    const bytes = new Uint8Array(buffer);
+                    let binary = '';
+                    for (let index = 0; index < bytes.length; index += 0x8000) {
+                        binary += String.fromCharCode.apply(null, bytes.subarray(index, index + 0x8000));
+                    }
+                    androidDownloadBridge.onBytes(btoa(binary));
+                }
+                androidDownloadBridge.saveDownloadFileName(name, String(blob.size));
                 return true;
             } catch (error) {
+                // Discard a partially written file if a chunk conversion or native write fails.
+                if (typeof androidDownloadBridge.ignoreClickedListener === 'function') {
+                    androidDownloadBridge.ignoreClickedListener();
+                }
                 console.error('Android WebView download bridge failed', error);
                 return false;
             }
