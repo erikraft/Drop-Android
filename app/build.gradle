@@ -40,18 +40,32 @@ android {
     flavorDimensions "device"
 
     productFlavors {
-        mobile { dimension "device" }
-        tv { dimension "device" }
-        xr { dimension "device" }
+        mobile {
+            dimension "device"
+        }
+
+        tv {
+            dimension "device"
+        }
+
+        xr {
+            dimension "device"
+        }
     }
 
-    buildFeatures { viewBinding true }
+    buildFeatures {
+        viewBinding true
+    }
 
     packagingOptions {
-        jniLibs { useLegacyPackaging = true }
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 
-    lint { disable 'MissingTranslation', 'ExtraTranslation' }
+    lint {
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -60,7 +74,9 @@ android {
 
     def keystorePropertiesFile = rootProject.file('keystore.properties')
     def keystoreProperties = new Properties()
-    if (keystorePropertiesFile.exists()) keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
 
     def resolveSigningValue = { List<String> propertyNames, String envName ->
         for (propertyName in propertyNames) {
@@ -77,14 +93,23 @@ android {
     def keystorePassword = resolveSigningValue(['KEYSTORE_PASSWORD', 'storePassword'], 'KEYSTORE_PASSWORD')
     def signingKeyAlias = resolveSigningValue(['KEY_ALIAS', 'keyAlias'], 'KEY_ALIAS')
     def signingKeyPassword = resolveSigningValue(['KEY_PASSWORD', 'keyPassword'], 'KEY_PASSWORD')
+
     def isReleaseTaskRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
     def signingValues = [keystorePath, keystorePassword, signingKeyAlias, signingKeyPassword]
     def hasAnySigningValue = signingValues.any { it != null && !it.isEmpty() }
     def hasCompleteSigningConfig = signingValues.every { it != null && !it.isEmpty() }
 
-    if (hasAnySigningValue && !hasCompleteSigningConfig) throw new GradleException("Signing configuration is incomplete. Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are all set.")
-    if (isReleaseTaskRequested && !hasCompleteSigningConfig) throw new GradleException("Release build requested without signing credentials. Configure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD.")
-    if (hasCompleteSigningConfig && !file(keystorePath).exists()) throw new GradleException("Configured KEYSTORE_PATH does not exist.")
+    if (hasAnySigningValue && !hasCompleteSigningConfig) {
+        throw new GradleException("Signing configuration is incomplete. Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are all set.")
+    }
+
+    if (isReleaseTaskRequested && !hasCompleteSigningConfig) {
+        throw new GradleException("Release build requested without signing credentials. Configure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD.")
+    }
+
+    if (hasCompleteSigningConfig && !file(keystorePath).exists()) {
+        throw new GradleException("Configured KEYSTORE_PATH does not exist.")
+    }
 
     if (hasCompleteSigningConfig) {
         signingConfigs {
@@ -95,6 +120,7 @@ android {
                 keyPassword signingKeyPassword
             }
         }
+
         buildTypes {
             release {
                 minifyEnabled true
@@ -104,7 +130,9 @@ android {
         }
     }
 
-    lintOptions { disable 'MissingTranslation', 'ExtraTranslation' }
+    lintOptions {
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
 }
 
 dependencies {
@@ -142,7 +170,9 @@ tasks.register('checkstyle', Checkstyle) {
     classpath = files()
 }
 
-tasks.named('check') { dependsOn tasks.named('checkstyle') }
+tasks.named('check') {
+    dependsOn tasks.named('checkstyle')
+}
 
 def playServiceAccountPath = System.getenv("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON")
 if (playServiceAccountPath != null && !playServiceAccountPath.isBlank()) {
