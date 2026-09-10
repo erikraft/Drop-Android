@@ -19,6 +19,8 @@ import org.briarproject.onionwrapper.TorWrapper;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
@@ -39,10 +41,11 @@ public final class TorController {
     private volatile AndroidTorWrapper tor;
     private volatile int socksPort;
     private volatile int controlPort;
-    private volatile long torGeneration;
+    private final CallbackGeneration torGeneration = new CallbackGeneration();
+    private final CallbackGeneration onionGeneration = new CallbackGeneration();
     private volatile boolean started;
     private volatile boolean connected;
-    private volatile Runnable pendingConnected;
+    private final List<Runnable> pendingConnected = new ArrayList<>();
     private volatile OnionCallback pendingOnion;
 
     private TorController(@NonNull Context context) {
@@ -86,12 +89,12 @@ public final class TorController {
         int[] ports = findAvailablePortPair();
         socksPort = ports[0];
         controlPort = ports[1];
-        final long generation = ++torGeneration;
+        final long generation = torGeneration.next();
         AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
                 application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
         newTor.setObserver(new TorWrapper.Observer() {
             private boolean isCurrent() {
-                return generation == torGeneration;
+                return torGeneration.isCurrent(generation);
             }
 
             @Override
@@ -155,12 +158,12 @@ public final class TorController {
         });
     }
 
-    public void start(Runnable callback) {
+    public synchronized void start(Runnable callback) {
         if (connected) {
             mainExecutor.execute(callback);
             return;
         }
-        pendingConnected = callback;
+        pendingConnected.add(callback);
         if (started) return;
         started = true;
         executor.execute(this::startTorWithRetry);
@@ -193,34 +196,46 @@ public final class TorController {
         failPending(lastError);
     }
 
-    private void failPending(final Exception error) {
-        pendingConnected = null;
+    private synchronized void failPending(final Exception error) {
+        pendingConnected.clear();
+        onionGeneration.next();
+        final long failureGeneration = onionGeneration.current();
         final OnionCallback callback = pendingOnion;
         pendingOnion = null;
-        if (callback != null) mainExecutor.execute(() -> callback.onError(error));
+        if (callback != null) mainExecutor.execute(() -> {
+            if (onionGeneration.isCurrent(failureGeneration)) callback.onError(error);
+        });
     }
 
-    public void publishHiddenService(int localPort, OnionCallback callback) {
+    public synchronized void publishHiddenService(int localPort, OnionCallback callback) {
+        final long requestGeneration = onionGeneration.next();
         pendingOnion = callback;
         callback.onProgress(0);
         start(() -> executor.execute(() -> {
             try {
+                if (!onionGeneration.isCurrent(requestGeneration)) return;
                 callback.onProgress(80);
-                tor.publishHiddenService(localPort, 80, null);
+                final AndroidTorWrapper currentTor = tor;
+                currentTor.publishHiddenService(localPort, 80, null);
             } catch (Exception e) {
-                pendingOnion = null;
+                if (!onionGeneration.isCurrent(requestGeneration)) return;
+                synchronized (TorController.this) {
+                    if (onionGeneration.isCurrent(requestGeneration)) pendingOnion = null;
+                }
                 Log.e(TAG, "Unable to publish Onion service", e);
-                mainExecutor.execute(() -> callback.onError(e));
+                mainExecutor.execute(() -> {
+                    if (onionGeneration.isCurrent(requestGeneration)) callback.onError(e);
+                });
             }
         }));
     }
 
-    private void handleState(TorWrapper.TorState state) {
+    private synchronized void handleState(TorWrapper.TorState state) {
         if (state == TorWrapper.TorState.CONNECTED) {
             connected = true;
-            Runnable cb = pendingConnected;
-            pendingConnected = null;
-            if (cb != null) mainExecutor.execute(cb);
+            final List<Runnable> callbacks = new ArrayList<>(pendingConnected);
+            pendingConnected.clear();
+            for (Runnable callback : callbacks) mainExecutor.execute(callback);
         } else if (state == TorWrapper.TorState.STOPPED) {
             connected = false;
             started = false;
@@ -228,14 +243,19 @@ public final class TorController {
     }
 
     private void handleBootstrapPercentage(int percentage) {
+        final long requestGeneration = onionGeneration.current();
         final OnionCallback callback = pendingOnion;
-        if (callback != null) mainExecutor.execute(() -> callback.onProgress(Math.max(0, Math.min(100, percentage))));
+        if (callback != null) mainExecutor.execute(() -> {
+            if (onionGeneration.isCurrent(requestGeneration)) callback.onProgress(Math.max(0, Math.min(100, percentage)));
+        });
     }
 
     private void handleHsDescriptorUpload(String onion) {
+        final long requestGeneration = onionGeneration.current();
         OnionCallback cb = pendingOnion;
         pendingOnion = null;
         if (cb != null) mainExecutor.execute(() -> {
+            if (!onionGeneration.isCurrent(requestGeneration)) return;
             cb.onProgress(100);
             cb.onReady(onion);
         });
@@ -245,7 +265,10 @@ public final class TorController {
 
     public static synchronized void shutdown(@NonNull Context context) {
         if (instance == null) return;
-        instance.torGeneration++;
+        instance.torGeneration.next();
+        instance.onionGeneration.next();
+        instance.pendingConnected.clear();
+        instance.pendingOnion = null;
         try { instance.tor.stop(); } catch (Exception ignored) { }
         if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
             ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });

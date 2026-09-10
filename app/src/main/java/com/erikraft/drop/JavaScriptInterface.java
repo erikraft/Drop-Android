@@ -50,8 +50,9 @@ public class JavaScriptInterface {
     @JavascriptInterface
     public synchronized void newFile(final String fileName, final String mimeType, final String fileSize) throws IOException {
         Log.i("DropAndroidJS", "Transfer Start: Receiving file. fileName=" + fileName + ", mimeType=" + mimeType + ", fileSize=" + fileSize);
-        String finalMime = mimeType;
-        if (mimeType.startsWith("base64:")) finalMime = mimeType.substring(7);
+        final String safeName = sanitizeDownloadName(fileName);
+        String finalMime = TextUtils.isEmpty(mimeType) ? "application/octet-stream" : mimeType;
+        if (finalMime.startsWith("base64:")) finalMime = finalMime.substring(7);
 
         IOUtils.closeStreamQuietly(fileOutputStream);
         fileOutputStream = null;
@@ -60,11 +61,11 @@ public class JavaScriptInterface {
         expectedBytes = parseExpectedBytes(fileSize);
         transferActive = false;
 
-        final FileWrapper fileWrapper = createFileWrapper(fileName, finalMime);
+        final FileWrapper fileWrapper = createFileWrapper(safeName, finalMime);
         if (fileWrapper == null) throw new IOException("Missing storage permissions");
         fileOutputStream = UriUtils.openOutputStream(fileWrapper.getUri(), context.getApplicationContext());
         if (fileOutputStream == null) throw new IOException("Cannot write target file");
-        fileHeader = new FileHeader(fileName, finalMime, fileSize, fileWrapper);
+        fileHeader = new FileHeader(safeName, finalMime, fileSize, fileWrapper);
         try {
             messageDigest = java.security.MessageDigest.getInstance("SHA-256");
         } catch (java.security.NoSuchAlgorithmException e) {
