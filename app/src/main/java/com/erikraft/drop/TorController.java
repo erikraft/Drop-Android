@@ -26,7 +26,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /** Android Tor controller used by Onion mode and .onion WebView instances. */
-public final class TorController implements TorWrapper.Observer {
+public final class TorController {
     private static final String TAG = "ErikrafT-Tor";
     private static final int PORT_ALLOCATION_ATTEMPTS = 8;
     private static TorController instance;
@@ -39,6 +39,7 @@ public final class TorController implements TorWrapper.Observer {
     private volatile AndroidTorWrapper tor;
     private volatile int socksPort;
     private volatile int controlPort;
+    private volatile long torGeneration;
     private volatile boolean started;
     private volatile boolean connected;
     private volatile Runnable pendingConnected;
@@ -85,9 +86,35 @@ public final class TorController implements TorWrapper.Observer {
         int[] ports = findAvailablePortPair();
         socksPort = ports[0];
         controlPort = ports[1];
-        tor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
+        final long generation = ++torGeneration;
+        AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
                 application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
-        tor.setObserver(this);
+        newTor.setObserver(new TorWrapper.Observer() {
+            private boolean isCurrent() {
+                return generation == torGeneration;
+            }
+
+            @Override
+            public void onState(TorWrapper.TorState state) {
+                if (isCurrent()) handleState(state);
+            }
+
+            @Override
+            public void onBootstrapPercentage(int percentage) {
+                if (isCurrent()) handleBootstrapPercentage(percentage);
+            }
+
+            @Override
+            public void onHsDescriptorUpload(String onion) {
+                if (isCurrent()) handleHsDescriptorUpload(onion);
+            }
+
+            @Override
+            public void onClockSkewDetected(long skewSeconds) {
+                if (isCurrent()) handleClockSkewDetected(skewSeconds);
+            }
+        });
+        tor = newTor;
     }
 
     private static String architecture() {
@@ -188,8 +215,7 @@ public final class TorController implements TorWrapper.Observer {
         }));
     }
 
-    @Override
-    public void onState(TorWrapper.TorState state) {
+    private void handleState(TorWrapper.TorState state) {
         if (state == TorWrapper.TorState.CONNECTED) {
             connected = true;
             Runnable cb = pendingConnected;
@@ -201,14 +227,12 @@ public final class TorController implements TorWrapper.Observer {
         }
     }
 
-    @Override
-    public void onBootstrapPercentage(int percentage) {
+    private void handleBootstrapPercentage(int percentage) {
         final OnionCallback callback = pendingOnion;
         if (callback != null) mainExecutor.execute(() -> callback.onProgress(Math.max(0, Math.min(100, percentage))));
     }
 
-    @Override
-    public void onHsDescriptorUpload(String onion) {
+    private void handleHsDescriptorUpload(String onion) {
         OnionCallback cb = pendingOnion;
         pendingOnion = null;
         if (cb != null) mainExecutor.execute(() -> {
@@ -217,10 +241,11 @@ public final class TorController implements TorWrapper.Observer {
         });
     }
 
-    @Override public void onClockSkewDetected(long skewSeconds) { }
+    private void handleClockSkewDetected(long skewSeconds) { }
 
     public static synchronized void shutdown(@NonNull Context context) {
         if (instance == null) return;
+        instance.torGeneration++;
         try { instance.tor.stop(); } catch (Exception ignored) { }
         if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
             ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });
