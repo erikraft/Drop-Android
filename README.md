@@ -67,7 +67,7 @@ For a signed release, configure these repository/environment secrets:
 
 The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch.
 
-> **Current Android app version:** `10.0.4` (version code `21`).
+> **Current Android app version:** `10.1.3` (version code `26`).
 > **Target/Compile SDK:** Android 16 / API 36.
 
 The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.
