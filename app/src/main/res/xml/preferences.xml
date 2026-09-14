@@ -62,6 +62,15 @@
             android:title="@string/retain_location_metadata_title"
             app:isPreferenceVisible="false" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="@string/pref_diagnostics_enabled"
+            android:summary="@string/diagnostics_summary"
+            android:title="@string/diagnostics_title" />
+        <Preference
+            android:key="@string/pref_diagnostics_open"
+            android:summary="@string/diagnostics_enabled_summary"
+            android:title="@string/diagnostics_open" />
     </PreferenceCategory>
 
     <PreferenceCategory

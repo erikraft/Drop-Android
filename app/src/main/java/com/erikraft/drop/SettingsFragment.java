@@ -76,6 +76,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        final Preference diagnosticsEnabled = findPreference(getString(R.string.pref_diagnostics_enabled));
+        final Preference diagnosticsOpen = findPreference(getString(R.string.pref_diagnostics_open));
+        if (diagnosticsEnabled != null && diagnosticsOpen != null) {
+            diagnosticsOpen.setEnabled(prefs.getBoolean(diagnosticsEnabled.getKey(), false));
+            diagnosticsEnabled.setOnPreferenceChangeListener((pref, value) -> { diagnosticsOpen.setEnabled((Boolean) value); return true; });
+            diagnosticsOpen.setOnPreferenceClickListener(pref -> {
+                if (!prefs.getBoolean(diagnosticsEnabled.getKey(), false)) { Snackbar.make(requireView(), R.string.diagnostics_disabled, Snackbar.LENGTH_LONG).show(); return true; }
+                startActivity(new Intent(requireContext(), DiagnosticsActivity.class)); return true;
+            });
+        }
+
         if (savedInstanceState != null) storageHelper.onRestoreInstanceState(savedInstanceState);
 
         initUrlPreference(R.string.pref_support, "https://biodrop.erikraft.com/donation.html");
