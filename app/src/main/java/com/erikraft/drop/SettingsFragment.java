@@ -3,6 +3,8 @@ package com.erikraft.drop;
 import android.Manifest;
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +16,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -30,14 +34,16 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.anggrayudi.storage.SimpleStorageHelper;
 import com.anggrayudi.storage.file.DocumentFileUtils;
-import com.erikraft.drop.utils.ClipboardUtils;
 import com.erikraft.drop.utils.Link;
-import com.erikraft.drop.utils.LogUtils;
 import com.erikraft.drop.utils.ShareUtils;
 import com.erikraft.drop.utils.ViewUtils;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
+    private static final String BITCOIN_PRIMARY = "bc1qn8pvw3fvl5dt0eq9fe4js6l3k3j2kekqwxdah2";
+    private static final String BITCOIN_EMAIL = "bc1q0mtp0lcyfr7c29xa6ngf8nyv4j0dts4hwynq6d";
+
     private final SimpleStorageHelper storageHelper = new SimpleStorageHelper(this);
     private SharedPreferences prefs;
 
@@ -90,6 +96,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (savedInstanceState != null) storageHelper.onRestoreInstanceState(savedInstanceState);
 
         initUrlPreference(R.string.pref_support, "https://biodrop.erikraft.com/donation.html");
+
+        final Preference bitcoinPreference = findPreference(getString(R.string.pref_bitcoin_donation));
+        if (bitcoinPreference != null) {
+            bitcoinPreference.setOnPreferenceClickListener(pref -> {
+                showBitcoinDonationDialog();
+                return true;
+            });
+        }
+
+        final Preference onionPreference = findPreference(getString(R.string.pref_onion_transfer));
+        if (onionPreference != null) {
+            onionPreference.setOnPreferenceClickListener(pref -> {
+                startActivity(new Intent(requireContext(), OnionTransferActivity.class));
+                return true;
+            });
+        }
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         if (openSourceComponents != null) {
@@ -175,6 +197,64 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 locationMetadataPref.setEnabled(false);
             }
         }
+    }
+
+    private void showBitcoinDonationDialog() {
+        LinearLayout root = new LinearLayout(requireContext());
+        root.setOrientation(LinearLayout.VERTICAL);
+        int padding = dp(20);
+        root.setPadding(padding, dp(4), padding, 0);
+
+        TextView primaryLabel = new TextView(requireContext());
+        primaryLabel.setText(R.string.bitcoin_primary_account);
+        primaryLabel.setTextSize(14);
+        root.addView(primaryLabel);
+        TextView primaryAddress = addressText(BITCOIN_PRIMARY);
+        root.addView(primaryAddress);
+        MaterialButton copyPrimary = new MaterialButton(requireContext());
+        copyPrimary.setText(R.string.bitcoin_copy_primary);
+        root.addView(copyPrimary);
+
+        TextView emailLabel = new TextView(requireContext());
+        emailLabel.setText(R.string.bitcoin_email_account);
+        emailLabel.setTextSize(14);
+        emailLabel.setPadding(0, dp(18), 0, 0);
+        root.addView(emailLabel);
+        TextView emailAddress = addressText(BITCOIN_EMAIL);
+        root.addView(emailAddress);
+        MaterialButton copyEmail = new MaterialButton(requireContext());
+        copyEmail.setText(R.string.bitcoin_copy_email);
+        root.addView(copyEmail);
+
+        AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.bitcoin_donation_dialog_title)
+                .setIcon(R.drawable.ic_bitcoin)
+                .setView(root)
+                .setPositiveButton(android.R.string.ok, null)
+                .create();
+
+        copyPrimary.setOnClickListener(v -> copyBitcoinAddress(BITCOIN_PRIMARY));
+        copyEmail.setOnClickListener(v -> copyBitcoinAddress(BITCOIN_EMAIL));
+        dialog.show();
+    }
+
+    private TextView addressText(String address) {
+        TextView text = new TextView(requireContext());
+        text.setText(address);
+        text.setTextIsSelectable(true);
+        text.setTextSize(13);
+        text.setPadding(0, dp(4), 0, dp(4));
+        return text;
+    }
+
+    private void copyBitcoinAddress(String address) {
+        ClipboardManager clipboard = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) clipboard.setPrimaryClip(ClipData.newPlainText("Bitcoin", address));
+        Snackbar.make(requireView(), R.string.bitcoin_copied, Snackbar.LENGTH_SHORT).show();
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     private boolean isNotificationsCorrectlyEnabled() {
