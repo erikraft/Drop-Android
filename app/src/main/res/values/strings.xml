@@ -57,6 +57,15 @@
     <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="bitcoin_donation_title">Doar em Bitcoin</string>
+    <string name="bitcoin_donation_summary">Apoie o ErikrafT Drop™ diretamente com Bitcoin</string>
+    <string name="bitcoin_donation_dialog_title">Doar em Bitcoin</string>
+    <string name="bitcoin_primary_account">Primary Account</string>
+    <string name="bitcoin_email_account">Bitcoin via Email</string>
+    <string name="bitcoin_copy_primary">Copiar Primary Account</string>
+    <string name="bitcoin_copy_email">Copiar Bitcoin via Email</string>
+    <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
+    <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um Onion Service temporário</string>
     <string name="read_more">read more</string>
     <string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
@@ -156,4 +165,6 @@
     <string name="diagnostics_disabled">Habilite Diagnósticos nas Configurações para visualizar os logs.</string>
     <string name="pref_diagnostics_enabled" translatable="false">diagnostics_enabled</string>
     <string name="pref_diagnostics_open" translatable="false">diagnostics_open</string>
+    <string name="pref_bitcoin_donation" translatable="false">bitcoin_donation</string>
+    <string name="pref_onion_transfer" translatable="false">onion_transfer_settings</string>
 </resources>
