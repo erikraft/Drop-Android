@@ -17,6 +17,7 @@ import org.briarproject.android.dontkillmelib.wakelock.AndroidWakeLockManagerFac
 import org.briarproject.onionwrapper.AndroidTorWrapper;
 import org.briarproject.onionwrapper.TorWrapper;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
