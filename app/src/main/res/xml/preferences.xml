@@ -61,7 +61,15 @@
             android:summaryOn="@string/retain_location_metadata_summary_on"
             android:title="@string/retain_location_metadata_title"
             app:isPreferenceVisible="false" />
-
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="@string/pref_diagnostics_enabled"
+            android:summary="@string/diagnostics_summary"
+            android:title="@string/diagnostics_title" />
+        <Preference
+            android:key="@string/pref_diagnostics_open"
+            android:summary="@string/diagnostics_enabled_summary"
+            android:title="@string/diagnostics_open" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -79,6 +87,5 @@
             android:title="@string/support_us"
             android:icon="@drawable/pref_community"
             app:singleLineTitle="false" />
-
     </PreferenceCategory>
 </PreferenceScreen>
