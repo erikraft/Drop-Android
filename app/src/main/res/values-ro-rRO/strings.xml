@@ -52,6 +52,15 @@
     <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="bitcoin_donation_title">Doar em Bitcoin</string>
+    <string name="bitcoin_donation_summary">Apoie o ErikrafT Drop™ diretamente com Bitcoin</string>
+    <string name="bitcoin_donation_dialog_title">Doar em Bitcoin</string>
+    <string name="bitcoin_primary_account">Primary Account</string>
+    <string name="bitcoin_email_account">Bitcoin via Email</string>
+    <string name="bitcoin_copy_primary">Copiar Primary Account</string>
+    <string name="bitcoin_copy_email">Copiar Bitcoin via Email</string>
+    <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
+    <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um Onion Service temporário</string>
     <string name="read_more">citește mai mult</string>
     <string name="version">Versiune</string>
     <string name="pref_device_name_title">Numele dispozitivului</string>
@@ -132,4 +141,14 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <string name="diagnostics_title">Diagnósticos</string>
+    <string name="diagnostics_summary">Ative os diagnósticos para visualizar os logs do aplicativo</string>
+    <string name="diagnostics_enabled_summary">Logs de diagnóstico habilitados</string>
+    <string name="diagnostics_open">Abrir diagnósticos</string>
+    <string name="diagnostics_refresh">Atualizar</string>
+    <string name="diagnostics_copy">Copiar</string>
+    <string name="diagnostics_save">Baixar .txt</string>
+    <string name="diagnostics_copied">Diagnósticos copiados.</string>
+    <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
+    <string name="diagnostics_disabled">Habilite Diagnósticos nas Configurações para visualizar os logs.</string>
 </resources>
