@@ -45,6 +45,7 @@
     <application
         android:name=".SnapdropApplication"
         android:allowBackup="false"
+        android:extractNativeLibs="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:banner="@drawable/tv_banner"
@@ -197,7 +198,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-            <activity android:name=".OnionTransferActivity" android:exported="false" />
+            <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" />
+        <activity android:name=".OnionTransferActivity" android:exported="false" />
     </application>
 
 </manifest>

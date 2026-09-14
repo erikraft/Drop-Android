@@ -17,6 +17,7 @@ import org.briarproject.android.dontkillmelib.wakelock.AndroidWakeLockManagerFac
 import org.briarproject.onionwrapper.AndroidTorWrapper;
 import org.briarproject.onionwrapper.TorWrapper;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -120,6 +121,16 @@ public final class TorController {
         tor = newTor;
     }
 
+    private void logNativeRuntimeState() {
+        try {
+            File dir = new File(application.getApplicationInfo().nativeLibraryDir);
+            File torLib = new File(dir, "libtor.so");
+            Log.i(TAG, "nativeLibraryDir=" + dir.getAbsolutePath());
+            Log.i(TAG, "libtor.so exists=" + torLib.exists() + ", readable=" + torLib.canRead() + ", executable=" + torLib.canExecute() + ", length=" + torLib.length());
+            Log.i(TAG, "ABIs=" + java.util.Arrays.toString(Build.SUPPORTED_ABIS) + ", sdk=" + Build.VERSION.SDK_INT);
+        } catch (Exception e) { Log.w(TAG, "Tor native diagnostics failed", e); }
+    }
+
     private static String architecture() {
         for (String abi : Build.SUPPORTED_ABIS) {
             if (abi.startsWith("x86_64")) return "x86_64_pie";
@@ -174,6 +185,7 @@ public final class TorController {
         for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try {
                 AndroidTorWrapper currentTor = tor;
+                logNativeRuntimeState();
                 currentTor.start();
                 currentTor.enableNetwork(true);
                 return;
