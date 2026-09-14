@@ -27,7 +27,6 @@
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
     <string name="onboarding_server_custom_add">Add server</string>
-
     <string name="onboarding_howto">How to use</string>
     <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
     <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
@@ -51,6 +50,16 @@
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Settings</string>
     <string name="logs">Debug Logs</string>
+    <string name="diagnostics_title">Diagnósticos</string>
+    <string name="diagnostics_summary">Ative os diagnósticos para visualizar os logs do aplicativo</string>
+    <string name="diagnostics_enabled_summary">Logs de diagnóstico habilitados</string>
+    <string name="diagnostics_open">Abrir diagnósticos</string>
+    <string name="diagnostics_refresh">Atualizar</string>
+    <string name="diagnostics_copy">Copiar</string>
+    <string name="diagnostics_save">Baixar .txt</string>
+    <string name="diagnostics_copied">Diagnósticos copiados.</string>
+    <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
+    <string name="diagnostics_disabled">Habilite Diagnósticos nas Configurações para visualizar os logs.</string>
     <string name="components_summary">Tap to display</string>
     <string name="support_us">Support us</string>
     <string name="support_us_summary">See, how you can support this project</string>
@@ -76,24 +85,17 @@
     <string name="retain_location_metadata_title">Retain location metadata</string>
     <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
     <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
-
     <string name="settings_theme_title">Theme</string>
-    <string-array name="darkmode_entries">
-        <item>System Default</item>
-        <item>Light</item>
-        <item>Dark</item>
-    </string-array>
+    <string-array name="darkmode_entries"><item>System Default</item><item>Light</item><item>Dark</item></string-array>
     <string name="baseurl_title">Change server address</string>
     <string name="baseurl_not_set">Not set</string>
     <string name="baseurl_instance_verified">Instance was successfully verified</string>
     <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
     <string name="baseurl_check_instance_failed">Failed to verify instance</string>
     <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-
     <string name="important_update_title">Important Update</string>
     <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
     <string name="important_update_ok">OK</string>
-
     <string name="save_location">Save location</string>
 
     <!-- File sharing -->
