@@ -17,6 +17,7 @@ import org.briarproject.android.dontkillmelib.wakelock.AndroidWakeLockManagerFac
 import org.briarproject.onionwrapper.AndroidTorWrapper;
 import org.briarproject.onionwrapper.TorWrapper;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -61,11 +62,6 @@ public final class TorController {
         return instance;
     }
 
-    /**
-     * Allocate two distinct local ports. The sockets are deliberately held open only during
-     * discovery because AndroidTorWrapper owns the actual listeners. Startup therefore retries
-     * with a fresh pair if another process wins the small allocation race.
-     */
     private static int[] findAvailablePortPair() {
         for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try (ServerSocket socks = new ServerSocket(0); ServerSocket control = new ServerSocket(0)) {
@@ -73,13 +69,9 @@ public final class TorController {
                 control.setReuseAddress(false);
                 int socksPort = socks.getLocalPort();
                 int controlPort = control.getLocalPort();
-                if (socksPort > 0 && controlPort > 0 && socksPort != controlPort) {
-                    return new int[]{socksPort, controlPort};
-                }
+                if (socksPort > 0 && controlPort > 0 && socksPort != controlPort) return new int[]{socksPort, controlPort};
             } catch (IOException e) {
-                if (attempt == PORT_ALLOCATION_ATTEMPTS) {
-                    throw new IllegalStateException("Unable to allocate local ports for Tor", e);
-                }
+                if (attempt == PORT_ALLOCATION_ATTEMPTS) throw new IllegalStateException("Unable to allocate local ports for Tor", e);
             }
         }
         throw new IllegalStateException("Unable to allocate local ports for Tor");
@@ -90,32 +82,13 @@ public final class TorController {
         socksPort = ports[0];
         controlPort = ports[1];
         final long generation = torGeneration.next();
-        AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
-                application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
+        AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(), application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
         newTor.setObserver(new TorWrapper.Observer() {
-            private boolean isCurrent() {
-                return torGeneration.isCurrent(generation);
-            }
-
-            @Override
-            public void onState(TorWrapper.TorState state) {
-                if (isCurrent()) handleState(state);
-            }
-
-            @Override
-            public void onBootstrapPercentage(int percentage) {
-                if (isCurrent()) handleBootstrapPercentage(percentage);
-            }
-
-            @Override
-            public void onHsDescriptorUpload(String onion) {
-                if (isCurrent()) handleHsDescriptorUpload(onion);
-            }
-
-            @Override
-            public void onClockSkewDetected(long skewSeconds) {
-                if (isCurrent()) handleClockSkewDetected(skewSeconds);
-            }
+            private boolean isCurrent() { return torGeneration.isCurrent(generation); }
+            @Override public void onState(TorWrapper.TorState state) { if (isCurrent()) handleState(state); }
+            @Override public void onBootstrapPercentage(int percentage) { if (isCurrent()) handleBootstrapPercentage(percentage); }
+            @Override public void onHsDescriptorUpload(String onion) { if (isCurrent()) handleHsDescriptorUpload(onion); }
+            @Override public void onClockSkewDetected(long skewSeconds) { if (isCurrent()) handleClockSkewDetected(skewSeconds); }
         });
         tor = newTor;
     }
@@ -130,39 +103,41 @@ public final class TorController {
         throw new IllegalStateException("Tor is not supported on this CPU architecture");
     }
 
+    private void logNativeRuntimeState() {
+        try {
+            File nativeDir = new File(application.getApplicationInfo().nativeLibraryDir);
+            File torLib = new File(nativeDir, "libtor.so");
+            File lyrebirdLib = new File(nativeDir, "liblyrebird.so");
+            Log.i(TAG, "Tor nativeLibraryDir=" + nativeDir.getAbsolutePath());
+            Log.i(TAG, "Tor libtor.so exists=" + torLib.exists() + ", readable=" + torLib.canRead() + ", executable=" + torLib.canExecute() + ", length=" + torLib.length());
+            Log.i(TAG, "Tor liblyrebird.so exists=" + lyrebirdLib.exists() + ", readable=" + lyrebirdLib.canRead() + ", executable=" + lyrebirdLib.canExecute() + ", length=" + lyrebirdLib.length());
+            Log.i(TAG, "Tor ABI list=" + java.util.Arrays.toString(Build.SUPPORTED_ABIS) + ", primary=" + Build.CPU_ABI + ", sdk=" + Build.VERSION.SDK_INT);
+        } catch (Exception e) {
+            Log.w(TAG, "Unable to inspect Tor native runtime state", e);
+        }
+    }
+
     public static boolean isOnionUrl(String url) {
         if (url == null) return false;
-        try {
-            String host = new java.net.URI(url).getHost();
-            return host != null && host.toLowerCase().endsWith(".onion");
-        } catch (Exception e) {
-            return url.toLowerCase().contains(".onion");
-        }
+        try { String host = new java.net.URI(url).getHost(); return host != null && host.toLowerCase().endsWith(".onion"); }
+        catch (Exception e) { return url.toLowerCase().contains(".onion"); }
     }
 
     public static void configureWebViewProxyForUrl(@NonNull Context context, String url, @NonNull Runnable afterProxy) {
         TorController controller = get(context);
         if (!isOnionUrl(url) || !WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-            if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-                ProxyController.getInstance().clearProxyOverride(controller.mainExecutor, afterProxy);
-            } else {
-                afterProxy.run();
-            }
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) ProxyController.getInstance().clearProxyOverride(controller.mainExecutor, afterProxy);
+            else afterProxy.run();
             return;
         }
         controller.start(() -> {
-            ProxyConfig config = new ProxyConfig.Builder()
-                    .addProxyRule("socks://127.0.0.1:" + controller.socksPort, ProxyConfig.MATCH_ALL_SCHEMES)
-                    .build();
+            ProxyConfig config = new ProxyConfig.Builder().addProxyRule("socks://127.0.0.1:" + controller.socksPort, ProxyConfig.MATCH_ALL_SCHEMES).build();
             ProxyController.getInstance().setProxyOverride(config, controller.mainExecutor, afterProxy);
         });
     }
 
     public synchronized void start(Runnable callback) {
-        if (connected) {
-            mainExecutor.execute(callback);
-            return;
-        }
+        if (connected) { mainExecutor.execute(callback); return; }
         pendingConnected.add(callback);
         if (started) return;
         started = true;
@@ -173,19 +148,21 @@ public final class TorController {
         Exception lastError = null;
         for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try {
+                logNativeRuntimeState();
                 AndroidTorWrapper currentTor = tor;
                 currentTor.start();
                 currentTor.enableNetwork(true);
                 return;
             } catch (Exception e) {
                 lastError = e;
-                Log.w(TAG, "Tor start failed on attempt " + attempt + "/" + PORT_ALLOCATION_ATTEMPTS + "; reallocating ports", e);
+                Log.e(TAG, "Tor start failed on attempt " + attempt + "/" + PORT_ALLOCATION_ATTEMPTS + ": " + e.getClass().getName() + ": " + e.getMessage(), e);
                 try {
                     AndroidTorWrapper currentTor = tor;
                     try { currentTor.stop(); } catch (Exception ignored) { }
                     recreateTorWrapper();
                 } catch (Exception allocationError) {
                     lastError = allocationError;
+                    Log.e(TAG, "Unable to recreate Tor wrapper after startup failure", allocationError);
                     break;
                 }
             }
@@ -202,9 +179,7 @@ public final class TorController {
         final long failureGeneration = onionGeneration.current();
         final OnionCallback callback = pendingOnion;
         pendingOnion = null;
-        if (callback != null) mainExecutor.execute(() -> {
-            if (onionGeneration.isCurrent(failureGeneration)) callback.onError(error);
-        });
+        if (callback != null) mainExecutor.execute(() -> { if (onionGeneration.isCurrent(failureGeneration)) callback.onError(error); });
     }
 
     public synchronized void publishHiddenService(int localPort, OnionCallback callback) {
@@ -219,13 +194,9 @@ public final class TorController {
                 currentTor.publishHiddenService(localPort, 80, null);
             } catch (Exception e) {
                 if (!onionGeneration.isCurrent(requestGeneration)) return;
-                synchronized (TorController.this) {
-                    if (onionGeneration.isCurrent(requestGeneration)) pendingOnion = null;
-                }
+                synchronized (TorController.this) { if (onionGeneration.isCurrent(requestGeneration)) pendingOnion = null; }
                 Log.e(TAG, "Unable to publish Onion service", e);
-                mainExecutor.execute(() -> {
-                    if (onionGeneration.isCurrent(requestGeneration)) callback.onError(e);
-                });
+                mainExecutor.execute(() -> { if (onionGeneration.isCurrent(requestGeneration)) callback.onError(e); });
             }
         }));
     }
@@ -245,42 +216,25 @@ public final class TorController {
     private void handleBootstrapPercentage(int percentage) {
         final long requestGeneration = onionGeneration.current();
         final OnionCallback callback = pendingOnion;
-        if (callback != null) mainExecutor.execute(() -> {
-            if (onionGeneration.isCurrent(requestGeneration)) callback.onProgress(Math.max(0, Math.min(100, percentage)));
-        });
+        if (callback != null) mainExecutor.execute(() -> { if (onionGeneration.isCurrent(requestGeneration)) callback.onProgress(Math.max(0, Math.min(100, percentage))); });
     }
 
     private void handleHsDescriptorUpload(String onion) {
         final long requestGeneration = onionGeneration.current();
         OnionCallback cb = pendingOnion;
         pendingOnion = null;
-        if (cb != null) mainExecutor.execute(() -> {
-            if (!onionGeneration.isCurrent(requestGeneration)) return;
-            cb.onProgress(100);
-            cb.onReady(onion);
-        });
+        if (cb != null) mainExecutor.execute(() -> { if (!onionGeneration.isCurrent(requestGeneration)) return; cb.onProgress(100); cb.onReady(onion); });
     }
 
     private void handleClockSkewDetected(long skewSeconds) { }
 
     public static synchronized void shutdown(@NonNull Context context) {
         if (instance == null) return;
-        instance.torGeneration.next();
-        instance.onionGeneration.next();
-        instance.pendingConnected.clear();
-        instance.pendingOnion = null;
+        instance.torGeneration.next(); instance.onionGeneration.next(); instance.pendingConnected.clear(); instance.pendingOnion = null;
         try { instance.tor.stop(); } catch (Exception ignored) { }
-        if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-            ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });
-        }
-        instance.executor.shutdownNow();
-        instance.ioExecutor.shutdownNow();
-        instance = null;
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) ProxyController.getInstance().clearProxyOverride(instance.mainExecutor, () -> { });
+        instance.executor.shutdownNow(); instance.ioExecutor.shutdownNow(); instance = null;
     }
 
-    public interface OnionCallback {
-        void onReady(String onionAddress);
-        void onError(Exception error);
-        default void onProgress(int percentage) { }
-    }
+    public interface OnionCallback { void onReady(String onionAddress); void onError(Exception error); default void onProgress(int percentage) { } }
 }
