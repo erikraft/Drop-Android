@@ -1,27 +1,19 @@
 (function applyAndroidWebViewUi() {
     'use strict';
 
-    const selectors = [
-        'a.icon-button[href="#about"]',
-        '#language-selector',
-        '#theme-auto'
-    ];
-
-    function hide() {
-        selectors.forEach(selector => {
-            document.querySelectorAll(selector).forEach(element => {
-                element.style.setProperty('display', 'none', 'important');
-                element.setAttribute('aria-hidden', 'true');
-                element.setAttribute('data-erikraft-android-hidden', 'true');
-            });
-        });
-    }
+    const styleId = 'erikraft-android-webview-ui';
+    if (document.getElementById(styleId)) return;
 
     function initialize() {
-        hide();
-        const observer = new MutationObserver(hide);
-        observer.observe(document.documentElement, { childList: true, subtree: true });
-        window.setTimeout(() => observer.disconnect(), 10000);
+        if (document.getElementById(styleId)) return;
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = [
+            'a.icon-button[href="#about"]',
+            '#language-selector',
+            '#theme-auto'
+        ].join(',\n') + ' { display: none !important; }';
+        (document.head || document.documentElement).appendChild(style);
     }
 
     if (document.readyState === 'loading') {
