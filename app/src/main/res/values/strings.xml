@@ -5,7 +5,6 @@
     <string name="err_no_browser">Can\'t open browser</string>
     <string name="err_no_app">No app installed to open this file</string>
     <string name="open_url">Open URL</string>
-
     <!-- Onboarding -->
     <string name="onboarding_button_continue">continue</string>
     <string name="onboarding_button_grant">grant permission</string>
@@ -27,23 +26,19 @@
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
     <string name="onboarding_server_custom_add">Add server</string>
-
     <string name="onboarding_howto">How to use</string>
     <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
     <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
-
     <!-- Download -->
     <string name="download_save_pending">Storing the file. Please have a little patience…</string>
     <string name="download_successful">Download successful</string>
     <string name="notification_channel_name">Download completed</string>
-
     <!-- Action Buttons -->
     <string name="open">open</string>
     <string name="install">install</string>
     <string name="reset">reset</string>
     <string name="copy">copy</string>
     <string name="retry">retry</string>
-
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">About</string>
     <string name="title_activity_about">About ErikrafT Drop™</string>
@@ -85,7 +80,6 @@
     <string name="retain_location_metadata_title">Retain location metadata</string>
     <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
     <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
-
     <string name="settings_theme_title">Theme</string>
     <string-array name="darkmode_entries">
         <item>System Default</item>
@@ -98,13 +92,10 @@
     <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
     <string name="baseurl_check_instance_failed">Failed to verify instance</string>
     <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-
     <string name="important_update_title">Important Update</string>
     <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
     <string name="important_update_ok">OK</string>
-
     <string name="save_location">Save location</string>
-
     <!-- File sharing -->
     <string name="intent_file">A file is selected for sharing</string>
     <string name="intent_files">Files are selected for sharing</string>
@@ -116,7 +107,6 @@
     <string name="ignore_error_network">Let me in anyway</string>
     <string name="error_not_reachable_title">Ups, sorry!</string>
     <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
-
     <!-- Website Localization -->
     <string name="website_no_peers_info">Open app or website on other devices to send files</string>
     <string name="website_instruction">Tap to send files or long tap to send a message</string>
@@ -126,7 +116,6 @@
     <string name="website_footer_discovery">You can be discovered by everyone on this network</string>
     <string name="website_footer_known_as">You are known as %s</string>
     <string name="website_about_subheading">The easiest way to transfer files across devices</string>
-
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
@@ -136,7 +125,6 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
-
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
     <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
@@ -153,6 +141,18 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <!-- FTP / FTPS -->
+    <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
+    <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
+    <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
+    <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
+    <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
+    <string name="ftp_passive_summary">Modo passivo: portas de dados 50000–50010. A porta de controle padrão é 2221 e pode ser alterada.</string>
+    <string name="ftp_start">Iniciar servidor</string>
+    <string name="ftp_stop">Parar servidor</string>
+    <string name="ftp_starting">Iniciando servidor…</string>
+    <string name="ftp_copy_address">Copiar endereço</string>
+    <string name="ftp_address_copied">Endereço FTP copiado.</string>
     <string name="diagnostics_title">Diagnósticos</string>
     <string name="diagnostics_summary">Ative os diagnósticos para visualizar os logs do aplicativo</string>
     <string name="diagnostics_enabled_summary">Logs de diagnóstico habilitados</string>
@@ -167,4 +167,9 @@
     <string name="pref_diagnostics_open" translatable="false">diagnostics_open</string>
     <string name="pref_bitcoin_donation" translatable="false">bitcoin_donation</string>
     <string name="pref_onion_transfer" translatable="false">onion_transfer_settings</string>
+    <string name="pref_ftp_port" translatable="false">ftp_port</string>
+    <string name="pref_ftp_username" translatable="false">ftp_username</string>
+    <string name="pref_ftp_password" translatable="false">ftp_password</string>
+    <string name="pref_ftp_anonymous" translatable="false">ftp_anonymous</string>
+    <string name="pref_ftp_ftps" translatable="false">ftp_ftps</string>
 </resources>
