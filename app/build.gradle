@@ -147,6 +147,7 @@ dependencies {
     implementation "com.mikepenz:aboutlibraries-core:11.2.3"
     implementation "com.mikepenz:aboutlibraries:11.2.3"
     implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'junit:junit:4.13.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
@@ -159,6 +160,9 @@ dependencies {
     implementation('org.briarproject:onionwrapper-android:0.1.4') {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
+    implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.86'
 }
 
 tasks.register('checkstyle', Checkstyle) {
