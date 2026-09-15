@@ -159,7 +159,7 @@ dependencies {
 }
 
 tasks.register('checkstyle', Checkstyle) {
-    configFile file("${rootProject.buildDir}/../checkstyle.xml")
+    configFile file("${project.rootDir}/checkstyle.xml")
     source 'main/java'
     source '../test/java'
     source '../androidTest/java'
