@@ -45,7 +45,6 @@
     <application
         android:name=".SnapdropApplication"
         android:allowBackup="false"
-        android:extractNativeLibs="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:banner="@drawable/tv_banner"

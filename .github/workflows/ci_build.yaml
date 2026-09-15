@@ -49,13 +49,40 @@ jobs:
       - name: Build the app
         run: |
           chmod +x gradlew
-          ./gradlew clean assembleDebug --no-build-cache --rerun-tasks
+          ./gradlew clean assembleDebug --no-build-cache --rerun-tasks --stacktrace --warning-mode all --info
+
+      - name: Verify Tor native libraries in APK
+        run: |
+          mapfile -t APKS < <(find app/build/outputs/apk -type f -name '*.apk' -print)
+          if [ "${#APKS[@]}" -eq 0 ]; then
+            echo "No APK was generated under app/build/outputs/apk." >&2
+            exit 1
+          fi
+
+          FOUND=0
+          for APK in "${APKS[@]}"; do
+            echo "Checking Tor native libraries in: $APK"
+            if unzip -Z1 "$APK" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'; then
+              echo "Found libtor.so in $APK"
+              unzip -Z1 "$APK" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'
+              FOUND=1
+            else
+              echo "No libtor.so found in $APK"
+            fi
+          done
+
+          if [ "$FOUND" -ne 1 ]; then
+            echo "ERROR: No generated APK contains libtor.so for a supported ABI." >&2
+            echo "Generated APKs:" >&2
+            printf ' - %s\n' "${APKS[@]}" >&2
+            exit 1
+          fi
 
       - name: Upload debug APK as artifact (optional)
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/**/*.apk
           if-no-files-found: ignore
 
       - name: Upload release APK to GitHub Release
