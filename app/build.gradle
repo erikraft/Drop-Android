@@ -155,9 +155,6 @@ dependencies {
     implementation 'org.nanohttpd:nanohttpd:2.3.1'
     implementation 'org.briarproject:dont-kill-me-lib:0.2.8'
     implementation 'info.guardianproject:tor-android:0.4.9.6'
-    // tor-android and onionwrapper expose the same net.freehaven.tor.control.* classes
-    // through different jtorctl coordinates. Keep Guardian's jtorctl, which is the
-    // dependency paired with tor-android, and prevent the duplicate Briar artifact.
     implementation 'info.guardianproject:jtorctl:0.4.5.7'
     implementation('org.briarproject:onionwrapper-android:0.1.4') {
         exclude group: 'org.briarproject', module: 'jtorctl'
