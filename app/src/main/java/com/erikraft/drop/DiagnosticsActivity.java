@@ -13,7 +13,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,7 +65,6 @@ public class DiagnosticsActivity extends AppCompatActivity {
         LinearLayout actions = new LinearLayout(this);
         actions.setOrientation(LinearLayout.HORIZONTAL);
         actions.setGravity(Gravity.CENTER_VERTICAL);
-        int margin = dp(4);
         addActionButton(actions, button(R.string.diagnostics_refresh), v -> refreshLogs());
         addActionButton(actions, button(R.string.diagnostics_copy), v -> copyLogs());
         addActionButton(actions, button(R.string.diagnostics_save), v -> saver.launch("erikraft-drop-diagnostics.txt"));
