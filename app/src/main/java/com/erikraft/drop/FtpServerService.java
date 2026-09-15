@@ -17,6 +17,7 @@ import org.apache.ftpserver.DataConnectionConfigurationFactory;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
 import org.apache.ftpserver.listener.ListenerFactory;
+import org.apache.ftpserver.ssl.SslConfiguration;
 import org.apache.ftpserver.ssl.SslConfigurationFactory;
 import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
 import org.apache.ftpserver.usermanager.SaltedPasswordEncryptor;
@@ -110,25 +111,29 @@ public class FtpServerService extends Service {
             connectionConfig.setAnonymousLoginEnabled(anonymous);
             connectionConfig.setMaxAnonymousLogins(1);
             serverFactory.setConnectionConfig(connectionConfig.createConnectionConfig());
+
             ListenerFactory listener = new ListenerFactory();
             listener.setPort(port);
             DataConnectionConfigurationFactory data = new DataConnectionConfigurationFactory();
             data.setPassivePorts(PASSIVE_PORT_START + "-" + PASSIVE_PORT_END);
             data.setPassiveIpCheck(true);
-            listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());
 
             if (ftps) {
+                SslConfigurationFactory sslFactory = new SslConfigurationFactory();
                 File keystore = createKeystore();
-                SslConfigurationFactory ssl = new SslConfigurationFactory();
-                ssl.setKeystoreFile(keystore);
-                ssl.setKeystorePassword(KEYSTORE_PASSWORD);
-                ssl.setKeyPassword(KEYSTORE_PASSWORD);
-                ssl.setKeyAlias(KEY_ALIAS);
-                ssl.setSslProtocol("TLS");
-                listener.setSslConfiguration(ssl.createSslConfiguration());
+                sslFactory.setKeystoreFile(keystore);
+                sslFactory.setKeystorePassword(KEYSTORE_PASSWORD);
+                sslFactory.setKeyPassword(KEYSTORE_PASSWORD);
+                sslFactory.setKeyAlias(KEY_ALIAS);
+                sslFactory.setSslProtocol("TLS");
+                SslConfiguration ssl = sslFactory.createSslConfiguration();
+                listener.setSslConfiguration(ssl);
                 listener.setImplicitSsl(false);
+                data.setSslConfiguration(ssl);
+                data.setImplicitSsl(false);
             }
 
+            listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());
             serverFactory.addListener("default", listener.createListener());
             ftpServer = serverFactory.createServer();
             ftpServer.start();
