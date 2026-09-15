@@ -19,35 +19,66 @@ android {
         applicationId "com.erikraft.drop"
         minSdkVersion 24
         targetSdkVersion 36
+
         versionCode 28
         versionName "10.1.5"
         applicationVariants.all { variant ->
-            variant.outputs.all { outputFileName = "Drop-Android.apk" }
+            variant.outputs.all {
+                outputFileName = "Drop-Android.apk"
+            }
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     flavorDimensions "device"
+
     productFlavors {
-        mobile { dimension "device" }
-        tv { dimension "device" }
-        xr { dimension "device" }
+        mobile {
+            dimension "device"
+        }
+
+        tv {
+            dimension "device"
+        }
+
+        xr {
+            dimension "device"
+        }
     }
-    buildFeatures { viewBinding = true; buildConfig = true }
-    packagingOptions { jniLibs { useLegacyPackaging = true } }
-    lint { disable 'MissingTranslation', 'ExtraTranslation' }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    lint {
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     def keystorePropertiesFile = rootProject.file('keystore.properties')
     def keystoreProperties = new Properties()
-    if (keystorePropertiesFile.exists()) keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+
     def resolveSigningValue = { List<String> propertyNames, String envName ->
         for (propertyName in propertyNames) {
             def propertyValue = project.findProperty(propertyName)
@@ -58,17 +89,29 @@ android {
         def envValue = System.getenv(envName)
         return envValue != null ? envValue.toString().trim() : null
     }
+
     def keystorePath = resolveSigningValue(['KEYSTORE_PATH', 'storeFile'], 'KEYSTORE_PATH')
     def keystorePassword = resolveSigningValue(['KEYSTORE_PASSWORD', 'storePassword'], 'KEYSTORE_PASSWORD')
     def signingKeyAlias = resolveSigningValue(['KEY_ALIAS', 'keyAlias'], 'KEY_ALIAS')
     def signingKeyPassword = resolveSigningValue(['KEY_PASSWORD', 'keyPassword'], 'KEY_PASSWORD')
+
     def isReleaseTaskRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
     def signingValues = [keystorePath, keystorePassword, signingKeyAlias, signingKeyPassword]
     def hasAnySigningValue = signingValues.any { it != null && !it.isEmpty() }
     def hasCompleteSigningConfig = signingValues.every { it != null && !it.isEmpty() }
-    if (hasAnySigningValue && !hasCompleteSigningConfig) throw new GradleException("Signing configuration is incomplete. Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are all set.")
-    if (isReleaseTaskRequested && !hasCompleteSigningConfig) throw new GradleException("Release build requested without signing credentials. Configure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD.")
-    if (hasCompleteSigningConfig && !file(keystorePath).exists()) throw new GradleException("Configured KEYSTORE_PATH does not exist.")
+
+    if (hasAnySigningValue && !hasCompleteSigningConfig) {
+        throw new GradleException("Signing configuration is incomplete. Ensure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD are all set.")
+    }
+
+    if (isReleaseTaskRequested && !hasCompleteSigningConfig) {
+        throw new GradleException("Release build requested without signing credentials. Configure KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD.")
+    }
+
+    if (hasCompleteSigningConfig && !file(keystorePath).exists()) {
+        throw new GradleException("Configured KEYSTORE_PATH does not exist.")
+    }
+
     if (hasCompleteSigningConfig) {
         signingConfigs {
             release {
@@ -78,7 +121,14 @@ android {
                 keyPassword signingKeyPassword
             }
         }
-        buildTypes { release { minifyEnabled true; proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'; signingConfig signingConfigs.release } }
+
+        buildTypes {
+            release {
+                minifyEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                signingConfig signingConfigs.release
+            }
+        }
     }
 }
 
@@ -106,7 +156,9 @@ dependencies {
     implementation 'org.briarproject:dont-kill-me-lib:0.2.8'
     implementation 'info.guardianproject:tor-android:0.4.9.6'
     implementation 'info.guardianproject:jtorctl:0.4.5.7'
-    implementation('org.briarproject:onionwrapper-android:0.1.4') { exclude group: 'org.briarproject', module: 'jtorctl' }
+    implementation('org.briarproject:onionwrapper-android:0.1.4') {
+        exclude group: 'org.briarproject', module: 'jtorctl'
+    }
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
     implementation 'org.bouncycastle:bcpkix-jdk18on:1.86'
@@ -120,7 +172,10 @@ tasks.register('checkstyle', Checkstyle) {
     include '**/*.java'
     classpath = files()
 }
-tasks.named('check') { dependsOn tasks.named('checkstyle') }
+
+tasks.named('check') {
+    dependsOn tasks.named('checkstyle')
+}
 
 def playServiceAccountPath = System.getenv("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON")
 if (playServiceAccountPath != null && !playServiceAccountPath.isBlank()) {
