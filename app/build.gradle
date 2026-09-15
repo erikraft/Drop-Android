@@ -118,7 +118,7 @@ android {
                 storeFile file(keystorePath)
                 storePassword keystorePassword
                 keyAlias signingKeyAlias
-                keyPassword keyPassword
+                keyPassword signingKeyPassword
             }
         }
 
