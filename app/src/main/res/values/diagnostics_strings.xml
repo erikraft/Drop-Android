@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diagnostics_clear">Limpar</string>
+    <string name="diagnostics_loading">Carregando diagnósticos…</string>
+</resources>
