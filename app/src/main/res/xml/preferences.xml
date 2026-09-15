@@ -4,32 +4,109 @@
     <PreferenceCategory
         android:title="@string/pref_category_settings"
         app:iconSpaceReserved="false">
-        <Preference android:defaultValue="@string/baseURL" android:icon="@drawable/pref_baseurl" android:key="@string/pref_baseurl" android:summary="%s" android:title="@string/baseurl_title" />
-        <SwitchPreferenceCompat android:icon="@drawable/pref_notifications" android:key="@string/pref_notifications" android:summary="@string/notifications_summary" android:title="@string/notifications_title" />
-        <SwitchPreferenceCompat android:defaultValue="true" android:icon="@drawable/pref_screen" android:key="@string/pref_switch_keep_on" android:summary="@string/keep_on_summary" android:title="@string/keep_on_title" />
-        <SwitchPreferenceCompat android:defaultValue="true" android:icon="@drawable/pref_connectivity_card" android:key="@string/pref_show_connectivity_card" android:summary="@string/show_connectivity_card_summary" android:title="@string/show_connectivity_card_title" />
-        <SwitchPreferenceCompat android:defaultValue="false" android:icon="@drawable/pref_floatingtext" android:key="@string/pref_floating_text_selection" android:summary="@string/floating_text_selection_summary" android:title="@string/floating_text_selection_title" app:isPreferenceVisible="false" />
-        <ListPreference android:defaultValue="@string/pref_value_theme_system_default" android:entries="@array/darkmode_entries" android:entryValues="@array/darkMode_values" android:icon="@drawable/pref_theme" android:key="@string/pref_theme_setting" android:summary="%s" android:title="@string/settings_theme_title" />
-        <Preference android:icon="@drawable/pref_name" android:key="@string/pref_device_name" android:maxLines="1" android:title="@string/pref_device_name_title" app:singleLineTitle="false" />
-        <Preference android:icon="@drawable/pref_savelocation" android:key="@string/pref_save_location" android:summary="%s" android:title="@string/save_location" />
-        <SwitchPreferenceCompat android:defaultValue="false" android:icon="@drawable/pref_location_metadata" android:key="@string/pref_retain_location_metadata" android:summaryOff="@string/retain_location_metadata_summary_off" android:summaryOn="@string/retain_location_metadata_summary_on" android:title="@string/retain_location_metadata_title" app:isPreferenceVisible="false" />
+        <Preference
+            android:defaultValue="@string/baseURL"
+            android:icon="@drawable/pref_baseurl"
+            android:key="@string/pref_baseurl"
+            android:summary="%s"
+            android:title="@string/baseurl_title" />
+        <SwitchPreferenceCompat
+            android:icon="@drawable/pref_notifications"
+            android:key="@string/pref_notifications"
+            android:summary="@string/notifications_summary"
+            android:title="@string/notifications_title" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:icon="@drawable/pref_screen"
+            android:key="@string/pref_switch_keep_on"
+            android:summary="@string/keep_on_summary"
+            android:title="@string/keep_on_title" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:icon="@drawable/pref_connectivity_card"
+            android:key="@string/pref_show_connectivity_card"
+            android:summary="@string/show_connectivity_card_summary"
+            android:title="@string/show_connectivity_card_title" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:icon="@drawable/pref_floatingtext"
+            android:key="@string/pref_floating_text_selection"
+            android:summary="@string/floating_text_selection_summary"
+            android:title="@string/floating_text_selection_title"
+            app:isPreferenceVisible="false" />
+        <ListPreference
+            android:defaultValue="@string/pref_value_theme_system_default"
+            android:entries="@array/darkmode_entries"
+            android:entryValues="@array/darkMode_values"
+            android:icon="@drawable/pref_theme"
+            android:key="@string/pref_theme_setting"
+            android:summary="%s"
+            android:title="@string/settings_theme_title" />
+        <Preference
+            android:icon="@drawable/pref_name"
+            android:key="@string/pref_device_name"
+            android:maxLines="1"
+            android:title="@string/pref_device_name_title"
+            app:singleLineTitle="false" />
+        <Preference
+            android:icon="@drawable/pref_savelocation"
+            android:key="@string/pref_save_location"
+            android:summary="%s"
+            android:title="@string/save_location" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:icon="@drawable/pref_location_metadata"
+            android:key="@string/pref_retain_location_metadata"
+            android:summaryOff="@string/retain_location_metadata_summary_off"
+            android:summaryOn="@string/retain_location_metadata_summary_on"
+            android:title="@string/retain_location_metadata_title"
+            app:isPreferenceVisible="false" />
 
-        <SwitchPreferenceCompat android:defaultValue="false" android:icon="@drawable/pref_about" android:key="@string/pref_diagnostics_enabled" android:summary="@string/diagnostics_summary" android:title="@string/diagnostics_title" />
-        <Preference android:icon="@drawable/pref_about" android:key="@string/pref_diagnostics_open" android:summary="@string/diagnostics_enabled_summary" android:title="@string/diagnostics_open" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:icon="@drawable/pref_about"
+            android:key="@string/pref_diagnostics_enabled"
+            android:summary="@string/diagnostics_summary"
+            android:title="@string/diagnostics_title" />
+        <Preference
+            android:icon="@drawable/pref_about"
+            android:key="@string/pref_diagnostics_open"
+            android:summary="@string/diagnostics_enabled_summary"
+            android:title="@string/diagnostics_open" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/title_activity_about"
         app:iconSpaceReserved="false">
-        <Preference android:icon="@drawable/pref_about" android:key="@string/pref_about" android:summary="@string/components_summary" android:title="@string/pref_about_title" app:singleLineTitle="false" />
-        <Preference android:key="@string/pref_support" android:summary="@string/support_us_summary" android:title="@string/support_us" android:icon="@drawable/pref_community" app:singleLineTitle="false" />
-        <Preference android:key="@string/pref_bitcoin_donation" android:summary="@string/bitcoin_donation_summary" android:title="@string/bitcoin_donation_title" android:icon="@drawable/ic_bitcoin" app:singleLineTitle="false" />
+        <Preference
+            android:icon="@drawable/pref_about"
+            android:key="@string/pref_about"
+            android:summary="@string/components_summary"
+            android:title="@string/pref_about_title"
+            app:singleLineTitle="false" />
+        <Preference
+            android:key="@string/pref_support"
+            android:summary="@string/support_us_summary"
+            android:title="@string/support_us"
+            android:icon="@drawable/pref_community"
+            app:singleLineTitle="false" />
+        <Preference
+            android:key="@string/pref_bitcoin_donation"
+            android:summary="@string/bitcoin_donation_summary"
+            android:title="@string/bitcoin_donation_title"
+            android:icon="@drawable/ic_bitcoin"
+            app:singleLineTitle="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/onion_transfer_title"
         android:summary="@string/onion_transfer_settings_summary"
         app:iconSpaceReserved="false">
-        <Preference android:key="@string/pref_onion_transfer" android:summary="@string/onion_transfer_settings_summary" android:title="@string/onion_transfer_title" android:icon="@drawable/ic_onion" app:singleLineTitle="false" />
+        <Preference
+            android:key="@string/pref_onion_transfer"
+            android:summary="@string/onion_transfer_settings_summary"
+            android:title="@string/onion_transfer_title"
+            android:icon="@drawable/ic_onion"
+            app:singleLineTitle="false" />
     </PreferenceCategory>
 </PreferenceScreen>
