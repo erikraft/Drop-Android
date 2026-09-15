@@ -64,10 +64,12 @@
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
+            android:icon="@drawable/pref_about"
             android:key="@string/pref_diagnostics_enabled"
             android:summary="@string/diagnostics_summary"
             android:title="@string/diagnostics_title" />
         <Preference
+            android:icon="@drawable/pref_about"
             android:key="@string/pref_diagnostics_open"
             android:summary="@string/diagnostics_enabled_summary"
             android:title="@string/diagnostics_open" />
@@ -94,6 +96,12 @@
             android:title="@string/bitcoin_donation_title"
             android:icon="@drawable/ic_bitcoin"
             app:singleLineTitle="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/onion_transfer_title"
+        android:summary="@string/onion_transfer_settings_summary"
+        app:iconSpaceReserved="false">
         <Preference
             android:key="@string/pref_onion_transfer"
             android:summary="@string/onion_transfer_settings_summary"

@@ -22,19 +22,16 @@ import java.util.Locale;
 
 public class LogUtils {
     private static String logcatLogs;
-
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.US);
 
-    private LogUtils() {
-        // utility class
-    }
+    private LogUtils() { }
 
     public static String getLogs(final SharedPreferences prefs, final boolean refresh) {
         if (refresh) {
             logcatLogs = "--------- System Information" +
                     "\n- Device type: " + Build.MODEL + " (" + Build.PRODUCT + ", " + Build.BRAND + ')' +
                     "\n- Android version: " + Build.VERSION.RELEASE +
-                    "\n- Snapdrop app version: " + BuildConfig.VERSION_NAME +
+                    "\n- ErikrafT Drop app version: " + BuildConfig.VERSION_NAME +
                     "\n- Current time: " + sdf.format(new Date()) +
                     "\n\n" +
                     prefs.getString(SnapdropApplication.getInstance().getApplicationContext().getString(R.string.pref_last_crash), "") +
@@ -46,15 +43,11 @@ public class LogUtils {
     private static String requestLogcatLogs() {
         String logs = "Unable to read logs";
         try {
-            // Only filter log messages which are important for us...
             final Process process = Runtime.getRuntime().exec("logcat *:I eglCodecCommon:S -d");
             final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
             final StringBuilder logsBuilder = new StringBuilder();
             String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                logsBuilder.append(line).append("\n");
-            }
+            while ((line = bufferedReader.readLine()) != null) logsBuilder.append(line).append("\n");
             logs = logsBuilder.toString();
             bufferedReader.close();
         } catch (IOException e) {
@@ -84,16 +77,10 @@ public class LogUtils {
     public static void installUncaughtExceptionHandler() {
         final Thread.UncaughtExceptionHandler previousHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
-
-
             PreferenceManager.getDefaultSharedPreferences(SnapdropApplication.getInstance()).edit()
                     .putString(SnapdropApplication.getInstance().getString(R.string.pref_last_crash), "--------- Last crash\n" + sdf.format(new Date()) + " " + LogUtils.getStacktrace(ex))
                     .commit();
-
-            // Call the default handler
-            if (previousHandler != null) {
-                previousHandler.uncaughtException(thread, ex);
-            }
+            if (previousHandler != null) previousHandler.uncaughtException(thread, ex);
         });
     }
 }

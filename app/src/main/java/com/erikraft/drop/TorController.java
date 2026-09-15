@@ -62,11 +62,6 @@ public final class TorController {
         return instance;
     }
 
-    /**
-     * Allocate two distinct local ports. The sockets are deliberately held open only during
-     * discovery because AndroidTorWrapper owns the actual listeners. Startup therefore retries
-     * with a fresh pair if another process wins the small allocation race.
-     */
     private static int[] findAvailablePortPair() {
         for (int attempt = 1; attempt <= PORT_ALLOCATION_ATTEMPTS; attempt++) {
             try (ServerSocket socks = new ServerSocket(0); ServerSocket control = new ServerSocket(0)) {
@@ -94,29 +89,11 @@ public final class TorController {
         AndroidTorWrapper newTor = new AndroidTorWrapper(application, wakeLockManager, ioExecutor, mainExecutor, architecture(),
                 application.getDir("tor", Context.MODE_PRIVATE), socksPort, controlPort);
         newTor.setObserver(new TorWrapper.Observer() {
-            private boolean isCurrent() {
-                return torGeneration.isCurrent(generation);
-            }
-
-            @Override
-            public void onState(TorWrapper.TorState state) {
-                if (isCurrent()) handleState(state);
-            }
-
-            @Override
-            public void onBootstrapPercentage(int percentage) {
-                if (isCurrent()) handleBootstrapPercentage(percentage);
-            }
-
-            @Override
-            public void onHsDescriptorUpload(String onion) {
-                if (isCurrent()) handleHsDescriptorUpload(onion);
-            }
-
-            @Override
-            public void onClockSkewDetected(long skewSeconds) {
-                if (isCurrent()) handleClockSkewDetected(skewSeconds);
-            }
+            private boolean isCurrent() { return torGeneration.isCurrent(generation); }
+            @Override public void onState(TorWrapper.TorState state) { if (isCurrent()) handleState(state); }
+            @Override public void onBootstrapPercentage(int percentage) { if (isCurrent()) handleBootstrapPercentage(percentage); }
+            @Override public void onHsDescriptorUpload(String onion) { if (isCurrent()) handleHsDescriptorUpload(onion); }
+            @Override public void onClockSkewDetected(long skewSeconds) { if (isCurrent()) handleClockSkewDetected(skewSeconds); }
         });
         tor = newTor;
     }
@@ -152,15 +129,24 @@ public final class TorController {
     }
 
     public static void configureWebViewProxyForUrl(@NonNull Context context, String url, @NonNull Runnable afterProxy) {
-        TorController controller = get(context);
-        if (!isOnionUrl(url) || !WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
+        // Normal HTTP(S) startup must not instantiate TorController: its constructor performs
+        // synchronous port allocation and wrapper initialization on the caller's thread.
+        if (!isOnionUrl(url)) {
             if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-                ProxyController.getInstance().clearProxyOverride(controller.mainExecutor, afterProxy);
+                ProxyController.getInstance().clearProxyOverride(
+                        command -> new Handler(Looper.getMainLooper()).post(command), afterProxy);
             } else {
                 afterProxy.run();
             }
             return;
         }
+
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
+            afterProxy.run();
+            return;
+        }
+
+        TorController controller = get(context);
         controller.start(() -> {
             ProxyConfig config = new ProxyConfig.Builder()
                     .addProxyRule("socks://127.0.0.1:" + controller.socksPort, ProxyConfig.MATCH_ALL_SCHEMES)
@@ -170,10 +156,7 @@ public final class TorController {
     }
 
     public synchronized void start(Runnable callback) {
-        if (connected) {
-            mainExecutor.execute(callback);
-            return;
-        }
+        if (connected) { mainExecutor.execute(callback); return; }
         pendingConnected.add(callback);
         if (started) return;
         started = true;
