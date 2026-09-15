@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.PreferenceManager;
 
+import com.erikraft.drop.utils.LogUtils;
 import com.google.android.material.button.MaterialButton;
 
 import java.nio.charset.StandardCharsets;
