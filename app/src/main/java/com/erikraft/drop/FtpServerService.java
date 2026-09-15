@@ -6,8 +6,8 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Build;
-import android.os.IBinder;
 import android.os.Environment;
+import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -17,12 +17,12 @@ import org.apache.ftpserver.DataConnectionConfigurationFactory;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
 import org.apache.ftpserver.listener.ListenerFactory;
-import org.apache.ftpserver.usermanager.UserManager;
+import org.apache.ftpserver.ssl.SslConfigurationFactory;
 import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
 import org.apache.ftpserver.usermanager.SaltedPasswordEncryptor;
+import org.apache.ftpserver.usermanager.UserManager;
 import org.apache.ftpserver.usermanager.impl.BaseUser;
 import org.apache.ftpserver.usermanager.impl.WritePermission;
-import org.apache.ftpserver.ssl.SslConfigurationFactory;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
@@ -33,7 +33,6 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.math.BigInteger;
 import java.security.KeyPair;
@@ -57,7 +56,6 @@ public class FtpServerService extends Service {
     private static final int DEFAULT_PORT = 2221;
     private static final int PASSIVE_PORT_START = 50000;
     private static final int PASSIVE_PORT_END = 50010;
-
     private FtpServer ftpServer;
 
     public static Intent startIntent(android.content.Context context) {
@@ -90,7 +88,6 @@ public class FtpServerService extends Service {
             String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "erikraft");
             boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false);
             boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true);
-
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);
 
@@ -98,7 +95,6 @@ public class FtpServerService extends Service {
             userFactory.setFile(new File(getFilesDir(), "ftp-users.properties"));
             userFactory.setPasswordEncryptor(new SaltedPasswordEncryptor());
             UserManager userManager = userFactory.createUserManager();
-
             BaseUser user = new BaseUser();
             user.setName(username);
             user.setPassword(password);
@@ -110,15 +106,12 @@ public class FtpServerService extends Service {
 
             FtpServerFactory serverFactory = new FtpServerFactory();
             serverFactory.setUserManager(userManager);
-
             ConnectionConfigFactory connectionConfig = new ConnectionConfigFactory();
             connectionConfig.setAnonymousLoginEnabled(anonymous);
             connectionConfig.setMaxAnonymousLogins(1);
             serverFactory.setConnectionConfig(connectionConfig.createConnectionConfig());
-
             ListenerFactory listener = new ListenerFactory();
             listener.setPort(port);
-
             DataConnectionConfigurationFactory data = new DataConnectionConfigurationFactory();
             data.setPassivePorts(PASSIVE_PORT_START + "-" + PASSIVE_PORT_END);
             data.setPassiveIpCheck(true);
@@ -131,7 +124,7 @@ public class FtpServerService extends Service {
                 ssl.setKeystorePassword(KEYSTORE_PASSWORD);
                 ssl.setKeyPassword(KEYSTORE_PASSWORD);
                 ssl.setKeyAlias(KEY_ALIAS);
-                ssl.setSslProtocol("TLSv1.2", "TLSv1.3");
+                ssl.setSslProtocol("TLS");
                 listener.setSslConfiguration(ssl.createSslConfiguration());
                 listener.setImplicitSsl(false);
             }
@@ -170,22 +163,18 @@ public class FtpServerService extends Service {
     private File createKeystore() throws Exception {
         File file = new File(getFilesDir(), "ftp-ftps.jks");
         if (file.exists()) return file;
-
         if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) Security.addProvider(new BouncyCastleProvider());
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048);
         KeyPair keyPair = generator.generateKeyPair();
-
         long now = System.currentTimeMillis();
         Date notBefore = new Date(now - 60_000L);
         Date notAfter = new Date(now + 3650L * 24L * 60L * 60L * 1000L);
         X500Name subject = new X500Name("CN=ErikrafT Drop FTP");
-        X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(
-                subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
+        X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
         ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(BouncyCastleProvider.PROVIDER_NAME).build(keyPair.getPrivate());
         X509CertificateHolder holder = builder.build(signer);
         X509Certificate certificate = new JcaX509CertificateConverter().setProvider(BouncyCastleProvider.PROVIDER_NAME).getCertificate(holder);
-
         KeyStore keyStore = KeyStore.getInstance("JKS");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});
@@ -215,9 +204,7 @@ public class FtpServerService extends Service {
 
     private Notification notification(String text) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Servidor FTP", NotificationManager.IMPORTANCE_LOW));
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Servidor FTP", NotificationManager.IMPORTANCE_LOW));
         return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_ftp)
                 .setContentTitle("ErikrafT Drop™ FTP")
