@@ -26,6 +26,8 @@ import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
 import com.erikraft.drop.utils.ClipboardUtils;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -186,9 +188,15 @@ public class JavaScriptInterface {
     }
 
     public static String getSendTextDialogWithPreInsertedString(final String text) {
-        return "javascript: try { document.getElementById(\"textInput\").innerHTML=\""
-                + TextUtils.htmlEncode(text).replaceAll("\\n", "<br />") + "\";"
-                + " Events.fire('activate-share-mode', {text: SnapdropAndroid.getTextFromUploadIntent()}); } catch (e) { console.error(e); }";
+        final String safeText = TextUtils.htmlEncode(text == null ? "" : text).replace("\n", "<br />");
+        final String quotedText = JSONObject.quote(safeText);
+        return "javascript:(function(){try{"
+                + "var input=document.getElementById('textInput');"
+                + "if(!input)return;"
+                + "input.innerHTML=" + quotedText + ";"
+                + "var bridge=(typeof SnapdropAndroid!=='undefined')?SnapdropAndroid:((typeof ErikrafTdropAndroid!=='undefined')?ErikrafTdropAndroid:null);"
+                + "if(bridge&&typeof Events!=='undefined'&&typeof Events.fire==='function'){Events.fire('activate-share-mode',{text:bridge.getTextFromUploadIntent()});}"
+                + "}catch(e){console.error(e);}})();";
     }
 
     @JavascriptInterface
