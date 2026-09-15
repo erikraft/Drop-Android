@@ -27,18 +27,24 @@ jobs:
         run: git submodule update --init --remote --depth 1 ErikrafT-Drop
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platform-tools
-            platforms;android-34
-            build-tools;34.0.0
+      - name: Configure Android SDK command-line tools
+        run: |
+          if [ -z "${ANDROID_HOME:-}" ]; then
+            echo "ANDROID_HOME is not configured on the runner." >&2
+            exit 1
+          fi
+
+          echo "${ANDROID_HOME}/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          echo "${ANDROID_HOME}/platform-tools" >> "$GITHUB_PATH"
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Accept Android SDK licenses
         run: yes | sdkmanager --licenses

@@ -13,12 +13,12 @@ aboutLibraries {
 
 android {
     namespace 'com.erikraft.drop'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.erikraft.drop"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 36
 
         versionCode 27
         versionName "10.1.4"
@@ -55,6 +55,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 
     packagingOptions {
@@ -128,10 +129,6 @@ android {
                 signingConfig signingConfigs.release
             }
         }
-    }
-
-    lintOptions {
-        disable 'MissingTranslation', 'ExtraTranslation'
     }
 }
 
