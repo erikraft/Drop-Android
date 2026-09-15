@@ -56,56 +56,43 @@ public class FtpSettingsActivity extends AppCompatActivity {
         SnapdropApplication.setAppTheme(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         buildUi();
-        registerReceiver(statusReceiver, new IntentFilter(FtpServerService.EXTRA_STATUS), Context.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(this, statusReceiver, new IntentFilter(FtpServerService.EXTRA_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     private void buildUi() {
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
-
         Toolbar toolbar = new Toolbar(this);
         toolbar.setTitle(R.string.ftp_settings_title);
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(v -> finish());
         root.addView(toolbar, new LinearLayout.LayoutParams(-1, getResources().getDimensionPixelSize(com.google.android.material.R.dimen.mtrl_toolbar_default_height)));
         setSupportActionBar(toolbar);
-
         ScrollView scroll = new ScrollView(this);
         LinearLayout content = new LinearLayout(this);
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(20), dp(12), dp(20), dp(28));
-
-        TextView intro = text(getString(R.string.ftp_settings_description), 15);
-        content.addView(intro);
-
+        content.addView(text(getString(R.string.ftp_settings_description), 15));
         portInput = field("Porta", prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
-        content.addView(portInput.getParent() == null ? (TextInputLayout) portInput.getTag() : (TextInputLayout) portInput.getTag(), lpTop(dp(12)));
-
+        content.addView((TextInputLayout) portInput.getTag(), lpTop(dp(12)));
         usernameInput = field("Nome de usuário", prefs.getString(getString(R.string.pref_ftp_username), "erikraft"), InputType.TYPE_CLASS_TEXT);
         content.addView((TextInputLayout) usernameInput.getTag(), lpTop(dp(8)));
-
         passwordInput = field("Senha", prefs.getString(getString(R.string.pref_ftp_password), "erikraft"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         content.addView((TextInputLayout) passwordInput.getTag(), lpTop(dp(8)));
-
         anonymousSwitch = new SwitchCompat(this);
         anonymousSwitch.setText(R.string.ftp_anonymous_title);
         anonymousSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false));
         content.addView(anonymousSwitch, lpTop(dp(8)));
-
         ftpsSwitch = new SwitchCompat(this);
         ftpsSwitch.setText(R.string.ftp_ftps_title);
         ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), true));
         content.addView(ftpsSwitch, lpTop(dp(4)));
-
-        TextView passive = text(getString(R.string.ftp_passive_summary), 13);
-        content.addView(passive, lpTop(dp(4)));
-
+        content.addView(text(getString(R.string.ftp_passive_summary), 13), lpTop(dp(4)));
         status = text("Servidor parado", 15);
         content.addView(status, lpTop(dp(18)));
         address = text("", 14);
         address.setTextIsSelectable(true);
         content.addView(address, lpTop(dp(4)));
-
         LinearLayout actions = new LinearLayout(this);
         actions.setGravity(Gravity.CENTER_VERTICAL);
         MaterialButton start = new MaterialButton(this);
@@ -117,15 +104,12 @@ public class FtpSettingsActivity extends AppCompatActivity {
         stopParams.setMargins(dp(8), 0, 0, 0);
         actions.addView(stop, stopParams);
         content.addView(actions, lpTop(dp(12)));
-
         MaterialButton copy = new MaterialButton(this);
         copy.setText(R.string.ftp_copy_address);
         content.addView(copy, lpTop(dp(8)));
-
         start.setOnClickListener(v -> saveAndStart());
         stop.setOnClickListener(v -> stopServer());
         copy.setOnClickListener(v -> copyAddress());
-
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         setContentView(root);
@@ -188,8 +172,7 @@ public class FtpSettingsActivity extends AppCompatActivity {
     private String buildAddress() {
         String port = prefs.getString(getString(R.string.pref_ftp_port), "2221");
         String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true) ? "ftps" : "ftp";
-        String host = getWifiAddress();
-        return scheme + "://" + host + ":" + port;
+        return scheme + "://" + getWifiAddress() + ":" + port;
     }
 
     private String getWifiAddress() {
