@@ -40,8 +40,8 @@
             android:entryValues="@array/darkMode_values"
             android:icon="@drawable/pref_theme"
             android:key="@string/pref_theme_setting"
-            android:summary="%s"
-            android:title="@string/settings_theme_title" />
+            android:title="@string/settings_theme_title"
+            app:useSimpleSummaryProvider="true" />
         <Preference
             android:icon="@drawable/pref_name"
             android:key="@string/pref_device_name"
