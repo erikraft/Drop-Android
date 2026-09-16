@@ -141,6 +141,18 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <!-- FTP / FTPS -->
+    <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
+    <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
+    <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
+    <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
+    <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
+    <string name="ftp_passive_summary">Modo passivo: portas de dados 50000–50010. A porta de controle padrão é 2221 e pode ser alterada.</string>
+    <string name="ftp_start">Iniciar servidor</string>
+    <string name="ftp_stop">Parar servidor</string>
+    <string name="ftp_starting">Iniciando servidor…</string>
+    <string name="ftp_copy_address">Copiar endereço</string>
+    <string name="ftp_address_copied">Endereço FTP copiado.</string>
     <string name="diagnostics_title">Diagnósticos</string>
     <string name="diagnostics_summary">Ative os diagnósticos para visualizar os logs do aplicativo</string>
     <string name="diagnostics_enabled_summary">Logs de diagnóstico habilitados</string>
