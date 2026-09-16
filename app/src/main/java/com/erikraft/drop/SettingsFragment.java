@@ -113,6 +113,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             });
         }
 
+        final Preference ftpPreference = findPreference("ftp_settings");
+        if (ftpPreference != null) {
+            ftpPreference.setOnPreferenceClickListener(pref -> {
+                startActivity(new Intent(requireContext(), FtpSettingsActivity.class));
+                return true;
+            });
+        }
+
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         if (openSourceComponents != null) {
             openSourceComponents.setOnPreferenceClickListener(pref -> {
