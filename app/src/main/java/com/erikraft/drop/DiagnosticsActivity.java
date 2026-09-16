@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.PreferenceManager;
@@ -57,11 +58,15 @@ public class DiagnosticsActivity extends AppCompatActivity {
 
         Toolbar bar = new Toolbar(this);
         bar.setTitle(R.string.diagnostics_title);
-        bar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        bar.setNavigationContentDescription(R.string.home_as_up_indicator_about);
-        bar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
         root.addView(bar, new LinearLayout.LayoutParams(-1, getResources().getDimensionPixelSize(com.google.android.material.R.dimen.mtrl_toolbar_default_height)));
         setSupportActionBar(bar);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+            actionBar.setHomeActionContentDescription(R.string.home_as_up_indicator_about);
+        }
 
         LinearLayout actions = new LinearLayout(this);
         actions.setOrientation(LinearLayout.HORIZONTAL);
@@ -84,6 +89,12 @@ public class DiagnosticsActivity extends AppCompatActivity {
         setContentView(root);
 
         refreshLogs();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getOnBackPressedDispatcher().onBackPressed();
+        return true;
     }
 
     private MaterialButton button(int id) {

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -73,10 +74,15 @@ public class OnionTransferActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = new MaterialToolbar(this);
         toolbar.setTitle(getString(R.string.onion_transfer_title));
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(v -> finish());
         root.addView(toolbar, new LinearLayout.LayoutParams(-1, getResources().getDimensionPixelSize(com.google.android.material.R.dimen.mtrl_toolbar_default_height)));
         setSupportActionBar(toolbar);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+            actionBar.setHomeActionContentDescription(R.string.home_as_up_indicator_about);
+        }
 
         ScrollView scroll = new ScrollView(this);
         scroll.setFillViewport(true);
@@ -174,6 +180,12 @@ public class OnionTransferActivity extends AppCompatActivity {
         stopButton.setOnClickListener(v -> stopOnion());
         copyButton.setOnClickListener(v -> copyLink());
         shareButton.setOnClickListener(v -> shareLink());
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getOnBackPressedDispatcher().onBackPressed();
+        return true;
     }
 
     private void registerPicker() {
