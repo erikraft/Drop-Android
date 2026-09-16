@@ -173,6 +173,7 @@ dependencies {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
+    implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
     implementation 'org.bouncycastle:bcpkix-jdk18on:1.86'
 }
