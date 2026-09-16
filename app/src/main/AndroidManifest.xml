@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -17,24 +19,12 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-feature
-        android:name="android.hardware.wifi"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.type.television"
-        android:required="false" />
-    <uses-feature
-        android:name="android.software.vr.mode"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.vr.high_performance"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.type.xr"
-        android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.type.television" android:required="false" />
+    <uses-feature android:name="android.software.vr.mode" android:required="false" />
+    <uses-feature android:name="android.hardware.vr.high_performance" android:required="false" />
+    <uses-feature android:name="android.hardware.type.xr" android:required="false" />
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -75,7 +65,6 @@
             android:label="@string/pref_category_settings">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -92,65 +81,42 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="*/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="*/*" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="snapdrop.net"
-                    android:scheme="http" />
-                <data
-                    android:host="snapdrop.net"
-                    android:scheme="https" />
+                <data android:host="snapdrop.net" android:scheme="http" />
+                <data android:host="snapdrop.net" android:scheme="https" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="pairdrop.net"
-                    android:scheme="http" />
-                <data
-                    android:host="pairdrop.net"
-                    android:scheme="https" />
+                <data android:host="pairdrop.net" android:scheme="http" />
+                <data android:host="pairdrop.net" android:scheme="https" />
             </intent-filter>
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="drop.erikraft.com"
-                    android:scheme="https" />
+                <data android:host="drop.erikraft.com" android:scheme="https" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
@@ -163,9 +129,7 @@
             android:theme="@style/TransparentBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
@@ -174,6 +138,11 @@
             android:name=".qr.QRTransferActivity"
             android:exported="false"
             android:label="@string/qr_transfer_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".FtpSettingsActivity"
+            android:exported="false"
+            android:label="@string/ftp_settings_title"
             android:theme="@style/AppTheme" />
 
         <service
@@ -187,6 +156,10 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+        <service
+            android:name=".FtpServerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -197,8 +170,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-            <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" />
+        <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" />
         <activity android:name=".OnionTransferActivity" android:exported="false" />
     </application>
-
 </manifest>
