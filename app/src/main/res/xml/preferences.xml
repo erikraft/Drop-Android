@@ -76,6 +76,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/ftp_settings_title"
+        android:summary="@string/ftp_settings_summary"
+        app:iconSpaceReserved="false">
+        <Preference
+            android:key="ftp_settings"
+            android:icon="@drawable/ic_ftp"
+            android:summary="@string/ftp_settings_summary"
+            android:title="@string/ftp_settings_title"
+            app:singleLineTitle="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/title_activity_about"
         app:iconSpaceReserved="false">
         <Preference
