@@ -65,17 +65,17 @@ jobs:
             echo "Checking Tor/Lyrebird native libraries in: $APK"
             ZIP_CONTENTS="$(unzip -Z1 "$APK")"
 
-            if printf '%s\n' "$ZIP_CONTENTS" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'; then
+            if grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$' <<< "$ZIP_CONTENTS"; then
               echo "Found libtor.so in $APK"
-              printf '%s\n' "$ZIP_CONTENTS" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'
+              grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$' <<< "$ZIP_CONTENTS"
               TOR_FOUND=1
             else
               echo "No libtor.so found in $APK"
             fi
 
-            if printf '%s\n' "$ZIP_CONTENTS" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$'; then
+            if grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$' <<< "$ZIP_CONTENTS"; then
               echo "Found liblyrebird.so in $APK"
-              printf '%s\n' "$ZIP_CONTENTS" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$'
+              grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$' <<< "$ZIP_CONTENTS"
               LYREBIRD_FOUND=1
             else
               echo "No liblyrebird.so found in $APK"
