@@ -121,9 +121,7 @@ public class OnboardingFragment2 extends Fragment {
                     if (url.startsWith("!!")) {
                         newServer(url.substring("!!".length()));
                     } else if (url.toLowerCase().contains(".onion")) {
-                        String onionUrl = url.contains("://") ? url : "http://" + url;
-                        if (!onionUrl.endsWith("/")) onionUrl += "/";
-                        newServer(onionUrl);
+                        newServer(normalizeServerUrl(url));
                     } else if (url.startsWith("http")) {
                         NetworkUtils.checkInstance(this, url, result -> {
                             if (result) newServer(url);
@@ -144,11 +142,25 @@ public class OnboardingFragment2 extends Fragment {
                 }));
 
         binding.continueButton.setOnClickListener(v -> {
-            viewModel.url(tempUrl.getValue());
+            final String selectedUrl = normalizeServerUrl(tempUrl.getValue());
+            viewModel.url(selectedUrl);
             if (viewModel.isOnlyServerSelection()) requireActivity().finish();
             else viewModel.launchFragment(OnboardingFragment3.class);
         });
         binding.continueButton.requestFocus();
+    }
+
+    private String normalizeServerUrl(final String value) {
+        if (value == null) return "https://drop.erikraft.com/";
+        String normalized = value.trim();
+        if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
+        if (normalized.toLowerCase().contains(".onion")) {
+            if (!normalized.contains("://")) normalized = "http://" + normalized;
+            normalized = normalized.replaceFirst("^https://", "http://");
+            while (normalized.endsWith("/")) normalized = normalized.substring(0, normalized.length() - 1);
+            return normalized + "/";
+        }
+        return normalized;
     }
 
     private boolean isSnapdropNet(final String value) {
@@ -196,10 +208,11 @@ public class OnboardingFragment2 extends Fragment {
     }
 
     private void newServer(final String url) {
+        final String normalizedUrl = normalizeServerUrl(url);
         final Set<String> serverUrls = new HashSet<>(pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>()));
-        serverUrls.add(url);
+        serverUrls.add(normalizedUrl);
         pref.edit().putStringSet(getString(R.string.pref_custom_servers), serverUrls).apply();
-        tempUrl.setValue(url);
+        tempUrl.setValue(normalizedUrl);
         reloadServerList();
     }
 
