@@ -21,9 +21,12 @@ import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 public class OnboardingFragment2 extends Fragment {
@@ -72,6 +75,7 @@ public class OnboardingFragment2 extends Fragment {
         @Override
         public ServerItemViewHolder onCreateViewHolder(final @NonNull ViewGroup parent, final int viewType) {
             final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.servercard, parent, false);
+            final ServerItemCardAdapter adapter = this;
             final ServerItemViewHolder holder = new ServerItemViewHolder(view);
             holder.itemView.setOnClickListener(v -> tempUrl.setValue(holder.urlTextView.getText().toString()));
             holder.itemView.setOnLongClickListener(v -> {
@@ -120,7 +124,7 @@ public class OnboardingFragment2 extends Fragment {
                     }
                     if (url.startsWith("!!")) {
                         newServer(url.substring("!!".length()));
-                    } else if (url.toLowerCase().contains(".onion")) {
+                    } else if (isOnionServerUrl(url)) {
                         newServer(normalizeServerUrl(url));
                     } else if (url.startsWith("http")) {
                         NetworkUtils.checkInstance(this, url, result -> {
@@ -150,15 +154,42 @@ public class OnboardingFragment2 extends Fragment {
         binding.continueButton.requestFocus();
     }
 
+    private boolean isOnionServerUrl(final String value) {
+        if (value == null) return false;
+        String normalized = value.trim();
+        if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
+        if (normalized.isEmpty()) return false;
+        String parseValue = normalized.contains("://") ? normalized : "http://" + normalized;
+        try {
+            final URI uri = new URI(parseValue);
+            final String host = uri.getHost();
+            return host != null && host.toLowerCase(Locale.ROOT).endsWith(".onion");
+        } catch (URISyntaxException e) {
+            return false;
+        }
+    }
+
     private String normalizeServerUrl(final String value) {
         if (value == null) return "https://drop.erikraft.com/";
         String normalized = value.trim();
         if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
-        if (normalized.toLowerCase().contains(".onion")) {
-            if (!normalized.contains("://")) normalized = "http://" + normalized;
-            normalized = normalized.replaceFirst("^https://", "http://");
-            while (normalized.endsWith("/")) normalized = normalized.substring(0, normalized.length() - 1);
-            return normalized + "/";
+        if (!isOnionServerUrl(normalized)) return normalized;
+
+        if (!normalized.contains("://")) {
+            normalized = "http://" + normalized;
+        } else if (normalized.regionMatches(true, 0, "https://", 0, "https://".length())) {
+            normalized = "http://" + normalized.substring("https://".length());
+        }
+
+        try {
+            final URI uri = new URI(normalized);
+            if (uri.getPath() == null || uri.getPath().isEmpty()) {
+                if (uri.getQuery() == null && uri.getFragment() == null && !normalized.endsWith("/")) {
+                    normalized += "/";
+                }
+            }
+        } catch (URISyntaxException ignored) {
+            return normalized;
         }
         return normalized;
     }
