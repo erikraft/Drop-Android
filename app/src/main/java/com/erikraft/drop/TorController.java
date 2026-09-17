@@ -98,12 +98,18 @@ public final class TorController {
         tor = newTor;
     }
 
+    private File nativeLibrary(String name) {
+        return new File(application.getApplicationInfo().nativeLibraryDir, name);
+    }
+
     private void logNativeRuntimeState() {
         try {
             File dir = new File(application.getApplicationInfo().nativeLibraryDir);
-            File torLib = new File(dir, "libtor.so");
+            File torLib = nativeLibrary("libtor.so");
+            File lyrebirdLib = nativeLibrary("liblyrebird.so");
             Log.i(TAG, "nativeLibraryDir=" + dir.getAbsolutePath());
             Log.i(TAG, "libtor.so exists=" + torLib.exists() + ", readable=" + torLib.canRead() + ", executable=" + torLib.canExecute() + ", length=" + torLib.length());
+            Log.i(TAG, "liblyrebird.so exists=" + lyrebirdLib.exists() + ", readable=" + lyrebirdLib.canRead() + ", executable=" + lyrebirdLib.canExecute() + ", length=" + lyrebirdLib.length());
             Log.i(TAG, "ABIs=" + java.util.Arrays.toString(Build.SUPPORTED_ABIS) + ", sdk=" + Build.VERSION.SDK_INT);
         } catch (Exception e) { Log.w(TAG, "Tor native diagnostics failed", e); }
     }
@@ -169,9 +175,17 @@ public final class TorController {
             try {
                 AndroidTorWrapper currentTor = tor;
                 logNativeRuntimeState();
+                File lyrebirdLib = nativeLibrary("liblyrebird.so");
+                if (!lyrebirdLib.isFile() || !lyrebirdLib.canRead() || !lyrebirdLib.canExecute()) {
+                    throw new IllegalStateException("Missing executable Tor transport library: " + lyrebirdLib.getAbsolutePath());
+                }
                 currentTor.start();
                 currentTor.enableNetwork(true);
                 return;
+            } catch (IllegalStateException e) {
+                lastError = e;
+                Log.e(TAG, "Tor native runtime is incomplete; aborting Onion startup", e);
+                break;
             } catch (Exception e) {
                 lastError = e;
                 Log.w(TAG, "Tor start failed on attempt " + attempt + "/" + PORT_ALLOCATION_ATTEMPTS + "; reallocating ports", e);
