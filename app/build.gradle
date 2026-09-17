@@ -172,9 +172,11 @@ dependencies {
     implementation('org.briarproject:onionwrapper-android:0.1.4') {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
-    // Onion Wrapper expects the Lyrebird executable to be packaged as liblyrebird.so.
-    // Keep the native transport artifact explicit so x86_64/arm64-v8a releases contain it.
-    implementation 'org.briarproject:lyrebird-android:0.6.2'
+    // Onion Wrapper expects the Lyrebird executable at liblyrebird.so in the APK.
+    // Force the published native artifact to be consumed as an AAR so its jni/
+    // entries are merged into the application's APK instead of being treated as
+    // a plain Java artifact. Keep this dependency explicit for all supported ABIs.
+    implementation 'org.briarproject:lyrebird-android:0.6.2@aar'
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
     implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
