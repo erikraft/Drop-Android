@@ -172,6 +172,9 @@ dependencies {
     implementation('org.briarproject:onionwrapper-android:0.1.4') {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
+    // Onion Wrapper expects the Lyrebird executable to be packaged as liblyrebird.so.
+    // Keep the native transport artifact explicit so x86_64/arm64-v8a releases contain it.
+    implementation 'org.briarproject:lyrebird-android:0.6.2'
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
     implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
