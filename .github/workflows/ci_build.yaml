@@ -51,7 +51,7 @@ jobs:
           chmod +x gradlew
           ./gradlew clean assembleDebug --no-build-cache --rerun-tasks --stacktrace --warning-mode all --info
 
-      - name: Verify Tor native libraries in APK
+      - name: Verify Tor and Lyrebird native libraries in APK
         run: |
           mapfile -t APKS < <(find app/build/outputs/apk -type f -name '*.apk' -print)
           if [ "${#APKS[@]}" -eq 0 ]; then
@@ -59,22 +59,37 @@ jobs:
             exit 1
           fi
 
-          FOUND=0
+          TOR_FOUND=0
+          LYREBIRD_FOUND=0
           for APK in "${APKS[@]}"; do
-            echo "Checking Tor native libraries in: $APK"
-            if unzip -Z1 "$APK" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'; then
+            echo "Checking Tor/Lyrebird native libraries in: $APK"
+            ZIP_CONTENTS="$(unzip -Z1 "$APK")"
+
+            if printf '%s\n' "$ZIP_CONTENTS" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'; then
               echo "Found libtor.so in $APK"
-              unzip -Z1 "$APK" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'
-              FOUND=1
+              printf '%s\n' "$ZIP_CONTENTS" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'
+              TOR_FOUND=1
             else
               echo "No libtor.so found in $APK"
             fi
+
+            if printf '%s\n' "$ZIP_CONTENTS" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$'; then
+              echo "Found liblyrebird.so in $APK"
+              printf '%s\n' "$ZIP_CONTENTS" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/liblyrebird\.so$'
+              LYREBIRD_FOUND=1
+            else
+              echo "No liblyrebird.so found in $APK"
+            fi
           done
 
-          if [ "$FOUND" -ne 1 ]; then
+          if [ "$TOR_FOUND" -ne 1 ]; then
             echo "ERROR: No generated APK contains libtor.so for a supported ABI." >&2
-            echo "Generated APKs:" >&2
-            printf ' - %s\n' "${APKS[@]}" >&2
+            exit 1
+          fi
+
+          if [ "$LYREBIRD_FOUND" -ne 1 ]; then
+            echo "ERROR: No generated APK contains liblyrebird.so for a supported ABI." >&2
+            echo "The Onion Wrapper requires the native Lyrebird transport at runtime." >&2
             exit 1
           fi
 
