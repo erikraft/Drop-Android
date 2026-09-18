@@ -27,7 +27,9 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       - name: Accept Android SDK licenses
         run: yes | sdkmanager --licenses
@@ -49,8 +51,6 @@ jobs:
             echo "Checking Tor/Lyrebird native library pairs in: $APK"
             ZIP_CONTENTS="$(unzip -Z1 "$APK")"
 
-            # Use here-strings instead of printf | grep -q. With pipefail enabled,
-            # grep -q can exit early and make printf receive SIGPIPE (Broken pipe).
             mapfile -t PACKAGED_ABIS < <(
               grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/' <<< "$ZIP_CONTENTS" \
                 | cut -d/ -f2 \
