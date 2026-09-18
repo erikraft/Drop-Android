@@ -1,159 +1,153 @@
-# Development Rules — ErikrafT Drop™ for Android
+# ErikrafT Drop™ — Development Rules
 
-These rules apply to human contributors and automated agents/models working on this repository.
+## 1. Audit first — do not rebuild existing functionality
 
-## 1. Audit Before Implementation
+This is an existing application. Human contributors and coding agents/models must inspect the current implementation before changing it.
 
-This is an existing application. **Do not recreate existing functionality when an implementation is already available.**
+Priority:
 
-Before changing code:
+1. **Search** for the existing implementation.
+2. **Understand** the current architecture and behavior.
+3. **Reuse** working components, services, APIs and integrations.
+4. **Correct** broken or incomplete existing code.
+5. **Extend** the existing implementation when the requirement needs additional behavior.
+6. **Refactor** only when technically necessary and keep the scope small.
+7. **Create from scratch** only when the existing implementation is technically unusable or cannot be corrected safely.
 
-1. Search the repository and inspect the current implementation.
-2. Identify the existing components, activities, services, functions, APIs, assets and integrations involved.
-3. Determine what is working, incomplete, broken, legacy or inconsistent.
-4. Reuse and evolve the existing implementation whenever technically possible.
-5. Make the smallest safe change that solves the task.
-6. Preserve unrelated behavior, integrations, UI, compatibility and architecture.
-7. Do not replace a working technology or architecture merely because another option appears preferable.
-8. Do not add redundant dependencies, frameworks or services.
-9. If an existing implementation is partially correct, fix or extend it instead of discarding it.
-10. Rebuild from scratch only when the existing implementation is technically unusable, incompatible or unsafe to correct; document the reason.
+Do not replace an existing implementation merely because another technology or architecture looks preferable.
 
-### Priority
+Before implementation, document:
 
-**SEARCH → UNDERSTAND → REUSE → CORRECT → EXTEND → REFACTOR IF NECESSARY → CREATE ONLY WHEN NO REUSABLE IMPLEMENTATION EXISTS.**
+- where the feature currently lives;
+- which files and components are involved;
+- what works;
+- what is broken, incomplete, legacy or inconsistent;
+- what will be changed;
+- what must remain untouched.
 
-Future agents/models must follow this order regardless of model, tool or coding preference.
+Avoid speculative changes and unrelated cleanup.
 
-## 2. Diagnose Before Changing
+## 2. Issues and Pull Requests
 
-Do not implement speculative fixes. First identify:
+Every correction, improvement or new feature should have a dedicated GitHub Issue or use an existing issue that precisely covers the work.
 
-- the actual code path;
-- files and components involved;
-- existing reusable implementation;
-- root cause or confirmed gap;
-- required changes;
-- files that must not be changed.
+The Issue should describe:
 
-Separate unrelated findings from the current task. Create a separate Issue when an out-of-scope problem needs follow-up.
-
-## 3. Issues and Pull Requests
-
-Every correction, improvement or new feature must be traceable to a specific GitHub Issue and Pull Request.
-
-The Issue should document:
-
-- problem/objective;
+- problem or objective;
 - current behavior;
 - expected behavior;
-- scope and non-scope;
+- scope;
 - acceptance criteria.
 
-The Pull Request must:
+Implementation belongs in a Pull Request that explicitly references the Issue.
 
-- explicitly reference the Issue;
-- explain what and why changed;
-- identify affected files/components;
-- explain how existing functionality was reused or extended;
-- list validation/tests actually executed;
-- identify relevant risks or compatibility considerations;
-- avoid unrelated changes and unnecessary broad refactors.
+A PR should explain:
 
-Never claim a test, build, runtime verification or review was performed unless it actually was.
+- what changed and why;
+- which files/components changed;
+- how the existing implementation was preserved or reused;
+- tests and quality checks executed;
+- compatibility considerations and risks.
 
-## 4. Documentation
+Do not mix unrelated refactors or architectural rewrites into a focused fix.
 
-Update the most appropriate existing documentation when possible. Do not duplicate project guidance. If no suitable document exists, add one appropriate Markdown document and keep the rules centralized.
+## 3. UI and Motion Principles
 
-## 5. UI, Motion and Accessibility
+When UI work is applicable, inspect existing loading, transition and motion behavior before adding anything.
 
-For UI work, audit existing loading, skeleton, lazy-loading, entry/exit animation, transition, progress and asynchronous feedback states before adding anything.
+Prefer existing patterns for:
 
-- Preserve correct existing motion.
-- Fix broken motion before adding another implementation.
-- Avoid redundant or decorative animation that does not improve the interaction.
-- Keep motion performant and accessible.
-- Respect `prefers-reduced-motion` where web UI/CSS motion is involved.
-- Preserve the project's existing visual identity rather than rebuilding the interface.
+- skeleton/loading states;
+- lazy loading;
+- progress indicators;
+- async feedback;
+- state transitions;
+- entry and exit animations.
 
-When a repository-specific or applicable Motion Principles skill/guidance is available, consult it before changing motion behavior.
+Do not duplicate animations or reconstruct the interface unnecessarily. Keep the existing visual identity and behavior. Respect `prefers-reduced-motion` and avoid motion that harms performance or accessibility.
 
-## 6. Observability
+## 4. Observability
 
-Audit existing observability before introducing instrumentation.
+Audit existing observability before introducing a new service.
 
-Use an existing suitable solution when one already exists. Consider Sentry, Datadog, New Relic or OpenTelemetry only when the architecture and operational need justify them; never install all of them automatically.
+Use an existing suitable solution when available. Consider Sentry, Datadog, New Relic or OpenTelemetry only when there is a concrete architectural need.
 
-Prioritize useful signals such as:
+Prioritize useful coverage of:
 
-- exceptions and errors;
+- exceptions and crashes;
 - network failures;
 - critical operations;
-- performance measurements;
-- relevant metrics;
+- performance;
+- metrics;
 - traces;
-- actionable logs.
+- logs.
 
-Avoid duplicate instrumentation and sensitive-data logging.
+Do not create duplicate instrumentation stacks.
 
-## 7. Quality and Lint
+## 5. Quality and lint
 
-Audit the repository's current quality tooling and CI before adding tools. Check what is configured, what actually runs, what is broken/outdated and what gaps exist.
+Inspect the project's existing quality tooling before adding another tool.
 
-Use tools such as Checkstyle, Arch-contract, Biome, Commitlint, Knip or Stryker only when they are appropriate to the repository and task. Do not introduce multiple tools for the same responsibility without a technical reason.
+Potential tools include Arch-contract, Biome, Commitlint, Knip and Stryker/Stryker Mutator, but none should be introduced automatically.
 
-For this Android repository, preserve and evolve the existing Gradle, Android Lint and Checkstyle setup rather than replacing it unnecessarily.
+First verify what is already configured and what actually runs in CI. Fix broken or stale tooling before adding redundant tooling.
 
-## 8. Tests and Regression Prevention
+## 6. Tests
 
-Before creating tests, search for tests covering the same behavior. Preserve the existing strategy and add focused regression coverage when practical.
+Preserve and evolve the current test strategy.
+
+Before writing a new test, search for existing coverage of the same functionality.
 
 For a bug:
 
 1. reproduce or identify the incorrect behavior;
 2. fix the existing implementation;
-3. add/update a focused regression test when the architecture permits;
-4. execute the relevant checks.
+3. add or update a focused regression test when practical;
+4. run the relevant tests.
 
-Use unit, integration or end-to-end testing according to the affected layer. Playwright/Codecov are not requirements by themselves; introduce them only when appropriate to the project and task.
+Use unit, integration and end-to-end tests, Codecov or Playwright only when appropriate to the existing architecture and task. Do not rewrite the whole test suite for one bug.
 
-If the repository has no existing test coverage for a layer and adding a test would require a disproportionate architectural rewrite, document that limitation instead of rebuilding the test architecture.
+## 7. Compatibility and regression safety
 
-## 9. Compatibility and Regression
+Consider changes across:
 
-Consider, where applicable:
-
-- desktop/mobile and supported Android form factors;
-- screen sizes and orientations;
-- supported browsers/WebView behavior;
+- desktop and mobile;
+- supported browsers and Android versions;
+- different screen sizes;
 - accessibility;
-- performance and resource usage;
-- loading/error/offline states;
+- performance;
+- loading and error states;
+- offline/network failure;
 - asynchronous operations;
-- existing integrations and data flows.
+- existing integrations.
 
-Do not break unrelated functionality to implement a new behavior.
+Do not break an unrelated existing feature to implement a new one. If an unrelated defect is discovered, record it separately instead of silently expanding scope.
 
-## 10. Dependency and Architecture Discipline
+## 8. Dependencies and native packaging
 
-Prefer existing dependencies and architecture. Before adding a dependency, verify that the project does not already provide the required capability and that the dependency is compatible with the current build, packaging and supported platforms.
+Do not add duplicate dependencies when an existing dependency can be reused.
 
-Native Android dependencies must also be validated in the produced artifact when native packaging is part of the task.
+For native Android libraries, verify the complete packaging path rather than assuming a Gradle dependency declaration is sufficient. Inspect the resolved artifact type, ABI layout and final APK/AAB contents when runtime code expects a specific native file.
 
-## 11. Completion Criteria
+For Onion Wrapper, the Android runtime expects the native files named `libtor.so` and `liblyrebird.so`. CI must validate the generated artifact rather than only checking Gradle configuration.
 
-A task is complete only when, as applicable:
+## 9. Completion criteria
 
-- the existing implementation was audited first;
-- the solution was incremental where possible;
-- unrelated behavior was preserved;
-- unnecessary duplication was avoided;
-- relevant tests/checks were executed and honestly reported;
-- lint/quality checks were executed when applicable;
+A task is complete only when:
+
+- the existing implementation was audited;
+- the smallest safe incremental change was applied where possible;
+- unrelated functionality was preserved;
+- no unnecessary duplicate implementation was introduced;
+- relevant tests were executed;
+- relevant lint/quality checks were executed;
 - required documentation was updated;
-- the Issue is explicitly linked to the PR;
-- the PR clearly documents the implementation and validation;
-- no dead or unrelated code was introduced.
+- the Issue and PR are linked;
+- the PR clearly documents the change and validation;
+- no dead code or unrelated changes were introduced.
 
-For release-sensitive changes, preserve the requested application version unless a version bump is explicitly part of the task.
+## 10. Rule for all future agents/models
+
+**PROCURE → ENTENDA → REUTILIZE → CORRIJA → ESTENDA → SÓ ENTÃO CRIE.**
+
+The model used to implement a task does not change this rule. A different model, framework preference or newer technology is not by itself a reason to replace working project code.

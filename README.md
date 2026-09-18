@@ -55,6 +55,8 @@ Your contributions help make the app accessible to users worldwide!
 ### ✍🏻｜Development
 If you want to help with development, this would be more than welcome! I am very glad about every pull request. Just fork the repo and start coding. However, if you plan to implement larger changes, please tell us in the [issue tracker](https://github.com/erikraft/Drop-Android/issues) before hacking on your great new feature.
 
+See [`DEVELOPMENT_RULES.md`](DEVELOPMENT_RULES.md) for the repository's full development, testing, compatibility, documentation, observability and incremental-maintenance rules. **Agents and contributors must audit and reuse existing implementations before creating new functionality.**
+
 ### 🤖｜Release and Play Store automation
 This repository includes a manual GitHub Actions release pipeline at `.github/workflows/release.yml` that builds and signs the mobile APK and AAB. It can also run automatically for version tags (`v*`).
 
@@ -67,7 +69,7 @@ For a signed release, configure these repository/environment secrets:
 
 The workflow validates that all signing inputs are present, keeps the keystore in the temporary runner directory, removes it after the job, builds both APK and AAB, and verifies the resulting signatures. It also builds against Android 16 (API 36) and refreshes the `ErikrafT-Drop` web submodule from its `master` branch.
 
-> **Current Android app version:** `10.1.4` (version code `27`).
+> **Current Android app version:** `10.1.5` (version code `28`).
 > **Target/Compile SDK:** Android 16 / API 36.
 
 The Android application and the web application use independent version numbers. The web application version is maintained in the `ErikrafT/Drop` repository.

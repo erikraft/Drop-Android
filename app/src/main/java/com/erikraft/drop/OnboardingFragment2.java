@@ -21,9 +21,12 @@ import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 public class OnboardingFragment2 extends Fragment {
@@ -72,6 +75,7 @@ public class OnboardingFragment2 extends Fragment {
         @Override
         public ServerItemViewHolder onCreateViewHolder(final @NonNull ViewGroup parent, final int viewType) {
             final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.servercard, parent, false);
+            final ServerItemCardAdapter adapter = this;
             final ServerItemViewHolder holder = new ServerItemViewHolder(view);
             holder.itemView.setOnClickListener(v -> tempUrl.setValue(holder.urlTextView.getText().toString()));
             holder.itemView.setOnLongClickListener(v -> {
@@ -120,10 +124,8 @@ public class OnboardingFragment2 extends Fragment {
                     }
                     if (url.startsWith("!!")) {
                         newServer(url.substring("!!".length()));
-                    } else if (url.toLowerCase().contains(".onion")) {
-                        String onionUrl = url.contains("://") ? url : "http://" + url;
-                        if (!onionUrl.endsWith("/")) onionUrl += "/";
-                        newServer(onionUrl);
+                    } else if (isOnionServerUrl(url)) {
+                        newServer(normalizeServerUrl(url));
                     } else if (url.startsWith("http")) {
                         NetworkUtils.checkInstance(this, url, result -> {
                             if (result) newServer(url);
@@ -144,11 +146,52 @@ public class OnboardingFragment2 extends Fragment {
                 }));
 
         binding.continueButton.setOnClickListener(v -> {
-            viewModel.url(tempUrl.getValue());
+            final String selectedUrl = normalizeServerUrl(tempUrl.getValue());
+            viewModel.url(selectedUrl);
             if (viewModel.isOnlyServerSelection()) requireActivity().finish();
             else viewModel.launchFragment(OnboardingFragment3.class);
         });
         binding.continueButton.requestFocus();
+    }
+
+    private boolean isOnionServerUrl(final String value) {
+        if (value == null) return false;
+        String normalized = value.trim();
+        if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
+        if (normalized.isEmpty()) return false;
+        String parseValue = normalized.contains("://") ? normalized : "http://" + normalized;
+        try {
+            final URI uri = new URI(parseValue);
+            final String host = uri.getHost();
+            return host != null && host.toLowerCase(Locale.ROOT).endsWith(".onion");
+        } catch (URISyntaxException e) {
+            return false;
+        }
+    }
+
+    private String normalizeServerUrl(final String value) {
+        if (value == null) return "https://drop.erikraft.com/";
+        String normalized = value.trim();
+        if (normalized.startsWith("!!")) normalized = normalized.substring(2).trim();
+        if (!isOnionServerUrl(normalized)) return normalized;
+
+        if (!normalized.contains("://")) {
+            normalized = "http://" + normalized;
+        } else if (normalized.regionMatches(true, 0, "https://", 0, "https://".length())) {
+            normalized = "http://" + normalized.substring("https://".length());
+        }
+
+        try {
+            final URI uri = new URI(normalized);
+            if (uri.getPath() == null || uri.getPath().isEmpty()) {
+                if (uri.getQuery() == null && uri.getFragment() == null && !normalized.endsWith("/")) {
+                    normalized += "/";
+                }
+            }
+        } catch (URISyntaxException ignored) {
+            return normalized;
+        }
+        return normalized;
     }
 
     private boolean isSnapdropNet(final String value) {
@@ -196,10 +239,11 @@ public class OnboardingFragment2 extends Fragment {
     }
 
     private void newServer(final String url) {
+        final String normalizedUrl = normalizeServerUrl(url);
         final Set<String> serverUrls = new HashSet<>(pref.getStringSet(getString(R.string.pref_custom_servers), new HashSet<>()));
-        serverUrls.add(url);
+        serverUrls.add(normalizedUrl);
         pref.edit().putStringSet(getString(R.string.pref_custom_servers), serverUrls).apply();
-        tempUrl.setValue(url);
+        tempUrl.setValue(normalizedUrl);
         reloadServerList();
     }
 

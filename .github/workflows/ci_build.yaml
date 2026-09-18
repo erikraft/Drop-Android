@@ -1,13 +1,11 @@
-name: Build and Upload APK to Release
-
-permissions:
-  contents: read
+name: CI Build
 
 on:
   push:
     branches:
       - master
-      - feat/webtorrent-onion-webview-beta
+      - beta
+      - 'release/**'
   pull_request:
   workflow_dispatch:
   release:
@@ -16,32 +14,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-      - name: Checkout the code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Java JDK
-        uses: actions/setup-java@v5
         with:
-          distribution: 'temurin'
+          submodules: recursive
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
           java-version: '17'
 
-      - name: Configure Android SDK command-line tools
-        run: |
-          if [ -z "${ANDROID_HOME:-}" ]; then
-            echo "ANDROID_HOME is not configured on the runner." >&2
-            exit 1
-          fi
-
-          echo "${ANDROID_HOME}/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-          echo "${ANDROID_HOME}/platform-tools" >> "$GITHUB_PATH"
-
-      - name: Install Android SDK packages
-        run: |
-          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Accept Android SDK licenses
         run: yes | sdkmanager --licenses
@@ -51,7 +37,7 @@ jobs:
           chmod +x gradlew
           ./gradlew clean assembleDebug --no-build-cache --rerun-tasks --stacktrace --warning-mode all --info
 
-      - name: Verify Tor native libraries in APK
+      - name: Verify Tor and Lyrebird native libraries in APK
         run: |
           mapfile -t APKS < <(find app/build/outputs/apk -type f -name '*.apk' -print)
           if [ "${#APKS[@]}" -eq 0 ]; then
@@ -59,24 +45,48 @@ jobs:
             exit 1
           fi
 
-          FOUND=0
           for APK in "${APKS[@]}"; do
-            echo "Checking Tor native libraries in: $APK"
-            if unzip -Z1 "$APK" | grep -qE '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'; then
-              echo "Found libtor.so in $APK"
-              unzip -Z1 "$APK" | grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/libtor\.so$'
-              FOUND=1
-            else
-              echo "No libtor.so found in $APK"
-            fi
-          done
+            echo "Checking Tor/Lyrebird native library pairs in: $APK"
+            ZIP_CONTENTS="$(unzip -Z1 "$APK")"
 
-          if [ "$FOUND" -ne 1 ]; then
-            echo "ERROR: No generated APK contains libtor.so for a supported ABI." >&2
-            echo "Generated APKs:" >&2
-            printf ' - %s\n' "${APKS[@]}" >&2
-            exit 1
-          fi
+            # Use here-strings instead of printf | grep -q. With pipefail enabled,
+            # grep -q can exit early and make printf receive SIGPIPE (Broken pipe).
+            mapfile -t PACKAGED_ABIS < <(
+              grep -E '^lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/' <<< "$ZIP_CONTENTS" \
+                | cut -d/ -f2 \
+                | sort -u
+            )
+
+            if [ "${#PACKAGED_ABIS[@]}" -eq 0 ]; then
+              echo "ERROR: $APK contains no supported native ABI directory." >&2
+              exit 1
+            fi
+
+            for ABI in "${PACKAGED_ABIS[@]}"; do
+              TOR_PATH="lib/$ABI/libtor.so"
+              LYREBIRD_PATH="lib/$ABI/liblyrebird.so"
+              echo "Checking ABI $ABI: $TOR_PATH + $LYREBIRD_PATH"
+
+              TOR_PRESENT=0
+              LYREBIRD_PRESENT=0
+              if grep -Fxq "$TOR_PATH" <<< "$ZIP_CONTENTS"; then
+                TOR_PRESENT=1
+              fi
+              if grep -Fxq "$LYREBIRD_PATH" <<< "$ZIP_CONTENTS"; then
+                LYREBIRD_PRESENT=1
+              fi
+
+              if [ "$TOR_PRESENT" -ne 1 ] || [ "$LYREBIRD_PRESENT" -ne 1 ]; then
+                echo "ERROR: $APK has an incomplete Tor/Lyrebird pair for ABI $ABI." >&2
+                echo "  libtor.so: $([ "$TOR_PRESENT" -eq 1 ] && echo present || echo missing)" >&2
+                echo "  liblyrebird.so: $([ "$LYREBIRD_PRESENT" -eq 1 ] && echo present || echo missing)" >&2
+                echo "The Onion Wrapper requires both native libraries for every packaged ABI." >&2
+                exit 1
+              fi
+
+              echo "Validated ABI $ABI: both native libraries are packaged."
+            done
+          done
 
       - name: Upload debug APK as artifact (optional)
         uses: actions/upload-artifact@v4
