@@ -11,6 +11,27 @@ aboutLibraries {
     }
 }
 
+def lyrebirdNative = configurations.create('lyrebirdNative')
+def generatedLyrebirdJniDir = layout.buildDirectory.dir('generated/lyrebird/jniLibs')
+def supportedLyrebirdAbis = ['arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'] as Set
+
+tasks.register('extractLyrebirdNativeLibraries', Sync) {
+    from({ lyrebirdNative.collect { zipTree(it) } }) {
+        include '**/liblyrebird.so'
+        eachFile { details ->
+            def segments = details.path.tokenize('/')
+            def abi = segments.find { supportedLyrebirdAbis.contains(it) }
+            if (abi == null) {
+                details.exclude()
+            } else {
+                details.path = "${abi}/liblyrebird.so"
+            }
+        }
+        includeEmptyDirs = false
+    }
+    into generatedLyrebirdJniDir
+}
+
 android {
     namespace = 'com.erikraft.drop'
     compileSdk 36
@@ -56,6 +77,12 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir generatedLyrebirdJniDir
+        }
     }
 
     packagingOptions {
@@ -145,6 +172,12 @@ android {
     }
 }
 
+tasks.configureEach { task ->
+    if (task.name.startsWith('merge') && task.name.endsWith('NativeLibs')) {
+        task.dependsOn tasks.named('extractLyrebirdNativeLibraries')
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.7.1'
@@ -172,10 +205,8 @@ dependencies {
     implementation('org.briarproject:onionwrapper-android:0.1.4') {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
-    // Keep the published Lyrebird Android artifact on its Maven-native packaging.
-    // The artifact is published as a JAR; requesting @aar makes Gradle look for a
-    // non-existent lyrebird-android-0.6.2.aar and breaks dependency resolution.
     implementation 'org.briarproject:lyrebird-android:0.6.2'
+    lyrebirdNative 'org.briarproject:lyrebird-android:0.6.2'
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
     implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
