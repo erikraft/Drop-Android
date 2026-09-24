@@ -173,7 +173,8 @@ android {
 }
 
 tasks.configureEach { task ->
-    if (task.name.startsWith('merge') && task.name.endsWith('NativeLibs')) {
+    if (task.name.startsWith('merge') &&
+        (task.name.endsWith('JniLibFolders') || task.name.endsWith('NativeLibs'))) {
         task.dependsOn tasks.named('extractLyrebirdNativeLibraries')
     }
 }
