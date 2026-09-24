@@ -206,7 +206,7 @@ dependencies {
         exclude group: 'org.briarproject', module: 'jtorctl'
     }
     implementation 'org.briarproject:lyrebird-android:0.6.2'
-    lyrebirdNative 'org.briarproject:lyrebird-android:0.6.2'
+    add('lyrebirdNative', 'org.briarproject:lyrebird-android:0.6.2')
     implementation 'org.apache.ftpserver:ftpserver-core:1.2.1'
     implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.86'
