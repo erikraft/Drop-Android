@@ -217,7 +217,6 @@ public class JavaScriptInterface {
 
     /** Keeps the Android window awake for WebView features such as Animated QR. */
     @JavascriptInterface
-    @JavascriptInterface
     public void requestExternalShare(final String fileName, final String mimeType, final String target) {
         context.requestExternalShare(fileName, mimeType, target);
     }
