@@ -7,6 +7,8 @@
 [![Crowdin](https://badges.crowdin.net/erikraft-drop-android/localized.svg)](https://crowdin.com/project/erikraft-drop-android)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40ErikrafTbr)](https://x.com/ErikrafTbr)
 
+<a href="https://www.producthunt.com/products/erikraft-drop?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-erikraft-drop" target="_blank" rel="noopener noreferrer"><img alt="ErikrafT Drop™ - Fast, secure file transfer for web, extension &amp; app | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1265004&amp;theme=dark&amp;t=1790724510256"></a>
+
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
 # ErikrafT Drop™ for Android
