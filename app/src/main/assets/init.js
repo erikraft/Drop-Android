@@ -372,3 +372,27 @@ try {
 try {
     localStorage.removeItem('theme');
 } catch (e) { console.error(e); }
+
+
+// ErikrafT Drop™ web compatibility pin.
+// The Android WebView integration is validated against this merged web commit.
+// This is diagnostic metadata only; it does not change the Android app version.
+try {
+    window.__erikraftDropWebCompatibilityCommit = 'e76ebe48102601ff5774515f18b256a575a8638b';
+    window.__erikraftDropWebCompatibility = 'received-media-metadata-spin-view';
+} catch (e) {
+    console.error('Unable to expose ErikrafT Drop web compatibility marker', e);
+}
+
+// Keep the final received File as the Android/WebView media source of truth.
+// Do not inspect chunks here and do not copy the Blob into Java/Base64.
+try {
+    window.addEventListener('files-received', event => {
+        const files = event?.detail?.files;
+        if (!Array.isArray(files) || !files.length) return;
+        window.__erikraftAndroidReceivedMedia = files.slice();
+        console.debug('[ErikrafT Drop Android] received media ready:', files.length);
+    }, false);
+} catch (e) {
+    console.error('Unable to install received-media Android integration hook', e);
+}
