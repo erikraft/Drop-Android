@@ -217,6 +217,12 @@ public class JavaScriptInterface {
 
     /** Keeps the Android window awake for WebView features such as Animated QR. */
     @JavascriptInterface
+    @JavascriptInterface
+    public void requestExternalShare(final String fileName, final String mimeType, final String target) {
+        context.requestExternalShare(fileName, mimeType, target);
+    }
+
+    @JavascriptInterface
     public void setKeepScreenOn(final boolean keepOn) {
         context.runOnUiThread(() -> {
             if (keepOn) context.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
