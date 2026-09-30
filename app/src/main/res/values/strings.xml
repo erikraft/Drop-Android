@@ -172,4 +172,7 @@
     <string name="pref_ftp_password" translatable="false">ftp_password</string>
     <string name="pref_ftp_anonymous" translatable="false">ftp_anonymous</string>
     <string name="pref_ftp_ftps" translatable="false">ftp_ftps</string>
+    <string name="share">Compartilhar</string>
+    <string name="share_instagram">Instagram</string>
+    <string name="share_instagram_story">Instagram Story</string>
 </resources>
