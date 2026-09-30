@@ -112,9 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
     public final List<JavaScriptInterface.FileHeader> downloadFilesList = Collections.synchronizedList(new ArrayList<>());
     private boolean dialogVisible = false;
-    private volatile String pendingExternalShareName = null;
-    private volatile String pendingExternalShareMime = null;
-    private volatile String pendingExternalShareTarget = null;
+    private final Object pendingExternalShareLock = new Object();
+    private PendingExternalShare pendingExternalShare = null;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -417,10 +416,14 @@ public class MainActivity extends AppCompatActivity {
     public void requestExternalShare(final String fileName, final String mimeType, final String target) {
         final String safeTarget = "instagram-story".equals(target) || "instagram".equals(target) ? target : null;
         if (safeTarget == null || fileName == null || fileName.isEmpty()) return;
-        pendingExternalShareName = fileName;
-        pendingExternalShareMime = mimeType == null || mimeType.isEmpty() ? "application/octet-stream" : mimeType;
-        pendingExternalShareTarget = safeTarget;
-        Log.d("DropAndroidShare", "External share requested: " + safeTarget + " / " + fileName);
+
+        final String safeName = JavaScriptInterface.sanitizeDownloadName(fileName);
+        final String safeMime = mimeType == null || mimeType.isEmpty() ? "application/octet-stream" : mimeType;
+        final PendingExternalShare request = new PendingExternalShare(safeName, safeMime, safeTarget);
+        synchronized (pendingExternalShareLock) {
+            pendingExternalShare = request;
+        }
+        Log.d("DropAndroidShare", "External share requested: " + safeTarget + " / " + safeName);
     }
 
     public void setDialogVisible(final boolean visible) {
@@ -871,12 +874,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean consumePendingExternalShare(final Uri uri, final JavaScriptInterface.FileHeader fileHeader) {
-        if (pendingExternalShareName == null || !pendingExternalShareName.equals(fileHeader.getName())) return false;
-        final String target = pendingExternalShareTarget;
-        final String mime = pendingExternalShareMime == null ? fileHeader.getMime() : pendingExternalShareMime;
-        pendingExternalShareName = null;
-        pendingExternalShareMime = null;
-        pendingExternalShareTarget = null;
+        final PendingExternalShare request;
+        synchronized (pendingExternalShareLock) {
+            request = pendingExternalShare;
+            if (request == null || !request.name.equals(fileHeader.getName())) return false;
+            pendingExternalShare = null;
+        }
+
+        final String target = request.target;
+        final String mime = request.mime;
         try {
             final Intent shareIntent;
             if ("instagram-story".equals(target)) {
@@ -893,21 +899,50 @@ public class MainActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             grantUriPermission("com.instagram.android", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             if (getPackageManager().resolveActivity(shareIntent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
-                startActivity(shareIntent);
-                return true;
+                try {
+                    startActivity(shareIntent);
+                    return true;
+                } catch (ActivityNotFoundException | SecurityException e) {
+                    Log.w("DropAndroidShare", "Direct Instagram share failed; using chooser", e);
+                }
             }
-            if ("instagram-story".equals(target)) {
-                final Intent fallback = new Intent(Intent.ACTION_SEND);
-                fallback.setType(mime);
-                fallback.putExtra(Intent.EXTRA_STREAM, uri);
-                fallback.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            final Intent fallback = new Intent(Intent.ACTION_SEND);
+            fallback.setType(mime);
+            fallback.putExtra(Intent.EXTRA_STREAM, uri);
+            fallback.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
                 startActivity(Intent.createChooser(fallback, getString(R.string.share)));
                 return true;
+            } catch (ActivityNotFoundException | SecurityException e) {
+                Log.w("DropAndroidShare", "Native share chooser unavailable", e);
             }
         } catch (ActivityNotFoundException | SecurityException e) {
-            Log.w("DropAndroidShare", "Instagram share unavailable", e);
+            Log.w("DropAndroidShare", "Instagram share setup failed; using chooser", e);
+            final Intent fallback = new Intent(Intent.ACTION_SEND);
+            fallback.setType(mime);
+            fallback.putExtra(Intent.EXTRA_STREAM, uri);
+            fallback.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
+                startActivity(Intent.createChooser(fallback, getString(R.string.share)));
+                return true;
+            } catch (ActivityNotFoundException | SecurityException chooserError) {
+                Log.w("DropAndroidShare", "Native share chooser unavailable", chooserError);
+            }
         }
         return false;
+    }
+
+    private static final class PendingExternalShare {
+        final String name;
+        final String mime;
+        final String target;
+
+        PendingExternalShare(final String name, final String mime, final String target) {
+            this.name = name;
+            this.mime = mime;
+            this.target = target;
+        }
     }
 
     private void fileDownloadedIntent(final Uri uri, final JavaScriptInterface.FileHeader fileHeader) {
