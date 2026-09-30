@@ -163,4 +163,8 @@
     <string name="diagnostics_copied">Diagnósticos copiados.</string>
     <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
     <string name="diagnostics_disabled">Habilite Diagnósticos nas Configurações para visualizar os logs.</string>
+    <string name="share">Share</string>
+    <string name="share_instagram">Instagram</string>
+    <string name="share_instagram_story">Instagram Story</string>
+    <string name="motion_photo">Live/Motion Photo</string>
 </resources>

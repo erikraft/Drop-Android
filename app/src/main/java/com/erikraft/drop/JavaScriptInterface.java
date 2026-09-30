@@ -127,7 +127,7 @@ public class JavaScriptInterface {
         }
     }
 
-    private String sanitizeDownloadName(final String requestedName) {
+    static String sanitizeDownloadName(final String requestedName) {
         String name = TextUtils.isEmpty(requestedName) ? "download" : requestedName;
         name = name.replace('\\', '_').replace('/', '_').replace('\n', '_').replace('\r', '_');
         return name.equals(".") || name.equals("..") ? "download" : name;
@@ -216,6 +216,11 @@ public class JavaScriptInterface {
     }
 
     /** Keeps the Android window awake for WebView features such as Animated QR. */
+    @JavascriptInterface
+    public void requestExternalShare(final String fileName, final String mimeType, final String target) {
+        context.requestExternalShare(fileName, mimeType, target);
+    }
+
     @JavascriptInterface
     public void setKeepScreenOn(final boolean keepOn) {
         context.runOnUiThread(() -> {
