@@ -112,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
     public final List<JavaScriptInterface.FileHeader> downloadFilesList = Collections.synchronizedList(new ArrayList<>());
     private boolean dialogVisible = false;
+    private volatile String pendingExternalShareName = null;
+    private volatile String pendingExternalShareMime = null;
+    private volatile String pendingExternalShareTarget = null;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -409,6 +412,15 @@ public class MainActivity extends AppCompatActivity {
             binding.webview.loadUrl(baseURL + "#about");
             setDialogVisible(true);
         }
+    }
+
+    public void requestExternalShare(final String fileName, final String mimeType, final String target) {
+        final String safeTarget = "instagram-story".equals(target) || "instagram".equals(target) ? target : null;
+        if (safeTarget == null || fileName == null || fileName.isEmpty()) return;
+        pendingExternalShareName = fileName;
+        pendingExternalShareMime = mimeType == null || mimeType.isEmpty() ? "application/octet-stream" : mimeType;
+        pendingExternalShareTarget = safeTarget;
+        Log.d("DropAndroidShare", "External share requested: " + safeTarget + " / " + fileName);
     }
 
     public void setDialogVisible(final boolean visible) {
@@ -858,7 +870,52 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    private boolean consumePendingExternalShare(final Uri uri, final JavaScriptInterface.FileHeader fileHeader) {
+        if (pendingExternalShareName == null || !pendingExternalShareName.equals(fileHeader.getName())) return false;
+        final String target = pendingExternalShareTarget;
+        final String mime = pendingExternalShareMime == null ? fileHeader.getMime() : pendingExternalShareMime;
+        pendingExternalShareName = null;
+        pendingExternalShareMime = null;
+        pendingExternalShareTarget = null;
+        try {
+            final Intent shareIntent;
+            if ("instagram-story".equals(target)) {
+                shareIntent = new Intent("com.instagram.share.ADD_TO_STORY");
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setDataAndType(uri, mime);
+                shareIntent.putExtra("source_application", getPackageName());
+            } else {
+                shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setType(mime);
+                shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            }
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            grantUriPermission("com.instagram.android", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            if (getPackageManager().resolveActivity(shareIntent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+                startActivity(shareIntent);
+                return true;
+            }
+            if ("instagram-story".equals(target)) {
+                final Intent fallback = new Intent(Intent.ACTION_SEND);
+                fallback.setType(mime);
+                fallback.putExtra(Intent.EXTRA_STREAM, uri);
+                fallback.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivity(Intent.createChooser(fallback, getString(R.string.share)));
+                return true;
+            }
+        } catch (ActivityNotFoundException | SecurityException e) {
+            Log.w("DropAndroidShare", "Instagram share unavailable", e);
+        }
+        return false;
+    }
+
     private void fileDownloadedIntent(final Uri uri, final JavaScriptInterface.FileHeader fileHeader) {
+        if (consumePendingExternalShare(uri, fileHeader)) {
+            resetUploadIntent();
+            return;
+        }
+
         final int notificationId = (int) SystemClock.uptimeMillis();
         final boolean isApk = fileHeader.getName().toLowerCase().endsWith(".apk");
 
