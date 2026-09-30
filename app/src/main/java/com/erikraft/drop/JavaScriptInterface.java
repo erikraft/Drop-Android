@@ -127,7 +127,7 @@ public class JavaScriptInterface {
         }
     }
 
-    private String sanitizeDownloadName(final String requestedName) {
+    static String sanitizeDownloadName(final String requestedName) {
         String name = TextUtils.isEmpty(requestedName) ? "download" : requestedName;
         name = name.replace('\\', '_').replace('/', '_').replace('\n', '_').replace('\r', '_');
         return name.equals(".") || name.equals("..") ? "download" : name;
