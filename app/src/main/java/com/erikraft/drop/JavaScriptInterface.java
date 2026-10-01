@@ -200,6 +200,11 @@ public class JavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void notifyMention(final String title, final String body) {
+        context.showMentionNotification(title, body);
+    }
+
+    @JavascriptInterface
     public void copyToClipboard(final String text) {
         ClipboardUtils.copy(context, text);
     }
