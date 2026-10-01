@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleOnBackPressed() {
             if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-                binding.webview.loadUrl(baseURL + "#");
+                binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
             } else if (dialogVisible) {
                 binding.webview.loadUrl(JavaScriptInterface.getAssetsJS(MainActivity.this, "closeDialogs.js"));
             }
@@ -413,6 +413,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void showMentionNotification(final String title, final String body) {
+        if (prefs == null || !prefs.getBoolean(getString(R.string.pref_notifications), true)) return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        final String channelId = "CHAT_MENTIONS";
+        final NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (manager == null) return;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            final NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Menções no chat",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            manager.createNotificationChannel(channel);
+        }
+
+        final Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                4101,
+                intent,
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                        ? PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+                        : PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        final Notification notification = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle(title == null || title.isEmpty() ? "Nova menção" : title)
+                .setContentText(body == null ? "" : body)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .build();
+
+        manager.notify((int) (SystemClock.uptimeMillis() & 0x7fffffff), notification);
+    }
+
     public void requestExternalShare(final String fileName, final String mimeType, final String target) {
         final String safeTarget = "instagram-story".equals(target) || "instagram".equals(target) ? target : null;
         if (safeTarget == null || fileName == null || fileName.isEmpty()) return;
@@ -431,12 +474,23 @@ public class MainActivity extends AppCompatActivity {
         onBackpressedCallback.setEnabled(dialogVisible);
     }
 
+    private String getAndroidWebAppUrl() {
+        try {
+            final Uri uri = Uri.parse(baseURL);
+            if ("android".equals(uri.getQueryParameter("client_type"))) return baseURL;
+            return uri.buildUpon().appendQueryParameter("client_type", "android").build().toString();
+        } catch (Exception e) {
+            Log.w("ErikrafTdropAndroid", "Could not append Android client type", e);
+            return baseURL;
+        }
+    }
+
     private void refreshWebsite(final boolean pulled) {
         Log.w("ErikrafTdropAndroid", "refresh triggered");
         if (NetworkUtils.isInternetAvailable() && !transfer.get() && !dialogVisible || forceRefresh) {
             final Runnable load = () -> {
                 binding.connectivityCard.setVisibility(NetworkUtils.isWifiAvailable() ? View.GONE : View.VISIBLE);
-                binding.webview.loadUrl(baseURL);
+                binding.webview.loadUrl(getAndroidWebAppUrl());
                 forceRefresh = false;
                 binding.webview.animate().alpha(0).start();
             };
