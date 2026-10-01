@@ -405,10 +405,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void toggleAbout() {
         if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-            binding.webview.loadUrl(baseURL + "#");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
             setDialogVisible(false);
         } else {
-            binding.webview.loadUrl(baseURL + "#about");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#about");
             setDialogVisible(true);
         }
     }
