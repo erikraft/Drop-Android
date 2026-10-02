@@ -116,10 +116,10 @@ jobs:
           EOF
 
           sudo /usr/sbin/sshd -f "${SFTP_ROOT}/sshd_config" -E "${SFTP_ROOT}/sshd.log"
-          trap 'sudo kill "$(cat "${SFTP_ROOT}/sshd.pid" 2>/dev/null)" 2>/dev/null || true; rm -rf "${SFTP_ROOT}"' EXIT
+          trap 'sudo kill "$(cat "${SFTP_ROOT}/sshd.pid" 2>/dev/null)" 2>/dev/null || true; sudo rm -rf "${SFTP_ROOT}"' EXIT
 
           printf 'ErikrafT Drop SFTP CI payload\n' > /tmp/erikraft-drop-sftp-upload.txt
-          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "${SFTP_KEY}" -P "${SFTP_PORT}" \
+          timeout 60s sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "${SFTP_KEY}" -P "${SFTP_PORT}" \
             erikraft-ci-sftp@127.0.0.1 <<'EOF'
           put /tmp/erikraft-drop-sftp-upload.txt uploaded.txt
           get uploaded.txt /tmp/erikraft-drop-sftp-download.txt
@@ -224,8 +224,9 @@ jobs:
 
       - name: Capture FTP/FTPS emulator logcat
         if: always()
+        timeout-minutes: 1
         run: |
-          adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' > ftp-ftps-logcat.txt 2>&1 || true
+          timeout 30s adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' > ftp-ftps-logcat.txt 2>&1 || true
 
       - name: Upload signed APK artifact
         if: always()
