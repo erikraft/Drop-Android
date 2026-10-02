@@ -53,9 +53,9 @@ public class LogUtils {
                 if (isRelevantLogLine(line)) relevantLogs.append(line).append("\n");
             }
             bufferedReader.close();
-            logs = "--------- Relevant Application Signals\\n" +
-                    (relevantLogs.length() == 0 ? "No application-specific or actionable error signals found.\\n" : relevantLogs) +
-                    "\\n--------- Full Logcat\\n" + fullLogs;
+            logs = "--------- Relevant Application Signals\n" +
+                    (relevantLogs.length() == 0 ? "No application-specific or actionable error signals found.\n" : relevantLogs) +
+                    "\n--------- Full Logcat\n" + fullLogs;
         } catch (IOException e) {
             Log.e("LogUtils", "Exception while reading logs", e);
         }
