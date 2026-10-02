@@ -86,15 +86,20 @@ public class FtpServerService extends Service {
         try {
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
-            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "erikraft");
+            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
             String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "erikraft");
             boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false);
             boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true);
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);
 
+            File userFile = new File(getFilesDir(), "ftp-users.properties");
+            if (!userFile.exists() && !userFile.createNewFile()) {
+                throw new IllegalStateException("Não foi possível criar o arquivo de usuários FTP: " + userFile);
+            }
+
             PropertiesUserManagerFactory userFactory = new PropertiesUserManagerFactory();
-            userFactory.setFile(new File(getFilesDir(), "ftp-users.properties"));
+            userFactory.setFile(userFile);
             userFactory.setPasswordEncryptor(new SaltedPasswordEncryptor());
             UserManager userManager = userFactory.createUserManager();
             BaseUser user = new BaseUser();
