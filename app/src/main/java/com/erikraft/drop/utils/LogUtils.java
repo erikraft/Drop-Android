@@ -81,4 +81,32 @@ public class LogUtils {
         final char priority = matcher.group(1).charAt(0);
         return (priority == 'E' || priority == 'F') && !lower.contains("openglrenderer");
     }
+
+    public static String getStacktrace(final Throwable ex) {
+        final StringBuilder builder = new StringBuilder(getStacktraceSegment(ex));
+        Throwable cause = ex.getCause();
+        while (cause != null) {
+            builder.append("caused by: ").append(getStacktraceSegment(cause));
+            cause = cause.getCause();
+        }
+        return builder.toString();
+    }
+
+    private static String getStacktraceSegment(final Throwable ex) {
+        final StringWriter sw = new StringWriter();
+        final PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        return sw + "\n";
+    }
+
+    @SuppressLint("ApplySharedPref")
+    public static void installUncaughtExceptionHandler() {
+        final Thread.UncaughtExceptionHandler previousHandler = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
+            PreferenceManager.getDefaultSharedPreferences(SnapdropApplication.getInstance()).edit()
+                    .putString(SnapdropApplication.getInstance().getString(R.string.pref_last_crash), "--------- Last crash\n" + sdf.format(new Date()) + " " + LogUtils.getStacktrace(ex))
+                    .commit();
+            if (previousHandler != null) previousHandler.uncaughtException(thread, ex);
+        });
+    }
 }
