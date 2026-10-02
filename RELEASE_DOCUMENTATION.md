@@ -116,7 +116,7 @@ FTP, FTPS and SFTP are distinct protocols; the SFTP smoke test must not be inter
 ## 7. Target API check
 
 Current Android configuration in `app/build.gradle` uses:
-- `compileSdk 35`
-- `targetSdkVersion 35`
+- `compileSdk 36`
+- `targetSdkVersion 36`
 
 Keep this aligned with Google Play requirements before each release window.
