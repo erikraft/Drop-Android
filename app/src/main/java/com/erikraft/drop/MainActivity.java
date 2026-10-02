@@ -523,6 +523,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onNewIntent(final Intent intent) {
+        if (intent == null) {
+            return;
+        }
+
         if ((Intent.ACTION_SEND.equals(intent.getAction()) || Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction()) || Intent.ACTION_PROCESS_TEXT.equals(intent.getAction())) && intent.getType() != null) {
             uploadIntent = intent;
 
@@ -552,8 +556,10 @@ public class MainActivity extends AppCompatActivity {
                 binding.webview.evaluateJavascript(JavaScriptInterface.getSendTextDialogWithPreInsertedString(clipText), null);
             }
 
-        } else if (Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData().getHost().equals(Uri.parse(baseURL).getHost())) {
-            binding.webview.loadUrl(intent.getDataString()); // e.g. paring URL
+        } else if (Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData() != null
+                && baseURL != null && intent.getData().getHost() != null
+                && intent.getData().getHost().equals(Uri.parse(baseURL).getHost())) {
+            binding.webview.loadUrl(intent.getDataString()); // e.g. pairing URL
         } else {
             super.onNewIntent(intent);
         }
@@ -617,6 +623,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Uri[] getUploadFromIntentUris(final Intent intent) {
+        if (intent == null) {
+            return null;
+        }
+
         Uri[] results = null;
         try {
             final String dataString = intent.getDataString();
