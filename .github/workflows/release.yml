@@ -82,6 +82,8 @@ jobs:
           SFTP_HOME="${SFTP_ROOT}/home"
           SFTP_KEY="${SFTP_ROOT}/id_ed25519"
           SFTP_PORT=2222
+          chmod 755 "${SFTP_ROOT}"
+          sudo mkdir -p /run/sshd
 
           sudo useradd --create-home --home-dir "${SFTP_HOME}" --shell /bin/bash erikraft-ci-sftp 2>/dev/null || true
           sudo mkdir -p "${SFTP_HOME}/.ssh"
