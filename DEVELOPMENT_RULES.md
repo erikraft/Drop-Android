@@ -146,7 +146,18 @@ A task is complete only when:
 - the PR clearly documents the change and validation;
 - no dead code or unrelated changes were introduced.
 
-## 10. Rule for all future agents/models
+## 10. CI navigation and component boundaries
+
+CI scripts must respect the same Android component boundaries as real application flows.
+
+In particular:
+
+- do not launch an `android:exported="false"` Activity directly from `adb shell am start`;
+- enter internal screens through an exported entry point and the existing in-app navigation flow;
+- keep UI-driven CI navigation bounded and emit the current UI hierarchy when a control cannot be found;
+- do not weaken manifest exposure solely to make an emulator test easier.
+
+## 11. Rule for all future agents/models
 
 **PROCURE → ENTENDA → REUTILIZE → CORRIJA → ESTENDA → SÓ ENTÃO CRIE.**
 
