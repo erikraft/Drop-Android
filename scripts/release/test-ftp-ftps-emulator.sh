@@ -68,6 +68,7 @@ sleep 2
 # Open Settings through MainActivity's existing action-bar menu, then select
 # the existing FTP/FTPS preference.
 adb shell input keyevent 82
+sleep 1
 tap_text "Settings menu item" false "Settings|Configurações"
 tap_text "FTP/FTPS settings preference" true "Transferência via FTP / FTPS|FTP / FTPS"
 
