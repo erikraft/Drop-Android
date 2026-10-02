@@ -108,7 +108,7 @@ Pipeline steps:
 The signed release pipeline also runs real protocol checks before publishing release assets:
 
 - **FTP:** authenticates against the existing Android `FtpServerService` and performs upload/download/delete through a real Android emulator.
-- **FTPS:** exercises the same existing service using explicit TLS (`AUTH TLS`) and verifies the transferred bytes. The CI server certificate is intentionally self-signed and is trusted only for this isolated test.
+- **FTPS:** exercises the same existing service using explicit TLS (`AUTH TLS`) and verifies the transferred bytes. The CI server certificate is intentionally self-signed, and certificate validation is explicitly disabled (`--insecure`) only for this isolated test.
 - **SFTP:** uses a separate ephemeral OpenSSH SFTP server on the GitHub runner. This validates SFTP interoperability tooling without claiming that ErikrafT Drop implements SFTP.
 
 FTP, FTPS and SFTP are distinct protocols; the SFTP smoke test must not be interpreted as Android app SFTP support.
