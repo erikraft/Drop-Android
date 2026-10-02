@@ -74,41 +74,11 @@ public class LogUtils {
                 lower.contains("tor") || lower.contains("lyrebird") ||
                 lower.contains("logutils")) return true;
 
-        final int priorityIndex = line.indexOf(" ");
-        if (priorityIndex < 0 || line.length() <= priorityIndex + 1) return false;
-        final String afterTimestamp = line.substring(priorityIndex + 1);
-        final int prioritySeparator = afterTimestamp.indexOf(" ");
-        if (prioritySeparator < 0 || afterTimestamp.length() <= prioritySeparator + 1) return false;
-        final String afterTime = afterTimestamp.substring(prioritySeparator + 1);
-        final char priority = afterTime.charAt(0);
+        final java.util.regex.Matcher matcher = java.util.regex.Pattern
+                .compile("^\\\\S+\\\\s+\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+([VDIWEF])\\\\s+")
+                .matcher(line);
+        if (!matcher.find()) return false;
+        final char priority = matcher.group(1).charAt(0);
         return (priority == 'E' || priority == 'F') && !lower.contains("openglrenderer");
-    }
-
-    public static String getStacktrace(final Throwable ex) {
-        final StringBuilder builder = new StringBuilder(getStacktraceSegment(ex));
-        Throwable cause = ex.getCause();
-        while (cause != null) {
-            builder.append("caused by: ").append(getStacktraceSegment(cause));
-            cause = cause.getCause();
-        }
-        return builder.toString();
-    }
-
-    private static String getStacktraceSegment(final Throwable ex) {
-        final StringWriter sw = new StringWriter();
-        final PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        return sw + "\n";
-    }
-
-    @SuppressLint("ApplySharedPref")
-    public static void installUncaughtExceptionHandler() {
-        final Thread.UncaughtExceptionHandler previousHandler = Thread.getDefaultUncaughtExceptionHandler();
-        Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
-            PreferenceManager.getDefaultSharedPreferences(SnapdropApplication.getInstance()).edit()
-                    .putString(SnapdropApplication.getInstance().getString(R.string.pref_last_crash), "--------- Last crash\n" + sdf.format(new Date()) + " " + LogUtils.getStacktrace(ex))
-                    .commit();
-            if (previousHandler != null) previousHandler.uncaughtException(thread, ex);
-        });
     }
 }
