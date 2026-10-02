@@ -63,6 +63,7 @@ PY
 tap_text "onboarding Continue button (1/3)" false "continue|Continue"
 tap_text "onboarding Continue button (2/3)" false "continue|Continue"
 tap_text "onboarding Finish button (3/3)" false "finish|Finish|continue|Continue"
+sleep 2
 
 # Open Settings through MainActivity's existing action-bar menu, then select
 # the existing FTP/FTPS preference.
