@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -116,7 +117,10 @@ public class FtpServerService extends Service {
             listener.setPort(port);
             DataConnectionConfigurationFactory data = new DataConnectionConfigurationFactory();
             data.setPassivePorts(PASSIVE_PORT_START + "-" + PASSIVE_PORT_END);
-            data.setPassiveIpCheck(true);
+            // Android devices frequently sit behind NAT/VPN interfaces; strict passive-IP
+            // validation can reject legitimate data connections even when the control
+            // connection is established successfully.
+            data.setPassiveIpCheck(false);
 
             if (ftps) {
                 SslConfigurationFactory sslFactory = new SslConfigurationFactory();
@@ -137,9 +141,11 @@ public class FtpServerService extends Service {
             serverFactory.addListener("default", listener.createListener());
             ftpServer = serverFactory.createServer();
             ftpServer.start();
+            Log.i("FtpServerService", "FTP/FTPS server started on port " + port + " with home " + home.getAbsolutePath());
             broadcastStatus(true, null);
             updateNotification((ftps ? "FTPS" : "FTP") + " ativo em " + port);
         } catch (Exception e) {
+            Log.e("FtpServerService", "FTP/FTPS server failed to start", e);
             broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
             stopServer();
             stopSelf();

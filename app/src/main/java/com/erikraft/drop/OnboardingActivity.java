@@ -43,10 +43,13 @@ public class OnboardingActivity extends AppCompatActivity {
                 .add(R.id.fragment_container_view, fragment, null)
                 .commit());
 
-        viewModel.getUrl().observe(this, url -> PreferenceManager.getDefaultSharedPreferences(this).edit()
-                .putBoolean(getString(R.string.pref_first_use), false)
-                .putString(getString(R.string.pref_baseurl), url)
-                .apply());
+        viewModel.getUrl().observe(this, url -> {
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putBoolean(getString(R.string.pref_first_use), false)
+                    .putString(getString(R.string.pref_baseurl), url)
+                    .apply();
+            if (viewModel.isOnlyServerSelection()) setResult(Activity.RESULT_OK);
+        });
 
         if (savedInstanceState == null) {
             if (viewModel.isOnlyServerSelection()) {

@@ -81,7 +81,7 @@
         app:iconSpaceReserved="false">
         <Preference
             android:key="ftp_settings"
-            android:icon="@drawable/ic_ftp"
+            android:icon="@drawable/ic_download"
             android:summary="@string/ftp_settings_summary"
             android:title="@string/ftp_settings_title"
             app:singleLineTitle="false" />
