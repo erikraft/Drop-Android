@@ -155,6 +155,8 @@ In particular:
 - do not launch an `android:exported="false"` Activity directly from `adb shell am start`;
 - enter internal screens through an exported entry point and the existing in-app navigation flow;
 - keep UI-driven CI navigation bounded and emit the current UI hierarchy when a control cannot be found;
+- bound every ADB and network readiness operation so a protocol test cannot consume the entire workflow timeout;
+- keep protocol readiness budgets shorter than the job-level timeout and emit service/forwarding diagnostics on failure;
 - do not weaken manifest exposure solely to make an emulator test easier.
 
 ## 11. Rule for all future agents/models
