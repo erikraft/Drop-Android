@@ -54,7 +54,7 @@ for port in 2221 50000 50001 50002 50003 50004 50005 50006 50007 50008 50009 500
 done
 
 for attempt in $(seq 1 30); do
-  if curl --silent --show-error --fail --user admin:admin ftp://127.0.0.1:2221/ >/dev/null; then
+  if curl --silent --show-error --fail --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin ftp://127.0.0.1:2221/ >/dev/null; then
     break
   fi
   sleep 1
@@ -68,26 +68,26 @@ printf 'ErikrafT Drop FTP/FTPS CI payload\n' > /tmp/drop-ftp-upload.txt
 rm -f /tmp/drop-ftp-download.txt /tmp/drop-ftps-download.txt
 
 echo "Testing plain FTP upload/download/delete"
-curl --silent --show-error --fail --user admin:admin \
+curl --silent --show-error --fail --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   --upload-file /tmp/drop-ftp-upload.txt \
   ftp://127.0.0.1:2221/erikraft-drop-ci-ftp.txt
-curl --silent --show-error --fail --user admin:admin \
+curl --silent --show-error --fail --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   --output /tmp/drop-ftp-download.txt \
   ftp://127.0.0.1:2221/erikraft-drop-ci-ftp.txt
 cmp /tmp/drop-ftp-upload.txt /tmp/drop-ftp-download.txt
-curl --silent --show-error --fail --user admin:admin \
+curl --silent --show-error --fail --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   -Q 'DELE erikraft-drop-ci-ftp.txt' \
   ftp://127.0.0.1:2221/ >/dev/null
 
 echo "Testing explicit FTPS/TLS upload/download/delete"
-curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+curl --silent --show-error --fail --insecure --ssl-reqd --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   --upload-file /tmp/drop-ftp-upload.txt \
   ftp://127.0.0.1:2221/erikraft-drop-ci-ftps.txt
-curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+curl --silent --show-error --fail --insecure --ssl-reqd --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   --output /tmp/drop-ftps-download.txt \
   ftp://127.0.0.1:2221/erikraft-drop-ci-ftps.txt
 cmp /tmp/drop-ftp-upload.txt /tmp/drop-ftps-download.txt
-curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+curl --silent --show-error --fail --insecure --ssl-reqd --connect-timeout 10 --max-time 30 --ftp-skip-pasv-ip --user admin:admin \
   -Q 'DELE erikraft-drop-ci-ftps.txt' \
   ftp://127.0.0.1:2221/ >/dev/null
 
