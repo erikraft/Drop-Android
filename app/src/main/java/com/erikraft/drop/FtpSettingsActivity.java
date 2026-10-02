@@ -76,9 +76,9 @@ public class FtpSettingsActivity extends AppCompatActivity {
         content.addView(text(getString(R.string.ftp_settings_description), 15));
         portInput = field("Porta", prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
         content.addView((TextInputLayout) portInput.getTag(), lpTop(dp(12)));
-        usernameInput = field("Nome de usuário", prefs.getString(getString(R.string.pref_ftp_username), "erikraft"), InputType.TYPE_CLASS_TEXT);
+        usernameInput = field("Nome de usuário", prefs.getString(getString(R.string.pref_ftp_username), "admin"), InputType.TYPE_CLASS_TEXT);
         content.addView((TextInputLayout) usernameInput.getTag(), lpTop(dp(8)));
-        passwordInput = field("Senha", prefs.getString(getString(R.string.pref_ftp_password), "erikraft"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passwordInput = field("Senha", prefs.getString(getString(R.string.pref_ftp_password), "admin"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         content.addView((TextInputLayout) passwordInput.getTag(), lpTop(dp(8)));
         anonymousSwitch = new SwitchCompat(this);
         anonymousSwitch.setText(R.string.ftp_anonymous_title);
@@ -120,6 +120,9 @@ public class FtpSettingsActivity extends AppCompatActivity {
     private TextInputEditText field(String hint, String value, int inputType) {
         TextInputLayout layout = new TextInputLayout(this);
         layout.setHint(hint);
+        if ("Senha".equals(hint)) {
+            layout.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+        }
         TextInputEditText edit = new TextInputEditText(this);
         edit.setSingleLine(true);
         edit.setInputType(inputType);
