@@ -44,7 +44,7 @@ jobs:
 
       - name: Install Android SDK packages
         run: |
-          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          sdkmanager "platform-tools" "emulator" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Accept Android SDK licenses
         run: yes | sdkmanager --licenses
@@ -69,6 +69,60 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew clean test --no-build-cache --rerun-tasks
+
+      - name: Run real SFTP interoperability smoke test
+        timeout-minutes: 5
+        run: |
+          set -euo pipefail
+
+          sudo apt-get update
+          sudo apt-get install -y openssh-server
+
+          SFTP_ROOT="$(mktemp -d)"
+          SFTP_HOME="${SFTP_ROOT}/home"
+          SFTP_KEY="${SFTP_ROOT}/id_ed25519"
+          SFTP_PORT=2222
+
+          sudo useradd --create-home --home-dir "${SFTP_HOME}" --shell /bin/bash erikraft-ci-sftp 2>/dev/null || true
+          sudo mkdir -p "${SFTP_HOME}/.ssh"
+          sudo chown -R erikraft-ci-sftp:erikraft-ci-sftp "${SFTP_HOME}"
+
+          ssh-keygen -t ed25519 -N "" -f "${SFTP_KEY}" >/dev/null
+          sudo cp "${SFTP_KEY}.pub" "${SFTP_HOME}/.ssh/authorized_keys"
+          sudo chown erikraft-ci-sftp:erikraft-ci-sftp "${SFTP_HOME}/.ssh/authorized_keys"
+          sudo chmod 700 "${SFTP_HOME}/.ssh"
+          sudo chmod 600 "${SFTP_HOME}/.ssh/authorized_keys"
+
+          HOST_KEY="${SFTP_ROOT}/ssh_host_ed25519_key"
+          ssh-keygen -t ed25519 -N "" -f "${HOST_KEY}" >/dev/null
+
+          cat > "${SFTP_ROOT}/sshd_config" <<EOF
+          Port ${SFTP_PORT}
+          ListenAddress 127.0.0.1
+          HostKey ${HOST_KEY}
+          PidFile ${SFTP_ROOT}/sshd.pid
+          AuthorizedKeysFile .ssh/authorized_keys
+          PasswordAuthentication no
+          KbdInteractiveAuthentication no
+          PubkeyAuthentication yes
+          PermitRootLogin no
+          UsePAM no
+          Subsystem sftp internal-sftp
+          LogLevel VERBOSE
+          EOF
+
+          sudo /usr/sbin/sshd -f "${SFTP_ROOT}/sshd_config" -E "${SFTP_ROOT}/sshd.log"
+          trap 'sudo kill "$(cat "${SFTP_ROOT}/sshd.pid" 2>/dev/null)" 2>/dev/null || true; rm -rf "${SFTP_ROOT}"' EXIT
+
+          printf 'ErikrafT Drop SFTP CI payload\n' > /tmp/erikraft-drop-sftp-upload.txt
+          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "${SFTP_KEY}" -P "${SFTP_PORT}" \
+            erikraft-ci-sftp@127.0.0.1 <<'EOF'
+          put /tmp/erikraft-drop-sftp-upload.txt uploaded.txt
+          get uploaded.txt /tmp/erikraft-drop-sftp-download.txt
+          bye
+          EOF
+
+          cmp /tmp/erikraft-drop-sftp-upload.txt /tmp/erikraft-drop-sftp-download.txt
 
       - name: Decode signing keystore
         env:
@@ -151,6 +205,107 @@ jobs:
             cp ErikrafT-Drop-release.aab \
               "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.aab"
           fi
+
+      - name: Run real FTP and FTPS transfer test against signed APK
+        timeout-minutes: 15
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          target: google_apis
+          arch: x86
+          profile: pixel_2
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: |
+            set -euo pipefail
+
+            adb install -r ErikrafT-Drop-release.apk
+            adb shell pm grant com.erikraft.drop android.permission.WRITE_EXTERNAL_STORAGE
+
+            adb shell am start -n com.erikraft.drop/.FtpSettingsActivity
+            sleep 2
+
+            found=0
+            for attempt in $(seq 1 10); do
+              adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
+              adb exec-out cat /sdcard/window.xml > /tmp/drop-window.xml 2>/dev/null || true
+
+              bounds="$(python3 - <<'PY'
+            import re
+            from pathlib import Path
+            text = Path("/tmp/drop-window.xml").read_text(errors="ignore")
+            match = re.search(r'text="Iniciar servidor".*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', text)
+            if not match:
+                match = re.search(r'text="Start server".*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', text)
+            if match:
+                x1, y1, x2, y2 = map(int, match.groups())
+                print(f"{(x1+x2)//2} {(y1+y2)//2}")
+            PY
+              )"
+
+              if [ -n "$bounds" ]; then
+                read -r tap_x tap_y <<< "$bounds"
+                adb shell input tap "$tap_x" "$tap_y"
+                found=1
+                break
+              fi
+
+              adb shell input swipe 540 1600 540 900 500 >/dev/null 2>&1 || true
+              sleep 1
+            done
+
+            if [ "$found" -ne 1 ]; then
+              echo "Unable to locate the existing FTP start control in FtpSettingsActivity." >&2
+              adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
+              adb exec-out cat /sdcard/window.xml || true
+              exit 1
+            fi
+
+            for port in 2221 50000 50001 50002 50003 50004 50005 50006 50007 50008 50009 50010; do
+              adb forward "tcp:$port" "tcp:$port"
+            done
+
+            for attempt in $(seq 1 30); do
+              if curl --silent --show-error --fail --user admin:admin ftp://127.0.0.1:2221/ >/dev/null; then
+                break
+              fi
+              sleep 1
+              if [ "$attempt" -eq 30 ]; then
+                echo "FTP server did not become reachable." >&2
+                adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' || true
+                exit 1
+              fi
+            done
+
+            printf 'ErikrafT Drop FTP/FTPS CI payload\n' > /tmp/drop-ftp-upload.txt
+            rm -f /tmp/drop-ftp-download.txt /tmp/drop-ftps-download.txt
+
+            echo "Testing plain FTP upload/download/delete"
+            curl --silent --show-error --fail --user admin:admin \
+              --upload-file /tmp/drop-ftp-upload.txt \
+              ftp://127.0.0.1:2221/erikraft-drop-ci-ftp.txt
+            curl --silent --show-error --fail --user admin:admin \
+              --output /tmp/drop-ftp-download.txt \
+              ftp://127.0.0.1:2221/erikraft-drop-ci-ftp.txt
+            cmp /tmp/drop-ftp-upload.txt /tmp/drop-ftp-download.txt
+            curl --silent --show-error --fail --user admin:admin \
+              -Q 'DELE erikraft-drop-ci-ftp.txt' \
+              ftp://127.0.0.1:2221/ >/dev/null
+
+            echo "Testing explicit FTPS/TLS upload/download/delete"
+            curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+              --upload-file /tmp/drop-ftp-upload.txt \
+              ftp://127.0.0.1:2221/erikraft-drop-ci-ftps.txt
+            curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+              --output /tmp/drop-ftps-download.txt \
+              ftp://127.0.0.1:2221/erikraft-drop-ci-ftps.txt
+            cmp /tmp/drop-ftp-upload.txt /tmp/drop-ftps-download.txt
+            curl --silent --show-error --fail --insecure --ssl-reqd --user admin:admin \
+              -Q 'DELE erikraft-drop-ci-ftps.txt' \
+              ftp://127.0.0.1:2221/ >/dev/null
+
+            echo "Real FTP and explicit FTPS transfer checks passed against the signed APK."
+            adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' || true
 
       - name: Upload signed APK artifact
         uses: actions/upload-artifact@v4
