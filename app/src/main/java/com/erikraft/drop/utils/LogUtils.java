@@ -75,7 +75,7 @@ public class LogUtils {
                 lower.contains("logutils")) return true;
 
         final java.util.regex.Matcher matcher = java.util.regex.Pattern
-                .compile("^\\\\S+\\\\s+\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+([VDIWEF])\\\\s+")
+                .compile("^\\S+\\s+\\S+\\s+\\d+\\s+\\d+\\s+([VDIWEF])\\s+")
                 .matcher(line);
         if (!matcher.find()) return false;
         final char priority = matcher.group(1).charAt(0);
