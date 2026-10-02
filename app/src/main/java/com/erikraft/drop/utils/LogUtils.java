@@ -43,17 +43,45 @@ public class LogUtils {
     private static String requestLogcatLogs() {
         String logs = "Unable to read logs";
         try {
-            final Process process = Runtime.getRuntime().exec("logcat *:I eglCodecCommon:S -d");
+            final Process process = Runtime.getRuntime().exec("logcat -v threadtime -d");
             final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            final StringBuilder logsBuilder = new StringBuilder();
+            final StringBuilder fullLogs = new StringBuilder();
+            final StringBuilder relevantLogs = new StringBuilder();
             String line;
-            while ((line = bufferedReader.readLine()) != null) logsBuilder.append(line).append("\n");
-            logs = logsBuilder.toString();
+            while ((line = bufferedReader.readLine()) != null) {
+                fullLogs.append(line).append("\n");
+                if (isRelevantLogLine(line)) relevantLogs.append(line).append("\n");
+            }
             bufferedReader.close();
+            logs = "--------- Relevant Application Signals\\n" +
+                    (relevantLogs.length() == 0 ? "No application-specific or actionable error signals found.\\n" : relevantLogs) +
+                    "\\n--------- Full Logcat\\n" + fullLogs;
         } catch (IOException e) {
             Log.e("LogUtils", "Exception while reading logs", e);
         }
         return logs;
+    }
+
+    private static boolean isRelevantLogLine(final String line) {
+        if (line == null) return false;
+        final String lower = line.toLowerCase(Locale.ROOT);
+        if (lower.contains("androidruntime") || lower.contains("fatal exception") ||
+                lower.contains("exception") || lower.contains("securityexception") ||
+                lower.contains("illegalstateexception") || lower.contains("caused by") ||
+                lower.contains("webview") || lower.contains("chromium") ||
+                lower.contains("ftpserverservice") || lower.contains("ftpsettingsactivity") ||
+                lower.contains("mainactivity") || lower.contains("javascriptinterface") ||
+                lower.contains("tor") || lower.contains("lyrebird") ||
+                lower.contains("logutils")) return true;
+
+        final int priorityIndex = line.indexOf(" ");
+        if (priorityIndex < 0 || line.length() <= priorityIndex + 1) return false;
+        final String afterTimestamp = line.substring(priorityIndex + 1);
+        final int prioritySeparator = afterTimestamp.indexOf(" ");
+        if (prioritySeparator < 0 || afterTimestamp.length() <= prioritySeparator + 1) return false;
+        final String afterTime = afterTimestamp.substring(prioritySeparator + 1);
+        final char priority = afterTime.charAt(0);
+        return (priority == 'E' || priority == 'F') && !lower.contains("openglrenderer");
     }
 
     public static String getStacktrace(final Throwable ex) {
