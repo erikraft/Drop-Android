@@ -9,45 +9,68 @@ trap cleanup EXIT
 adb install -r ErikrafT-Drop-release.apk
 adb shell pm grant com.erikraft.drop android.permission.WRITE_EXTERNAL_STORAGE
 
-adb shell am start -n com.erikraft.drop/.FtpSettingsActivity
-sleep 2
+# FtpSettingsActivity is intentionally non-exported. Enter it through the
+# existing user-facing MainActivity -> Settings -> FTP/FTPS navigation flow
+# instead of bypassing the application's exported-component boundary.
+adb shell am start -n com.erikraft.drop/.MainActivity >/dev/null
 
-found=0
-for attempt in $(seq 1 10); do
-  adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
-  adb exec-out cat /sdcard/window.xml > /tmp/drop-window.xml 2>/dev/null || true
+tap_text() {
+  description="$1"
+  swipe="$2"
+  shift 2
 
-  bounds="$(python3 - <<'PY'
+  for attempt in $(seq 1 30); do
+    adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
+    adb exec-out cat /sdcard/window.xml > /tmp/drop-window.xml 2>/dev/null || true
+
+    bounds="$(CANDIDATES="$*" python3 - <<'PY'
+import html
+import os
 import re
 from pathlib import Path
 
-text = Path("/tmp/drop-window.xml").read_text(errors="ignore")
-match = re.search(r'text="Iniciar servidor".*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', text)
-if not match:
-    match = re.search(r'text="Start server".*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', text)
-if match:
-    x1, y1, x2, y2 = map(int, match.groups())
-    print(f"{(x1+x2)//2} {(y1+y2)//2}")
+text = html.unescape(Path("/tmp/drop-window.xml").read_text(errors="ignore"))
+for candidate in os.environ["CANDIDATES"].split("|"):
+    pattern = rf'text="{re.escape(candidate)}".*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"'
+    match = re.search(pattern, text)
+    if match:
+        x1, y1, x2, y2 = map(int, match.groups())
+        print(f"{(x1 + x2) // 2} {(y1 + y2) // 2}")
+        break
 PY
-  )"
+)"
 
-  if [ -n "$bounds" ]; then
-    read -r tap_x tap_y <<< "$bounds"
-    adb shell input tap "$tap_x" "$tap_y"
-    found=1
-    break
-  fi
+    if [ -n "$bounds" ]; then
+      read -r tap_x tap_y <<< "$bounds"
+      adb shell input tap "$tap_x" "$tap_y"
+      return 0
+    fi
 
-  adb shell input swipe 540 1600 540 900 500 >/dev/null 2>&1 || true
-  sleep 1
-done
+    if [ "$swipe" = "true" ]; then
+      adb shell input swipe 540 1600 540 900 500 >/dev/null 2>&1 || true
+    fi
+    sleep 1
+  done
 
-if [ "$found" -ne 1 ]; then
-  echo "Unable to locate the existing FTP start control in FtpSettingsActivity." >&2
+  echo "Unable to locate $description through the existing UI." >&2
   adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
   adb exec-out cat /sdcard/window.xml || true
-  exit 1
-fi
+  return 1
+}
+
+# A clean emulator starts the existing first-run onboarding. Complete it using
+# its existing Continue controls so the test reaches the normal main screen.
+tap_text "onboarding Continue button (1/3)" false "continue|Continue"
+tap_text "onboarding Continue button (2/3)" false "continue|Continue"
+tap_text "onboarding Finish button (3/3)" false "finish|Finish|continue|Continue"
+
+# Open Settings through MainActivity's existing action-bar menu, then select
+# the existing FTP/FTPS preference.
+adb shell input keyevent 82
+tap_text "Settings menu item" false "Settings|Configurações"
+tap_text "FTP/FTPS settings preference" true "Transferência via FTP / FTPS|FTP / FTPS"
+
+tap_text "FTP start control in FtpSettingsActivity" true "Iniciar servidor|Start server"
 
 for port in 2221 50000 50001 50002 50003 50004 50005 50006 50007 50008 50009 50010; do
   adb forward "tcp:$port" "tcp:$port"
