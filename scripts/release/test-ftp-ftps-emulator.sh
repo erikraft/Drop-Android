@@ -2,7 +2,7 @@
 set -euo pipefail
 
 cleanup() {
-  adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' > ftp-ftps-logcat.txt 2>&1 || true
+  timeout 20s adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' > ftp-ftps-logcat.txt 2>&1 || true
 }
 trap cleanup EXIT
 
