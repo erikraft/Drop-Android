@@ -11,7 +11,14 @@ FTP_READY_TIMEOUT="${FTP_READY_TIMEOUT:-90}"
 FTP_READY_ATTEMPT_TIMEOUT="${FTP_READY_ATTEMPT_TIMEOUT:-5s}"
 
 adb_timeout() {
-  timeout "$ADB_TIMEOUT" adb "$@"
+  local timeout_value="$ADB_TIMEOUT"
+
+  if [[ "${1:-}" =~ ^[0-9]+s$ ]]; then
+    timeout_value="$1"
+    shift
+  fi
+
+  timeout "$timeout_value" adb "$@"
 }
 
 echo "Installing signed APK."
