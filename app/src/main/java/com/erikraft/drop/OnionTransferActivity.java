@@ -74,7 +74,12 @@ public class OnionTransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SnapdropApplication.setAppTheme(this);
         notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
-            if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
+            if (stopNotificationSwitch != null) {
+                stopNotificationSwitch.setChecked(granted);
+                PreferenceManager.getDefaultSharedPreferences(this)
+                        .edit().putBoolean(getString(R.string.pref_onion_stop_notification), granted).apply();
+                if (granted && server != null) showNotification();
+            }
         });
         buildUi();
         registerPicker();
