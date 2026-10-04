@@ -7,6 +7,9 @@ cleanup() {
 trap cleanup EXIT
 
 ADB_TIMEOUT="${ADB_TIMEOUT:-15s}"
+ADB_KILL_AFTER="${ADB_KILL_AFTER:-5s}"
+PACKAGE_MANAGER_TIMEOUT="${PACKAGE_MANAGER_TIMEOUT:-90}"
+PACKAGE_MANAGER_ATTEMPT_TIMEOUT="${PACKAGE_MANAGER_ATTEMPT_TIMEOUT:-5s}"
 FTP_READY_TIMEOUT="${FTP_READY_TIMEOUT:-90}"
 FTP_READY_ATTEMPT_TIMEOUT="${FTP_READY_ATTEMPT_TIMEOUT:-5s}"
 
@@ -18,9 +21,40 @@ adb_timeout() {
     shift
   fi
 
-  timeout "$timeout_value" adb "$@"
+  timeout --kill-after="$ADB_KILL_AFTER" "$timeout_value" adb "$@"
 }
 
+wait_for_package_manager() {
+  echo "Waiting for Android Package Manager (maximum ${PACKAGE_MANAGER_TIMEOUT}s)."
+  local ready_at="$(date +%s)"
+
+  while true; do
+    local now="$(date +%s)"
+    local elapsed=$((now - ready_at))
+    if [ "$elapsed" -ge "$PACKAGE_MANAGER_TIMEOUT" ]; then
+      break
+    fi
+
+    if adb_timeout "$PACKAGE_MANAGER_ATTEMPT_TIMEOUT" shell cmd package list packages >/dev/null 2>&1; then
+      echo "Android Package Manager is ready."
+      return 0
+    fi
+
+    sleep 2
+  done
+
+  echo "Android Package Manager did not become responsive within ${PACKAGE_MANAGER_TIMEOUT}s." >&2
+  echo "ADB device state:" >&2
+  adb_timeout 10s get-state >&2 || true
+  echo "Android boot state:" >&2
+  adb_timeout 10s shell getprop sys.boot_completed >&2 || true
+  echo "Package Manager diagnostic:" >&2
+  adb_timeout 10s shell cmd package list packages >&2 || true
+  return 1
+}
+
+echo "Waiting for Android Package Manager before installing signed APK."
+wait_for_package_manager
 echo "Installing signed APK."
 adb_timeout 60s install -r ErikrafT-Drop-release.apk
 adb_timeout 15s shell pm grant com.erikraft.drop android.permission.WRITE_EXTERNAL_STORAGE
@@ -37,8 +71,8 @@ tap_text() {
   shift 2
 
   for attempt in $(seq 1 30); do
-    timeout "$ADB_TIMEOUT" adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
-    timeout "$ADB_TIMEOUT" adb exec-out cat /sdcard/window.xml > /tmp/drop-window.xml 2>/dev/null || true
+    timeout --kill-after="$ADB_KILL_AFTER" "$ADB_TIMEOUT" adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
+    timeout --kill-after="$ADB_KILL_AFTER" "$ADB_TIMEOUT" adb exec-out cat /sdcard/window.xml > /tmp/drop-window.xml 2>/dev/null || true
 
     bounds="$(CANDIDATES="$*" python3 - <<'PY'
 import html
@@ -64,14 +98,14 @@ PY
     fi
 
     if [ "$swipe" = "true" ]; then
-      timeout "$ADB_TIMEOUT" adb shell input swipe 540 1600 540 900 500 >/dev/null 2>&1 || true
+      timeout --kill-after="$ADB_KILL_AFTER" "$ADB_TIMEOUT" adb shell input swipe 540 1600 540 900 500 >/dev/null 2>&1 || true
     fi
     sleep 1
   done
 
   echo "Unable to locate $description through the existing UI." >&2
-  timeout "$ADB_TIMEOUT" adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
-  timeout "$ADB_TIMEOUT" adb exec-out cat /sdcard/window.xml || true
+  timeout --kill-after="$ADB_KILL_AFTER" "$ADB_TIMEOUT" adb shell uiautomator dump /sdcard/window.xml >/dev/null 2>&1 || true
+  timeout --kill-after="$ADB_KILL_AFTER" "$ADB_TIMEOUT" adb exec-out cat /sdcard/window.xml || true
   return 1
 }
 
@@ -123,11 +157,11 @@ done
 if [ "$ready" != "true" ]; then
   echo "FTP server did not become reachable within ${FTP_READY_TIMEOUT}s." >&2
   echo "Forwarded ports:" >&2
-  timeout "$ADB_TIMEOUT" adb forward --list >&2 || true
+  adb_timeout 15s forward --list >&2 || true
   echo "FTP/FTPS service state:" >&2
-  timeout "$ADB_TIMEOUT" adb shell dumpsys activity services com.erikraft.drop/.FtpServerService >&2 || true
+  adb_timeout 15s shell dumpsys activity services com.erikraft.drop/.FtpServerService >&2 || true
   echo "FTP/FTPS service log:" >&2
-  timeout 20s adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' >&2 || true
+  timeout --kill-after="$ADB_KILL_AFTER" 20s adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' >&2 || true
   exit 1
 fi
 
