@@ -66,8 +66,8 @@ public class SftpServerService extends Service {
             String username = valueOrDefault(
                     prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
             String password = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_sftp_password), ""), "erikraft");
-            String configuredHome = prefs.getString(getString(R.string.pref_sftp_home), "");
+                    prefs.getString(getString(R.string.pref_ftp_username) + "_secret", ""), "erikraft");
+            String configuredHome = prefs.getString(getString(R.string.pref_save_location), "");
             File home = new File(configuredHome);
             if (!home.isDirectory() || !home.canRead() || !home.canWrite()) {
                 throw new IllegalStateException("A pasta SFTP selecionada não pode ser acessada diretamente.");
