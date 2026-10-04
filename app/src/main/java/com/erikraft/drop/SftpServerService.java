@@ -164,7 +164,7 @@ public class SftpServerService extends Service {
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .addAction(new NotificationCompat.Action.Builder(
                         android.R.drawable.ic_menu_close_clear_cancel,
-                        getString(R.string.sftp_stop),
+                        getString(R.string.ftp_stop),
                         stopPendingIntent).build());
     }
 
