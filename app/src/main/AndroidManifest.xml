@@ -180,6 +180,10 @@
             </intent-filter>
         </service>
         <service
+            android:name=".SftpServerService"
+            android:exported="false" />
+
+        <service
             android:name=".FtpServerService"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
