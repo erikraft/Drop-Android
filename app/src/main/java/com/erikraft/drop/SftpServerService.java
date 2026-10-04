@@ -36,6 +36,7 @@ public class SftpServerService extends Service {
     private SshServer server;
     private static volatile boolean running;
     private static volatile int runningPort;
+    private boolean starting;
 
     public static Intent startIntent(android.content.Context context) {
         return new Intent(context, SftpServerService.class).setAction(ACTION_START);
@@ -53,7 +54,8 @@ public class SftpServerService extends Service {
             return START_NOT_STICKY;
         }
         synchronized (LOCK) {
-            if (server != null) return START_NOT_STICKY;
+            if (server != null || starting) return START_NOT_STICKY;
+            starting = true;
             startForeground(NOTIFICATION_ID, notification("Iniciando servidor SFTP…"));
             new Thread(this::startServer, "ErikrafT-Drop-SFTP").start();
         }
@@ -99,6 +101,7 @@ public class SftpServerService extends Service {
                 }
                 candidate.start();
                 server = candidate;
+                starting = false;
             }
             Log.i("SftpServerService", "SFTP server started on port " + port
                     + " with home " + home.getAbsolutePath());
@@ -110,6 +113,7 @@ public class SftpServerService extends Service {
         } catch (Exception e) {
             Log.e("SftpServerService", "SFTP server failed to start", e);
             broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
+            synchronized (LOCK) { starting = false; }
             stopServer();
             stopSelf();
         }
@@ -140,6 +144,7 @@ public class SftpServerService extends Service {
                 }
                 server = null;
             }
+            starting = false;
             running = false;
             runningPort = 0;
         }
