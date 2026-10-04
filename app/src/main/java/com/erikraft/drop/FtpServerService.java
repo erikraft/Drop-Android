@@ -3,6 +3,7 @@ package com.erikraft.drop;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Build;
@@ -52,6 +53,7 @@ public class FtpServerService extends Service {
     public static final String EXTRA_STATUS = "status";
     public static final String EXTRA_ERROR = "error";
     public static final String CHANNEL_ID = "ftp_server";
+    public static final String EXTRA_STOP_NOTIFICATION = "stop_notification";
     private static final int NOTIFICATION_ID = 42021;
     private static final String KEYSTORE_PASSWORD = "erikraft-drop-ftps";
     private static final String KEY_ALIAS = "erikraft-drop-ftps";
@@ -188,9 +190,9 @@ public class FtpServerService extends Service {
         Date notAfter = new Date(now + 3650L * 24L * 60L * 60L * 1000L);
         X500Name subject = new X500Name("CN=ErikrafT Drop FTP");
         X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
-        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(BouncyCastleProvider.PROVIDER_NAME).build(keyPair.getPrivate());
+        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(new BouncyCastleProvider()).build(keyPair.getPrivate());
         X509CertificateHolder holder = builder.build(signer);
-        X509Certificate certificate = new JcaX509CertificateConverter().setProvider(BouncyCastleProvider.PROVIDER_NAME).getCertificate(holder);
+        X509Certificate certificate = new JcaX509CertificateConverter().setProvider(new BouncyCastleProvider()).getCertificate(holder);
         KeyStore keyStore = KeyStore.getInstance("JKS");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});
@@ -221,13 +223,26 @@ public class FtpServerService extends Service {
     private Notification notification(String text) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Servidor FTP", NotificationManager.IMPORTANCE_LOW));
-        return new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_ftp)
                 .setContentTitle("ErikrafT Drop™ FTP")
                 .setContentText(text)
                 .setOngoing(true)
-                .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .build();
+                .setCategory(NotificationCompat.CATEGORY_SERVICE);
+        boolean stopAction = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_ftp_stop_notification), false);
+        if (stopAction) {
+            PendingIntent stopPendingIntent = PendingIntent.getService(
+                    this,
+                    NOTIFICATION_ID + 1,
+                    stopIntent(this),
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            builder.addAction(new NotificationCompat.Action.Builder(
+                    android.R.drawable.ic_menu_close_clear_cancel,
+                    getString(R.string.ftp_stop),
+                    stopPendingIntent).build());
+        }
+        return builder.build();
     }
 
     private void updateNotification(String text) {
