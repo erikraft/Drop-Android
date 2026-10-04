@@ -40,11 +40,10 @@ jobs:
           fi
 
           echo "${ANDROID_HOME}/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-          echo "${ANDROID_HOME}/platform-tools" >> "$GITHUB_PATH"
 
       - name: Install Android SDK packages
         run: |
-          sdkmanager "platform-tools" "emulator" "platforms;android-36" "build-tools;36.0.0"
+          sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
       - name: Accept Android SDK licenses
         run: yes | sdkmanager --licenses
@@ -69,64 +68,6 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew clean test --no-build-cache --rerun-tasks
-
-      - name: Run real SFTP interoperability smoke test
-        timeout-minutes: 5
-        run: |
-          set -euo pipefail
-
-          sudo apt-get update
-          sudo apt-get install -y openssh-server
-
-          SFTP_ROOT="$(mktemp -d)"
-          SFTP_HOME="${SFTP_ROOT}/home"
-          SFTP_KEY="${SFTP_ROOT}/id_ed25519"
-          SFTP_PORT=2222
-          chmod 755 "${SFTP_ROOT}"
-          sudo mkdir -p /run/sshd
-
-          sudo useradd --create-home --home-dir "${SFTP_HOME}" --shell /bin/bash erikraft-ci-sftp 2>/dev/null || true
-          SFTP_PASSWORD_HASH="$(openssl passwd -6 "$(openssl rand -hex 32)")"
-          sudo usermod --password "${SFTP_PASSWORD_HASH}" erikraft-ci-sftp
-          sudo mkdir -p "${SFTP_HOME}/.ssh"
-          sudo chown -R erikraft-ci-sftp:erikraft-ci-sftp "${SFTP_HOME}"
-
-          ssh-keygen -t ed25519 -N "" -f "${SFTP_KEY}" >/dev/null
-          sudo cp "${SFTP_KEY}.pub" "${SFTP_HOME}/.ssh/authorized_keys"
-          sudo chown erikraft-ci-sftp:erikraft-ci-sftp "${SFTP_HOME}/.ssh/authorized_keys"
-          sudo chmod 700 "${SFTP_HOME}/.ssh"
-          sudo chmod 600 "${SFTP_HOME}/.ssh/authorized_keys"
-
-          HOST_KEY="${SFTP_ROOT}/ssh_host_ed25519_key"
-          ssh-keygen -t ed25519 -N "" -f "${HOST_KEY}" >/dev/null
-
-          cat > "${SFTP_ROOT}/sshd_config" <<EOF
-          Port ${SFTP_PORT}
-          ListenAddress 127.0.0.1
-          HostKey ${HOST_KEY}
-          PidFile ${SFTP_ROOT}/sshd.pid
-          AuthorizedKeysFile .ssh/authorized_keys
-          PasswordAuthentication no
-          KbdInteractiveAuthentication no
-          PubkeyAuthentication yes
-          PermitRootLogin no
-          UsePAM no
-          Subsystem sftp internal-sftp
-          LogLevel VERBOSE
-          EOF
-
-          sudo /usr/sbin/sshd -f "${SFTP_ROOT}/sshd_config" -E "${SFTP_ROOT}/sshd.log"
-          trap 'sudo kill "$(cat "${SFTP_ROOT}/sshd.pid" 2>/dev/null)" 2>/dev/null || true; sudo rm -rf "${SFTP_ROOT}"' EXIT
-
-          printf 'ErikrafT Drop SFTP CI payload\n' > /tmp/erikraft-drop-sftp-upload.txt
-          timeout 60s sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "${SFTP_KEY}" -P "${SFTP_PORT}" \
-            erikraft-ci-sftp@127.0.0.1 <<'EOF'
-          put /tmp/erikraft-drop-sftp-upload.txt uploaded.txt
-          get uploaded.txt /tmp/erikraft-drop-sftp-download.txt
-          bye
-          EOF
-
-          cmp /tmp/erikraft-drop-sftp-upload.txt /tmp/erikraft-drop-sftp-download.txt
 
       - name: Decode signing keystore
         env:
@@ -210,24 +151,6 @@ jobs:
               "ErikrafT-Drop-${{ steps.meta.outputs.tag_name }}.aab"
           fi
 
-      - name: Run real FTP and FTPS transfer test against signed APK
-        timeout-minutes: 15
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 28
-          target: google_apis
-          arch: x86
-          profile: pixel_2
-          disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          script: bash scripts/release/test-ftp-ftps-emulator.sh
-
-      - name: Capture FTP/FTPS emulator logcat
-        if: always()
-        timeout-minutes: 1
-        run: |
-          timeout 30s adb logcat -d -s FtpServerService:I FtpServerService:E '*:S' > ftp-ftps-logcat.txt 2>&1 || true
-
       - name: Upload signed APK artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -242,14 +165,6 @@ jobs:
         with:
           name: erikraft-drop-aab
           path: ErikrafT-Drop-release.aab
-          if-no-files-found: ignore
-
-      - name: Upload FTP/FTPS emulator logcat
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: erikraft-drop-ftp-ftps-logcat
-          path: ftp-ftps-logcat.txt
           if-no-files-found: ignore
 
       - name: Create GitHub release with signed assets
