@@ -24,6 +24,7 @@ import java.io.File;
 
 public class SftpSettingsActivity extends AppCompatActivity {
     private TextInputEditText port,user,password;
+    private String initialStatus = "Servidor parado";
     private TextView folder,status,address;
     private ActivityResultLauncher<Intent> picker;
     private BroadcastReceiver statusReceiver;
@@ -73,7 +74,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
         port=field("Porta",p.getString(getString(R.string.pref_sftp_port),"2222"));user=field("Nome de usuário",p.getString(getString(R.string.pref_sftp_username),"admin"));password=field("Senha",p.getString(getString(R.string.pref_sftp_password),"admin"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
-        status=text("Servidor parado",15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
+        status=text(initialStatus,15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
         LinearLayout row=new LinearLayout(this);MaterialButton start=button("Iniciar servidor SFTP"),stop=button("Parar servidor SFTP");row.addView(start,new LinearLayout.LayoutParams(0,-2,1));LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(0,-2,1);sp.setMargins(dp(8),0,0,0);row.addView(stop,sp);c.addView(row,top(14));
         MaterialButton copy=button("Copiar endereço SFTP");c.addView(copy,top(8));
         start.setOnClickListener(v->startServer());stop.setOnClickListener(v->stopServer());copy.setOnClickListener(v->{android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);if(cm!=null)cm.setPrimaryClip(android.content.ClipData.newPlainText("SFTP",address.getText()));});
