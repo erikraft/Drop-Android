@@ -71,6 +71,7 @@ public class FtpSettingsActivity extends AppCompatActivity {
         notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
             if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
             prefs.edit().putBoolean(getString(R.string.pref_ftp_stop_notification), granted).apply();
+            if (FtpServerService.isRunning()) startService(new Intent(this, FtpServerService.class).setAction(FtpServerService.ACTION_REFRESH_NOTIFICATION));
         });
         directoryPicker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null) return;
