@@ -438,6 +438,7 @@ public class OnionTransferActivity extends AppCompatActivity {
 
     @Override protected void onDestroy() {
         if (startupTimeout != null) handler.removeCallbacks(startupTimeout);
+        cancelNotification();
         if (server != null) server.stop();
         TorController.shutdown(this);
         super.onDestroy();
@@ -524,7 +525,7 @@ public class OnionTransferActivity extends AppCompatActivity {
             return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/plain", "Not found");
         }
 
-        private static String mime(String name) {
+        private String mime(String name) {
             String n = name.toLowerCase();
             if (n.endsWith(".png")) return "image/png";
             if (n.endsWith(".jpg") || n.endsWith(".jpeg")) return "image/jpeg";
@@ -533,7 +534,7 @@ public class OnionTransferActivity extends AppCompatActivity {
             return "application/octet-stream";
         }
 
-        private static String escape(String s) {
+        private String escape(String s) {
             return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
         }
     }
