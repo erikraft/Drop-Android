@@ -1,9 +1,13 @@
 package com.erikraft.drop;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -14,15 +18,21 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.anggrayudi.storage.file.DocumentFileUtils;
+import androidx.documentfile.provider.DocumentFile;
 
 import java.net.Inet4Address;
 import java.net.NetworkInterface;
@@ -35,7 +45,11 @@ public class FtpSettingsActivity extends AppCompatActivity {
     private TextInputEditText passwordInput;
     private SwitchCompat anonymousSwitch;
     private SwitchCompat ftpsSwitch;
+    private SwitchCompat stopNotificationSwitch;
+    private TextView directorySummary;
     private TextView status;
+    private ActivityResultLauncher<Intent> directoryPicker;
+    private ActivityResultLauncher<String> notificationPermissionLauncher;
     private TextView address;
 
     private final BroadcastReceiver statusReceiver = new BroadcastReceiver() {
@@ -55,6 +69,27 @@ public class FtpSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SnapdropApplication.setAppTheme(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+            if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
+        });
+        directoryPicker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null) return;
+            Uri uri = result.getData().getData();
+            if (uri == null) return;
+            try {
+                final int flags = result.getData().getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                getContentResolver().takePersistableUriPermission(uri, flags);
+            } catch (SecurityException ignored) { }
+            DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
+            if (folder == null) return;
+            String path = DocumentFileUtils.getAbsolutePath(folder, this);
+            if (path == null || path.trim().isEmpty()) {
+                Toast.makeText(this, "Não foi possível obter o diretório escolhido.", Toast.LENGTH_LONG).show();
+                return;
+            }
+            prefs.edit().putString(getString(R.string.pref_save_location), path).apply();
+            directorySummary.setText(path);
+        });
         buildUi();
         ContextCompat.registerReceiver(this, statusReceiver, new IntentFilter(FtpServerService.EXTRA_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
     }
@@ -74,6 +109,19 @@ public class FtpSettingsActivity extends AppCompatActivity {
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(20), dp(12), dp(20), dp(28));
         content.addView(text(getString(R.string.ftp_settings_description), 15));
+        MaterialButton chooseDirectory = new MaterialButton(this);
+        chooseDirectory.setText(R.string.ftp_choose_directory);
+        directorySummary = text(prefs.getString(getString(R.string.pref_save_location),
+                android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS).getPath()), 13);
+        directorySummary.setTextIsSelectable(true);
+        content.addView(chooseDirectory, lpTop(dp(12)));
+        content.addView(directorySummary, lpTop(dp(4)));
+        chooseDirectory.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION |
+                    Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
+            directoryPicker.launch(intent);
+        });
         portInput = field("Porta", prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
         content.addView((TextInputLayout) portInput.getTag(), lpTop(dp(12)));
         usernameInput = field("Nome de usuário", prefs.getString(getString(R.string.pref_ftp_username), "admin"), InputType.TYPE_CLASS_TEXT);
@@ -88,6 +136,13 @@ public class FtpSettingsActivity extends AppCompatActivity {
         ftpsSwitch.setText(R.string.ftp_ftps_title);
         ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), true));
         content.addView(ftpsSwitch, lpTop(dp(4)));
+        stopNotificationSwitch = new SwitchCompat(this);
+        stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
+        stopNotificationSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_stop_notification), false));
+        stopNotificationSwitch.setContentDescription(getString(R.string.ftp_stop_notification_summary));
+        content.addView(stopNotificationSwitch, lpTop(dp(8)));
+        TextView notificationSummary = text(getString(R.string.ftp_stop_notification_summary), 13);
+        content.addView(notificationSummary, lpTop(dp(2)));
         content.addView(text(getString(R.string.ftp_passive_summary), 13), lpTop(dp(4)));
         status = text("Servidor parado", 15);
         content.addView(status, lpTop(dp(18)));
@@ -109,6 +164,7 @@ public class FtpSettingsActivity extends AppCompatActivity {
         copy.setText(R.string.ftp_copy_address);
         content.addView(copy, lpTop(dp(8)));
         start.setOnClickListener(v -> saveAndStart());
+        stopNotificationSwitch.setOnClickListener(v -> handleStopNotificationPreference());
         stop.setOnClickListener(v -> stopServer());
         copy.setOnClickListener(v -> copyAddress());
         scroll.addView(content);
@@ -130,6 +186,19 @@ public class FtpSettingsActivity extends AppCompatActivity {
         layout.addView(edit, new LinearLayout.LayoutParams(-1, -2));
         edit.setTag(layout);
         return edit;
+    }
+
+    private void handleStopNotificationPreference() {
+        if (!stopNotificationSwitch.isChecked()) {
+            prefs.edit().putBoolean(getString(R.string.pref_ftp_stop_notification), false).apply();
+            return;
+        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            return;
+        }
+        prefs.edit().putBoolean(getString(R.string.pref_ftp_stop_notification), true).apply();
     }
 
     private void saveAndStart() {
@@ -156,6 +225,7 @@ public class FtpSettingsActivity extends AppCompatActivity {
                 .putString(getString(R.string.pref_ftp_password), password)
                 .putBoolean(getString(R.string.pref_ftp_anonymous), anonymousSwitch.isChecked())
                 .putBoolean(getString(R.string.pref_ftp_ftps), ftpsSwitch.isChecked())
+                .putBoolean(getString(R.string.pref_ftp_stop_notification), stopNotificationSwitch.isChecked())
                 .apply();
         ContextCompat.startForegroundService(this, FtpServerService.startIntent(this));
         status.setText(R.string.ftp_starting);
