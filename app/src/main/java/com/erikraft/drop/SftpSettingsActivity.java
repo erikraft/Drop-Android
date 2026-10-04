@@ -47,10 +47,10 @@ public class SftpSettingsActivity extends AppCompatActivity {
     private void buildUi(){
         android.content.SharedPreferences p=PreferenceManager.getDefaultSharedPreferences(this);
         LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);
-        Toolbar tb=new Toolbar(this);tb.setTitle(R.string.sftp_settings_title);tb.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);tb.setNavigationOnClickListener(v->finish());
+        Toolbar tb=new Toolbar(this);tb.setTitle("Transferência via SFTP");tb.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);tb.setNavigationOnClickListener(v->finish());
         root.addView(tb,new LinearLayout.LayoutParams(-1,dp(56)));setSupportActionBar(tb);
         LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(20),dp(12),dp(20),dp(28));
-        c.addView(text(getString(R.string.sftp_settings_description),15));
+        c.addView(text("Execute um servidor SFTP local via SSH. A pasta selecionada será a raiz do SFTP.",15));
         MaterialButton choose=new MaterialButton(this);choose.setText("Escolher pasta");c.addView(choose,top(12));
         folder=text(p.getString("save_location",Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
@@ -70,9 +70,9 @@ public class SftpSettingsActivity extends AppCompatActivity {
         if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
         p.edit().putString("save_location",f.getAbsolutePath()).putString("ftp_port",String.valueOf(po)).putString("ftp_username",u).putString("ftp_username_secret",pw).apply();
-        ContextCompat.startForegroundService(this,SftpServerService.startIntent(this));status.setText("Iniciar servidor SFTP"ing);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
+        ContextCompat.startForegroundService(this,SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
-    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Parar servidor SFTP"ped);address.setText("");}
+    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if("Senha".equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
     private MaterialButton button(int id){MaterialButton b=new MaterialButton(this);b.setText(id);return b;}
     private TextView text(String s,float z){TextView v=new TextView(this);v.setText(s);v.setTextSize(z);return v;}
