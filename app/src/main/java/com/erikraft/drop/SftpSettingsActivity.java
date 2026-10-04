@@ -70,7 +70,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
         if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
         p.edit().putString("save_location",f.getAbsolutePath()).putString("ftp_port",String.valueOf(po)).putString("ftp_username",u).putString("ftp_username_secret",pw).apply();
-        ContextCompat.startForegroundService(this,SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
+        startService(SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if("Senha".equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
