@@ -129,6 +129,9 @@ public class OnionTransferActivity extends AppCompatActivity {
 
         MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
         shareContent.addView(pick);
+        MaterialButton clearFiles = button("Remover arquivos selecionados");
+        clearFiles.setEnabled(false);
+        shareContent.addView(clearFiles, lpTop(dp(6)));
         selectionSummary = text("Nenhum arquivo selecionado.", 14);
         shareContent.addView(selectionSummary);
 
@@ -151,6 +154,18 @@ public class OnionTransferActivity extends AppCompatActivity {
             updateSelectionSummary();
         });
         shareContent.addView(useText, lpTop(dp(8)));
+        MaterialButton clearText = button("Limpar texto digitado");
+        clearText.setOnClickListener(v -> {
+            textInput.setText("");
+            textToShare = "";
+            updateSelectionSummary();
+        });
+        shareContent.addView(clearText, lpTop(dp(6)));
+        clearFiles.setOnClickListener(v -> {
+            files.clear();
+            updateSelectionSummary();
+            clearFiles.setEnabled(false);
+        });
         content.addView(shareCard);
 
         MaterialCardView statusCard = card();
@@ -287,6 +302,7 @@ public class OnionTransferActivity extends AppCompatActivity {
                     files.add(copyToCache(data.getData()));
                 }
                 updateSelectionSummary();
+                clearFiles.setEnabled(!files.isEmpty());
             } catch (IOException e) {
                 Toast.makeText(this, "Falha ao preparar arquivo: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
