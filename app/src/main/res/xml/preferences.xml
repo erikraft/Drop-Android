@@ -88,6 +88,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/sftp_settings_title"
+        android:summary="@string/sftp_settings_summary"
+        app:iconSpaceReserved="false">
+        <Preference
+            android:key="sftp_settings"
+            android:icon="@drawable/ic_ftp"
+            android:summary="@string/sftp_settings_summary"
+            android:title="@string/sftp_settings_title"
+            app:singleLineTitle="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/onion_transfer_title"
         android:summary="@string/onion_transfer_settings_summary"
         app:iconSpaceReserved="false">
@@ -122,4 +134,4 @@
             app:singleLineTitle="false" />
     </PreferenceCategory>
 
-    ferenceScreen>
+</PreferenceScreen>
