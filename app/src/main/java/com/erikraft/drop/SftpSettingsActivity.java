@@ -51,7 +51,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
             boolean running = intent.getBooleanExtra("running", false);
             String error = intent.getStringExtra(SftpServerService.EXTRA_ERROR);
             status.setText(running ? "Servidor SFTP ativo" : (error == null ? "Servidor parado" : "Falha: " + error));
-            if (running) address.setText("sftp://" + com.erikraft.drop.utils.NetworkUtils.getIpAddress(this) + ":" + SftpServerService.getRunningPort());
+            if (running) address.setText("sftp://" + com.erikraft.drop.utils.NetworkUtils.getIpAddress(SftpSettingsActivity.this) + ":" + SftpServerService.getRunningPort());
             else address.setText("");
         }};
         ContextCompat.registerReceiver(this, statusReceiver, new IntentFilter(SftpServerService.EXTRA_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
@@ -69,7 +69,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
         LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(20),dp(12),dp(20),dp(28));
         c.addView(text("Execute um servidor SFTP local via SSH. A pasta selecionada será a raiz do SFTP.",15));
         MaterialButton choose=new MaterialButton(this);choose.setText("Escolher pasta");c.addView(choose,top(12));
-        folder=text(p.getString("save_location",Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
+        folder=text(p.getString(getString(R.string.pref_sftp_save_location),Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
         port=field("Porta",p.getString(getString(R.string.pref_sftp_port),"2222"));user=field("Nome de usuário",p.getString(getString(R.string.pref_sftp_username),"admin"));password=field("Senha",p.getString(getString(R.string.pref_sftp_password),"admin"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
@@ -86,7 +86,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
         int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,"Informe uma porta válida.",Toast.LENGTH_SHORT).show();return;}
         if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
-        p.edit().putString("save_location",f.getAbsolutePath()).putString("ftp_port",String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).apply();
+        p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).apply();
         androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
