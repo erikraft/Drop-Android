@@ -167,6 +167,7 @@ public class FtpServerService extends Service {
                     return;
                 }
                 ftpServer = candidate;
+                runningInstance = candidate;
                 candidate.start();
             }
             Log.i("FtpServerService", "FTP/FTPS server started on port " + port + " with home " + home.getAbsolutePath());
@@ -235,6 +236,7 @@ public class FtpServerService extends Service {
                 } catch (Exception ignored) {
                 }
                 ftpServer = null;
+                runningInstance = null;
             }
         }
     }
@@ -276,6 +278,10 @@ public class FtpServerService extends Service {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.notify(NOTIFICATION_ID, notification(text));
     }
+
+    public static boolean isRunning() { return runningInstance != null; }
+
+    private static volatile FtpServer runningInstance;
 
     @Override
     public void onDestroy() {
