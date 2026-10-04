@@ -54,20 +54,36 @@ wait_for_package_manager() {
   return 1
 }
 
+verify_installed_package() {
+  local installed_path
+  local installed_packages
+
+  installed_path="$(adb_timeout 10s shell pm path com.erikraft.drop 2>/dev/null)" || return 1
+  [[ "$installed_path" == package:* ]] || return 1
+
+  installed_packages="$(adb_timeout 10s shell pm list packages 2>/dev/null)" || return 1
+  printf '%s\n' "$installed_packages" | grep -qx 'package:com.erikraft.drop'
+}
+
 echo "Waiting for Android Package Manager before installing signed APK."
 wait_for_package_manager
 echo "Installing signed APK (maximum ${APK_INSTALL_TIMEOUT})."
 if ! adb_timeout "$APK_INSTALL_TIMEOUT" install -r --no-streaming ErikrafT-Drop-release.apk; then
-  echo "Signed APK installation failed or timed out." >&2
-  echo "ADB device state:" >&2
-  adb_timeout 10s get-state >&2 || true
-  echo "Android boot state:" >&2
-  adb_timeout 10s shell getprop sys.boot_completed >&2 || true
-  echo "Installed package path:" >&2
-  adb_timeout 10s shell pm path com.erikraft.drop >&2 || true
-  echo "Package Manager diagnostic:" >&2
-  adb_timeout 10s shell cmd package list packages >&2 || true
-  exit 1
+  echo "Signed APK installation command failed or timed out; verifying package state." >&2
+  if verify_installed_package; then
+    echo "Signed APK is registered with Android Package Manager; continuing." >&2
+  else
+    echo "Signed APK installation failed or timed out." >&2
+    echo "ADB device state:" >&2
+    adb_timeout 10s get-state >&2 || true
+    echo "Android boot state:" >&2
+    adb_timeout 10s shell getprop sys.boot_completed >&2 || true
+    echo "Installed package path:" >&2
+    adb_timeout 10s shell pm path com.erikraft.drop >&2 || true
+    echo "Package Manager diagnostic:" >&2
+    adb_timeout 10s shell cmd package list packages >&2 || true
+    exit 1
+  fi
 fi
 adb_timeout 15s shell pm grant com.erikraft.drop android.permission.WRITE_EXTERNAL_STORAGE
 
