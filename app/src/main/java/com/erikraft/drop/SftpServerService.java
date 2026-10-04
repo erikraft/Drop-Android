@@ -64,7 +64,7 @@ public class SftpServerService extends Service {
                     PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
             String username = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_sftp_username), ""), "admin");
+                    prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
             String password = valueOrDefault(
                     prefs.getString(getString(R.string.pref_sftp_password), ""), "erikraft");
             String configuredHome = prefs.getString(getString(R.string.pref_sftp_home), "");
