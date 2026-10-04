@@ -61,6 +61,8 @@ public class FtpServerService extends Service {
     private static final int PASSIVE_PORT_START = 50000;
     private static final int PASSIVE_PORT_END = 50010;
     private FtpServer ftpServer;
+    private final Object serverLock = new Object();
+    private long startGeneration;
 
     public static Intent startIntent(android.content.Context context) {
         return new Intent(context, FtpServerService.class).setAction(ACTION_START);
@@ -77,14 +79,16 @@ public class FtpServerService extends Service {
             stopSelf();
             return START_NOT_STICKY;
         }
-        if (ftpServer == null) {
+        synchronized (serverLock) {
+            if (ftpServer != null) return START_NOT_STICKY;
+            final long generation = ++startGeneration;
             startForeground(NOTIFICATION_ID, notification("Iniciando servidor FTP…"));
-            new Thread(this::startServer, "ErikrafT-Drop-FTP").start();
+            new Thread(() -> startServer(generation), "ErikrafT-Drop-FTP").start();
         }
         return START_NOT_STICKY;
     }
 
-    private void startServer() {
+    private void startServer(long generation) {
         try {
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
@@ -146,8 +150,18 @@ public class FtpServerService extends Service {
 
             listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());
             serverFactory.addListener("default", listener.createListener());
-            ftpServer = serverFactory.createServer();
-            ftpServer.start();
+            FtpServer candidate = serverFactory.createServer();
+            synchronized (serverLock) {
+                if (generation != startGeneration) {
+                    try {
+                        candidate.stop();
+                    } catch (Exception ignored) {
+                    }
+                    return;
+                }
+                ftpServer = candidate;
+                candidate.start();
+            }
             Log.i("FtpServerService", "FTP/FTPS server started on port " + port + " with home " + home.getAbsolutePath());
             broadcastStatus(true, null);
             updateNotification((ftps ? "FTPS" : "FTP") + " ativo em " + port);
@@ -203,12 +217,15 @@ public class FtpServerService extends Service {
     }
 
     private void stopServer() {
-        if (ftpServer != null) {
-            try {
-                ftpServer.stop();
-            } catch (Exception ignored) {
+        synchronized (serverLock) {
+            startGeneration++;
+            if (ftpServer != null) {
+                try {
+                    ftpServer.stop();
+                } catch (Exception ignored) {
+                }
+                ftpServer = null;
             }
-            ftpServer = null;
         }
     }
 
