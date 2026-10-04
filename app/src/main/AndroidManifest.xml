@@ -187,6 +187,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
         <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" />
-        <activity android:name=".OnionTransferActivity" android:exported="false" />
+        <activity android:name=".OnionTransferActivity" android:exported="false" android:launchMode="singleTop" />
     </application>
 </manifest>
