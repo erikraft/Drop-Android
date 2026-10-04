@@ -122,15 +122,4 @@
             app:singleLineTitle="false" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/onion_transfer_title"
-        android:summary="@string/onion_transfer_settings_summary"
-        app:iconSpaceReserved="false">
-        <Preference
-            android:key="@string/pref_onion_transfer"
-            android:summary="@string/onion_transfer_settings_summary"
-            android:title="@string/onion_transfer_title"
-            android:icon="@drawable/ic_onion"
-            app:singleLineTitle="false" />
-    </PreferenceCategory>
-</PreferenceScreen>
+    ferenceScreen>
