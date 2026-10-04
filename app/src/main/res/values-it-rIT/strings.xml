@@ -141,9 +141,18 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <!-- SFTP -->
+    <string name="sftp_settings_title">Transferência via SFTP</string>
+    <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
+    <string name="ftp_choose_directory">Choose directory</string>
+    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
+    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
+    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
+    <string name="onion_stop_notification_title">Notification with “Stop”</string>
+    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
