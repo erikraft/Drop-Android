@@ -24,8 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.button.MaterialButton;
@@ -34,6 +32,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.anggrayudi.storage.file.DocumentFileUtils;
 import androidx.documentfile.provider.DocumentFile;
 
+import java.io.File;
 import java.net.Inet4Address;
 import java.net.NetworkInterface;
 import java.util.Collections;
@@ -71,6 +70,7 @@ public class FtpSettingsActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
             if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
+            prefs.edit().putBoolean(getString(R.string.pref_ftp_stop_notification), granted).apply();
         });
         directoryPicker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null) return;
@@ -87,8 +87,13 @@ public class FtpSettingsActivity extends AppCompatActivity {
                 Toast.makeText(this, "Não foi possível obter o diretório escolhido.", Toast.LENGTH_LONG).show();
                 return;
             }
-            prefs.edit().putString(getString(R.string.pref_save_location), path).apply();
-            directorySummary.setText(path);
+            File directPath = new File(path);
+            if (!directPath.isDirectory() || !directPath.canRead() || !directPath.canWrite()) {
+                Toast.makeText(this, "Esta pasta só está disponível via SAF e não pode ser usada diretamente pelo servidor FTP.", Toast.LENGTH_LONG).show();
+                return;
+            }
+            prefs.edit().putString(getString(R.string.pref_save_location), directPath.getAbsolutePath()).apply();
+            directorySummary.setText(directPath.getAbsolutePath());
         });
         buildUi();
         ContextCompat.registerReceiver(this, statusReceiver, new IntentFilter(FtpServerService.EXTRA_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
