@@ -88,8 +88,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Transferência via SFTP"
-        android:summary="Servidor SFTP seguro para transferência de arquivos via SSH"
+        android:title="@string/sftp_settings_title"
+        android:summary="@string/sftp_settings_summary"
         app:iconSpaceReserved="false">
         <Preference
             android:key="sftp_settings"
