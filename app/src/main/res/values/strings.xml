@@ -141,6 +141,13 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <!-- SFTP -->
+    <string name="sftp_settings_title">Transferência via SFTP</string>
+    <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
+    <string name="pref_sftp_port" translatable="false">sftp_port</string>
+    <string name="pref_sftp_username" translatable="false">sftp_username</string>
+    <string name="pref_sftp_password" translatable="false">sftp_password</string>
+    <string name="pref_sftp_save_location" translatable="false">sftp_save_location</string>
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
