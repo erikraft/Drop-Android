@@ -38,7 +38,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
             if(f==null||!f.isDirectory()||!f.canRead()||!f.canWrite()){
                 Toast.makeText(this,"Esta pasta não pode ser usada diretamente pelo SFTP.",Toast.LENGTH_LONG).show();return;
             }
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putString("sftp_home",f.getAbsolutePath()).apply();
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putString("ftp_save_location",f.getAbsolutePath()).apply();
             folder.setText(f.getAbsolutePath());
         });
         buildUi();
@@ -52,9 +52,9 @@ public class SftpSettingsActivity extends AppCompatActivity {
         LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(20),dp(12),dp(20),dp(28));
         c.addView(text(getString(R.string.sftp_settings_description),15));
         MaterialButton choose=new MaterialButton(this);choose.setText("Escolher pasta");c.addView(choose,top(12));
-        folder=text(p.getString("sftp_home",Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
+        folder=text(p.getString("ftp_save_location",Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
-        port=field("Porta",p.getString("sftp_port","2222"));user=field("Nome de usuário",p.getString("sftp_username","admin"));password=field("Senha",p.getString("sftp_password","admin"));
+        port=field("Porta",p.getString("ftp_port","2222"));user=field("Nome de usuário",p.getString("ftp_username","admin"));password=field("Senha",p.getString("ftp_username_secret","admin"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
         status=text("Servidor parado",15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
         LinearLayout row=new LinearLayout(this);MaterialButton start=button("Iniciar servidor SFTP"),stop=button("Parar servidor SFTP");row.addView(start,new LinearLayout.LayoutParams(0,-2,1));LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(0,-2,1);sp.setMargins(dp(8),0,0,0);row.addView(stop,sp);c.addView(row,top(14));
@@ -64,12 +64,12 @@ public class SftpSettingsActivity extends AppCompatActivity {
     }
 
     private void startServer(){
-        android.content.SharedPreferences p=PreferenceManager.getDefaultSharedPreferences(this);String home=p.getString("sftp_home","");File f=new File(home);
+        android.content.SharedPreferences p=PreferenceManager.getDefaultSharedPreferences(this);String home=p.getString("ftp_save_location","");File f=new File(home);
         if(!f.isDirectory()||!f.canRead()||!f.canWrite()){Toast.makeText(this,"Escolha uma pasta acessível diretamente pelo SFTP.",Toast.LENGTH_LONG).show();return;}
         int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,"Informe uma porta válida.",Toast.LENGTH_SHORT).show();return;}
         if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
-        p.edit().putString("sftp_home",f.getAbsolutePath()).putString("sftp_port",String.valueOf(po)).putString("sftp_username",u).putString("sftp_password",pw).apply();
+        p.edit().putString("ftp_save_location",f.getAbsolutePath()).putString("ftp_port",String.valueOf(po)).putString("ftp_username",u).putString("ftp_username_secret",pw).apply();
         ContextCompat.startForegroundService(this,SftpServerService.startIntent(this));status.setText("Iniciar servidor SFTP"ing);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Parar servidor SFTP"ped);address.setText("");}
