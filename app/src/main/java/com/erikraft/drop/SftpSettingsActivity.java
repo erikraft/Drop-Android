@@ -74,7 +74,7 @@ public class SftpSettingsActivity extends AppCompatActivity {
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if("Senha".equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
-    private MaterialButton button(int id){MaterialButton b=new MaterialButton(this);b.setText(id);return b;}
+    private MaterialButton button(String label){MaterialButton b=new MaterialButton(this);b.setText(label);return b;}
     private TextView text(String s,float z){TextView v=new TextView(this);v.setText(s);v.setTextSize(z);return v;}
     private LinearLayout.LayoutParams top(int m){LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(-1,-2);p.topMargin=dp(m);return p;}
     private int dp(int n){return Math.round(n*getResources().getDisplayMetrics().density);}
