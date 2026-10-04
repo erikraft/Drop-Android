@@ -175,10 +175,10 @@ public class FtpServerService extends Service {
             updateNotification((ftps ? "FTPS" : "FTP") + " ativo em " + port);
         } catch (Exception e) {
             Log.e("FtpServerService", "FTP/FTPS server failed to start", e);
-            broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
             synchronized (serverLock) {
                 if (generation != startGeneration) return;
             }
+            broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
             stopServer();
             stopSelf();
         }
