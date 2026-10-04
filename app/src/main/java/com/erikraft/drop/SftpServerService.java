@@ -34,6 +34,8 @@ public class SftpServerService extends Service {
     private static final Object LOCK = new Object();
 
     private SshServer server;
+    private static volatile boolean running;
+    private static volatile int runningPort;
 
     public static Intent startIntent(android.content.Context context) {
         return new Intent(context, SftpServerService.class).setAction(ACTION_START);
@@ -52,6 +54,7 @@ public class SftpServerService extends Service {
         }
         synchronized (LOCK) {
             if (server != null) return START_NOT_STICKY;
+            startForeground(NOTIFICATION_ID, notification("Iniciando servidor SFTP…"));
             new Thread(this::startServer, "ErikrafT-Drop-SFTP").start();
         }
         return START_NOT_STICKY;
@@ -61,12 +64,12 @@ public class SftpServerService extends Service {
         try {
             android.content.SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(this);
-            int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
+            int port = parsePort(prefs.getString(getString(R.string.pref_sftp_port), "" + DEFAULT_PORT));
             String username = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
+                    prefs.getString(getString(R.string.pref_sftp_username), ""), "admin");
             String password = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_ftp_username) + "_secret", ""), "erikraft");
-            String configuredHome = prefs.getString(getString(R.string.pref_save_location), "");
+                    prefs.getString(getString(R.string.pref_sftp_password), ""), "admin");
+            String configuredHome = prefs.getString(getString(R.string.pref_sftp_save_location), "");
             File home = new File(configuredHome);
             if (!home.isDirectory() || !home.canRead() || !home.canWrite()) {
                 throw new IllegalStateException("A pasta SFTP selecionada não pode ser acessada diretamente.");
@@ -94,12 +97,15 @@ public class SftpServerService extends Service {
                     }
                     return;
                 }
+                candidate.start();
                 server = candidate;
             }
-            candidate.start();
             Log.i("SftpServerService", "SFTP server started on port " + port
                     + " with home " + home.getAbsolutePath());
             broadcastStatus(true, null);
+            running = true;
+            runningPort = port;
+            startForeground(NOTIFICATION_ID, notification("SFTP ativo em " + port));
             updateNotification("SFTP ativo em " + port);
         } catch (Exception e) {
             Log.e("SftpServerService", "SFTP server failed to start", e);
@@ -122,7 +128,7 @@ public class SftpServerService extends Service {
     }
 
     private String valueOrDefault(String value, String fallback) {
-        return value == null || value.trim().isEmpty() ? fallback : value.trim();
+        return value == null || value.trim().isEmpty() ? fallback : value;
     }
 
     private void stopServer() {
@@ -134,7 +140,11 @@ public class SftpServerService extends Service {
                 }
                 server = null;
             }
+            running = false;
+            runningPort = 0;
         }
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (manager != null) manager.cancel(NOTIFICATION_ID);
     }
 
     private void broadcastStatus(boolean running, String error) {
@@ -183,6 +193,10 @@ public class SftpServerService extends Service {
         broadcastStatus(false, null);
         super.onDestroy();
     }
+
+    public static boolean isRunning() { return running; }
+
+    public static int getRunningPort() { return runningPort; }
 
     @Nullable
     @Override
