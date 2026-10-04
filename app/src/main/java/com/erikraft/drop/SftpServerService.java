@@ -52,7 +52,6 @@ public class SftpServerService extends Service {
         }
         synchronized (LOCK) {
             if (server != null) return START_NOT_STICKY;
-            startForeground(NOTIFICATION_ID, notification("Iniciando servidor SFTP…"));
             new Thread(this::startServer, "ErikrafT-Drop-SFTP").start();
         }
         return START_NOT_STICKY;
