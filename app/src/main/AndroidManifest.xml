@@ -181,7 +181,8 @@
         </service>
         <service
             android:name=".SftpServerService"
-            android:exported="false" />
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
         <service
             android:name=".FtpServerService"
