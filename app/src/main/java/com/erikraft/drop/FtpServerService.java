@@ -54,6 +54,7 @@ public class FtpServerService extends Service {
     public static final String EXTRA_ERROR = "error";
     public static final String CHANNEL_ID = "ftp_server";
     public static final String EXTRA_STOP_NOTIFICATION = "stop_notification";
+    public static final String ACTION_REFRESH_NOTIFICATION = "com.erikraft.drop.action.REFRESH_FTP_NOTIFICATION";
     private static final int NOTIFICATION_ID = 42021;
     private static final String KEYSTORE_PASSWORD = "erikraft-drop-ftps";
     private static final String KEY_ALIAS = "erikraft-drop-ftps";
@@ -74,6 +75,12 @@ public class FtpServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent != null && ACTION_REFRESH_NOTIFICATION.equals(intent.getAction())) {
+            synchronized (serverLock) {
+                if (ftpServer != null) updateNotification("Servidor FTP/FTPS ativo");
+            }
+            return START_NOT_STICKY;
+        }
         if (intent != null && ACTION_STOP.equals(intent.getAction())) {
             stopServer();
             stopSelf();
@@ -168,6 +175,9 @@ public class FtpServerService extends Service {
         } catch (Exception e) {
             Log.e("FtpServerService", "FTP/FTPS server failed to start", e);
             broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
+            synchronized (serverLock) {
+                if (generation != startGeneration) return;
+            }
             stopServer();
             stopSelf();
         }
