@@ -63,6 +63,7 @@ public class OnionTransferActivity extends AppCompatActivity {
     private MaterialButton stopButton;
     private MaterialButton copyButton;
     private MaterialButton shareButton;
+    private MaterialButton clearFilesButton;
     private androidx.appcompat.widget.SwitchCompat stopNotificationSwitch;
     private ActivityResultLauncher<String> notificationPermissionLauncher;
     private String textToShare = "";
@@ -129,9 +130,9 @@ public class OnionTransferActivity extends AppCompatActivity {
 
         MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
         shareContent.addView(pick);
-        MaterialButton clearFiles = button("Remover arquivos selecionados");
-        clearFiles.setEnabled(false);
-        shareContent.addView(clearFiles, lpTop(dp(6)));
+        clearFilesButton = button("Remover arquivos selecionados");
+        clearFilesButton.setEnabled(false);
+        shareContent.addView(clearFilesButton, lpTop(dp(6)));
         selectionSummary = text("Nenhum arquivo selecionado.", 14);
         shareContent.addView(selectionSummary);
 
@@ -161,10 +162,10 @@ public class OnionTransferActivity extends AppCompatActivity {
             updateSelectionSummary();
         });
         shareContent.addView(clearText, lpTop(dp(6)));
-        clearFiles.setOnClickListener(v -> {
+        clearFilesButton.setOnClickListener(v -> {
             files.clear();
             updateSelectionSummary();
-            clearFiles.setEnabled(false);
+            clearFilesButton.setEnabled(false);
         });
         content.addView(shareCard);
 
@@ -302,7 +303,7 @@ public class OnionTransferActivity extends AppCompatActivity {
                     files.add(copyToCache(data.getData()));
                 }
                 updateSelectionSummary();
-                clearFiles.setEnabled(!files.isEmpty());
+                if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
             } catch (IOException e) {
                 Toast.makeText(this, "Falha ao preparar arquivo: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
