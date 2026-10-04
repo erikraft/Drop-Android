@@ -302,10 +302,11 @@ public class OnionTransferActivity extends AppCompatActivity {
                 } else if (data.getData() != null) {
                     files.add(copyToCache(data.getData()));
                 }
-                updateSelectionSummary();
-                if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
             } catch (IOException e) {
                 Toast.makeText(this, "Falha ao preparar arquivo: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            } finally {
+                updateSelectionSummary();
+                if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
             }
         });
     }
