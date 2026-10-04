@@ -8,6 +8,10 @@
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
+# Apache MINA SSHD references this optional desktop-Java/JMX type.
+# javax.management is not provided by the Android runtime.
+-dontwarn javax.management.MBeanException
+
 # Keep methods invoked by WebView's reflection-based JavaScript bridge in release builds.
 -keepclassmembers class com.erikraft.drop.JavaScriptInterface {
     @android.webkit.JavascriptInterface <methods>;
