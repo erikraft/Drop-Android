@@ -140,8 +140,8 @@ public class DiagnosticsActivity extends AppCompatActivity {
     }
 
     private void clearLogs() {
-        currentLogs = "";
-        logs.setText("");
+        currentLogs = LogUtils.getEmptyLogHeader();
+        logs.setText(currentLogs);
         logs.scrollTo(0, 0);
     }
 

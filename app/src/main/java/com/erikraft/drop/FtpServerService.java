@@ -3,6 +3,7 @@ package com.erikraft.drop;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Build;
@@ -52,6 +53,8 @@ public class FtpServerService extends Service {
     public static final String EXTRA_STATUS = "status";
     public static final String EXTRA_ERROR = "error";
     public static final String CHANNEL_ID = "ftp_server";
+    public static final String EXTRA_STOP_NOTIFICATION = "stop_notification";
+    public static final String ACTION_REFRESH_NOTIFICATION = "com.erikraft.drop.action.REFRESH_FTP_NOTIFICATION";
     private static final int NOTIFICATION_ID = 42021;
     private static final String KEYSTORE_PASSWORD = "erikraft-drop-ftps";
     private static final String KEY_ALIAS = "erikraft-drop-ftps";
@@ -59,6 +62,8 @@ public class FtpServerService extends Service {
     private static final int PASSIVE_PORT_START = 50000;
     private static final int PASSIVE_PORT_END = 50010;
     private FtpServer ftpServer;
+    private final Object serverLock = new Object();
+    private long startGeneration;
 
     public static Intent startIntent(android.content.Context context) {
         return new Intent(context, FtpServerService.class).setAction(ACTION_START);
@@ -70,19 +75,27 @@ public class FtpServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent != null && ACTION_REFRESH_NOTIFICATION.equals(intent.getAction())) {
+            synchronized (serverLock) {
+                if (ftpServer != null) updateNotification("Servidor FTP/FTPS ativo");
+            }
+            return START_NOT_STICKY;
+        }
         if (intent != null && ACTION_STOP.equals(intent.getAction())) {
             stopServer();
             stopSelf();
             return START_NOT_STICKY;
         }
-        if (ftpServer == null) {
+        synchronized (serverLock) {
+            if (ftpServer != null) return START_NOT_STICKY;
+            final long generation = ++startGeneration;
             startForeground(NOTIFICATION_ID, notification("Iniciando servidor FTP…"));
-            new Thread(this::startServer, "ErikrafT-Drop-FTP").start();
+            new Thread(() -> startServer(generation), "ErikrafT-Drop-FTP").start();
         }
         return START_NOT_STICKY;
     }
 
-    private void startServer() {
+    private void startServer(long generation) {
         try {
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
@@ -144,13 +157,27 @@ public class FtpServerService extends Service {
 
             listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());
             serverFactory.addListener("default", listener.createListener());
-            ftpServer = serverFactory.createServer();
-            ftpServer.start();
+            FtpServer candidate = serverFactory.createServer();
+            synchronized (serverLock) {
+                if (generation != startGeneration) {
+                    try {
+                        candidate.stop();
+                    } catch (Exception ignored) {
+                    }
+                    return;
+                }
+                ftpServer = candidate;
+                runningInstance = candidate;
+                candidate.start();
+            }
             Log.i("FtpServerService", "FTP/FTPS server started on port " + port + " with home " + home.getAbsolutePath());
             broadcastStatus(true, null);
             updateNotification((ftps ? "FTPS" : "FTP") + " ativo em " + port);
         } catch (Exception e) {
             Log.e("FtpServerService", "FTP/FTPS server failed to start", e);
+            synchronized (serverLock) {
+                if (generation != startGeneration) return;
+            }
             broadcastStatus(false, e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage());
             stopServer();
             stopSelf();
@@ -188,9 +215,9 @@ public class FtpServerService extends Service {
         Date notAfter = new Date(now + 3650L * 24L * 60L * 60L * 1000L);
         X500Name subject = new X500Name("CN=ErikrafT Drop FTP");
         X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
-        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(BouncyCastleProvider.PROVIDER_NAME).build(keyPair.getPrivate());
+        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(new BouncyCastleProvider()).build(keyPair.getPrivate());
         X509CertificateHolder holder = builder.build(signer);
-        X509Certificate certificate = new JcaX509CertificateConverter().setProvider(BouncyCastleProvider.PROVIDER_NAME).getCertificate(holder);
+        X509Certificate certificate = new JcaX509CertificateConverter().setProvider(new BouncyCastleProvider()).getCertificate(holder);
         KeyStore keyStore = KeyStore.getInstance("JKS");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});
@@ -201,12 +228,16 @@ public class FtpServerService extends Service {
     }
 
     private void stopServer() {
-        if (ftpServer != null) {
-            try {
-                ftpServer.stop();
-            } catch (Exception ignored) {
+        synchronized (serverLock) {
+            startGeneration++;
+            if (ftpServer != null) {
+                try {
+                    ftpServer.stop();
+                } catch (Exception ignored) {
+                }
+                ftpServer = null;
+                runningInstance = null;
             }
-            ftpServer = null;
         }
     }
 
@@ -221,19 +252,36 @@ public class FtpServerService extends Service {
     private Notification notification(String text) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Servidor FTP", NotificationManager.IMPORTANCE_LOW));
-        return new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_ftp)
                 .setContentTitle("ErikrafT Drop™ FTP")
                 .setContentText(text)
                 .setOngoing(true)
-                .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .build();
+                .setCategory(NotificationCompat.CATEGORY_SERVICE);
+        boolean stopAction = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_ftp_stop_notification), false);
+        if (stopAction) {
+            PendingIntent stopPendingIntent = PendingIntent.getService(
+                    this,
+                    NOTIFICATION_ID + 1,
+                    stopIntent(this),
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            builder.addAction(new NotificationCompat.Action.Builder(
+                    android.R.drawable.ic_menu_close_clear_cancel,
+                    getString(R.string.ftp_stop),
+                    stopPendingIntent).build());
+        }
+        return builder.build();
     }
 
     private void updateNotification(String text) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.notify(NOTIFICATION_ID, notification(text));
     }
+
+    public static boolean isRunning() { return runningInstance != null; }
+
+    private static volatile FtpServer runningInstance;
 
     @Override
     public void onDestroy() {

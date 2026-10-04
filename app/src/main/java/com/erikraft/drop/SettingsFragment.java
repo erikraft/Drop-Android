@@ -120,6 +120,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
+        final Preference sftpPreference = findPreference("sftp_settings");
+        if (sftpPreference != null) {
+            sftpPreference.setOnPreferenceClickListener(pref -> {
+                startActivity(new Intent(requireContext(), SftpSettingsActivity.class));
+                return true;
+            });
+        }
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         if (openSourceComponents != null) {

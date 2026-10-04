@@ -155,6 +155,13 @@
             android:label="@string/qr_transfer_title"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".SftpSettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".SettingsActivity"
+            android:label="@string/sftp_settings_title"
+            android:theme="@style/AppTheme" />
+
+        <activity
             android:name=".FtpSettingsActivity"
             android:exported="false"
             android:parentActivityName=".SettingsActivity"
@@ -173,6 +180,11 @@
             </intent-filter>
         </service>
         <service
+            android:name=".SftpServerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <service
             android:name=".FtpServerService"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
@@ -187,6 +199,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
         <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" />
-        <activity android:name=".OnionTransferActivity" android:exported="false" />
+        <activity android:name=".OnionTransferActivity" android:exported="false" android:launchMode="singleTop" />
     </application>
 </manifest>

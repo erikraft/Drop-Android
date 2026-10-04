@@ -26,6 +26,15 @@ public class LogUtils {
 
     private LogUtils() { }
 
+    public static String getEmptyLogHeader() {
+        return "--------- System Information" +
+                "\n- Device type: " + Build.MODEL + " (" + Build.PRODUCT + ", " + Build.BRAND + ')' +
+                "\n- Android version: " + Build.VERSION.RELEASE +
+                "\n- ErikrafT Drop app version: " + BuildConfig.VERSION_NAME +
+                "\n- Current time: " + sdf.format(new Date()) +
+                "\n\n--------- Relevant Application Signals\n";
+    }
+
     public static String getLogs(final SharedPreferences prefs, final boolean refresh) {
         if (refresh) {
             logcatLogs = "--------- System Information" +

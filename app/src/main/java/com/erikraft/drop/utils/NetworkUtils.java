@@ -18,6 +18,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.lang.reflect.Method;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
@@ -32,6 +37,49 @@ public class NetworkUtils {
 
     private static WifiManager getWiFiManager() {
         return (WifiManager) SnapdropApplication.getInstance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    }
+
+
+    /**
+     * Returns a usable local IPv4 address for local-server connection URLs.
+     * Wi-Fi is preferred when available, with another active interface as fallback.
+     */
+    public static String getIpAddress(final Context context) {
+        String fallback = null;
+
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+
+            while (interfaces != null && interfaces.hasMoreElements()) {
+                NetworkInterface networkInterface = interfaces.nextElement();
+
+                if (!networkInterface.isUp() || networkInterface.isLoopback()) {
+                    continue;
+                }
+
+                Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress address = addresses.nextElement();
+
+                    if (address.isLoopbackAddress() || !(address instanceof Inet4Address)) {
+                        continue;
+                    }
+
+                    String hostAddress = address.getHostAddress();
+                    if ("wlan0".equals(networkInterface.getName())) {
+                        return hostAddress;
+                    }
+
+                    if (fallback == null) {
+                        fallback = hostAddress;
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            Log.e("NetworkUtils", "Unable to determine local IP address", e);
+        }
+
+        return fallback != null ? fallback : "127.0.0.1";
     }
 
     public static boolean isWiFi(final NetworkInfo networkInfo) {

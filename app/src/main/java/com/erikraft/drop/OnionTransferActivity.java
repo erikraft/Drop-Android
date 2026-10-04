@@ -1,5 +1,9 @@
 package com.erikraft.drop;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -20,10 +24,13 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import androidx.core.app.NotificationCompat;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -56,6 +63,9 @@ public class OnionTransferActivity extends AppCompatActivity {
     private MaterialButton stopButton;
     private MaterialButton copyButton;
     private MaterialButton shareButton;
+    private MaterialButton clearFilesButton;
+    private androidx.appcompat.widget.SwitchCompat stopNotificationSwitch;
+    private ActivityResultLauncher<String> notificationPermissionLauncher;
     private String textToShare = "";
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable startupTimeout;
@@ -64,8 +74,17 @@ public class OnionTransferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SnapdropApplication.setAppTheme(this);
+        notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+            if (stopNotificationSwitch != null) {
+                stopNotificationSwitch.setChecked(granted);
+                PreferenceManager.getDefaultSharedPreferences(this)
+                        .edit().putBoolean(getString(R.string.pref_onion_stop_notification), granted).apply();
+                if (granted && server != null) showNotification();
+            }
+        });
         buildUi();
         registerPicker();
+        handleNotificationIntent(getIntent());
     }
 
     private void buildUi() {
@@ -96,6 +115,13 @@ public class OnionTransferActivity extends AppCompatActivity {
         TextView description = text(getString(R.string.onion_transfer_description), 15);
         description.setPadding(0, dp(8), 0, dp(16));
         content.addView(description);
+        stopNotificationSwitch = new androidx.appcompat.widget.SwitchCompat(this);
+        stopNotificationSwitch.setText(R.string.onion_stop_notification_title);
+        stopNotificationSwitch.setChecked(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_onion_stop_notification), false));
+        content.addView(stopNotificationSwitch, lpTop(dp(8)));
+        content.addView(text(getString(R.string.onion_stop_notification_summary), 13), lpTop(dp(2)));
+        stopNotificationSwitch.setOnClickListener(v -> handleStopNotificationPreference());
 
         MaterialCardView shareCard = card();
         LinearLayout shareContent = verticalInsideCard(shareCard);
@@ -104,6 +130,9 @@ public class OnionTransferActivity extends AppCompatActivity {
 
         MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
         shareContent.addView(pick);
+        clearFilesButton = button("Remover arquivos selecionados");
+        clearFilesButton.setEnabled(false);
+        shareContent.addView(clearFilesButton, lpTop(dp(6)));
         selectionSummary = text("Nenhum arquivo selecionado.", 14);
         shareContent.addView(selectionSummary);
 
@@ -126,6 +155,18 @@ public class OnionTransferActivity extends AppCompatActivity {
             updateSelectionSummary();
         });
         shareContent.addView(useText, lpTop(dp(8)));
+        MaterialButton clearText = button("Limpar texto digitado");
+        clearText.setOnClickListener(v -> {
+            textInput.setText("");
+            textToShare = "";
+            updateSelectionSummary();
+        });
+        shareContent.addView(clearText, lpTop(dp(6)));
+        clearFilesButton.setOnClickListener(v -> {
+            files.clear();
+            updateSelectionSummary();
+            clearFilesButton.setEnabled(false);
+        });
         content.addView(shareCard);
 
         MaterialCardView statusCard = card();
@@ -183,6 +224,67 @@ public class OnionTransferActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleNotificationIntent(intent);
+    }
+
+    private void handleNotificationIntent(Intent intent) {
+        if (intent != null && ACTION_STOP_NOTIFICATION.equals(intent.getAction())) {
+            stopOnion(false);
+            finish();
+        }
+    }
+
+    private void handleStopNotificationPreference() {
+        if (!stopNotificationSwitch.isChecked()) {
+            PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit().putBoolean(getString(R.string.pref_onion_stop_notification), false).apply();
+            cancelNotification();
+            return;
+        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            return;
+        }
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .edit().putBoolean(getString(R.string.pref_onion_stop_notification), true).apply();
+        if (server != null) showNotification();
+    }
+
+    private void showNotification() {
+        if (server == null || !PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_onion_stop_notification), false)) return;
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, getString(R.string.onion_transfer_title), NotificationManager.IMPORTANCE_LOW));
+        }
+        Intent stopIntent = new Intent(this, OnionTransferActivity.class)
+                .setAction(ACTION_STOP_NOTIFICATION)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, NOTIFICATION_ID, stopIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_onion)
+                .setContentTitle(getString(R.string.onion_transfer_title))
+                .setContentText(getString(R.string.onion_stop_notification_summary))
+                .setOngoing(true)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                .addAction(new NotificationCompat.Action.Builder(
+                        android.R.drawable.ic_menu_close_clear_cancel,
+                        getString(R.string.onion_transfer_stop),
+                        pendingIntent).build());
+        manager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    private void cancelNotification() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (manager != null) manager.cancel(NOTIFICATION_ID);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         getOnBackPressedDispatcher().onBackPressed();
         return true;
@@ -200,9 +302,11 @@ public class OnionTransferActivity extends AppCompatActivity {
                 } else if (data.getData() != null) {
                     files.add(copyToCache(data.getData()));
                 }
-                updateSelectionSummary();
             } catch (IOException e) {
                 Toast.makeText(this, "Falha ao preparar arquivo: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            } finally {
+                updateSelectionSummary();
+                if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
             }
         });
     }
@@ -285,6 +389,7 @@ public class OnionTransferActivity extends AppCompatActivity {
                     copyButton.setEnabled(true);
                     shareButton.setEnabled(true);
                     showQr(link);
+                    showNotification();
                 }
 
                 @Override public void onError(Exception error) {
@@ -316,6 +421,7 @@ public class OnionTransferActivity extends AppCompatActivity {
         progress.setVisibility(View.GONE);
         address.setText("");
         qr.setVisibility(View.GONE);
+        cancelNotification();
         if (!preserveStatus) status.setText("Serviço Onion parado.");
     }
 
@@ -350,6 +456,7 @@ public class OnionTransferActivity extends AppCompatActivity {
 
     @Override protected void onDestroy() {
         if (startupTimeout != null) handler.removeCallbacks(startupTimeout);
+        cancelNotification();
         if (server != null) server.stop();
         TorController.shutdown(this);
         super.onDestroy();
@@ -397,7 +504,10 @@ public class OnionTransferActivity extends AppCompatActivity {
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
 
-    private static final class OnionHttpServer extends NanoHTTPD {
+    private static final String ACTION_STOP_NOTIFICATION = "com.erikraft.drop.action.STOP_ONION_NOTIFICATION";
+    private static final int NOTIFICATION_ID = 42022;
+    private static final String CHANNEL_ID = "onion_transfer";
+ class OnionHttpServer extends NanoHTTPD {
         private final List<File> files;
         private final String text;
 
@@ -433,7 +543,7 @@ public class OnionTransferActivity extends AppCompatActivity {
             return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/plain", "Not found");
         }
 
-        private static String mime(String name) {
+        private String mime(String name) {
             String n = name.toLowerCase();
             if (n.endsWith(".png")) return "image/png";
             if (n.endsWith(".jpg") || n.endsWith(".jpeg")) return "image/jpeg";
@@ -442,7 +552,7 @@ public class OnionTransferActivity extends AppCompatActivity {
             return "application/octet-stream";
         }
 
-        private static String escape(String s) {
+        private String escape(String s) {
             return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
         }
     }

@@ -141,9 +141,22 @@
     <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <!-- SFTP -->
+    <string name="sftp_settings_title">Transferência via SFTP</string>
+    <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
+    <string name="pref_sftp_port" translatable="false">sftp_port</string>
+    <string name="pref_sftp_username" translatable="false">sftp_username</string>
+    <string name="pref_sftp_password" translatable="false">sftp_password</string>
+    <string name="pref_sftp_save_location" translatable="false">sftp_save_location</string>
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
+    <string name="ftp_choose_directory">Choose directory</string>
+    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
+    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
+    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
+    <string name="onion_stop_notification_title">Notification with “Stop”</string>
+    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -172,6 +185,8 @@
     <string name="pref_ftp_password" translatable="false">ftp_password</string>
     <string name="pref_ftp_anonymous" translatable="false">ftp_anonymous</string>
     <string name="pref_ftp_ftps" translatable="false">ftp_ftps</string>
+    <string name="pref_ftp_stop_notification" translatable="false">ftp_stop_notification</string>
+    <string name="pref_onion_stop_notification" translatable="false">onion_stop_notification</string>
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
