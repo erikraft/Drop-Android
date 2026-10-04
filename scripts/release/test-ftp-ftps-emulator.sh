@@ -12,6 +12,7 @@ PACKAGE_MANAGER_TIMEOUT="${PACKAGE_MANAGER_TIMEOUT:-90}"
 PACKAGE_MANAGER_ATTEMPT_TIMEOUT="${PACKAGE_MANAGER_ATTEMPT_TIMEOUT:-5s}"
 FTP_READY_TIMEOUT="${FTP_READY_TIMEOUT:-90}"
 FTP_READY_ATTEMPT_TIMEOUT="${FTP_READY_ATTEMPT_TIMEOUT:-5s}"
+APK_INSTALL_TIMEOUT="${APK_INSTALL_TIMEOUT:-180s}"
 
 adb_timeout() {
   local timeout_value="$ADB_TIMEOUT"
@@ -55,8 +56,19 @@ wait_for_package_manager() {
 
 echo "Waiting for Android Package Manager before installing signed APK."
 wait_for_package_manager
-echo "Installing signed APK."
-adb_timeout 60s install -r ErikrafT-Drop-release.apk
+echo "Installing signed APK (maximum ${APK_INSTALL_TIMEOUT})."
+if ! adb_timeout "$APK_INSTALL_TIMEOUT" install -r --no-streaming ErikrafT-Drop-release.apk; then
+  echo "Signed APK installation failed or timed out." >&2
+  echo "ADB device state:" >&2
+  adb_timeout 10s get-state >&2 || true
+  echo "Android boot state:" >&2
+  adb_timeout 10s shell getprop sys.boot_completed >&2 || true
+  echo "Installed package path:" >&2
+  adb_timeout 10s shell pm path com.erikraft.drop >&2 || true
+  echo "Package Manager diagnostic:" >&2
+  adb_timeout 10s shell cmd package list packages >&2 || true
+  exit 1
+fi
 adb_timeout 15s shell pm grant com.erikraft.drop android.permission.WRITE_EXTERNAL_STORAGE
 
 # FtpSettingsActivity is intentionally non-exported. Enter it through the
