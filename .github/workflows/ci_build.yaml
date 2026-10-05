@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,7 +44,7 @@ jobs:
 
       - name: Verify Tor and Lyrebird native libraries in APK
         run: |
-          mapfile -t APKS < <(find app/build/outputs/apk -type f -name '*.apk' -print)
+          mapfile -t APKS < <(find app/build/outputs/apk -type f -name '*.apk' ! -path '*/androidTest/*' -print)
           if [ "${#APKS[@]}" -eq 0 ]; then
             echo "No APK was generated under app/build/outputs/apk." >&2
             exit 1
