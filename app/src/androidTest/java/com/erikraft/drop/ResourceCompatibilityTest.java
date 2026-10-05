@@ -21,7 +21,7 @@ public class ResourceCompatibilityTest {
     public void criticalDrawablesInflateOnDevice() {
         final Context context = ApplicationProvider.getApplicationContext();
 
-        assertNotNull(ContextCompat.getDrawable(context, R.drawable.pref_connectivity_card));
+        assertNotNull(ContextCompat.getDrawable(context, R.drawable.ic_snapdrop));
         assertNotNull(ContextCompat.getDrawable(context, R.drawable.ic_ftp));
         assertNotNull(ContextCompat.getDrawable(context, R.drawable.pref_savelocation));
     }
