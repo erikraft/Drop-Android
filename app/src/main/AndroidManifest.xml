@@ -171,7 +171,7 @@
         <service
             android:name=".QuickTileService"
             android:exported="true"
-            android:icon="@drawable/pref_connectivity_card"
+            android:icon="@drawable/ic_snapdrop"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             tools:targetApi="n">
