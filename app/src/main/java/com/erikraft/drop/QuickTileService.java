@@ -29,7 +29,7 @@ public class QuickTileService extends TileService {
         if (tile != null) {
             tile.setIcon(android.graphics.drawable.Icon.createWithResource(
                     this,
-                    R.drawable.ic_snapdrop
+                    R.drawable.pref_connectivity_card
             ));
             tile.setState(Tile.STATE_INACTIVE);
             tile.updateTile();
