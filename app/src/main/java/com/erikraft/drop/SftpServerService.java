@@ -171,7 +171,7 @@ public class SftpServerService extends Service {
                 this, NOTIFICATION_ID + 1, stopIntent(this),
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_ftp)
+                .setSmallIcon(R.drawable.pref_savelocation)
                 .setContentTitle("ErikrafT Drop™ SFTP")
                 .setContentText(text)
                 .setOngoing(true)
