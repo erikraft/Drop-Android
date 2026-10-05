@@ -25,3 +25,16 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Apache Mina SSHD and Apache FtpServer use service loading/reflection internally.
+# Keep their runtime implementation classes intact in minified release builds.
+-keep class org.apache.sshd.** { *; }
+-keep class org.apache.ftpserver.** { *; }
+
+# Bouncy Castle is used by FTPS certificate generation and Apache SSHD.
+# Android also ships a platform crypto provider, so do not let R8 rewrite
+# the bundled provider classes used by the app.
+-keep class org.bouncycastle.** { *; }
+-dontwarn org.apache.sshd.**
+-dontwarn org.apache.ftpserver.**
+-dontwarn org.bouncycastle.**
+
