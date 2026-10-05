@@ -93,7 +93,7 @@
         app:iconSpaceReserved="false">
         <Preference
             android:key="sftp_settings"
-            android:icon="@drawable/ic_ftp"
+            android:icon="@drawable/pref_savelocation"
             android:summary="@string/sftp_settings_summary"
             android:title="@string/sftp_settings_title"
             app:singleLineTitle="false" />
