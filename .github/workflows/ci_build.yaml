@@ -40,7 +40,7 @@ jobs:
       - name: Build the app
         run: |
           chmod +x gradlew
-          ./gradlew clean assembleDebug --no-build-cache --rerun-tasks --stacktrace --warning-mode all --info
+          ./gradlew clean test assembleDebug assembleDebugAndroidTest --no-build-cache --rerun-tasks --stacktrace --warning-mode all --info
 
       - name: Verify Tor and Lyrebird native libraries in APK
         run: |
