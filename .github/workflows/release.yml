@@ -13,7 +13,7 @@ jobs:
   release:
     name: Build and sign Android release artifacts
     if: github.repository == 'erikraft/Drop-Android'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: production
 
