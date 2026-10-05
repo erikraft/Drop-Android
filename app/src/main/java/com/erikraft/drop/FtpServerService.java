@@ -41,6 +41,7 @@ import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
+import java.security.Provider;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -206,7 +207,11 @@ public class FtpServerService extends Service {
     private File createKeystore() throws Exception {
         File file = new File(getFilesDir(), "ftp-ftps.jks");
         if (file.exists()) return file;
-        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) Security.addProvider(new BouncyCastleProvider());
+        Provider bcProvider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME);
+        if (bcProvider == null) {
+            bcProvider = new BouncyCastleProvider();
+            Security.addProvider(bcProvider);
+        }
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048);
         KeyPair keyPair = generator.generateKeyPair();
@@ -214,10 +219,15 @@ public class FtpServerService extends Service {
         Date notBefore = new Date(now - 60_000L);
         Date notAfter = new Date(now + 3650L * 24L * 60L * 60L * 1000L);
         X500Name subject = new X500Name("CN=ErikrafT Drop FTP");
-        X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
-        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA").setProvider(new BouncyCastleProvider()).build(keyPair.getPrivate());
+        X509v3CertificateBuilder builder = new JcaX509v3CertificateBuilder(
+                subject, BigInteger.valueOf(now), notBefore, notAfter, subject, keyPair.getPublic());
+        ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA")
+                .setProvider(bcProvider)
+                .build(keyPair.getPrivate());
         X509CertificateHolder holder = builder.build(signer);
-        X509Certificate certificate = new JcaX509CertificateConverter().setProvider(new BouncyCastleProvider()).getCertificate(holder);
+        X509Certificate certificate = new JcaX509CertificateConverter()
+                .setProvider(bcProvider)
+                .getCertificate(holder);
         KeyStore keyStore = KeyStore.getInstance("JKS");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});

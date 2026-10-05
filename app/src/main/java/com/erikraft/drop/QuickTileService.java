@@ -13,11 +13,24 @@ import androidx.annotation.RequiresApi;
 public class QuickTileService extends TileService {
 
     @Override
+    public void onTileAdded() {
+        super.onTileAdded();
+        updateTile();
+    }
+
+    @Override
     public void onStartListening() {
         super.onStartListening();
+        updateTile();
+    }
 
+    private void updateTile() {
         final Tile tile = getQsTile();
         if (tile != null) {
+            tile.setIcon(android.graphics.drawable.Icon.createWithResource(
+                    this,
+                    R.drawable.ic_snapdrop
+            ));
             tile.setState(Tile.STATE_INACTIVE);
             tile.updateTile();
         }
