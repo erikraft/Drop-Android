@@ -228,6 +228,24 @@ public class JavaScriptInterface {
         context.requestExternalShare(fileName, mimeType, target);
     }
 
+    /** Opens the native Onion Service transfer screen from the Android WebView. */
+    @JavascriptInterface
+    public void openOnionTransfer() {
+        context.startActivity(new android.content.Intent(context, OnionTransferActivity.class));
+    }
+
+    /** Opens the native FTP/FTPS settings screen from the Android WebView. */
+    @JavascriptInterface
+    public void openFtpSettings() {
+        context.startActivity(new android.content.Intent(context, FtpSettingsActivity.class));
+    }
+
+    /** Opens the native SFTP settings screen from the Android WebView. */
+    @JavascriptInterface
+    public void openSftpSettings() {
+        context.startActivity(new android.content.Intent(context, SftpSettingsActivity.class));
+    }
+
     @JavascriptInterface
     public void setKeepScreenOn(final boolean keepOn) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
