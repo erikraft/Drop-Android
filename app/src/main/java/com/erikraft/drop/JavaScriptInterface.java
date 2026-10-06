@@ -3,6 +3,7 @@ package com.erikraft.drop;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 
 import androidx.documentfile.provider.DocumentFile;
+import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.anggrayudi.storage.FileWrapper;
@@ -228,10 +230,15 @@ public class JavaScriptInterface {
 
     @JavascriptInterface
     public void setKeepScreenOn(final boolean keepOn) {
-        context.runOnUiThread(() -> {
-            if (keepOn) context.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            else if (!context.transfer.get()) context.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        });
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putBoolean(context.getString(R.string.pref_switch_keep_on), keepOn).apply();
+        context.runOnUiThread(context::applyKeepScreenOnPreference);
+    }
+
+    @JavascriptInterface
+    public boolean isKeepScreenOnEnabled() {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(context.getString(R.string.pref_switch_keep_on), true);
     }
 
     /** Disables the native pull-to-refresh container while an in-WebView overlay is being scrolled. */
@@ -348,11 +355,16 @@ public class JavaScriptInterface {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName), StandardCharsets.UTF_8))) {
             final StringBuilder text = new StringBuilder("javascript:");
             String currentLine;
-            while ((currentLine = reader.readLine()) != null) if (!currentLine.trim().startsWith("//")) text.append(currentLine);
+            while ((currentLine = reader.readLine()) != null) {
+                if (!currentLine.trim().startsWith("//")) {
+                    text.append(currentLine).append('\n');
+                }
+            }
             return text.toString();
         } catch (IOException e) {
             Log.e("JavaScriptInterface", "unable to read assets file '" + fileName + "'", e);
         }
         return null;
     }
+
 }
