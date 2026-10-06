@@ -115,7 +115,7 @@
     <string name="website_file_download">Mentés</string>
     <string name="website_footer_discovery">Felfedezhető vagy mindenki számára ezen a hálózaton</string>
     <string name="website_footer_known_as">%s-ként vagy felfedezhető</string>
-    <string name="website_about_subheading">A legegyszerűbb mód, hogy fájlokat ossz meg eszközök között</string>
+    <string name="website_about_subheading">A legegyszerűbb módja a fájlok átvitelének a Web, Windows, Linux, Android, bővítmények és egyebek között</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>

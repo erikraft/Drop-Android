@@ -115,7 +115,7 @@
     <string name="website_file_download">Kaydet</string>
     <string name="website_footer_discovery">Bu ağda bulunan herkes sizi keşfedebilir</string>
     <string name="website_footer_known_as">%s olarak görünüyorsunuz</string>
-    <string name="website_about_subheading">Cihazlar arası dosya transferinin en kolay yolu</string>
+    <string name="website_about_subheading">Web, Windows, Linux, Android, uzantılar ve daha fazlası arasında dosya aktarmanın en kolay yolu</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>

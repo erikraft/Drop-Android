@@ -115,7 +115,7 @@
     <string name="website_file_download">Opslaan</string>
     <string name="website_footer_discovery">Je kunt door iedereen op dit netwerk worden ontdekt</string>
     <string name="website_footer_known_as">Jij bent %s</string>
-    <string name="website_about_subheading">De makkelijkste manier om bestanden te verplaatsen tussen apparaten</string>
+    <string name="website_about_subheading">De eenvoudigste manier om bestanden over te zetten via het web, Windows, Linux, Android, extensies en meer</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
