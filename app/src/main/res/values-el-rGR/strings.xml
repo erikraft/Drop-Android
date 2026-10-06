@@ -115,7 +115,7 @@
     <string name="website_file_download">Αποθήκευση</string>
     <string name="website_footer_discovery">Μπορείτε να ανακαλυφθείτε από όλους σε αυτό το δίκτυο</string>
     <string name="website_footer_known_as">Είστε γνωστοί ως %s</string>
-    <string name="website_about_subheading">Ο ευκολότερος τρόπος μεταφοράς αρχείων μέσω Web, Windows, Linux, Android, επεκτάσεων και άλλων</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
