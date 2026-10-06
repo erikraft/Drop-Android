@@ -115,7 +115,7 @@
     <string name="website_file_download">Uložit</string>
     <string name="website_footer_discovery">V této síti vás může kdokoli objevit</string>
     <string name="website_footer_known_as">Ostatní vás vidí pod přezdívkou %s</string>
-    <string name="website_about_subheading">Nejjednodušší způsob přenosu souborů přes Web, Windows, Linux, Android, rozšíření a další</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
