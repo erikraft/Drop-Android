@@ -17,7 +17,7 @@
         android:layout_marginTop="120dp"
         android:alpha="0"
         android:scaleType="centerInside"
-        android:src="@drawable/pref_connectivity_card"
+        android:src="@drawable/ic_snapdrop"
         tools:alpha="1" />
 
     <TextView

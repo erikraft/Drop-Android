@@ -215,15 +215,8 @@ public class MainActivity extends AppCompatActivity {
             openSettingsResultLauncher.launch(OnboardingActivity.getServerSelectionIntent(this));
         }
 
-        if (prefs.getBoolean(getString(R.string.pref_switch_keep_on), true)) {
-            transfer.setOnChangedListener(transferActive -> runOnUiThread(() -> {
-                if (transferActive) {
-                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                } else {
-                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                }
-            }));
-        }
+        transfer.setOnChangedListener(transferActive -> runOnUiThread(this::applyKeepScreenOnPreference));
+        applyKeepScreenOnPreference();
 
         getOnBackPressedDispatcher().addCallback(this, onBackpressedCallback);
 
@@ -573,10 +566,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        applyKeepScreenOnPreference();
 
         final IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(receiver, intentFilter);
+    }
+
+    void applyKeepScreenOnPreference() {
+        if (prefs == null) return;
+        final boolean keepScreenOn = prefs.getBoolean(getString(R.string.pref_switch_keep_on), true);
+        if (keepScreenOn || transfer.get()) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
     }
 
     @Override
