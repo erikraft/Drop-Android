@@ -35,4 +35,13 @@ public class ResourceCompatibilityTest {
 
         assertNotNull(icon);
     }
+    @Test
+    public void minasshdNistp384ParametersResolveWithBundledProvider() throws Exception {
+        if (java.security.Security.getProvider("BC") == null) {
+            java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        }
+
+        org.apache.sshd.common.cipher.ECCurves.nistp384.getParameters();
+    }
+
 }
