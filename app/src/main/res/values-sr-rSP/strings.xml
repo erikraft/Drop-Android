@@ -115,7 +115,7 @@
     <string name="website_file_download">Save</string>
     <string name="website_footer_discovery">You can be discovered by everyone on this network</string>
     <string name="website_footer_known_as">You are known as %s</string>
-    <string name="website_about_subheading">Најлакши начин за пренос датотека преко Веба, Windows-а, Linux-а, Android-а, екстензија и још много тога</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
