@@ -115,7 +115,7 @@
     <string name="website_file_download">Lagre</string>
     <string name="website_footer_discovery">Du kan bli funnet av alle i dette nettverket</string>
     <string name="website_footer_known_as">Du er kjent som %s</string>
-    <string name="website_about_subheading">Den enkleste måten å overføre filer på tvers av Web, Windows, Linux, Android, utvidelser og mer</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
