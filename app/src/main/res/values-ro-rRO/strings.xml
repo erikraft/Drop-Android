@@ -115,7 +115,7 @@
     <string name="website_file_download">Salvează</string>
     <string name="website_footer_discovery">Oricine conectat la aceeași rețea te poate vedea</string>
     <string name="website_footer_known_as">Ești cunoscut ca %s</string>
-    <string name="website_about_subheading">Cel mai simplu mod de a transfera fișiere între dispozitive</string>
+    <string name="website_about_subheading">Cel mai simplu mod de a transfera fișiere prin Web, Windows, Linux, Android, extensii și multe altele</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
