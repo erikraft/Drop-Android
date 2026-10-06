@@ -115,7 +115,7 @@
     <string name="website_file_download">Salva</string>
     <string name="website_footer_discovery">Potresti essere individuato da tutti su questa rete</string>
     <string name="website_footer_known_as">Il tuo soprannome è %s</string>
-    <string name="website_about_subheading">Il modo più semplice per trasferire file sul Web, Windows, Linux, Android, estensioni e altro ancora</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
