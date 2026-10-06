@@ -115,7 +115,7 @@
     <string name="website_file_download">Desa</string>
     <string name="website_footer_discovery">Pots ser trobat per qualsevol en aquesta xarxa</string>
     <string name="website_footer_known_as">Sou conegut com a %s</string>
-    <string name="website_about_subheading">La manera més fàcil de transferir fitxers per la Web, Windows, Linux, Android, extensions i molt més</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
