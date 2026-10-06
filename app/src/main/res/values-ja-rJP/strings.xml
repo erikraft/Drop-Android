@@ -115,7 +115,7 @@
     <string name="website_file_download">保存</string>
     <string name="website_footer_discovery">このネットワーク上のすべてのデバイスからアクセスできます</string>
     <string name="website_footer_known_as">他のデバイスに表示される名前: %s</string>
-    <string name="website_about_subheading">Web、Windows、Linux、Android、拡張機能などをまたいでファイルを転送する最も簡単な方法</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
