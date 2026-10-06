@@ -115,7 +115,7 @@
     <string name="website_file_download">저장</string>
     <string name="website_footer_discovery">이 네트워크의 모두가 당신을 찾을 수 있습니다</string>
     <string name="website_footer_known_as">당신의 이름은 %s 입니다</string>
-    <string name="website_about_subheading">웹, Windows, Linux, Android, 확장 프로그램 등에서 파일을 전송하는 가장 쉬운 방법</string>
+    <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
