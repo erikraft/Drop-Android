@@ -115,7 +115,7 @@
     <string name="website_file_download">שמור</string>
     <string name="website_footer_discovery">כולם ברשת זו יכולים לגלות אותך</string>
     <string name="website_footer_known_as">אתה ידוע בתור %s</string>
-    <string name="website_about_subheading">הדרך הקלה ביותר לשלוח קבצים בין מכשירים</string>
+    <string name="website_about_subheading">הדרך הקלה ביותר להעברת קבצים דרך האינטרנט, Windows, Linux, Android, הרחבות ועוד</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
