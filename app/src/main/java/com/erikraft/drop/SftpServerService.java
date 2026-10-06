@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import org.apache.sshd.common.file.virtualfs.VirtualFileSystemFactory;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.apache.sshd.server.SshServer;
 import org.apache.sshd.server.auth.password.PasswordAuthenticator;
 import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
@@ -21,6 +22,7 @@ import org.apache.sshd.server.session.ServerSession;
 import org.apache.sshd.sftp.server.SftpSubsystemFactory;
 
 import java.io.File;
+import java.security.Security;
 import java.util.Collections;
 
 public class SftpServerService extends Service {
@@ -64,6 +66,11 @@ public class SftpServerService extends Service {
 
     private void startServer() {
         try {
+            // Apache MINA SSHD resolves ECCurves during static initialization.
+            // On Android, make the bundled BC provider available before the first
+            // SSHD class is initialized so nistp384/nistp521 parameter discovery
+            // does not depend on provider auto-registration order.
+            ensureBouncyCastleProvider();
             android.content.SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_sftp_port), "" + DEFAULT_PORT));
@@ -116,6 +123,12 @@ public class SftpServerService extends Service {
             synchronized (LOCK) { starting = false; }
             stopServer();
             stopSelf();
+        }
+    }
+
+    private static void ensureBouncyCastleProvider() {
+        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
+            Security.addProvider(new BouncyCastleProvider());
         }
     }
 
