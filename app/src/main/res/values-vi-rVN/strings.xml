@@ -115,7 +115,7 @@
     <string name="website_file_download">Lưu</string>
     <string name="website_footer_discovery">Bạn có thể được tìn thấy bởi bất kì ai trong cùng mạng bạn đang kết nối</string>
     <string name="website_footer_known_as">Tên hiển thị của bạn là %s</string>
-    <string name="website_about_subheading">Cách dễ nhất để truyền các tập tin giữa các thiết bị</string>
+    <string name="website_about_subheading">Cách dễ nhất để truyền tệp qua Web, Windows, Linux, Android, tiện ích mở rộng và hơn nữa</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
