@@ -115,7 +115,7 @@
     <string name="website_file_download">保存</string>
     <string name="website_footer_discovery">您可以在这个网络上被所有人发现</string>
     <string name="website_footer_known_as">您的设备昵称为 %s</string>
-    <string name="website_about_subheading">跨设备传输文件的最简单方法</string>
+    <string name="website_about_subheading">在 Web、Windows、Linux、Android、扩展程序等平台之间传输文件的最简单方式</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
