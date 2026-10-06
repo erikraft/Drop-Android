@@ -115,7 +115,7 @@
     <string name="website_file_download">Зберегти</string>
     <string name="website_footer_discovery">Вас можуть знайти всі в цій мережі</string>
     <string name="website_footer_known_as">Ваше ім\'я/ідентифікатор: %s</string>
-    <string name="website_about_subheading">Найпростіший спосіб передачі файлів між пристроями</string>
+    <string name="website_about_subheading">Найпростіший спосіб передавати файли через Web, Windows, Linux, Android, розширення та багато іншого</string>
     <!-- QR Transfer -->
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
