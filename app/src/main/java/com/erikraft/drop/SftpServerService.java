@@ -83,6 +83,9 @@ public class SftpServerService extends Service {
             if (!home.isDirectory() || !home.canRead() || !home.canWrite()) {
                 throw new IllegalStateException("A pasta SFTP selecionada não pode ser acessada diretamente.");
             }
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                throw new IllegalStateException("O servidor SFTP requer Android 8.0 ou superior.");
+            }
 
             SshServer candidate = SshServer.setUpDefaultServer();
             candidate.setPort(port);

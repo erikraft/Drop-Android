@@ -79,7 +79,15 @@ public class FtpSettingsActivity extends AppCompatActivity {
             if (uri == null) return;
             try {
                 final int flags = result.getData().getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                getContentResolver().takePersistableUriPermission(uri, flags);
+                if ((flags & Intent.FLAG_GRANT_READ_URI_PERMISSION) != 0
+                        && (flags & Intent.FLAG_GRANT_WRITE_URI_PERMISSION) != 0) {
+                    getContentResolver().takePersistableUriPermission(uri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                } else if ((flags & Intent.FLAG_GRANT_READ_URI_PERMISSION) != 0) {
+                    getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                } else if ((flags & Intent.FLAG_GRANT_WRITE_URI_PERMISSION) != 0) {
+                    getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                }
             } catch (SecurityException ignored) { }
             DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
             if (folder == null) return;

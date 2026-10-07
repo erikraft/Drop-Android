@@ -34,8 +34,13 @@ public class SftpSettingsActivity extends AppCompatActivity {
         picker=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),r->{
             if(r.getResultCode()!=Activity.RESULT_OK||r.getData()==null)return;
             android.net.Uri uri=r.getData().getData(); if(uri==null)return;
-            try{getContentResolver().takePersistableUriPermission(uri,r.getData().getFlags()&
-                (Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION));}catch(SecurityException ignored){}
+            try{int flags=r.getData().getFlags()&(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                if((flags&Intent.FLAG_GRANT_READ_URI_PERMISSION)!=0&&(flags&Intent.FLAG_GRANT_WRITE_URI_PERMISSION)!=0)
+                    getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                else if((flags&Intent.FLAG_GRANT_READ_URI_PERMISSION)!=0)
+                    getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                else if((flags&Intent.FLAG_GRANT_WRITE_URI_PERMISSION)!=0)
+                    getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_WRITE_URI_PERMISSION);}catch(SecurityException ignored){}
             DocumentFile df=DocumentFile.fromTreeUri(this,uri);
             if(df==null)return;
             String p=com.anggrayudi.storage.file.DocumentFileUtils.getAbsolutePath(df,this);
