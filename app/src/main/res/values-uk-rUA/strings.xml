@@ -69,6 +69,8 @@
     <string name="notifications_title">Сповіщення</string>
     <string name="keep_on_summary">(Рекомендується) На багатьох пристроях спостерігаються проблеми з перериванням передачі при вимкненому екрані</string>
     <string name="keep_on_title">Не вимикати екран під час передачі</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">Поділитись виділеним текстом</string>
     <string name="floating_text_selection_summary">При виборі тексту в інших програмах буде запропоновано опцію \"Надіслати за допомогою ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Попередження про підключення</string>
