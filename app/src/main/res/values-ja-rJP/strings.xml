@@ -69,6 +69,8 @@
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(推奨) 多くのデバイスで画面の消灯時に転送が中止される問題が発生します</string>
     <string name="keep_on_title">転送時に画面を点灯したままにする</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">テキスト選択メニューに表示</string>
     <string name="floating_text_selection_summary">他のアプリでテキストを選択すると､「ErikrafT Dropで送信」オプションが表示されます</string>
     <string name="show_connectivity_card_title">接続警告</string>
