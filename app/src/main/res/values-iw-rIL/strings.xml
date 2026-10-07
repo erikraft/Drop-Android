@@ -69,6 +69,8 @@
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(מומלץ) להמון מכשירים יש בעיות שהעברת הקבצים נקטעת כשמכבים את מסך המכשיר</string>
     <string name="keep_on_title">השאר מסך דולק במשך העברת הקבצים</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">בחירת טקסט צף</string>
     <string name="floating_text_selection_summary">כשתבחר שורת טקסט ביישום אחר, יפתח אפשרות של \"שתף עם ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Connectivity warning</string>
