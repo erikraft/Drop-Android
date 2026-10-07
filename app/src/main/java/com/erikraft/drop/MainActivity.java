@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PictureInPictureParams;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -561,6 +562,20 @@ public class MainActivity extends AppCompatActivity {
     public void resetUploadIntent() {
         uploadIntent = null;
         onlyText = false;
+    }
+
+    @Override
+    public void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && prefs != null
+                && prefs.getBoolean(getString(R.string.pref_picture_in_picture), true)
+                && !isFinishing()
+                && !isInPictureInPictureMode()) {
+            enterPictureInPictureMode(new PictureInPictureParams.Builder()
+                    .setAspectRatio(new android.util.Rational(16, 9))
+                    .build());
+        }
     }
 
     @Override

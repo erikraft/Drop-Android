@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Kuva kuvassa (PiP)</string>
+    <string name="picture_in_picture_summary">(Suositus) Pidä ErikrafT Drop näkyvissä kelluvassa ikkunassa tiedostonsiirron aikana, kun sovellus pienennetään</string>
+</resources>

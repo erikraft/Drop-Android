@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">화면 속 화면 (PiP)</string>
+    <string name="picture_in_picture_summary">(권장) 앱을 최소화한 후 파일 전송 중에도 ErikrafT Drop을 플로팅 창으로 표시합니다</string>
+</resources>
