@@ -69,6 +69,8 @@
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Ajánlott) Sok eszköznél megszakad az átvitel, ha a kijelző kikapcsol</string>
     <string name="keep_on_title">A képernyő bekapcsolva tartása átvitel közben</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">Lebegő szöveg kijelölése</string>
     <string name="floating_text_selection_summary">Ha más alkalmazásokban szöveget jelöl ki, megjelenik a „Küldés ErikrafT Drop-pal” lehetőség</string>
     <string name="show_connectivity_card_title">Connectivity warning</string>
