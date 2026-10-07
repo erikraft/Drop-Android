@@ -69,6 +69,8 @@
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Recomendado) Muitos dispositivos têm problemas com transferências interrompidas quando a tela é desligada</string>
     <string name="keep_on_title">Mantenha a tela ligada durante a transferência</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">Seleção de texto flutuante</string>
     <string name="floating_text_selection_summary">Ao selecionar texto em outras aplicações, será exibida uma opção \"Enviar com ErikrafT Drop\"</string>
     <string name="show_connectivity_card_title">Connectivity warning</string>
