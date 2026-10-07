@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Kép a képben (PiP)</string>
+    <string name="picture_in_picture_summary">(Ajánlott) Az alkalmazás minimalizálása után tartsa az ErikrafT Dropot láthatóan lebegő ablakban fájlátvitel közben</string>
+</resources>

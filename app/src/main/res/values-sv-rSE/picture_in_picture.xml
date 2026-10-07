@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Bild-i-bild (PiP)</string>
+    <string name="picture_in_picture_summary">(Rekommenderas) Håll ErikrafT Drop synligt i ett flytande fönster under filöverföring när appen minimeras</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">画中画 (PiP)</string>
+    <string name="picture_in_picture_summary">（推荐）最小化应用后，在文件传输期间通过浮动窗口保持 ErikrafT Drop 可见</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Bilde-i-bilde (PiP)</string>
+    <string name="picture_in_picture_summary">(Anbefalt) Hold ErikrafT Drop synlig i et flytende vindu under filoverføring når appen minimeres</string>
+</resources>

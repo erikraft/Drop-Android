@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Картинка в картинке (PiP)</string>
+    <string name="picture_in_picture_summary">(Рекомендуется) Оставляйте ErikrafT Drop видимым в плавающем окне во время передачи файлов после сворачивания приложения</string>
+</resources>

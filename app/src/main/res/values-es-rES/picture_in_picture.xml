@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Imagen en imagen (PiP)</string>
+    <string name="picture_in_picture_summary">(Recomendado) Mantén ErikrafT Drop visible en una ventana flotante durante la transferencia de archivos al minimizar la aplicación</string>
+</resources>

@@ -198,6 +198,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return true;
         });
 
+        final SwitchPreferenceCompat pictureInPicturePref = findPreference(getString(R.string.pref_picture_in_picture));
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            pictureInPicturePref.setVisible(false);
+        }
+
         final SwitchPreferenceCompat locationMetadataPref = findPreference(getString(R.string.pref_retain_location_metadata));
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             locationMetadataPref.setVisible(true);

@@ -23,6 +23,12 @@
             android:title="@string/keep_on_title" />
         <SwitchPreferenceCompat
             android:defaultValue="true"
+            android:icon="@drawable/pref_screen"
+            android:key="@string/pref_picture_in_picture"
+            android:summary="@string/picture_in_picture_summary"
+            android:title="@string/picture_in_picture_title" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
             android:icon="@drawable/pref_connectivity_card"
             android:key="@string/pref_show_connectivity_card"
             android:summary="@string/show_connectivity_card_summary"
