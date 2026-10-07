@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">子母畫面 (PiP)</string>
+    <string name="picture_in_picture_summary">（建議）最小化應用程式後，在檔案傳輸期間透過浮動視窗保持 ErikrafT Drop 可見</string>
+</resources>

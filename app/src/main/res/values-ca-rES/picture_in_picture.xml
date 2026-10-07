@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Imatge sobre imatge (PiP)</string>
+    <string name="picture_in_picture_summary">(Recomanat) Mantén ErikrafT Drop visible en una finestra flotant durant la transferència de fitxers en minimitzar l'aplicació</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="picture_in_picture_title">Слика у слици (PiP)</string>
+    <string name="picture_in_picture_summary">(Препоручено) Нека ErikrafT Drop буде видљив у плутајућем прозору током преноса датотека након минимизовања апликације</string>
+</resources>
