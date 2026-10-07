@@ -69,6 +69,8 @@
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(推荐) 若遇到熄屏时传输中断的问题，请启用该项</string>
     <string name="keep_on_title">传输时保持屏幕开启</string>
+    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
+    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">浮动文字选择</string>
     <string name="floating_text_selection_summary">使用其他APP选中文本时，显示“使用ErikrafT Drop发送”选项</string>
     <string name="show_connectivity_card_title">连接警告</string>
