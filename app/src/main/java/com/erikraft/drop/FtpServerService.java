@@ -144,6 +144,7 @@ public class FtpServerService extends Service {
                 SslConfigurationFactory sslFactory = new SslConfigurationFactory();
                 File keystore = createKeystore();
                 sslFactory.setKeystoreFile(keystore);
+                sslFactory.setKeystoreType("PKCS12");
                 sslFactory.setKeystorePassword(KEYSTORE_PASSWORD);
                 sslFactory.setKeyPassword(KEYSTORE_PASSWORD);
                 sslFactory.setKeyAlias(KEY_ALIAS);
@@ -204,7 +205,9 @@ public class FtpServerService extends Service {
     }
 
     private File createKeystore() throws Exception {
-        File file = new File(getFilesDir(), "ftp-ftps.jks");
+        // Android does not guarantee the desktop JKS keystore implementation.
+        // Use PKCS12, which is supported by Android's platform crypto providers.
+        File file = new File(getFilesDir(), "ftp-ftps.p12");
         if (file.exists()) return file;
         // Do not use Android's platform provider named "BC". Android ships an
         // older, internal Bouncy Castle provider under the same name, which can
@@ -228,7 +231,7 @@ public class FtpServerService extends Service {
         X509Certificate certificate = new JcaX509CertificateConverter()
                 .setProvider(bcProvider)
                 .getCertificate(holder);
-        KeyStore keyStore = KeyStore.getInstance("JKS");
+        KeyStore keyStore = KeyStore.getInstance("PKCS12");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});
         try (FileOutputStream output = new FileOutputStream(file)) {
