@@ -30,6 +30,10 @@
 -keep class org.apache.sshd.** { *; }
 -keep class org.apache.ftpserver.** { *; }
 
+# Apache MINA's NIO transport discovers processor implementations reflectively.
+# Preserve implementation names and public constructors in minified release builds.
+-keep class org.apache.mina.** { *; }
+
 # Bouncy Castle is used by FTPS certificate generation and Apache SSHD.
 # Android also ships a platform crypto provider, so do not let R8 rewrite
 # the bundled provider classes used by the app.

@@ -14,6 +14,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import org.apache.sshd.common.file.virtualfs.VirtualFileSystemFactory;
+import org.apache.sshd.common.util.OsUtils;
+import org.apache.sshd.common.util.io.PathUtils;
 import org.apache.sshd.server.SshServer;
 import org.apache.sshd.server.auth.password.PasswordAuthenticator;
 import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
@@ -64,12 +66,16 @@ public class SftpServerService extends Service {
 
     private void startServer() {
         try {
-            // Android already provides EC/RSA primitives through Conscrypt.
-            // Apache MINA SSHD 2.20.0 resolves EC parameters through JCA and
-            // can select Android's platform BC provider by name. That provider
-            // is not compatible with the newer SSHD curve lookup. Disable only
-            // SSHD's optional BC registrar and let the Android provider handle
-            // EC/RSA operations instead of globally replacing Android providers.
+            // Android does not expose a conventional user home/current directory.
+            // Configure SSHD's path resolvers before touching SshServer/ServerBuilder:
+            // their static initializers may resolve ~/.ssh during class initialization.
+            java.nio.file.Path appFiles = getFilesDir().toPath();
+            System.setProperty("user.home", appFiles.toString());
+            System.setProperty("user.dir", appFiles.toString());
+            PathUtils.setUserHomeFolderResolver(() -> appFiles);
+            OsUtils.setCurrentWorkingDirectoryResolver(() -> appFiles);
+
+            // Android provides its own crypto primitives; avoid SSHD's optional BC registrar.
             System.setProperty("org.apache.sshd.security.provider.BC.enabled", "false");
             android.content.SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(this);
