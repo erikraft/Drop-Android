@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -37,7 +36,7 @@ import java.net.Inet4Address;
 import java.net.NetworkInterface;
 import java.util.Collections;
 
-public class FtpSettingsActivity extends AppCompatActivity {
+public class FtpSettingsActivity extends DropPipActivity {
     private SharedPreferences prefs;
     private TextInputEditText portInput;
     private TextInputEditText usernameInput;
