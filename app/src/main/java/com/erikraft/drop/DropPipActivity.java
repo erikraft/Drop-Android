@@ -1,7 +1,6 @@
 package com.erikraft.drop;
 
 import android.app.PictureInPictureParams;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
