@@ -65,8 +65,8 @@
     <string name="version">Versjon</string>
     <string name="pref_device_name_title">Enhetsnavn</string>
     <string name="pref_device_name_summary">Angi et brukerdefinert enhetsnavn</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Vis et varsel når en nedlasting er fullført. Android 13+ krever varslingstillatelse.</string>
+    <string name="notifications_title">Varsler</string>
     <string name="keep_on_summary">(Anbefalt) Mange enheter har problemer med at overføring blir avbrutt når skjermen slås av</string>
     <string name="keep_on_title">Hold skjermen påslått mens du overfører</string>
     <string name="floating_text_selection_title">Floating text selection</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Velg katalog</string>
+    <string name="ftp_directory_summary">Velg mappen som FTP/FTPS-serveren eksponerer.</string>
+    <string name="ftp_stop_notification_title">Varsel med «Stopp server»</string>
+    <string name="ftp_stop_notification_summary">Vis en varslingshandling for å stoppe FTP/FTPS-serveren.</string>
+    <string name="onion_stop_notification_title">Varsel med «Stopp»</string>
+    <string name="onion_stop_notification_summary">Vis en varslingshandling for å stoppe Onion-tjenesten.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
