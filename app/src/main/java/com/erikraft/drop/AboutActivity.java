@@ -54,23 +54,16 @@ public class AboutActivity extends DropPipActivity {
 
         addHeading(content, getString(R.string.about_licenses_title));
         addHtml(content, getString(R.string.about_licenses_summary), 15);
-        addButton(content, getString(R.string.about_license_button), "https://github.com/erikraft/Drop-Android/blob/master/LICENSE");
+        addButton(content, getString(R.string.about_licenses_title), "https://github.com/erikraft/Drop-Android/blob/master/LICENSE");
 
         addHeading(content, getString(R.string.about_credits_title));
-        addHtml(content,
-                getString(R.string.about_credits_body,
-                        "https://github.com/schlagmichdoch/PairDrop",
-                        "https://github.com/erikraft/Drop",
-                        "https://github.com/erikraft/Drop-Android"), 15);
+        addHtml(content, buildReferencesHtml(), 15);
 
-        addHeading(content, getString(R.string.about_privacy_title));
-        addHtml(content, getString(R.string.about_privacy_body), 15);
-
-        addHeading(content, getString(R.string.about_project_title));
-        addButton(content, getString(R.string.about_project_web_button), "https://github.com/erikraft/Drop");
-        addButton(content, getString(R.string.about_project_android_button), "https://github.com/erikraft/Drop-Android");
-        addButton(content, getString(R.string.about_project_site_button), "https://drop.erikraft.com/");
-        addButton(content, getString(R.string.about_support_button), "https://biodrop.erikraft.com/donation.html");
+        addHeading(content, getString(R.string.support_us));
+        addButton(content, "GitHub — ErikrafT Drop™", "https://github.com/erikraft/Drop");
+        addButton(content, "GitHub — Android", "https://github.com/erikraft/Drop-Android");
+        addButton(content, "Site oficial", "https://drop.erikraft.com/");
+        addButton(content, getString(R.string.support_us), "https://biodrop.erikraft.com/donation.html");
 
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
