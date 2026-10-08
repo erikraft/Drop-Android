@@ -50,7 +50,8 @@ public abstract class DropPipActivity extends AppCompatActivity {
     }
 
     private void updatePictureInPictureParams() {
-        if (!isPictureInPictureAvailable()) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
+                || !getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
             return;
         }
 
