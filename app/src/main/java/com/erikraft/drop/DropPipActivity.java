@@ -35,9 +35,14 @@ public abstract class DropPipActivity extends AppCompatActivity {
         updatePictureInPictureParams();
     }
 
+    static boolean isPictureInPictureEnabled(final SharedPreferences prefs, final String key) {
+        return prefs.getBoolean(key, true);
+    }
+
     private boolean isPictureInPictureEnabled() {
-        return PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.pref_picture_in_picture), true);
+        return isPictureInPictureEnabled(
+                PreferenceManager.getDefaultSharedPreferences(this),
+                getString(R.string.pref_picture_in_picture));
     }
 
     private boolean isPictureInPictureAvailable() {
