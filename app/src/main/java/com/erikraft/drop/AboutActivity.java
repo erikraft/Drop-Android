@@ -56,8 +56,6 @@ public class AboutActivity extends DropPipActivity {
         addHtml(content, getString(R.string.about_licenses_summary), 15);
         addButton(content, getString(R.string.about_licenses_title), "https://github.com/erikraft/Drop-Android/blob/master/LICENSE");
 
-        addHeading(content, getString(R.string.about_credits_title));
-        addHtml(content, buildReferencesHtml(), 15);
 
         addHeading(content, getString(R.string.support_us));
         addButton(content, "GitHub — ErikrafT Drop™", "https://github.com/erikraft/Drop");
@@ -121,7 +119,7 @@ public class AboutActivity extends DropPipActivity {
     }
 
     private String link(String label, String url) {
-        return "<a href="" + url + "">" + label + "</a>";
+        return "<a href=\"" + url + "\">" + label + "</a>";
     }
 
     private void addHeading(LinearLayout parent, String value) {
