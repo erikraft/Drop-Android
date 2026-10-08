@@ -9,13 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 
 /** Stable, self-contained About screen. It does not depend on generated AboutLibraries UI state. */
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends DropPipActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

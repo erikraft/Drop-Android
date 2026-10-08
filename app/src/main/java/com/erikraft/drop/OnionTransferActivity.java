@@ -27,7 +27,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import androidx.core.app.NotificationCompat;
@@ -49,7 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Android-only Onion Service sharing mode. Files and text are served from the device through Tor. */
-public class OnionTransferActivity extends AppCompatActivity {
+public class OnionTransferActivity extends DropPipActivity {
     private final List<File> files = new ArrayList<>();
     private ActivityResultLauncher<Intent> picker;
     private OnionHttpServer server;

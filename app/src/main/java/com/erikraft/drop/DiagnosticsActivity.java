@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.PreferenceManager;
 
@@ -27,7 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class DiagnosticsActivity extends AppCompatActivity {
+public class DiagnosticsActivity extends DropPipActivity {
     private TextView logs;
     private String currentLogs = "";
     private ActivityResultLauncher<String> saver;

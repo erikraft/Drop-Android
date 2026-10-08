@@ -24,10 +24,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.erikraft.drop.DropPipActivity;
 import com.erikraft.drop.R;
 import com.erikraft.drop.utils.ClipboardUtils;
 import com.google.zxing.BinaryBitmap;
@@ -46,7 +46,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
-public class QRTransferActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+public class QRTransferActivity extends DropPipActivity implements SurfaceHolder.Callback {
 
     public static final String EXTRA_MODE = "mode";
     public static final String EXTRA_TEXT = "text";
@@ -414,7 +414,19 @@ public class QRTransferActivity extends AppCompatActivity implements SurfaceHold
 
     @Override
     protected void onDestroy() {
-        cancelTransfer();
+        isCancelled = true;
+        stopCamera();
+
+        if (handler != null && animationRunnable != null) {
+            handler.removeCallbacks(animationRunnable);
+        }
+
+        if (qrDecoder != null) {
+            qrDecoder.reset();
+        }
+
+        sendChunks = null;
+        baseFrame = null;
         super.onDestroy();
     }
 }
