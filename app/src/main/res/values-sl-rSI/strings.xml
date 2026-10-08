@@ -175,22 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
-
     <string name="about_credits_title">O aplikaciji</string>
-
     <string name="about_version_format">Različica %1$s (%2$d)</string>
-
     <string name="about_description">ErikrafT Drop™ je odprtokodna aplikacija za prenos datotek in besedila. Ta stran prikazuje glavne neposredne odvisnosti in tehnične reference ekosistema Web in Android.</string>
-
     <string name="about_dependencies_title">Odvisnosti</string>
-
     <string name="about_dependencies_summary">Neposredne odvisnosti Androida, uporabljene v tej različici.</string>
-
     <string name="about_references_title">Tehnične reference</string>
-
     <string name="about_references_disclaimer">Licence in navedbe tretjih oseb so ohranjene v licenčnih datotekah projekta.</string>
-
     <string name="about_licenses_title">Licence</string>
-
     <string name="about_licenses_summary">Informacije o licencah odprtokodne programske opreme in tretjih oseb so na voljo v izvorni kodi.</string>
 </resources>
