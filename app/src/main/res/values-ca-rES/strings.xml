@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Sobre l’aplicació</string>
+
+    <string name="about_version_format">Versió %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ és una aplicació de codi obert per transferir fitxers i text. Aquesta pàgina mostra les dependències directes i les referències tècniques principals de l’ecosistema Web i Android.</string>
+
+    <string name="about_dependencies_title">Dependències</string>
+
+    <string name="about_dependencies_summary">Dependències directes d’Android utilitzades en aquesta versió.</string>
+
+    <string name="about_references_title">Referències tècniques</string>
+
+    <string name="about_references_disclaimer">Les llicències i els crèdits de tercers es conserven als fitxers de llicència del projecte.</string>
+
+    <string name="about_licenses_title">Llicència</string>
+
+    <string name="about_licenses_summary">La informació de llicències de codi obert i de tercers està disponible al codi font.</string>
 </resources>
