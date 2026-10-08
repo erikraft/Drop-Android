@@ -42,7 +42,6 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.Provider;
-import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -207,12 +206,13 @@ public class FtpServerService extends Service {
     private File createKeystore() throws Exception {
         File file = new File(getFilesDir(), "ftp-ftps.jks");
         if (file.exists()) return file;
-        Provider bcProvider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME);
-        if (bcProvider == null) {
-            bcProvider = new BouncyCastleProvider();
-            Security.addProvider(bcProvider);
-        }
-        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+        // Do not use Android's platform provider named "BC". Android ships an
+        // older, internal Bouncy Castle provider under the same name, which can
+        // shadow the bundled provider and make SHA256withRSA unavailable.
+        // Keep the bundled provider instance local instead of registering it
+        // globally.
+        Provider bcProvider = new BouncyCastleProvider();
+        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA", bcProvider);
         generator.initialize(2048);
         KeyPair keyPair = generator.generateKeyPair();
         long now = System.currentTimeMillis();
