@@ -44,7 +44,7 @@ public class CryptoProviderCompatibilityTest {
     }
 
     @Test
-    public void sshdInitializesWithAndroidHomeAndWithoutItsBcRegistrar() {
+    public void sshdInitializesWithAndroidHomeAndWithoutItsBcRegistrar() throws Exception {
         String providerProperty = "org.apache.sshd.security.provider.BC.enabled";
         String previousProviderProperty = System.getProperty(providerProperty);
         Context context = ApplicationProvider.getApplicationContext();
@@ -58,7 +58,7 @@ public class CryptoProviderCompatibilityTest {
             System.setProperty(providerProperty, "false");
             SshServer server = SshServer.setUpDefaultServer();
             assertNotNull(server);
-            server.close(true);
+            server.stop();
         } finally {
             if (previousProviderProperty == null) {
                 System.clearProperty(providerProperty);
