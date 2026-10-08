@@ -89,7 +89,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-                <activity
+        <activity
             android:name=".AboutActivity"
             android:exported="false"
             android:label="Sobre este app"
@@ -158,14 +158,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".FileBrowserActivity" />
-                <activity
+        <activity
             android:name=".qr.QRTransferActivity"
             android:exported="false"
             android:label="@string/qr_transfer_title"
             android:theme="@style/AppTheme"
             android:supportsPictureInPicture="true"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
-                <activity
+        <activity
             android:name=".SftpSettingsActivity"
             android:exported="false"
             android:parentActivityName=".SettingsActivity"
@@ -174,7 +174,7 @@
             android:supportsPictureInPicture="true"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
 
-                <activity
+        <activity
             android:name=".FtpSettingsActivity"
             android:exported="false"
             android:parentActivityName=".SettingsActivity"
@@ -213,13 +213,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-                <activity
+        <activity
             android:name=".DiagnosticsActivity"
             android:exported="false"
             android:label="@string/diagnostics_title"
             android:supportsPictureInPicture="true"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
-                <activity
+        <activity
             android:name=".OnionTransferActivity"
             android:exported="false"
             android:launchMode="singleTop"
