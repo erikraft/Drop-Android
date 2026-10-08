@@ -65,8 +65,8 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
     <string name="pref_device_name_summary">Set a user-defined device name</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Prikaži obavijest kada je preuzimanje završeno. Android 13+ zahtijeva dopuštenje za obavijesti.</string>
+    <string name="notifications_title">Obavijesti</string>
     <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
     <string name="keep_on_title">Keep screen on while transferring</string>
     <string name="floating_text_selection_title">Floating text selection</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Odaberi direktorij</string>
+    <string name="ftp_directory_summary">Odaberite mapu koju izlaže FTP/FTPS poslužitelj.</string>
+    <string name="ftp_stop_notification_title">Obavijest s „Zaustavi poslužitelj“</string>
+    <string name="ftp_stop_notification_summary">Prikaži radnju obavijesti za zaustavljanje FTP/FTPS poslužitelja.</string>
+    <string name="onion_stop_notification_title">Obavijest s „Zaustavi“</string>
+    <string name="onion_stop_notification_summary">Prikaži radnju obavijesti za zaustavljanje Onion usluge.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
