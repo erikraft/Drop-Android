@@ -175,22 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
-
     <string name="about_credits_title">Giới thiệu ứng dụng</string>
-
     <string name="about_version_format">Phiên bản %1$s (%2$d)</string>
-
     <string name="about_description">ErikrafT Drop™ là ứng dụng mã nguồn mở để truyền tệp và văn bản. Trang này liệt kê các phần phụ thuộc trực tiếp chính và tài liệu tham chiếu kỹ thuật của hệ sinh thái Web và Android.</string>
-
     <string name="about_dependencies_title">Phần phụ thuộc</string>
-
     <string name="about_dependencies_summary">Các phần phụ thuộc Android trực tiếp được sử dụng trong phiên bản này.</string>
-
     <string name="about_references_title">Tài liệu tham chiếu kỹ thuật</string>
-
     <string name="about_references_disclaimer">Giấy phép và ghi công của bên thứ ba được giữ trong các tệp giấy phép của dự án.</string>
-
     <string name="about_licenses_title">Giấy phép</string>
-
     <string name="about_licenses_summary">Thông tin giấy phép mã nguồn mở và bên thứ ba có trong mã nguồn.</string>
 </resources>
