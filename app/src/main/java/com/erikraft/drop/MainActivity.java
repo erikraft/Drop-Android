@@ -572,9 +572,13 @@ public class MainActivity extends DropPipActivity {
         registerReceiver(receiver, intentFilter);
     }
 
+    static boolean shouldKeepScreenOn(final SharedPreferences prefs, final String key) {
+        return prefs.getBoolean(key, true);
+    }
+
     void applyKeepScreenOnPreference() {
         if (prefs == null) return;
-        final boolean keepScreenOn = prefs.getBoolean(getString(R.string.pref_switch_keep_on), true);
+        final boolean keepScreenOn = shouldKeepScreenOn(prefs, getString(R.string.pref_switch_keep_on));
         if (keepScreenOn) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {
