@@ -65,7 +65,7 @@
     <string name="version">版本</string>
     <string name="pref_device_name_title">裝置名稱</string>
     <string name="pref_device_name_summary">設定使用者定義的裝置名稱</string>
-    <string name="notifications_summary">下載完成時顯示通知</string>
+    <string name="notifications_summary">下載完成時顯示通知。Android 13 以上版本需要通知權限。</string>
     <string name="notifications_title">通知</string>
     <string name="keep_on_summary">如果遇到螢幕休眠而中斷傳輸請開啟這個選項</string>
     <string name="keep_on_title">傳輸時保持螢幕開啟</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">選擇目錄</string>
+    <string name="ftp_directory_summary">選擇 FTP/FTPS 伺服器提供的資料夾。</string>
+    <string name="ftp_stop_notification_title">「停止伺服器」通知</string>
+    <string name="ftp_stop_notification_summary">顯示用於停止 FTP/FTPS 伺服器的通知操作。</string>
+    <string name="onion_stop_notification_title">「停止」通知</string>
+    <string name="onion_stop_notification_summary">顯示用於停止 Onion 服務的通知操作。</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
