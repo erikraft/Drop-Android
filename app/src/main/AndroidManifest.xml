@@ -89,12 +89,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
+                <activity
             android:name=".AboutActivity"
             android:exported="false"
-            android:label="Sobre este app" /
+            android:label="Sobre este app"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
@@ -158,30 +158,30 @@
             </intent-filter>
         </activity>
         <activity android:name=".FileBrowserActivity" />
-        <activity
+                <activity
             android:name=".qr.QRTransferActivity"
             android:exported="false"
             android:label="@string/qr_transfer_title"
-            android:theme="@style/AppTheme" /
+            android:theme="@style/AppTheme"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
-        <activity
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
+                <activity
             android:name=".SftpSettingsActivity"
             android:exported="false"
             android:parentActivityName=".SettingsActivity"
             android:label="@string/sftp_settings_title"
-            android:theme="@style/AppTheme" /
+            android:theme="@style/AppTheme"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
 
-        <activity
+                <activity
             android:name=".FtpSettingsActivity"
             android:exported="false"
             android:parentActivityName=".SettingsActivity"
             android:label="@string/ftp_settings_title"
-            android:theme="@style/AppTheme" /
+            android:theme="@style/AppTheme"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
 
         <service
             android:name=".QuickTileService"
@@ -213,11 +213,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        <activity android:name=".DiagnosticsActivity" android:exported="false" android:label="@string/diagnostics_title" /
+                <activity
+            android:name=".DiagnosticsActivity"
+            android:exported="false"
+            android:label="@string/diagnostics_title"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
-        <activity android:name=".OnionTransferActivity" android:exported="false" android:launchMode="singleTop" /
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
+                <activity
+            android:name=".OnionTransferActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
             android:supportsPictureInPicture="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
     </application>
 </manifest>
