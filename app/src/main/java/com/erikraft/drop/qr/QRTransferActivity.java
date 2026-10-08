@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -46,7 +45,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
-public class QRTransferActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+public class QRTransferActivity extends DropPipActivity implements SurfaceHolder.Callback {
 
     public static final String EXTRA_MODE = "mode";
     public static final String EXTRA_TEXT = "text";
