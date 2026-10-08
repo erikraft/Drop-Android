@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.security.AlgorithmParameters;
 import java.security.Provider;
-import java.security.Security;
 import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
