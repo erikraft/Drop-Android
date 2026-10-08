@@ -234,10 +234,23 @@ public class FtpServerService extends Service {
         KeyStore keyStore = KeyStore.getInstance("PKCS12");
         keyStore.load(null, KEYSTORE_PASSWORD.toCharArray());
         keyStore.setKeyEntry(KEY_ALIAS, keyPair.getPrivate(), KEYSTORE_PASSWORD.toCharArray(), new X509Certificate[]{certificate});
-        try (FileOutputStream output = new FileOutputStream(file)) {
-            keyStore.store(output, KEYSTORE_PASSWORD.toCharArray());
+        File temporary = File.createTempFile("ftp-ftps-", ".tmp", getFilesDir());
+        boolean published = false;
+        try {
+            try (FileOutputStream output = new FileOutputStream(temporary)) {
+                keyStore.store(output, KEYSTORE_PASSWORD.toCharArray());
+            }
+            if (!temporary.renameTo(file)) {
+                throw new IllegalStateException("Não foi possível finalizar o keystore FTPS.");
+            }
+            published = true;
+            return file;
+        } finally {
+            if (!published && temporary.exists() && !temporary.delete()) {
+                Log.w("FtpServerService", "Could not delete temporary FTPS keystore: "
+                        + temporary.getAbsolutePath());
+            }
         }
-        return file;
     }
 
     private void stopServer() {
