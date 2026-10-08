@@ -8,12 +8,19 @@ import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
 
+import org.apache.sshd.common.util.OsUtils;
+import org.apache.sshd.common.util.io.PathUtils;
 import org.apache.sshd.server.SshServer;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.core.app.ApplicationProvider;
+
+import android.content.Context;
+
+import java.security.KeyStore;
 
 @RunWith(AndroidJUnit4.class)
 public class CryptoProviderCompatibilityTest {
@@ -32,18 +39,31 @@ public class CryptoProviderCompatibilityTest {
     }
 
     @Test
-    public void sshdInitializesWithoutItsBouncyCastleRegistrar() {
-        String property = "org.apache.sshd.security.provider.BC.enabled";
-        String previous = System.getProperty(property);
+    public void androidProvidesPkcs12Keystore() throws Exception {
+        assertNotNull(KeyStore.getInstance("PKCS12"));
+    }
+
+    @Test
+    public void sshdInitializesWithAndroidHomeAndWithoutItsBcRegistrar() {
+        String providerProperty = "org.apache.sshd.security.provider.BC.enabled";
+        String previousProviderProperty = System.getProperty(providerProperty);
+        Context context = ApplicationProvider.getApplicationContext();
+        java.nio.file.Path appFiles = context.getFilesDir().toPath();
+
         try {
-            System.setProperty(property, "false");
+            System.setProperty("user.home", appFiles.toString());
+            System.setProperty("user.dir", appFiles.toString());
+            PathUtils.setUserHomeFolderResolver(() -> appFiles);
+            OsUtils.setCurrentWorkingDirectoryResolver(() -> appFiles);
+            System.setProperty(providerProperty, "false");
             SshServer server = SshServer.setUpDefaultServer();
             assertNotNull(server);
+            server.close(true);
         } finally {
-            if (previous == null) {
-                System.clearProperty(property);
+            if (previousProviderProperty == null) {
+                System.clearProperty(providerProperty);
             } else {
-                System.setProperty(property, previous);
+                System.setProperty(providerProperty, previousProviderProperty);
             }
         }
     }
