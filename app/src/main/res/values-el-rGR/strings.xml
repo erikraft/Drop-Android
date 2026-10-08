@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Σχετικά με την εφαρμογή</string>
+
+    <string name="about_version_format">Έκδοση %1$s (%2$d)</string>
+
+    <string name="about_description">Το ErikrafT Drop™ είναι εφαρμογή ανοικτού κώδικα για μεταφορά αρχείων και κειμένου. Αυτή η σελίδα παρουσιάζει τις βασικές άμεσες εξαρτήσεις και τεχνικές αναφορές του Web και Android οικοσυστήματος.</string>
+
+    <string name="about_dependencies_title">Εξαρτήσεις</string>
+
+    <string name="about_dependencies_summary">Άμεσες εξαρτήσεις Android που χρησιμοποιούνται σε αυτή την έκδοση.</string>
+
+    <string name="about_references_title">Τεχνικές αναφορές</string>
+
+    <string name="about_references_disclaimer">Οι άδειες και οι αναφορές τρίτων διατηρούνται στα αρχεία αδειών του έργου.</string>
+
+    <string name="about_licenses_title">Άδειες</string>
+
+    <string name="about_licenses_summary">Οι πληροφορίες αδειών ανοικτού κώδικα και τρίτων είναι διαθέσιμες στον πηγαίο κώδικα.</string>
 </resources>
