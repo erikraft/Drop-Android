@@ -65,8 +65,8 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Gerätename</string>
     <string name="pref_device_name_summary">Lege einen benutzerdefinierten Gerätenamen fest</string>
-        <string name="notifications_summary">Benachrichtigungen</string>
-        <string name="notifications_title">Benachrichtigung anzeigen, wenn ein Download abgeschlossen ist. Android 13+ benötigt eine Benachrichtigungsberechtigung.</string>
+    <string name="notifications_summary">Benachrichtigung anzeigen, wenn ein Download abgeschlossen ist. Android 13+ benötigt eine Benachrichtigungsberechtigung.</string>
+    <string name="notifications_title">Benachrichtigungen</string>
     <string name="keep_on_summary">(Empfohlen) Viele Geräte haben Probleme mit Übertragungen, wenn der Bildschirm ausgeschaltet wird</string>
     <string name="keep_on_title">Bildschirm während der Übertragung angeschaltet lassen</string>
     <string name="floating_text_selection_title">Schwebende Textauswahl</string>
