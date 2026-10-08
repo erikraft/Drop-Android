@@ -65,8 +65,8 @@
     <string name="version">Versió</string>
     <string name="pref_device_name_title">Nom del dispositiu</string>
     <string name="pref_device_name_summary">Estableix un nom de dispositiu definit per l\'usuari</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Mostra una notificació quan finalitzi la baixada. Android 13+ requereix permís per a les notificacions.</string>
+    <string name="notifications_title">Notificacions</string>
     <string name="keep_on_summary">(Recomanat) Molts dispositius tenen problemes amb transferiments detinguts degut a que la pantalla s\'apagui</string>
     <string name="keep_on_title">Deixa la pantalla encesa mentre es transfereix</string>
     <string name="floating_text_selection_title">Selecció del text flotant</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+        <string name="ftp_choose_directory">Tria el directori</string>
+        <string name="ftp_directory_summary">Tria la carpeta exposada pel servidor FTP/FTPS.</string>
+        <string name="ftp_stop_notification_title">Notificació amb «Atura el servidor»</string>
+        <string name="ftp_stop_notification_summary">Mostra una acció de notificació per aturar el servidor FTP/FTPS.</string>
+        <string name="onion_stop_notification_title">Notificació amb «Atura»</string>
+        <string name="onion_stop_notification_summary">Mostra una acció de notificació per aturar el servei Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Sobre l’aplicació</string>
+
+    <string name="about_version_format">Versió %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ és una aplicació de codi obert per transferir fitxers i text. Aquesta pàgina mostra les dependències directes i les referències tècniques principals de l’ecosistema Web i Android.</string>
+
+    <string name="about_dependencies_title">Dependències</string>
+
+    <string name="about_dependencies_summary">Dependències directes d’Android utilitzades en aquesta versió.</string>
+
+    <string name="about_references_title">Referències tècniques</string>
+
+    <string name="about_references_disclaimer">Les llicències i els crèdits de tercers es conserven als fitxers de llicència del projecte.</string>
+
+    <string name="about_licenses_title">Llicència</string>
+
+    <string name="about_licenses_summary">La informació de llicències de codi obert i de tercers està disponible al codi font.</string>
 </resources>

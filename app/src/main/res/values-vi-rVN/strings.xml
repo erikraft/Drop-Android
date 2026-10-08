@@ -65,8 +65,8 @@
     <string name="version">Phiên bản</string>
     <string name="pref_device_name_title">Tên thiết bị</string>
     <string name="pref_device_name_summary">Đặt tên thiết bị tùy chỉnh</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Hiển thị thông báo khi quá trình tải xuống hoàn tất. Android 13+ yêu cầu quyền thông báo.</string>
+    <string name="notifications_title">Thông báo</string>
     <string name="keep_on_summary">(Khuyến khích) Một số thiết bị trong lúc truyền sẽ bị ngắt nếu màn hình bị tắt</string>
     <string name="keep_on_title">Giữ màn hình bật khi đang truyền</string>
     <string name="floating_text_selection_title">Hộp thoại nổi khi bôi đen chữ</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Chọn thư mục</string>
+    <string name="ftp_directory_summary">Chọn thư mục được máy chủ FTP/FTPS cung cấp.</string>
+    <string name="ftp_stop_notification_title">Thông báo với “Dừng máy chủ”</string>
+    <string name="ftp_stop_notification_summary">Hiển thị thao tác thông báo để dừng máy chủ FTP/FTPS.</string>
+    <string name="onion_stop_notification_title">Thông báo với “Dừng”</string>
+    <string name="onion_stop_notification_summary">Hiển thị thao tác thông báo để dừng dịch vụ Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="about_credits_title">Giới thiệu ứng dụng</string>
+    <string name="about_version_format">Phiên bản %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ là ứng dụng mã nguồn mở để truyền tệp và văn bản. Trang này liệt kê các phần phụ thuộc trực tiếp chính và tài liệu tham chiếu kỹ thuật của hệ sinh thái Web và Android.</string>
+    <string name="about_dependencies_title">Phần phụ thuộc</string>
+    <string name="about_dependencies_summary">Các phần phụ thuộc Android trực tiếp được sử dụng trong phiên bản này.</string>
+    <string name="about_references_title">Tài liệu tham chiếu kỹ thuật</string>
+    <string name="about_references_disclaimer">Giấy phép và ghi công của bên thứ ba được giữ trong các tệp giấy phép của dự án.</string>
+    <string name="about_licenses_title">Giấy phép</string>
+    <string name="about_licenses_summary">Thông tin giấy phép mã nguồn mở và bên thứ ba có trong mã nguồn.</string>
 </resources>

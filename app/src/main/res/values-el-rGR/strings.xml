@@ -65,7 +65,7 @@
     <string name="version">Έκδοση</string>
     <string name="pref_device_name_title">Όνομα συσκευής</string>
     <string name="pref_device_name_summary">Ορισμός ονόματος συσκευής από τον χρήστη</string>
-    <string name="notifications_summary">Εμφάνιση ειδοποίησης όταν ολοκληρωθεί η λήψη</string>
+    <string name="notifications_summary">Εμφάνιση ειδοποίησης όταν ολοκληρωθεί μια λήψη. Το Android 13+ απαιτεί άδεια ειδοποιήσεων.</string>
     <string name="notifications_title">Ειδοποιήσεις</string>
     <string name="keep_on_summary">(Προτείνεται) Πολλές συσκευές αντιμετωπίζουν προβλήματα με μεταφορές αρχείων οπού διακόπτονται διότι η οθόνη απενεργοποιείται</string>
     <string name="keep_on_title">Διατηρήστε την οθόνη ενεργή κατά τη μεταφορά</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+        <string name="ftp_choose_directory">Επιλογή φακέλου</string>
+        <string name="ftp_directory_summary">Επιλέξτε τον φάκελο που εκθέτει ο διακομιστής FTP/FTPS.</string>
+        <string name="ftp_stop_notification_title">Ειδοποίηση με «Διακοπή διακομιστή»</string>
+        <string name="ftp_stop_notification_summary">Εμφάνιση ενέργειας ειδοποίησης για διακοπή του διακομιστή FTP/FTPS.</string>
+        <string name="onion_stop_notification_title">Ειδοποίηση με «Διακοπή»</string>
+        <string name="onion_stop_notification_summary">Εμφάνιση ενέργειας ειδοποίησης για διακοπή της υπηρεσίας Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Σχετικά με την εφαρμογή</string>
+
+    <string name="about_version_format">Έκδοση %1$s (%2$d)</string>
+
+    <string name="about_description">Το ErikrafT Drop™ είναι εφαρμογή ανοικτού κώδικα για μεταφορά αρχείων και κειμένου. Αυτή η σελίδα παρουσιάζει τις βασικές άμεσες εξαρτήσεις και τεχνικές αναφορές του Web και Android οικοσυστήματος.</string>
+
+    <string name="about_dependencies_title">Εξαρτήσεις</string>
+
+    <string name="about_dependencies_summary">Άμεσες εξαρτήσεις Android που χρησιμοποιούνται σε αυτή την έκδοση.</string>
+
+    <string name="about_references_title">Τεχνικές αναφορές</string>
+
+    <string name="about_references_disclaimer">Οι άδειες και οι αναφορές τρίτων διατηρούνται στα αρχεία αδειών του έργου.</string>
+
+    <string name="about_licenses_title">Άδειες</string>
+
+    <string name="about_licenses_summary">Οι πληροφορίες αδειών ανοικτού κώδικα και τρίτων είναι διαθέσιμες στον πηγαίο κώδικα.</string>
 </resources>

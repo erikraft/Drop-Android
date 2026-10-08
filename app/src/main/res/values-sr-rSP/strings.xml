@@ -65,8 +65,8 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
     <string name="pref_device_name_summary">Set a user-defined device name</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Прикажи обавештење када се преузимање заврши. Android 13+ захтева дозволу за обавештења.</string>
+    <string name="notifications_title">Обавештења</string>
     <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
     <string name="keep_on_title">Keep screen on while transferring</string>
     <string name="floating_text_selection_title">Floating text selection</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Изабери директоријум</string>
+    <string name="ftp_directory_summary">Изаберите фасциклу коју излаже FTP/FTPS сервер.</string>
+    <string name="ftp_stop_notification_title">Обавештење са „Заустави сервер“</string>
+    <string name="ftp_stop_notification_summary">Прикажи радњу у обавештењу за заустављање FTP/FTPS сервера.</string>
+    <string name="onion_stop_notification_title">Обавештење са „Заустави“</string>
+    <string name="onion_stop_notification_summary">Прикажи радњу у обавештењу за заустављање Onion услуге.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="about_credits_title">О апликацији</string>
+    <string name="about_version_format">Верзија %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ је апликација отвореног кода за пренос датотека и текста. Ова страница приказује главне директне зависности и техничке референце Web и Android екосистема.</string>
+    <string name="about_dependencies_title">Зависности</string>
+    <string name="about_dependencies_summary">Директне Android зависности које користи ова верзија.</string>
+    <string name="about_references_title">Техничке референце</string>
+    <string name="about_references_disclaimer">Лиценце и заслуге трећих страна сачуване су у лиценцним датотекама пројекта.</string>
+    <string name="about_licenses_title">Лиценце</string>
+    <string name="about_licenses_summary">Информације о лиценцама отвореног кода и трећих страна доступне су у изворном коду.</string>
 </resources>

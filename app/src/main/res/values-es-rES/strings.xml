@@ -65,8 +65,8 @@
     <string name="version">Versión</string>
     <string name="pref_device_name_title">Nombre del dispositivo</string>
     <string name="pref_device_name_summary">Establece un nombre de dispositivo definido por el usuario</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Mostrar una notificación cuando se complete una descarga. Android 13+ requiere permiso para las notificaciones.</string>
+    <string name="notifications_title">Notificaciones</string>
     <string name="keep_on_summary">(Recomendado) Muchos dispositivos tienen problemas con las interrupciones de transferencias cuando la pantalla se apaga</string>
     <string name="keep_on_title">Mantener la pantalla encendida mientras se transfiere</string>
     <string name="floating_text_selection_title">Selección de texto flotante</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+        <string name="ftp_choose_directory">Elegir directorio</string>
+        <string name="ftp_directory_summary">Elige la carpeta expuesta por el servidor FTP/FTPS.</string>
+        <string name="ftp_stop_notification_title">Notificación con «Detener servidor»</string>
+        <string name="ftp_stop_notification_summary">Mostrar una acción de notificación para detener el servidor FTP/FTPS.</string>
+        <string name="onion_stop_notification_title">Notificación con «Detener»</string>
+        <string name="onion_stop_notification_summary">Mostrar una acción de notificación para detener el servicio Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Acerca de la aplicación</string>
+
+    <string name="about_version_format">Versión %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ es una aplicación de código abierto para transferir archivos y texto. Esta página muestra las principales dependencias directas y referencias técnicas del ecosistema Web y Android.</string>
+
+    <string name="about_dependencies_title">Dependencias</string>
+
+    <string name="about_dependencies_summary">Dependencias directas de Android utilizadas en esta versión.</string>
+
+    <string name="about_references_title">Referencias técnicas</string>
+
+    <string name="about_references_disclaimer">Las licencias y atribuciones de terceros se conservan en los archivos de licencia del proyecto.</string>
+
+    <string name="about_licenses_title">Licencias</string>
+
+    <string name="about_licenses_summary">La información de licencias de código abierto y de terceros está disponible en el código fuente.</string>
 </resources>

@@ -65,7 +65,7 @@
     <string name="version">版本</string>
     <string name="pref_device_name_title">裝置名稱</string>
     <string name="pref_device_name_summary">設定使用者定義的裝置名稱</string>
-    <string name="notifications_summary">下載完成時顯示通知</string>
+    <string name="notifications_summary">下載完成時顯示通知。Android 13 以上版本需要通知權限。</string>
     <string name="notifications_title">通知</string>
     <string name="keep_on_summary">如果遇到螢幕休眠而中斷傳輸請開啟這個選項</string>
     <string name="keep_on_title">傳輸時保持螢幕開啟</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">選擇目錄</string>
+    <string name="ftp_directory_summary">選擇 FTP/FTPS 伺服器提供的資料夾。</string>
+    <string name="ftp_stop_notification_title">「停止伺服器」通知</string>
+    <string name="ftp_stop_notification_summary">顯示用於停止 FTP/FTPS 伺服器的通知操作。</string>
+    <string name="onion_stop_notification_title">「停止」通知</string>
+    <string name="onion_stop_notification_summary">顯示用於停止 Onion 服務的通知操作。</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">關於此應用程式</string>
+
+    <string name="about_version_format">版本 %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ 是一款用於傳輸檔案和文字的開源應用程式。本頁列出 Web 和 Android 生態系統中使用的主要直接相依套件與技術參考。</string>
+
+    <string name="about_dependencies_title">相依套件</string>
+
+    <string name="about_dependencies_summary">此版本使用的 Android 直接相依套件。</string>
+
+    <string name="about_references_title">技術參考</string>
+
+    <string name="about_references_disclaimer">第三方授權與署名資訊保留在專案的授權檔案中。</string>
+
+    <string name="about_licenses_title">授權</string>
+
+    <string name="about_licenses_summary">開源與第三方授權資訊可在原始碼中查看。</string>
 </resources>

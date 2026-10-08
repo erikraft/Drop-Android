@@ -193,4 +193,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">About this app</string>
+
+    <string name="about_version_format">Version %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ is an open-source app for transferring files and text. This page lists the main direct dependencies and technical references used across the Web and Android ecosystem.</string>
+
+    <string name="about_dependencies_title">Dependencies</string>
+
+    <string name="about_dependencies_summary">Direct Android dependencies used by this version.</string>
+
+    <string name="about_references_title">Technical references</string>
+
+    <string name="about_references_disclaimer">Upstream projects and third-party components retain their own authorship and licenses. This page documents the dependencies and references reviewed for ErikrafT Drop™.</string>
+
+    <string name="about_licenses_title">Licenses</string>
+
+    <string name="about_licenses_summary">Open-source and third-party license information is available in the source code and project license files.</string>
 </resources>

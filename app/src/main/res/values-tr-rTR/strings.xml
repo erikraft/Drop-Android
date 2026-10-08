@@ -65,8 +65,8 @@
     <string name="version">Sürüm</string>
     <string name="pref_device_name_title">Cihaz Adı</string>
     <string name="pref_device_name_summary">Kullanıcı-tanımlı bir cihaz adı belirleyin</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">İndirme tamamlandığında bildirim göster. Android 13+ bildirim izni gerektirir.</string>
+    <string name="notifications_title">Bildirimler</string>
     <string name="keep_on_summary">(Önerilir) Bir çok cihaz ekranın transfer anında kapanması sebebiyle problem yaşamakta</string>
     <string name="keep_on_title">Transfer sırasında ekranı açık tut</string>
     <string name="floating_text_selection_title">Kayan metin seçimi</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Dizin seç</string>
+    <string name="ftp_directory_summary">FTP/FTPS sunucusunun sunduğu klasörü seçin.</string>
+    <string name="ftp_stop_notification_title">“Sunucuyu durdur” bildirimi</string>
+    <string name="ftp_stop_notification_summary">FTP/FTPS sunucusunu durdurmak için bildirim eylemi göster.</string>
+    <string name="onion_stop_notification_title">“Durdur” bildirimi</string>
+    <string name="onion_stop_notification_summary">Onion hizmetini durdurmak için bildirim eylemi göster.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="about_credits_title">Uygulama hakkında</string>
+    <string name="about_version_format">Sürüm %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ dosya ve metin aktarımı için açık kaynaklı bir uygulamadır. Bu sayfa Web ve Android ekosisteminde kullanılan başlıca doğrudan bağımlılıkları ve teknik referansları gösterir.</string>
+    <string name="about_dependencies_title">Bağımlılıklar</string>
+    <string name="about_dependencies_summary">Bu sürümde kullanılan doğrudan Android bağımlılıkları.</string>
+    <string name="about_references_title">Teknik referanslar</string>
+    <string name="about_references_disclaimer">Üçüncü taraf lisansları ve atıfları projenin lisans dosyalarında korunur.</string>
+    <string name="about_licenses_title">Lisanslar</string>
+    <string name="about_licenses_summary">Açık kaynak ve üçüncü taraf lisans bilgileri kaynak kodunda bulunur.</string>
 </resources>

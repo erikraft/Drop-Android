@@ -65,8 +65,8 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Enhetsnamn</string>
     <string name="pref_device_name_summary">Ange ett användardefinierat enhetsnamn</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Visa en avisering när en nedladdning är klar. Android 13+ kräver behörighet för aviseringar.</string>
+    <string name="notifications_title">Aviseringar</string>
     <string name="keep_on_summary">(Rekommenderas) Många enheter har problem med överföringar som avbryts när skärmen stängs av</string>
     <string name="keep_on_title">Behåll skärmen på vid överföring</string>
     <string name="floating_text_selection_title">Floating text selection</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Välj katalog</string>
+    <string name="ftp_directory_summary">Välj mappen som FTP/FTPS-servern exponerar.</string>
+    <string name="ftp_stop_notification_title">Avisering med ”Stoppa server”</string>
+    <string name="ftp_stop_notification_summary">Visa en aviseringsåtgärd för att stoppa FTP/FTPS-servern.</string>
+    <string name="onion_stop_notification_title">Avisering med ”Stoppa”</string>
+    <string name="onion_stop_notification_summary">Visa en aviseringsåtgärd för att stoppa Onion-tjänsten.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="about_credits_title">Om appen</string>
+    <string name="about_version_format">Version %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ är en app med öppen källkod för överföring av filer och text. Den här sidan visar de viktigaste direkta beroendena och tekniska referenserna i Web- och Android-ekosystemet.</string>
+    <string name="about_dependencies_title">Beroenden</string>
+    <string name="about_dependencies_summary">Direkta Android-beroenden som används av den här versionen.</string>
+    <string name="about_references_title">Tekniska referenser</string>
+    <string name="about_references_disclaimer">Licenser och attributioner från tredje part finns kvar i projektets licensfiler.</string>
+    <string name="about_licenses_title">Licenser</string>
+    <string name="about_licenses_summary">Information om öppen källkod och tredjepartslicenser finns i källkoden.</string>
 </resources>

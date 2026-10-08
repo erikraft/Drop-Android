@@ -65,8 +65,8 @@
     <string name="version">Versiune</string>
     <string name="pref_device_name_title">Numele dispozitivului</string>
     <string name="pref_device_name_summary">Setează un nume de dispozitiv definit de utilizator</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Afișează o notificare când descărcarea este finalizată. Android 13+ necesită permisiunea pentru notificări.</string>
+    <string name="notifications_title">Notificări</string>
     <string name="keep_on_summary">(Recomandat) Multe dispozitive au probleme cu transferurile întrerupte atunci când ecranul se oprește</string>
     <string name="keep_on_title">Păstrează ecranul pornit în timpul transferului</string>
     <string name="floating_text_selection_title">Selecție de text plutitoare</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Alege directorul</string>
+    <string name="ftp_directory_summary">Alege folderul expus de serverul FTP/FTPS.</string>
+    <string name="ftp_stop_notification_title">Notificare cu „Oprește serverul”</string>
+    <string name="ftp_stop_notification_summary">Afișează o acțiune în notificare pentru oprirea serverului FTP/FTPS.</string>
+    <string name="onion_stop_notification_title">Notificare cu „Oprește”</string>
+    <string name="onion_stop_notification_summary">Afișează o acțiune în notificare pentru oprirea serviciului Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
@@ -175,4 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="about_credits_title">Despre aplicație</string>
+    <string name="about_version_format">Versiunea %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ este o aplicație open source pentru transferul de fișiere și text. Această pagină prezintă principalele dependențe directe și referințe tehnice ale ecosistemului Web și Android.</string>
+    <string name="about_dependencies_title">Dependențe</string>
+    <string name="about_dependencies_summary">Dependențele Android directe utilizate de această versiune.</string>
+    <string name="about_references_title">Referințe tehnice</string>
+    <string name="about_references_disclaimer">Licențele și atribuțiile terților sunt păstrate în fișierele de licență ale proiectului.</string>
+    <string name="about_licenses_title">Licențe</string>
+    <string name="about_licenses_summary">Informațiile despre licențele open source și terțe părți sunt disponibile în codul sursă.</string>
 </resources>
