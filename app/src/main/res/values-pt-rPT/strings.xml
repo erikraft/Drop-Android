@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Sobre esta aplicação</string>
+
+    <string name="about_version_format">Versão %1$s (%2$d)</string>
+
+    <string name="about_description">O ErikrafT Drop™ é uma aplicação de código aberto para transferência de ficheiros e texto. Esta página apresenta as principais dependências diretas e referências técnicas usadas no ecossistema Web e Android.</string>
+
+    <string name="about_dependencies_title">Dependências</string>
+
+    <string name="about_dependencies_summary">Dependências diretas do Android usadas nesta versão.</string>
+
+    <string name="about_references_title">Referências técnicas</string>
+
+    <string name="about_references_disclaimer">As licenças e atribuições de terceiros são mantidas nos ficheiros de licença do projeto.</string>
+
+    <string name="about_licenses_title">Licenças</string>
+
+    <string name="about_licenses_summary">As informações sobre licenças de código aberto e de terceiros estão disponíveis no código-fonte.</string>
 </resources>
