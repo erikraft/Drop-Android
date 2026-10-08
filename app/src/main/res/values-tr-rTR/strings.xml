@@ -175,22 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
-
     <string name="about_credits_title">Uygulama hakkında</string>
-
     <string name="about_version_format">Sürüm %1$s (%2$d)</string>
-
     <string name="about_description">ErikrafT Drop™ dosya ve metin aktarımı için açık kaynaklı bir uygulamadır. Bu sayfa Web ve Android ekosisteminde kullanılan başlıca doğrudan bağımlılıkları ve teknik referansları gösterir.</string>
-
     <string name="about_dependencies_title">Bağımlılıklar</string>
-
     <string name="about_dependencies_summary">Bu sürümde kullanılan doğrudan Android bağımlılıkları.</string>
-
     <string name="about_references_title">Teknik referanslar</string>
-
     <string name="about_references_disclaimer">Üçüncü taraf lisansları ve atıfları projenin lisans dosyalarında korunur.</string>
-
     <string name="about_licenses_title">Lisanslar</string>
-
     <string name="about_licenses_summary">Açık kaynak ve üçüncü taraf lisans bilgileri kaynak kodunda bulunur.</string>
 </resources>
