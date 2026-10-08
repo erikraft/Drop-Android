@@ -4,3 +4,10 @@ updates:
   directory: "/"
   schedule:
     interval: daily
+  ignore:
+    - dependency-name: "org.apache.ftpserver:ftpserver-core"
+    - dependency-name: "org.apache.sshd:sshd-core"
+    - dependency-name: "org.apache.sshd:sshd-sftp"
+    - dependency-name: "org.bouncycastle:bcprov-jdk18on"
+    - dependency-name: "org.bouncycastle:bcpkix-jdk18on"
+    - dependency-name: "org.briarproject:onionwrapper-android"
