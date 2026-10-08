@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PictureInPictureParams;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -58,7 +57,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -96,7 +94,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DropPipActivity {
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 12321;
 
     private String baseURL;
@@ -565,20 +563,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onUserLeaveHint() {
-        super.onUserLeaveHint();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-                && prefs != null
-                && prefs.getBoolean(getString(R.string.pref_picture_in_picture), true)
-                && !isFinishing()
-                && !isInPictureInPictureMode()) {
-            enterPictureInPictureMode(new PictureInPictureParams.Builder()
-                    .setAspectRatio(new android.util.Rational(16, 9))
-                    .build());
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         applyKeepScreenOnPreference();
@@ -591,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
     void applyKeepScreenOnPreference() {
         if (prefs == null) return;
         final boolean keepScreenOn = prefs.getBoolean(getString(R.string.pref_switch_keep_on), true);
-        if (keepScreenOn || transfer.get()) {
+        if (keepScreenOn) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
