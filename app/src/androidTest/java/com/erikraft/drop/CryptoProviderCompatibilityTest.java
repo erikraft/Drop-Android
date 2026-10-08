@@ -100,8 +100,12 @@ public class CryptoProviderCompatibilityTest {
                     KEYSTORE_PASSWORD.toCharArray());
             assertNotNull(reloaded.getKey("round-trip", KEYSTORE_PASSWORD.toCharArray()));
         } finally {
-            startService(context, FtpServerService.stopIntent(context));
-            restorePreferences(preferences, previous);
+            try {
+                startService(context, FtpServerService.stopIntent(context));
+                awaitFtpRunning(false);
+            } finally {
+                restorePreferences(preferences, previous);
+            }
         }
     }
 
