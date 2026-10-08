@@ -27,6 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.erikraft.drop.DropPipActivity;
 import com.erikraft.drop.R;
 import com.erikraft.drop.utils.ClipboardUtils;
 import com.google.zxing.BinaryBitmap;
@@ -413,7 +414,19 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
 
     @Override
     protected void onDestroy() {
-        cancelTransfer();
+        isCancelled = true;
+        stopCamera();
+
+        if (handler != null && animationRunnable != null) {
+            handler.removeCallbacks(animationRunnable);
+        }
+
+        if (qrDecoder != null) {
+            qrDecoder.reset();
+        }
+
+        sendChunks = null;
+        baseFrame = null;
         super.onDestroy();
     }
 }
