@@ -607,7 +607,9 @@ public class MainActivity extends DropPipActivity {
         } catch (IllegalArgumentException ignored) {
             Log.w("MainActivity.onStop", "No BroadcastReceiver registered");
         }
-        if (!transfer.get() && !dialogVisible && uploadMessage == null) {
+        final boolean inPictureInPictureMode = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && isInPictureInPictureMode();
+        if (!inPictureInPictureMode && !transfer.get() && !dialogVisible && uploadMessage == null) {
             binding.webview.loadUrl("about:blank");
         }
     }
