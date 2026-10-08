@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">关于此应用</string>
+
+    <string name="about_version_format">版本 %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ 是一款用于传输文件和文本的开源应用。本页面列出 Web 和 Android 生态中使用的主要直接依赖项和技术参考。</string>
+
+    <string name="about_dependencies_title">依赖项</string>
+
+    <string name="about_dependencies_summary">此版本使用的 Android 直接依赖项。</string>
+
+    <string name="about_references_title">技术参考</string>
+
+    <string name="about_references_disclaimer">第三方许可证和署名保存在项目的许可证文件中。</string>
+
+    <string name="about_licenses_title">许可证</string>
+
+    <string name="about_licenses_summary">开源及第三方许可证信息可在源代码中查看。</string>
 </resources>
