@@ -114,6 +114,10 @@ public class CryptoProviderCompatibilityTest {
                 context.getString(R.string.pref_sftp_username),
                 context.getString(R.string.pref_sftp_password),
                 context.getString(R.string.pref_sftp_save_location));
+        String previousUserHome = System.getProperty("user.home");
+        String previousUserDir = System.getProperty("user.dir");
+        String providerProperty = "org.apache.sshd.security.provider.BC.enabled";
+        String previousProviderProperty = System.getProperty(providerProperty);
         File home = new File(context.getFilesDir(), "sftp-instrumentation-home");
         assertTrue("Could not create SFTP test home", home.isDirectory() || home.mkdirs());
         try {
@@ -129,9 +133,17 @@ public class CryptoProviderCompatibilityTest {
             awaitSftpRunning(true);
             assertTrue("SFTP service did not remain running", SftpServerService.isRunning());
         } finally {
-            startService(context, SftpServerService.stopIntent(context));
-            awaitSftpRunning(false);
-            restorePreferences(preferences, previous);
+            try {
+                startService(context, SftpServerService.stopIntent(context));
+                awaitSftpRunning(false);
+            } finally {
+                PathUtils.setUserHomeFolderResolver(null);
+                OsUtils.setCurrentWorkingDirectoryResolver(null);
+                restoreProperty("user.home", previousUserHome);
+                restoreProperty("user.dir", previousUserDir);
+                restoreProperty(providerProperty, previousProviderProperty);
+                restorePreferences(preferences, previous);
+            }
         }
     }
 
