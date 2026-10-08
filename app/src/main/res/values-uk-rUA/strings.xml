@@ -175,22 +175,13 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
-
     <string name="about_credits_title">Про застосунок</string>
-
     <string name="about_version_format">Версія %1$s (%2$d)</string>
-
     <string name="about_description">ErikrafT Drop™ — застосунок із відкритим кодом для передавання файлів і тексту. На цій сторінці наведено основні прямі залежності та технічні посилання екосистем Web і Android.</string>
-
     <string name="about_dependencies_title">Залежності</string>
-
     <string name="about_dependencies_summary">Прямі залежності Android, які використовує ця версія.</string>
-
     <string name="about_references_title">Технічні посилання</string>
-
     <string name="about_references_disclaimer">Ліцензії та атрибуції сторонніх компонентів зберігаються у файлах ліцензій проєкту.</string>
-
     <string name="about_licenses_title">Ліцензії</string>
-
     <string name="about_licenses_summary">Інформація про ліцензії відкритого коду та сторонніх компонентів доступна у вихідному коді.</string>
 </resources>
