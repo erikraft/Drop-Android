@@ -65,8 +65,8 @@
     <string name="version">Versió</string>
     <string name="pref_device_name_title">Nom del dispositiu</string>
     <string name="pref_device_name_summary">Estableix un nom de dispositiu definit per l\'usuari</string>
-        <string name="notifications_summary">Notificacions</string>
-        <string name="notifications_title">Mostra una notificació quan finalitzi la baixada. Android 13+ requereix permís per a les notificacions.</string>
+    <string name="notifications_summary">Mostra una notificació quan finalitzi la baixada. Android 13+ requereix permís per a les notificacions.</string>
+    <string name="notifications_title">Notificacions</string>
     <string name="keep_on_summary">(Recomanat) Molts dispositius tenen problemes amb transferiments detinguts degut a que la pantalla s\'apagui</string>
     <string name="keep_on_title">Deixa la pantalla encesa mentre es transfereix</string>
     <string name="floating_text_selection_title">Selecció del text flotant</string>
