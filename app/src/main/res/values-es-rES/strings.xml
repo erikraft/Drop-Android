@@ -65,8 +65,8 @@
     <string name="version">Versión</string>
     <string name="pref_device_name_title">Nombre del dispositivo</string>
     <string name="pref_device_name_summary">Establece un nombre de dispositivo definido por el usuario</string>
-        <string name="notifications_summary">Notificaciones</string>
-        <string name="notifications_title">Mostrar una notificación cuando se complete una descarga. Android 13+ requiere permiso para las notificaciones.</string>
+    <string name="notifications_summary">Mostrar una notificación cuando se complete una descarga. Android 13+ requiere permiso para las notificaciones.</string>
+    <string name="notifications_title">Notificaciones</string>
     <string name="keep_on_summary">(Recomendado) Muchos dispositivos tienen problemas con las interrupciones de transferencias cuando la pantalla se apaga</string>
     <string name="keep_on_title">Mantener la pantalla encendida mientras se transfiere</string>
     <string name="floating_text_selection_title">Selección de texto flotante</string>
