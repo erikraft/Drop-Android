@@ -65,8 +65,8 @@
     <string name="version">Versie</string>
     <string name="pref_device_name_title">Apparaatnaam</string>
     <string name="pref_device_name_summary">Stel een apparaatnaam in</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Toon een melding wanneer een download is voltooid. Android 13+ vereist toestemming voor meldingen.</string>
+    <string name="notifications_title">Meldingen</string>
     <string name="keep_on_summary">(Aanbevolen) Veel apparaten hebben problemen met onderbroken overdrachten waneer het scherm wordt uitgeschakeld</string>
     <string name="keep_on_title">Houd het scherm aan tijdens de overdracht</string>
     <string name="floating_text_selection_title">Zwevende-tekstselectie</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Map kiezen</string>
+    <string name="ftp_directory_summary">Kies de map die door de FTP/FTPS-server wordt aangeboden.</string>
+    <string name="ftp_stop_notification_title">Melding met “Server stoppen”</string>
+    <string name="ftp_stop_notification_summary">Toon een meldingsactie om de FTP/FTPS-server te stoppen.</string>
+    <string name="onion_stop_notification_title">Melding met “Stoppen”</string>
+    <string name="onion_stop_notification_summary">Toon een meldingsactie om de Onion-service te stoppen.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
