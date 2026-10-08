@@ -65,8 +65,8 @@
     <string name="version">Έκδοση</string>
     <string name="pref_device_name_title">Όνομα συσκευής</string>
     <string name="pref_device_name_summary">Ορισμός ονόματος συσκευής από τον χρήστη</string>
-        <string name="notifications_summary">Ειδοποιήσεις</string>
-        <string name="notifications_title">Εμφάνιση ειδοποίησης όταν ολοκληρωθεί μια λήψη. Το Android 13+ απαιτεί άδεια ειδοποιήσεων.</string>
+    <string name="notifications_summary">Εμφάνιση ειδοποίησης όταν ολοκληρωθεί μια λήψη. Το Android 13+ απαιτεί άδεια ειδοποιήσεων.</string>
+    <string name="notifications_title">Ειδοποιήσεις</string>
     <string name="keep_on_summary">(Προτείνεται) Πολλές συσκευές αντιμετωπίζουν προβλήματα με μεταφορές αρχείων οπού διακόπτονται διότι η οθόνη απενεργοποιείται</string>
     <string name="keep_on_title">Διατηρήστε την οθόνη ενεργή κατά τη μεταφορά</string>
     <string name="floating_text_selection_title">Επιλογή Floating text</string>
