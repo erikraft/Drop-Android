@@ -65,8 +65,8 @@
     <string name="version">버전</string>
     <string name="pref_device_name_title">기기 이름</string>
     <string name="pref_device_name_summary">기기 별칭을 정하세요.</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">다운로드가 완료되면 알림을 표시합니다. Android 13 이상에서는 알림 권한이 필요합니다.</string>
+    <string name="notifications_title">알림</string>
     <string name="keep_on_summary">(권장함) 많은 기기에 화면이 꺼지면 전송이 중단되는 문제가 있습니다.</string>
     <string name="keep_on_title">전송 중일때 화면 켜짐 유지</string>
     <string name="floating_text_selection_title">선택된 텍스트 보내기</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">디렉터리 선택</string>
+    <string name="ftp_directory_summary">FTP/FTPS 서버에서 제공할 폴더를 선택하세요.</string>
+    <string name="ftp_stop_notification_title">“서버 중지” 알림</string>
+    <string name="ftp_stop_notification_summary">FTP/FTPS 서버를 중지하는 알림 작업을 표시합니다.</string>
+    <string name="onion_stop_notification_title">“중지” 알림</string>
+    <string name="onion_stop_notification_summary">Onion 서비스를 중지하는 알림 작업을 표시합니다.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
