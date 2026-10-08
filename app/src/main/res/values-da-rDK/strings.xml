@@ -65,8 +65,8 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
     <string name="pref_device_name_summary">Set a user-defined device name</string>
-        <string name="notifications_summary">Notifikationer</string>
-        <string name="notifications_title">Vis en notifikation, når en download er fuldført. Android 13+ kræver tilladelse til notifikationer.</string>
+    <string name="notifications_summary">Vis en notifikation, når en download er fuldført. Android 13+ kræver tilladelse til notifikationer.</string>
+    <string name="notifications_title">Notifikationer</string>
     <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
     <string name="keep_on_title">Keep screen on while transferring</string>
     <string name="floating_text_selection_title">Floating text selection</string>
