@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import android.content.SharedPreferences;
 
-import androidx.test.core.app.ApplicationProvider;
 import androidx.preference.PreferenceManager;
+import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.After;
 import org.junit.Before;
