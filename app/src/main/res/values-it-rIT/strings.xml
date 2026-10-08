@@ -65,8 +65,8 @@
     <string name="version">Versione</string>
     <string name="pref_device_name_title">Nome del dispositivo</string>
     <string name="pref_device_name_summary">Imposta un nome del dispositivo personalizzato</string>
-    <string name="notifications_summary">Show notification when download is completed</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Mostra una notifica al completamento di un download. Android 13+ richiede l’autorizzazione alle notifiche.</string>
+    <string name="notifications_title">Notifiche</string>
     <string name="keep_on_summary">(Consigliato) Molti dispositivi interrompono il trasferimento quando lo schermo si spegne</string>
     <string name="keep_on_title">Mantieni lo schermo attivo durante il trasferimento</string>
     <string name="floating_text_selection_title">Selezione testo fluttuante</string>
@@ -147,12 +147,12 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
     <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-    <string name="ftp_choose_directory">Choose directory</string>
-    <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-    <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-    <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-    <string name="onion_stop_notification_title">Notification with “Stop”</string>
-    <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
+    <string name="ftp_choose_directory">Scegli directory</string>
+    <string name="ftp_directory_summary">Scegli la cartella esposta dal server FTP/FTPS.</string>
+    <string name="ftp_stop_notification_title">Notifica con «Arresta server»</string>
+    <string name="ftp_stop_notification_summary">Mostra un’azione nella notifica per arrestare il server FTP/FTPS.</string>
+    <string name="onion_stop_notification_title">Notifica con «Arresta»</string>
+    <string name="onion_stop_notification_summary">Mostra un’azione nella notifica per arrestare il servizio Onion.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
