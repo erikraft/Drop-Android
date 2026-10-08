@@ -175,4 +175,22 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+
+    <string name="about_credits_title">Om appen</string>
+
+    <string name="about_version_format">Version %1$s (%2$d)</string>
+
+    <string name="about_description">ErikrafT Drop™ er en open source-app til overførsel af filer og tekst. Denne side viser de vigtigste direkte afhængigheder og tekniske referencer i Web- og Android-økosystemet.</string>
+
+    <string name="about_dependencies_title">Afhængigheder</string>
+
+    <string name="about_dependencies_summary">Direkte Android-afhængigheder, der bruges i denne version.</string>
+
+    <string name="about_references_title">Tekniske referencer</string>
+
+    <string name="about_references_disclaimer">Licenser og krediteringer for tredjeparter bevares i projektets licensfiler.</string>
+
+    <string name="about_licenses_title">Licens</string>
+
+    <string name="about_licenses_summary">Oplysninger om open source- og tredjepartslisenser findes i kildekoden.</string>
 </resources>
