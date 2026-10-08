@@ -65,7 +65,7 @@
     <string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
     <string name="pref_device_name_summary">Set a user-defined device name</string>
-    <string name="notifications_summary">Wys 'n kennisgewing wanneer 'n aflaai voltooi is. Android 13+ vereis kennisgewingtoestemming.</string>
+    <string name="notifications_summary">Wys \'n kennisgewing wanneer \'n aflaai voltooi is. Android 13+ vereis kennisgewingtoestemming.</string>
     <string name="notifications_title">Kennisgewings</string>
     <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
     <string name="keep_on_title">Keep screen on while transferring</string>
@@ -150,9 +150,9 @@
         <string name="ftp_choose_directory">Kies gids</string>
         <string name="ftp_directory_summary">Kies die gids wat deur die FTP/FTPS-bediener blootgestel word.</string>
         <string name="ftp_stop_notification_title">Kennisgewing met “Stop bediener”</string>
-        <string name="ftp_stop_notification_summary">Wys 'n kennisgewingaksie om die FTP/FTPS-bediener te stop.</string>
+        <string name="ftp_stop_notification_summary">Wys \'n kennisgewingaksie om die FTP/FTPS-bediener te stop.</string>
         <string name="onion_stop_notification_title">Kennisgewing met “Stop”</string>
-        <string name="onion_stop_notification_summary">Wys 'n kennisgewingaksie om die Onion-diens te stop.</string>
+        <string name="onion_stop_notification_summary">Wys \'n kennisgewingaksie om die Onion-diens te stop.</string>
     <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
