@@ -279,7 +279,7 @@ public class FtpServerService extends Service {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) manager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Servidor FTP", NotificationManager.IMPORTANCE_LOW));
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_ftp)
+                .setSmallIcon(R.drawable.pref_savelocation)
                 .setContentTitle("ErikrafT Drop™ FTP")
                 .setContentText(text)
                 .setOngoing(true)
