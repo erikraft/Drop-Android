@@ -1,18 +1,22 @@
 package com.erikraft.drop;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Build;
 import android.os.Environment;
+import android.content.pm.PackageManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.preference.PreferenceManager;
@@ -26,10 +30,22 @@ public class SftpSettingsActivity extends DropPipActivity {
     private String initialStatus = "Servidor parado";
     private TextView folder,status,address;
     private ActivityResultLauncher<Intent> picker;
+    private ActivityResultLauncher<String> notificationPermissionLauncher;
+    private SwitchCompat stopNotificationSwitch;
     private BroadcastReceiver statusReceiver;
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
+        notificationPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(), granted -> {
+                    if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
+                    PreferenceManager.getDefaultSharedPreferences(this).edit()
+                            .putBoolean(getString(R.string.pref_sftp_stop_notification), granted).apply();
+                    if (SftpServerService.isRunning()) {
+                        startService(new Intent(this, SftpServerService.class)
+                                .setAction(SftpServerService.ACTION_REFRESH_NOTIFICATION));
+                    }
+                });
         picker=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),r->{
             if(r.getResultCode()!=Activity.RESULT_OK||r.getData()==null)return;
             android.net.Uri uri=r.getData().getData(); if(uri==null)return;
@@ -78,11 +94,41 @@ public class SftpSettingsActivity extends DropPipActivity {
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
         port=field("Porta",p.getString(getString(R.string.pref_sftp_port),"2222"));user=field("Nome de usuário",p.getString(getString(R.string.pref_sftp_username),"admin"));password=field("Senha",p.getString(getString(R.string.pref_sftp_password),"admin"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
+        stopNotificationSwitch = new SwitchCompat(this);
+        stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
+        stopNotificationSwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_stop_notification), false));
+        c.addView(stopNotificationSwitch,top(10));
         status=text(initialStatus,15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
         LinearLayout row=new LinearLayout(this);MaterialButton start=button("Iniciar servidor SFTP"),stop=button("Parar servidor SFTP");row.addView(start,new LinearLayout.LayoutParams(0,-2,1));LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(0,-2,1);sp.setMargins(dp(8),0,0,0);row.addView(stop,sp);c.addView(row,top(14));
         MaterialButton copy=button("Copiar endereço SFTP");c.addView(copy,top(8));
-        start.setOnClickListener(v->startServer());stop.setOnClickListener(v->stopServer());copy.setOnClickListener(v->{android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);if(cm!=null)cm.setPrimaryClip(android.content.ClipData.newPlainText("SFTP",address.getText()));});
+        start.setOnClickListener(v->startServer());
+        stopNotificationSwitch.setOnClickListener(v->handleStopNotificationPreference());
+        stop.setOnClickListener(v->stopServer());copy.setOnClickListener(v->{android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);if(cm!=null)cm.setPrimaryClip(android.content.ClipData.newPlainText("SFTP",address.getText()));});
         root.addView(c,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);
+    }
+
+    private void handleStopNotificationPreference() {
+        if (!stopNotificationSwitch.isChecked()) {
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putBoolean(getString(R.string.pref_sftp_stop_notification), false).apply();
+            if (SftpServerService.isRunning()) {
+                startService(new Intent(this, SftpServerService.class)
+                        .setAction(SftpServerService.ACTION_REFRESH_NOTIFICATION));
+            }
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            return;
+        }
+        PreferenceManager.getDefaultSharedPreferences(this).edit()
+                .putBoolean(getString(R.string.pref_sftp_stop_notification), true).apply();
+        if (SftpServerService.isRunning()) {
+            startService(new Intent(this, SftpServerService.class)
+                    .setAction(SftpServerService.ACTION_REFRESH_NOTIFICATION));
+        }
     }
 
     private void startServer(){
@@ -91,7 +137,7 @@ public class SftpSettingsActivity extends DropPipActivity {
         int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,"Informe uma porta válida.",Toast.LENGTH_SHORT).show();return;}
         if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
-        p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).apply();
+        p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
         androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
