@@ -28,6 +28,7 @@ import java.util.Collections;
 public class SftpServerService extends Service {
     public static final String ACTION_START = "com.erikraft.drop.action.START_SFTP";
     public static final String ACTION_STOP = "com.erikraft.drop.action.STOP_SFTP";
+    public static final String ACTION_REFRESH_NOTIFICATION = "com.erikraft.drop.action.REFRESH_SFTP_NOTIFICATION";
     public static final String EXTRA_STATUS = "sftp_status";
     public static final String EXTRA_ERROR = "sftp_error";
     private static final String CHANNEL_ID = "sftp_server";
@@ -50,6 +51,10 @@ public class SftpServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent != null && ACTION_REFRESH_NOTIFICATION.equals(intent.getAction())) {
+            if (server != null) updateNotification("SFTP ativo em " + runningPort);
+            return START_NOT_STICKY;
+        }
         if (intent != null && ACTION_STOP.equals(intent.getAction())) {
             stopServer();
             stopSelf();
@@ -187,16 +192,21 @@ public class SftpServerService extends Service {
         PendingIntent stopPendingIntent = PendingIntent.getService(
                 this, NOTIFICATION_ID + 1, stopIntent(this),
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        return new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.pref_savelocation)
                 .setContentTitle("ErikrafT Drop™ SFTP")
                 .setContentText(text)
                 .setOngoing(true)
-                .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .addAction(new NotificationCompat.Action.Builder(
-                        android.R.drawable.ic_menu_close_clear_cancel,
-                        getString(R.string.ftp_stop),
-                        stopPendingIntent).build());
+                .setCategory(NotificationCompat.CATEGORY_SERVICE);
+        boolean stopAction = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_sftp_stop_notification), false);
+        if (stopAction) {
+            builder.addAction(new NotificationCompat.Action.Builder(
+                    android.R.drawable.ic_menu_close_clear_cancel,
+                    getString(R.string.ftp_stop),
+                    stopPendingIntent).build());
+        }
+        return builder;
     }
 
     private android.app.Notification notification(String text) {
