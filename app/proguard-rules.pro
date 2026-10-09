@@ -13,6 +13,12 @@
 -dontwarn javax.management.MBeanException
 -dontwarn javax.management.ReflectionException
 
+# Apache MINA proxy authentication optionally references Java SE SASL
+# and GSSAPI types, which are not available on the Android runtime.
+# The app does not configure MINA SOCKS GSSAPI or SASL proxy authentication.
+-dontwarn javax.security.sasl.**
+-dontwarn org.ietf.jgss.**
+
 # Keep methods invoked by WebView's reflection-based JavaScript bridge in release builds.
 -keepclassmembers class com.erikraft.drop.JavaScriptInterface {
     @android.webkit.JavascriptInterface <methods>;
