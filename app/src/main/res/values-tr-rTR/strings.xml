@@ -171,7 +171,7 @@
         <string name="diagnostics_save">.txt indir</string>
         <string name="diagnostics_copied">Tanılama kopyalandı.</string>
         <string name="diagnostics_saved">Tanılama dosyası kaydedildi.</string>
-        <string name="diagnostics_disabled">Günlükleri görmek için Ayarlar'da Tanılama'yı etkinleştirin.</string>
+        <string name="diagnostics_disabled">Günlükleri görmek için Ayarlar\'da Tanılama\'yı etkinleştirin.</string>
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
