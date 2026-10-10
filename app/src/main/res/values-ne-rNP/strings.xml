@@ -175,4 +175,6 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="sftp_start">SFTP सर्भर सुरु गर्नुहोस्</string>
+    <string name="sftp_stop">SFTP सर्भर रोक्नुहोस्</string>
 </resources>

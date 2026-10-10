@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Licențele și atribuțiile terților sunt păstrate în fișierele de licență ale proiectului.</string>
     <string name="about_licenses_title">Licențe</string>
     <string name="about_licenses_summary">Informațiile despre licențele open source și terțe părți sunt disponibile în codul sursă.</string>
+    <string name="sftp_start">Pornește serverul SFTP</string>
+    <string name="sftp_stop">Oprește serverul SFTP</string>
 </resources>

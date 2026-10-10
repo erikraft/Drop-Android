@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Лиценце и заслуге трећих страна сачуване су у лиценцним датотекама пројекта.</string>
     <string name="about_licenses_title">Лиценце</string>
     <string name="about_licenses_summary">Информације о лиценцама отвореног кода и трећих страна доступне су у изворном коду.</string>
+    <string name="sftp_start">Покрени SFTP сервер</string>
+    <string name="sftp_stop">Заустави SFTP сервер</string>
 </resources>

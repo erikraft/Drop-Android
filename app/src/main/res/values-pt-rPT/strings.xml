@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">As licenças e atribuições de terceiros são mantidas nos ficheiros de licença do projeto.</string>
     <string name="about_licenses_title">Licenças</string>
     <string name="about_licenses_summary">As informações sobre licenças de código aberto e de terceiros estão disponíveis no código-fonte.</string>
+    <string name="sftp_start">Iniciar servidor SFTP</string>
+    <string name="sftp_stop">Parar servidor SFTP</string>
 </resources>
