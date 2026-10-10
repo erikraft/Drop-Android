@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string name="diagnostics_clear">Clear</string>
-        <string name="diagnostics_loading">Loading diagnostics…</string>
-    <string name="diagnostics_share_failed">Failed to share diagnostics: %1$s</string>
-    <string name="diagnostics_save_failed">Failed to save diagnostics: %1$s</string>
-</resources>
+        <string name="diagnostics_loading">Loading diagnostics…</string></resources>

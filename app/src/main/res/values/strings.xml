@@ -218,9 +218,6 @@
     <string name="app_language_title">App language</string>
     <string name="app_language_summary">Current: %1$s. The WebView website follows this language when available.</string>
     <string name="app_language_dialog_title">Choose app language</string>
-    <string name="app_language_system_default">Device default language</string>
-    <string name="diagnostics_clear">Clear</string>
-    <string name="diagnostics_loading">Loading diagnostics…</string>
-    <string name="diagnostics_share_failed">Failed to share diagnostics: %1$s</string>
+    <string name="app_language_system_default">Device default language</string>    <string name="diagnostics_share_failed">Failed to share diagnostics: %1$s</string>
     <string name="diagnostics_save_failed">Failed to save diagnostics: %1$s</string>
 </resources>
