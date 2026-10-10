@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Άδειες</string>
 
     <string name="about_licenses_summary">Οι πληροφορίες αδειών ανοικτού κώδικα και τρίτων είναι διαθέσιμες στον πηγαίο κώδικα.</string>
+    <string name="sftp_start">Εκκίνηση διακομιστή SFTP</string>
+    <string name="sftp_stop">Διακοπή διακομιστή SFTP</string>
 </resources>

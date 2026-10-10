@@ -29,6 +29,7 @@ public class SftpSettingsActivity extends DropPipActivity {
     private TextInputEditText port,user,password;
     private String initialStatus = "Servidor parado";
     private TextView folder,status,address;
+    private MaterialButton serverToggleButton;
     private ActivityResultLauncher<Intent> picker;
     private ActivityResultLauncher<String> notificationPermissionLauncher;
     private SwitchCompat stopNotificationSwitch;
@@ -72,13 +73,17 @@ public class SftpSettingsActivity extends DropPipActivity {
             boolean running = intent.getBooleanExtra("running", false);
             String error = intent.getStringExtra(SftpServerService.EXTRA_ERROR);
             status.setText(running ? "Servidor SFTP ativo" : (error == null ? "Servidor parado" : "Falha: " + error));
+            updateServerToggle(running);
             if (running) address.setText("sftp://" + com.erikraft.drop.utils.NetworkUtils.getIpAddress(SftpSettingsActivity.this) + ":" + SftpServerService.getRunningPort());
             else address.setText("");
         }};
         ContextCompat.registerReceiver(this, statusReceiver, new IntentFilter(SftpServerService.EXTRA_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
         if (SftpServerService.isRunning()) {
             status.setText("Servidor SFTP ativo");
+            updateServerToggle(true);
             address.setText("sftp://" + com.erikraft.drop.utils.NetworkUtils.getIpAddress(this) + ":" + SftpServerService.getRunningPort());
+        } else {
+            updateServerToggle(false);
         }
     }
 
@@ -99,11 +104,11 @@ public class SftpSettingsActivity extends DropPipActivity {
         stopNotificationSwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_stop_notification), false));
         c.addView(stopNotificationSwitch,top(10));
         status=text(initialStatus,15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
-        LinearLayout row=new LinearLayout(this);MaterialButton start=button("Iniciar servidor SFTP"),stop=button("Parar servidor SFTP");row.addView(start,new LinearLayout.LayoutParams(0,-2,1));LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(0,-2,1);sp.setMargins(dp(8),0,0,0);row.addView(stop,sp);c.addView(row,top(14));
+        serverToggleButton=button(getString(R.string.sftp_start));c.addView(serverToggleButton,top(14));
         MaterialButton copy=button("Copiar endereço SFTP");c.addView(copy,top(8));
-        start.setOnClickListener(v->startServer());
+        serverToggleButton.setOnClickListener(v->{if(SftpServerService.isRunning())stopServer();else startServer();});
         stopNotificationSwitch.setOnClickListener(v->handleStopNotificationPreference());
-        stop.setOnClickListener(v->stopServer());copy.setOnClickListener(v->{android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);if(cm!=null)cm.setPrimaryClip(android.content.ClipData.newPlainText("SFTP",address.getText()));});
+        copy.setOnClickListener(v->{android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);if(cm!=null)cm.setPrimaryClip(android.content.ClipData.newPlainText("SFTP",address.getText()));});
         root.addView(c,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);
     }
 
@@ -140,7 +145,8 @@ public class SftpSettingsActivity extends DropPipActivity {
         p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
         androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
-    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Servidor SFTP parado.");address.setText("");}
+    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Parando servidor SFTP…");}
+    private void updateServerToggle(boolean running){if(serverToggleButton!=null)serverToggleButton.setText(running?R.string.sftp_stop:R.string.sftp_start);}
     @Override protected void onDestroy(){ if(statusReceiver!=null) unregisterReceiver(statusReceiver); super.onDestroy(); }
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if("Senha".equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
     private MaterialButton button(String label){MaterialButton b=new MaterialButton(this);b.setText(label);return b;}

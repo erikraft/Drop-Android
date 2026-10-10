@@ -41,7 +41,7 @@
     <string name="retry">repetir</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Informações sobre o \'app\'</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Sobre o ErikrafT Drop™</string>
     <string name="pref_about_title">Sobre este \'app\'</string>
     <string name="view_downloads">Ver downloads</string>
     <string name="pref_category_settings">Configurações</string>
@@ -144,6 +144,8 @@
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
     <!-- SFTP -->
+    <string name="sftp_start">Iniciar servidor SFTP</string>
+    <string name="sftp_stop">Parar servidor SFTP</string>
     <string name="sftp_settings_title">Transferência via SFTP</string>
     <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
     <!-- FTP / FTPS -->
@@ -170,6 +172,7 @@
     <string name="diagnostics_open">Abrir diagnósticos</string>
     <string name="diagnostics_refresh">Atualizar</string>
     <string name="diagnostics_copy">Copiar</string>
+    <string name="diagnostics_share">Compartilhar diagnósticos</string>
     <string name="diagnostics_save">Baixar .txt</string>
     <string name="diagnostics_copied">Diagnósticos copiados.</string>
     <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>

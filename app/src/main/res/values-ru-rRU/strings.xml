@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Лицензии и сведения о сторонних компонентах сохраняются в файлах лицензий проекта.</string>
     <string name="about_licenses_title">Лицензии</string>
     <string name="about_licenses_summary">Информация о лицензиях открытого кода и сторонних компонентов доступна в исходном коде.</string>
+    <string name="sftp_start">Запустить SFTP-сервер</string>
+    <string name="sftp_stop">Остановить SFTP-сервер</string>
 </resources>

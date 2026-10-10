@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Giấy phép và ghi công của bên thứ ba được giữ trong các tệp giấy phép của dự án.</string>
     <string name="about_licenses_title">Giấy phép</string>
     <string name="about_licenses_summary">Thông tin giấy phép mã nguồn mở và bên thứ ba có trong mã nguồn.</string>
+    <string name="sftp_start">Khởi động máy chủ SFTP</string>
+    <string name="sftp_stop">Dừng máy chủ SFTP</string>
 </resources>

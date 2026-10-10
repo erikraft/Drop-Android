@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Lisensie</string>
 
     <string name="about_licenses_summary">Oopbron- en derdeparty-lisensie-inligting is beskikbaar in die bronkode.</string>
+    <string name="sftp_start">Begin SFTP-bediener</string>
+    <string name="sftp_stop">Stop SFTP-bediener</string>
 </resources>

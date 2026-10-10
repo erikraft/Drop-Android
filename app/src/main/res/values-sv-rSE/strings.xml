@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Licenser och attributioner från tredje part finns kvar i projektets licensfiler.</string>
     <string name="about_licenses_title">Licenser</string>
     <string name="about_licenses_summary">Information om öppen källkod och tredjepartslicenser finns i källkoden.</string>
+    <string name="sftp_start">Starta SFTP-server</string>
+    <string name="sftp_stop">Stoppa SFTP-server</string>
 </resources>

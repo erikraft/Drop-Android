@@ -3,6 +3,8 @@ package com.erikraft.drop;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,12 +19,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.preference.PreferenceManager;
 
 import com.erikraft.drop.utils.LogUtils;
 import com.google.android.material.button.MaterialButton;
 
 import java.nio.charset.StandardCharsets;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -70,10 +75,11 @@ public class DiagnosticsActivity extends DropPipActivity {
         LinearLayout actions = new LinearLayout(this);
         actions.setOrientation(LinearLayout.HORIZONTAL);
         actions.setGravity(Gravity.CENTER_VERTICAL);
-        addActionButton(actions, button(R.string.diagnostics_refresh), v -> refreshLogs());
-        addActionButton(actions, button(R.string.diagnostics_copy), v -> copyLogs());
-        addActionButton(actions, button(R.string.diagnostics_save), v -> saver.launch("erikraft-drop-diagnostics.txt"));
-        addActionButton(actions, button(R.string.diagnostics_clear), v -> clearLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_refresh, android.R.drawable.ic_popup_sync), v -> refreshLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_copy, R.drawable.ic_content_copy), v -> copyLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_save, android.R.drawable.ic_menu_save), v -> saver.launch("erikraft-drop-diagnostics.txt"));
+        addActionButton(actions, iconButton(R.string.diagnostics_clear, android.R.drawable.ic_menu_delete), v -> clearLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_share, android.R.drawable.ic_menu_share), v -> shareLogs());
         root.addView(actions, new LinearLayout.LayoutParams(-1, -2));
 
         ScrollView scroll = new ScrollView(this);
@@ -103,6 +109,15 @@ public class DiagnosticsActivity extends DropPipActivity {
         b.setMinWidth(0);
         b.setMaxLines(1);
         return b;
+    }
+
+    private MaterialButton iconButton(int label, int icon) {
+        MaterialButton button = button(label);
+        button.setText("");
+        button.setContentDescription(getString(label));
+        button.setIconResource(icon);
+        button.setIconGravity(MaterialButton.ICON_GRAVITY_TEXT_START);
+        return button;
     }
 
     private void addActionButton(LinearLayout parent, MaterialButton button, View.OnClickListener listener) {
@@ -136,6 +151,25 @@ public class DiagnosticsActivity extends DropPipActivity {
         ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (cm != null) cm.setPrimaryClip(ClipData.newPlainText("ErikrafT Drop diagnostics", currentLogs));
         Toast.makeText(this, R.string.diagnostics_copied, Toast.LENGTH_SHORT).show();
+    }
+
+    private void shareLogs() {
+        try {
+            File file = new File(getCacheDir(), "erikraft-drop-diagnostics.txt");
+            try (FileOutputStream out = new FileOutputStream(file, false)) {
+                out.write(currentLogs.getBytes(StandardCharsets.UTF_8));
+            }
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("text/plain");
+            share.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.diagnostics_title));
+            share.putExtra(Intent.EXTRA_STREAM, uri);
+            share.setClipData(android.content.ClipData.newRawUri("ErikrafT Drop diagnostics", uri));
+            share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(share, getString(R.string.diagnostics_share)));
+        } catch (Exception e) {
+            Toast.makeText(this, "Falha ao compartilhar: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void clearLogs() {

@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Лиценз</string>
 
     <string name="about_licenses_summary">Информацията за лицензите на отворения код и компонентите на трети страни е налична в изходния код.</string>
+    <string name="sftp_start">Стартиране на SFTP сървър</string>
+    <string name="sftp_stop">Спиране на SFTP сървър</string>
 </resources>

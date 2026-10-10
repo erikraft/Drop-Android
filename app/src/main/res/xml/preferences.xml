@@ -23,7 +23,7 @@
             android:title="@string/keep_on_title" />
         <SwitchPreferenceCompat
             android:defaultValue="true"
-            android:icon="@drawable/pref_screen"
+            android:icon="@drawable/ic_picture_in_picture"
             android:key="@string/pref_picture_in_picture"
             android:summary="@string/picture_in_picture_summary"
             android:title="@string/picture_in_picture_title" />

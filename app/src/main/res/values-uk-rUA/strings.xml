@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Ліцензії та атрибуції сторонніх компонентів зберігаються у файлах ліцензій проєкту.</string>
     <string name="about_licenses_title">Ліцензії</string>
     <string name="about_licenses_summary">Інформація про ліцензії відкритого коду та сторонніх компонентів доступна у вихідному коді.</string>
+    <string name="sftp_start">Запустити SFTP-сервер</string>
+    <string name="sftp_stop">Зупинити SFTP-сервер</string>
 </resources>

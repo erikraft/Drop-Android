@@ -144,6 +144,8 @@
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
     <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
     <!-- SFTP -->
+    <string name="sftp_start">Start SFTP server</string>
+    <string name="sftp_stop">Stop SFTP server</string>
     <string name="sftp_settings_title">Transferência via SFTP</string>
     <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
     <string name="pref_sftp_port" translatable="false">sftp_port</string>
@@ -175,6 +177,7 @@
     <string name="diagnostics_open">Abrir diagnósticos</string>
     <string name="diagnostics_refresh">Atualizar</string>
     <string name="diagnostics_copy">Copiar</string>
+    <string name="diagnostics_share">Share diagnostics</string>
     <string name="diagnostics_save">Baixar .txt</string>
     <string name="diagnostics_copied">Diagnósticos copiados.</string>
     <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
