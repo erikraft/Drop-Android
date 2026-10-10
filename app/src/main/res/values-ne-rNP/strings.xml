@@ -187,4 +187,5 @@
     <string name="diagnostics_share_failed">डायग्नोस्टिक्स साझा गर्न सकिएन: %1$s</string>
     <string name="diagnostics_save_failed">डायग्नोस्टिक्स सुरक्षित गर्न सकिएन: %1$s</string>
     <string name="app_language_search">भाषाहरू खोज्नुहोस्</string>
+    <string name="app_language_search_no_results">कुनै भाषा फेला परेन</string>
 </resources>

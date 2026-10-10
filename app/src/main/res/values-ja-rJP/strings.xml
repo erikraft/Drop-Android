@@ -187,4 +187,5 @@
     <string name="diagnostics_share_failed">診断を共有できませんでした: %1$s</string>
     <string name="diagnostics_save_failed">診断を保存できませんでした: %1$s</string>
     <string name="app_language_search">言語を検索</string>
+    <string name="app_language_search_no_results">言語が見つかりません</string>
 </resources>

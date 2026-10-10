@@ -207,4 +207,5 @@
     <string name="diagnostics_share_failed">Falha ao compartilhar diagnósticos: %1$s</string>
     <string name="diagnostics_save_failed">Falha ao salvar os diagnósticos: %1$s</string>
     <string name="app_language_search">Pesquisar idiomas</string>
+    <string name="app_language_search_no_results">Nenhum idioma encontrado</string>
 </resources>
