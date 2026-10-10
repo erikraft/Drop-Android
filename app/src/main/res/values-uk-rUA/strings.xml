@@ -195,4 +195,5 @@
     <string name="diagnostics_loading">Завантаження діагностики…</string>
     <string name="diagnostics_share_failed">Не вдалося поділитися діагностикою: %1$s</string>
     <string name="diagnostics_save_failed">Не вдалося зберегти діагностику: %1$s</string>
+    <string name="app_language_search">Пошук мов</string>
 </resources>

@@ -195,4 +195,5 @@
     <string name="diagnostics_loading">Läser in diagnostik…</string>
     <string name="diagnostics_share_failed">Det gick inte att dela diagnostik: %1$s</string>
     <string name="diagnostics_save_failed">Det gick inte att spara diagnostik: %1$s</string>
+    <string name="app_language_search">Sök språk</string>
 </resources>
