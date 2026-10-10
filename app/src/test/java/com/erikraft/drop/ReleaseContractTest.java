@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class ReleaseContractTest {
     @Test
-    public void androidVersionMustRemain10_1_8Code31() {
-        assertEquals("10.1.8", BuildConfig.VERSION_NAME);
-        assertEquals(31, BuildConfig.VERSION_CODE);
+    public void androidVersionMustRemain10_1_9Code32() {
+        assertEquals("10.1.9", BuildConfig.VERSION_NAME);
+        assertEquals(32, BuildConfig.VERSION_CODE);
     }
 }
