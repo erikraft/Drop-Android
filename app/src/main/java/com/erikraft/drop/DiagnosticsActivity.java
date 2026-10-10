@@ -76,7 +76,7 @@ public class DiagnosticsActivity extends DropPipActivity {
         actions.setOrientation(LinearLayout.HORIZONTAL);
         actions.setGravity(Gravity.CENTER_VERTICAL);
         addActionButton(actions, iconButton(R.string.diagnostics_refresh, android.R.drawable.ic_popup_sync), v -> refreshLogs());
-        addActionButton(actions, iconButton(R.string.diagnostics_copy, android.R.drawable.ic_menu_copy), v -> copyLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_copy, R.drawable.ic_content_copy), v -> copyLogs());
         addActionButton(actions, iconButton(R.string.diagnostics_save, android.R.drawable.ic_menu_save), v -> saver.launch("erikraft-drop-diagnostics.txt"));
         addActionButton(actions, iconButton(R.string.diagnostics_clear, android.R.drawable.ic_menu_delete), v -> clearLogs());
         addActionButton(actions, iconButton(R.string.diagnostics_share, android.R.drawable.ic_menu_share), v -> shareLogs());
