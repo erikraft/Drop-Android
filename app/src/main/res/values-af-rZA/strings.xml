@@ -204,4 +204,5 @@
     <string name="diagnostics_loading">Laai diagnostiek…</string>
     <string name="diagnostics_share_failed">Kon nie diagnostiek deel nie: %1$s</string>
     <string name="diagnostics_save_failed">Kon nie diagnostiek stoor nie: %1$s</string>
+    <string name="app_language_search">Soek tale</string>
 </resources>

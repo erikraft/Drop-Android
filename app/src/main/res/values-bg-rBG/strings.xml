@@ -204,4 +204,5 @@
     <string name="diagnostics_loading">Зареждане на диагностиката…</string>
     <string name="diagnostics_share_failed">Неуспешно споделяне на диагностиката: %1$s</string>
     <string name="diagnostics_save_failed">Неуспешно запазване на диагностиката: %1$s</string>
+    <string name="app_language_search">Търсене на езици</string>
 </resources>
