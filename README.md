@@ -12,6 +12,8 @@
 <img src="https://biodrop.erikraft.com/images/Logo.png" width="20px" style="display:inline;">｜ErikrafT Drop available on the Web and also as Extensions: [CLICK HERE](https://github.com/erikraft/Drop/)
 
 # ErikrafT Drop™ for Android
+
+**Current Android version:** `v10.1.9` (`versionCode 32`; proposed, pending PR/CI validation and release).
 <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
 
 **ErikrafT Drop™ for Android** is an Android client for the free and open source local file sharing solution https://drop.erikraft.com/.
