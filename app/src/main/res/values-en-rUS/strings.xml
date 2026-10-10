@@ -164,16 +164,16 @@
     <string name="ftp_starting">Iniciando servidor…</string>
     <string name="ftp_copy_address">Copiar endereço</string>
     <string name="ftp_address_copied">Endereço FTP copiado.</string>
-    <string name="diagnostics_title">Diagnósticos</string>
-    <string name="diagnostics_summary">Ative os diagnósticos para visualizar os logs do aplicativo</string>
-    <string name="diagnostics_enabled_summary">Logs de diagnóstico habilitados</string>
-    <string name="diagnostics_open">Abrir diagnósticos</string>
-    <string name="diagnostics_refresh">Atualizar</string>
-    <string name="diagnostics_copy">Copiar</string>
-    <string name="diagnostics_save">Baixar .txt</string>
-    <string name="diagnostics_copied">Diagnósticos copiados.</string>
-    <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
-    <string name="diagnostics_disabled">Habilite Diagnósticos nas Configurações para visualizar os logs.</string>
+        <string name="diagnostics_title">Diagnostics</string>
+        <string name="diagnostics_summary">Enable diagnostics to view application logs.</string>
+        <string name="diagnostics_enabled_summary">Diagnostic logging is enabled.</string>
+        <string name="diagnostics_open">Open diagnostics</string>
+        <string name="diagnostics_refresh">Refresh</string>
+        <string name="diagnostics_copy">Copy</string>
+        <string name="diagnostics_save">Download .txt</string>
+        <string name="diagnostics_copied">Diagnostics copied.</string>
+        <string name="diagnostics_saved">Diagnostics file saved.</string>
+        <string name="diagnostics_disabled">Enable Diagnostics in Settings to view logs.</string>
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
@@ -195,4 +195,15 @@
     <string name="about_licenses_title">Licenses</string>
 
     <string name="about_licenses_summary">Open-source and third-party license information is available in the source code.</string>
+    <string name="app_language_title">App language</string>
+    <string name="app_language_summary">Current: %1$s. The WebView website follows this language when available.</string>
+    <string name="app_language_dialog_title">Choose app language</string>
+    <string name="app_language_system_default">Device default language</string>
+    <string name="diagnostics_share">Share diagnostics</string>
+    <string name="diagnostics_clear">Clear</string>
+    <string name="diagnostics_loading">Loading diagnostics…</string>
+    <string name="diagnostics_share_failed">Failed to share diagnostics: %1$s</string>
+    <string name="diagnostics_save_failed">Failed to save diagnostics: %1$s</string>
+    <string name="app_language_search">Search languages</string>
+    <string name="app_language_search_no_results">No languages found</string>
 </resources>

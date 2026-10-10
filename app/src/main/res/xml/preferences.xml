@@ -49,6 +49,12 @@
             android:title="@string/settings_theme_title"
             app:useSimpleSummaryProvider="true" />
         <Preference
+            android:icon="@drawable/ic_translate"
+            android:key="@string/pref_app_language"
+            android:summary="@string/app_language_summary"
+            android:title="@string/app_language_title"
+            app:singleLineTitle="false" />
+        <Preference
             android:icon="@drawable/pref_name"
             android:key="@string/pref_device_name"
             android:maxLines="1"
@@ -70,12 +76,12 @@
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
-            android:icon="@drawable/pref_about"
+            android:icon="@drawable/ic_clipboard_alert"
             android:key="@string/pref_diagnostics_enabled"
             android:summary="@string/diagnostics_summary"
             android:title="@string/diagnostics_title" />
         <Preference
-            android:icon="@drawable/pref_about"
+            android:icon="@drawable/ic_clipboard_alert"
             android:key="@string/pref_diagnostics_open"
             android:summary="@string/diagnostics_enabled_summary"
             android:title="@string/diagnostics_open" />

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 
 import androidx.documentfile.provider.DocumentFile;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -36,6 +37,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 public class JavaScriptInterface {
     private final MainActivity context;
@@ -261,6 +263,66 @@ public class JavaScriptInterface {
     public boolean isKeepScreenOnEnabled() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean(context.getString(R.string.pref_switch_keep_on), true);
+    }
+
+    /**
+     * Returns the website locale that matches the selected native app language.
+     * Empty means use the device/browser language; untranslated website locales fall back to English.
+     */
+    @JavascriptInterface
+    public String getPreferredWebsiteLocale() {
+        final String selectedTags = AppCompatDelegate.getApplicationLocales().toLanguageTags();
+        if (TextUtils.isEmpty(selectedTags)) return "";
+
+        final Locale selected = Locale.forLanguageTag(selectedTags.split(",")[0]);
+        final String language = selected.getLanguage().toLowerCase(Locale.ROOT);
+        final String country = selected.getCountry().toUpperCase(Locale.ROOT);
+        switch (language) {
+            case "af": return "af-ZA";
+            case "ar": return "ar";
+            case "bg": return "bg";
+            case "ca": return "ca";
+            case "cs": return "cs";
+            case "da": return "da";
+            case "de": return "de";
+            case "el": return "el-GR";
+            case "en": return "en";
+            case "es": return "es";
+            case "et": return "et";
+            case "eu": return "eu";
+            case "fa": return "fa";
+            case "fi": return "fi-FI";
+            case "fr": return "fr";
+            case "he":
+            case "iw": return "he";
+            case "hu": return "hu";
+            case "id":
+            case "in": return "id";
+            case "it": return "it";
+            case "ja": return "ja";
+            case "kn": return "kn";
+            case "ko": return "ko";
+            case "nb":
+            case "no": return "nb";
+            case "nl": return "nl";
+            case "nn": return "nn-NO";
+            case "pl": return "pl";
+            case "pt": return "PT".equals(country) ? "pt-PT" : "pt-BR";
+            case "ro": return "ro";
+            case "ru": return "ru";
+            case "sk": return "sk";
+            case "sr": return "sr-SP";
+            case "sv": return "sv-SE";
+            case "ta": return "ta";
+            case "tr": return "tr";
+            case "uk": return "uk";
+            case "vi": return "vi-VN";
+            case "zh":
+                if ("HK".equals(country)) return "zh-HK";
+                if ("TW".equals(country)) return "zh-TW";
+                return "zh-CN";
+            default: return "en";
+        }
     }
 
     /** Disables the native pull-to-refresh container while an in-WebView overlay is being scrolled. */
