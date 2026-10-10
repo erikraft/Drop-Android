@@ -24,9 +24,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Consumer;
+import androidx.core.os.LocaleListCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -40,7 +42,19 @@ import com.erikraft.drop.utils.ViewUtils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 public class SettingsFragment extends PreferenceFragmentCompat {
+    private static final List<String> APP_LOCALE_TAGS = Arrays.asList(
+            "af-ZA", "ar-SA", "bg-BG", "ca-ES", "cs-CZ", "da-DK", "de-DE",
+            "el-GR", "en-US", "es-ES", "fi-FI", "fr-FR", "hi-IN", "hr-HR",
+            "hu-HU", "id-ID", "it-IT", "he-IL", "ja-JP", "ko-KR", "mk-MK",
+            "ne-NP", "nl-NL", "no-NO", "pl-PL", "pt-BR", "pt-PT", "ro-RO",
+            "ru-RU", "sk-SK", "sl-SI", "sr", "sv-SE", "tr-TR", "uk-UA",
+            "vi-VN", "zh-CN", "zh-TW");
     private static final String BITCOIN_PRIMARY = "bc1qn8pvw3fvl5dt0eq9fe4js6l3k3j2kekqwxdah2";
     private static final String BITCOIN_EMAIL = "bc1q0mtp0lcyfr7c29xa6ngf8nyv4j0dts4hwynq6d";
 
@@ -198,6 +212,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return true;
         });
 
+        final Preference appLanguagePreference = findPreference(getString(R.string.pref_app_language));
+        if (appLanguagePreference != null) {
+            updateAppLanguageSummary(appLanguagePreference);
+            appLanguagePreference.setOnPreferenceClickListener(preference -> {
+                showAppLanguageDialog(appLanguagePreference);
+                return true;
+            });
+        }
+
         final SwitchPreferenceCompat pictureInPicturePref = findPreference(getString(R.string.pref_picture_in_picture));
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             pictureInPicturePref.setVisible(false);
@@ -275,6 +298,59 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private int dp(int value) {
         return Math.round(value * getResources().getDisplayMetrics().density);
+    }
+
+    private void showAppLanguageDialog(final Preference preference) {
+        final List<String> locales = new ArrayList<>(APP_LOCALE_TAGS);
+        locales.sort((first, second) ->
+                getLanguageDisplayName(first).compareToIgnoreCase(getLanguageDisplayName(second)));
+
+        final String[] entries = new String[locales.size() + 1];
+        entries[0] = getString(R.string.app_language_system_default);
+        for (int i = 0; i < locales.size(); i++) {
+            entries[i + 1] = getLanguageDisplayName(locales.get(i));
+        }
+
+        final String selectedLocale = AppCompatDelegate.getApplicationLocales().toLanguageTags();
+        int selectedIndex = 0;
+        if (!selectedLocale.isEmpty()) {
+            for (int i = 0; i < locales.size(); i++) {
+                if (localeTagsMatch(locales.get(i), selectedLocale)) {
+                    selectedIndex = i + 1;
+                    break;
+                }
+            }
+        }
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.app_language_dialog_title)
+                .setSingleChoiceItems(entries, selectedIndex, (dialog, which) -> {
+                    final LocaleListCompat applicationLocales = which == 0
+                            ? LocaleListCompat.getEmptyLocaleList()
+                            : LocaleListCompat.forLanguageTags(locales.get(which - 1));
+                    dialog.dismiss();
+                    AppCompatDelegate.setApplicationLocales(applicationLocales);
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private void updateAppLanguageSummary(final Preference preference) {
+        final String selectedLocale = AppCompatDelegate.getApplicationLocales().toLanguageTags();
+        final String displayName = selectedLocale.isEmpty()
+                ? getString(R.string.app_language_system_default)
+                : getLanguageDisplayName(selectedLocale.split(",")[0]);
+        preference.setSummary(getString(R.string.app_language_summary, displayName));
+    }
+
+    private String getLanguageDisplayName(final String languageTag) {
+        final Locale locale = Locale.forLanguageTag(languageTag);
+        return locale.getDisplayName(locale);
+    }
+
+    private boolean localeTagsMatch(final String first, final String second) {
+        return Locale.forLanguageTag(first).toLanguageTag()
+                .equalsIgnoreCase(Locale.forLanguageTag(second.split(",")[0]).toLanguageTag());
     }
 
     private boolean isNotificationsCorrectlyEnabled() {

@@ -4,6 +4,8 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -77,9 +79,9 @@ public class DiagnosticsActivity extends DropPipActivity {
         actions.setGravity(Gravity.CENTER_VERTICAL);
         addActionButton(actions, iconButton(R.string.diagnostics_refresh, android.R.drawable.ic_popup_sync), v -> refreshLogs());
         addActionButton(actions, iconButton(R.string.diagnostics_copy, R.drawable.ic_content_copy), v -> copyLogs());
-        addActionButton(actions, iconButton(R.string.diagnostics_save, android.R.drawable.ic_menu_save), v -> saver.launch("erikraft-drop-diagnostics.txt"));
-        addActionButton(actions, iconButton(R.string.diagnostics_clear, android.R.drawable.ic_menu_delete), v -> clearLogs());
-        addActionButton(actions, iconButton(R.string.diagnostics_share, android.R.drawable.ic_menu_share), v -> shareLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_save, R.drawable.ic_file_download), v -> saver.launch("erikraft-drop-diagnostics.txt"));
+        addActionButton(actions, iconButton(R.string.diagnostics_clear, R.drawable.ic_delete), v -> clearLogs());
+        addActionButton(actions, iconButton(R.string.diagnostics_share, R.drawable.ic_share), v -> shareLogs());
         root.addView(actions, new LinearLayout.LayoutParams(-1, -2));
 
         ScrollView scroll = new ScrollView(this);
@@ -116,13 +118,20 @@ public class DiagnosticsActivity extends DropPipActivity {
         button.setText("");
         button.setContentDescription(getString(label));
         button.setIconResource(icon);
+        button.setIconTint(ColorStateList.valueOf(Color.WHITE));
+        button.setIconSize(dp(22));
         button.setIconGravity(MaterialButton.ICON_GRAVITY_TEXT_START);
+        button.setIconPadding(0);
+        button.setGravity(Gravity.CENTER);
+        button.setPadding(0, 0, 0, 0);
+        button.setInsetTop(0);
+        button.setInsetBottom(0);
         return button;
     }
 
     private void addActionButton(LinearLayout parent, MaterialButton button, View.OnClickListener listener) {
         button.setOnClickListener(listener);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, -2, 1f);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, dp(48), 1f);
         params.setMargins(dp(3), dp(2), dp(3), dp(2));
         parent.addView(button, params);
     }
@@ -168,7 +177,7 @@ public class DiagnosticsActivity extends DropPipActivity {
             share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(share, getString(R.string.diagnostics_share)));
         } catch (Exception e) {
-            Toast.makeText(this, "Falha ao compartilhar: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.diagnostics_share_failed, e.getMessage()), Toast.LENGTH_LONG).show();
         }
     }
 

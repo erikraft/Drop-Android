@@ -566,10 +566,23 @@ public class MainActivity extends DropPipActivity {
     public void onResume() {
         super.onResume();
         applyKeepScreenOnPreference();
+        syncWebViewLocale();
 
         final IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(receiver, intentFilter);
+    }
+
+
+    private void syncWebViewLocale() {
+        if (binding == null || binding.webview == null) return;
+        final String script = "(function(){try{var b=window.ErikrafTdropAndroid;" +
+                "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||!window.Localization)return;" +
+                "var lang=b.getPreferredWebsiteLocale()||'';" +
+                "if(lang&&window.Localization.localeIsSupported(lang)){localStorage.setItem('language_code',lang);window.Localization.setTranslation(lang);}" +
+                "else{localStorage.removeItem('language_code');window.Localization.setTranslation(null);}" +
+                "}catch(e){console.warn('[ErikrafT Drop] WebView locale sync failed',e);}})();";
+        binding.webview.evaluateJavascript(script, null);
     }
 
     static boolean shouldKeepScreenOn(final SharedPreferences prefs, final String key) {
@@ -784,7 +797,11 @@ public class MainActivity extends DropPipActivity {
             //website initialisation
             Log.w("WebView", "load init script...");
             binding.webview.evaluateJavascript(JavaScriptInterface.getAssetsJS(MainActivity.this, "init.js"),
-                    returnValue -> binding.loadAnimator.animate().alpha(0).withEndAction(() -> binding.webview.animate().alpha(1).start()));
+                    returnValue -> {
+                        syncWebViewLocale();
+                        binding.loadAnimator.animate().alpha(0)
+                                .withEndAction(() -> binding.webview.animate().alpha(1).start());
+                    });
             binding.webview.evaluateJavascript(JavaScriptInterface.getSendTextDialogWithPreInsertedString(getTextFromUploadIntent()), null);
 
             final List<Uri> uris = new ArrayList<>();
