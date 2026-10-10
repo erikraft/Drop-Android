@@ -175,4 +175,6 @@
     <string name="share">Compartilhar</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
+    <string name="sftp_start">Avvia server SFTP</string>
+    <string name="sftp_stop">Arresta server SFTP</string>
 </resources>
