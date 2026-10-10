@@ -216,7 +216,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (appLanguagePreference != null) {
             updateAppLanguageSummary(appLanguagePreference);
             appLanguagePreference.setOnPreferenceClickListener(preference -> {
-                showAppLanguageDialog(appLanguagePreference);
+                showAppLanguageDialog();
                 return true;
             });
         }
@@ -300,7 +300,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
-    private void showAppLanguageDialog(final Preference preference) {
+    private void showAppLanguageDialog() {
         final List<String> locales = new ArrayList<>(APP_LOCALE_TAGS);
         locales.sort((first, second) ->
                 getLanguageDisplayName(first).compareToIgnoreCase(getLanguageDisplayName(second)));

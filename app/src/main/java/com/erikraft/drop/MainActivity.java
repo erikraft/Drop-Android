@@ -577,10 +577,10 @@ public class MainActivity extends DropPipActivity {
     private void syncWebViewLocale() {
         if (binding == null || binding.webview == null) return;
         final String script = "(function(){try{var b=window.ErikrafTdropAndroid;" +
-                "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||!window.Localization)return;" +
+                "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||typeof Localization==='undefined')return;" +
                 "var lang=b.getPreferredWebsiteLocale()||'';" +
-                "if(lang&&window.Localization.localeIsSupported(lang)){localStorage.setItem('language_code',lang);window.Localization.setTranslation(lang);}" +
-                "else{localStorage.removeItem('language_code');window.Localization.setTranslation(null);}" +
+                "if(lang&&Localization.localeIsSupported(lang)){localStorage.setItem('language_code',lang);Localization.setTranslation(lang);}" +
+                "else{localStorage.removeItem('language_code');Localization.setTranslation(null);}" +
                 "}catch(e){console.warn('[ErikrafT Drop] WebView locale sync failed',e);}})();";
         binding.webview.evaluateJavascript(script, null);
     }
