@@ -14,9 +14,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -300,39 +306,118 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
+    private static final class LanguageOption {
+        final String localeTag;
+        final String label;
+        final String searchable;
+
+        LanguageOption(final String localeTag, final String label, final String searchTerms) {
+            this.localeTag = localeTag;
+            this.label = label;
+            this.searchable = (label + " " + searchTerms).toLowerCase(Locale.ROOT);
+        }
+
+        @NonNull
+        @Override
+        public String toString() {
+            return label;
+        }
+    }
+
     private void showAppLanguageDialog() {
         final List<String> locales = new ArrayList<>(APP_LOCALE_TAGS);
         locales.sort((first, second) ->
                 getLanguageDisplayName(first).compareToIgnoreCase(getLanguageDisplayName(second)));
 
-        final String[] entries = new String[locales.size() + 1];
-        entries[0] = getString(R.string.app_language_system_default);
-        for (int i = 0; i < locales.size(); i++) {
-            entries[i + 1] = getLanguageDisplayName(locales.get(i));
+        final List<LanguageOption> allOptions = new ArrayList<>();
+        final String systemDefaultLabel = getString(R.string.app_language_system_default);
+        allOptions.add(new LanguageOption(null, systemDefaultLabel, "device default system"));
+        for (String localeTag : locales) {
+            final Locale locale = Locale.forLanguageTag(localeTag);
+            final String displayName = getLanguageDisplayName(localeTag);
+            final String englishName = locale.getDisplayName(Locale.ENGLISH);
+            allOptions.add(new LanguageOption(localeTag, displayName,
+                    localeTag + " " + englishName + " " + locale.getDisplayName(Locale.getDefault())));
         }
 
-        final String selectedLocale = AppCompatDelegate.getApplicationLocales().toLanguageTags();
-        int selectedIndex = 0;
-        if (!selectedLocale.isEmpty()) {
-            for (int i = 0; i < locales.size(); i++) {
-                if (localeTagsMatch(locales.get(i), selectedLocale)) {
-                    selectedIndex = i + 1;
+        final String selectedLocaleTags = AppCompatDelegate.getApplicationLocales().toLanguageTags();
+        final String selectedLocale = selectedLocaleTags.isEmpty() ? null : selectedLocaleTags.split(",")[0];
+
+        final LinearLayout content = new LinearLayout(requireContext());
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setPadding(dp(20), dp(4), dp(20), 0);
+
+        final EditText searchInput = new EditText(requireContext());
+        searchInput.setSingleLine(true);
+        searchInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        searchInput.setHint(R.string.app_language_search);
+        searchInput.setContentDescription(getString(R.string.app_language_search));
+        content.addView(searchInput, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        final ListView languageList = new ListView(requireContext());
+        languageList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        final ArrayAdapter<LanguageOption> adapter = new ArrayAdapter<>(
+                requireContext(), android.R.layout.simple_list_item_single_choice, new ArrayList<>(allOptions));
+        languageList.setAdapter(adapter);
+        final int maxListHeight = Math.min(dp(360),
+                Math.max(dp(180), getResources().getDisplayMetrics().heightPixels / 2));
+        content.addView(languageList, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, maxListHeight));
+
+        final AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.app_language_dialog_title)
+                .setView(content)
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
+
+        final Runnable markSelectedOption = () -> {
+            languageList.clearChoices();
+            for (int i = 0; i < adapter.getCount(); i++) {
+                final LanguageOption option = adapter.getItem(i);
+                if (option == null) continue;
+                final boolean selected = selectedLocale == null
+                        ? option.localeTag == null
+                        : option.localeTag != null && localeTagsMatch(option.localeTag, selectedLocale);
+                if (selected) {
+                    languageList.setItemChecked(i, true);
                     break;
                 }
             }
-        }
+        };
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.app_language_dialog_title)
-                .setSingleChoiceItems(entries, selectedIndex, (dialog, which) -> {
-                    final LocaleListCompat applicationLocales = which == 0
-                            ? LocaleListCompat.getEmptyLocaleList()
-                            : LocaleListCompat.forLanguageTags(locales.get(which - 1));
-                    dialog.dismiss();
-                    AppCompatDelegate.setApplicationLocales(applicationLocales);
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence text, final int start, final int count, final int after) { }
+
+            @Override
+            public void onTextChanged(final CharSequence text, final int start, final int before, final int count) { }
+
+            @Override
+            public void afterTextChanged(final Editable editable) {
+                final String query = editable == null ? "" : editable.toString().trim().toLowerCase(Locale.ROOT);
+                final List<LanguageOption> matches = new ArrayList<>();
+                for (LanguageOption option : allOptions) {
+                    if (query.isEmpty() || option.searchable.contains(query)) matches.add(option);
+                }
+                adapter.clear();
+                adapter.addAll(matches);
+                markSelectedOption.run();
+            }
+        });
+
+        languageList.setOnItemClickListener((parent, view, position, id) -> {
+            final LanguageOption option = adapter.getItem(position);
+            if (option == null) return;
+            final LocaleListCompat applicationLocales = option.localeTag == null
+                    ? LocaleListCompat.getEmptyLocaleList()
+                    : LocaleListCompat.forLanguageTags(option.localeTag);
+            dialog.dismiss();
+            AppCompatDelegate.setApplicationLocales(applicationLocales);
+        });
+
+        dialog.show();
+        markSelectedOption.run();
     }
 
     private void updateAppLanguageSummary(final Preference preference) {
