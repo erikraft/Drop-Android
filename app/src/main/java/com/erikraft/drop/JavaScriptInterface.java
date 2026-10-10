@@ -246,11 +246,15 @@ public class JavaScriptInterface {
         context.startActivity(new android.content.Intent(context, SftpSettingsActivity.class));
     }
 
+    /**
+     * Kept for compatibility with cached WebView pages. Screen-awake is a persistent
+     * Android setting and must only be changed from Android Settings, not by QR-page
+     * lifecycle cleanup running without a user interaction.
+     */
     @JavascriptInterface
+    @Deprecated
     public void setKeepScreenOn(final boolean keepOn) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.edit().putBoolean(context.getString(R.string.pref_switch_keep_on), keepOn).apply();
-        context.runOnUiThread(context::applyKeepScreenOnPreference);
+        // Intentionally ignored: the native preference remains the source of truth.
     }
 
     @JavascriptInterface
