@@ -196,4 +196,5 @@
     <string name="diagnostics_share_failed">Zdieľanie diagnostiky zlyhalo: %1$s</string>
     <string name="diagnostics_save_failed">Uloženie diagnostiky zlyhalo: %1$s</string>
     <string name="app_language_search">Hľadať jazyky</string>
+    <string name="app_language_search_no_results">Nenašli sa žiadne jazyky</string>
 </resources>

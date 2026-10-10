@@ -196,4 +196,5 @@
     <string name="diagnostics_share_failed">Tanılama paylaşılamadı: %1$s</string>
     <string name="diagnostics_save_failed">Tanılama kaydedilemedi: %1$s</string>
     <string name="app_language_search">Dilleri ara</string>
+    <string name="app_language_search_no_results">Dil bulunamadı</string>
 </resources>

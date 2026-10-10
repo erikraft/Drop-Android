@@ -196,4 +196,5 @@
     <string name="diagnostics_share_failed">Не удалось поделиться диагностикой: %1$s</string>
     <string name="diagnostics_save_failed">Не удалось сохранить диагностику: %1$s</string>
     <string name="app_language_search">Поиск языков</string>
+    <string name="app_language_search_no_results">Языки не найдены</string>
 </resources>

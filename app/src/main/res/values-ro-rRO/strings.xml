@@ -196,4 +196,5 @@
     <string name="diagnostics_share_failed">Partajarea diagnosticelor a eșuat: %1$s</string>
     <string name="diagnostics_save_failed">Salvarea diagnosticelor a eșuat: %1$s</string>
     <string name="app_language_search">Caută limbi</string>
+    <string name="app_language_search_no_results">Nu s-au găsit limbi</string>
 </resources>

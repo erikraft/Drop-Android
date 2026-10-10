@@ -196,4 +196,5 @@
     <string name="diagnostics_share_failed">Skupna raba diagnostike ni uspela: %1$s</string>
     <string name="diagnostics_save_failed">Shranjevanje diagnostike ni uspelo: %1$s</string>
     <string name="app_language_search">Išči jezike</string>
+    <string name="app_language_search_no_results">Ni najdenih jezikov</string>
 </resources>
