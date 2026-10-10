@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">진단을 불러오는 중…</string>
     <string name="diagnostics_share_failed">진단을 공유하지 못했습니다: %1$s</string>
     <string name="diagnostics_save_failed">진단을 저장하지 못했습니다: %1$s</string>
+    <string name="app_language_search">언어 검색</string>
 </resources>

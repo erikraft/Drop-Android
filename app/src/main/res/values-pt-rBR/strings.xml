@@ -206,4 +206,5 @@
     <string name="diagnostics_loading">Carregando diagnósticos…</string>
     <string name="diagnostics_share_failed">Falha ao compartilhar diagnósticos: %1$s</string>
     <string name="diagnostics_save_failed">Falha ao salvar os diagnósticos: %1$s</string>
+    <string name="app_language_search">Pesquisar idiomas</string>
 </resources>
