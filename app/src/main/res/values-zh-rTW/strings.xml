@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">無法分享診斷資料：%1$s</string>
     <string name="diagnostics_save_failed">無法儲存診斷資料：%1$s</string>
     <string name="app_language_search">搜尋語言</string>
+    <string name="app_language_search_no_results">找不到語言</string>
 </resources>

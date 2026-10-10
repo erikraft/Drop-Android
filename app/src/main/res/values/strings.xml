@@ -221,4 +221,5 @@
     <string name="app_language_system_default">Device default language</string>    <string name="diagnostics_share_failed">Failed to share diagnostics: %1$s</string>
     <string name="diagnostics_save_failed">Failed to save diagnostics: %1$s</string>
     <string name="app_language_search">Search languages</string>
+    <string name="app_language_search_no_results">No languages found</string>
 </resources>

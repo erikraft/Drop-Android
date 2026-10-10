@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">分享诊断失败：%1$s</string>
     <string name="diagnostics_save_failed">保存诊断失败：%1$s</string>
     <string name="app_language_search">搜索语言</string>
+    <string name="app_language_search_no_results">未找到语言</string>
 </resources>
