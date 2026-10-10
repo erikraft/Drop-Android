@@ -184,4 +184,6 @@
     <string name="about_references_disclaimer">Üçüncü taraf lisansları ve atıfları projenin lisans dosyalarında korunur.</string>
     <string name="about_licenses_title">Lisanslar</string>
     <string name="about_licenses_summary">Açık kaynak ve üçüncü taraf lisans bilgileri kaynak kodunda bulunur.</string>
+    <string name="sftp_start">SFTP sunucusunu başlat</string>
+    <string name="sftp_stop">SFTP sunucusunu durdur</string>
 </resources>

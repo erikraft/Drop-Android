@@ -193,4 +193,6 @@
     <string name="about_licenses_title">授權</string>
 
     <string name="about_licenses_summary">開源與第三方授權資訊可在原始碼中查看。</string>
+    <string name="sftp_start">啟動 SFTP 伺服器</string>
+    <string name="sftp_stop">停止 SFTP 伺服器</string>
 </resources>

@@ -193,4 +193,6 @@
     <string name="about_licenses_title">许可证</string>
 
     <string name="about_licenses_summary">开源及第三方许可证信息可在源代码中查看。</string>
+    <string name="sftp_start">启动 SFTP 服务器</string>
+    <string name="sftp_stop">停止 SFTP 服务器</string>
 </resources>
