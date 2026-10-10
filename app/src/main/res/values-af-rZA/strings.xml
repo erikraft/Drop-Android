@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">Kon nie diagnostiek deel nie: %1$s</string>
     <string name="diagnostics_save_failed">Kon nie diagnostiek stoor nie: %1$s</string>
     <string name="app_language_search">Soek tale</string>
+    <string name="app_language_search_no_results">Geen tale gevind nie</string>
 </resources>

@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">تعذّرت مشاركة التشخيص: %1$s</string>
     <string name="diagnostics_save_failed">تعذّر حفظ التشخيص: %1$s</string>
     <string name="app_language_search">ابحث عن اللغات</string>
+    <string name="app_language_search_no_results">لم يتم العثور على لغات</string>
 </resources>

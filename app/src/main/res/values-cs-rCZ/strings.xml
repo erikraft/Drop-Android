@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">Diagnostiku se nepodařilo sdílet: %1$s</string>
     <string name="diagnostics_save_failed">Diagnostiku se nepodařilo uložit: %1$s</string>
     <string name="app_language_search">Hledat jazyky</string>
+    <string name="app_language_search_no_results">Nebyly nalezeny žádné jazyky</string>
 </resources>

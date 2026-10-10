@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">Αποτυχία κοινοποίησης διαγνωστικών: %1$s</string>
     <string name="diagnostics_save_failed">Αποτυχία αποθήκευσης διαγνωστικών: %1$s</string>
     <string name="app_language_search">Αναζήτηση γλωσσών</string>
+    <string name="app_language_search_no_results">Δεν βρέθηκαν γλώσσες</string>
 </resources>
