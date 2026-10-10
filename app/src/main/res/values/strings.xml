@@ -175,6 +175,7 @@
     <string name="diagnostics_open">Abrir diagnósticos</string>
     <string name="diagnostics_refresh">Atualizar</string>
     <string name="diagnostics_copy">Copiar</string>
+    <string name="diagnostics_share">Share diagnostics</string>
     <string name="diagnostics_save">Baixar .txt</string>
     <string name="diagnostics_copied">Diagnósticos copiados.</string>
     <string name="diagnostics_saved">Arquivo de diagnósticos salvo.</string>
