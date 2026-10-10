@@ -193,4 +193,6 @@
     <string name="about_licenses_title">التراخيص</string>
 
     <string name="about_licenses_summary">معلومات تراخيص البرمجيات مفتوحة المصدر والجهات الخارجية متاحة في الشفرة المصدرية.</string>
+    <string name="sftp_start">بدء خادم SFTP</string>
+    <string name="sftp_stop">إيقاف خادم SFTP</string>
 </resources>

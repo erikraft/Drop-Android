@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Llicència</string>
 
     <string name="about_licenses_summary">La informació de llicències de codi obert i de tercers està disponible al codi font.</string>
+    <string name="sftp_start">Inicia el servidor SFTP</string>
+    <string name="sftp_stop">Atura el servidor SFTP</string>
 </resources>

@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Lizenzen</string>
 
     <string name="about_licenses_summary">Informationen zu Open-Source- und Drittanbieter-Lizenzen sind im Quellcode verfügbar.</string>
+    <string name="sftp_start">SFTP-Server starten</string>
+    <string name="sftp_stop">SFTP-Server stoppen</string>
 </resources>

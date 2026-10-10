@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Licencias</string>
 
     <string name="about_licenses_summary">La información de licencias de código abierto y de terceros está disponible en el código fuente.</string>
+    <string name="sftp_start">Iniciar servidor SFTP</string>
+    <string name="sftp_stop">Detener servidor SFTP</string>
 </resources>

@@ -193,4 +193,6 @@
     <string name="about_licenses_title">Licence</string>
 
     <string name="about_licenses_summary">Informace o licencích open source a komponent třetích stran jsou dostupné ve zdrojovém kódu.</string>
+    <string name="sftp_start">Spustit server SFTP</string>
+    <string name="sftp_stop">Zastavit server SFTP</string>
 </resources>
