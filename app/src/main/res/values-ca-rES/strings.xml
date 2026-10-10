@@ -205,5 +205,5 @@
     <string name="diagnostics_share_failed">No s’han pogut compartir els diagnòstics: %1$s</string>
     <string name="diagnostics_save_failed">No s’han pogut desar els diagnòstics: %1$s</string>
     <string name="app_language_search">Cerca idiomes</string>
-    <string name="app_language_search_no_results">No s'han trobat idiomes</string>
+    <string name="app_language_search_no_results">No s\'han trobat idiomes</string>
 </resources>
