@@ -18,9 +18,11 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.provider.Settings;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -362,7 +364,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         languageList.setAdapter(adapter);
         final int maxListHeight = Math.min(dp(360),
                 Math.max(dp(180), getResources().getDisplayMetrics().heightPixels / 2));
-        content.addView(languageList, new LinearLayout.LayoutParams(
+        final FrameLayout listContainer = new FrameLayout(requireContext());
+        final TextView emptyView = new TextView(requireContext());
+        emptyView.setText(R.string.app_language_search_no_results);
+        emptyView.setGravity(Gravity.CENTER);
+        emptyView.setPadding(dp(16), dp(12), dp(16), dp(12));
+        listContainer.addView(languageList, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+        listContainer.addView(emptyView, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+        languageList.setEmptyView(emptyView);
+        content.addView(listContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, maxListHeight));
 
         final AlertDialog dialog = new AlertDialog.Builder(requireContext())
