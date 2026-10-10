@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">Caricamento diagnostica…</string>
     <string name="diagnostics_share_failed">Impossibile condividere la diagnostica: %1$s</string>
     <string name="diagnostics_save_failed">Impossibile salvare la diagnostica: %1$s</string>
+    <string name="app_language_search">Cerca lingue</string>
 </resources>

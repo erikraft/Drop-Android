@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">Diagnosztika betöltése…</string>
     <string name="diagnostics_share_failed">Nem sikerült megosztani a diagnosztikát: %1$s</string>
     <string name="diagnostics_save_failed">Nem sikerült menteni a diagnosztikát: %1$s</string>
+    <string name="app_language_search">Nyelvek keresése</string>
 </resources>

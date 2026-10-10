@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">Chargement des diagnostics…</string>
     <string name="diagnostics_share_failed">Échec du partage des diagnostics : %1$s</string>
     <string name="diagnostics_save_failed">Échec de l’enregistrement des diagnostics : %1$s</string>
+    <string name="app_language_search">Rechercher des langues</string>
 </resources>

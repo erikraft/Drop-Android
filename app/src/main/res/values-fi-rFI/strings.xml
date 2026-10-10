@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">Ladataan diagnostiikkaa…</string>
     <string name="diagnostics_share_failed">Diagnostiikan jakaminen epäonnistui: %1$s</string>
     <string name="diagnostics_save_failed">Diagnostiikan tallentaminen epäonnistui: %1$s</string>
+    <string name="app_language_search">Hae kieliä</string>
 </resources>

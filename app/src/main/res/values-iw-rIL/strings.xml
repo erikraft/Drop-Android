@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">טוען נתוני אבחון…</string>
     <string name="diagnostics_share_failed">שיתוף האבחון נכשל: %1$s</string>
     <string name="diagnostics_save_failed">שמירת האבחון נכשלה: %1$s</string>
+    <string name="app_language_search">חיפוש שפות</string>
 </resources>

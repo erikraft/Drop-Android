@@ -186,4 +186,5 @@
     <string name="diagnostics_loading">Učitavanje dijagnostike…</string>
     <string name="diagnostics_share_failed">Dijeljenje dijagnostike nije uspjelo: %1$s</string>
     <string name="diagnostics_save_failed">Spremanje dijagnostike nije uspjelo: %1$s</string>
+    <string name="app_language_search">Pretraži jezike</string>
 </resources>
