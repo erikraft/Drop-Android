@@ -187,4 +187,5 @@
     <string name="diagnostics_share_failed">Gagal membagikan diagnostik: %1$s</string>
     <string name="diagnostics_save_failed">Gagal menyimpan diagnostik: %1$s</string>
     <string name="app_language_search">Cari bahasa</string>
+    <string name="app_language_search_no_results">Bahasa tidak ditemukan</string>
 </resources>

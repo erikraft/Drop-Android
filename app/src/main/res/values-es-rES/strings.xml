@@ -205,4 +205,5 @@
     <string name="diagnostics_share_failed">No se pudieron compartir los diagnósticos: %1$s</string>
     <string name="diagnostics_save_failed">No se pudieron guardar los diagnósticos: %1$s</string>
     <string name="app_language_search">Buscar idiomas</string>
+    <string name="app_language_search_no_results">No se encontraron idiomas</string>
 </resources>
