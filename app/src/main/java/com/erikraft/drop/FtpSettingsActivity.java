@@ -49,6 +49,7 @@ public class FtpSettingsActivity extends DropPipActivity {
     private ActivityResultLauncher<Intent> directoryPicker;
     private ActivityResultLauncher<String> notificationPermissionLauncher;
     private TextView address;
+    private MaterialButton serverToggleButton;
 
     private final BroadcastReceiver statusReceiver = new BroadcastReceiver() {
         @Override
@@ -164,26 +165,24 @@ public class FtpSettingsActivity extends DropPipActivity {
         content.addView(address, lpTop(dp(4)));
         LinearLayout actions = new LinearLayout(this);
         actions.setGravity(Gravity.CENTER_VERTICAL);
-        MaterialButton start = new MaterialButton(this);
-        start.setText(R.string.ftp_start);
-        MaterialButton stop = new MaterialButton(this);
-        stop.setText(R.string.ftp_stop);
-        actions.addView(start, new LinearLayout.LayoutParams(0, -2, 1));
-        LinearLayout.LayoutParams stopParams = new LinearLayout.LayoutParams(0, -2, 1);
-        stopParams.setMargins(dp(8), 0, 0, 0);
-        actions.addView(stop, stopParams);
+        serverToggleButton = new MaterialButton(this);
+        serverToggleButton.setText(R.string.ftp_start);
+        actions.addView(serverToggleButton, new LinearLayout.LayoutParams(-1, -2));
         content.addView(actions, lpTop(dp(12)));
         MaterialButton copy = new MaterialButton(this);
         copy.setText(R.string.ftp_copy_address);
         content.addView(copy, lpTop(dp(8)));
-        start.setOnClickListener(v -> saveAndStart());
+        serverToggleButton.setOnClickListener(v -> {
+            if (FtpServerService.isRunning()) stopServer();
+            else saveAndStart();
+        });
         stopNotificationSwitch.setOnClickListener(v -> handleStopNotificationPreference());
-        stop.setOnClickListener(v -> stopServer());
         copy.setOnClickListener(v -> copyAddress());
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         setContentView(root);
-        updateAddress();
+        updateButtons(FtpServerService.isRunning());
+        status.setText(FtpServerService.isRunning() ? "Servidor ativo" : "Servidor parado");
     }
 
     private TextInputEditText field(String hint, String value, int inputType) {
@@ -249,6 +248,7 @@ public class FtpSettingsActivity extends DropPipActivity {
     }
 
     private void updateButtons(boolean running) {
+        serverToggleButton.setText(running ? R.string.ftp_stop : R.string.ftp_start);
         address.setText(running ? buildAddress() : "");
     }
 
