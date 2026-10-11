@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Порт</string>
     <string name="ftp_username_hint">Ім’я користувача</string>
     <string name="ftp_password_hint">Пароль</string>
+    <string name="transfer_error_directory_path">Не вдалося отримати доступ до вибраної папки.</string>
+    <string name="transfer_error_folder_unsupported">Цей сервер не може безпосередньо використовувати цю папку.</string>
+    <string name="transfer_error_invalid_port">Введіть дійсний порт.</string>
+    <string name="transfer_error_port_range">Порт має бути від 1025 до 65535.</string>
+    <string name="transfer_error_credentials_required">Ім’я користувача та пароль обов’язкові.</string>
+    <string name="onion_error_tor_timeout">Tor не відповів вчасно. Перевірте, чи можна запустити Tor на цьому пристрої.</string>
+    <string name="onion_error_qr">Не вдалося створити QR-код.</string>
+    <string name="onion_error_file_open">Не вдалося відкрити вибраний файл.</string>
 </resources>
