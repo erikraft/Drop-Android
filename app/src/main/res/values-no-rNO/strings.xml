@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">Kunne ikke åpne lenken.</string>
     <string name="picture_in_picture_title">Bilde-i-bilde (PiP)</string>
     <string name="picture_in_picture_summary">Hold ErikrafT Drop synlig i et flytende vindu under filoverføring etter at du har minimert appen.</string>
+    <string name="about_credits_title">Om appen</string>
+    <string name="about_version_format">Versjon %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ er en åpen kildekode-app for overføring av filer og tekst. Denne siden viser de viktigste direkte avhengighetene og tekniske referansene i Web- og Android-økosystemet.</string>
+    <string name="about_dependencies_title">Avhengigheter</string>
+    <string name="about_dependencies_summary">Direkte Android-avhengigheter som brukes i denne versjonen.</string>
+    <string name="about_references_title">Tekniske referanser</string>
+    <string name="about_references_disclaimer">Oppstrømsprosjekter og tredjepartskomponenter beholder sitt eget opphav og sine lisenser. Denne siden dokumenterer avhengighetene og referansene som er gjennomgått for ErikrafT Drop™.</string>
+    <string name="about_licenses_title">Lisenser</string>
+    <string name="about_licenses_summary">Informasjon om åpen kildekode- og tredjepartslisenser finnes i kildekoden og prosjektets lisensfiler.</string>
 </resources>
