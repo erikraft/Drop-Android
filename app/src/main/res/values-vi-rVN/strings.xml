@@ -204,6 +204,4 @@
     <string name="diagnostics_pull_requests">Pull request</string>
     <string name="diagnostics_contribute">Để đóng góp, hãy mở pull request trong kho phù hợp.</string>
     <string name="diagnostics_link_failed">Không thể mở liên kết.</string>
-    <string name="picture_in_picture_title">Hình trong hình (PiP)</string>
-    <string name="picture_in_picture_summary">Giữ ErikrafT Drop hiển thị trong cửa sổ nổi khi truyền tệp sau khi thu nhỏ ứng dụng.</string>
 </resources>
