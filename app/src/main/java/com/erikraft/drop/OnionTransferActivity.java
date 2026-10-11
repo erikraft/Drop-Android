@@ -328,7 +328,7 @@ public class OnionTransferActivity extends DropPipActivity {
         }
         File out = new File(getCacheDir(), name.replaceAll("[^a-zA-Z0-9._-]", "_"));
         try (InputStream in = getContentResolver().openInputStream(uri); java.io.FileOutputStream fos = new java.io.FileOutputStream(out)) {
-            if (in == null) throw new IOException("Arquivo não pôde ser aberto");
+            if (in == null) throw new IOException(getString(R.string.onion_error_file_open));
             byte[] buf = new byte[64 * 1024];
             int len;
             while ((len = in.read(buf)) != -1) fos.write(buf, 0, len);
@@ -366,7 +366,7 @@ public class OnionTransferActivity extends DropPipActivity {
             startupTimeout = () -> {
                 if (server != null && address.getText().length() == 0) {
                     status.setText(getString(R.string.onion_transfer_error));
-                    Toast.makeText(this, "O Tor não respondeu a tempo. Verifique se o dispositivo permite executar o Tor.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.onion_error_tor_timeout), Toast.LENGTH_LONG).show();
                     stopOnion(true);
                 }
             };
@@ -449,7 +449,7 @@ public class OnionTransferActivity extends DropPipActivity {
             qr.setImageBitmap(bitmap);
             qr.setVisibility(View.VISIBLE);
         } catch (Exception e) {
-            Toast.makeText(this, "Não foi possível gerar o QR Code.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.onion_error_qr), Toast.LENGTH_SHORT).show();
         }
     }
 
