@@ -202,4 +202,7 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">To contribute, open a Pull Request in the appropriate repository.</string>
     <string name="diagnostics_link_failed">Could not open the link.</string>
+    <string name="app_language_contribute">Help translate ErikrafT Drop™ and make the app available to more people.</string>
+    <string name="app_language_contribute_web">Contribute to Web / Desktop translations</string>
+    <string name="app_language_contribute_android">Contribute to Android translations</string>
 </resources>
