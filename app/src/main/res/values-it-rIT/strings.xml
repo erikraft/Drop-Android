@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">Impossibile aprire il collegamento.</string>
     <string name="picture_in_picture_title">Picture-in-picture (PiP)</string>
     <string name="picture_in_picture_summary">Mantieni ErikrafT Drop visibile in una finestra mobile durante i trasferimenti dopo aver ridotto a icona l’app.</string>
+    <string name="about_credits_title">Informazioni sull’app</string>
+    <string name="about_version_format">Versione %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ è un’app open source per trasferire file e testo. Questa pagina elenca le principali dipendenze dirette e i riferimenti tecnici degli ecosistemi Web e Android.</string>
+    <string name="about_dependencies_title">Dipendenze</string>
+    <string name="about_dependencies_summary">Dipendenze Android dirette utilizzate in questa versione.</string>
+    <string name="about_references_title">Riferimenti tecnici</string>
+    <string name="about_references_disclaimer">I progetti upstream e i componenti di terze parti mantengono i propri autori e le proprie licenze. Questa pagina documenta le dipendenze e i riferimenti esaminati per ErikrafT Drop™.</string>
+    <string name="about_licenses_title">Licenze</string>
+    <string name="about_licenses_summary">Le informazioni sulle licenze open source e di terze parti sono disponibili nel codice sorgente e nei file di licenza del progetto.</string>
 </resources>
