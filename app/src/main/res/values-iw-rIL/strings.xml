@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor לא הגיב בזמן. יש לבדוק אם ניתן להפעיל את Tor במכשיר הזה.</string>
     <string name="onion_error_qr">לא ניתן ליצור קוד QR.</string>
     <string name="onion_error_file_open">לא ניתן לפתוח את הקובץ שנבחר.</string>
+    <string name="onion_transfer_clear_files">הסרת קבצים שנבחרו</string>
+    <string name="onion_transfer_clear_text">ניקוי הטקסט שהוזן</string>
+    <string name="onion_transfer_ready_to_start">מוכן להתחלה.</string>
+    <string name="onion_transfer_qr_content_description">קוד QR של שירות Onion</string>
+    <string name="onion_transfer_link_copied">הקישור הועתק.</string>
+    <string name="onion_transfer_prepare_file_error">הכנת הקובץ נכשלה: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d קבצים וטקסט מוכנים לשיתוף.</string>
+    <string name="onion_transfer_summary_files">%1$d קבצים מוכנים לשיתוף.</string>
+    <string name="onion_transfer_summary_text">הטקסט מוכן לשיתוף.</string>
 </resources>
