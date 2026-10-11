@@ -105,6 +105,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         updateLegacyTransferCompatibility();
+        final Preference legacyNfcPreference = findPreference("legacy_nfc_beam");
+        if (legacyNfcPreference != null) {
+            legacyNfcPreference.setOnPreferenceClickListener(preference -> {
+                startActivity(new Intent(requireContext(), LegacyTransferActivity.class));
+                return true;
+            });
+        }
+        final Preference legacyWifiPreference = findPreference("legacy_wifi_direct");
+        if (legacyWifiPreference != null) {
+            legacyWifiPreference.setOnPreferenceClickListener(preference -> {
+                startActivity(new Intent(requireContext(), LegacyTransferActivity.class));
+                return true;
+            });
+        }
 
         final Preference diagnosticsEnabled = findPreference(getString(R.string.pref_diagnostics_enabled));
         final Preference diagnosticsOpen = findPreference(getString(R.string.pref_diagnostics_open));
@@ -467,21 +481,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             final boolean hasNfc = adapter != null;
-            nfcPreference.setSelectable(false);
-            nfcPreference.setEnabled(beamApiAvailable && hasNfc);
+            // NFC tag I/O remains available on modern Android even though Beam was removed.
+            nfcPreference.setSelectable(true);
+            nfcPreference.setEnabled(hasNfc);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
                     : !beamApiAvailable
-                        ? R.string.legacy_nfc_android_version
-                        : R.string.legacy_transfer_transport_pending);
+                        ? R.string.legacy_nfc_modern_tag_io
+                        : R.string.legacy_transfer_tap_to_open);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
                     .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
-            wifiPreference.setSelectable(false);
+            wifiPreference.setSelectable(true);
             wifiPreference.setEnabled(hasWifiDirect);
             wifiPreference.setSummary(hasWifiDirect
-                    ? R.string.legacy_transfer_transport_pending
+                    ? R.string.legacy_transfer_tap_to_open
                     : R.string.legacy_wifi_no_hardware);
         }
     }
