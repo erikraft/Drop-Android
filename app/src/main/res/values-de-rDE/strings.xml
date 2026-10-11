@@ -91,9 +91,9 @@
     <string name="baseurl_instance_verified">Instanz wurde erfolgreich verifiziert</string>
     <string name="baseurl_no_snapdrop_instance">Instanz scheint nicht unterstützt zu werden</string>
     <string name="baseurl_check_instance_failed">Fehler beim Überprüfen der Instanz</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="baseurl_unofficial_instances">In den <a href="">FAQ</a> findest du eine Liste inoffizieller und älterer Instanzen. Einige davon funktionieren möglicherweise nicht korrekt in der App.</string>
+    <string name="important_update_title">Wichtiges Update</string>
+    <string name="important_update_message">Die Website snapdrop.net wurde von einem Unternehmen übernommen, dessen Sicherheits- und Datenschutzpraktiken unklar sind.\n\nZum Schutz deiner Daten unterstützt diese App snapdrop.net nicht mehr und wechselt für alle Nutzer zu ErikrafT Drop™, einer sichereren Alternative.\n\nVielen Dank für dein Verständnis!</string>
     <string name="important_update_ok">OK</string>
     <string name="save_location">Speicherort</string>
     <!-- File sharing -->
@@ -213,8 +213,8 @@
     <string name="diagnostics_pull_requests">Pull Requests</string>
     <string name="diagnostics_contribute">Um beizutragen, erstelle einen Pull Request im passenden Repository.</string>
     <string name="diagnostics_link_failed">Link konnte nicht geöffnet werden.</string>
-    <string name="important_update_title">Wichtiges Update</string>
-    <string name="important_update_message">Die Website snapdrop.net wurde von einem Unternehmen übernommen, dessen Sicherheits- und Datenschutzpraktiken unklar sind.\n\nZum Schutz deiner Daten unterstützt diese App snapdrop.net nicht mehr und wechselt für alle Nutzer zu ErikrafT Drop™, einer sichereren Alternative.\n\nVielen Dank für dein Verständnis!</string>
-    <string name="important_update_ok">OK</string>
-    <string name="baseurl_unofficial_instances">In den &lt;a href=""&gt;FAQ&lt;/a&gt; findest du eine Liste inoffizieller und älterer Instanzen. Einige davon funktionieren möglicherweise nicht korrekt in der App.</string>
+    
+    
+    
+    
 </resources>
