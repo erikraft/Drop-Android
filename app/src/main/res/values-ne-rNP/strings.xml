@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">लिङ्क खोल्न सकिएन।</string>
     <string name="picture_in_picture_title">पिक्चर-इन-पिक्चर (PiP)</string>
     <string name="picture_in_picture_summary">एप सानो गरेपछि फाइल स्थानान्तरणको समयमा ErikrafT Drop लाई फ्लोटिङ विन्डोमा देखिने राख्नुहोस्।</string>
+    <string name="about_credits_title">एपबारे</string>
+    <string name="about_version_format">संस्करण %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ फाइल र पाठ स्थानान्तरण गर्ने खुला स्रोत एप हो। यस पृष्ठमा Web र Android इकोसिस्टमका मुख्य प्रत्यक्ष निर्भरता र प्राविधिक सन्दर्भहरू सूचीबद्ध छन्।</string>
+    <string name="about_dependencies_title">निर्भरताहरू</string>
+    <string name="about_dependencies_summary">यस संस्करणमा प्रयोग गरिएका प्रत्यक्ष Android निर्भरताहरू।</string>
+    <string name="about_references_title">प्राविधिक सन्दर्भहरू</string>
+    <string name="about_references_disclaimer">अपस्ट्रीम परियोजना र तेस्रो-पक्ष घटकहरूले आफ्ना लेखकत्व र इजाजतपत्र कायम राख्छन्। यस पृष्ठले ErikrafT Drop™ का लागि समीक्षा गरिएका निर्भरता र सन्दर्भहरू अभिलेख गर्छ।</string>
+    <string name="about_licenses_title">इजाजतपत्रहरू</string>
+    <string name="about_licenses_summary">खुला स्रोत र तेस्रो-पक्ष इजाजतपत्रसम्बन्धी जानकारी स्रोत कोड र परियोजनाका इजाजतपत्र फाइलहरूमा उपलब्ध छ।</string>
 </resources>
