@@ -274,12 +274,31 @@ public final class LegacyTransferActivity extends DropPipActivity {
         }
     }
 
+    private String readTextRecord(NdefMessage message) {
+        if (message == null || message.getRecords().length == 0) return null;
+        NdefRecord record = message.getRecords()[0];
+        byte[] payload = record.getPayload();
+        if (payload == null || payload.length == 0) return null;
+        int languageLength = payload[0] & 0x3f;
+        if (payload.length <= languageLength + 1) return "";
+        return new String(payload, languageLength + 1, payload.length - languageLength - 1, StandardCharsets.UTF_8);
+    }
+
     private void handleNfcIntent(Intent intent) {
         if (intent == null) return;
         String action = intent.getAction();
         if (!NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
                 && !NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)
                 && !NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) return;
+        android.os.Parcelable[] incoming = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        if (incoming != null && incoming.length > 0 && incoming[0] instanceof NdefMessage) {
+            String received = readTextRecord((NdefMessage) incoming[0]);
+            if (received != null) {
+                textInput.setText(received);
+                status.setText(R.string.legacy_beam_text_received);
+                return;
+            }
+        }
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         if (tag == null) return;
         Ndef ndef = Ndef.get(tag);
