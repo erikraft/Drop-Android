@@ -265,4 +265,12 @@
     <string name="ftp_port_hint">端口</string>
     <string name="ftp_username_hint">用户名</string>
     <string name="ftp_password_hint">密码</string>
+    <string name="transfer_error_directory_path">无法访问所选文件夹。</string>
+    <string name="transfer_error_folder_unsupported">此服务器无法直接使用此文件夹。</string>
+    <string name="transfer_error_invalid_port">请输入有效端口。</string>
+    <string name="transfer_error_port_range">端口必须介于 1025 和 65535 之间。</string>
+    <string name="transfer_error_credentials_required">用户名和密码为必填项。</string>
+    <string name="onion_error_tor_timeout">Tor 未及时响应。请检查此设备是否可以运行 Tor。</string>
+    <string name="onion_error_qr">无法生成二维码。</string>
+    <string name="onion_error_file_open">无法打开所选文件。</string>
 </resources>
