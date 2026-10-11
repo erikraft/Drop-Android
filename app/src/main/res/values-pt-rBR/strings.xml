@@ -256,4 +256,8 @@
     <string name="legacy_transfer_tap_to_open">Toque para abrir as ferramentas de transferência disponíveis.</string>
     <string name="legacy_wifi_waiting_for_sender">Conectado como receptor. O dispositivo conectado pode enviar texto para este aparelho.</string>
     <string name="legacy_beam_text_received">Texto recebido pelo Android Beam.</string>
+    <string name="important_update_title">Atualização importante</string>
+    <string name="important_update_message">O site snapdrop.net foi adquirido por uma empresa cujas práticas de segurança e privacidade não são claras.\n\nPara manter seus dados seguros, este aplicativo deixará de oferecer suporte ao snapdrop.net e passará a usar o ErikrafT Drop™, uma alternativa mais segura.\n\nAgradecemos pela compreensão!</string>
+    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Consulte as &lt;a href=""&gt;perguntas frequentes&lt;/a&gt; para ver uma lista de instâncias não oficiais e antigas. Algumas podem não funcionar corretamente dentro do aplicativo.</string>
 </resources>
