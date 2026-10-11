@@ -7,31 +7,31 @@
 
 //change ReceiveTextDialog._onCopy to connect to JavaScriptInterface (don't call super method as it will throw an NotAllowedError)
 try {
-    ReceiveTextDialog.prototype._onCopy = function () {
-        ErikrafTdropAndroid.copyToClipboard(this.$text.textContent);
-        Events.fire('notify-user', 'Copied to clipboard');
-    };
-} catch (e) {
-    console.error(e);
-}
+    if (typeof ReceiveTextDialog !== 'undefined' && ReceiveTextDialog.prototype) {
+        ReceiveTextDialog.prototype._onCopy = function () {
+            ErikrafTdropAndroid.copyToClipboard(this.$text.textContent);
+            Events.fire('notify-user', 'Copied to clipboard');
+        };
+    }
+} catch (e) { /* Optional legacy dialog hook is unavailable on newer web builds. */ }
 
 //change PeerUI.setProgress(progress) to connect to JavaScriptInterface
 try {
-    PeerUI.prototype.sP = PeerUI.prototype.setProgress;
-    PeerUI.prototype.setProgress = function (progress) {
-        ErikrafTdropAndroid.setProgress(progress);
-        this.sP(progress);
-    };
-} catch (e) {
-    console.error(e);
-}
+    if (typeof PeerUI !== 'undefined' && PeerUI.prototype
+            && typeof PeerUI.prototype.setProgress === 'function') {
+        PeerUI.prototype.sP = PeerUI.prototype.setProgress;
+        PeerUI.prototype.setProgress = function (progress) {
+            ErikrafTdropAndroid.setProgress(progress);
+            this.sP(progress);
+        };
+    }
+} catch (e) { /* Optional legacy peer UI hook is unavailable on newer web builds. */ }
 
 //change tweet link
 try {
-    document.querySelector('.icon-button[title~="Tweet"]').href = 'https://x.com/ErikrafTbr';
-} catch (e) {
-    console.error(e);
-}
+    const tweetLink = document.querySelector('.icon-button[title~="Tweet"]');
+    if (tweetLink) tweetLink.href = 'https://x.com/ErikrafTbr';
+} catch (e) { /* This link is optional on web builds with a different header. */ }
 
 //add footer to about page
 try {
@@ -47,19 +47,18 @@ try {
     websiteLinkText.innerText = window.location.host.toUpperCase();
 
     let aboutScreen = document.querySelector('#about>section');
-    websiteLinkDiv.appendChild(websiteLink);
-    websiteLink.appendChild(websiteLinkText);
-    aboutScreen.appendChild(websiteLinkDiv);
-} catch (e) {
-    console.error(e);
-}
+    if (aboutScreen) {
+        websiteLinkDiv.appendChild(websiteLink);
+        websiteLink.appendChild(websiteLinkText);
+        aboutScreen.appendChild(websiteLinkDiv);
+    }
+} catch (e) { /* About markup differs between web builds. */ }
 
 //retarget donation button (play guidelines)
 try {
-    document.querySelector('.icon-button[href*="paypal"]').href = 'https://ko-fi.com/erikraft/';
-} catch (e) {
-    console.error(e);
-}
+    const donationLink = document.querySelector('.icon-button[href*="paypal"]');
+    if (donationLink) donationLink.href = 'https://ko-fi.com/erikraft/';
+} catch (e) { /* Donation link is optional on web builds with a different header. */ }
 
 //remove "safari hack"
 try {
@@ -70,63 +69,67 @@ try {
 
 //avoid text overflow (receive dialog) - might not be necessary anymore (see #393)
 try {
-    document.getElementById('fileName').style.textOverflow = 'ellipsis';
-    document.getElementById('fileName').style.overflow = 'hidden';
-} catch (e) {
-    console.error(e);
-}
+    const fileName = document.getElementById('fileName');
+    if (fileName) {
+        fileName.style.textOverflow = 'ellipsis';
+        fileName.style.overflow = 'hidden';
+    }
+} catch (e) { /* Legacy receive dialog is not present on every web build. */ }
 
 //move about background to the left side (for better opening animation)
 try {
     let aboutBackground = document.querySelector('#about>x-background');
-    aboutBackground.style.top = 'calc(-32px - 250px)';
-    aboutBackground.style.left = 'calc(32px - 250px)';
-    aboutBackground.style.right = null;
-} catch (e) {
-    console.error(e);
-}
+    if (aboutBackground) {
+        aboutBackground.style.top = 'calc(-32px - 250px)';
+        aboutBackground.style.left = 'calc(32px - 250px)';
+        aboutBackground.style.right = null;
+    }
+} catch (e) { /* Legacy About background is optional. */ }
 
 //change PeerUI._onTouchEnd(e) to connect to JavaScriptInterface
 try {
-    PeerUI.prototype._oTE = PeerUI.prototype._onTouchEnd;
-    PeerUI.prototype._onTouchEnd = function (e) {
-        this._oTE(e);
-        if ((Date.now() - this._touchStart < 500) && SnapdropAndroid.shouldOpenSendTextDialog()) {
-            if (document.querySelector('meta[name="application-name"]')?.content == "PairDrop") {
-                // no fix yet, cause they have changed the data format
-            } else {
-                Events.fire('text-recipient', this._peer.id);
+    if (typeof PeerUI !== 'undefined' && PeerUI.prototype
+            && typeof PeerUI.prototype._onTouchEnd === 'function') {
+        PeerUI.prototype._oTE = PeerUI.prototype._onTouchEnd;
+        PeerUI.prototype._onTouchEnd = function (e) {
+            this._oTE(e);
+            if ((Date.now() - this._touchStart < 500) && SnapdropAndroid.shouldOpenSendTextDialog()) {
+                if (document.querySelector('meta[name="application-name"]')?.content == "PairDrop") {
+                    // no fix yet, cause they have changed the data format
+                } else {
+                    Events.fire('text-recipient', this._peer.id);
+                }
             }
-        }
-    };
-} catch (e) {
-    console.error(e);
-}
+        };
+    }
+} catch (e) { /* Optional legacy peer touch hook is unavailable on newer web builds. */ }
 
 //catch chunks
 try {
-    Peer.prototype._oFH = Peer.prototype._onFileHeader;
-    Peer.prototype._onFileHeader = function (header) {
-        SnapdropAndroid.newFile(header.name, header.mime, header.size);
-        this._oFH(header);
-    };
+    if (typeof Peer !== 'undefined' && Peer.prototype
+            && typeof Peer.prototype._onFileHeader === 'function'
+            && typeof Peer.prototype._onChunkReceived === 'function') {
+        Peer.prototype._oFH = Peer.prototype._onFileHeader;
+        Peer.prototype._onFileHeader = function (header) {
+            SnapdropAndroid.newFile(header.name, header.mime, header.size);
+            this._oFH(header);
+        };
 
-    Peer.prototype._oCR = Peer.prototype._onChunkReceived;
-    Peer.prototype._onChunkReceived = function (chunk) {
-        let bytes = new Uint8Array(chunk);
-        let binary = '';
-        let len = bytes.byteLength;
-        for (let i = 0; i < len; i += 8192) {
-            let sub = bytes.subarray(i, Math.min(i + 8192, len));
-            binary += String.fromCharCode.apply(null, sub);
-        }
-        let base64 = btoa(binary);
-        SnapdropAndroid.onBytes(base64);
-        this._oCR(chunk);
-    };
-} catch (e) {
-    console.error(e);
-}
+        Peer.prototype._oCR = Peer.prototype._onChunkReceived;
+        Peer.prototype._onChunkReceived = function (chunk) {
+            let bytes = new Uint8Array(chunk);
+            let binary = '';
+            let len = bytes.byteLength;
+            for (let i = 0; i < len; i += 8192) {
+                let sub = bytes.subarray(i, Math.min(i + 8192, len));
+                binary += String.fromCharCode.apply(null, sub);
+            }
+            let base64 = btoa(binary);
+            SnapdropAndroid.onBytes(base64);
+            this._oCR(chunk);
+        };
+    }
+} catch (e) { /* Optional legacy peer hooks are unavailable on newer web builds. */ }
 
 // ensure Android JS bridge is available under a common name when possible
 try {
@@ -141,29 +144,29 @@ try {
 try {
     const _androidBridge = (typeof ErikrafTdropAndroid !== 'undefined') ? ErikrafTdropAndroid : (typeof SnapdropAndroid !== 'undefined' ? SnapdropAndroid : null);
     if (_androidBridge) {
-        if (!Dialog.prototype._shw) Dialog.prototype._shw = Dialog.prototype.show;
-        Dialog.prototype.show = function () {
-            try { _androidBridge.dialogShown(); } catch (e) { /* ignore bridge errors */ }
-            this._shw();
-        };
+        if (typeof Dialog !== 'undefined' && Dialog.prototype) {
+            if (!Dialog.prototype._shw) Dialog.prototype._shw = Dialog.prototype.show;
+            Dialog.prototype.show = function () {
+                try { _androidBridge.dialogShown(); } catch (e) { /* ignore bridge errors */ }
+                this._shw();
+            };
 
-        if (!Dialog.prototype._hde) Dialog.prototype._hde = Dialog.prototype.hide;
-        Dialog.prototype.hide = function () {
-            try { _androidBridge.dialogHidden(); } catch (e) { /* ignore bridge errors */ }
-            this._hde();
-        };
+            if (!Dialog.prototype._hde) Dialog.prototype._hde = Dialog.prototype.hide;
+            Dialog.prototype.hide = function () {
+                try { _androidBridge.dialogHidden(); } catch (e) { /* ignore bridge errors */ }
+                this._hde();
+            };
+        }
     }
-} catch (e) {
-    console.error(e);
-}
+} catch (e) { /* Optional legacy dialog hooks are unavailable on newer web builds. */ }
 
 //register ignoreClickedListener
 try {
     let downloadCancel = document.querySelector("#receiveDialog>x-background>x-paper>div.row-reverse>button");
-    downloadCancel.addEventListener("click", function () { SnapdropAndroid.ignoreClickedListener(); });
-} catch (e) {
-    console.error(e);
-}
+    if (downloadCancel && typeof SnapdropAndroid !== 'undefined') {
+        downloadCancel.addEventListener("click", function () { SnapdropAndroid.ignoreClickedListener(); });
+    }
+} catch (e) { /* Legacy receive dialog is not present on every web build. */ }
 
 //show localized display name
 try {
@@ -172,14 +175,16 @@ try {
     if (!localizationBuiltIn) {
         let localizeDisplayName = function (str) {
             const displayNameNode = document.getElementById('displayName');
-            if (displayNameNode.textContent.substring(0, 17) === "You are known as ") {
+            if (displayNameNode && displayNameNode.textContent.substring(0, 17) === "You are known as "
+                    && typeof SnapdropAndroid !== 'undefined') {
                 displayNameNode.textContent = SnapdropAndroid.getYouAreKnownAsTranslationString(str);
             }
         };
 
         window.addEventListener('display-name', e => window.setTimeout(_ => localizeDisplayName(e.detail.message.displayName), 100), false);
 
-        let currentText = document.getElementById('displayName').textContent;
+        const displayName = document.getElementById('displayName');
+        let currentText = displayName ? displayName.textContent : '';
         if (currentText.startsWith("You are known as ")) {
             localizeDisplayName(currentText.split("You are known as ")[1]);
         }
@@ -308,28 +313,24 @@ try {
 
 //hide unnecessary web toolbar buttons
 try {
-    document.querySelector('#theme').style.display = "none";
-} catch (e) {
-    console.error(e);
-}
+    const themeButton = document.querySelector('#theme');
+    if (themeButton) themeButton.style.display = "none";
+} catch (e) { /* Optional legacy theme control is absent. */ }
 try {
-    document.querySelector('#theme-wrapper').style.display = "none";
+    const themeWrapper = document.querySelector('#theme-wrapper');
+    if (themeWrapper) themeWrapper.style.display = "none";
     localStorage.removeItem('theme');
     document.body.classList.remove('dark-theme');
     document.body.classList.remove('light-theme');
-} catch (e) {
-    console.error(e);
-}
+} catch (e) { /* Optional legacy theme controls are absent. */ }
 try {
-    document.getElementById('language-selector').style.display = "none";
-} catch (e) {
-    console.error(e);
-}
+    const languageSelector = document.getElementById('language-selector');
+    if (languageSelector) languageSelector.style.display = "none";
+} catch (e) { /* Language selector is optional on newer web builds. */ }
 try {
-    document.getElementById('expand').style.display = "none";
-} catch (e) {
-    console.error(e);
-}
+    const expandButton = document.getElementById('expand');
+    if (expandButton) expandButton.style.display = "none";
+} catch (e) { /* Expand control is optional on newer web builds. */ }
 
 // Android WebView: About is exposed by the native action bar, so keep only one entry point.
 try {
