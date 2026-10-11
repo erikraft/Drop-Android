@@ -377,6 +377,26 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         content.addView(listContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, maxListHeight));
 
+        final TextView contributionMessage = new TextView(requireContext());
+        contributionMessage.setText(R.string.app_language_contribute);
+        contributionMessage.setPadding(0, dp(16), 0, dp(8));
+        content.addView(contributionMessage, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        final MaterialButton webTranslationsButton = new MaterialButton(requireContext());
+        webTranslationsButton.setText(R.string.app_language_contribute_web);
+        content.addView(webTranslationsButton, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        webTranslationsButton.setOnClickListener(v ->
+                ShareUtils.openUrl(this, "https://crowdin.com/project/erikraft-drop"));
+
+        final MaterialButton androidTranslationsButton = new MaterialButton(requireContext());
+        androidTranslationsButton.setText(R.string.app_language_contribute_android);
+        content.addView(androidTranslationsButton, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        androidTranslationsButton.setOnClickListener(v ->
+                ShareUtils.openUrl(this, "https://crowdin.com/project/erikraft-drop-android"));
+
         final AlertDialog dialog = new AlertDialog.Builder(requireContext())
                 .setTitle(R.string.app_language_dialog_title)
                 .setView(content)
