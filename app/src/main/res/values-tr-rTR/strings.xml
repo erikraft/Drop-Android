@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Bağlantı noktası</string>
     <string name="ftp_username_hint">Kullanıcı adı</string>
     <string name="ftp_password_hint">Şifre</string>
+    <string name="transfer_error_directory_path">Seçilen klasöre erişilemedi.</string>
+    <string name="transfer_error_folder_unsupported">Bu klasör bu sunucu tarafından doğrudan kullanılamaz.</string>
+    <string name="transfer_error_invalid_port">Geçerli bir bağlantı noktası girin.</string>
+    <string name="transfer_error_port_range">Bağlantı noktası 1025 ile 65535 arasında olmalıdır.</string>
+    <string name="transfer_error_credentials_required">Kullanıcı adı ve şifre gereklidir.</string>
+    <string name="onion_error_tor_timeout">Tor zamanında yanıt vermedi. Bu cihazda Tor çalıştırılabildiğini kontrol edin.</string>
+    <string name="onion_error_qr">QR kodu oluşturulamadı.</string>
+    <string name="onion_error_file_open">Seçilen dosya açılamadı.</string>
 </resources>
