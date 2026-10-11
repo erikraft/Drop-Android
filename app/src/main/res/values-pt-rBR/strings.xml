@@ -260,4 +260,11 @@
     
     
     
+    <string name="server_status_running">Servidor ativo</string>
+    <string name="server_status_stopped">Servidor parado</string>
+    <string name="server_status_error">Falha: %1$s</string>
+    <string name="onion_transfer_content_title">Conteúdo para compartilhar</string>
+    <string name="ftp_port_hint">Porta</string>
+    <string name="ftp_username_hint">Nome de usuário</string>
+    <string name="ftp_password_hint">Senha</string>
 </resources>
