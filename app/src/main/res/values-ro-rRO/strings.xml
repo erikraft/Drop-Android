@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Salvarea diagnosticelor a eșuat: %1$s</string>
     <string name="app_language_search">Caută limbi</string>
     <string name="app_language_search_no_results">Nu s-au găsit limbi</string>
+    <string name="diagnostics_sources_title">Depozite cu cod sursă</string>
+    <string name="diagnostics_web_repository">Depozit Web / Desktop</string>
+    <string name="diagnostics_android_repository">Depozit Android</string>
+    <string name="diagnostics_issues">Probleme</string>
+    <string name="diagnostics_pull_requests">Pull requesturi</string>
+    <string name="diagnostics_contribute">Pentru a contribui, deschide un pull request în depozitul potrivit.</string>
+    <string name="diagnostics_link_failed">Linkul nu a putut fi deschis.</string>
 </resources>
