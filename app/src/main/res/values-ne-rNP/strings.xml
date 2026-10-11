@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">पोर्ट</string>
     <string name="ftp_username_hint">प्रयोगकर्ता नाम</string>
     <string name="ftp_password_hint">पासवर्ड</string>
+    <string name="transfer_error_directory_path">छानिएको फोल्डरमा पहुँच गर्न सकिएन।</string>
+    <string name="transfer_error_folder_unsupported">यो फोल्डर यस सर्भरबाट सिधै प्रयोग गर्न सकिँदैन।</string>
+    <string name="transfer_error_invalid_port">मान्य पोर्ट प्रविष्ट गर्नुहोस्।</string>
+    <string name="transfer_error_port_range">पोर्ट 1025 र 65535 बीच हुनुपर्छ।</string>
+    <string name="transfer_error_credentials_required">प्रयोगकर्ता नाम र पासवर्ड आवश्यक छन्।</string>
+    <string name="onion_error_tor_timeout">Tor ले समयमै जवाफ दिएन। यो उपकरणमा Tor चल्न सक्छ कि जाँच गर्नुहोस्।</string>
+    <string name="onion_error_qr">QR कोड बनाउन सकिएन।</string>
+    <string name="onion_error_file_open">छानिएको फाइल खोल्न सकिएन।</string>
 </resources>
