@@ -139,7 +139,7 @@
     <string name="onion_transfer_share">Paylaş</string>
     <string name="onion_transfer_no_files">En az bir dosya seçin veya metin gönderin.</string>
     <string name="onion_transfer_progress">Tor başlatılıyor… %1$d%%</string>
-    <string name="onion_transfer_server_ready">Yerel sunucu hazır. Tor'a bağlanılıyor…</string>
+    <string name="onion_transfer_server_ready">Yerel sunucu hazır. Tor\'a bağlanılıyor…</string>
     <string name="onion_transfer_error">Onion hizmeti başlatılamadı.</string>
     <!-- SFTP -->
     <string name="sftp_settings_title">SFTP üzerinden aktar</string>
@@ -156,7 +156,7 @@
     <string name="ftp_settings_description">FTP sunucusunu her yerde yanınızda taşıyın. FileZilla, Windows Gezgini veya uyumlu başka bir istemciyle FTP ya da FTPS kullanın. Sunucu, kök klasör olarak ErikrafT Drop™ içinde ayarlanan kayıt klasörünü kullanır.</string>
     <string name="ftp_anonymous_title">Anonim erişime izin ver</string>
     <string name="ftp_ftps_title">FTPS kullan (TLS üzerinden FTP)</string>
-    <string name="ftp_passive_summary">Pasif mod: veri bağlantı noktaları 50000–50010. Varsayılan denetim bağlantı noktası 2221'dir ve değiştirilebilir.</string>
+    <string name="ftp_passive_summary">Pasif mod: veri bağlantı noktaları 50000–50010. Varsayılan denetim bağlantı noktası 2221\'dir ve değiştirilebilir.</string>
     <string name="ftp_start">Sunucuyu başlat</string>
     <string name="ftp_stop">Sunucuyu durdur</string>
     <string name="ftp_starting">Sunucu başlatılıyor…</string>
@@ -201,7 +201,7 @@
     <string name="diagnostics_web_repository">Web / Masaüstü deposu</string>
     <string name="diagnostics_android_repository">Android deposu</string>
     <string name="diagnostics_issues">Sorunlar</string>
-    <string name="diagnostics_pull_requests">Pull request'ler</string>
+    <string name="diagnostics_pull_requests">Pull request\'ler</string>
     <string name="diagnostics_contribute">Katkıda bulunmak için ilgili depoda bir pull request açın.</string>
     <string name="diagnostics_link_failed">Bağlantı açılamadı.</string>
 </resources>
