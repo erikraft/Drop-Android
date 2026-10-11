@@ -93,7 +93,7 @@
     <string name="baseurl_check_instance_failed">İstemci doğrulaması başarısız oldu</string>
     <string name="baseurl_unofficial_instances">Resmî olmayan ve eski örneklerin listesi için <a href="">SSS</a> bölümüne bakın. Bazı örnekler uygulama içinde düzgün çalışmayabilir.</string>
     <string name="important_update_title">Önemli Güncelleme</string>
-    <string name="important_update_message">snapdrop.net web sitesi, güvenlik ve gizlilik uygulamaları belirsiz olan bir şirket tarafından satın alındı.\n\nVerilerinizi korumak için bu uygulama artık snapdrop.net desteği sunmayacak ve daha güvenli bir alternatif olan ErikrafT Drop™'a geçecektir.\n\nAnlayışınız için teşekkür ederiz!</string>
+    <string name="important_update_message">snapdrop.net web sitesi, güvenlik ve gizlilik uygulamaları belirsiz olan bir şirket tarafından satın alındı.\n\nVerilerinizi korumak için bu uygulama artık snapdrop.net desteği sunmayacak ve daha güvenli bir alternatif olan ErikrafT Drop™’a geçecektir.\n\nAnlayışınız için teşekkür ederiz!</string>
     <string name="important_update_ok">Anladım</string>
     <string name="save_location">Kayıt konumu</string>
     <!-- File sharing -->
@@ -234,10 +234,10 @@
     <string name="legacy_wifi_send_text">Bağlı cihaza metin gönder</string>
     <string name="legacy_wifi_unavailable">Wi-Fi Direct bu cihazda kullanılamıyor.</string>
     <string name="legacy_wifi_permission_denied">Yakındaki cihaz izni reddedildi.</string>
-    <string name="legacy_wifi_disabled">Wi-Fi Direct kullanmak için Wi-Fi'yi etkinleştirin.</string>
+    <string name="legacy_wifi_disabled">Wi-Fi Direct kullanmak için Wi-Fi’yi etkinleştirin.</string>
     <string name="legacy_wifi_discovering">Yakındaki cihazlar aranıyor…</string>
     <string name="legacy_wifi_discovery_failed">Cihaz arama başarısız (hata %1$d).</string>
-    <string name="legacy_wifi_no_peers">Cihaz bulunamadı. Her iki cihazda da Wi-Fi'nin açık olduğundan emin olun ve yeniden deneyin.</string>
+    <string name="legacy_wifi_no_peers">Cihaz bulunamadı. Her iki cihazda da Wi-Fi’nin açık olduğundan emin olun ve yeniden deneyin.</string>
     <string name="legacy_wifi_connecting">Cihaza bağlanılıyor…</string>
     <string name="legacy_wifi_connect_failed">Bağlantı başarısız (hata %1$d).</string>
     <string name="legacy_wifi_connected">Bağlandı. Uyumlu ErikrafT Drop oturumları arasında metin mesajları gönderilebilir.</string>
