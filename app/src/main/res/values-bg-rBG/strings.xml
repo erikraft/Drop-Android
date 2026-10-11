@@ -282,4 +282,5 @@
     <string name="onion_transfer_summary_files_and_text">%1$d файл(а) и текст са готови за споделяне.</string>
     <string name="onion_transfer_summary_files">%1$d файл(а) са готови за споделяне.</string>
     <string name="onion_transfer_summary_text">Текстът е готов за споделяне.</string>
+    <string name="ftp_stopping">Спиране на сървъра…</string>
 </resources>
