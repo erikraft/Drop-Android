@@ -265,12 +265,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Nom d'usuari</string>
     <string name="ftp_password_hint">Contrasenya</string>
-    <string name="transfer_error_directory_path">No s'ha pogut accedir a la carpeta seleccionada.</string>
+    <string name="transfer_error_directory_path">No s’ha pogut accedir a la carpeta seleccionada.</string>
     <string name="transfer_error_folder_unsupported">Aquesta carpeta no es pot utilitzar directament amb aquest servidor.</string>
     <string name="transfer_error_invalid_port">Introdueix un port vàlid.</string>
-    <string name="transfer_error_port_range">El port ha d'estar entre 1025 i 65535.</string>
-    <string name="transfer_error_credentials_required">El nom d'usuari i la contrasenya són obligatoris.</string>
+    <string name="transfer_error_port_range">El port ha d’estar entre 1025 i 65535.</string>
+    <string name="transfer_error_credentials_required">El nom d’usuari i la contrasenya són obligatoris.</string>
     <string name="onion_error_tor_timeout">Tor no ha respost a temps. Comprova si Tor es pot executar en aquest dispositiu.</string>
-    <string name="onion_error_qr">No s'ha pogut generar el codi QR.</string>
-    <string name="onion_error_file_open">No s'ha pogut obrir el fitxer seleccionat.</string>
+    <string name="onion_error_qr">No s’ha pogut generar el codi QR.</string>
+    <string name="onion_error_file_open">No s’ha pogut obrir el fitxer seleccionat.</string>
 </resources>
