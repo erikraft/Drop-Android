@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">Toca per obrir les eines de transferència disponibles.</string>
     <string name="legacy_wifi_waiting_for_sender">Connectat com a receptor. El dispositiu connectat pot enviar text a aquest dispositiu.</string>
     <string name="legacy_beam_text_received">Text rebut mitjançant Android Beam.</string>
+    <string name="server_status_running">Servidor en funcionament</string>
+    <string name="server_status_stopped">Servidor aturat</string>
+    <string name="server_status_error">Error: %1$s</string>
+    <string name="onion_transfer_content_title">Contingut per compartir</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Nom d'usuari</string>
+    <string name="ftp_password_hint">Contrasenya</string>
 </resources>
