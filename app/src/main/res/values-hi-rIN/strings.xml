@@ -195,4 +195,15 @@
     <string name="diagnostics_pull_requests">पुल अनुरोध</string>
     <string name="diagnostics_contribute">योगदान करने के लिए संबंधित रिपॉज़िटरी में पुल अनुरोध खोलें।</string>
     <string name="diagnostics_link_failed">लिंक नहीं खोला जा सका।</string>
+    <string name="picture_in_picture_title">पिक्चर-इन-पिक्चर (PiP)</string>
+    <string name="picture_in_picture_summary">ऐप को छोटा करने के बाद फ़ाइल ट्रांसफ़र के दौरान ErikrafT Drop को फ़्लोटिंग विंडो में दिखाई रखें।</string>
+    <string name="about_credits_title">ऐप के बारे में</string>
+    <string name="about_version_format">संस्करण %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ फ़ाइलों और टेक्स्ट को स्थानांतरित करने वाला ओपन-सोर्स ऐप है। यह पृष्ठ Web और Android इकोसिस्टम की मुख्य प्रत्यक्ष निर्भरताएँ और तकनीकी संदर्भ दिखाता है।</string>
+    <string name="about_dependencies_title">निर्भरताएँ</string>
+    <string name="about_dependencies_summary">इस संस्करण में उपयोग की गई प्रत्यक्ष Android निर्भरताएँ।</string>
+    <string name="about_references_title">तकनीकी संदर्भ</string>
+    <string name="about_references_disclaimer">अपस्ट्रीम प्रोजेक्ट और तृतीय-पक्ष घटक अपने लेखकत्व और लाइसेंस बनाए रखते हैं। यह पृष्ठ ErikrafT Drop™ के लिए समीक्षा की गई निर्भरताओं और संदर्भों का दस्तावेज़ है।</string>
+    <string name="about_licenses_title">लाइसेंस</string>
+    <string name="about_licenses_summary">ओपन-सोर्स और तृतीय-पक्ष लाइसेंस की जानकारी स्रोत कोड और प्रोजेक्ट लाइसेंस फ़ाइलों में उपलब्ध है।</string>
 </resources>
