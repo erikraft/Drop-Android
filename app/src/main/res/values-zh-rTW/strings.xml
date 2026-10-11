@@ -273,4 +273,13 @@
     <string name="onion_error_tor_timeout">Tor 未及時回應。請確認此裝置是否能執行 Tor。</string>
     <string name="onion_error_qr">無法產生 QR 碼。</string>
     <string name="onion_error_file_open">無法開啟所選檔案。</string>
+    <string name="onion_transfer_clear_files">移除所選檔案</string>
+    <string name="onion_transfer_clear_text">清除已輸入文字</string>
+    <string name="onion_transfer_ready_to_start">準備啟動。</string>
+    <string name="onion_transfer_qr_content_description">Onion 服務 QR 碼</string>
+    <string name="onion_transfer_link_copied">連結已複製。</string>
+    <string name="onion_transfer_prepare_file_error">準備檔案失敗：%1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d 個檔案和文字已準備好分享。</string>
+    <string name="onion_transfer_summary_files">%1$d 個檔案已準備好分享。</string>
+    <string name="onion_transfer_summary_text">文字已準備好分享。</string>
 </resources>
