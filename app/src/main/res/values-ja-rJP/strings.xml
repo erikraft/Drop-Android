@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">ポート</string>
     <string name="ftp_username_hint">ユーザー名</string>
     <string name="ftp_password_hint">パスワード</string>
+    <string name="transfer_error_directory_path">選択したフォルダーにアクセスできません。</string>
+    <string name="transfer_error_folder_unsupported">このフォルダーはこのサーバーから直接使用できません。</string>
+    <string name="transfer_error_invalid_port">有効なポートを入力してください。</string>
+    <string name="transfer_error_port_range">ポートは1025～65535の範囲で指定してください。</string>
+    <string name="transfer_error_credentials_required">ユーザー名とパスワードは必須です。</string>
+    <string name="onion_error_tor_timeout">Torが時間内に応答しませんでした。この端末でTorを実行できるか確認してください。</string>
+    <string name="onion_error_qr">QRコードを生成できませんでした。</string>
+    <string name="onion_error_file_open">選択したファイルを開けませんでした。</string>
 </resources>
