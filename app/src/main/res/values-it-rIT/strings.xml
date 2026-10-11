@@ -89,11 +89,11 @@
     <string name="baseurl_title">Modifica indirizzo del server</string>
     <string name="baseurl_not_set">Non impostato</string>
     <string name="baseurl_instance_verified">Istanza verificata correttamente</string>
-    <string name="baseurl_no_snapdrop_instance">L\\'istanza non sembra essere supportata</string>
+    <string name="baseurl_no_snapdrop_instance">L\'istanza non sembra essere supportata</string>
     <string name="baseurl_check_instance_failed">Verifica dell'istanza non riuscita</string>
     <string name="baseurl_unofficial_instances">Consulta le <a href="">FAQ</a> per un elenco di istanze non ufficiali e legacy. Alcune potrebbero non funzionare correttamente nell’app.</string>
     <string name="important_update_title">Aggiornamento importante</string>
-    <string name="important_update_message">Il sito snapdrop.net è stato acquisito da un\\'azienda le cui pratiche di sicurezza e privacy non sono chiare.\n\nPer proteggere i tuoi dati, questa app non supporterà più snapdrop.net e passerà a ErikrafT Drop™, un\\'alternativa più sicura.\n\nGrazie per la comprensione!</string>
+    <string name="important_update_message">Il sito snapdrop.net è stato acquisito da un\'azienda le cui pratiche di sicurezza e privacy non sono chiare.\n\nPer proteggere i tuoi dati, questa app non supporterà più snapdrop.net e passerà a ErikrafT Drop™, un\'alternativa più sicura.\n\nGrazie per la comprensione!</string>
     <string name="important_update_ok">Va bene</string>
     <string name="save_location">Percorso di salvataggio</string>
     <!-- File sharing -->
