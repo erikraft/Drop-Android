@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">Instance byla úspěšně ověřena</string>
     <string name="baseurl_no_snapdrop_instance">Zdá se, že instance není podporována</string>
     <string name="baseurl_check_instance_failed">Nepodařilo se ověřit instanci</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">V <a href="">často kladených otázkách</a> najdete seznam neoficiálních a starších instancí. Některé nemusí v aplikaci fungovat správně.</string>
+    <string name="important_update_title">Důležitá aktualizace</string>
+    <string name="important_update_message">Web snapdrop.net získala společnost s nejasnými postupy v oblasti zabezpečení a ochrany soukromí.\n\nAbychom ochránili vaše data, aplikace již nebude podporovat snapdrop.net a místo něj přejde na ErikrafT Drop™, bezpečnější alternativu.\n\nDěkujeme za pochopení!</string>
+    <string name="important_update_ok">Rozumím</string>
     <string name="save_location">Uložit umístění</string>
     <!-- File sharing -->
     <string name="intent_file">Soubor je vybrán pro sdílení</string>
