@@ -282,4 +282,5 @@
     <string name="onion_transfer_summary_files_and_text">%1$d αρχείο(α) και κείμενο έτοιμα για κοινή χρήση.</string>
     <string name="onion_transfer_summary_files">%1$d αρχείο(α) έτοιμα για κοινή χρήση.</string>
     <string name="onion_transfer_summary_text">Το κείμενο είναι έτοιμο για κοινή χρήση.</string>
+    <string name="ftp_stopping">Διακοπή διακομιστή…</string>
 </resources>
