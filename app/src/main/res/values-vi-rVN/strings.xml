@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_long">ErikrafT Drop</string>
-    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="app_name_slogan">Chuyển tệp dễ dàng giữa tất cả thiết bị của bạn.</string>
     <string name="err_no_browser">Không thể mở trình duyệt</string>
     <string name="err_no_app">Không có ứng dụng nào có thể mở tập tin này</string>
     <string name="open_url">Mở liên kết URL</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">tiếp tục</string>
+    <string name="onboarding_button_grant">cấp quyền</string>
+    <string name="onboarding_button_finish">hoàn tất</string>
+    <string name="onboarding_choose_server">Chọn địa chỉ máy chủ</string>
+    <string name="onboarding_choose_server_short">chọn máy chủ</string>
+    <string name="onboarding_choose_server_description">Ứng dụng này là trình khách được tối ưu cho các ứng dụng web ErikrafT Drop và PairDrop.\nChọn một máy chủ bên dưới hoặc nhập URL tùy chỉnh để kết nối.\n\nLưu ý: Bạn phải chọn cùng một URL trên tất cả thiết bị.</string>
+    <string name="onboarding_storage_permission">Quyền truy cập bộ nhớ</string>
+    <string name="onboarding_storage_permission_description">Ứng dụng này dùng để chia sẻ tệp nên cần quyền truy cập bộ nhớ để hoạt động.</string>
     <string name="onboarding_server_primary_summary">(1) Chính — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Phụ — máy chủ dự phòng ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Thứ ba — máy chủ dự phòng ErikrafT Drop™</string>
@@ -26,32 +26,32 @@
     <string name="onboarding_server_custom">URL tùy chỉnh</string>
     <string name="onboarding_server_custom_summary">Người dùng có kinh nghiệm cũng có thể tự lưu trữ máy chủ.</string>
     <string name="onboarding_server_custom_add">Thêm máy chủ</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
-    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
+    <string name="onboarding_howto">Cách sử dụng</string>
+    <string name="onboarding_howto_summary">1. Mở ứng dụng này hoặc %s trên thiết bị khác trong cùng mạng Wi-Fi cục bộ.\n\n2. Nhấn vào thiết bị và chọn các tệp bạn muốn gửi.\n\n3. Xong! Các tệp sẽ được gửi…</string>
+    <string name="onboarding_howto_troubleshoot">Lưu ý: Các thiết bị phải kết nối cùng mạng Wi-Fi. Ứng dụng có thể không hoạt động nếu VPN được bật.</string>
     <!-- Download -->
     <string name="download_save_pending">Đang tải về tệp. Vui lòng đợi…</string>
     <string name="download_successful">Tải xuống thành công</string>
     <string name="notification_channel_name">Tải xuống hoàn tất</string>
     <!-- Action Buttons -->
     <string name="open">mở</string>
-    <string name="install">install</string>
+    <string name="install">Cài đặt</string>
     <string name="reset">đặt lại</string>
     <string name="copy">sao chép</string>
-    <string name="retry">retry</string>
+    <string name="retry">Thử lại</string>
     <!-- Settings / About -->
-    <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
-    <string name="pref_about_title">About this app</string>
-    <string name="view_downloads">View downloads</string>
+    <string name="home_as_up_indicator_about">Giới thiệu</string>
+    <string name="title_activity_about">Giới thiệu ErikrafT Drop™</string>
+    <string name="pref_about_title">Giới thiệu ứng dụng này</string>
+    <string name="view_downloads">Xem nội dung tải xuống</string>
     <string name="pref_category_settings">Cài đặt</string>
     <string name="logs">Nhật ký hoạt động</string>
     <string name="components_summary">Chạm để hiển thị</string>
-    <string name="support_us">Support us</string>
-    <string name="support_us_summary">See, how you can support this project</string>
-    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us">Ủng hộ chúng tôi</string>
+    <string name="support_us_summary">Xem cách bạn có thể hỗ trợ dự án này</string>
+    <string name="support_us_description">Hãy hỗ trợ ErikrafT Drop™ để giúp dự án tiếp tục hoạt động.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
-    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX và Ko-fi</string>
     <string name="bitcoin_donation_title">Quyên góp bằng Bitcoin</string>
     <string name="bitcoin_donation_summary">Ủng hộ trực tiếp ErikrafT Drop™ bằng Bitcoin</string>
     <string name="bitcoin_donation_dialog_title">Quyên góp bằng Bitcoin</string>
@@ -71,29 +71,29 @@
     <string name="keep_on_title">Giữ màn hình bật khi đang truyền</string>
     <string name="floating_text_selection_title">Hộp thoại nổi khi bôi đen chữ</string>
     <string name="floating_text_selection_summary">Khi bôi đen văn bản trên ứng dụng khác, lựa chọn \"Gửi bằng ErikrafT Drop\" sẽ hiện lên</string>
-    <string name="show_connectivity_card_title">Connectivity warning</string>
-    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
+    <string name="show_connectivity_card_title">Cảnh báo kết nối</string>
+    <string name="show_connectivity_card_summary">Hiển thị cảnh báo khi bạn chưa kết nối Wi-Fi</string>
     <string name="floating_text_selection_activity_label">Gửi bằng ErikrafT Drop</string>
-    <string name="permission_not_granted">please grant the necessary permission</string>
-    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
-    <string name="open_settings">open settings</string>
-    <string name="retain_location_metadata_title">Retain location metadata</string>
-    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
-    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="permission_not_granted">Vui lòng cấp quyền cần thiết</string>
+    <string name="permission_not_granted_fallback">Vui lòng tự cấp quyền cần thiết trong cài đặt</string>
+    <string name="open_settings">Mở cài đặt</string>
+    <string name="retain_location_metadata_title">Giữ siêu dữ liệu vị trí</string>
+    <string name="retain_location_metadata_summary_off">Một số tệp phương tiện có thể chứa dữ liệu vị trí bị loại bỏ mặc định. Cấp quyền để giữ toàn bộ siêu dữ liệu</string>
+    <string name="retain_location_metadata_summary_on">Ứng dụng hiện có toàn quyền truy cập tệp</string>
     <string name="settings_theme_title">Giao diện</string>
     <string-array name="darkmode_entries">
         <item>Mặc định theo hệ thống</item>
         <item>Sáng</item>
         <item>Tối</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="baseurl_title">Thay đổi địa chỉ máy chủ</string>
+    <string name="baseurl_not_set">Chưa đặt</string>
+    <string name="baseurl_instance_verified">Đã xác minh máy chủ thành công</string>
+    <string name="baseurl_no_snapdrop_instance">Có vẻ máy chủ không được hỗ trợ</string>
+    <string name="baseurl_check_instance_failed">Không thể xác minh máy chủ</string>
+    <string name="baseurl_unofficial_instances">Xem &lt;a href=""&gt;FAQ&lt;/a&gt; để biết danh sách máy chủ không chính thức và cũ. Một số máy chủ có thể không hoạt động đúng trong ứng dụng.</string>
+    <string name="important_update_title">Cập nhật quan trọng</string>
+    <string name="important_update_message">Trang web snapdrop.net đã được một công ty mua lại với các thực tiễn bảo mật và quyền riêng tư chưa rõ ràng.\n\nĐể bảo vệ dữ liệu của bạn, ứng dụng sẽ không còn hỗ trợ snapdrop.net mà chuyển tất cả người dùng sang ErikrafT Drop™, một lựa chọn an toàn hơn.\n\nCảm ơn bạn đã thông cảm!</string>
     <string name="important_update_ok">OK</string>
     <string name="save_location">Vị trí lưu</string>
     <!-- File sharing -->
@@ -102,13 +102,13 @@
     <string name="intent_content">Nội dung đã được chọn để chia sẻ</string>
     <string name="error_filechooser">Không thể mở trình chọn tập tin</string>
     <string name="error_network">Vui lòng xác minh rằng bạn được kết nối với mạng WiFi</string>
-    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
-    <string name="error_network_offline">You are offline</string>
+    <string name="error_network_no_wifi">Vui lòng kết nối Wi-Fi hoặc ghép đôi thiết bị</string>
+    <string name="error_network_offline">Bạn đang ngoại tuyến</string>
     <string name="ignore_error_network">Cứ cho tôi vào đi</string>
     <string name="error_not_reachable_title">Ầu, xin lỗi!</string>
-    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
+    <string name="error_server_not_reachable">Không thể kết nối đến máy chủ. \n\nNếu kết nối Internet vẫn hoạt động nhưng lỗi tiếp diễn, hãy thử chọn địa chỉ máy chủ khác.</string>
     <!-- Website Localization -->
-    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_no_peers_info">Mở ứng dụng hoặc trang web trên thiết bị khác để gửi tệp</string>
     <string name="website_instruction">Nhấn để truyền tập tin hoặc nhấn giữ để gửi tin nhắn</string>
     <string name="website_file_received">Tập tin đã được nhận</string>
     <string name="website_file_ask_before_download">Luôn hỏi trước khi lưu tập tin</string>
@@ -117,14 +117,14 @@
     <string name="website_footer_known_as">Tên hiển thị của bạn là %s</string>
     <string name="website_about_subheading">Cách dễ nhất để truyền tệp qua Web, Windows, Linux, Android, tiện ích mở rộng và hơn nữa</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
+    <string name="qr_transfer_title">Truyền qua QR</string>
+    <string name="qr_transfer_send_title">Gửi bằng mã QR động</string>
+    <string name="qr_transfer_receive_title">Nhận bằng mã QR động</string>
+    <string name="qr_transfer_instruction">Hướng camera của thiết bị kia vào mã QR này</string>
+    <string name="qr_transfer_receive_searching">Đang tìm mã QR…</string>
+    <string name="pause">Tạm dừng</string>
+    <string name="resume">Tiếp tục</string>
+    <string name="cancel">Hủy</string>
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Truyền qua Onion (beta)</string>
     <string name="onion_transfer_description">Chia sẻ tệp hoặc văn bản trực tiếp từ thiết bị qua kết nối Tor riêng tư. Nội dung vẫn trên thiết bị và được gửi qua địa chỉ Onion tạm thời.</string>
