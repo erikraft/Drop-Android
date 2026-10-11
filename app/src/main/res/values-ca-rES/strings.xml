@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Sol·licituds d'extracció</string>
     <string name="diagnostics_contribute">Per col·laborar, obre una sol·licitud d'extracció al repositori corresponent.</string>
     <string name="diagnostics_link_failed">No s'ha pogut obrir l'enllaç.</string>
-    <string name="picture_in_picture_title">Imatge sobre imatge (PiP)</string>
-    <string name="picture_in_picture_summary">Mantén ErikrafT Drop visible en una finestra flotant durant les transferències després de minimitzar l’aplicació.</string>
 </resources>
