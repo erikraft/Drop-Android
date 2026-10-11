@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">点按以打开可用的传输工具。</string>
     <string name="legacy_wifi_waiting_for_sender">已作为接收方连接。已连接的设备可以向此设备发送文本。</string>
     <string name="legacy_beam_text_received">已通过 Android Beam 收到文本。</string>
+    <string name="server_status_running">服务器运行中</string>
+    <string name="server_status_stopped">服务器已停止</string>
+    <string name="server_status_error">错误：%1$s</string>
+    <string name="onion_transfer_content_title">要分享的内容</string>
+    <string name="ftp_port_hint">端口</string>
+    <string name="ftp_username_hint">用户名</string>
+    <string name="ftp_password_hint">密码</string>
 </resources>
