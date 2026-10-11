@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">पुल अनुरोधहरू</string>
     <string name="diagnostics_contribute">योगदान गर्न सम्बन्धित रिपोजिटरीमा पुल अनुरोध खोल्नुहोस्।</string>
     <string name="diagnostics_link_failed">लिङ्क खोल्न सकिएन।</string>
+    <string name="picture_in_picture_title">पिक्चर-इन-पिक्चर (PiP)</string>
+    <string name="picture_in_picture_summary">एप सानो गरेपछि फाइल स्थानान्तरणको समयमा ErikrafT Drop लाई फ्लोटिङ विन्डोमा देखिने राख्नुहोस्।</string>
 </resources>
