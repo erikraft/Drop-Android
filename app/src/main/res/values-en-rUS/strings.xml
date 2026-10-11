@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Fourth — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quinary_summary">(5) Fifth — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor is required. The Onion Service is accessed directly through Tor on this device.</string>
     <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_snapdrop_summary">The classic Snapdrop. Simple and clean.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -52,25 +52,13 @@
     <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
     <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
-    <string name="bitcoin_donation_title">Doar em Bitcoin</string>
-    <string name="bitcoin_donation_summary">Apoie o ErikrafT Drop™ diretamente com Bitcoin</string>
-    <string name="bitcoin_donation_dialog_title">Doar em Bitcoin</string>
-    <string name="bitcoin_primary_account">Primary Account</string>
-    <string name="bitcoin_email_account">Bitcoin via Email</string>
-    <string name="bitcoin_copy_primary">Copiar Primary Account</string>
-    <string name="bitcoin_copy_email">Copiar Bitcoin via Email</string>
-    <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
-    <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um Onion Service temporário</string>
-    <string name="read_more">read more</string>
-    <string name="version">Version</string>
+<string name="version">Version</string>
     <string name="pref_device_name_title">Device name</string>
     <string name="pref_device_name_summary">Set a user-defined device name</string>
     <string name="notifications_summary">Show a notification when a download is completed. Android 13+ requires notification permission.</string>
     <string name="notifications_title">Notifications</string>
     <string name="keep_on_summary">(Recommended) Many devices have problems with transfers being interrupted when the screen turns off</string>
     <string name="keep_on_title">Keep screen on while transferring</string>
-    <string name="picture_in_picture_title">Picture-in-Picture (PiP)</string>
-    <string name="picture_in_picture_summary">(Recommended) Keep ErikrafT Drop visible in a floating window while transferring files after minimizing the app</string>
     <string name="floating_text_selection_title">Floating text selection</string>
     <string name="floating_text_selection_summary">When selecting text in other apps, an option \"Send with ErikrafT Drop\" will be shown</string>
     <string name="show_connectivity_card_title">Connectivity warning</string>
@@ -128,43 +116,9 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transferência via Onion (Beta)</string>
-    <string name="onion_transfer_description">Compartilhe arquivos ou texto diretamente do seu dispositivo usando uma conexão privada do Tor. O conteúdo fica no seu aparelho e é entregue pelo endereço Onion temporário.</string>
-    <string name="onion_transfer_select_files">Selecionar arquivos</string>
-    <string name="onion_transfer_send_text">Enviar texto</string>
-    <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
-    <string name="onion_transfer_start">Iniciar Onion Service</string>
-    <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
-    <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
-    <string name="onion_transfer_copy">Copiar link</string>
-    <string name="onion_transfer_share">Compartilhar</string>
-    <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
-    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
-    <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
-    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
-    <!-- SFTP -->
-    <string name="sftp_settings_title">Transferência via SFTP</string>
-    <string name="sftp_settings_summary">Servidor SFTP seguro para transferência de arquivos via SSH</string>
-    <!-- FTP / FTPS -->
-    <string name="ftp_settings_title">Transferência via FTP / FTPS</string>
-    <string name="ftp_settings_summary">Servidor FTP local para transferir arquivos por Wi-Fi, sem cabos USB</string>
-        <string name="ftp_choose_directory">Choose directory</string>
-        <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
-        <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
-        <string name="ftp_stop_notification_summary">Show a notification action to stop the FTP/FTPS server.</string>
-        <string name="onion_stop_notification_title">Notification with “Stop”</string>
-        <string name="onion_stop_notification_summary">Show a notification action to stop the Onion Service.</string>
-    <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
-    <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
-    <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
-    <string name="ftp_passive_summary">Modo passivo: portas de dados 50000–50010. A porta de controle padrão é 2221 e pode ser alterada.</string>
-    <string name="ftp_start">Iniciar servidor</string>
-    <string name="ftp_stop">Parar servidor</string>
-    <string name="ftp_starting">Iniciando servidor…</string>
-    <string name="ftp_copy_address">Copiar endereço</string>
-    <string name="ftp_address_copied">Endereço FTP copiado.</string>
-        <string name="diagnostics_title">Diagnostics</string>
+<!-- SFTP -->
+<!-- FTP / FTPS -->
+<string name="diagnostics_title">Diagnostics</string>
         <string name="diagnostics_summary">Enable diagnostics to view application logs.</string>
         <string name="diagnostics_enabled_summary">Diagnostic logging is enabled.</string>
         <string name="diagnostics_open">Open diagnostics</string>
@@ -174,7 +128,7 @@
         <string name="diagnostics_copied">Diagnostics copied.</string>
         <string name="diagnostics_saved">Diagnostics file saved.</string>
         <string name="diagnostics_disabled">Enable Diagnostics in Settings to view logs.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Share</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
@@ -206,4 +160,11 @@
     <string name="diagnostics_save_failed">Failed to save diagnostics: %1$s</string>
     <string name="app_language_search">Search languages</string>
     <string name="app_language_search_no_results">No languages found</string>
+    <string name="diagnostics_sources_title">Source repositories</string>
+    <string name="diagnostics_web_repository">Web / Desktop repository</string>
+    <string name="diagnostics_android_repository">Android repository</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull requests</string>
+    <string name="diagnostics_contribute">To contribute, open a Pull Request in the appropriate repository.</string>
+    <string name="diagnostics_link_failed">Could not open the link.</string>
 </resources>
