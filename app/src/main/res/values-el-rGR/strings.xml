@@ -265,4 +265,12 @@
     <string name="ftp_port_hint">Θύρα</string>
     <string name="ftp_username_hint">Όνομα χρήστη</string>
     <string name="ftp_password_hint">Κωδικός πρόσβασης</string>
+    <string name="transfer_error_directory_path">Δεν ήταν δυνατή η πρόσβαση στον επιλεγμένο φάκελο.</string>
+    <string name="transfer_error_folder_unsupported">Αυτός ο φάκελος δεν μπορεί να χρησιμοποιηθεί απευθείας από αυτόν τον διακομιστή.</string>
+    <string name="transfer_error_invalid_port">Εισαγάγετε έγκυρη θύρα.</string>
+    <string name="transfer_error_port_range">Η θύρα πρέπει να είναι μεταξύ 1025 και 65535.</string>
+    <string name="transfer_error_credentials_required">Απαιτούνται όνομα χρήστη και κωδικός πρόσβασης.</string>
+    <string name="onion_error_tor_timeout">Το Tor δεν ανταποκρίθηκε εγκαίρως. Ελέγξτε αν μπορεί να εκτελεστεί σε αυτήν τη συσκευή.</string>
+    <string name="onion_error_qr">Δεν ήταν δυνατή η δημιουργία κωδικού QR.</string>
+    <string name="onion_error_file_open">Δεν ήταν δυνατό το άνοιγμα του επιλεγμένου αρχείου.</string>
 </resources>
