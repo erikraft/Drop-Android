@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">De klassieke snapdrop. Sober en simpel.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Vierde — ErikrafT Drop™ Onion-service</string>
+    <string name="onboarding_server_quinary_summary">(5) Vijfde — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor is vereist. De Onion-service wordt op dit apparaat rechtstreeks via Tor geopend.</string>
+    <string name="onboarding_server_pairdrop_summary">Primaire ErikrafT Drop™-server.</string>
+    <string name="onboarding_server_snapdrop_summary">De klassieke Snapdrop. Eenvoudig en overzichtelijk.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Aangepaste URL</string>
     <string name="onboarding_server_custom_summary">Experts kunnen ook hun eigen servers hosten.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnostiek gekopieerd.</string>
         <string name="diagnostics_saved">Diagnostisch bestand opgeslagen.</string>
         <string name="diagnostics_disabled">Schakel Diagnostiek in Instellingen in om logboeken te bekijken.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Delen</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="sftp_start">SFTP-server starten</string>
