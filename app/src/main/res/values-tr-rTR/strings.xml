@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Klasik snapdrop. Temiz ve basit.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Dördüncü — ErikrafT Drop™ Onion hizmeti</string>
+    <string name="onboarding_server_quinary_summary">(5) Beşinci — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor gereklidir. Onion hizmetine bu cihazda doğrudan Tor üzerinden erişilir.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ birincil sunucusu.</string>
+    <string name="onboarding_server_snapdrop_summary">Klasik Snapdrop. Sade ve temiz.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Özel URL</string>
     <string name="onboarding_server_custom_summary">Uzman kullanıcılar kendi serverlarını depolayabilir.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Tanılama kopyalandı.</string>
         <string name="diagnostics_saved">Tanılama dosyası kaydedildi.</string>
         <string name="diagnostics_disabled">Günlükleri görmek için Ayarlar\'da Tanılama\'yı etkinleştirin.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Paylaş</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="about_credits_title">Uygulama hakkında</string>
