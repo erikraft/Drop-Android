@@ -204,4 +204,6 @@
     <string name="diagnostics_pull_requests">Pull request'ler</string>
     <string name="diagnostics_contribute">Katkıda bulunmak için ilgili depoda bir pull request açın.</string>
     <string name="diagnostics_link_failed">Bağlantı açılamadı.</string>
+    <string name="picture_in_picture_title">Resim içinde resim (PiP)</string>
+    <string name="picture_in_picture_summary">Uygulamayı küçülttükten sonra dosya aktarımları sırasında ErikrafT Drop'u kayan bir pencerede görünür tutun.</string>
 </resources>
