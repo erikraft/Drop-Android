@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Cổng</string>
     <string name="ftp_username_hint">Tên người dùng</string>
     <string name="ftp_password_hint">Mật khẩu</string>
+    <string name="transfer_error_directory_path">Không thể truy cập thư mục đã chọn.</string>
+    <string name="transfer_error_folder_unsupported">Máy chủ này không thể sử dụng trực tiếp thư mục này.</string>
+    <string name="transfer_error_invalid_port">Nhập cổng hợp lệ.</string>
+    <string name="transfer_error_port_range">Cổng phải nằm trong khoảng 1025 đến 65535.</string>
+    <string name="transfer_error_credentials_required">Cần có tên người dùng và mật khẩu.</string>
+    <string name="onion_error_tor_timeout">Tor không phản hồi kịp thời. Hãy kiểm tra xem Tor có thể chạy trên thiết bị này không.</string>
+    <string name="onion_error_qr">Không thể tạo mã QR.</string>
+    <string name="onion_error_file_open">Không thể mở tệp đã chọn.</string>
 </resources>
