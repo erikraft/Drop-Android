@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">Klepnutím otevřete dostupné nástroje pro přenos.</string>
     <string name="legacy_wifi_waiting_for_sender">Připojeno jako příjemce. Připojené zařízení může do tohoto zařízení odeslat text.</string>
     <string name="legacy_beam_text_received">Text přijat přes Android Beam.</string>
+    <string name="server_status_running">Server běží</string>
+    <string name="server_status_stopped">Server zastaven</string>
+    <string name="server_status_error">Chyba: %1$s</string>
+    <string name="onion_transfer_content_title">Obsah ke sdílení</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Uživatelské jméno</string>
+    <string name="ftp_password_hint">Heslo</string>
 </resources>
