@@ -6,14 +6,14 @@
     <string name="err_no_app">Nenhuma aplicação instalada para abrir este ficheiro</string>
     <string name="open_url">Abrir URL</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">continuar</string>
+    <string name="onboarding_button_grant">conceder permissão</string>
+    <string name="onboarding_button_finish">concluir</string>
+    <string name="onboarding_choose_server">Escolher endereço do servidor</string>
+    <string name="onboarding_choose_server_short">escolher servidor</string>
+    <string name="onboarding_choose_server_description">Esta aplicação é um cliente otimizado para as aplicações Web ErikrafT Drop e PairDrop.\nEscolha uma das seguintes instâncias ou indique um URL personalizado para estabelecer ligação.\n\nNota: tem de escolher o mesmo URL em todos os dispositivos.</string>
+    <string name="onboarding_storage_permission">Permissão de armazenamento</string>
+    <string name="onboarding_storage_permission_description">Esta aplicação permite partilhar ficheiros. Por isso, é necessária a permissão de armazenamento para a utilizar.</string>
     <string name="onboarding_server_primary_summary">(1) Principal — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secundário — servidor alternativo do ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Terciário — servidor alternativo do ErikrafT Drop™</string>
@@ -26,9 +26,9 @@
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Utilizadores experientes também podem alojar os seus próprios servidores.</string>
     <string name="onboarding_server_custom_add">Adicionar servidor</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
-    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
+    <string name="onboarding_howto">Como utilizar</string>
+    <string name="onboarding_howto_summary">1. Abra esta aplicação ou %s noutro dispositivo ligado à sua rede Wi-Fi local.\n\n2. Toque no dispositivo e selecione os ficheiros que pretende enviar.\n\n3. Já está! Os ficheiros serão enviados…</string>
+    <string name="onboarding_howto_troubleshoot">Sugestão: os dispositivos têm de estar ligados à mesma rede Wi-Fi. Poderá não funcionar se uma VPN estiver ativa.</string>
     <!-- Download -->
     <string name="download_save_pending">Armazenando o arquivo. Por favor, tenha um cadinho de paciência…</string>
     <string name="download_successful">Foi baixado com sucesso</string>
@@ -86,15 +86,15 @@
         <item>Claro</item>
         <item>Escuro</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_title">Alterar endereço do servidor</string>
+    <string name="baseurl_not_set">Não definido</string>
+    <string name="baseurl_instance_verified">Instância verificada com sucesso</string>
+    <string name="baseurl_no_snapdrop_instance">A instância parece não ser suportada</string>
+    <string name="baseurl_check_instance_failed">Não foi possível verificar a instância</string>
+    <string name="baseurl_unofficial_instances">Consulte as <a href="">FAQ</a> para ver uma lista de instâncias não oficiais e antigas. Algumas poderão não funcionar corretamente na aplicação.</string>
+    <string name="important_update_title">Atualização importante</string>
+    <string name="important_update_message">O site snapdrop.net foi adquirido por uma empresa cujas práticas de segurança e privacidade não são claras.\n\nPara manter os seus dados seguros, esta aplicação deixará de suportar snapdrop.net e passará a utilizar ErikrafT Drop™, uma alternativa mais segura.\n\nObrigado pela compreensão!</string>
+    <string name="important_update_ok">Compreendi</string>
     <string name="save_location">Guardar localização</string>
     <!-- File sharing -->
     <string name="intent_file">O arquivo é selecionado para ser compartilhado</string>
