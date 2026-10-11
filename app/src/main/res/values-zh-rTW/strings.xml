@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">傳統 Snapdrop，簡單易用。</string>
+    <string name="onboarding_server_quaternary_summary">(4) 第四 — ErikrafT Drop™ Onion 服務</string>
+    <string name="onboarding_server_quinary_summary">(5) 第五 — PairDrop</string>
+    <string name="onboarding_server_onion_warning">需要 Tor。此裝置會透過 Tor 直接存取 Onion 服務。</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ 主要伺服器。</string>
+    <string name="onboarding_server_snapdrop_summary">經典的 Snapdrop。簡單俐落。</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">自訂 URL</string>
     <string name="onboarding_server_custom_summary">專家也可以託管個人所有的伺服器。</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">已複製診斷資料。</string>
         <string name="diagnostics_saved">已儲存診斷檔案。</string>
         <string name="diagnostics_disabled">請在設定中啟用診斷以檢視記錄。</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">分享</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
@@ -206,7 +206,7 @@
     <string name="diagnostics_save_failed">無法儲存診斷資料：%1$s</string>
     <string name="app_language_search">搜尋語言</string>
     <string name="app_language_search_no_results">找不到語言</string>
-    <string name="diagnostics_sources_title">診斷來源儲存庫</string>
+    <string name="diagnostics_sources_title">原始碼儲存庫</string>
     <string name="diagnostics_web_repository">Web / 桌面版儲存庫</string>
     <string name="diagnostics_android_repository">Android 儲存庫</string>
     <string name="diagnostics_issues">問題回報</string>
