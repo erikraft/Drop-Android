@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Nume de utilizator</string>
     <string name="ftp_password_hint">Parolă</string>
+    <string name="transfer_error_directory_path">Nu se poate accesa folderul selectat.</string>
+    <string name="transfer_error_folder_unsupported">Acest folder nu poate fi folosit direct de acest server.</string>
+    <string name="transfer_error_invalid_port">Introdu un port valid.</string>
+    <string name="transfer_error_port_range">Portul trebuie sa fie intre 1025 si 65535.</string>
+    <string name="transfer_error_credentials_required">Numele de utilizator si parola sunt obligatorii.</string>
+    <string name="onion_error_tor_timeout">Tor nu a raspuns la timp. Verifica daca Tor poate rula pe acest dispozitiv.</string>
+    <string name="onion_error_qr">Codul QR nu a putut fi generat.</string>
+    <string name="onion_error_file_open">Fisierul selectat nu a putut fi deschis.</string>
 </resources>
