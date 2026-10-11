@@ -282,4 +282,5 @@
     <string name="onion_transfer_summary_files_and_text">%1$d lêer(s) en teks gereed om te deel.</string>
     <string name="onion_transfer_summary_files">%1$d lêer(s) gereed om te deel.</string>
     <string name="onion_transfer_summary_text">Teks gereed om te deel.</string>
+    <string name="ftp_stopping">Bediener word gestop…</string>
 </resources>
