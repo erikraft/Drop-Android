@@ -10,7 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;\nimport android.nfc.NfcAdapter;
+import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -102,7 +103,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
-        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());\n        updateLegacyTransferCompatibility();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        updateLegacyTransferCompatibility();
 
         final Preference diagnosticsEnabled = findPreference(getString(R.string.pref_diagnostics_enabled));
         final Preference diagnosticsOpen = findPreference(getString(R.string.pref_diagnostics_open));
