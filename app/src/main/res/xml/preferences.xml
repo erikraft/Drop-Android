@@ -88,6 +88,21 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/legacy_transfer_category"
+        app:iconSpaceReserved="false">
+        <Preference
+            android:key="legacy_nfc_beam"
+            android:icon="@drawable/ic_onion"
+            android:title="@string/legacy_nfc_title"
+            android:summary="@string/legacy_transfer_checking" />
+        <Preference
+            android:key="legacy_wifi_direct"
+            android:icon="@drawable/pref_connectivity_card"
+            android:title="@string/legacy_wifi_title"
+            android:summary="@string/legacy_transfer_checking" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/ftp_settings_title"
         android:summary="@string/ftp_settings_summary"
         app:iconSpaceReserved="false">
