@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">Врската не може да се отвори.</string>
     <string name="picture_in_picture_title">Слика во слика (PiP)</string>
     <string name="picture_in_picture_summary">Оставете го ErikrafT Drop видлив во лебдечки прозорец за време на преносот на датотеки откако ќе ја минимизирате апликацијата.</string>
+    <string name="about_credits_title">За апликацијата</string>
+    <string name="about_version_format">Верзија %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ е апликација со отворен код за пренос на датотеки и текст. Оваа страница ги наведува главните директни зависности и технички референци од Web и Android екосистемот.</string>
+    <string name="about_dependencies_title">Зависности</string>
+    <string name="about_dependencies_summary">Директни Android зависности што се користат во оваа верзија.</string>
+    <string name="about_references_title">Технички референци</string>
+    <string name="about_references_disclaimer">Проектите од повисоко ниво и компонентите од трети страни ги задржуваат своите авторски права и лиценци. Оваа страница ги документира зависностите и референците проверени за ErikrafT Drop™.</string>
+    <string name="about_licenses_title">Лиценци</string>
+    <string name="about_licenses_summary">Информациите за лиценци за отворен код и трети страни се достапни во изворниот код и датотеките со лиценци на проектот.</string>
 </resources>
