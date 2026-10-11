@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">Kon nie diagnostiek stoor nie: %1$s</string>
     <string name="app_language_search">Soek tale</string>
     <string name="app_language_search_no_results">Geen tale gevind nie</string>
+    <string name="diagnostics_sources_title">Bronbewaarplekke</string>
+    <string name="diagnostics_web_repository">Web-/Desktop-bewaarplek</string>
+    <string name="diagnostics_android_repository">Android-bewaarplek</string>
+    <string name="diagnostics_issues">Kwessies</string>
+    <string name="diagnostics_pull_requests">Trekversoeke</string>
+    <string name="diagnostics_contribute">Om by te dra, open ’n Trekversoek in die toepaslike bewaarplek.</string>
+    <string name="diagnostics_link_failed">Kon nie die skakel oopmaak nie.</string>
 </resources>
