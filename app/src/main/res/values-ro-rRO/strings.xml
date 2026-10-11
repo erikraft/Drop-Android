@@ -10,7 +10,7 @@
     <string name="onboarding_button_grant">Acordă permisiuni</string>
     <string name="onboarding_button_finish">Finalizare</string>
     <string name="onboarding_choose_server">Alege o adresă de server</string>
-    <string name="onboarding_choose_server_short">choose server</string>
+    <string name="onboarding_choose_server_short">alege serverul</string>
     <string name="onboarding_choose_server_description">Această aplicație este un client optimizat pentru aplicația web ErikrafT Drop și PairDrop.\nAlege una dintre următoarele instanțe sau specifică un URL personalizat la care să te conectezi.\n\nNotă: Trebuie să alegeți același URL pe toate dispozitivele.</string>
     <string name="onboarding_storage_permission">Permisiuni pentru stocare</string>
     <string name="onboarding_storage_permission_description">Această aplicație este pentru partajări. De aceea sunt necesare permisiuni pentru stocare.</string>
@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">Utilizatorii avansați își pot găzdui și propriile servere.</string>
     <string name="onboarding_server_custom_add">Adaugă server</string>
     <string name="onboarding_howto">Instrucțiuni de folosire</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. Deschide această aplicație sau %s pe orice alt dispozitiv din rețeaua ta Wi-Fi locală.\n\n2. Atinge dispozitivul și selectează fișierele pe care vrei să le trimiți.\n\n3. Gata! Fișierele vor fi trimise…</string>
     <string name="onboarding_howto_troubleshoot">Sugestie: Dispozitivele trebuie să fie conectate la aceeași rețea WiFi. Nu va funcționa dacă un VPN este activat.</string>
     <!-- Download -->
     <string name="download_save_pending">Se stochează fișierul. Vă rugăm să aveți puțină răbdare...</string>
@@ -86,15 +86,15 @@
         <item>Luminos</item>
         <item>Întunecat</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
+    <string name="baseurl_title">Schimbă adresa serverului</string>
     <string name="baseurl_not_set">Nesetat</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_instance_verified">Instanța a fost verificată cu succes</string>
+    <string name="baseurl_no_snapdrop_instance">Instanța pare să nu fie acceptată</string>
+    <string name="baseurl_check_instance_failed">Verificarea instanței a eșuat</string>
+    <string name="baseurl_unofficial_instances">Consultă <a href="">Întrebări frecvente</a> pentru o listă de instanțe neoficiale și vechi. Este posibil ca unele să nu funcționeze corect în aplicație.</string>
+    <string name="important_update_title">Actualizare importantă</string>
+    <string name="important_update_message">Site-ul snapdrop.net a fost achiziționat de o companie ale cărei practici de securitate și confidențialitate nu sunt clare.\n\nPentru a-ți proteja datele, aplicația nu va mai accepta snapdrop.net și va trece la ErikrafT Drop™, o alternativă mai sigură.\n\nÎți mulțumim pentru înțelegere!</string>
+    <string name="important_update_ok">Am înțeles</string>
     <string name="save_location">Locaţia pentru salvare</string>
     <!-- File sharing -->
     <string name="intent_file">Un fișier este selectat pentru partajare</string>
