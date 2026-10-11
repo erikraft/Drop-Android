@@ -171,6 +171,7 @@
     <string name="ftp_start">Start server</string>
     <string name="ftp_stop">Stop server</string>
     <string name="ftp_starting">Starting server…</string>
+    <string name="ftp_stopping">Stopping server…</string>
     <string name="ftp_copy_address">Copy address</string>
     <string name="ftp_address_copied">FTP address copied.</string>
         <string name="diagnostics_title">Diagnostics</string>
