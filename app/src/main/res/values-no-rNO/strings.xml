@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor svarte ikke i tide. Kontroller om Tor kan kjøre på denne enheten.</string>
     <string name="onion_error_qr">Kunne ikke generere QR-koden.</string>
     <string name="onion_error_file_open">Kunne ikke åpne den valgte filen.</string>
+    <string name="onion_transfer_clear_files">Fjern valgte filer</string>
+    <string name="onion_transfer_clear_text">Tøm innskrevet tekst</string>
+    <string name="onion_transfer_ready_to_start">Klar til å starte.</string>
+    <string name="onion_transfer_qr_content_description">QR-kode for Onion-tjenesten</string>
+    <string name="onion_transfer_link_copied">Lenken er kopiert.</string>
+    <string name="onion_transfer_prepare_file_error">Klarte ikke å klargjøre filen: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fil(er) og tekst er klare til deling.</string>
+    <string name="onion_transfer_summary_files">%1$d fil(er) er klare til deling.</string>
+    <string name="onion_transfer_summary_text">Teksten er klar til deling.</string>
 </resources>
