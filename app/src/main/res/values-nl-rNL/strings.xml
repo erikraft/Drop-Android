@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">De link kon niet worden geopend.</string>
     <string name="picture_in_picture_title">Beeld-in-beeld (PiP)</string>
     <string name="picture_in_picture_summary">Houd ErikrafT Drop zichtbaar in een zwevend venster tijdens bestandsoverdrachten nadat je de app hebt geminimaliseerd.</string>
+    <string name="about_credits_title">Over de app</string>
+    <string name="about_version_format">Versie %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ is een opensource-app voor het overzetten van bestanden en tekst. Deze pagina vermeldt de belangrijkste directe afhankelijkheden en technische verwijzingen van het Web- en Android-ecosysteem.</string>
+    <string name="about_dependencies_title">Afhankelijkheden</string>
+    <string name="about_dependencies_summary">Directe Android-afhankelijkheden die in deze versie worden gebruikt.</string>
+    <string name="about_references_title">Technische verwijzingen</string>
+    <string name="about_references_disclaimer">Bovenliggende projecten en componenten van derden behouden hun eigen auteurschap en licenties. Deze pagina documenteert de afhankelijkheden en verwijzingen die voor ErikrafT Drop™ zijn beoordeeld.</string>
+    <string name="about_licenses_title">Licenties</string>
+    <string name="about_licenses_summary">Informatie over open-source- en licenties van derden is beschikbaar in de broncode en de licentiebestanden van het project.</string>
 </resources>
