@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Se &lt;a href=""&gt;FAQ&lt;/a&gt; for en liste over uofficielle og ældre servere. Nogle servere fungerer muligvis ikke korrekt i appen.</string>
     <string name="important_update_title">Vigtig opdatering</string>
     <string name="important_update_message">Webstedet snapdrop.net er blevet opkøbt af en virksomhed med uklare sikkerheds- og privatlivspraksisser.\n\nFor at beskytte dine data understøtter appen ikke længere snapdrop.net og flytter i stedet alle brugere til ErikrafT Drop™, et mere sikkert alternativ.\n\nTak for din forståelse!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Forstået</string>
     <string name="save_location">Gem placering</string>
     <!-- File sharing -->
     <string name="intent_file">En fil er valgt til deling</string>
