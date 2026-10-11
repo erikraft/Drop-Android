@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">Πατήστε για να ανοίξετε τα διαθέσιμα εργαλεία μεταφοράς.</string>
     <string name="legacy_wifi_waiting_for_sender">Συνδέθηκε ως παραλήπτης. Η συνδεδεμένη συσκευή μπορεί να στείλει κείμενο σε αυτήν τη συσκευή.</string>
     <string name="legacy_beam_text_received">Το κείμενο ελήφθη μέσω Android Beam.</string>
+    <string name="server_status_running">Ο διακομιστής εκτελείται</string>
+    <string name="server_status_stopped">Ο διακομιστής έχει σταματήσει</string>
+    <string name="server_status_error">Σφάλμα: %1$s</string>
+    <string name="onion_transfer_content_title">Περιεχόμενο για κοινή χρήση</string>
+    <string name="ftp_port_hint">Θύρα</string>
+    <string name="ftp_username_hint">Όνομα χρήστη</string>
+    <string name="ftp_password_hint">Κωδικός πρόσβασης</string>
 </resources>
