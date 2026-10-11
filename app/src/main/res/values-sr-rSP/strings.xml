@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Чување дијагностике није успело: %1$s</string>
     <string name="app_language_search">Претражи језике</string>
     <string name="app_language_search_no_results">Није пронађен ниједан језик</string>
+    <string name="diagnostics_sources_title">Repozitorijumi izvornog koda</string>
+    <string name="diagnostics_web_repository">Web / Desktop repozitorijum</string>
+    <string name="diagnostics_android_repository">Android repozitorijum</string>
+    <string name="diagnostics_issues">Problemi</string>
+    <string name="diagnostics_pull_requests">Pull zahtevi</string>
+    <string name="diagnostics_contribute">Da biste doprineli, otvorite pull zahtev u odgovarajućem repozitorijumu.</string>
+    <string name="diagnostics_link_failed">Nije moguće otvoriti vezu.</string>
 </resources>
