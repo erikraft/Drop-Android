@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Keempat — Layanan Onion ErikrafT Drop™</string>
+    <string name="onboarding_server_quinary_summary">(5) Kelima — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor diperlukan. Layanan Onion diakses langsung melalui Tor pada perangkat ini.</string>
+    <string name="onboarding_server_pairdrop_summary">Server utama ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">Snapdrop klasik. Sederhana dan bersih.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnostik disalin.</string>
         <string name="diagnostics_saved">File diagnostik disimpan.</string>
         <string name="diagnostics_disabled">Aktifkan Diagnostik di Pengaturan untuk melihat log.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Bagikan</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="sftp_start">Mulai server SFTP</string>
