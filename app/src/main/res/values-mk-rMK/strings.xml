@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">Pull барања</string>
     <string name="diagnostics_contribute">За да придонесете, отворете pull барање во соодветниот репозиториум.</string>
     <string name="diagnostics_link_failed">Врската не може да се отвори.</string>
-    <string name="picture_in_picture_title">Слика во слика (PiP)</string>
-    <string name="picture_in_picture_summary">Оставете го ErikrafT Drop видлив во лебдечки прозорец за време на преносот на датотеки откако ќе ја минимизирате апликацијата.</string>
     <string name="about_credits_title">За апликацијата</string>
     <string name="about_version_format">Верзија %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ е апликација со отворен код за пренос на датотеки и текст. Оваа страница ги наведува главните директни зависности и технички референци од Web и Android екосистемот.</string>
