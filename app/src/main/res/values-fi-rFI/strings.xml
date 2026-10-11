@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Diagnostiikan tallentaminen epäonnistui: %1$s</string>
     <string name="app_language_search">Hae kieliä</string>
     <string name="app_language_search_no_results">Kieliä ei löytynyt</string>
+    <string name="diagnostics_sources_title">Lähdekoodivarastot</string>
+    <string name="diagnostics_web_repository">Web-/työpöytävarasto</string>
+    <string name="diagnostics_android_repository">Android-varasto</string>
+    <string name="diagnostics_issues">Ongelmat</string>
+    <string name="diagnostics_pull_requests">Pull requestit</string>
+    <string name="diagnostics_contribute">Osallistu avaamalla pull request oikeassa repositoriossa.</string>
+    <string name="diagnostics_link_failed">Linkkiä ei voitu avata.</string>
 </resources>
