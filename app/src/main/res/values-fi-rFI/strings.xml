@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Portti</string>
     <string name="ftp_username_hint">Käyttäjänimi</string>
     <string name="ftp_password_hint">Salasana</string>
+    <string name="transfer_error_directory_path">Valittuun kansioon ei päästy käsiksi.</string>
+    <string name="transfer_error_folder_unsupported">Tätä kansiota ei voi käyttää suoraan tällä palvelimella.</string>
+    <string name="transfer_error_invalid_port">Anna kelvollinen portti.</string>
+    <string name="transfer_error_port_range">Portin on oltava välillä 1025–65535.</string>
+    <string name="transfer_error_credentials_required">Käyttäjänimi ja salasana ovat pakollisia.</string>
+    <string name="onion_error_tor_timeout">Tor ei vastannut ajoissa. Tarkista, voiko Tor toimia tällä laitteella.</string>
+    <string name="onion_error_qr">QR-koodin luominen epäonnistui.</string>
+    <string name="onion_error_file_open">Valitun tiedoston avaaminen epäonnistui.</string>
 </resources>
