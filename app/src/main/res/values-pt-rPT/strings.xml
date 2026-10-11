@@ -55,10 +55,10 @@
     <string name="bitcoin_donation_title">Doar em Bitcoin</string>
     <string name="bitcoin_donation_summary">Apoie o ErikrafT Drop™ diretamente com Bitcoin</string>
     <string name="bitcoin_donation_dialog_title">Doar em Bitcoin</string>
-    <string name="bitcoin_primary_account">Primary Account</string>
-    <string name="bitcoin_email_account">Bitcoin via Email</string>
-    <string name="bitcoin_copy_primary">Copiar Primary Account</string>
-    <string name="bitcoin_copy_email">Copiar Bitcoin via Email</string>
+    <string name="bitcoin_primary_account">Conta principal</string>
+    <string name="bitcoin_email_account">Bitcoin por e-mail</string>
+    <string name="bitcoin_copy_primary">Copiar conta principal</string>
+    <string name="bitcoin_copy_email">Copiar endereço Bitcoin por e-mail</string>
     <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
     <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um Onion Service temporário</string>
     <string name="read_more">read more</string>
@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Falha ao guardar os diagnósticos: %1$s</string>
     <string name="app_language_search">Pesquisar idiomas</string>
     <string name="app_language_search_no_results">Não foram encontrados idiomas</string>
+    <string name="diagnostics_sources_title">Repositórios do código-fonte</string>
+    <string name="diagnostics_web_repository">Repositório Web / Desktop</string>
+    <string name="diagnostics_android_repository">Repositório Android</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull Requests</string>
+    <string name="diagnostics_contribute">Para contribuir, abra um Pull Request no repositório adequado.</string>
+    <string name="diagnostics_link_failed">Não foi possível abrir a ligação.</string>
 </resources>
