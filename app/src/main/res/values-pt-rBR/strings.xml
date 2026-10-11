@@ -55,13 +55,13 @@
     <string name="bitcoin_donation_title">Doar em Bitcoin</string>
     <string name="bitcoin_donation_summary">Apoie o ErikrafT Drop™ diretamente com Bitcoin</string>
     <string name="bitcoin_donation_dialog_title">Doar em Bitcoin</string>
-    <string name="bitcoin_primary_account">Primary Account</string>
-    <string name="bitcoin_email_account">Bitcoin via Email</string>
-    <string name="bitcoin_copy_primary">Copiar Primary Account</string>
-    <string name="bitcoin_copy_email">Copiar Bitcoin via Email</string>
+    <string name="bitcoin_primary_account">Conta principal</string>
+    <string name="bitcoin_email_account">Bitcoin por e-mail</string>
+    <string name="bitcoin_copy_primary">Copiar conta principal</string>
+    <string name="bitcoin_copy_email">Copiar endereço de Bitcoin por e-mail</string>
     <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
-    <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um Onion Service temporário</string>
-    <string name="read_more">Acesse mais informações</string>
+    <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um serviço Onion temporário</string>
+    <string name="read_more">Saiba mais</string>
     <string name="version">Versão</string>
     <string name="pref_device_name_title">Nome do dispositivo</string>
     <string name="pref_device_name_summary">Utilizar um nome de dispositivo definido pelo usuário</string>
@@ -133,16 +133,16 @@
     <string name="onion_transfer_select_files">Selecionar arquivos</string>
     <string name="onion_transfer_send_text">Enviar texto</string>
     <string name="onion_transfer_text_hint">Digite o texto que deseja compartilhar</string>
-    <string name="onion_transfer_start">Iniciar Onion Service</string>
+    <string name="onion_transfer_start">Iniciar serviço Onion</string>
     <string name="onion_transfer_stop">Parar</string>
-    <string name="onion_transfer_waiting">Iniciando Tor e publicando o Onion Service…</string>
+    <string name="onion_transfer_waiting">Iniciando o Tor e publicando o serviço Onion…</string>
     <string name="onion_transfer_ready">Seu endereço Onion temporário:</string>
     <string name="onion_transfer_copy">Copiar link</string>
     <string name="onion_transfer_share">Compartilhar</string>
     <string name="onion_transfer_no_files">Selecione pelo menos um arquivo ou envie um texto.</string>
-    <string name="onion_transfer_progress">Inicializando Tor… %1$d%%</string>
+    <string name="onion_transfer_progress">Inicializando o Tor… %1$d%%</string>
     <string name="onion_transfer_server_ready">Servidor local pronto. Conectando ao Tor…</string>
-    <string name="onion_transfer_error">Não foi possível iniciar o Onion Service.</string>
+    <string name="onion_transfer_error">Não foi possível iniciar o serviço Onion.</string>
     <!-- SFTP -->
     <string name="sftp_start">Iniciar servidor SFTP</string>
     <string name="sftp_stop">Parar servidor SFTP</string>
@@ -155,9 +155,9 @@
     <string name="ftp_directory_summary">Escolha a pasta disponibilizada pelo servidor FTP/FTPS.</string>
     <string name="ftp_stop_notification_title">Notificação com “Parar servidor”</string>
     <string name="ftp_stop_notification_summary">Mostrar uma ação na notificação para parar o servidor FTP/FTPS.</string>
-    <string name="onion_stop_notification_title">Notificação com “Parar”</string>
+    <string name="onion_stop_notification_title">Notificação com “Parar serviço”</string>
     <string name="onion_stop_notification_summary">Mostrar uma ação na notificação para parar o serviço Onion.</string>
-    <string name="ftp_settings_description">Leve um servidor FTP no seu bolso. Use FTP ou FTPS com FileZilla, Windows Explorer ou outro cliente compatível. O servidor usa a pasta de salvamento configurada no ErikrafT Drop™ como pasta base.</string>
+    <string name="ftp_settings_description">Leve um servidor FTP no bolso. Use FTP ou FTPS com FileZilla, Explorador de Arquivos do Windows ou outro cliente compatível. O servidor usa como diretório raiz a pasta de salvamento configurada no ErikrafT Drop™.</string>
     <string name="ftp_anonymous_title">Permitir acesso anônimo</string>
     <string name="ftp_ftps_title">Usar FTPS (FTP sobre TLS)</string>
     <string name="ftp_passive_summary">Modo passivo: portas de dados 50000–50010. A porta de controle padrão é 2221 e pode ser alterada.</string>
@@ -208,4 +208,11 @@
     <string name="diagnostics_save_failed">Falha ao salvar os diagnósticos: %1$s</string>
     <string name="app_language_search">Pesquisar idiomas</string>
     <string name="app_language_search_no_results">Nenhum idioma encontrado</string>
+    <string name="diagnostics_sources_title">Repositórios do código-fonte</string>
+    <string name="diagnostics_web_repository">Repositório Web / Desktop</string>
+    <string name="diagnostics_android_repository">Repositório Android</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull Requests</string>
+    <string name="diagnostics_contribute">Para contribuir, abra um Pull Request no repositório correspondente.</string>
+    <string name="diagnostics_link_failed">Não foi possível abrir o link.</string>
 </resources>
