@@ -73,7 +73,6 @@
             android:summaryOn="@string/retain_location_metadata_summary_on"
             android:title="@string/retain_location_metadata_title"
             app:isPreferenceVisible="false" />
-
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:icon="@drawable/ic_clipboard_alert"
@@ -86,7 +85,6 @@
             android:summary="@string/diagnostics_enabled_summary"
             android:title="@string/diagnostics_open" />
     </PreferenceCategory>
-
     <PreferenceCategory
         android:title="@string/ftp_settings_title"
         android:summary="@string/ftp_settings_summary"
@@ -98,7 +96,6 @@
             android:title="@string/ftp_settings_title"
             app:singleLineTitle="false" />
     </PreferenceCategory>
-
     <PreferenceCategory
         android:title="@string/sftp_settings_title"
         android:summary="@string/sftp_settings_summary"
@@ -110,7 +107,6 @@
             android:title="@string/sftp_settings_title"
             app:singleLineTitle="false" />
     </PreferenceCategory>
-
     <PreferenceCategory
         android:title="@string/onion_transfer_title"
         android:summary="@string/onion_transfer_settings_summary"
@@ -122,7 +118,20 @@
             android:icon="@drawable/ic_onion"
             app:singleLineTitle="false" />
     </PreferenceCategory>
-
+    <PreferenceCategory
+        android:title="@string/legacy_transfer_category"
+        app:iconSpaceReserved="false">
+        <Preference
+            android:key="legacy_nfc_beam"
+            android:icon="@drawable/ic_nfc"
+            android:title="@string/legacy_nfc_title"
+            android:summary="@string/legacy_transfer_checking" />
+        <Preference
+            android:key="legacy_wifi_direct"
+            android:icon="@drawable/ic_wifi_direct"
+            android:title="@string/legacy_wifi_title"
+            android:summary="@string/legacy_transfer_checking" />
+    </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_activity_about"
         app:iconSpaceReserved="false">
@@ -145,5 +154,4 @@
             android:icon="@drawable/ic_bitcoin"
             app:singleLineTitle="false" />
     </PreferenceCategory>
-
 </PreferenceScreen>
