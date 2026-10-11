@@ -58,7 +58,7 @@
     <string name="bitcoin_primary_account">Conta principal</string>
     <string name="bitcoin_email_account">Bitcoin por e-mail</string>
     <string name="bitcoin_copy_primary">Copiar conta principal</string>
-    <string name="bitcoin_copy_email">Copiar endereço de Bitcoin por e-mail</string>
+    <string name="bitcoin_copy_email">Copiar endereço Bitcoin por e-mail</string>
     <string name="bitcoin_copied">Endereço Bitcoin copiado.</string>
     <string name="onion_transfer_settings_summary">Compartilhe arquivos ou texto por um serviço Onion temporário</string>
     <string name="read_more">Saiba mais</string>
