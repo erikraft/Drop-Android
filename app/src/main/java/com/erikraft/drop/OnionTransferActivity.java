@@ -129,10 +129,10 @@ public class OnionTransferActivity extends DropPipActivity {
 
         MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
         shareContent.addView(pick);
-        clearFilesButton = button("Remover arquivos selecionados");
+        clearFilesButton = button(getString(R.string.onion_transfer_clear_files));
         clearFilesButton.setEnabled(false);
         shareContent.addView(clearFilesButton, lpTop(dp(6)));
-        selectionSummary = text("Nenhum arquivo selecionado.", 14);
+        selectionSummary = text(getString(R.string.onion_transfer_no_files), 14);
         shareContent.addView(selectionSummary);
 
         TextView sendTextLabel = text(getString(R.string.onion_transfer_send_text), 14);
@@ -154,7 +154,7 @@ public class OnionTransferActivity extends DropPipActivity {
             updateSelectionSummary();
         });
         shareContent.addView(useText, lpTop(dp(8)));
-        MaterialButton clearText = button("Limpar texto digitado");
+        MaterialButton clearText = button(getString(R.string.onion_transfer_clear_text));
         clearText.setOnClickListener(v -> {
             textInput.setText("");
             textToShare = "";
@@ -170,7 +170,7 @@ public class OnionTransferActivity extends DropPipActivity {
 
         MaterialCardView statusCard = card();
         LinearLayout statusContent = verticalInsideCard(statusCard);
-        status = text("Pronto para iniciar.", 15);
+        status = text(getString(R.string.onion_transfer_ready_to_start), 15);
         statusContent.addView(status);
         progress = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         progress.setMax(100);
@@ -197,7 +197,7 @@ public class OnionTransferActivity extends DropPipActivity {
 
         qr = new ImageView(this);
         qr.setAdjustViewBounds(true);
-        qr.setContentDescription("QR Code do Onion Service");
+        qr.setContentDescription(getString(R.string.onion_transfer_qr_content_description));
         qr.setVisibility(View.GONE);
         content.addView(qr, lpTop(dp(12)));
 
@@ -302,7 +302,7 @@ public class OnionTransferActivity extends DropPipActivity {
                     files.add(copyToCache(data.getData()));
                 }
             } catch (IOException e) {
-                Toast.makeText(this, "Falha ao preparar arquivo: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.onion_transfer_prepare_file_error, e.getMessage()), Toast.LENGTH_LONG).show();
             } finally {
                 updateSelectionSummary();
                 if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
@@ -338,9 +338,9 @@ public class OnionTransferActivity extends DropPipActivity {
 
     private void updateSelectionSummary() {
         if (files.isEmpty() && textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_no_files));
-        else if (!files.isEmpty() && !textToShare.isEmpty()) selectionSummary.setText(files.size() + " arquivo(s) + texto pronto para compartilhar.");
-        else if (!files.isEmpty()) selectionSummary.setText(files.size() + " arquivo(s) pronto(s) para compartilhar.");
-        else selectionSummary.setText("Texto pronto para compartilhar.");
+        else if (!files.isEmpty() && !textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_summary_files_and_text, files.size()));
+        else if (!files.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_summary_files, files.size()));
+        else selectionSummary.setText(getString(R.string.onion_transfer_summary_text));
     }
 
     private void startOnion() {
@@ -429,7 +429,7 @@ public class OnionTransferActivity extends DropPipActivity {
         if (value.isEmpty()) return;
         ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         if (cm != null) cm.setPrimaryClip(ClipData.newPlainText("ErikrafT Drop™ Onion", value));
-        Toast.makeText(this, "Link copiado.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.onion_transfer_link_copied, Toast.LENGTH_SHORT).show();
     }
 
     private void shareLink() {
