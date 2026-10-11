@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Класичний snapdrop. Чисто і просто.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Четвертий — Onion Service ErikrafT Drop™</string>
+    <string name="onboarding_server_quinary_summary">(5) П’ятий — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Потрібен Tor. На цьому пристрої доступ до Onion Service здійснюється безпосередньо через Tor.</string>
+    <string name="onboarding_server_pairdrop_summary">Основний сервер ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">Класичний Snapdrop. Простий і зрозумілий.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Користувацька URL</string>
     <string name="onboarding_server_custom_summary">Експерти також можуть розміщувати власні сервери.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Діагностику скопійовано.</string>
         <string name="diagnostics_saved">Файл діагностики збережено.</string>
         <string name="diagnostics_disabled">Увімкніть діагностику в Налаштуваннях, щоб переглядати журнали.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Поділитися</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="about_credits_title">Про застосунок</string>
