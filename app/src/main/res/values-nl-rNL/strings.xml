@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Poort</string>
     <string name="ftp_username_hint">Gebruikersnaam</string>
     <string name="ftp_password_hint">Wachtwoord</string>
+    <string name="transfer_error_directory_path">Kan de geselecteerde map niet openen.</string>
+    <string name="transfer_error_folder_unsupported">Deze map kan niet rechtstreeks door deze server worden gebruikt.</string>
+    <string name="transfer_error_invalid_port">Voer een geldige poort in.</string>
+    <string name="transfer_error_port_range">De poort moet tussen 1025 en 65535 liggen.</string>
+    <string name="transfer_error_credentials_required">Gebruikersnaam en wachtwoord zijn verplicht.</string>
+    <string name="onion_error_tor_timeout">Tor reageerde niet op tijd. Controleer of Tor op dit apparaat kan draaien.</string>
+    <string name="onion_error_qr">De QR-code kon niet worden gemaakt.</string>
+    <string name="onion_error_file_open">Het geselecteerde bestand kon niet worden geopend.</string>
 </resources>
