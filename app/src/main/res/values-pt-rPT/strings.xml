@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Toque para abrir as ferramentas de transferência disponíveis.</string>
     <string name="legacy_wifi_waiting_for_sender">Ligado como recetor. O dispositivo ligado pode enviar texto para este dispositivo.</string>
     <string name="legacy_beam_text_received">Texto recebido através de Android Beam.</string>
+    <string name="server_status_running">Servidor em execução</string>
+    <string name="server_status_stopped">Servidor parado</string>
+    <string name="server_status_error">Erro: %1$s</string>
+    <string name="onion_transfer_content_title">Conteúdo para partilhar</string>
+    <string name="ftp_port_hint">Porto</string>
+    <string name="ftp_username_hint">Nome de utilizador</string>
+    <string name="ftp_password_hint">Palavra-passe</string>
 </resources>
