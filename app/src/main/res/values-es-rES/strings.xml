@@ -284,4 +284,5 @@
     <string name="onion_transfer_summary_files_and_text">%1$d archivo(s) y texto listos para compartir.</string>
     <string name="onion_transfer_summary_files">%1$d archivo(s) listos para compartir.</string>
     <string name="onion_transfer_summary_text">Texto listo para compartir.</string>
+    <string name="ftp_stopping">Deteniendo servidor…</string>
 </resources>
