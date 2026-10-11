@@ -310,10 +310,8 @@ public final class LegacyTransferActivity extends DropPipActivity {
             ndef.connect();
             NdefMessage[] messages = ndef.getNdefMessage() == null ? new NdefMessage[0] : new NdefMessage[]{ndef.getNdefMessage()};
             if (messages.length > 0 && messages[0].getRecords().length > 0) {
-                byte[] payload = messages[0].getRecords()[0].getPayload();
-                int languageLength = payload.length == 0 ? 0 : payload[0] & 0x3f;
-                if (payload.length > languageLength + 1) {
-                    String readText = new String(payload, languageLength + 1, payload.length - languageLength - 1, StandardCharsets.UTF_8);
+                String readText = readTextRecord(messages[0]);
+                if (readText != null) {
                     textInput.setText(readText);
                     status.setText(R.string.legacy_nfc_tag_read);
                 }
