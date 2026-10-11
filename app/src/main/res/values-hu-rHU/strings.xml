@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Koppintson az elérhető átviteli eszközök megnyitásához.</string>
     <string name="legacy_wifi_waiting_for_sender">Fogadóként csatlakoztatva. A csatlakoztatott eszköz szöveget küldhet erre az eszközre.</string>
     <string name="legacy_beam_text_received">Szöveg érkezett Android Beamen keresztül.</string>
+    <string name="server_status_running">A szerver fut</string>
+    <string name="server_status_stopped">A szerver leállítva</string>
+    <string name="server_status_error">Hiba: %1$s</string>
+    <string name="onion_transfer_content_title">Megosztandó tartalom</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Felhasználónév</string>
+    <string name="ftp_password_hint">Jelszó</string>
 </resources>
