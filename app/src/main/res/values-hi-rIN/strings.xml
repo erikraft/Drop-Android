@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">उपलब्ध स्थानांतरण उपकरण खोलने के लिए टैप करें।</string>
     <string name="legacy_wifi_waiting_for_sender">प्राप्तकर्ता के रूप में कनेक्ट है। जुड़ा हुआ डिवाइस इस डिवाइस पर पाठ भेज सकता है।</string>
     <string name="legacy_beam_text_received">Android Beam से पाठ प्राप्त हुआ।</string>
+    <string name="server_status_running">सर्वर चालू है</string>
+    <string name="server_status_stopped">सर्वर बंद है</string>
+    <string name="server_status_error">त्रुटि: %1$s</string>
+    <string name="onion_transfer_content_title">साझा करने के लिए सामग्री</string>
+    <string name="ftp_port_hint">पोर्ट</string>
+    <string name="ftp_username_hint">उपयोगकर्ता नाम</string>
+    <string name="ftp_password_hint">पासवर्ड</string>
 </resources>
