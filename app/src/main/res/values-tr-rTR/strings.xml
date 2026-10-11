@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Kullanılabilir aktarım araçlarını açmak için dokunun.</string>
     <string name="legacy_wifi_waiting_for_sender">Alıcı olarak bağlandı. Bağlı cihaz bu cihaza metin gönderebilir.</string>
     <string name="legacy_beam_text_received">Android Beam üzerinden metin alındı.</string>
+    <string name="server_status_running">Sunucu çalışıyor</string>
+    <string name="server_status_stopped">Sunucu durduruldu</string>
+    <string name="server_status_error">Hata: %1$s</string>
+    <string name="onion_transfer_content_title">Paylaşılacak içerik</string>
+    <string name="ftp_port_hint">Bağlantı noktası</string>
+    <string name="ftp_username_hint">Kullanıcı adı</string>
+    <string name="ftp_password_hint">Şifre</string>
 </resources>
