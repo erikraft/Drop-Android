@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">Αποτυχία αποθήκευσης διαγνωστικών: %1$s</string>
     <string name="app_language_search">Αναζήτηση γλωσσών</string>
     <string name="app_language_search_no_results">Δεν βρέθηκαν γλώσσες</string>
+    <string name="diagnostics_sources_title">Αποθετήρια πηγαίου κώδικα</string>
+    <string name="diagnostics_web_repository">Αποθετήριο Web / Desktop</string>
+    <string name="diagnostics_android_repository">Αποθετήριο Android</string>
+    <string name="diagnostics_issues">Ζητήματα</string>
+    <string name="diagnostics_pull_requests">Pull requests</string>
+    <string name="diagnostics_contribute">Για να συνεισφέρετε, ανοίξτε ένα pull request στο κατάλληλο αποθετήριο.</string>
+    <string name="diagnostics_link_failed">Δεν ήταν δυνατό το άνοιγμα του συνδέσμου.</string>
 </resources>
