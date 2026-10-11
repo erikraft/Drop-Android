@@ -128,6 +128,7 @@
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transfer via Onion (Beta)</string>
     <string name="onion_transfer_description">Share files or text directly from your device through a private Tor connection. Content stays on your device and is delivered through a temporary Onion address.</string>
+    <string name="onion_transfer_content_title">Content to share</string>
     <string name="onion_transfer_select_files">Select files</string>
     <string name="onion_transfer_send_text">Send text</string>
     <string name="onion_transfer_text_hint">Enter the text you want to share</string>
@@ -154,6 +155,9 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transfer via FTP / FTPS</string>
     <string name="ftp_settings_summary">Local FTP server for file transfers over Wi-Fi, without USB cables</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Username</string>
+    <string name="ftp_password_hint">Password</string>
     <string name="ftp_choose_directory">Choose directory</string>
     <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
     <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
@@ -270,4 +274,8 @@
     <string name="legacy_transfer_tap_to_open">Tap to open the available transfer tools.</string>
     <string name="legacy_wifi_waiting_for_sender">Connected as receiver. The connected peer can send text to this device.</string>
     <string name="legacy_beam_text_received">Text received through Android Beam.</string>
+
+    <string name="server_status_running">Server running</string>
+    <string name="server_status_stopped">Server stopped</string>
+    <string name="server_status_error">Error: %1$s</string>
 </resources>
