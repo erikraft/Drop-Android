@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">プルリクエスト</string>
     <string name="diagnostics_contribute">貢献するには、該当するリポジトリでプルリクエストを作成してください。</string>
     <string name="diagnostics_link_failed">リンクを開けませんでした。</string>
-    <string name="picture_in_picture_title">ピクチャー イン ピクチャー（PiP）</string>
-    <string name="picture_in_picture_summary">アプリを最小化した後も、ファイル転送中にErikrafT Dropをフローティングウィンドウで表示します。</string>
     <string name="about_credits_title">アプリについて</string>
     <string name="about_version_format">バージョン %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™は、ファイルやテキストを転送するオープンソースアプリです。このページでは、WebとAndroidのエコシステムで使用される主な直接依存関係と技術的な参照先を示します。</string>
