@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">Tik om die beskikbare oordragnutsgoed oop te maak.</string>
     <string name="legacy_wifi_waiting_for_sender">Gekoppel as ontvanger. Die gekoppelde toestel kan teks na hierdie toestel stuur.</string>
     <string name="legacy_beam_text_received">Teks via Android Beam ontvang.</string>
+    <string name="server_status_running">Bediener loop</string>
+    <string name="server_status_stopped">Bediener gestop</string>
+    <string name="server_status_error">Fout: %1$s</string>
+    <string name="onion_transfer_content_title">Inhoud om te deel</string>
+    <string name="ftp_port_hint">Poort</string>
+    <string name="ftp_username_hint">Gebruikersnaam</string>
+    <string name="ftp_password_hint">Wagwoord</string>
 </resources>
