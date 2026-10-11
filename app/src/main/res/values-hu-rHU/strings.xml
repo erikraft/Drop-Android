@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">A hivatkozás nem nyitható meg.</string>
     <string name="picture_in_picture_title">Kép a képben (PiP)</string>
     <string name="picture_in_picture_summary">Az ErikrafT Drop fájlátvitel közben lebegő ablakban marad, miután minimalizálja az alkalmazást.</string>
+    <string name="about_credits_title">Az alkalmazásról</string>
+    <string name="about_version_format">Verzió: %1$s (%2$d)</string>
+    <string name="about_description">Az ErikrafT Drop™ egy nyílt forráskódú alkalmazás fájlok és szövegek átvitelére. Ez az oldal a Web- és Android-ökoszisztéma fő közvetlen függőségeit és műszaki hivatkozásait sorolja fel.</string>
+    <string name="about_dependencies_title">Függőségek</string>
+    <string name="about_dependencies_summary">A verzióban használt közvetlen Android-függőségek.</string>
+    <string name="about_references_title">Műszaki hivatkozások</string>
+    <string name="about_references_disclaimer">A felsőbb szintű projektek és külső összetevők megtartják saját szerzői jogaikat és licenceiket. Ez az oldal dokumentálja az ErikrafT Drop™ esetében áttekintett függőségeket és hivatkozásokat.</string>
+    <string name="about_licenses_title">Licencek</string>
+    <string name="about_licenses_summary">A nyílt forráskódú és harmadik féltől származó licencek adatai a forráskódban és a projekt licencfájljaiban találhatók.</string>
 </resources>
