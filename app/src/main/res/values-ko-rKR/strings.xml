@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">숙련된 사용자는 자체 서버도 호스팅할 수 있습니다.</string>
     <string name="onboarding_server_custom_add">서버 추가</string>
     <string name="onboarding_howto">사용법</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. 같은 로컬 Wi-Fi 네트워크의 다른 기기에서 이 앱 또는 %s를 여세요.\n\n2. 기기를 누르고 보낼 파일을 선택하세요.\n\n3. 완료! 파일이 전송됩니다…</string>
     <string name="onboarding_howto_troubleshoot">팁: 기기들이 같은 Wi-Fi에 연결되어 있어야 합니다. VPN이 연결되어 있다면 작동하지 않을 수 있습니다.</string>
     <!-- Download -->
     <string name="download_save_pending">파일을 저장중입니다. 잠시 기다려주세요...</string>
@@ -41,7 +41,7 @@
     <string name="retry">다시 시도</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">정보</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">ErikrafT Drop™ 정보</string>
     <string name="pref_about_title">앱 소개</string>
     <string name="view_downloads">다운로드 보기</string>
     <string name="pref_category_settings">설정</string>
@@ -49,9 +49,9 @@
     <string name="components_summary">눌러서 보기</string>
     <string name="support_us">지원하기</string>
     <string name="support_us_summary">앱 개발을 도울 방법에 대해 알아보세요</string>
-    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_description">ErikrafT Drop™을 후원하고 프로젝트가 계속 운영될 수 있도록 도와주세요.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
-    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX 및 Ko-fi</string>
     <string name="bitcoin_donation_title">Bitcoin으로 기부</string>
     <string name="bitcoin_donation_summary">Bitcoin으로 ErikrafT Drop™을 직접 후원하세요</string>
     <string name="bitcoin_donation_dialog_title">Bitcoin으로 기부</string>
@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">인스턴스가 성공적으로 확인되었습니다.</string>
     <string name="baseurl_no_snapdrop_instance">인스턴스가 지원되지 않는 것 같습니다</string>
     <string name="baseurl_check_instance_failed">인스턴스 검증을 실패하였습니다</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">비공식 및 오래된 서버 목록은 &lt;a href=""&gt;FAQ&lt;/a&gt;를 참조하세요. 일부 서버는 앱에서 제대로 작동하지 않을 수 있습니다.</string>
+    <string name="important_update_title">중요 업데이트</string>
+    <string name="important_update_message">snapdrop.net 웹사이트는 보안 및 개인정보 보호 관행이 명확하지 않은 회사에 인수되었습니다.\n\n사용자 데이터를 보호하기 위해 이 앱은 더 이상 snapdrop.net을 지원하지 않고, 모든 사용자를 더 안전한 대안인 ErikrafT Drop™으로 이동합니다.\n\n이해해 주셔서 감사합니다!</string>
+    <string name="important_update_ok">확인</string>
     <string name="save_location">저장할 경로</string>
     <!-- File sharing -->
     <string name="intent_file">공유할 파일이 선택되었어요.</string>
@@ -117,14 +117,14 @@
     <string name="website_footer_known_as">당신의 이름은 %s 입니다</string>
     <string name="website_about_subheading">웹, Windows, Linux, Android, 확장 프로그램 등에서 파일을 전송하는 가장 쉬운 방법</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
+    <string name="qr_transfer_title">QR 전송</string>
+    <string name="qr_transfer_send_title">애니메이션 QR로 보내기</string>
+    <string name="qr_transfer_receive_title">애니메이션 QR로 받기</string>
+    <string name="qr_transfer_instruction">다른 기기의 카메라를 이 QR 코드에 맞추세요</string>
+    <string name="qr_transfer_receive_searching">QR 코드 검색 중…</string>
+    <string name="pause">일시중지</string>
+    <string name="resume">계속</string>
+    <string name="cancel">취소</string>
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Onion으로 전송(베타)</string>
     <string name="onion_transfer_description">비공개 Tor 연결을 통해 기기에서 파일 또는 텍스트를 바로 공유하세요. 콘텐츠는 기기에 남고 임시 Onion 주소를 통해 전송됩니다.</string>
