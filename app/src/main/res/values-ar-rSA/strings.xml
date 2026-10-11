@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">تعذّر حفظ التشخيص: %1$s</string>
     <string name="app_language_search">ابحث عن اللغات</string>
     <string name="app_language_search_no_results">لم يتم العثور على لغات</string>
+    <string name="diagnostics_sources_title">مستودعات المصدر</string>
+    <string name="diagnostics_web_repository">مستودع الويب / سطح المكتب</string>
+    <string name="diagnostics_android_repository">مستودع Android</string>
+    <string name="diagnostics_issues">المشكلات</string>
+    <string name="diagnostics_pull_requests">طلبات السحب</string>
+    <string name="diagnostics_contribute">للمساهمة، افتح طلب سحب في المستودع المناسب.</string>
+    <string name="diagnostics_link_failed">تعذر فتح الرابط.</string>
 </resources>
