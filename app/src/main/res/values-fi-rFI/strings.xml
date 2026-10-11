@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Avaa käytettävissä olevat siirtotyökalut napauttamalla.</string>
     <string name="legacy_wifi_waiting_for_sender">Yhdistetty vastaanottajana. Yhdistetty laite voi lähettää tekstiä tähän laitteeseen.</string>
     <string name="legacy_beam_text_received">Teksti vastaanotettu Android Beamin kautta.</string>
+    <string name="server_status_running">Palvelin käynnissä</string>
+    <string name="server_status_stopped">Palvelin pysäytetty</string>
+    <string name="server_status_error">Virhe: %1$s</string>
+    <string name="onion_transfer_content_title">Jaettava sisältö</string>
+    <string name="ftp_port_hint">Portti</string>
+    <string name="ftp_username_hint">Käyttäjänimi</string>
+    <string name="ftp_password_hint">Salasana</string>
 </resources>
