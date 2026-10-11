@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">非公式または古いサーバーの一覧は&lt;a href=""&gt;FAQ&lt;/a&gt;をご覧ください。一部のサーバーはアプリ内で正しく動作しない場合があります。</string>
     <string name="important_update_title">重要な更新</string>
     <string name="important_update_message">snapdrop.netのWebサイトは、セキュリティとプライバシーの取り組みが不明確な企業に買収されました。\n\nデータを保護するため、このアプリはsnapdrop.netをサポートせず、すべてのユーザーをより安全な代替サービスであるErikrafT Drop™へ移行します。\n\nご理解ありがとうございます！</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">了解</string>
     <string name="save_location">保存先</string>
     <!-- File sharing -->
     <string name="intent_file">共有するファイルが選択されています</string>
