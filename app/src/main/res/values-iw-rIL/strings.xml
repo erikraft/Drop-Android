@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">יציאה</string>
     <string name="ftp_username_hint">שם משתמש</string>
     <string name="ftp_password_hint">סיסמה</string>
+    <string name="transfer_error_directory_path">לא ניתן לגשת לתיקייה שנבחרה.</string>
+    <string name="transfer_error_folder_unsupported">לא ניתן להשתמש בתיקייה זו ישירות עם השרת הזה.</string>
+    <string name="transfer_error_invalid_port">יש להזין יציאה תקינה.</string>
+    <string name="transfer_error_port_range">היציאה חייבת להיות בין 1025 ל־65535.</string>
+    <string name="transfer_error_credentials_required">שם משתמש וסיסמה הם חובה.</string>
+    <string name="onion_error_tor_timeout">Tor לא הגיב בזמן. יש לבדוק אם ניתן להפעיל את Tor במכשיר הזה.</string>
+    <string name="onion_error_qr">לא ניתן ליצור קוד QR.</string>
+    <string name="onion_error_file_open">לא ניתן לפתוח את הקובץ שנבחר.</string>
 </resources>
