@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Zoznam neoficiálnych a starších serverov nájdete v &lt;a href=""&gt;často kladených otázkach&lt;/a&gt;. Niektoré servery nemusia v aplikácii fungovať správne.</string>
     <string name="important_update_title">Dôležitá aktualizácia</string>
     <string name="important_update_message">Webovú stránku snapdrop.net získala spoločnosť s nejasnými postupmi v oblasti bezpečnosti a ochrany súkromia.\n\nAby sme ochránili vaše údaje, táto aplikácia už nebude podporovať snapdrop.net a všetkých používateľov presmeruje na bezpečnejšiu alternatívu ErikrafT Drop™.\n\nĎakujeme za pochopenie!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Rozumiem</string>
     <string name="save_location">Miesto uloženia</string>
     <!-- File sharing -->
     <string name="intent_file">Bol vybraný súbor na zdieľanie</string>
