@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">Pull requestek</string>
     <string name="diagnostics_contribute">Közreműködéshez nyisson pull requestet a megfelelő tárolóban.</string>
     <string name="diagnostics_link_failed">A hivatkozás nem nyitható meg.</string>
+    <string name="picture_in_picture_title">Kép a képben (PiP)</string>
+    <string name="picture_in_picture_summary">Az ErikrafT Drop fájlátvitel közben lebegő ablakban marad, miután minimalizálja az alkalmazást.</string>
 </resources>
