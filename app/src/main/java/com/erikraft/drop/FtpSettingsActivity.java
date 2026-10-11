@@ -93,12 +93,12 @@ public class FtpSettingsActivity extends DropPipActivity {
             if (folder == null) return;
             String path = DocumentFileUtils.getAbsolutePath(folder, this);
             if (path == null || path.trim().isEmpty()) {
-                Toast.makeText(this, "Não foi possível obter o diretório escolhido.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.transfer_error_directory_path), Toast.LENGTH_LONG).show();
                 return;
             }
             File directPath = new File(path);
             if (!directPath.isDirectory() || !directPath.canRead() || !directPath.canWrite()) {
-                Toast.makeText(this, "Esta pasta só está disponível via SAF e não pode ser usada diretamente pelo servidor FTP.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.transfer_error_folder_unsupported), Toast.LENGTH_LONG).show();
                 return;
             }
             prefs.edit().putString(getString(R.string.pref_save_location), directPath.getAbsolutePath()).apply();
@@ -218,17 +218,17 @@ public class FtpSettingsActivity extends DropPipActivity {
         try {
             port = Integer.parseInt(portInput.getText() == null ? "" : portInput.getText().toString());
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Informe uma porta válida.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.transfer_error_invalid_port), Toast.LENGTH_SHORT).show();
             return;
         }
         if (port < 1025 || port > 65535) {
-            Toast.makeText(this, "A porta deve estar entre 1025 e 65535.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.transfer_error_port_range), Toast.LENGTH_SHORT).show();
             return;
         }
         String username = usernameInput.getText() == null ? "" : usernameInput.getText().toString().trim();
         String password = passwordInput.getText() == null ? "" : passwordInput.getText().toString();
         if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Usuário e senha são obrigatórios.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.transfer_error_credentials_required), Toast.LENGTH_SHORT).show();
             return;
         }
         prefs.edit()
