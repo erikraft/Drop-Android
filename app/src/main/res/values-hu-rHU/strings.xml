@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">A Tor nem válaszolt időben. Ellenőrizd, hogy futtatható-e a Tor ezen az eszközön.</string>
     <string name="onion_error_qr">A QR-kód létrehozása nem sikerült.</string>
     <string name="onion_error_file_open">A kiválasztott fájl nem nyitható meg.</string>
+    <string name="onion_transfer_clear_files">Kijelölt fájlok eltávolítása</string>
+    <string name="onion_transfer_clear_text">Beírt szöveg törlése</string>
+    <string name="onion_transfer_ready_to_start">Indításra kész.</string>
+    <string name="onion_transfer_qr_content_description">Az Onion szolgáltatás QR-kódja</string>
+    <string name="onion_transfer_link_copied">Hivatkozás másolva.</string>
+    <string name="onion_transfer_prepare_file_error">A fájl előkészítése nem sikerült: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fájl és a szöveg megosztásra kész.</string>
+    <string name="onion_transfer_summary_files">%1$d fájl megosztásra kész.</string>
+    <string name="onion_transfer_summary_text">A szöveg megosztásra kész.</string>
 </resources>
