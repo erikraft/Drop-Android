@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor nije odgovorio na vrijeme. Provjerite može li se Tor pokrenuti na ovom uređaju.</string>
     <string name="onion_error_qr">Nije moguće generirati QR kod.</string>
     <string name="onion_error_file_open">Nije moguće otvoriti odabranu datoteku.</string>
+    <string name="onion_transfer_clear_files">Ukloni odabrane datoteke</string>
+    <string name="onion_transfer_clear_text">Izbriši uneseni tekst</string>
+    <string name="onion_transfer_ready_to_start">Spremno za pokretanje.</string>
+    <string name="onion_transfer_qr_content_description">QR kod Onion usluge</string>
+    <string name="onion_transfer_link_copied">Poveznica je kopirana.</string>
+    <string name="onion_transfer_prepare_file_error">Priprema datoteke nije uspjela: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d datoteka i tekst spremni su za dijeljenje.</string>
+    <string name="onion_transfer_summary_files">%1$d datoteka spremno je za dijeljenje.</string>
+    <string name="onion_transfer_summary_text">Tekst je spreman za dijeljenje.</string>
 </resources>
