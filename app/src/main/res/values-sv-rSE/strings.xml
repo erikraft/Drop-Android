@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Det gick inte att spara diagnostik: %1$s</string>
     <string name="app_language_search">Sök språk</string>
     <string name="app_language_search_no_results">Inga språk hittades</string>
+    <string name="diagnostics_sources_title">Källkodsarkiv</string>
+    <string name="diagnostics_web_repository">Webb-/skrivbordsarkiv</string>
+    <string name="diagnostics_android_repository">Android-arkiv</string>
+    <string name="diagnostics_issues">Ärenden</string>
+    <string name="diagnostics_pull_requests">Pull requests</string>
+    <string name="diagnostics_contribute">Öppna en pull request i rätt arkiv för att bidra.</string>
+    <string name="diagnostics_link_failed">Det gick inte att öppna länken.</string>
 </resources>
