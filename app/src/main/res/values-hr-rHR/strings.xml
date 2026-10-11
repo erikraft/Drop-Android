@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Dodirnite za otvaranje dostupnih alata za prijenos.</string>
     <string name="legacy_wifi_waiting_for_sender">Povezano kao primatelj. Povezani uređaj može slati tekst na ovaj uređaj.</string>
     <string name="legacy_beam_text_received">Tekst je primljen putem Android Beama.</string>
+    <string name="server_status_running">Poslužitelj radi</string>
+    <string name="server_status_stopped">Poslužitelj zaustavljen</string>
+    <string name="server_status_error">Pogreška: %1$s</string>
+    <string name="onion_transfer_content_title">Sadržaj za dijeljenje</string>
+    <string name="ftp_port_hint">Priključak</string>
+    <string name="ftp_username_hint">Korisničko ime</string>
+    <string name="ftp_password_hint">Lozinka</string>
 </resources>
