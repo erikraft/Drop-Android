@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Για να συνεισφέρετε, ανοίξτε ένα pull request στο κατάλληλο αποθετήριο.</string>
     <string name="diagnostics_link_failed">Δεν ήταν δυνατό το άνοιγμα του συνδέσμου.</string>
-    <string name="picture_in_picture_title">Εικόνα μέσα σε εικόνα (PiP)</string>
-    <string name="picture_in_picture_summary">Διατηρήστε το ErikrafT Drop ορατό σε αιωρούμενο παράθυρο κατά τη μεταφορά αρχείων αφού ελαχιστοποιήσετε την εφαρμογή.</string>
 </resources>
