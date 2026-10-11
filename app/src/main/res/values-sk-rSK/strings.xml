@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Uloženie diagnostiky zlyhalo: %1$s</string>
     <string name="app_language_search">Hľadať jazyky</string>
     <string name="app_language_search_no_results">Nenašli sa žiadne jazyky</string>
+    <string name="diagnostics_sources_title">Úložiská zdrojového kódu</string>
+    <string name="diagnostics_web_repository">Webové / desktopové úložisko</string>
+    <string name="diagnostics_android_repository">Úložisko Android</string>
+    <string name="diagnostics_issues">Problémy</string>
+    <string name="diagnostics_pull_requests">Pull requesty</string>
+    <string name="diagnostics_contribute">Ak chcete prispieť, vytvorte pull request v príslušnom úložisku.</string>
+    <string name="diagnostics_link_failed">Odkaz sa nepodarilo otvoriť.</string>
 </resources>
