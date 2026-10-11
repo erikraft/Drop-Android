@@ -282,4 +282,5 @@
     <string name="onion_transfer_summary_files_and_text">%1$d fitxer(s) i text a punt per compartir.</string>
     <string name="onion_transfer_summary_files">%1$d fitxer(s) a punt per compartir.</string>
     <string name="onion_transfer_summary_text">Text a punt per compartir.</string>
+    <string name="ftp_stopping">S’està aturant el servidor…</string>
 </resources>
