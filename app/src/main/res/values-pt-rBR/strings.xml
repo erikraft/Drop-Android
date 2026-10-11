@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Consulte as <a href="">perguntas frequentes</a> para ver uma lista de instâncias não oficiais e antigas. Algumas podem não funcionar corretamente dentro do aplicativo.</string>
     <string name="important_update_title">Atualização importante</string>
     <string name="important_update_message">O site snapdrop.net foi adquirido por uma empresa cujas práticas de segurança e privacidade não são claras.\n\nPara manter seus dados seguros, este aplicativo deixará de oferecer suporte ao snapdrop.net e passará a usar o ErikrafT Drop™, uma alternativa mais segura.\n\nAgradecemos pela compreensão!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Entendi</string>
     <string name="save_location">Salvar localização</string>
     <!-- File sharing -->
     <string name="intent_file">Um arquivo foi selecionado para compartilhar</string>
