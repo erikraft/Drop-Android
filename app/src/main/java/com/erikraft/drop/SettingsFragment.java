@@ -348,7 +348,23 @@ public class SettingsFragment extends PreferenceFragmentCompat {
      * Keep this local to language search; it does not change displayed names or locale tags.
      */
     private static String normalizeLanguageSearch(final String value) {
-        return Normalizer.normalize(value == null ? "" : value, Normalizer.Form.NFD)
+        final String source = value == null ? "" : value;
+        final StringBuilder normalizedFlags = new StringBuilder(source.length());
+        for (int offset = 0; offset < source.length();) {
+            final int codePoint = source.codePointAt(offset);
+            offset += Character.charCount(codePoint);
+            if (codePoint >= 0x1F1E6 && codePoint <= 0x1F1FF && offset < source.length()) {
+                final int next = source.codePointAt(offset);
+                if (next >= 0x1F1E6 && next <= 0x1F1FF) {
+                    normalizedFlags.append((char) ('A' + codePoint - 0x1F1E6));
+                    normalizedFlags.append((char) ('A' + next - 0x1F1E6));
+                    offset += Character.charCount(next);
+                    continue;
+                }
+            }
+            normalizedFlags.appendCodePoint(codePoint);
+        }
+        return Normalizer.normalize(normalizedFlags.toString(), Normalizer.Form.NFD)
                 .replaceAll("\\p{M}+", "")
                 .toLowerCase(Locale.ROOT)
                 .replaceAll("[^\\p{L}\\p{N}]+", " ")
@@ -398,6 +414,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         return edits <= 1;
     }
 
+    /**
+     * Returns a regional-indicator flag as an invisible search alias (it is never rendered).
+     * Locale tags without a region, such as Serbian "sr", intentionally have no flag alias.
+     */
+    private static String getFlagSearchAlias(final String localeTag) {
+        final String region = Locale.forLanguageTag(localeTag).getCountry().toUpperCase(Locale.ROOT);
+        if (region.length() != 2 || !region.matches("[A-Z]{2}")) return "";
+        final int first = 0x1F1E6 + region.charAt(0) - 'A';
+        final int second = 0x1F1E6 + region.charAt(1) - 'A';
+        return new String(Character.toChars(first)) + new String(Character.toChars(second));
+    }
+
     private static String getLanguageSearchAliases(final String localeTag) {
         final String language = Locale.forLanguageTag(localeTag).getLanguage();
         switch (language) {
@@ -419,7 +447,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             case "id": return "indonesian indonesio indonésio";
             case "it": return "italian italiano";
             case "he": return "hebrew hebraico";
-            case "ja": return "japanese japones japonês";
+            case "ja": return "japanese japan japao japão 日本 日本語 にほん にっぽん japonês japones japonese";
             case "ko": return "korean coreano";
             case "mk": return "macedonian macedonio macedônio";
             case "ne": return "nepali nepalês nepales";
@@ -436,7 +464,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             case "tr": return "turkish turco";
             case "uk": return "ukrainian ucraniano";
             case "vi": return "vietnamese vietnamita";
-            case "zh": return "chinese chines chinês mandarim";
+            case "zh": return "chinese china 中国 中文 汉语 漢語 chines chinês mandarim";
             default: return "";
         }
     }
@@ -454,10 +482,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             final String displayName = getLanguageDisplayName(localeTag);
             final String englishName = locale.getDisplayName(Locale.ENGLISH);
             final String localizedName = locale.getDisplayName(Locale.forLanguageTag("pt-BR"));
+            final String countryEnglish = locale.getDisplayCountry(Locale.ENGLISH);
+            final String countryPortuguese = locale.getDisplayCountry(Locale.forLanguageTag("pt-BR"));
+            final String countryNative = locale.getDisplayCountry(locale);
             allOptions.add(new LanguageOption(localeTag, displayName,
                     localeTag + " " + locale.getLanguage() + " " + englishName + " "
                             + localizedName + " " + locale.getDisplayName(Locale.getDefault()) + " "
-                            + getLanguageSearchAliases(localeTag)));
+                            + countryEnglish + " " + countryPortuguese + " " + countryNative + " "
+                            + getFlagSearchAlias(localeTag) + " " + getLanguageSearchAliases(localeTag)));
         }
 
         final String selectedLocaleTags = AppCompatDelegate.getApplicationLocales().toLanguageTags();
