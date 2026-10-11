@@ -195,4 +195,15 @@
     <string name="diagnostics_pull_requests">Pull requestit</string>
     <string name="diagnostics_contribute">Osallistu avaamalla pull request oikeassa repositoriossa.</string>
     <string name="diagnostics_link_failed">Linkkiä ei voitu avata.</string>
+    <string name="picture_in_picture_title">Kuva kuvassa (PiP)</string>
+    <string name="picture_in_picture_summary">Pidä ErikrafT Drop näkyvissä kelluvassa ikkunassa tiedostonsiirron aikana, kun olet pienentänyt sovelluksen.</string>
+    <string name="about_credits_title">Tietoja sovelluksesta</string>
+    <string name="about_version_format">Versio %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ on avoimen lähdekoodin sovellus tiedostojen ja tekstin siirtämiseen. Tällä sivulla luetellaan Web- ja Android-ekosysteemin tärkeimmät suorat riippuvuudet ja tekniset viitteet.</string>
+    <string name="about_dependencies_title">Riippuvuudet</string>
+    <string name="about_dependencies_summary">Tässä versiossa käytetyt suorat Android-riippuvuudet.</string>
+    <string name="about_references_title">Tekniset viitteet</string>
+    <string name="about_references_disclaimer">Ylävirran projektit ja kolmannen osapuolen osat säilyttävät omat tekijyys- ja lisenssitietonsa. Tämä sivu dokumentoi ErikrafT Drop™ -projektissa tarkistetut riippuvuudet ja viitteet.</string>
+    <string name="about_licenses_title">Lisenssit</string>
+    <string name="about_licenses_summary">Avoimen lähdekoodin ja kolmansien osapuolten lisenssitiedot ovat saatavilla lähdekoodissa ja projektin lisenssitiedostoissa.</string>
 </resources>
