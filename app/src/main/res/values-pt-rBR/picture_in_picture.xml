@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="picture_in_picture_title">Imagem sobre imagem (PiP)</string>
+    <string name="picture_in_picture_summary">(Recomendado) Mantenha o ErikrafT Drop visível em uma janela flutuante durante as transferências de arquivos após minimizar o aplicativo</string>
+</resources>
