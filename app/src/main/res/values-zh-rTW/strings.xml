@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">執行個體已成功驗證</string>
     <string name="baseurl_no_snapdrop_instance">執行個體似乎並不支援</string>
     <string name="baseurl_check_instance_failed">無法驗證執行個體</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">請參閱<a href="">常見問題</a>，查看非官方及舊版執行個體清單。部分執行個體可能無法在應用程式中正常運作。</string>
+    <string name="important_update_title">重要更新</string>
+    <string name="important_update_message">snapdrop.net 網站已被一家安全與隱私作法不明確的公司收購。\n\n為了保護您的資料，此應用程式將不再支援 snapdrop.net，並改用更安全的替代方案 ErikrafT Drop™。\n\n感謝您的理解！</string>
+    <string name="important_update_ok">知道了</string>
     <string name="save_location">儲存位置</string>
     <!-- File sharing -->
     <string name="intent_file">已選取的等候分享的檔案</string>
@@ -213,4 +213,49 @@
     <string name="diagnostics_pull_requests">Pull Request</string>
     <string name="diagnostics_contribute">若要貢獻，請在對應的儲存庫中提交 Pull Request。</string>
     <string name="diagnostics_link_failed">無法開啟連結。</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">協助翻譯 ErikrafT Drop™，讓更多人能使用這個應用程式。</string>
+    <string name="app_language_contribute_web">參與 Web／桌面版翻譯</string>
+    <string name="app_language_contribute_android">參與 Android 版翻譯</string>
+    <string name="legacy_transfer_category">舊式傳輸相容性</string>
+    <string name="legacy_nfc_title">Android Beam（NFC P2P）</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">正在檢查裝置相容性…</string>
+    <string name="legacy_nfc_no_hardware">不支援：此裝置沒有 NFC 轉接器。</string>
+    <string name="legacy_nfc_android_version">Android 10 及更新版本已無法使用 Android Beam。</string>
+    <string name="legacy_wifi_no_hardware">不支援：此裝置未回報具備 Wi-Fi Direct 硬體。</string>
+    <string name="legacy_transfer_transport_pending">已偵測到相容硬體。傳輸整合仍屬實驗性功能，這個版本尚未提供。</string>
+    <string name="legacy_transfer_screen_title">舊式傳輸工具</string>
+    <string name="legacy_transfer_ready">選擇舊式傳輸方式。可用性取決於裝置和 Android 版本。</string>
+    <string name="legacy_transfer_text_hint">要傳送或寫入 NFC 標籤的文字</string>
+    <string name="legacy_beam_send_text">準備 Android Beam 文字</string>
+    <string name="legacy_beam_unavailable">Android 10 及更新版本已無法使用 Android Beam；NFC 標籤工具仍可能正常運作。</string>
+    <string name="legacy_beam_ready_to_tap">文字已準備好。請將兩部裝置靠近，並依照系統的 Beam 提示操作。</string>
+    <string name="legacy_nfc_write_tag">讀取／寫入 NFC 標籤</string>
+    <string name="legacy_nfc_tap_tag">將 NFC 標籤靠近裝置以讀取，或將文字寫入空白且可寫入的 NDEF 標籤。</string>
+    <string name="legacy_nfc_tag_not_ndef">此標籤不支援 NDEF 文字。</string>
+    <string name="legacy_nfc_tag_read">已從 NFC 標籤讀取文字。</string>
+    <string name="legacy_nfc_tag_written">已將文字寫入 NFC 標籤。</string>
+    <string name="legacy_nfc_tag_too_small">此 NFC 標籤的空間不足。</string>
+    <string name="legacy_nfc_tag_error">無法讀取或寫入此 NFC 標籤。</string>
+    <string name="legacy_wifi_discover">尋找附近的 Wi-Fi Direct 裝置</string>
+    <string name="legacy_wifi_send_text">傳送文字至已連線的裝置</string>
+    <string name="legacy_wifi_unavailable">此裝置無法使用 Wi-Fi Direct。</string>
+    <string name="legacy_wifi_permission_denied">附近裝置權限遭到拒絕。</string>
+    <string name="legacy_wifi_disabled">請開啟 Wi-Fi 以使用 Wi-Fi Direct。</string>
+    <string name="legacy_wifi_discovering">正在搜尋附近的裝置…</string>
+    <string name="legacy_wifi_discovery_failed">搜尋失敗（錯誤 %1$d）。</string>
+    <string name="legacy_wifi_no_peers">找不到裝置。請確認兩部裝置都已開啟 Wi-Fi，然後再試一次。</string>
+    <string name="legacy_wifi_connecting">正在連線至裝置…</string>
+    <string name="legacy_wifi_connect_failed">連線失敗（錯誤 %1$d）。</string>
+    <string name="legacy_wifi_connected">已連線。相容的 ErikrafT Drop 工作階段之間可以傳送文字訊息。</string>
+    <string name="legacy_wifi_not_connected">尚未連線至 Wi-Fi Direct 裝置。</string>
+    <string name="legacy_wifi_text_sent">文字已傳送。</string>
+    <string name="legacy_wifi_text_received">已透過 Wi-Fi Direct 收到文字。</string>
+    <string name="legacy_wifi_transfer_failed">傳輸失敗：%1$s</string>
+    <string name="legacy_nfc_modern_tag_io">此處無法使用 Android Beam，但仍可讀取及寫入 NFC 標籤。點選以開啟工具。</string>
+    <string name="legacy_transfer_tap_to_open">點選以開啟可用的傳輸工具。</string>
+    <string name="legacy_wifi_waiting_for_sender">已以接收者身分連線。已連線的裝置可以傳送文字至此裝置。</string>
+    <string name="legacy_beam_text_received">已透過 Android Beam 收到文字。</string>
 </resources>

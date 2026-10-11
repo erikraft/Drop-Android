@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Zoznam neoficiálnych a starších serverov nájdete v &lt;a href=""&gt;často kladených otázkach&lt;/a&gt;. Niektoré servery nemusia v aplikácii fungovať správne.</string>
     <string name="important_update_title">Dôležitá aktualizácia</string>
     <string name="important_update_message">Webovú stránku snapdrop.net získala spoločnosť s nejasnými postupmi v oblasti bezpečnosti a ochrany súkromia.\n\nAby sme ochránili vaše údaje, táto aplikácia už nebude podporovať snapdrop.net a všetkých používateľov presmeruje na bezpečnejšiu alternatívu ErikrafT Drop™.\n\nĎakujeme za pochopenie!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Rozumiem</string>
     <string name="save_location">Miesto uloženia</string>
     <!-- File sharing -->
     <string name="intent_file">Bol vybraný súbor na zdieľanie</string>
@@ -204,4 +204,49 @@
     <string name="diagnostics_pull_requests">Pull requesty</string>
     <string name="diagnostics_contribute">Ak chcete prispieť, vytvorte pull request v príslušnom úložisku.</string>
     <string name="diagnostics_link_failed">Odkaz sa nepodarilo otvoriť.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">Pomôžte preložiť ErikrafT Drop™ a sprístupniť aplikáciu väčšiemu počtu ľudí.</string>
+    <string name="app_language_contribute_web">Prispejte k prekladom webovej a desktopovej verzie</string>
+    <string name="app_language_contribute_android">Prispejte k prekladom Androidu</string>
+    <string name="legacy_transfer_category">Kompatibilita so staršími spôsobmi prenosu</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Kontroluje sa kompatibilita zariadenia…</string>
+    <string name="legacy_nfc_no_hardware">Nepodporované: toto zariadenie nemá adaptér NFC.</string>
+    <string name="legacy_nfc_android_version">Android Beam nie je dostupný v systéme Android 10 a novšom.</string>
+    <string name="legacy_wifi_no_hardware">Nepodporované: zariadenie neuvádza hardvér Wi-Fi Direct.</string>
+    <string name="legacy_transfer_transport_pending">Zistený kompatibilný hardvér. Integrácia prenosu je stále experimentálna a v tomto zostavení nie je dostupná.</string>
+    <string name="legacy_transfer_screen_title">Nástroje starších prenosov</string>
+    <string name="legacy_transfer_ready">Vyberte starší spôsob prenosu. Dostupnosť závisí od zariadenia a verzie systému Android.</string>
+    <string name="legacy_transfer_text_hint">Text na odoslanie alebo zápis na značku NFC</string>
+    <string name="legacy_beam_send_text">Pripraviť text pre Android Beam</string>
+    <string name="legacy_beam_unavailable">Android Beam nie je dostupný v systéme Android 10 a novšom; nástroje značiek NFC môžu naďalej fungovať.</string>
+    <string name="legacy_beam_ready_to_tap">Text je pripravený. Priložte zariadenia k sebe a postupujte podľa systémovej výzvy Beam.</string>
+    <string name="legacy_nfc_write_tag">Čítanie/zápis značky NFC</string>
+    <string name="legacy_nfc_tap_tag">Priložte značku NFC k zariadeniu, aby ste ju prečítali, alebo zapíšte text na prázdnu zapisovateľnú značku NDEF.</string>
+    <string name="legacy_nfc_tag_not_ndef">Táto značka nepodporuje text NDEF.</string>
+    <string name="legacy_nfc_tag_read">Text zo značky NFC bol prečítaný.</string>
+    <string name="legacy_nfc_tag_written">Text bol zapísaný na značku NFC.</string>
+    <string name="legacy_nfc_tag_too_small">Na tejto značke NFC nie je dostatok miesta.</string>
+    <string name="legacy_nfc_tag_error">Túto značku NFC sa nepodarilo prečítať ani zapísať.</string>
+    <string name="legacy_wifi_discover">Vyhľadať blízke zariadenia Wi-Fi Direct</string>
+    <string name="legacy_wifi_send_text">Odoslať text pripojenému zariadeniu</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct nie je na tomto zariadení dostupný.</string>
+    <string name="legacy_wifi_permission_denied">Povolenie na prístup k blízkym zariadeniam bolo zamietnuté.</string>
+    <string name="legacy_wifi_disabled">Ak chcete používať Wi-Fi Direct, zapnite Wi-Fi.</string>
+    <string name="legacy_wifi_discovering">Vyhľadávajú sa blízke zariadenia…</string>
+    <string name="legacy_wifi_discovery_failed">Vyhľadávanie zlyhalo (chyba %1$d).</string>
+    <string name="legacy_wifi_no_peers">Nenašli sa žiadne zariadenia. Skontrolujte, či je na oboch zariadeniach zapnuté Wi-Fi, a skúste to znova.</string>
+    <string name="legacy_wifi_connecting">Pripája sa k zariadeniu…</string>
+    <string name="legacy_wifi_connect_failed">Pripojenie zlyhalo (chyba %1$d).</string>
+    <string name="legacy_wifi_connected">Pripojené. Medzi kompatibilnými reláciami ErikrafT Drop možno odosielať textové správy.</string>
+    <string name="legacy_wifi_not_connected">Nie je pripojené k zariadeniu Wi-Fi Direct.</string>
+    <string name="legacy_wifi_text_sent">Text bol odoslaný.</string>
+    <string name="legacy_wifi_text_received">Text bol prijatý cez Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Prenos zlyhal: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam tu nie je dostupný, ale značky NFC možno čítať a zapisovať. Klepnutím otvorte nástroje.</string>
+    <string name="legacy_transfer_tap_to_open">Klepnutím otvorte dostupné nástroje prenosu.</string>
+    <string name="legacy_wifi_waiting_for_sender">Pripojené ako prijímač. Pripojené zariadenie môže odoslať text do tohto zariadenia.</string>
+    <string name="legacy_beam_text_received">Text bol prijatý cez Android Beam.</string>
 </resources>

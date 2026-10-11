@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">Екземпляр успішно перевірено</string>
     <string name="baseurl_no_snapdrop_instance">Здається, екземпляр не підтримується</string>
     <string name="baseurl_check_instance_failed">Не вдалося перевірити екземпляр</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Перелік неофіційних і застарілих екземплярів дивіться в розділі <a href="">FAQ</a>. Деякі з них можуть працювати в застосунку некоректно.</string>
+    <string name="important_update_title">Важливе оновлення</string>
+    <string name="important_update_message">Вебсайт snapdrop.net придбала компанія з незрозумілими практиками безпеки та конфіденційності.\n\nЩоб захистити ваші дані, застосунок більше не підтримуватиме snapdrop.net і перейде на ErikrafT Drop™ — безпечнішу альтернативу.\n\nДякуємо за розуміння!</string>
+    <string name="important_update_ok">Зрозуміло</string>
     <string name="save_location">Зберегти розташування</string>
     <!-- File sharing -->
     <string name="intent_file">Файл, обраний для надсилання</string>
@@ -204,4 +204,49 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Щоб зробити внесок, створіть pull request у відповідному репозиторії.</string>
     <string name="diagnostics_link_failed">Не вдалося відкрити посилання.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">Допоможіть перекласти ErikrafT Drop™, щоб застосунок став доступним більшій кількості людей.</string>
+    <string name="app_language_contribute_web">Долучитися до перекладу вебверсії та версії для ПК</string>
+    <string name="app_language_contribute_android">Долучитися до перекладу Android</string>
+    <string name="legacy_transfer_category">Сумісність зі старими способами передавання</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Перевірка сумісності пристрою…</string>
+    <string name="legacy_nfc_no_hardware">Не підтримується: цей пристрій не має NFC-адаптера.</string>
+    <string name="legacy_nfc_android_version">Android Beam недоступний в Android 10 і новіших версіях.</string>
+    <string name="legacy_wifi_no_hardware">Не підтримується: пристрій не повідомляє про наявність обладнання Wi-Fi Direct.</string>
+    <string name="legacy_transfer_transport_pending">Виявлено сумісне обладнання. Інтеграція передавання все ще експериментальна й недоступна в цій збірці.</string>
+    <string name="legacy_transfer_screen_title">Інструменти для старих способів передавання</string>
+    <string name="legacy_transfer_ready">Виберіть старий спосіб передавання. Доступність залежить від пристрою та версії Android.</string>
+    <string name="legacy_transfer_text_hint">Текст для надсилання або запису на NFC-мітку</string>
+    <string name="legacy_beam_send_text">Підготувати текст для Android Beam</string>
+    <string name="legacy_beam_unavailable">Android Beam недоступний в Android 10 і новіших версіях; інструменти NFC-міток можуть і далі працювати.</string>
+    <string name="legacy_beam_ready_to_tap">Текст підготовлено. Зблизьте пристрої та дотримуйтеся системної підказки Beam.</string>
+    <string name="legacy_nfc_write_tag">Читання/запис NFC-мітки</string>
+    <string name="legacy_nfc_tap_tag">Піднесіть NFC-мітку до пристрою, щоб прочитати її, або запишіть текст на порожню доступну для запису мітку NDEF.</string>
+    <string name="legacy_nfc_tag_not_ndef">Ця мітка не підтримує текст NDEF.</string>
+    <string name="legacy_nfc_tag_read">Текст прочитано з NFC-мітки.</string>
+    <string name="legacy_nfc_tag_written">Текст записано на NFC-мітку.</string>
+    <string name="legacy_nfc_tag_too_small">На цій NFC-мітці недостатньо місця.</string>
+    <string name="legacy_nfc_tag_error">Не вдалося прочитати або записати цю NFC-мітку.</string>
+    <string name="legacy_wifi_discover">Знайти пристрої Wi-Fi Direct поблизу</string>
+    <string name="legacy_wifi_send_text">Надіслати текст на підключений пристрій</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct недоступний на цьому пристрої.</string>
+    <string name="legacy_wifi_permission_denied">Дозвіл на доступ до пристроїв поблизу відхилено.</string>
+    <string name="legacy_wifi_disabled">Увімкніть Wi-Fi, щоб користуватися Wi-Fi Direct.</string>
+    <string name="legacy_wifi_discovering">Пошук пристроїв поблизу…</string>
+    <string name="legacy_wifi_discovery_failed">Не вдалося знайти пристрої (помилка %1$d).</string>
+    <string name="legacy_wifi_no_peers">Пристроїв не знайдено. Переконайтеся, що Wi-Fi увімкнено на обох пристроях, і спробуйте ще раз.</string>
+    <string name="legacy_wifi_connecting">Підключення до пристрою…</string>
+    <string name="legacy_wifi_connect_failed">Не вдалося підключитися (помилка %1$d).</string>
+    <string name="legacy_wifi_connected">Підключено. Можна надсилати текстові повідомлення між сумісними сеансами ErikrafT Drop.</string>
+    <string name="legacy_wifi_not_connected">Немає підключення до пристрою Wi-Fi Direct.</string>
+    <string name="legacy_wifi_text_sent">Текст надіслано.</string>
+    <string name="legacy_wifi_text_received">Текст отримано через Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Передавання не вдалося: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam тут недоступний, але NFC-мітки можна читати й записувати. Торкніться, щоб відкрити інструменти.</string>
+    <string name="legacy_transfer_tap_to_open">Торкніться, щоб відкрити доступні інструменти передавання.</string>
+    <string name="legacy_wifi_waiting_for_sender">Підключено як одержувач. Підключений пристрій може надсилати текст на цей пристрій.</string>
+    <string name="legacy_beam_text_received">Текст отримано через Android Beam.</string>
 </resources>

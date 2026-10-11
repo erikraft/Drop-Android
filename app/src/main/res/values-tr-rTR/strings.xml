@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">İstemci başarıyla onaylandı</string>
     <string name="baseurl_no_snapdrop_instance">Görünüşe göre istemci desteklenmiyor</string>
     <string name="baseurl_check_instance_failed">İstemci doğrulaması başarısız oldu</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Resmî olmayan ve eski örneklerin listesi için <a href="">SSS</a> bölümüne bakın. Bazı örnekler uygulama içinde düzgün çalışmayabilir.</string>
+    <string name="important_update_title">Önemli Güncelleme</string>
+    <string name="important_update_message">snapdrop.net web sitesi, güvenlik ve gizlilik uygulamaları belirsiz olan bir şirket tarafından satın alındı.\n\nVerilerinizi korumak için bu uygulama artık snapdrop.net desteği sunmayacak ve daha güvenli bir alternatif olan ErikrafT Drop™’a geçecektir.\n\nAnlayışınız için teşekkür ederiz!</string>
+    <string name="important_update_ok">Anladım</string>
     <string name="save_location">Kayıt konumu</string>
     <!-- File sharing -->
     <string name="intent_file">Bir dosya paylaşım için seçildi</string>
@@ -204,4 +204,49 @@
     <string name="diagnostics_pull_requests">Pull request\'ler</string>
     <string name="diagnostics_contribute">Katkıda bulunmak için ilgili depoda bir pull request açın.</string>
     <string name="diagnostics_link_failed">Bağlantı açılamadı.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">ErikrafT Drop™ uygulamasını daha fazla kişinin kullanabilmesi için çeviriye yardımcı olun.</string>
+    <string name="app_language_contribute_web">Web / Masaüstü çevirilerine katkıda bulunun</string>
+    <string name="app_language_contribute_android">Android çevirilerine katkıda bulunun</string>
+    <string name="legacy_transfer_category">Eski aktarım yöntemleriyle uyumluluk</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Cihaz uyumluluğu denetleniyor…</string>
+    <string name="legacy_nfc_no_hardware">Desteklenmiyor: bu cihazda NFC adaptörü yok.</string>
+    <string name="legacy_nfc_android_version">Android Beam, Android 10 ve sonraki sürümlerde kullanılamaz.</string>
+    <string name="legacy_wifi_no_hardware">Desteklenmiyor: bu cihaz Wi-Fi Direct donanımı bildirmiyor.</string>
+    <string name="legacy_transfer_transport_pending">Uyumlu donanım algılandı. Aktarım entegrasyonu hâlâ deneyseldir ve bu derlemede kullanılamaz.</string>
+    <string name="legacy_transfer_screen_title">Eski aktarım araçları</string>
+    <string name="legacy_transfer_ready">Eski bir aktarım yöntemi seçin. Kullanılabilirlik cihazınıza ve Android sürümüne bağlıdır.</string>
+    <string name="legacy_transfer_text_hint">Gönderilecek veya NFC etiketine yazılacak metin</string>
+    <string name="legacy_beam_send_text">Android Beam metnini hazırla</string>
+    <string name="legacy_beam_unavailable">Android Beam, Android 10 ve sonraki sürümlerde kullanılamaz; NFC etiket araçları yine de çalışabilir.</string>
+    <string name="legacy_beam_ready_to_tap">Metin hazır. Cihazları birbirine yaklaştırın ve sistemin Beam istemini izleyin.</string>
+    <string name="legacy_nfc_write_tag">NFC etiketini oku/yaz</string>
+    <string name="legacy_nfc_tap_tag">Okumak için bir NFC etiketini cihaza yaklaştırın veya boş, yazılabilir bir NDEF etiketine metin yazın.</string>
+    <string name="legacy_nfc_tag_not_ndef">Bu etiket NDEF metnini desteklemiyor.</string>
+    <string name="legacy_nfc_tag_read">NFC etiketinden metin okundu.</string>
+    <string name="legacy_nfc_tag_written">NFC etiketine metin yazıldı.</string>
+    <string name="legacy_nfc_tag_too_small">Bu NFC etiketinde yeterli alan yok.</string>
+    <string name="legacy_nfc_tag_error">Bu NFC etiketi okunamadı veya yazılamadı.</string>
+    <string name="legacy_wifi_discover">Yakındaki Wi-Fi Direct cihazlarını bul</string>
+    <string name="legacy_wifi_send_text">Bağlı cihaza metin gönder</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct bu cihazda kullanılamıyor.</string>
+    <string name="legacy_wifi_permission_denied">Yakındaki cihaz izni reddedildi.</string>
+    <string name="legacy_wifi_disabled">Wi-Fi Direct kullanmak için Wi-Fi’yi etkinleştirin.</string>
+    <string name="legacy_wifi_discovering">Yakındaki cihazlar aranıyor…</string>
+    <string name="legacy_wifi_discovery_failed">Cihaz arama başarısız (hata %1$d).</string>
+    <string name="legacy_wifi_no_peers">Cihaz bulunamadı. Her iki cihazda da Wi-Fi’nin açık olduğundan emin olun ve yeniden deneyin.</string>
+    <string name="legacy_wifi_connecting">Cihaza bağlanılıyor…</string>
+    <string name="legacy_wifi_connect_failed">Bağlantı başarısız (hata %1$d).</string>
+    <string name="legacy_wifi_connected">Bağlandı. Uyumlu ErikrafT Drop oturumları arasında metin mesajları gönderilebilir.</string>
+    <string name="legacy_wifi_not_connected">Bir Wi-Fi Direct cihazına bağlı değil.</string>
+    <string name="legacy_wifi_text_sent">Metin gönderildi.</string>
+    <string name="legacy_wifi_text_received">Wi-Fi Direct üzerinden metin alındı.</string>
+    <string name="legacy_wifi_transfer_failed">Aktarım başarısız: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam burada kullanılamıyor ancak NFC etiketleri okunup yazılabilir. Araçları açmak için dokunun.</string>
+    <string name="legacy_transfer_tap_to_open">Kullanılabilir aktarım araçlarını açmak için dokunun.</string>
+    <string name="legacy_wifi_waiting_for_sender">Alıcı olarak bağlandı. Bağlı cihaz bu cihaza metin gönderebilir.</string>
+    <string name="legacy_beam_text_received">Android Beam üzerinden metin alındı.</string>
 </resources>

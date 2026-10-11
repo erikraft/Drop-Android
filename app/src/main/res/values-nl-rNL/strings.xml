@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">Ervaren gebruikers kunnen ook hun eigen servers hosten.</string>
     <string name="onboarding_server_custom_add">Server toevoegen</string>
     <string name="onboarding_howto">Zo werkt het</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. Open deze app of %s op een ander apparaat in je lokale wifi-netwerk.\n\n2. Tik op het apparaat en selecteer de bestanden die je wilt verzenden.\n\n3. Klaar! De bestanden worden verzonden…</string>
     <string name="onboarding_howto_troubleshoot">Tip: Apparaten moeten verbonden zijn met hetzelfde WiFi-netwerk. Het werkt mogelijk niet als een VPN ingeschakeld is.</string>
     <!-- Download -->
     <string name="download_save_pending">Het bestand opslaan. Even geduld…</string>
@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">Instantie met succes geverifieerd</string>
     <string name="baseurl_no_snapdrop_instance">Instantie lijkt niet te worden ondersteund</string>
     <string name="baseurl_check_instance_failed">Fout bij het verifiëren van de instantie</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Bekijk de <a href="">FAQ</a> voor een lijst met niet-officiële en oudere instanties. Sommige werken mogelijk niet goed in de app.</string>
+    <string name="important_update_title">Belangrijke update</string>
+    <string name="important_update_message">De website snapdrop.net is overgenomen door een bedrijf waarvan het beveiligings- en privacybeleid onduidelijk is.\n\nOm je gegevens veilig te houden, ondersteunt deze app snapdrop.net niet langer en schakelt deze over naar ErikrafT Drop™, een veiliger alternatief.\n\nBedankt voor je begrip!</string>
+    <string name="important_update_ok">Begrepen</string>
     <string name="save_location">Locatie opslaan</string>
     <!-- File sharing -->
     <string name="intent_file">Een bestand is geselecteerd om te delen</string>
@@ -204,4 +204,49 @@
     <string name="about_references_disclaimer">Bovenliggende projecten en componenten van derden behouden hun eigen auteurschap en licenties. Deze pagina documenteert de afhankelijkheden en verwijzingen die voor ErikrafT Drop™ zijn beoordeeld.</string>
     <string name="about_licenses_title">Licenties</string>
     <string name="about_licenses_summary">Informatie over open-source- en licenties van derden is beschikbaar in de broncode en de licentiebestanden van het project.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">Help ErikrafT Drop™ te vertalen zodat de app voor meer mensen beschikbaar wordt.</string>
+    <string name="app_language_contribute_web">Draag bij aan vertalingen voor web en desktop</string>
+    <string name="app_language_contribute_android">Draag bij aan Android-vertalingen</string>
+    <string name="legacy_transfer_category">Compatibiliteit met oudere overdrachtsmethoden</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Compatibiliteit van apparaat controleren…</string>
+    <string name="legacy_nfc_no_hardware">Niet ondersteund: dit apparaat heeft geen NFC-adapter.</string>
+    <string name="legacy_nfc_android_version">Android Beam is niet beschikbaar op Android 10 en hoger.</string>
+    <string name="legacy_wifi_no_hardware">Niet ondersteund: dit apparaat meldt geen Wi-Fi Direct-hardware.</string>
+    <string name="legacy_transfer_transport_pending">Compatibele hardware gevonden. De integratie voor overdracht is nog experimenteel en niet beschikbaar in deze build.</string>
+    <string name="legacy_transfer_screen_title">Hulpmiddelen voor oudere overdracht</string>
+    <string name="legacy_transfer_ready">Kies een oudere overdrachtsmethode. De beschikbaarheid hangt af van je apparaat en Android-versie.</string>
+    <string name="legacy_transfer_text_hint">Tekst om te verzenden of naar een NFC-tag te schrijven</string>
+    <string name="legacy_beam_send_text">Android Beam-tekst voorbereiden</string>
+    <string name="legacy_beam_unavailable">Android Beam is niet beschikbaar op Android 10 en hoger; NFC-tagfuncties werken mogelijk nog wel.</string>
+    <string name="legacy_beam_ready_to_tap">Tekst voorbereid. Houd de apparaten bij elkaar en volg de Beam-melding van het systeem.</string>
+    <string name="legacy_nfc_write_tag">NFC-tag lezen/schrijven</string>
+    <string name="legacy_nfc_tap_tag">Houd een NFC-tag bij het apparaat om deze te lezen, of schrijf tekst naar een lege, beschrijfbare NDEF-tag.</string>
+    <string name="legacy_nfc_tag_not_ndef">Deze tag ondersteunt geen NDEF-tekst.</string>
+    <string name="legacy_nfc_tag_read">Tekst gelezen van NFC-tag.</string>
+    <string name="legacy_nfc_tag_written">Tekst geschreven naar NFC-tag.</string>
+    <string name="legacy_nfc_tag_too_small">Deze NFC-tag heeft onvoldoende ruimte.</string>
+    <string name="legacy_nfc_tag_error">Deze NFC-tag kan niet worden gelezen of beschreven.</string>
+    <string name="legacy_wifi_discover">Zoek naar Wi-Fi Direct-apparaten in de buurt</string>
+    <string name="legacy_wifi_send_text">Stuur tekst naar het verbonden apparaat</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct is niet beschikbaar op dit apparaat.</string>
+    <string name="legacy_wifi_permission_denied">Toestemming voor apparaten in de buurt is geweigerd.</string>
+    <string name="legacy_wifi_disabled">Schakel Wi-Fi in om Wi-Fi Direct te gebruiken.</string>
+    <string name="legacy_wifi_discovering">Zoeken naar apparaten in de buurt…</string>
+    <string name="legacy_wifi_discovery_failed">Zoeken mislukt (fout %1$d).</string>
+    <string name="legacy_wifi_no_peers">Geen apparaten gevonden. Controleer of Wi-Fi op beide apparaten is ingeschakeld en probeer het opnieuw.</string>
+    <string name="legacy_wifi_connecting">Verbinden met apparaat…</string>
+    <string name="legacy_wifi_connect_failed">Verbinding mislukt (fout %1$d).</string>
+    <string name="legacy_wifi_connected">Verbonden. Tekstberichten kunnen worden verzonden tussen compatibele ErikrafT Drop-sessies.</string>
+    <string name="legacy_wifi_not_connected">Niet verbonden met een Wi-Fi Direct-apparaat.</string>
+    <string name="legacy_wifi_text_sent">Tekst verzonden.</string>
+    <string name="legacy_wifi_text_received">Tekst ontvangen via Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Overdracht mislukt: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam is hier niet beschikbaar, maar NFC-tags kunnen wel worden gelezen en beschreven. Tik om de hulpmiddelen te openen.</string>
+    <string name="legacy_transfer_tap_to_open">Tik om de beschikbare overdrachtshulpmiddelen te openen.</string>
+    <string name="legacy_wifi_waiting_for_sender">Verbonden als ontvanger. Het verbonden apparaat kan tekst naar dit apparaat sturen.</string>
+    <string name="legacy_beam_text_received">Tekst ontvangen via Android Beam.</string>
 </resources>

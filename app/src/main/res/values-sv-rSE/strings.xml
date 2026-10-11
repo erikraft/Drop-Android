@@ -6,14 +6,14 @@
     <string name="err_no_app">Ingen applikation hittades som kan öppna denna fil</string>
     <string name="open_url">Öppna URL</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">fortsätt</string>
+    <string name="onboarding_button_grant">ge behörighet</string>
+    <string name="onboarding_button_finish">slutför</string>
+    <string name="onboarding_choose_server">Välj serveradress</string>
+    <string name="onboarding_choose_server_short">välj server</string>
+    <string name="onboarding_choose_server_description">Den här appen är en optimerad klient för ErikrafT Drop- och PairDrop-webbapparna.\nVälj en av följande instanser eller ange en anpassad URL för att ansluta.\n\nObs! Du måste välja samma URL på alla enheter.</string>
+    <string name="onboarding_storage_permission">Lagringsbehörighet</string>
+    <string name="onboarding_storage_permission_description">Den här appen används för fildelning. Därför krävs lagringsbehörighet för att använda den.</string>
     <string name="onboarding_server_primary_summary">(1) Primär — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Sekundär — ErikrafT Drop™-reserv</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiär — ErikrafT Drop™-reserv</string>
@@ -26,8 +26,8 @@
     <string name="onboarding_server_custom">Anpassad URL</string>
     <string name="onboarding_server_custom_summary">Erfarna användare kan också vara värdar för egna servrar.</string>
     <string name="onboarding_server_custom_add">Lägg till server</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto">Så här använder du appen</string>
+    <string name="onboarding_howto_summary">1. Öppna den här appen eller %s på en annan enhet i ditt lokala Wi-Fi-nätverk.\n\n2. Tryck på enheten och välj filerna du vill skicka.\n\n3. Klart! Filerna skickas…</string>
     <string name="onboarding_howto_troubleshoot">Tips: Enheter måste vara anslutna till samma WiFi-nätverk. Det kanske inte fungerar om en VPN är aktiverad.</string>
     <!-- Download -->
     <string name="download_save_pending">Lagrar filen. Var god och vänta…</string>
@@ -86,15 +86,15 @@
         <item>Ljus</item>
         <item>Mörk</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_title">Ändra serveradress</string>
+    <string name="baseurl_not_set">Inte inställd</string>
+    <string name="baseurl_instance_verified">Instansen har verifierats</string>
+    <string name="baseurl_no_snapdrop_instance">Instansen verkar inte stödjas</string>
+    <string name="baseurl_check_instance_failed">Det gick inte att verifiera instansen</string>
+    <string name="baseurl_unofficial_instances">Se <a href="">FAQ</a> för en lista över inofficiella och äldre instanser. Vissa kanske inte fungerar korrekt i appen.</string>
+    <string name="important_update_title">Viktig uppdatering</string>
+    <string name="important_update_message">Webbplatsen snapdrop.net har förvärvats av ett företag med otydliga rutiner för säkerhet och integritet.\n\nFör att skydda dina data kommer appen inte längre att stödja snapdrop.net, utan i stället använda ErikrafT Drop™, ett säkrare alternativ.\n\nTack för din förståelse!</string>
+    <string name="important_update_ok">Jag förstår</string>
     <string name="save_location">Spara platsen</string>
     <!-- File sharing -->
     <string name="intent_file">En fil är markerad för delning</string>
@@ -204,4 +204,49 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Öppna en pull request i rätt arkiv för att bidra.</string>
     <string name="diagnostics_link_failed">Det gick inte att öppna länken.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">Hjälp till att översätta ErikrafT Drop™ så att appen blir tillgänglig för fler.</string>
+    <string name="app_language_contribute_web">Bidra till översättningar för webb och dator</string>
+    <string name="app_language_contribute_android">Bidra till Android-översättningar</string>
+    <string name="legacy_transfer_category">Kompatibilitet med äldre överföringsmetoder</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Kontrollerar enhetens kompatibilitet…</string>
+    <string name="legacy_nfc_no_hardware">Stöds inte: den här enheten har ingen NFC-adapter.</string>
+    <string name="legacy_nfc_android_version">Android Beam är inte tillgängligt på Android 10 och senare.</string>
+    <string name="legacy_wifi_no_hardware">Stöds inte: den här enheten rapporterar ingen Wi-Fi Direct-maskinvara.</string>
+    <string name="legacy_transfer_transport_pending">Kompatibel maskinvara upptäcktes. Överföringsintegrationen är fortfarande experimentell och är inte tillgänglig i den här versionen.</string>
+    <string name="legacy_transfer_screen_title">Verktyg för äldre överföringar</string>
+    <string name="legacy_transfer_ready">Välj en äldre överföringsmetod. Tillgängligheten beror på enheten och Android-versionen.</string>
+    <string name="legacy_transfer_text_hint">Text att skicka eller skriva till en NFC-tagg</string>
+    <string name="legacy_beam_send_text">Förbered Android Beam-text</string>
+    <string name="legacy_beam_unavailable">Android Beam är inte tillgängligt på Android 10 och senare; NFC-taggverktyg kan fortfarande fungera.</string>
+    <string name="legacy_beam_ready_to_tap">Texten är förberedd. För enheterna nära varandra och följ systemets Beam-anvisning.</string>
+    <string name="legacy_nfc_write_tag">Läs/skriv NFC-tagg</string>
+    <string name="legacy_nfc_tap_tag">Håll en NFC-tagg nära enheten för att läsa den eller skriv text till en tom, skrivbar NDEF-tagg.</string>
+    <string name="legacy_nfc_tag_not_ndef">Den här taggen stöder inte NDEF-text.</string>
+    <string name="legacy_nfc_tag_read">Text läst från NFC-tagg.</string>
+    <string name="legacy_nfc_tag_written">Text skriven till NFC-tagg.</string>
+    <string name="legacy_nfc_tag_too_small">Den här NFC-taggen har inte tillräckligt med utrymme.</string>
+    <string name="legacy_nfc_tag_error">Det gick inte att läsa eller skriva den här NFC-taggen.</string>
+    <string name="legacy_wifi_discover">Hitta närliggande Wi-Fi Direct-enheter</string>
+    <string name="legacy_wifi_send_text">Skicka text till den anslutna enheten</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct är inte tillgängligt på den här enheten.</string>
+    <string name="legacy_wifi_permission_denied">Behörighet för enheter i närheten nekades.</string>
+    <string name="legacy_wifi_disabled">Aktivera Wi-Fi för att använda Wi-Fi Direct.</string>
+    <string name="legacy_wifi_discovering">Söker efter närliggande enheter…</string>
+    <string name="legacy_wifi_discovery_failed">Sökningen misslyckades (fel %1$d).</string>
+    <string name="legacy_wifi_no_peers">Inga enheter hittades. Kontrollera att Wi-Fi är aktiverat på båda enheterna och försök igen.</string>
+    <string name="legacy_wifi_connecting">Ansluter till enheten…</string>
+    <string name="legacy_wifi_connect_failed">Anslutningen misslyckades (fel %1$d).</string>
+    <string name="legacy_wifi_connected">Ansluten. Textmeddelanden kan skickas mellan kompatibla ErikrafT Drop-sessioner.</string>
+    <string name="legacy_wifi_not_connected">Inte ansluten till en Wi-Fi Direct-enhet.</string>
+    <string name="legacy_wifi_text_sent">Text skickad.</string>
+    <string name="legacy_wifi_text_received">Text mottagen via Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Överföringen misslyckades: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam är inte tillgängligt här, men NFC-taggar kan läsas och skrivas. Tryck för att öppna verktygen.</string>
+    <string name="legacy_transfer_tap_to_open">Tryck för att öppna tillgängliga överföringsverktyg.</string>
+    <string name="legacy_wifi_waiting_for_sender">Ansluten som mottagare. Den anslutna enheten kan skicka text till den här enheten.</string>
+    <string name="legacy_beam_text_received">Text mottagen via Android Beam.</string>
 </resources>

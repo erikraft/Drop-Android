@@ -10,7 +10,7 @@
     <string name="onboarding_button_grant">Acordă permisiuni</string>
     <string name="onboarding_button_finish">Finalizare</string>
     <string name="onboarding_choose_server">Alege o adresă de server</string>
-    <string name="onboarding_choose_server_short">choose server</string>
+    <string name="onboarding_choose_server_short">alege serverul</string>
     <string name="onboarding_choose_server_description">Această aplicație este un client optimizat pentru aplicația web ErikrafT Drop și PairDrop.\nAlege una dintre următoarele instanțe sau specifică un URL personalizat la care să te conectezi.\n\nNotă: Trebuie să alegeți același URL pe toate dispozitivele.</string>
     <string name="onboarding_storage_permission">Permisiuni pentru stocare</string>
     <string name="onboarding_storage_permission_description">Această aplicație este pentru partajări. De aceea sunt necesare permisiuni pentru stocare.</string>
@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">Utilizatorii avansați își pot găzdui și propriile servere.</string>
     <string name="onboarding_server_custom_add">Adaugă server</string>
     <string name="onboarding_howto">Instrucțiuni de folosire</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. Deschide această aplicație sau %s pe orice alt dispozitiv din rețeaua ta Wi-Fi locală.\n\n2. Atinge dispozitivul și selectează fișierele pe care vrei să le trimiți.\n\n3. Gata! Fișierele vor fi trimise…</string>
     <string name="onboarding_howto_troubleshoot">Sugestie: Dispozitivele trebuie să fie conectate la aceeași rețea WiFi. Nu va funcționa dacă un VPN este activat.</string>
     <!-- Download -->
     <string name="download_save_pending">Se stochează fișierul. Vă rugăm să aveți puțină răbdare...</string>
@@ -86,15 +86,15 @@
         <item>Luminos</item>
         <item>Întunecat</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
+    <string name="baseurl_title">Schimbă adresa serverului</string>
     <string name="baseurl_not_set">Nesetat</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_instance_verified">Instanța a fost verificată cu succes</string>
+    <string name="baseurl_no_snapdrop_instance">Instanța pare să nu fie acceptată</string>
+    <string name="baseurl_check_instance_failed">Verificarea instanței a eșuat</string>
+    <string name="baseurl_unofficial_instances">Consultă <a href="">Întrebări frecvente</a> pentru o listă de instanțe neoficiale și vechi. Este posibil ca unele să nu funcționeze corect în aplicație.</string>
+    <string name="important_update_title">Actualizare importantă</string>
+    <string name="important_update_message">Site-ul snapdrop.net a fost achiziționat de o companie ale cărei practici de securitate și confidențialitate nu sunt clare.\n\nPentru a-ți proteja datele, aplicația nu va mai accepta snapdrop.net și va trece la ErikrafT Drop™, o alternativă mai sigură.\n\nÎți mulțumim pentru înțelegere!</string>
+    <string name="important_update_ok">Am înțeles</string>
     <string name="save_location">Locaţia pentru salvare</string>
     <!-- File sharing -->
     <string name="intent_file">Un fișier este selectat pentru partajare</string>
@@ -204,4 +204,49 @@
     <string name="diagnostics_pull_requests">Pull requesturi</string>
     <string name="diagnostics_contribute">Pentru a contribui, deschide un pull request în depozitul potrivit.</string>
     <string name="diagnostics_link_failed">Linkul nu a putut fi deschis.</string>
+
+    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <string name="app_language_contribute">Ajută la traducerea ErikrafT Drop™ pentru ca aplicația să fie disponibilă mai multor persoane.</string>
+    <string name="app_language_contribute_web">Contribuie la traducerile pentru web și desktop</string>
+    <string name="app_language_contribute_android">Contribuie la traducerile pentru Android</string>
+    <string name="legacy_transfer_category">Compatibilitate cu metodele vechi de transfer</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Se verifică compatibilitatea dispozitivului…</string>
+    <string name="legacy_nfc_no_hardware">Neacceptat: acest dispozitiv nu are un adaptor NFC.</string>
+    <string name="legacy_nfc_android_version">Android Beam nu este disponibil pe Android 10 și versiunile ulterioare.</string>
+    <string name="legacy_wifi_no_hardware">Neacceptat: acest dispozitiv nu raportează hardware Wi-Fi Direct.</string>
+    <string name="legacy_transfer_transport_pending">A fost detectat hardware compatibil. Integrarea transferului este încă experimentală și nu este disponibilă în această versiune.</string>
+    <string name="legacy_transfer_screen_title">Instrumente pentru transferuri vechi</string>
+    <string name="legacy_transfer_ready">Alege o metodă veche de transfer. Disponibilitatea depinde de dispozitiv și de versiunea Android.</string>
+    <string name="legacy_transfer_text_hint">Text de trimis sau de scris pe o etichetă NFC</string>
+    <string name="legacy_beam_send_text">Pregătește text pentru Android Beam</string>
+    <string name="legacy_beam_unavailable">Android Beam nu este disponibil pe Android 10 și versiunile ulterioare; instrumentele pentru etichete NFC pot funcționa în continuare.</string>
+    <string name="legacy_beam_ready_to_tap">Text pregătit. Apropie dispozitivele și urmează solicitarea Beam a sistemului.</string>
+    <string name="legacy_nfc_write_tag">Citește/scrie eticheta NFC</string>
+    <string name="legacy_nfc_tap_tag">Apropie o etichetă NFC de dispozitiv pentru a o citi sau scrie text pe o etichetă NDEF goală, inscriptibilă.</string>
+    <string name="legacy_nfc_tag_not_ndef">Această etichetă nu acceptă text NDEF.</string>
+    <string name="legacy_nfc_tag_read">Text citit de pe eticheta NFC.</string>
+    <string name="legacy_nfc_tag_written">Text scris pe eticheta NFC.</string>
+    <string name="legacy_nfc_tag_too_small">Această etichetă NFC nu are suficient spațiu.</string>
+    <string name="legacy_nfc_tag_error">Eticheta NFC nu a putut fi citită sau scrisă.</string>
+    <string name="legacy_wifi_discover">Descoperă dispozitive Wi-Fi Direct din apropiere</string>
+    <string name="legacy_wifi_send_text">Trimite text către dispozitivul conectat</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct nu este disponibil pe acest dispozitiv.</string>
+    <string name="legacy_wifi_permission_denied">Permisiunea pentru dispozitivele din apropiere a fost refuzată.</string>
+    <string name="legacy_wifi_disabled">Activează Wi-Fi pentru a utiliza Wi-Fi Direct.</string>
+    <string name="legacy_wifi_discovering">Se caută dispozitive din apropiere…</string>
+    <string name="legacy_wifi_discovery_failed">Descoperirea a eșuat (eroare %1$d).</string>
+    <string name="legacy_wifi_no_peers">Nu s-au găsit dispozitive. Asigură-te că Wi-Fi este activat pe ambele dispozitive și încearcă din nou.</string>
+    <string name="legacy_wifi_connecting">Se conectează la dispozitiv…</string>
+    <string name="legacy_wifi_connect_failed">Conectarea a eșuat (eroare %1$d).</string>
+    <string name="legacy_wifi_connected">Conectat. Se pot trimite mesaje text între sesiuni ErikrafT Drop compatibile.</string>
+    <string name="legacy_wifi_not_connected">Nu este conectat la un dispozitiv Wi-Fi Direct.</string>
+    <string name="legacy_wifi_text_sent">Text trimis.</string>
+    <string name="legacy_wifi_text_received">Text primit prin Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Transferul a eșuat: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam nu este disponibil aici, dar etichetele NFC pot fi citite și scrise. Atinge pentru a deschide instrumentele.</string>
+    <string name="legacy_transfer_tap_to_open">Atinge pentru a deschide instrumentele de transfer disponibile.</string>
+    <string name="legacy_wifi_waiting_for_sender">Conectat ca receptor. Dispozitivul conectat poate trimite text către acest dispozitiv.</string>
+    <string name="legacy_beam_text_received">Text primit prin Android Beam.</string>
 </resources>

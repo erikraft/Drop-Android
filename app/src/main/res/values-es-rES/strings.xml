@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">La instancia fue verificada exitosamente</string>
     <string name="baseurl_no_snapdrop_instance">La instancia no parece estar soportada</string>
     <string name="baseurl_check_instance_failed">Error al verificar la instancia</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Consulta las <a href="">preguntas frecuentes</a> para ver una lista de instancias no oficiales y heredadas. Ten en cuenta que algunas pueden no funcionar correctamente dentro de la aplicación.</string>
+    <string name="important_update_title">Actualización importante</string>
+    <string name="important_update_message">El sitio web snapdrop.net ha sido adquirido por una empresa cuyas prácticas de seguridad y privacidad no están claras.\n\nPara proteger tus datos, esta aplicación dejará de ser compatible con snapdrop.net y cambiará a todos los usuarios a ErikrafT Drop™, una alternativa más segura.\n\n¡Gracias por tu comprensión!</string>
+    <string name="important_update_ok">Aceptar</string>
     <string name="save_location">Guardar ubicación</string>
     <!-- File sharing -->
     <string name="intent_file">Se ha seleccionado un archivo para compartir</string>
@@ -213,4 +213,51 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Para contribuir, abre una pull request en el repositorio correspondiente.</string>
     <string name="diagnostics_link_failed">No se pudo abrir el enlace.</string>
+    
+    
+    
+    
+    <string name="app_language_contribute">Ayuda a traducir ErikrafT Drop™ y permite que más personas utilicen la aplicación.</string>
+    <string name="app_language_contribute_web">Colaborar con las traducciones de Web / Desktop</string>
+    <string name="app_language_contribute_android">Colaborar con las traducciones de Android</string>
+    <string name="legacy_transfer_category">Compatibilidad con transferencias heredadas</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Comprobando la compatibilidad del dispositivo…</string>
+    <string name="legacy_nfc_no_hardware">No compatible: este dispositivo no tiene adaptador NFC.</string>
+    <string name="legacy_nfc_android_version">Android Beam no está disponible en Android 10 y versiones posteriores.</string>
+    <string name="legacy_wifi_no_hardware">No compatible: este dispositivo no detecta hardware Wi-Fi Direct.</string>
+    <string name="legacy_transfer_transport_pending">Se ha detectado hardware compatible. La integración de transferencia sigue siendo experimental y no está disponible en esta versión.</string>
+    <string name="legacy_transfer_screen_title">Herramientas de transferencia heredadas</string>
+    <string name="legacy_transfer_ready">Elige un método de transferencia heredado. La disponibilidad depende del dispositivo y de la versión de Android.</string>
+    <string name="legacy_transfer_text_hint">Texto para enviar o escribir en una etiqueta NFC</string>
+    <string name="legacy_beam_send_text">Preparar texto para Android Beam</string>
+    <string name="legacy_beam_unavailable">Android Beam no está disponible en Android 10 y versiones posteriores; las herramientas para etiquetas NFC pueden seguir funcionando.</string>
+    <string name="legacy_beam_ready_to_tap">Texto preparado. Acerca los dispositivos y sigue las indicaciones de Beam del sistema.</string>
+    <string name="legacy_nfc_write_tag">Leer/escribir etiqueta NFC</string>
+    <string name="legacy_nfc_tap_tag">Acerca una etiqueta NFC al dispositivo para leerla o escribe texto en una etiqueta NDEF vacía y compatible con escritura.</string>
+    <string name="legacy_nfc_tag_not_ndef">Esta etiqueta no admite texto NDEF.</string>
+    <string name="legacy_nfc_tag_read">Texto leído de la etiqueta NFC.</string>
+    <string name="legacy_nfc_tag_written">Texto escrito en la etiqueta NFC.</string>
+    <string name="legacy_nfc_tag_too_small">Esta etiqueta NFC no tiene suficiente espacio.</string>
+    <string name="legacy_nfc_tag_error">No se pudo leer ni escribir esta etiqueta NFC.</string>
+    <string name="legacy_wifi_discover">Buscar dispositivos Wi-Fi Direct cercanos</string>
+    <string name="legacy_wifi_send_text">Enviar texto al dispositivo conectado</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct no está disponible en este dispositivo.</string>
+    <string name="legacy_wifi_permission_denied">Se ha denegado el permiso para dispositivos cercanos.</string>
+    <string name="legacy_wifi_disabled">Activa el Wi-Fi para usar Wi-Fi Direct.</string>
+    <string name="legacy_wifi_discovering">Buscando dispositivos cercanos…</string>
+    <string name="legacy_wifi_discovery_failed">Error al buscar dispositivos (error %1$d).</string>
+    <string name="legacy_wifi_no_peers">No se han encontrado dispositivos. Comprueba que el Wi-Fi esté activado en ambos dispositivos e inténtalo de nuevo.</string>
+    <string name="legacy_wifi_connecting">Conectando al dispositivo…</string>
+    <string name="legacy_wifi_connect_failed">Error al conectar (error %1$d).</string>
+    <string name="legacy_wifi_connected">Conectado. Se pueden enviar mensajes de texto entre sesiones compatibles de ErikrafT Drop.</string>
+    <string name="legacy_wifi_not_connected">No hay conexión con ningún dispositivo Wi-Fi Direct.</string>
+    <string name="legacy_wifi_text_sent">Texto enviado.</string>
+    <string name="legacy_wifi_text_received">Texto recibido por Wi-Fi Direct.</string>
+    <string name="legacy_wifi_transfer_failed">Error en la transferencia: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam no está disponible aquí, pero sí se pueden leer y escribir etiquetas NFC. Toca para abrir las herramientas.</string>
+    <string name="legacy_transfer_tap_to_open">Toca para abrir las herramientas de transferencia disponibles.</string>
+    <string name="legacy_wifi_waiting_for_sender">Conectado como receptor. El dispositivo conectado puede enviar texto a este dispositivo.</string>
+    <string name="legacy_beam_text_received">Texto recibido mediante Android Beam.</string>
 </resources>

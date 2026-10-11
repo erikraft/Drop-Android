@@ -57,6 +57,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -91,6 +93,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -180,7 +185,7 @@ public class MainActivity extends DropPipActivity {
         @Override
         public void handleOnBackPressed() {
             if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-                binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
+                binding.webview.loadUrl(getAndroidWebAppUrl() + "#", getWebViewRequestHeaders());
             } else if (dialogVisible) {
                 binding.webview.loadUrl(JavaScriptInterface.getAssetsJS(MainActivity.this, "closeDialogs.js"));
             }
@@ -397,10 +402,10 @@ public class MainActivity extends DropPipActivity {
 
     private void toggleAbout() {
         if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-            binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#", getWebViewRequestHeaders());
             setDialogVisible(false);
         } else {
-            binding.webview.loadUrl(getAndroidWebAppUrl() + "#about");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#about", getWebViewRequestHeaders());
             setDialogVisible(true);
         }
     }
@@ -477,12 +482,32 @@ public class MainActivity extends DropPipActivity {
         }
     }
 
+    /**
+     * Pass the selected Android app locale to the website's initial HTTP request.
+     * JavaScript locale synchronization remains authoritative for site translations.
+     */
+    private Map<String, String> getWebViewRequestHeaders() {
+        String languageTags = AppCompatDelegate.getApplicationLocales().toLanguageTags();
+        if (languageTags == null || languageTags.trim().isEmpty()) {
+            languageTags = LocaleListCompat.getDefault().toLanguageTags();
+        }
+        if (languageTags == null || languageTags.trim().isEmpty()) {
+            languageTags = Locale.getDefault().toLanguageTag();
+        }
+
+        final Map<String, String> headers = new LinkedHashMap<>();
+        if (languageTags != null && !languageTags.trim().isEmpty()) {
+            headers.put("Accept-Language", languageTags);
+        }
+        return headers;
+    }
+
     private void refreshWebsite(final boolean pulled) {
         Log.w("ErikrafTdropAndroid", "refresh triggered");
         if (NetworkUtils.isInternetAvailable() && !transfer.get() && !dialogVisible || forceRefresh) {
             final Runnable load = () -> {
                 binding.connectivityCard.setVisibility(NetworkUtils.isWifiAvailable() ? View.GONE : View.VISIBLE);
-                binding.webview.loadUrl(getAndroidWebAppUrl());
+                binding.webview.loadUrl(getAndroidWebAppUrl(), getWebViewRequestHeaders());
                 forceRefresh = false;
                 binding.webview.animate().alpha(0).start();
             };
@@ -551,7 +576,7 @@ public class MainActivity extends DropPipActivity {
         } else if (Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData() != null
                 && baseURL != null && intent.getData().getHost() != null
                 && intent.getData().getHost().equals(Uri.parse(baseURL).getHost())) {
-            binding.webview.loadUrl(intent.getDataString()); // e.g. pairing URL
+            binding.webview.loadUrl(intent.getDataString(), getWebViewRequestHeaders()); // e.g. pairing URL
         } else {
             super.onNewIntent(intent);
         }
