@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Trykk for å åpne tilgjengelige overføringsverktøy.</string>
     <string name="legacy_wifi_waiting_for_sender">Tilkoblet som mottaker. Den tilkoblede enheten kan sende tekst til denne enheten.</string>
     <string name="legacy_beam_text_received">Tekst mottatt via Android Beam.</string>
+    <string name="server_status_running">Serveren kjører</string>
+    <string name="server_status_stopped">Server stoppet</string>
+    <string name="server_status_error">Feil: %1$s</string>
+    <string name="onion_transfer_content_title">Innhold som skal deles</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Brukernavn</string>
+    <string name="ftp_password_hint">Passord</string>
 </resources>
