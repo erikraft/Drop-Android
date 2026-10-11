@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">Pull zahtjevi</string>
     <string name="diagnostics_contribute">Za doprinos otvorite pull zahtjev u odgovarajućem repozitoriju.</string>
     <string name="diagnostics_link_failed">Nije moguće otvoriti poveznicu.</string>
-    <string name="picture_in_picture_title">Slika u slici (PiP)</string>
-    <string name="picture_in_picture_summary">Zadržite ErikrafT Drop vidljivim u plutajućem prozoru tijekom prijenosa datoteka nakon minimiziranja aplikacije.</string>
     <string name="about_credits_title">O aplikaciji</string>
     <string name="about_version_format">Verzija %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ aplikacija je otvorenog koda za prijenos datoteka i teksta. Ova stranica prikazuje glavne izravne ovisnosti i tehničke reference Web i Android ekosustava.</string>
