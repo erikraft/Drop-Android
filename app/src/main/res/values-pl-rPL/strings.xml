@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Nie udało się zapisać diagnostyki: %1$s</string>
     <string name="app_language_search">Szukaj języków</string>
     <string name="app_language_search_no_results">Nie znaleziono języków</string>
+    <string name="diagnostics_sources_title">Repozytoria kodu źródłowego</string>
+    <string name="diagnostics_web_repository">Repozytorium Web / Desktop</string>
+    <string name="diagnostics_android_repository">Repozytorium Android</string>
+    <string name="diagnostics_issues">Zgłoszenia</string>
+    <string name="diagnostics_pull_requests">Pull requesty</string>
+    <string name="diagnostics_contribute">Aby wnieść wkład, utwórz pull request w odpowiednim repozytorium.</string>
+    <string name="diagnostics_link_failed">Nie udało się otworzyć linku.</string>
 </resources>
