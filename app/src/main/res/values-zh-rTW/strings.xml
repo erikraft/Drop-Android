@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">執行個體已成功驗證</string>
     <string name="baseurl_no_snapdrop_instance">執行個體似乎並不支援</string>
     <string name="baseurl_check_instance_failed">無法驗證執行個體</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">請參閱<a href="">常見問題</a>，查看非官方及舊版執行個體清單。部分執行個體可能無法在應用程式中正常運作。</string>
+    <string name="important_update_title">重要更新</string>
+    <string name="important_update_message">snapdrop.net 網站已被一家安全與隱私作法不明確的公司收購。\n\n為了保護您的資料，此應用程式將不再支援 snapdrop.net，並改用更安全的替代方案 ErikrafT Drop™。\n\n感謝您的理解！</string>
+    <string name="important_update_ok">知道了</string>
     <string name="save_location">儲存位置</string>
     <!-- File sharing -->
     <string name="intent_file">已選取的等候分享的檔案</string>
