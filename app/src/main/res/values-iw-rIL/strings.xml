@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">הקישו לפתיחת כלי ההעברה הזמינים.</string>
     <string name="legacy_wifi_waiting_for_sender">מחובר כמקבל. המכשיר המחובר יכול לשלוח טקסט למכשיר זה.</string>
     <string name="legacy_beam_text_received">התקבל טקסט דרך Android Beam.</string>
+    <string name="server_status_running">השרת פועל</string>
+    <string name="server_status_stopped">השרת נעצר</string>
+    <string name="server_status_error">שגיאה: %1$s</string>
+    <string name="onion_transfer_content_title">תוכן לשיתוף</string>
+    <string name="ftp_port_hint">יציאה</string>
+    <string name="ftp_username_hint">שם משתמש</string>
+    <string name="ftp_password_hint">סיסמה</string>
 </resources>
