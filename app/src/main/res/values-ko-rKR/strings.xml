@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor가 제시간에 응답하지 않았습니다. 이 기기에서 Tor를 실행할 수 있는지 확인하세요.</string>
     <string name="onion_error_qr">QR 코드를 생성할 수 없습니다.</string>
     <string name="onion_error_file_open">선택한 파일을 열 수 없습니다.</string>
+    <string name="onion_transfer_clear_files">선택한 파일 제거</string>
+    <string name="onion_transfer_clear_text">입력한 텍스트 지우기</string>
+    <string name="onion_transfer_ready_to_start">시작할 준비가 되었습니다.</string>
+    <string name="onion_transfer_qr_content_description">Onion 서비스 QR 코드</string>
+    <string name="onion_transfer_link_copied">링크가 복사되었습니다.</string>
+    <string name="onion_transfer_prepare_file_error">파일을 준비하지 못했습니다: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">파일 %1$d개와 텍스트를 공유할 준비가 되었습니다.</string>
+    <string name="onion_transfer_summary_files">파일 %1$d개를 공유할 준비가 되었습니다.</string>
+    <string name="onion_transfer_summary_text">텍스트를 공유할 준비가 되었습니다.</string>
 </resources>
