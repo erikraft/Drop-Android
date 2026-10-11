@@ -197,4 +197,11 @@
     <string name="diagnostics_save_failed">Tanılama kaydedilemedi: %1$s</string>
     <string name="app_language_search">Dilleri ara</string>
     <string name="app_language_search_no_results">Dil bulunamadı</string>
+    <string name="diagnostics_sources_title">Kaynak kod depoları</string>
+    <string name="diagnostics_web_repository">Web / Masaüstü deposu</string>
+    <string name="diagnostics_android_repository">Android deposu</string>
+    <string name="diagnostics_issues">Sorunlar</string>
+    <string name="diagnostics_pull_requests">Pull request'ler</string>
+    <string name="diagnostics_contribute">Katkıda bulunmak için ilgili depoda bir pull request açın.</string>
+    <string name="diagnostics_link_failed">Bağlantı açılamadı.</string>
 </resources>
