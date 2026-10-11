@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">Pull request</string>
     <string name="diagnostics_contribute">Untuk berkontribusi, buka pull request di repositori yang sesuai.</string>
     <string name="diagnostics_link_failed">Tautan tidak dapat dibuka.</string>
-    <string name="picture_in_picture_title">Gambar dalam gambar (PiP)</string>
-    <string name="picture_in_picture_summary">Pertahankan ErikrafT Drop terlihat di jendela mengambang selama transfer file setelah aplikasi diminimalkan.</string>
     <string name="about_credits_title">Tentang aplikasi</string>
     <string name="about_version_format">Versi %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ adalah aplikasi sumber terbuka untuk mentransfer file dan teks. Halaman ini mencantumkan dependensi langsung utama dan referensi teknis ekosistem Web dan Android.</string>
