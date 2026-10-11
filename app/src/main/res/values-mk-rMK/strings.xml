@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Порта</string>
     <string name="ftp_username_hint">Корисничко име</string>
     <string name="ftp_password_hint">Лозинка</string>
+    <string name="transfer_error_directory_path">Не може да се пристапи до избраната папка.</string>
+    <string name="transfer_error_folder_unsupported">Оваа папка не може директно да се користи од овој сервер.</string>
+    <string name="transfer_error_invalid_port">Внесете валидна порта.</string>
+    <string name="transfer_error_port_range">Портата мора да биде меѓу 1025 и 65535.</string>
+    <string name="transfer_error_credentials_required">Потребни се корисничко име и лозинка.</string>
+    <string name="onion_error_tor_timeout">Tor не одговори навреме. Проверете дали Tor може да работи на овој уред.</string>
+    <string name="onion_error_qr">Не може да се создаде QR-код.</string>
+    <string name="onion_error_file_open">Не може да се отвори избраната датотека.</string>
 </resources>
