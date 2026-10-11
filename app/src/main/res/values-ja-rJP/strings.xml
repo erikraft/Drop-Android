@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">タップして利用可能な転送ツールを開きます。</string>
     <string name="legacy_wifi_waiting_for_sender">受信側として接続しました。接続中の相手デバイスからこのデバイスへテキストを送信できます。</string>
     <string name="legacy_beam_text_received">Android Beam 経由でテキストを受信しました。</string>
+    <string name="server_status_running">サーバー実行中</string>
+    <string name="server_status_stopped">サーバー停止中</string>
+    <string name="server_status_error">エラー: %1$s</string>
+    <string name="onion_transfer_content_title">共有するコンテンツ</string>
+    <string name="ftp_port_hint">ポート</string>
+    <string name="ftp_username_hint">ユーザー名</string>
+    <string name="ftp_password_hint">パスワード</string>
 </resources>
