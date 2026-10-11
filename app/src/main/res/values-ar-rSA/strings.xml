@@ -265,4 +265,12 @@
     <string name="ftp_port_hint">المنفذ</string>
     <string name="ftp_username_hint">اسم المستخدم</string>
     <string name="ftp_password_hint">كلمة المرور</string>
+    <string name="transfer_error_directory_path">تعذر الوصول إلى المجلد المحدد.</string>
+    <string name="transfer_error_folder_unsupported">لا يمكن استخدام هذا المجلد مباشرةً بواسطة هذا الخادم.</string>
+    <string name="transfer_error_invalid_port">أدخل منفذًا صالحًا.</string>
+    <string name="transfer_error_port_range">يجب أن يكون المنفذ بين 1025 و65535.</string>
+    <string name="transfer_error_credentials_required">اسم المستخدم وكلمة المرور مطلوبان.</string>
+    <string name="onion_error_tor_timeout">لم يستجب Tor في الوقت المحدد. تحقق من إمكانية تشغيل Tor على هذا الجهاز.</string>
+    <string name="onion_error_qr">تعذر إنشاء رمز QR.</string>
+    <string name="onion_error_file_open">تعذر فتح الملف المحدد.</string>
 </resources>
