@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Användarnamn</string>
     <string name="ftp_password_hint">Lösenord</string>
+    <string name="transfer_error_directory_path">Det gick inte att komma åt den valda mappen.</string>
+    <string name="transfer_error_folder_unsupported">Den här mappen kan inte användas direkt av den här servern.</string>
+    <string name="transfer_error_invalid_port">Ange en giltig port.</string>
+    <string name="transfer_error_port_range">Porten måste vara mellan 1025 och 65535.</string>
+    <string name="transfer_error_credentials_required">Användarnamn och lösenord krävs.</string>
+    <string name="onion_error_tor_timeout">Tor svarade inte i tid. Kontrollera om Tor kan köras på den här enheten.</string>
+    <string name="onion_error_qr">Det gick inte att skapa QR-koden.</string>
+    <string name="onion_error_file_open">Det gick inte att öppna den valda filen.</string>
 </resources>
