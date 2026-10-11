@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Tryck för att öppna tillgängliga överföringsverktyg.</string>
     <string name="legacy_wifi_waiting_for_sender">Ansluten som mottagare. Den anslutna enheten kan skicka text till den här enheten.</string>
     <string name="legacy_beam_text_received">Text mottagen via Android Beam.</string>
+    <string name="server_status_running">Servern körs</string>
+    <string name="server_status_stopped">Servern är stoppad</string>
+    <string name="server_status_error">Fel: %1$s</string>
+    <string name="onion_transfer_content_title">Innehåll att dela</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Användarnamn</string>
+    <string name="ftp_password_hint">Lösenord</string>
 </resources>
