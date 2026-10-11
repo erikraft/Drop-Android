@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Порт</string>
     <string name="ftp_username_hint">Корисничко име</string>
     <string name="ftp_password_hint">Лозинка</string>
+    <string name="transfer_error_directory_path">Није могуће приступити изабраној фасцикли.</string>
+    <string name="transfer_error_folder_unsupported">Овај сервер не може директно да користи ову фасциклу.</string>
+    <string name="transfer_error_invalid_port">Унесите исправан порт.</string>
+    <string name="transfer_error_port_range">Порт мора бити између 1025 и 65535.</string>
+    <string name="transfer_error_credentials_required">Корисничко име и лозинка су обавезни.</string>
+    <string name="onion_error_tor_timeout">Tor није одговорио на време. Проверите да ли Tor може да ради на овом уређају.</string>
+    <string name="onion_error_qr">Није могуће направити QR код.</string>
+    <string name="onion_error_file_open">Није могуће отворити изабрану датотеку.</string>
 </resources>
