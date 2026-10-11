@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">לא ניתן לפתוח את הקישור.</string>
     <string name="picture_in_picture_title">תמונה בתוך תמונה (PiP)</string>
     <string name="picture_in_picture_summary">השאירו את ErikrafT Drop גלוי בחלון צף במהלך העברת קבצים לאחר מזעור האפליקציה.</string>
+    <string name="about_credits_title">מידע על האפליקציה</string>
+    <string name="about_version_format">גרסה %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ היא אפליקציית קוד פתוח להעברת קבצים וטקסט. בדף זה מופיעות התלויות הישירות העיקריות וההפניות הטכניות של מערכות Web ו-Android.</string>
+    <string name="about_dependencies_title">תלויות</string>
+    <string name="about_dependencies_summary">התלויות הישירות ב-Android המשמשות בגרסה זו.</string>
+    <string name="about_references_title">הפניות טכניות</string>
+    <string name="about_references_disclaimer">פרויקטים במעלה הזרם ורכיבי צד שלישי שומרים על זכויות היוצרים והרישיונות שלהם. דף זה מתעד את התלויות וההפניות שנבדקו עבור ErikrafT Drop™.</string>
+    <string name="about_licenses_title">רישיונות</string>
+    <string name="about_licenses_summary">מידע על רישיונות קוד פתוח וצד שלישי זמין בקוד המקור ובקובצי הרישיון של הפרויקט.</string>
 </resources>
