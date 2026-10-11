@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">풀 리퀘스트</string>
     <string name="diagnostics_contribute">기여하려면 해당 저장소에서 풀 리퀘스트를 여세요.</string>
     <string name="diagnostics_link_failed">링크를 열 수 없습니다.</string>
+    <string name="picture_in_picture_title">화면 속 화면(PiP)</string>
+    <string name="picture_in_picture_summary">앱을 최소화한 뒤에도 파일 전송 중 ErikrafT Drop을 플로팅 창에 표시합니다.</string>
 </resources>
