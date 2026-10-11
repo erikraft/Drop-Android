@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.text.Normalizer;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private static final List<String> APP_LOCALE_TAGS = Arrays.asList(
@@ -332,13 +333,111 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         LanguageOption(final String localeTag, final String label, final String searchTerms) {
             this.localeTag = localeTag;
             this.label = label;
-            this.searchable = (label + " " + searchTerms).toLowerCase(Locale.ROOT);
+            this.searchable = normalizeLanguageSearch(label + " " + searchTerms);
         }
 
         @NonNull
         @Override
         public String toString() {
             return label;
+        }
+    }
+
+    /**
+     * Makes language search accent-insensitive and tolerant of one-character typos.
+     * Keep this local to language search; it does not change displayed names or locale tags.
+     */
+    private static String normalizeLanguageSearch(final String value) {
+        return Normalizer.normalize(value == null ? "" : value, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}+", "")
+                .toLowerCase(Locale.ROOT)
+                .replaceAll("[^\\p{L}\\p{N}]+", " ")
+                .trim();
+    }
+
+    private static boolean languageSearchMatches(final String searchable, final String query) {
+        final String normalizedQuery = normalizeLanguageSearch(query);
+        if (normalizedQuery.isEmpty() || searchable.contains(normalizedQuery)) return true;
+
+        final String[] queryTokens = normalizedQuery.split("\\s+");
+        final String[] candidateTokens = searchable.split("\\s+");
+        for (String queryToken : queryTokens) {
+            boolean tokenMatched = false;
+            for (String candidateToken : candidateTokens) {
+                if (candidateToken.startsWith(queryToken)
+                        || (queryToken.length() >= 4 && isWithinOneEdit(queryToken, candidateToken))) {
+                    tokenMatched = true;
+                    break;
+                }
+            }
+            if (!tokenMatched) return false;
+        }
+        return true;
+    }
+
+    private static boolean isWithinOneEdit(final String first, final String second) {
+        if (Math.abs(first.length() - second.length()) > 1) return false;
+        int i = 0;
+        int j = 0;
+        int edits = 0;
+        while (i < first.length() && j < second.length()) {
+            if (first.charAt(i) == second.charAt(j)) {
+                i++;
+                j++;
+                continue;
+            }
+            if (++edits > 1) return false;
+            if (first.length() > second.length()) i++;
+            else if (first.length() < second.length()) j++;
+            else {
+                i++;
+                j++;
+            }
+        }
+        if (i < first.length() || j < second.length()) edits++;
+        return edits <= 1;
+    }
+
+    private static String getLanguageSearchAliases(final String localeTag) {
+        final String language = Locale.forLanguageTag(localeTag).getLanguage();
+        switch (language) {
+            case "af": return "afrikaans africano";
+            case "ar": return "arabic arabe árabe";
+            case "bg": return "bulgarian bulgaro búlgaro";
+            case "ca": return "catalan catalão catala catalan";
+            case "cs": return "czech checo tcheco";
+            case "da": return "danish dinamarques dinamarquês";
+            case "de": return "german alemao alemão alema alemã";
+            case "el": return "greek grego grega";
+            case "en": return "english ingles inglês inges ingless inglish";
+            case "es": return "spanish espanhol español espanhol";
+            case "fi": return "finnish finlandes finlandês";
+            case "fr": return "french frances francês fraces";
+            case "hi": return "hindi indiano";
+            case "hr": return "croatian croata";
+            case "hu": return "hungarian hungaro húngaro";
+            case "id": return "indonesian indonesio indonésio";
+            case "it": return "italian italiano";
+            case "he": return "hebrew hebraico";
+            case "ja": return "japanese japones japonês";
+            case "ko": return "korean coreano";
+            case "mk": return "macedonian macedonio macedônio";
+            case "ne": return "nepali nepalês nepales";
+            case "nl": return "dutch holandes holandês neerlandes neerlandês";
+            case "no": return "norwegian noruegues norueguês";
+            case "pl": return "polish polones polonês";
+            case "pt": return "portuguese portugues português portugeus";
+            case "ro": return "romanian romeno romena";
+            case "ru": return "russian russo russa";
+            case "sk": return "slovak eslovaco";
+            case "sl": return "slovenian esloveno";
+            case "sr": return "serbian servio sérvio";
+            case "sv": return "swedish sueco";
+            case "tr": return "turkish turco";
+            case "uk": return "ukrainian ucraniano";
+            case "vi": return "vietnamese vietnamita";
+            case "zh": return "chinese chines chinês mandarim";
+            default: return "";
         }
     }
 
@@ -349,13 +448,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         final List<LanguageOption> allOptions = new ArrayList<>();
         final String systemDefaultLabel = getString(R.string.app_language_system_default);
-        allOptions.add(new LanguageOption(null, systemDefaultLabel, "device default system"));
+        allOptions.add(new LanguageOption(null, systemDefaultLabel, "device default system padrão padrao"));
         for (String localeTag : locales) {
             final Locale locale = Locale.forLanguageTag(localeTag);
             final String displayName = getLanguageDisplayName(localeTag);
             final String englishName = locale.getDisplayName(Locale.ENGLISH);
+            final String localizedName = locale.getDisplayName(Locale.forLanguageTag("pt-BR"));
             allOptions.add(new LanguageOption(localeTag, displayName,
-                    localeTag + " " + englishName + " " + locale.getDisplayName(Locale.getDefault())));
+                    localeTag + " " + locale.getLanguage() + " " + englishName + " "
+                            + localizedName + " " + locale.getDisplayName(Locale.getDefault()) + " "
+                            + getLanguageSearchAliases(localeTag)));
         }
 
         final String selectedLocaleTags = AppCompatDelegate.getApplicationLocales().toLanguageTags();
@@ -443,10 +545,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
             @Override
             public void afterTextChanged(final Editable editable) {
-                final String query = editable == null ? "" : editable.toString().trim().toLowerCase(Locale.ROOT);
+                final String query = editable == null ? "" : editable.toString();
                 final List<LanguageOption> matches = new ArrayList<>();
                 for (LanguageOption option : allOptions) {
-                    if (query.isEmpty() || option.searchable.contains(query)) matches.add(option);
+                    if (query.trim().isEmpty() || languageSearchMatches(option.searchable, query)) {
+                        matches.add(option);
+                    }
                 }
                 adapter.clear();
                 adapter.addAll(matches);
