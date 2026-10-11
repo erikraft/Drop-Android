@@ -204,4 +204,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Чтобы внести вклад, создайте Pull Request в соответствующем репозитории.</string>
     <string name="diagnostics_link_failed">Не удалось открыть ссылку.</string>
+    <string name="picture_in_picture_title">Картинка в картинке (PiP)</string>
+    <string name="picture_in_picture_summary">После сворачивания приложения ErikrafT Drop остаётся видимым в плавающем окне во время передачи файлов.</string>
 </resources>
