@@ -204,6 +204,4 @@
     <string name="diagnostics_pull_requests">Pull requesturi</string>
     <string name="diagnostics_contribute">Pentru a contribui, deschide un pull request în depozitul potrivit.</string>
     <string name="diagnostics_link_failed">Linkul nu a putut fi deschis.</string>
-    <string name="picture_in_picture_title">Imagine în imagine (PiP)</string>
-    <string name="picture_in_picture_summary">Păstrează ErikrafT Drop vizibil într-o fereastră flotantă în timpul transferurilor după minimizarea aplicației.</string>
 </resources>
