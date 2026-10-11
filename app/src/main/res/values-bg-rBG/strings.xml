@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Заявки за изтегляне</string>
     <string name="diagnostics_contribute">За да допринесете, отворете заявка за изтегляне в съответното хранилище.</string>
     <string name="diagnostics_link_failed">Връзката не може да бъде отворена.</string>
-    <string name="picture_in_picture_title">Картина в картината (PiP)</string>
-    <string name="picture_in_picture_summary">Запазете ErikrafT Drop видим в плаващ прозорец по време на прехвърляне на файлове, след като минимизирате приложението.</string>
 </resources>
