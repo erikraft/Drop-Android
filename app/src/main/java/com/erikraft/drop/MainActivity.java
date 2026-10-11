@@ -185,7 +185,7 @@ public class MainActivity extends DropPipActivity {
         @Override
         public void handleOnBackPressed() {
             if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-                binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
+                binding.webview.loadUrl(getAndroidWebAppUrl() + "#", getWebViewRequestHeaders());
             } else if (dialogVisible) {
                 binding.webview.loadUrl(JavaScriptInterface.getAssetsJS(MainActivity.this, "closeDialogs.js"));
             }
@@ -402,10 +402,10 @@ public class MainActivity extends DropPipActivity {
 
     private void toggleAbout() {
         if (binding.webview.getUrl() != null && binding.webview.getUrl().endsWith("#about")) {
-            binding.webview.loadUrl(getAndroidWebAppUrl() + "#");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#", getWebViewRequestHeaders());
             setDialogVisible(false);
         } else {
-            binding.webview.loadUrl(getAndroidWebAppUrl() + "#about");
+            binding.webview.loadUrl(getAndroidWebAppUrl() + "#about", getWebViewRequestHeaders());
             setDialogVisible(true);
         }
     }
@@ -576,7 +576,7 @@ public class MainActivity extends DropPipActivity {
         } else if (Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData() != null
                 && baseURL != null && intent.getData().getHost() != null
                 && intent.getData().getHost().equals(Uri.parse(baseURL).getHost())) {
-            binding.webview.loadUrl(intent.getDataString()); // e.g. pairing URL
+            binding.webview.loadUrl(intent.getDataString(), getWebViewRequestHeaders()); // e.g. pairing URL
         } else {
             super.onNewIntent(intent);
         }
