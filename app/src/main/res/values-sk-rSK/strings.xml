@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Používateľské meno</string>
     <string name="ftp_password_hint">Heslo</string>
+    <string name="transfer_error_directory_path">Nepodarilo sa ziskat pristup k vybranemu priecinku.</string>
+    <string name="transfer_error_folder_unsupported">Tento server nemoze tento priecinok pouzivat priamo.</string>
+    <string name="transfer_error_invalid_port">Zadajte platny port.</string>
+    <string name="transfer_error_port_range">Port musi byt v rozsahu 1025 az 65535.</string>
+    <string name="transfer_error_credentials_required">Pouzivatelske meno a heslo su povinne.</string>
+    <string name="onion_error_tor_timeout">Tor neodpovedal nacas. Overte, ci mozno Tor spustit na tomto zariadeni.</string>
+    <string name="onion_error_qr">QR kod sa nepodarilo vytvorit.</string>
+    <string name="onion_error_file_open">Vybrany subor sa nepodarilo otvorit.</string>
 </resources>
