@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Priključak</string>
     <string name="ftp_username_hint">Korisničko ime</string>
     <string name="ftp_password_hint">Lozinka</string>
+    <string name="transfer_error_directory_path">Nije moguće pristupiti odabranoj mapi.</string>
+    <string name="transfer_error_folder_unsupported">Ovaj poslužitelj ne može izravno koristiti ovu mapu.</string>
+    <string name="transfer_error_invalid_port">Unesite valjani port.</string>
+    <string name="transfer_error_port_range">Port mora biti između 1025 i 65535.</string>
+    <string name="transfer_error_credentials_required">Korisničko ime i lozinka su obavezni.</string>
+    <string name="onion_error_tor_timeout">Tor nije odgovorio na vrijeme. Provjerite može li se Tor pokrenuti na ovom uređaju.</string>
+    <string name="onion_error_qr">Nije moguće generirati QR kod.</string>
+    <string name="onion_error_file_open">Nije moguće otvoriti odabranu datoteku.</string>
 </resources>
