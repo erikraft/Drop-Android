@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Fjärde — ErikrafT Drop™ Onion-tjänst</string>
+    <string name="onboarding_server_quinary_summary">(5) Femte — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor krävs. Onion-tjänsten nås direkt via Tor på den här enheten.</string>
+    <string name="onboarding_server_pairdrop_summary">Primär ErikrafT Drop™-server.</string>
+    <string name="onboarding_server_snapdrop_summary">Klassiska Snapdrop. Enkelt och rent.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnostik kopierad.</string>
         <string name="diagnostics_saved">Diagnostikfil sparad.</string>
         <string name="diagnostics_disabled">Aktivera diagnostik i Inställningar för att visa loggar.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Dela</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="about_credits_title">Om appen</string>
