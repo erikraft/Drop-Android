@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_quaternary_summary">(4) चौथा — ErikrafT Drop™ Onion सेवा</string>
+    <string name="onboarding_server_quinary_summary">(5) पाँचवाँ — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor आवश्यक है। इस डिवाइस पर Onion सेवा सीधे Tor के माध्यम से खुलती है।</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ का प्राथमिक सर्वर।</string>
+    <string name="onboarding_server_snapdrop_summary">क्लासिक Snapdrop। सरल और साफ़।</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">डायग्नोस्टिक्स कॉपी किए गए।</string>
         <string name="diagnostics_saved">डायग्नोस्टिक्स फ़ाइल सहेजी गई।</string>
         <string name="diagnostics_disabled">लॉग देखने के लिए सेटिंग में डायग्नोस्टिक्स चालू करें।</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">साझा करें</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="sftp_start">SFTP सर्वर शुरू करें</string>
