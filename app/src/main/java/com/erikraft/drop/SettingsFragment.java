@@ -10,7 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.net.Uri;\nimport android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -102,7 +102,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
-        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());\n        updateLegacyTransferCompatibility();
 
         final Preference diagnosticsEnabled = findPreference(getString(R.string.pref_diagnostics_enabled));
         final Preference diagnosticsOpen = findPreference(getString(R.string.pref_diagnostics_open));
@@ -450,6 +450,36 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         dialog.show();
         markSelectedOption.run();
+    }
+
+
+    /**
+     * Reports platform capability only. Android Beam is deprecated on Android 10+;
+     * NFC tag support is a separate capability and is not implied by this row.
+     * These rows deliberately do not claim that transfer transport is implemented.
+     */
+    private void updateLegacyTransferCompatibility() {
+        final Preference nfcPreference = findPreference("legacy_nfc_beam");
+        final Preference wifiPreference = findPreference("legacy_wifi_direct");
+        if (nfcPreference != null) {
+            final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
+            final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
+            final boolean hasNfc = adapter != null;
+            nfcPreference.setEnabled(beamApiAvailable && hasNfc);
+            nfcPreference.setSummary(!hasNfc
+                    ? R.string.legacy_nfc_no_hardware
+                    : !beamApiAvailable
+                        ? R.string.legacy_nfc_android_version
+                        : R.string.legacy_transfer_transport_pending);
+        }
+        if (wifiPreference != null) {
+            final boolean hasWifiDirect = requireContext().getPackageManager()
+                    .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
+            wifiPreference.setEnabled(hasWifiDirect);
+            wifiPreference.setSummary(hasWifiDirect
+                    ? R.string.legacy_transfer_transport_pending
+                    : R.string.legacy_wifi_no_hardware);
+        }
     }
 
     private void updateAppLanguageSummary(final Preference preference) {
