@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">Kunne ikke gemme diagnostik: %1$s</string>
     <string name="app_language_search">Søg efter sprog</string>
     <string name="app_language_search_no_results">Ingen sprog fundet</string>
+    <string name="diagnostics_sources_title">Kodelagre</string>
+    <string name="diagnostics_web_repository">Web-/desktop-lager</string>
+    <string name="diagnostics_android_repository">Android-lager</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull requests</string>
+    <string name="diagnostics_contribute">Hvis du vil bidrage, skal du oprette en pull request i det relevante lager.</string>
+    <string name="diagnostics_link_failed">Linket kunne ikke åbnes.</string>
 </resources>
