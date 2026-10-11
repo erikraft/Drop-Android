@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor nu a raspuns la timp. Verifica daca Tor poate rula pe acest dispozitiv.</string>
     <string name="onion_error_qr">Codul QR nu a putut fi generat.</string>
     <string name="onion_error_file_open">Fisierul selectat nu a putut fi deschis.</string>
+    <string name="onion_transfer_clear_files">Elimină fișierele selectate</string>
+    <string name="onion_transfer_clear_text">Șterge textul introdus</string>
+    <string name="onion_transfer_ready_to_start">Gata de pornire.</string>
+    <string name="onion_transfer_qr_content_description">Codul QR al serviciului Onion</string>
+    <string name="onion_transfer_link_copied">Link copiat.</string>
+    <string name="onion_transfer_prepare_file_error">Fișierul nu a putut fi pregătit: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fișier(e) și text pregătite pentru partajare.</string>
+    <string name="onion_transfer_summary_files">%1$d fișier(e) pregătite pentru partajare.</string>
+    <string name="onion_transfer_summary_text">Text pregătit pentru partajare.</string>
 </resources>
