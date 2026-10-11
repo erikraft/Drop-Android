@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Spremanje dijagnostike nije uspjelo: %1$s</string>
     <string name="app_language_search">Pretraži jezike</string>
     <string name="app_language_search_no_results">Nije pronađen nijedan jezik</string>
+    <string name="diagnostics_sources_title">Repozitoriji izvornog koda</string>
+    <string name="diagnostics_web_repository">Web / Desktop repozitorij</string>
+    <string name="diagnostics_android_repository">Android repozitorij</string>
+    <string name="diagnostics_issues">Problemi</string>
+    <string name="diagnostics_pull_requests">Pull zahtjevi</string>
+    <string name="diagnostics_contribute">Za doprinos otvorite pull zahtjev u odgovarajućem repozitoriju.</string>
+    <string name="diagnostics_link_failed">Nije moguće otvoriti poveznicu.</string>
 </resources>
