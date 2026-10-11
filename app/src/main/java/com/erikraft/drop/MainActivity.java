@@ -576,12 +576,25 @@ public class MainActivity extends DropPipActivity {
 
     private void syncWebViewLocale() {
         if (binding == null || binding.webview == null) return;
-        final String script = "(function(){try{var b=window.ErikrafTdropAndroid;" +
-                "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||typeof Localization==='undefined')return;" +
+        // The website's Localization class and its first translation request can still
+        // be initializing when init.js completes. Retry briefly instead of silently
+        // leaving the WebView in its previous localStorage locale.
+        final String script = "(function syncNativeLocale(attempt){" +
+                "try{" +
+                "var b=window.ErikrafTdropAndroid;" +
+                "var L=(typeof Localization!=='undefined')?Localization:null;" +
+                "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||!L||typeof L.setTranslation!=='function'||typeof L.localeIsSupported!=='function'){" +
+                "if(attempt<40){setTimeout(function(){syncNativeLocale(attempt+1);},100);}return;}" +
                 "var lang=b.getPreferredWebsiteLocale()||'';" +
-                "if(lang&&Localization.localeIsSupported(lang)){localStorage.setItem('language_code',lang);Localization.setTranslation(lang);}" +
-                "else{localStorage.removeItem('language_code');Localization.setTranslation(null);}" +
-                "}catch(e){console.warn('[ErikrafT Drop] WebView locale sync failed',e);}})();";
+                "if(lang&&L.localeIsSupported(lang)){" +
+                "localStorage.setItem('language_code',lang);" +
+                "Promise.resolve(L.setTranslation(lang)).then(function(ok){if(!ok)console.warn('[ErikrafT Drop] WebView locale was not applied:',lang);});" +
+                "}else{" +
+                "localStorage.removeItem('language_code');" +
+                "Promise.resolve(L.setTranslation(L.systemLocale)).catch(function(e){console.warn('[ErikrafT Drop] WebView system locale sync failed',e);});" +
+                "}" +
+                "}catch(e){console.warn('[ErikrafT Drop] WebView locale sync failed',e);}" +
+                "})(0);";
         binding.webview.evaluateJavascript(script, null);
     }
 
