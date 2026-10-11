@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Katso &lt;a href=""&gt;UKK&lt;/a&gt;:sta luettelo epävirallisista ja vanhoista palvelimista. Jotkin palvelimet eivät ehkä toimi sovelluksessa oikein.</string>
     <string name="important_update_title">Tärkeä päivitys</string>
     <string name="important_update_message">snapdrop.net-sivuston on hankkinut yritys, jonka tietoturva- ja tietosuojakäytännöt ovat epäselviä.\n\nTietojesi suojaamiseksi tämä sovellus ei enää tue snapdrop.net-sivustoa, vaan siirtää kaikki käyttäjät turvallisempaan vaihtoehtoon, ErikrafT Drop™ -palveluun.\n\nKiitos ymmärryksestäsi!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Selvä</string>
     <string name="save_location">Tallennussijainti</string>
     <!-- File sharing -->
     <string name="intent_file">Tiedosto on valittu jaettavaksi</string>
