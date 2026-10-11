@@ -197,4 +197,13 @@
     <string name="diagnostics_link_failed">Nie udało się otworzyć linku.</string>
     <string name="picture_in_picture_title">Obraz w obrazie (PiP)</string>
     <string name="picture_in_picture_summary">Po zminimalizowaniu aplikacji ErikrafT Drop pozostaje widoczny w pływającym oknie podczas przesyłania plików.</string>
+    <string name="about_credits_title">Informacje o aplikacji</string>
+    <string name="about_version_format">Wersja %1$s (%2$d)</string>
+    <string name="about_description">ErikrafT Drop™ to aplikacja open source do przesyłania plików i tekstu. Ta strona zawiera główne bezpośrednie zależności i odniesienia techniczne ekosystemów Web i Android.</string>
+    <string name="about_dependencies_title">Zależności</string>
+    <string name="about_dependencies_summary">Bezpośrednie zależności Android używane w tej wersji.</string>
+    <string name="about_references_title">Odniesienia techniczne</string>
+    <string name="about_references_disclaimer">Projekty nadrzędne i komponenty innych firm zachowują własne autorstwo i licencje. Ta strona dokumentuje zależności i odniesienia sprawdzone dla ErikrafT Drop™.</string>
+    <string name="about_licenses_title">Licencje</string>
+    <string name="about_licenses_summary">Informacje o licencjach open source i licencjach stron trzecich są dostępne w kodzie źródłowym i plikach licencyjnych projektu.</string>
 </resources>
