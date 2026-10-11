@@ -258,4 +258,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Nom d'utilisateur</string>
     <string name="ftp_password_hint">Mot de passe</string>
+    <string name="transfer_error_directory_path">Impossible d’accéder au dossier sélectionné.</string>
+    <string name="transfer_error_folder_unsupported">Ce dossier ne peut pas être utilisé directement par ce serveur.</string>
+    <string name="transfer_error_invalid_port">Saisissez un port valide.</string>
+    <string name="transfer_error_port_range">Le port doit être compris entre 1025 et 65535.</string>
+    <string name="transfer_error_credentials_required">Le nom d’utilisateur et le mot de passe sont obligatoires.</string>
+    <string name="onion_error_tor_timeout">Tor n’a pas répondu à temps. Vérifiez si Tor peut fonctionner sur cet appareil.</string>
+    <string name="onion_error_qr">Impossible de générer le code QR.</string>
+    <string name="onion_error_file_open">Impossible d’ouvrir le fichier sélectionné.</string>
 </resources>
