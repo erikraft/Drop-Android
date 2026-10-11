@@ -286,4 +286,13 @@
     <string name="onion_error_tor_timeout">Tor did not respond in time. Check whether Tor can run on this device.</string>
     <string name="onion_error_qr">Could not generate the QR code.</string>
     <string name="onion_error_file_open">Could not open the selected file.</string>
+    <string name="onion_transfer_clear_files">Remove selected files</string>
+    <string name="onion_transfer_clear_text">Clear entered text</string>
+    <string name="onion_transfer_ready_to_start">Ready to start.</string>
+    <string name="onion_transfer_qr_content_description">Onion Service QR code</string>
+    <string name="onion_transfer_link_copied">Link copied.</string>
+    <string name="onion_transfer_prepare_file_error">Failed to prepare file: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d file(s) and text ready to share.</string>
+    <string name="onion_transfer_summary_files">%1$d file(s) ready to share.</string>
+    <string name="onion_transfer_summary_text">Text ready to share.</string>
 </resources>
