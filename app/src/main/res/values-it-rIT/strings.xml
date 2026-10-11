@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — servizio Onion di ErikrafT Drop™</string>
     <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Il classico snapdrop. Pulito e semplice.</string>
+    <string name="onboarding_server_onion_warning">Tor è necessario. Il servizio Onion è accessibile direttamente tramite Tor su questo dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">Server principale di ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">Lo Snapdrop classico. Semplice e pulito.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personalizzato</string>
     <string name="onboarding_server_custom_summary">Gli esperti possono anche utilizzare i propri server.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnostica copiata.</string>
         <string name="diagnostics_saved">File diagnostico salvato.</string>
         <string name="diagnostics_disabled">Attiva la diagnostica nelle Impostazioni per visualizzare i log.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Condividi</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="sftp_start">Avvia server SFTP</string>
