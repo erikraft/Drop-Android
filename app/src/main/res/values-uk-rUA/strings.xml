@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor не відповів вчасно. Перевірте, чи можна запустити Tor на цьому пристрої.</string>
     <string name="onion_error_qr">Не вдалося створити QR-код.</string>
     <string name="onion_error_file_open">Не вдалося відкрити вибраний файл.</string>
+    <string name="onion_transfer_clear_files">Видалити вибрані файли</string>
+    <string name="onion_transfer_clear_text">Очистити введений текст</string>
+    <string name="onion_transfer_ready_to_start">Готово до запуску.</string>
+    <string name="onion_transfer_qr_content_description">QR-код Onion-служби</string>
+    <string name="onion_transfer_link_copied">Посилання скопійовано.</string>
+    <string name="onion_transfer_prepare_file_error">Не вдалося підготувати файл: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d файл(и) та текст готові до поширення.</string>
+    <string name="onion_transfer_summary_files">%1$d файл(и) готові до поширення.</string>
+    <string name="onion_transfer_summary_text">Текст готовий до поширення.</string>
 </resources>
