@@ -213,4 +213,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Para contribuir, abre una pull request en el repositorio correspondiente.</string>
     <string name="diagnostics_link_failed">No se pudo abrir el enlace.</string>
+    <string name="picture_in_picture_title">Imagen en imagen (PiP)</string>
+    <string name="picture_in_picture_summary">Mantén ErikrafT Drop visible en una ventana flotante durante las transferencias después de minimizar la aplicación.</string>
 </resources>
