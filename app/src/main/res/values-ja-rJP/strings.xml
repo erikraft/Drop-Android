@@ -41,7 +41,7 @@
     <string name="retry">再試行</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">このアプリについて</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">ErikrafT Drop™について</string>
     <string name="pref_about_title">このアプリについて</string>
     <string name="view_downloads">ダウンロードを表示</string>
     <string name="pref_category_settings">設定</string>
@@ -49,9 +49,9 @@
     <string name="components_summary">タップして表示</string>
     <string name="support_us">支援</string>
     <string name="support_us_summary">このプロジェクトを支援方法について</string>
-    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us_description">ErikrafT Drop™を支援して、プロジェクトの継続を応援してください。</string>
     <string name="support_us_option_kofi">Ko-fi</string>
-    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIXとKo-fi</string>
     <string name="bitcoin_donation_title">Bitcoinで寄付</string>
     <string name="bitcoin_donation_summary">BitcoinでErikrafT Drop™を直接支援</string>
     <string name="bitcoin_donation_dialog_title">Bitcoinで寄付</string>
@@ -91,9 +91,9 @@
     <string name="baseurl_instance_verified">サーバーが正常に検証されました</string>
     <string name="baseurl_no_snapdrop_instance">このサーバーには対応していません</string>
     <string name="baseurl_check_instance_failed">サーバーの検証に失敗しました</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="baseurl_unofficial_instances">非公式または古いサーバーの一覧は&lt;a href=""&gt;FAQ&lt;/a&gt;をご覧ください。一部のサーバーはアプリ内で正しく動作しない場合があります。</string>
+    <string name="important_update_title">重要な更新</string>
+    <string name="important_update_message">snapdrop.netのWebサイトは、セキュリティとプライバシーの取り組みが不明確な企業に買収されました。\n\nデータを保護するため、このアプリはsnapdrop.netをサポートせず、すべてのユーザーをより安全な代替サービスであるErikrafT Drop™へ移行します。\n\nご理解ありがとうございます！</string>
     <string name="important_update_ok">OK</string>
     <string name="save_location">保存先</string>
     <!-- File sharing -->
@@ -117,14 +117,14 @@
     <string name="website_footer_known_as">他のデバイスに表示される名前: %s</string>
     <string name="website_about_subheading">Web、Windows、Linux、Android、拡張機能などをまたいでファイルを転送する最も簡単な方法</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
+    <string name="qr_transfer_title">QR転送</string>
+    <string name="qr_transfer_send_title">アニメーションQRで送信</string>
+    <string name="qr_transfer_receive_title">アニメーションQRで受信</string>
+    <string name="qr_transfer_instruction">相手のデバイスのカメラをこのQRコードに向けてください</string>
+    <string name="qr_transfer_receive_searching">QRコードを検索中…</string>
+    <string name="pause">一時停止</string>
+    <string name="resume">再開</string>
+    <string name="cancel">キャンセル</string>
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Onion経由で転送（ベータ）</string>
     <string name="onion_transfer_description">プライベートなTor接続を使って、デバイスからファイルやテキストを直接共有します。コンテンツはデバイス上に保持され、一時的なOnionアドレスを通じて送信されます。</string>
