@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Open een pull request in de juiste repository om bij te dragen.</string>
     <string name="diagnostics_link_failed">De link kon niet worden geopend.</string>
+    <string name="picture_in_picture_title">Beeld-in-beeld (PiP)</string>
+    <string name="picture_in_picture_summary">Houd ErikrafT Drop zichtbaar in een zwevend venster tijdens bestandsoverdrachten nadat je de app hebt geminimaliseerd.</string>
 </resources>
