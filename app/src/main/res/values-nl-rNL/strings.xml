@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">Ervaren gebruikers kunnen ook hun eigen servers hosten.</string>
     <string name="onboarding_server_custom_add">Server toevoegen</string>
     <string name="onboarding_howto">Zo werkt het</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. Open deze app of %s op een ander apparaat in je lokale wifi-netwerk.\n\n2. Tik op het apparaat en selecteer de bestanden die je wilt verzenden.\n\n3. Klaar! De bestanden worden verzonden…</string>
     <string name="onboarding_howto_troubleshoot">Tip: Apparaten moeten verbonden zijn met hetzelfde WiFi-netwerk. Het werkt mogelijk niet als een VPN ingeschakeld is.</string>
     <!-- Download -->
     <string name="download_save_pending">Het bestand opslaan. Even geduld…</string>
@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">Instantie met succes geverifieerd</string>
     <string name="baseurl_no_snapdrop_instance">Instantie lijkt niet te worden ondersteund</string>
     <string name="baseurl_check_instance_failed">Fout bij het verifiëren van de instantie</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Bekijk de <a href="">FAQ</a> voor een lijst met niet-officiële en oudere instanties. Sommige werken mogelijk niet goed in de app.</string>
+    <string name="important_update_title">Belangrijke update</string>
+    <string name="important_update_message">De website snapdrop.net is overgenomen door een bedrijf waarvan het beveiligings- en privacybeleid onduidelijk is.\n\nOm je gegevens veilig te houden, ondersteunt deze app snapdrop.net niet langer en schakelt deze over naar ErikrafT Drop™, een veiliger alternatief.\n\nBedankt voor je begrip!</string>
+    <string name="important_update_ok">Begrepen</string>
     <string name="save_location">Locatie opslaan</string>
     <!-- File sharing -->
     <string name="intent_file">Een bestand is geselecteerd om te delen</string>
