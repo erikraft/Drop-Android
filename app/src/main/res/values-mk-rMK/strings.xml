@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">Pull барања</string>
     <string name="diagnostics_contribute">За да придонесете, отворете pull барање во соодветниот репозиториум.</string>
     <string name="diagnostics_link_failed">Врската не може да се отвори.</string>
+    <string name="picture_in_picture_title">Слика во слика (PiP)</string>
+    <string name="picture_in_picture_summary">Оставете го ErikrafT Drop видлив во лебдечки прозорец за време на преносот на датотеки откако ќе ја минимизирате апликацијата.</string>
 </resources>
