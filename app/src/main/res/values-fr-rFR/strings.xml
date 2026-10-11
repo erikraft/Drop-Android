@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Pour contribuer, ouvrez une pull request dans le dépôt approprié.</string>
     <string name="diagnostics_link_failed">Impossible d’ouvrir le lien.</string>
-    <string name="picture_in_picture_title">Image dans l’image (PiP)</string>
-    <string name="picture_in_picture_summary">Gardez ErikrafT Drop visible dans une fenêtre flottante pendant les transferts après avoir réduit l’application.</string>
     <string name="about_credits_title">À propos de l’application</string>
     <string name="about_version_format">Version %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ est une application open source permettant de transférer des fichiers et du texte. Cette page présente les principales dépendances directes et références techniques des écosystèmes Web et Android.</string>
