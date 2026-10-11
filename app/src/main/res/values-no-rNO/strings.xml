@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Hvis du vil bidra, åpner du en pull request i det aktuelle lageret.</string>
     <string name="diagnostics_link_failed">Kunne ikke åpne lenken.</string>
+    <string name="picture_in_picture_title">Bilde-i-bilde (PiP)</string>
+    <string name="picture_in_picture_summary">Hold ErikrafT Drop synlig i et flytende vindu under filoverføring etter at du har minimert appen.</string>
 </resources>
