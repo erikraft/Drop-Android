@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">שמירת האבחון נכשלה: %1$s</string>
     <string name="app_language_search">חיפוש שפות</string>
     <string name="app_language_search_no_results">לא נמצאו שפות</string>
+    <string name="diagnostics_sources_title">מאגרי קוד מקור</string>
+    <string name="diagnostics_web_repository">מאגר Web / Desktop</string>
+    <string name="diagnostics_android_repository">מאגר Android</string>
+    <string name="diagnostics_issues">בעיות</string>
+    <string name="diagnostics_pull_requests">בקשות משיכה</string>
+    <string name="diagnostics_contribute">כדי לתרום, יש לפתוח בקשת משיכה במאגר המתאים.</string>
+    <string name="diagnostics_link_failed">לא ניתן לפתוח את הקישור.</string>
 </resources>
