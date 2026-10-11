@@ -467,6 +467,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             final boolean hasNfc = adapter != null;
+            nfcPreference.setSelectable(false);
             nfcPreference.setEnabled(beamApiAvailable && hasNfc);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
@@ -477,6 +478,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
                     .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
+            wifiPreference.setSelectable(false);
             wifiPreference.setEnabled(hasWifiDirect);
             wifiPreference.setSummary(hasWifiDirect
                     ? R.string.legacy_transfer_transport_pending
