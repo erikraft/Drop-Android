@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">L\'snapdrop clàssic. Net i senzill.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quart — servei Onion d’ErikrafT Drop™</string>
+    <string name="onboarding_server_quinary_summary">(5) Cinquè — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Cal Tor. El servei Onion s’accedeix directament mitjançant Tor en aquest dispositiu.</string>
+    <string name="onboarding_server_pairdrop_summary">Servidor principal d’ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">El Snapdrop clàssic: senzill i net.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personalitzat</string>
     <string name="onboarding_server_custom_summary">Els usuaris més experts poden allotjar els seus servidors.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnòstics copiats.</string>
         <string name="diagnostics_saved">Fitxer de diagnòstics desat.</string>
         <string name="diagnostics_disabled">Activa els diagnòstics a Configuració per veure els registres.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Comparteix</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
