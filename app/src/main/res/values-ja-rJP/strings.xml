@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Torが時間内に応答しませんでした。この端末でTorを実行できるか確認してください。</string>
     <string name="onion_error_qr">QRコードを生成できませんでした。</string>
     <string name="onion_error_file_open">選択したファイルを開けませんでした。</string>
+    <string name="onion_transfer_clear_files">選択したファイルを削除</string>
+    <string name="onion_transfer_clear_text">入力したテキストを消去</string>
+    <string name="onion_transfer_ready_to_start">開始する準備ができました。</string>
+    <string name="onion_transfer_qr_content_description">OnionサービスのQRコード</string>
+    <string name="onion_transfer_link_copied">リンクをコピーしました。</string>
+    <string name="onion_transfer_prepare_file_error">ファイルを準備できませんでした: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d個のファイルとテキストを共有できます。</string>
+    <string name="onion_transfer_summary_files">%1$d個のファイルを共有できます。</string>
+    <string name="onion_transfer_summary_text">テキストを共有できます。</string>
 </resources>
