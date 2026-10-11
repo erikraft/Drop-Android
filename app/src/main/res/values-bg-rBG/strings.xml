@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Simple and clean file sharing.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Четвърти — Onion услуга на ErikrafT Drop™</string>
+    <string name="onboarding_server_quinary_summary">(5) Пети — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Необходим е Tor. Onion услугата се отваря директно чрез Tor на това устройство.</string>
+    <string name="onboarding_server_pairdrop_summary">Основен сървър на ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">Класическият Snapdrop — лесен и изчистен.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Custom URL</string>
     <string name="onboarding_server_custom_summary">Experts can also host their own servers.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Диагностиката е копирана.</string>
         <string name="diagnostics_saved">Диагностичният файл е запазен.</string>
         <string name="diagnostics_disabled">Включете диагностиката в Настройки, за да виждате журналите.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Споделяне</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
