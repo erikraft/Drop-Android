@@ -91,9 +91,9 @@
     <string name="baseurl_instance_verified">A instância foi verificada com sucesso</string>
     <string name="baseurl_no_snapdrop_instance">A instância parece não ser suportada</string>
     <string name="baseurl_check_instance_failed">Falha ao verificar instância</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="baseurl_unofficial_instances">Consulte as <a href="">perguntas frequentes</a> para ver uma lista de instâncias não oficiais e antigas. Algumas podem não funcionar corretamente dentro do aplicativo.</string>
+    <string name="important_update_title">Atualização importante</string>
+    <string name="important_update_message">O site snapdrop.net foi adquirido por uma empresa cujas práticas de segurança e privacidade não são claras.\n\nPara manter seus dados seguros, este aplicativo deixará de oferecer suporte ao snapdrop.net e passará a usar o ErikrafT Drop™, uma alternativa mais segura.\n\nAgradecemos pela compreensão!</string>
     <string name="important_update_ok">OK</string>
     <string name="save_location">Salvar localização</string>
     <!-- File sharing -->
@@ -256,8 +256,8 @@
     <string name="legacy_transfer_tap_to_open">Toque para abrir as ferramentas de transferência disponíveis.</string>
     <string name="legacy_wifi_waiting_for_sender">Conectado como receptor. O dispositivo conectado pode enviar texto para este aparelho.</string>
     <string name="legacy_beam_text_received">Texto recebido pelo Android Beam.</string>
-    <string name="important_update_title">Atualização importante</string>
-    <string name="important_update_message">O site snapdrop.net foi adquirido por uma empresa cujas práticas de segurança e privacidade não são claras.\n\nPara manter seus dados seguros, este aplicativo deixará de oferecer suporte ao snapdrop.net e passará a usar o ErikrafT Drop™, uma alternativa mais segura.\n\nAgradecemos pela compreensão!</string>
-    <string name="important_update_ok">OK</string>
-    <string name="baseurl_unofficial_instances">Consulte as &lt;a href=""&gt;perguntas frequentes&lt;/a&gt; para ver uma lista de instâncias não oficiais e antigas. Algumas podem não funcionar corretamente dentro do aplicativo.</string>
+    
+    
+    
+    
 </resources>
