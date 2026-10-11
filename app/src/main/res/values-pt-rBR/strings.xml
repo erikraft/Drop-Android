@@ -213,4 +213,7 @@
     <string name="diagnostics_pull_requests">Pull Requests</string>
     <string name="diagnostics_contribute">Para contribuir, abra um Pull Request no repositório correspondente.</string>
     <string name="diagnostics_link_failed">Não foi possível abrir o link.</string>
+    <string name="app_language_contribute">Ajude a traduzir o ErikrafT Drop™ e tornar o aplicativo acessível a mais pessoas.</string>
+    <string name="app_language_contribute_web">Contribuir com as traduções da Web / Desktop</string>
+    <string name="app_language_contribute_android">Contribuir com as traduções do Android</string>
 </resources>
