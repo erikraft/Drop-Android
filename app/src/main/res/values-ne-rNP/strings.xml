@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">पुल अनुरोधहरू</string>
     <string name="diagnostics_contribute">योगदान गर्न सम्बन्धित रिपोजिटरीमा पुल अनुरोध खोल्नुहोस्।</string>
     <string name="diagnostics_link_failed">लिङ्क खोल्न सकिएन।</string>
-    <string name="picture_in_picture_title">पिक्चर-इन-पिक्चर (PiP)</string>
-    <string name="picture_in_picture_summary">एप सानो गरेपछि फाइल स्थानान्तरणको समयमा ErikrafT Drop लाई फ्लोटिङ विन्डोमा देखिने राख्नुहोस्।</string>
     <string name="about_credits_title">एपबारे</string>
     <string name="about_version_format">संस्करण %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ फाइल र पाठ स्थानान्तरण गर्ने खुला स्रोत एप हो। यस पृष्ठमा Web र Android इकोसिस्टमका मुख्य प्रत्यक्ष निर्भरता र प्राविधिक सन्दर्भहरू सूचीबद्ध छन्।</string>
