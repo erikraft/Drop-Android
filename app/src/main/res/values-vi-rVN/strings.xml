@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor không phản hồi kịp thời. Hãy kiểm tra xem Tor có thể chạy trên thiết bị này không.</string>
     <string name="onion_error_qr">Không thể tạo mã QR.</string>
     <string name="onion_error_file_open">Không thể mở tệp đã chọn.</string>
+    <string name="onion_transfer_clear_files">Xóa các tệp đã chọn</string>
+    <string name="onion_transfer_clear_text">Xóa văn bản đã nhập</string>
+    <string name="onion_transfer_ready_to_start">Sẵn sàng khởi động.</string>
+    <string name="onion_transfer_qr_content_description">Mã QR của dịch vụ Onion</string>
+    <string name="onion_transfer_link_copied">Đã sao chép liên kết.</string>
+    <string name="onion_transfer_prepare_file_error">Không thể chuẩn bị tệp: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d tệp và văn bản đã sẵn sàng để chia sẻ.</string>
+    <string name="onion_transfer_summary_files">%1$d tệp đã sẵn sàng để chia sẻ.</string>
+    <string name="onion_transfer_summary_text">Văn bản đã sẵn sàng để chia sẻ.</string>
 </resources>
