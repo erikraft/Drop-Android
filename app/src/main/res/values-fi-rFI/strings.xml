@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor ei vastannut ajoissa. Tarkista, voiko Tor toimia tällä laitteella.</string>
     <string name="onion_error_qr">QR-koodin luominen epäonnistui.</string>
     <string name="onion_error_file_open">Valitun tiedoston avaaminen epäonnistui.</string>
+    <string name="onion_transfer_clear_files">Poista valitut tiedostot</string>
+    <string name="onion_transfer_clear_text">Tyhjennä kirjoitettu teksti</string>
+    <string name="onion_transfer_ready_to_start">Valmis käynnistettäväksi.</string>
+    <string name="onion_transfer_qr_content_description">Onion-palvelun QR-koodi</string>
+    <string name="onion_transfer_link_copied">Linkki kopioitu.</string>
+    <string name="onion_transfer_prepare_file_error">Tiedoston valmistelu epäonnistui: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d tiedosto(a) ja teksti valmiina jaettavaksi.</string>
+    <string name="onion_transfer_summary_files">%1$d tiedosto(a) valmiina jaettavaksi.</string>
+    <string name="onion_transfer_summary_text">Teksti valmiina jaettavaksi.</string>
 </resources>
