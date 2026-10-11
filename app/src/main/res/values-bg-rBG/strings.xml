@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">Неуспешно запазване на диагностиката: %1$s</string>
     <string name="app_language_search">Търсене на езици</string>
     <string name="app_language_search_no_results">Няма намерени езици</string>
+    <string name="diagnostics_sources_title">Хранилища с изходен код</string>
+    <string name="diagnostics_web_repository">Уеб / Desktop хранилище</string>
+    <string name="diagnostics_android_repository">Android хранилище</string>
+    <string name="diagnostics_issues">Проблеми</string>
+    <string name="diagnostics_pull_requests">Заявки за изтегляне</string>
+    <string name="diagnostics_contribute">За да допринесете, отворете заявка за изтегляне в съответното хранилище.</string>
+    <string name="diagnostics_link_failed">Връзката не може да бъде отворена.</string>
 </resources>
