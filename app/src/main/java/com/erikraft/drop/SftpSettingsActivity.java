@@ -62,7 +62,7 @@ public class SftpSettingsActivity extends DropPipActivity {
             String p=com.anggrayudi.storage.file.DocumentFileUtils.getAbsolutePath(df,this);
             File f=p==null?null:new File(p);
             if(f==null||!f.isDirectory()||!f.canRead()||!f.canWrite()){
-                Toast.makeText(this,"Esta pasta não pode ser usada diretamente pelo SFTP.",Toast.LENGTH_LONG).show();return;
+                Toast.makeText(this,getString(R.string.transfer_error_folder_unsupported),Toast.LENGTH_LONG).show();return;
             }
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).apply();
             folder.setText(f.getAbsolutePath());
@@ -138,10 +138,10 @@ public class SftpSettingsActivity extends DropPipActivity {
 
     private void startServer(){
         android.content.SharedPreferences p=PreferenceManager.getDefaultSharedPreferences(this);String home=p.getString(getString(R.string.pref_sftp_save_location),"");File f=new File(home);
-        if(!f.isDirectory()||!f.canRead()||!f.canWrite()){Toast.makeText(this,"Escolha uma pasta acessível diretamente pelo SFTP.",Toast.LENGTH_LONG).show();return;}
-        int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,"Informe uma porta válida.",Toast.LENGTH_SHORT).show();return;}
-        if(po<1025||po>65535){Toast.makeText(this,"A porta deve estar entre 1025 e 65535.",Toast.LENGTH_SHORT).show();return;}
-        String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,"Usuário e senha são obrigatórios.",Toast.LENGTH_SHORT).show();return;}
+        if(!f.isDirectory()||!f.canRead()||!f.canWrite()){Toast.makeText(this,getString(R.string.transfer_error_folder_unsupported),Toast.LENGTH_LONG).show();return;}
+        int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,getString(R.string.transfer_error_invalid_port),Toast.LENGTH_SHORT).show();return;}
+        if(po<1025||po>65535){Toast.makeText(this,getString(R.string.transfer_error_port_range),Toast.LENGTH_SHORT).show();return;}
+        String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,getString(R.string.transfer_error_credentials_required),Toast.LENGTH_SHORT).show();return;}
         p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
         androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
