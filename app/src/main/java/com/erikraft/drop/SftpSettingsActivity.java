@@ -143,9 +143,9 @@ public class SftpSettingsActivity extends DropPipActivity {
         if(po<1025||po>65535){Toast.makeText(this,getString(R.string.transfer_error_port_range),Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,getString(R.string.transfer_error_credentials_required),Toast.LENGTH_SHORT).show();return;}
         p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
-        androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText("Iniciando servidor SFTP…");address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
+        androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText(R.string.ftp_starting);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
     }
-    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText("Parando servidor SFTP…");}
+    private void stopServer(){startService(SftpServerService.stopIntent(this));status.setText(R.string.ftp_stopping);}
     private void updateServerToggle(boolean running){if(serverToggleButton!=null)serverToggleButton.setText(running?R.string.sftp_stop:R.string.sftp_start);}
     @Override protected void onDestroy(){ if(statusReceiver!=null) unregisterReceiver(statusReceiver); super.onDestroy(); }
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if(getString(R.string.ftp_password_hint).equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
