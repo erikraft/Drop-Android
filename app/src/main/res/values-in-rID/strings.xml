@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Nama pengguna</string>
     <string name="ftp_password_hint">Kata sandi</string>
+    <string name="transfer_error_directory_path">Folder yang dipilih tidak dapat diakses.</string>
+    <string name="transfer_error_folder_unsupported">Folder ini tidak dapat digunakan langsung oleh server ini.</string>
+    <string name="transfer_error_invalid_port">Masukkan port yang valid.</string>
+    <string name="transfer_error_port_range">Port harus antara 1025 dan 65535.</string>
+    <string name="transfer_error_credentials_required">Nama pengguna dan kata sandi wajib diisi.</string>
+    <string name="onion_error_tor_timeout">Tor tidak merespons tepat waktu. Periksa apakah Tor dapat berjalan di perangkat ini.</string>
+    <string name="onion_error_qr">Kode QR tidak dapat dibuat.</string>
+    <string name="onion_error_file_open">File yang dipilih tidak dapat dibuka.</string>
 </resources>
