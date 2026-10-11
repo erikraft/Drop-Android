@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">डायग्नोस्टिक्स सहेजे नहीं जा सके: %1$s</string>
     <string name="app_language_search">भाषाएँ खोजें</string>
     <string name="app_language_search_no_results">कोई भाषा नहीं मिली</string>
+    <string name="diagnostics_sources_title">सोर्स रिपॉज़िटरी</string>
+    <string name="diagnostics_web_repository">वेब / डेस्कटॉप रिपॉज़िटरी</string>
+    <string name="diagnostics_android_repository">Android रिपॉज़िटरी</string>
+    <string name="diagnostics_issues">समस्याएँ</string>
+    <string name="diagnostics_pull_requests">पुल अनुरोध</string>
+    <string name="diagnostics_contribute">योगदान करने के लिए संबंधित रिपॉज़िटरी में पुल अनुरोध खोलें।</string>
+    <string name="diagnostics_link_failed">लिंक नहीं खोला जा सका।</string>
 </resources>
