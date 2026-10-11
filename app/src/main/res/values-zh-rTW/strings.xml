@@ -213,4 +213,6 @@
     <string name="diagnostics_pull_requests">Pull Request</string>
     <string name="diagnostics_contribute">若要貢獻，請在對應的儲存庫中提交 Pull Request。</string>
     <string name="diagnostics_link_failed">無法開啟連結。</string>
+    <string name="picture_in_picture_title">子母畫面 (PiP)</string>
+    <string name="picture_in_picture_summary">最小化應用程式後，檔案傳輸期間仍可在浮動視窗中顯示 ErikrafT Drop。</string>
 </resources>
