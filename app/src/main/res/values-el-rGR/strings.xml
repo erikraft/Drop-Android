@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">Το κλασσικό snapdrop. Απλό και λιτό.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Τέταρτο — υπηρεσία Onion του ErikrafT Drop™</string>
+    <string name="onboarding_server_quinary_summary">(5) Πέμπτο — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Απαιτείται το Tor. Η υπηρεσία Onion είναι προσβάσιμη απευθείας μέσω Tor σε αυτήν τη συσκευή.</string>
+    <string name="onboarding_server_pairdrop_summary">Κύριος διακομιστής ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">Το κλασικό Snapdrop. Απλό και καθαρό.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">Προσαρμοσμένο URL</string>
     <string name="onboarding_server_custom_summary">Οι ειδικοί μπορούν επιπλέον να το κάνουν host σε δικό τους servers.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Τα διαγνωστικά αντιγράφηκαν.</string>
         <string name="diagnostics_saved">Το αρχείο διαγνωστικών αποθηκεύτηκε.</string>
         <string name="diagnostics_disabled">Ενεργοποιήστε τα Διαγνωστικά στις Ρυθμίσεις για να δείτε τα αρχεία καταγραφής.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Κοινή χρήση</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
