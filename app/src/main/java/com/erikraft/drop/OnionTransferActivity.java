@@ -124,7 +124,7 @@ public class OnionTransferActivity extends DropPipActivity {
 
         MaterialCardView shareCard = card();
         LinearLayout shareContent = verticalInsideCard(shareCard);
-        TextView shareTitle = text("Conteúdo para compartilhar", 18);
+        TextView shareTitle = text(getString(R.string.onion_transfer_content_title), 18);
         shareContent.addView(shareTitle);
 
         MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
@@ -421,7 +421,7 @@ public class OnionTransferActivity extends DropPipActivity {
         address.setText("");
         qr.setVisibility(View.GONE);
         cancelNotification();
-        if (!preserveStatus) status.setText("Serviço Onion parado.");
+        if (!preserveStatus) status.setText(getString(R.string.server_status_stopped));
     }
 
     private void copyLink() {
