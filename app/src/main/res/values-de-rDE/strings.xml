@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Pull Requests</string>
     <string name="diagnostics_contribute">Um beizutragen, erstelle einen Pull Request im passenden Repository.</string>
     <string name="diagnostics_link_failed">Link konnte nicht geöffnet werden.</string>
-    <string name="picture_in_picture_title">Bild-im-Bild (PiP)</string>
-    <string name="picture_in_picture_summary">ErikrafT Drop bleibt nach dem Minimieren während Dateiübertragungen in einem schwebenden Fenster sichtbar.</string>
 </resources>
