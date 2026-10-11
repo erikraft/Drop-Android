@@ -204,4 +204,15 @@
     <string name="about_references_disclaimer">I progetti upstream e i componenti di terze parti mantengono i propri autori e le proprie licenze. Questa pagina documenta le dipendenze e i riferimenti esaminati per ErikrafT Drop™.</string>
     <string name="about_licenses_title">Licenze</string>
     <string name="about_licenses_summary">Le informazioni sulle licenze open source e di terze parti sono disponibili nel codice sorgente e nei file di licenza del progetto.</string>
+    <string name="important_update_title">Aggiornamento importante</string>
+    <string name="important_update_message">Il sito snapdrop.net è stato acquisito da un\'azienda le cui pratiche di sicurezza e privacy non sono chiare.\n\nPer proteggere i tuoi dati, questa app non supporterà più snapdrop.net e passerà a ErikrafT Drop™, un\'alternativa più sicura.\n\nGrazie per la comprensione!</string>
+    <string name="important_update_ok">OK</string>
+    <string name="baseurl_title">Modifica indirizzo del server</string>
+    <string name="baseurl_instance_verified">Istanza verificata correttamente</string>
+    <string name="baseurl_no_snapdrop_instance">L\'istanza non sembra essere supportata</string>
+    <string name="baseurl_check_instance_failed">Verifica dell\'istanza non riuscita</string>
+    <string name="baseurl_unofficial_instances">Consulta le &lt;a href=""&gt;FAQ&lt;/a&gt; per un elenco di istanze non ufficiali e legacy. Alcune potrebbero non funzionare correttamente nell\'app.</string>
+    <string name="onboarding_choose_server_short">Scegli server</string>
+    <string name="onboarding_howto_summary">1. Apri questa app o %s su qualsiasi altro dispositivo connesso alla tua rete Wi-Fi locale.\n\n2. Tocca il dispositivo e seleziona i file da inviare.\n\n3. Fatto! I file verranno inviati…</string>
+    <string name="onboarding_howto_troubleshoot">Suggerimento: i dispositivi devono essere connessi alla stessa rete Wi-Fi. Il servizio potrebbe non funzionare se è attiva una VPN.</string>
 </resources>
