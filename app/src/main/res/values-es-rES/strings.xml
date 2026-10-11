@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
+    <string name="onboarding_server_quaternary_summary">(4) Cuarto — servicio Onion de ErikrafT Drop™</string>
     <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">El Snapdrop clásico. Limpio y simple.</string>
+    <string name="onboarding_server_onion_warning">Se requiere Tor. El servicio Onion se abre directamente a través de Tor en este dispositivo.</string>
+    <string name="onboarding_server_pairdrop_summary">Servidor principal de ErikrafT Drop™.</string>
+    <string name="onboarding_server_snapdrop_summary">El Snapdrop clásico. Sencillo y limpio.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">URL personalizada</string>
     <string name="onboarding_server_custom_summary">Los expertos también pueden alojar sus propios servidores.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">Diagnósticos copiados.</string>
         <string name="diagnostics_saved">Archivo de diagnósticos guardado.</string>
         <string name="diagnostics_disabled">Activa los diagnósticos en Ajustes para ver los registros.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">Compartir</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
 
