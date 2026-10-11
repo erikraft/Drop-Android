@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor se ni odzval pravočasno. Preverite, ali lahko Tor deluje v tej napravi.</string>
     <string name="onion_error_qr">Kode QR ni bilo mogoce ustvariti.</string>
     <string name="onion_error_file_open">Izbrane datoteke ni bilo mogoce odpreti.</string>
+    <string name="onion_transfer_clear_files">Odstrani izbrane datoteke</string>
+    <string name="onion_transfer_clear_text">Počisti vneseno besedilo</string>
+    <string name="onion_transfer_ready_to_start">Pripravljeno za zagon.</string>
+    <string name="onion_transfer_qr_content_description">QR-koda storitve Onion</string>
+    <string name="onion_transfer_link_copied">Povezava je kopirana.</string>
+    <string name="onion_transfer_prepare_file_error">Datoteke ni bilo mogoče pripraviti: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d datotek in besedilo je pripravljenih za skupno rabo.</string>
+    <string name="onion_transfer_summary_files">%1$d datotek je pripravljenih za skupno rabo.</string>
+    <string name="onion_transfer_summary_text">Besedilo je pripravljeno za skupno rabo.</string>
 </resources>
