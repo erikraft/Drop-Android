@@ -57,7 +57,7 @@ public class FtpSettingsActivity extends DropPipActivity {
             if (!FtpServerService.EXTRA_STATUS.equals(intent.getAction())) return;
             boolean running = intent.getBooleanExtra("running", false);
             String error = intent.getStringExtra(FtpServerService.EXTRA_ERROR);
-            status.setText(running ? "Servidor ativo" : (error == null ? "Servidor parado" : "Falha: " + error));
+            status.setText(running ? getString(R.string.server_status_running) : (error == null ? getString(R.string.server_status_stopped) : getString(R.string.server_status_error, error)));
             updateButtons(running);
             if (running) updateAddress();
         }
@@ -136,11 +136,11 @@ public class FtpSettingsActivity extends DropPipActivity {
                     Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
             directoryPicker.launch(intent);
         });
-        portInput = field("Porta", prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
+        portInput = field(getString(R.string.ftp_port_hint), prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
         content.addView((TextInputLayout) portInput.getTag(), lpTop(dp(12)));
-        usernameInput = field("Nome de usuário", prefs.getString(getString(R.string.pref_ftp_username), "admin"), InputType.TYPE_CLASS_TEXT);
+        usernameInput = field(getString(R.string.ftp_username_hint), prefs.getString(getString(R.string.pref_ftp_username), "admin"), InputType.TYPE_CLASS_TEXT);
         content.addView((TextInputLayout) usernameInput.getTag(), lpTop(dp(8)));
-        passwordInput = field("Senha", prefs.getString(getString(R.string.pref_ftp_password), "admin"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passwordInput = field(getString(R.string.ftp_password_hint), prefs.getString(getString(R.string.pref_ftp_password), "admin"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         content.addView((TextInputLayout) passwordInput.getTag(), lpTop(dp(8)));
         anonymousSwitch = new SwitchCompat(this);
         anonymousSwitch.setText(R.string.ftp_anonymous_title);
@@ -158,7 +158,7 @@ public class FtpSettingsActivity extends DropPipActivity {
         TextView notificationSummary = text(getString(R.string.ftp_stop_notification_summary), 13);
         content.addView(notificationSummary, lpTop(dp(2)));
         content.addView(text(getString(R.string.ftp_passive_summary), 13), lpTop(dp(4)));
-        status = text("Servidor parado", 15);
+        status = text(getString(R.string.server_status_stopped), 15);
         content.addView(status, lpTop(dp(18)));
         address = text("", 14);
         address.setTextIsSelectable(true);
@@ -182,13 +182,13 @@ public class FtpSettingsActivity extends DropPipActivity {
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         setContentView(root);
         updateButtons(FtpServerService.isRunning());
-        status.setText(FtpServerService.isRunning() ? "Servidor ativo" : "Servidor parado");
+        status.setText(FtpServerService.isRunning() ? getString(R.string.server_status_running) : getString(R.string.server_status_stopped));
     }
 
     private TextInputEditText field(String hint, String value, int inputType) {
         TextInputLayout layout = new TextInputLayout(this);
         layout.setHint(hint);
-        if ("Senha".equals(hint)) {
+        if (getString(R.string.ftp_password_hint).equals(hint)) {
             layout.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
         }
         TextInputEditText edit = new TextInputEditText(this);
