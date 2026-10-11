@@ -94,7 +94,7 @@
     <string name="baseurl_unofficial_instances">Xem &lt;a href=""&gt;FAQ&lt;/a&gt; để biết danh sách máy chủ không chính thức và cũ. Một số máy chủ có thể không hoạt động đúng trong ứng dụng.</string>
     <string name="important_update_title">Cập nhật quan trọng</string>
     <string name="important_update_message">Trang web snapdrop.net đã được một công ty mua lại với các thực tiễn bảo mật và quyền riêng tư chưa rõ ràng.\n\nĐể bảo vệ dữ liệu của bạn, ứng dụng sẽ không còn hỗ trợ snapdrop.net mà chuyển tất cả người dùng sang ErikrafT Drop™, một lựa chọn an toàn hơn.\n\nCảm ơn bạn đã thông cảm!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="important_update_ok">Đã hiểu</string>
     <string name="save_location">Vị trí lưu</string>
     <!-- File sharing -->
     <string name="intent_file">Đã chọn 1 file để chia sẻ</string>
