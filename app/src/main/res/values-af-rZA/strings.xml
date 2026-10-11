@@ -9,9 +9,9 @@
     <string name="onboarding_button_continue">gaan voort</string>
     <string name="onboarding_button_grant">verleen toestemming</string>
     <string name="onboarding_button_finish">voltooi</string>
-    <string name="onboarding_choose_server">Kies 'n bedieneradres</string>
+    <string name="onboarding_choose_server">Kies \'n bedieneradres</string>
     <string name="onboarding_choose_server_short">kies bediener</string>
-    <string name="onboarding_choose_server_description">Hierdie toepassing is 'n geoptimaliseerde kliënt vir die ErikrafT Drop- en PairDrop-webtoepassings.\nKies een van die volgende instansies of spesifiseer 'n pasgemaakte URL om te koppel.\n\nLet wel: Jy moet dieselfde URL op alle toestelle kies.</string>
+    <string name="onboarding_choose_server_description">Hierdie toepassing is \'n geoptimaliseerde kliënt vir die ErikrafT Drop- en PairDrop-webtoepassings.\nKies een van die volgende instansies of spesifiseer \'n pasgemaakte URL om te koppel.\n\nLet wel: Jy moet dieselfde URL op alle toestelle kies.</string>
     <string name="onboarding_storage_permission">Bergingstoestemming</string>
     <string name="onboarding_storage_permission_description">Hierdie toepassing deel lêers. Daarom is bergingstoestemming nodig om dit te gebruik.</string>
     <string name="onboarding_server_primary_summary">(1) Primêr — ErikrafT Drop™</string>
@@ -28,9 +28,9 @@
     <string name="onboarding_server_custom_add">Voeg bediener by</string>
     <string name="onboarding_howto">Hoe om dit te gebruik</string>
     <string name="onboarding_howto_summary">1. Maak hierdie toepassing of %s op enige ander toestel in jou plaaslike Wi-Fi-netwerk oop.\n\n2. Tik op die toestel en kies die lêers wat jy wil stuur.\n\n3. Klaar! Die lêers sal gestuur word…</string>
-    <string name="onboarding_howto_troubleshoot">Wenk: Toestelle moet aan dieselfde Wi-Fi-netwerk gekoppel wees. Dit werk dalk nie as 'n VPN geaktiveer is nie.</string>
+    <string name="onboarding_howto_troubleshoot">Wenk: Toestelle moet aan dieselfde Wi-Fi-netwerk gekoppel wees. Dit werk dalk nie as \'n VPN geaktiveer is nie.</string>
     <!-- Download -->
-    <string name="download_save_pending">Lêer word gestoor. Wag asseblief 'n oomblik…</string>
+    <string name="download_save_pending">Lêer word gestoor. Wag asseblief \'n oomblik…</string>
     <string name="download_successful">Aflaai suksesvol</string>
     <string name="notification_channel_name">Aflaai voltooi</string>
     <!-- Action Buttons -->
@@ -64,7 +64,7 @@
     <string name="read_more">Lees meer</string>
     <string name="version">Weergawe</string>
     <string name="pref_device_name_title">Toestelnaam</string>
-    <string name="pref_device_name_summary">Stel 'n pasgemaakte toestelnaam in</string>
+    <string name="pref_device_name_summary">Stel \'n pasgemaakte toestelnaam in</string>
     <string name="notifications_summary">Wys \'n kennisgewing wanneer \'n aflaai voltooi is. Android 13+ vereis kennisgewingtoestemming.</string>
     <string name="notifications_title">Kennisgewings</string>
     <string name="keep_on_summary">(Aanbeveel) Op baie toestelle word oordragte onderbreek wanneer die skerm afskakel</string>
@@ -72,7 +72,7 @@
     <string name="floating_text_selection_title">Swaaiende tekskeuse</string>
     <string name="floating_text_selection_summary">Wanneer jy teks in ander toepassings kies, verskyn die opsie "Stuur met ErikrafT Drop"</string>
     <string name="show_connectivity_card_title">Verbindingswaarskuwing</string>
-    <string name="show_connectivity_card_summary">Wys 'n waarskuwing wanneer jy nie aan 'n Wi-Fi-netwerk gekoppel is nie</string>
+    <string name="show_connectivity_card_summary">Wys \'n waarskuwing wanneer jy nie aan \'n Wi-Fi-netwerk gekoppel is nie</string>
     <string name="floating_text_selection_activity_label">Stuur met ErikrafT Drop</string>
     <string name="permission_not_granted">verleen asseblief die nodige toestemming</string>
     <string name="permission_not_granted_fallback">verleen asseblief die nodige toestemming handmatig</string>
@@ -91,27 +91,27 @@
     <string name="baseurl_instance_verified">Instansie suksesvol geverifieer</string>
     <string name="baseurl_no_snapdrop_instance">Dit lyk nie of die instansie ondersteun word nie</string>
     <string name="baseurl_check_instance_failed">Kon nie instansie verifieer nie</string>
-    <string name="baseurl_unofficial_instances">Kyk na die &lt;a href=""&gt;FAQ&lt;/a&gt; vir 'n lys van nie-amptelike en ou instansies. Sommige instansies werk dalk nie behoorlik binne die toepassing nie.</string>
+    <string name="baseurl_unofficial_instances">Kyk na die &lt;a href=""&gt;FAQ&lt;/a&gt; vir \'n lys van nie-amptelike en ou instansies. Sommige instansies werk dalk nie behoorlik binne die toepassing nie.</string>
     <string name="important_update_title">Belangrike opdatering</string>
-    <string name="important_update_message">Die snapdrop.net-webwerf is verkry deur 'n maatskappy met onduidelike sekuriteits- en privaatheidspraktyke.\n\nOm jou data veilig te hou, sal hierdie toepassing nie meer snapdrop.net ondersteun nie en sal alle gebruikers eerder na ErikrafT Drop™ oorskakel, 'n veiliger alternatief.\n\nDankie vir jou begrip!</string>
+    <string name="important_update_message">Die snapdrop.net-webwerf is verkry deur \'n maatskappy met onduidelike sekuriteits- en privaatheidspraktyke.\n\nOm jou data veilig te hou, sal hierdie toepassing nie meer snapdrop.net ondersteun nie en sal alle gebruikers eerder na ErikrafT Drop™ oorskakel, \'n veiliger alternatief.\n\nDankie vir jou begrip!</string>
     <string name="important_update_ok">Goed</string>
     <string name="save_location">Stoorligging</string>
     <!-- File sharing -->
-    <string name="intent_file">'n Lêer is gekies om te deel</string>
+    <string name="intent_file">\'n Lêer is gekies om te deel</string>
     <string name="intent_files">Lêers is gekies om te deel</string>
     <string name="intent_content">Inhoud is gekies om te deel</string>
     <string name="error_filechooser">Kan nie lêerkieser oopmaak nie</string>
-    <string name="error_network">Kontroleer asseblief of jy aan 'n Wi-Fi-netwerk gekoppel is</string>
-    <string name="error_network_no_wifi">Koppel asseblief aan 'n Wi-Fi-netwerk of koppel toestelle</string>
+    <string name="error_network">Kontroleer asseblief of jy aan \'n Wi-Fi-netwerk gekoppel is</string>
+    <string name="error_network_no_wifi">Koppel asseblief aan \'n Wi-Fi-netwerk of koppel toestelle</string>
     <string name="error_network_offline">Jy is vanlyn</string>
     <string name="ignore_error_network">Laat my in elk geval voortgaan</string>
     <string name="error_not_reachable_title">Oeps, jammer!</string>
-    <string name="error_server_not_reachable">Die bediener kan nie bereik word nie. \n\nAs jou internetverbinding werk en dit steeds gebeur, probeer asseblief om 'n ander bedieneradres te kies.</string>
+    <string name="error_server_not_reachable">Die bediener kan nie bereik word nie. \n\nAs jou internetverbinding werk en dit steeds gebeur, probeer asseblief om \'n ander bedieneradres te kies.</string>
     <!-- Website Localization -->
     <string name="website_no_peers_info">Maak die toepassing of webwerf op ander toestelle oop om lêers te stuur</string>
-    <string name="website_instruction">Tik om lêers te stuur of hou lank ingedruk om 'n boodskap te stuur</string>
+    <string name="website_instruction">Tik om lêers te stuur of hou lank ingedruk om \'n boodskap te stuur</string>
     <string name="website_file_received">Lêer ontvang</string>
-    <string name="website_file_ask_before_download">Vra altyd voordat 'n lêer gestoor word</string>
+    <string name="website_file_ask_before_download">Vra altyd voordat \'n lêer gestoor word</string>
     <string name="website_file_download">Stoor</string>
     <string name="website_footer_discovery">Jy kan deur almal op hierdie netwerk ontdek word</string>
     <string name="website_footer_known_as">Jy is bekend as %s</string>
