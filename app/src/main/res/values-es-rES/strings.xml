@@ -213,4 +213,8 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Para contribuir, abre una pull request en el repositorio correspondiente.</string>
     <string name="diagnostics_link_failed">No se pudo abrir el enlace.</string>
+    <string name="important_update_title">Actualización importante</string>
+    <string name="important_update_message">El sitio web snapdrop.net ha sido adquirido por una empresa cuyas prácticas de seguridad y privacidad no están claras.\n\nPara proteger tus datos, esta aplicación dejará de ser compatible con snapdrop.net y cambiará a todos los usuarios a ErikrafT Drop™, una alternativa más segura.\n\n¡Gracias por tu comprensión!</string>
+    <string name="important_update_ok">Aceptar</string>
+    <string name="baseurl_unofficial_instances">Consulta las &lt;a href=""&gt;preguntas frecuentes&lt;/a&gt; para ver una lista de instancias no oficiales y heredadas. Ten en cuenta que algunas pueden no funcionar correctamente dentro de la aplicación.</string>
 </resources>
