@@ -133,7 +133,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
         wifiReceiver = new BroadcastReceiver() {
             @Override public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
-                if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION)equals(action)) {
+                if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
                     if (hasWifiPermission()) wifiManager.requestPeers(wifiChannel, list -> showPeers(list));
                 } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
                     if (hasWifiPermission()) wifiManager.requestConnectionInfo(wifiChannel, info -> {
