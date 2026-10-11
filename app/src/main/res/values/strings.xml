@@ -266,4 +266,7 @@
     <string name="legacy_wifi_text_sent">Text sent.</string>
     <string name="legacy_wifi_text_received">Text received over Wi-Fi Direct.</string>
     <string name="legacy_wifi_transfer_failed">Transfer failed: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam is unavailable here, but NFC tag reading/writing is available. Tap to open tools.</string>
+    <string name="legacy_transfer_tap_to_open">Tap to open the available transfer tools.</string>
+    <string name="legacy_wifi_waiting_for_sender">Connected as receiver. The connected peer can send text to this device.</string>
 </resources>
