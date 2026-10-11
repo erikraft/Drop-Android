@@ -17,11 +17,11 @@
     <string name="onboarding_server_primary_summary">(1) Primary — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secondary — ErikrafT Drop™ fallback</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiary — ErikrafT Drop™ fallback</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — ErikrafT Drop™ Onion Service</string>
-    <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
-    <string name="onboarding_server_onion_warning">Requer Tor. O serviço Onion é acessado diretamente pelo Tor no dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ primary server.</string>
-    <string name="onboarding_server_snapdrop_summary">기본적인 Snapdrop. 간단하고 깨끗합니다.</string>
+    <string name="onboarding_server_quaternary_summary">(4) 네 번째 — ErikrafT Drop™ Onion 서비스</string>
+    <string name="onboarding_server_quinary_summary">(5) 다섯 번째 — PairDrop</string>
+    <string name="onboarding_server_onion_warning">Tor가 필요합니다. 이 기기에서는 Tor를 통해 Onion 서비스에 직접 접속합니다.</string>
+    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ 기본 서버입니다.</string>
+    <string name="onboarding_server_snapdrop_summary">기존 Snapdrop입니다. 간단하고 깔끔합니다.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop fallback.</string>
     <string name="onboarding_server_custom">커스텀 URL</string>
     <string name="onboarding_server_custom_summary">전문가들은 직접 서버를 호스팅할 수도 있습니다.</string>
@@ -172,7 +172,7 @@
         <string name="diagnostics_copied">진단이 복사되었습니다.</string>
         <string name="diagnostics_saved">진단 파일이 저장되었습니다.</string>
         <string name="diagnostics_disabled">로그를 보려면 설정에서 진단을 활성화하세요.</string>
-    <string name="share">Compartilhar</string>
+    <string name="share">공유</string>
     <string name="share_instagram">Instagram</string>
     <string name="share_instagram_story">Instagram Story</string>
     <string name="sftp_start">SFTP 서버 시작</string>
