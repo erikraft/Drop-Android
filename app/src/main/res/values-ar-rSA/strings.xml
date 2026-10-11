@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">طلبات السحب</string>
     <string name="diagnostics_contribute">للمساهمة، افتح طلب سحب في المستودع المناسب.</string>
     <string name="diagnostics_link_failed">تعذر فتح الرابط.</string>
-    <string name="picture_in_picture_title">نافذة ضمن نافذة (PiP)</string>
-    <string name="picture_in_picture_summary">أبقِ ErikrafT Drop ظاهرًا في نافذة عائمة أثناء نقل الملفات بعد تصغير التطبيق.</string>
 </resources>
