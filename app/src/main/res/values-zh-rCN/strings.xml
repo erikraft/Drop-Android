@@ -27,7 +27,7 @@
     <string name="onboarding_server_custom_summary">高级用户也可以托管自己的服务器。</string>
     <string name="onboarding_server_custom_add">添加服务器</string>
     <string name="onboarding_howto">如何使用</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
+    <string name="onboarding_howto_summary">1. 在本地 Wi-Fi 网络中的其他设备上打开此应用或 %s。\n\n2. 点按该设备并选择要发送的文件。\n\n3. 完成！文件将开始发送…</string>
     <string name="onboarding_howto_troubleshoot">提示：设备需要连接到同一个WiFi网络。如果启用了VPN，它可能无法工作。</string>
     <!-- Download -->
     <string name="download_save_pending">存储文件。请稍等…</string>
@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">实例验证成功</string>
     <string name="baseurl_no_snapdrop_instance">实例似乎不受支持</string>
     <string name="baseurl_check_instance_failed">验证实例失败</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">请查看<a href="">常见问题</a>，了解非官方和旧版实例列表。部分实例可能无法在应用内正常运行。</string>
+    <string name="important_update_title">重要更新</string>
+    <string name="important_update_message">snapdrop.net 网站已被一家安全和隐私实践不明确的公司收购。\n\n为保护您的数据，此应用将不再支持 snapdrop.net，而是切换到更安全的替代方案 ErikrafT Drop™。\n\n感谢您的理解！</string>
+    <string name="important_update_ok">知道了</string>
     <string name="save_location">保存位置</string>
     <!-- File sharing -->
     <string name="intent_file">已选择一个要共享的文件</string>
