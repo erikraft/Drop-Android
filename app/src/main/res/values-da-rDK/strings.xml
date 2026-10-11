@@ -258,4 +258,11 @@
     <string name="legacy_transfer_tap_to_open">Tryk for at åbne de tilgængelige overførselsværktøjer.</string>
     <string name="legacy_wifi_waiting_for_sender">Forbundet som modtager. Den tilsluttede enhed kan sende tekst til denne enhed.</string>
     <string name="legacy_beam_text_received">Tekst modtaget via Android Beam.</string>
+    <string name="server_status_running">Serveren kører</string>
+    <string name="server_status_stopped">Server stoppet</string>
+    <string name="server_status_error">Fejl: %1$s</string>
+    <string name="onion_transfer_content_title">Indhold til deling</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Brugernavn</string>
+    <string name="ftp_password_hint">Adgangskode</string>
 </resources>
