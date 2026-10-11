@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Nem sikerült menteni a diagnosztikát: %1$s</string>
     <string name="app_language_search">Nyelvek keresése</string>
     <string name="app_language_search_no_results">Nem található nyelv</string>
+    <string name="diagnostics_sources_title">Forráskód-tárolók</string>
+    <string name="diagnostics_web_repository">Webes / asztali tároló</string>
+    <string name="diagnostics_android_repository">Android-tároló</string>
+    <string name="diagnostics_issues">Hibajegyek</string>
+    <string name="diagnostics_pull_requests">Pull requestek</string>
+    <string name="diagnostics_contribute">Közreműködéshez nyisson pull requestet a megfelelő tárolóban.</string>
+    <string name="diagnostics_link_failed">A hivatkozás nem nyitható meg.</string>
 </resources>
