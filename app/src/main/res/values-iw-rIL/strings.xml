@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_long">ErikrafT Drop</string>
-    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="app_name_slogan">העברת קבצים בקלות בין כל המכשירים שלך.</string>
     <string name="err_no_browser">אי אפשר לפתוח דפדפן</string>
     <string name="err_no_app">לא נמצא יישום לפתיחת קובץ זה</string>
     <string name="open_url">פתח קישור אינטרנט</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">המשך</string>
+    <string name="onboarding_button_grant">מתן הרשאה</string>
+    <string name="onboarding_button_finish">סיום</string>
+    <string name="onboarding_choose_server">בחירת כתובת שרת</string>
+    <string name="onboarding_choose_server_short">בחירת שרת</string>
+    <string name="onboarding_choose_server_description">האפליקציה הזו היא לקוח מותאם ליישומי האינטרנט ErikrafT Drop ו-PairDrop.\nבחרו אחד מהשרתים הבאים או הזינו כתובת URL מותאמת אישית כדי להתחבר.\n\nהערה: יש לבחור אותה כתובת URL בכל המכשירים.</string>
+    <string name="onboarding_storage_permission">הרשאת אחסון</string>
+    <string name="onboarding_storage_permission_description">האפליקציה מיועדת לשיתוף קבצים, ולכן נדרשת הרשאת אחסון כדי להשתמש בה.</string>
     <string name="onboarding_server_primary_summary">(1) ראשי — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) משני — שרת גיבוי של ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) שלישוני — שרת גיבוי של ErikrafT Drop™</string>
@@ -26,32 +26,32 @@
     <string name="onboarding_server_custom">כתובת URL מותאמת אישית</string>
     <string name="onboarding_server_custom_summary">משתמשים מנוסים יכולים לארח גם שרתים משלהם.</string>
     <string name="onboarding_server_custom_add">הוספת שרת</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
-    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
+    <string name="onboarding_howto">איך משתמשים</string>
+    <string name="onboarding_howto_summary">1. פתחו את האפליקציה הזו או את %s במכשיר אחר באותה רשת Wi-Fi מקומית.\n\n2. הקישו על המכשיר ובחרו את הקבצים שברצונכם לשלוח.\n\n3. סיימתם! הקבצים יישלחו…</string>
+    <string name="onboarding_howto_troubleshoot">טיפ: המכשירים צריכים להיות מחוברים לאותה רשת Wi-Fi. ייתכן שהפעולה לא תעבוד כאשר VPN מופעל.</string>
     <!-- Download -->
     <string name="download_save_pending">מאחסן את הקובץ. בבקשה הראה קצת סבלנות...</string>
     <string name="download_successful">ההורדה הושלמה</string>
     <string name="notification_channel_name">ההורדה הושלמה</string>
     <!-- Action Buttons -->
     <string name="open">פתח</string>
-    <string name="install">install</string>
+    <string name="install">התקנה</string>
     <string name="reset">אפס</string>
     <string name="copy">העתק</string>
-    <string name="retry">retry</string>
+    <string name="retry">ניסיון חוזר</string>
     <!-- Settings / About -->
-    <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
-    <string name="pref_about_title">About this app</string>
-    <string name="view_downloads">View downloads</string>
+    <string name="home_as_up_indicator_about">מידע</string>
+    <string name="title_activity_about">מידע על ErikrafT Drop™</string>
+    <string name="pref_about_title">מידע על האפליקציה</string>
+    <string name="view_downloads">הצגת הורדות</string>
     <string name="pref_category_settings">הגדרות</string>
     <string name="logs">יומני איתור באגים</string>
     <string name="components_summary">לחץ להצגה</string>
-    <string name="support_us">Support us</string>
-    <string name="support_us_summary">See, how you can support this project</string>
-    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us">תמיכה בנו</string>
+    <string name="support_us_summary">כך תוכלו לתמוך בפרויקט</string>
+    <string name="support_us_description">תמכו ב-ErikrafT Drop™ ועזרו לפרויקט להמשיך לפעול.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
-    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX ו-Ko-fi</string>
     <string name="bitcoin_donation_title">תרומה באמצעות Bitcoin</string>
     <string name="bitcoin_donation_summary">תמכו ישירות ב-ErikrafT Drop™ באמצעות Bitcoin</string>
     <string name="bitcoin_donation_dialog_title">תרומה באמצעות Bitcoin</string>
@@ -71,30 +71,30 @@
     <string name="keep_on_title">השאר מסך דולק במשך העברת הקבצים</string>
     <string name="floating_text_selection_title">בחירת טקסט צף</string>
     <string name="floating_text_selection_summary">כשתבחר שורת טקסט ביישום אחר, יפתח אפשרות של \"שתף עם ErikrafT Drop\"</string>
-    <string name="show_connectivity_card_title">Connectivity warning</string>
-    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
+    <string name="show_connectivity_card_title">אזהרת קישוריות</string>
+    <string name="show_connectivity_card_summary">הצגת אזהרה כשאין חיבור לרשת Wi-Fi</string>
     <string name="floating_text_selection_activity_label">שתף עם ErikrafT Drop</string>
-    <string name="permission_not_granted">please grant the necessary permission</string>
-    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
-    <string name="open_settings">open settings</string>
-    <string name="retain_location_metadata_title">Retain location metadata</string>
-    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
-    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="permission_not_granted">יש להעניק את ההרשאה הנדרשת</string>
+    <string name="permission_not_granted_fallback">יש להעניק את ההרשאה הנדרשת באופן ידני</string>
+    <string name="open_settings">פתיחת ההגדרות</string>
+    <string name="retain_location_metadata_title">שמירת מטא-נתונים של מיקום</string>
+    <string name="retain_location_metadata_summary_off">ייתכן שקובצי מדיה כוללים נתוני מיקום שמוסרים כברירת מחדל. יש להעניק הרשאה כדי לכלול את כל המטא-נתונים</string>
+    <string name="retain_location_metadata_summary_on">לאפליקציה יש כרגע גישה מלאה לקבצים</string>
     <string name="settings_theme_title">ערכת נושא</string>
     <string-array name="darkmode_entries">
         <item>ברירת מחדל של המערכת</item>
         <item>בהיר</item>
         <item>כהה</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_title">שינוי כתובת השרת</string>
+    <string name="baseurl_not_set">לא הוגדרה כתובת</string>
+    <string name="baseurl_instance_verified">השרת אומת בהצלחה</string>
+    <string name="baseurl_no_snapdrop_instance">נראה שהשרת אינו נתמך</string>
+    <string name="baseurl_check_instance_failed">אימות השרת נכשל</string>
+    <string name="baseurl_unofficial_instances">לעיון ברשימת שרתים לא רשמיים וישנים, עברו אל &lt;a href=""&gt;שאלות נפוצות&lt;/a&gt;. ייתכן ששרתים מסוימים לא יפעלו כראוי באפליקציה.</string>
+    <string name="important_update_title">עדכון חשוב</string>
+    <string name="important_update_message">האתר snapdrop.net נרכש על ידי חברה שמדיניות האבטחה והפרטיות שלה אינה ברורה.\n\nכדי להגן על הנתונים שלכם, האפליקציה לא תתמוך עוד ב-snapdrop.net ותעביר את כל המשתמשים לחלופה הבטוחה יותר ErikrafT Drop™.\n\nתודה על ההבנה!</string>
+    <string name="important_update_ok">אישור</string>
     <string name="save_location">שמור מיקום</string>
     <!-- File sharing -->
     <string name="intent_file">קובץ מצורף נבחר לשיתוף</string>
@@ -102,13 +102,13 @@
     <string name="intent_content">תוכן נבחר לשיתוף</string>
     <string name="error_filechooser">אין אפשרות לפתוח את בוחר הקבצים</string>
     <string name="error_network">אנא ודא שאתה מחובר לרשת WiFi</string>
-    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
-    <string name="error_network_offline">You are offline</string>
+    <string name="error_network_no_wifi">יש להתחבר לרשת Wi-Fi או לצמד את המכשירים</string>
+    <string name="error_network_offline">אין חיבור לרשת</string>
     <string name="ignore_error_network">תן לי להיכנס בכל מקרה</string>
     <string name="error_not_reachable_title">אופס, סליחה!</string>
-    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
+    <string name="error_server_not_reachable">לא ניתן להגיע לשרת. \n\nאם החיבור לאינטרנט פועל והבעיה נמשכת, נסו לבחור כתובת שרת אחרת.</string>
     <!-- Website Localization -->
-    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_no_peers_info">פתחו את האפליקציה או האתר במכשירים אחרים כדי לשלוח קבצים</string>
     <string name="website_instruction">לחץ כדי לשלוח קבצים או לחץ לחיצה ארוכה כדי לשלוח הודעה</string>
     <string name="website_file_received">הקובץ התקבל</string>
     <string name="website_file_ask_before_download">שאל תמיד לפני שמירת קובץ</string>
@@ -117,14 +117,14 @@
     <string name="website_footer_known_as">אתה ידוע בתור %s</string>
     <string name="website_about_subheading">הדרך הקלה ביותר להעברת קבצים דרך האינטרנט, Windows, Linux, Android, הרחבות ועוד</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
+    <string name="qr_transfer_title">העברה באמצעות QR</string>
+    <string name="qr_transfer_send_title">שליחה באמצעות QR מונפש</string>
+    <string name="qr_transfer_receive_title">קבלה באמצעות QR מונפש</string>
+    <string name="qr_transfer_instruction">כוונו את מצלמת המכשיר השני אל קוד ה-QR הזה</string>
+    <string name="qr_transfer_receive_searching">מחפש קוד QR…</string>
+    <string name="pause">השהיה</string>
+    <string name="resume">המשך</string>
+    <string name="cancel">ביטול</string>
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">העברה באמצעות Onion (בטא)</string>
     <string name="onion_transfer_description">שתפו קבצים או טקסט ישירות מהמכשיר באמצעות חיבור Tor פרטי. התוכן נשאר במכשיר ונשלח באמצעות כתובת Onion זמנית.</string>
