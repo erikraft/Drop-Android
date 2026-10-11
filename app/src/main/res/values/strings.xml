@@ -278,4 +278,12 @@
     <string name="server_status_running">Server running</string>
     <string name="server_status_stopped">Server stopped</string>
     <string name="server_status_error">Error: %1$s</string>
+    <string name="transfer_error_directory_path">Could not access the selected folder.</string>
+    <string name="transfer_error_folder_unsupported">This folder cannot be used directly by this server.</string>
+    <string name="transfer_error_invalid_port">Enter a valid port.</string>
+    <string name="transfer_error_port_range">Port must be between 1025 and 65535.</string>
+    <string name="transfer_error_credentials_required">Username and password are required.</string>
+    <string name="onion_error_tor_timeout">Tor did not respond in time. Check whether Tor can run on this device.</string>
+    <string name="onion_error_qr">Could not generate the QR code.</string>
+    <string name="onion_error_file_open">Could not open the selected file.</string>
 </resources>
