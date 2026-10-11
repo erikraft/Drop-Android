@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">डायग्नोस्टिक्स सुरक्षित गर्न सकिएन: %1$s</string>
     <string name="app_language_search">भाषाहरू खोज्नुहोस्</string>
     <string name="app_language_search_no_results">कुनै भाषा फेला परेन</string>
+    <string name="diagnostics_sources_title">स्रोत कोड रिपोजिटरीहरू</string>
+    <string name="diagnostics_web_repository">वेब / डेस्कटप रिपोजिटरी</string>
+    <string name="diagnostics_android_repository">Android रिपोजिटरी</string>
+    <string name="diagnostics_issues">समस्याहरू</string>
+    <string name="diagnostics_pull_requests">पुल अनुरोधहरू</string>
+    <string name="diagnostics_contribute">योगदान गर्न सम्बन्धित रिपोजिटरीमा पुल अनुरोध खोल्नुहोस्।</string>
+    <string name="diagnostics_link_failed">लिङ्क खोल्न सकिएन।</string>
 </resources>
