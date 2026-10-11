@@ -204,4 +204,6 @@
     <string name="diagnostics_pull_requests">Pull requests</string>
     <string name="diagnostics_contribute">Öppna en pull request i rätt arkiv för att bidra.</string>
     <string name="diagnostics_link_failed">Det gick inte att öppna länken.</string>
+    <string name="picture_in_picture_title">Bild-i-bild (PiP)</string>
+    <string name="picture_in_picture_summary">Håll ErikrafT Drop synligt i ett flytande fönster under filöverföringar efter att du har minimerat appen.</string>
 </resources>
