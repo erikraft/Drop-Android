@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">プルリクエスト</string>
     <string name="diagnostics_contribute">貢献するには、該当するリポジトリでプルリクエストを作成してください。</string>
     <string name="diagnostics_link_failed">リンクを開けませんでした。</string>
+    <string name="picture_in_picture_title">ピクチャー イン ピクチャー（PiP）</string>
+    <string name="picture_in_picture_summary">アプリを最小化した後も、ファイル転送中にErikrafT Dropをフローティングウィンドウで表示します。</string>
 </resources>
