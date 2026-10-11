@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">診断を保存できませんでした: %1$s</string>
     <string name="app_language_search">言語を検索</string>
     <string name="app_language_search_no_results">言語が見つかりません</string>
+    <string name="diagnostics_sources_title">ソースコードリポジトリ</string>
+    <string name="diagnostics_web_repository">Web / Desktop リポジトリ</string>
+    <string name="diagnostics_android_repository">Android リポジトリ</string>
+    <string name="diagnostics_issues">Issue</string>
+    <string name="diagnostics_pull_requests">プルリクエスト</string>
+    <string name="diagnostics_contribute">貢献するには、該当するリポジトリでプルリクエストを作成してください。</string>
+    <string name="diagnostics_link_failed">リンクを開けませんでした。</string>
 </resources>
