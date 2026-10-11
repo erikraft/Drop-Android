@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Pull Request</string>
     <string name="diagnostics_contribute">如需贡献，请在相应仓库中创建 Pull Request。</string>
     <string name="diagnostics_link_failed">无法打开链接。</string>
-    <string name="picture_in_picture_title">画中画 (PiP)</string>
-    <string name="picture_in_picture_summary">最小化应用后，在文件传输期间让 ErikrafT Drop 保持显示在悬浮窗口中。</string>
 </resources>
