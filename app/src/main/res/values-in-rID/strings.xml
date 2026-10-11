@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Gagal menyimpan diagnostik: %1$s</string>
     <string name="app_language_search">Cari bahasa</string>
     <string name="app_language_search_no_results">Bahasa tidak ditemukan</string>
+    <string name="diagnostics_sources_title">Repositori kode sumber</string>
+    <string name="diagnostics_web_repository">Repositori Web / Desktop</string>
+    <string name="diagnostics_android_repository">Repositori Android</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull request</string>
+    <string name="diagnostics_contribute">Untuk berkontribusi, buka pull request di repositori yang sesuai.</string>
+    <string name="diagnostics_link_failed">Tautan tidak dapat dibuka.</string>
 </resources>
