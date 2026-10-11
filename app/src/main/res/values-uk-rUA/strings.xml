@@ -91,10 +91,10 @@
     <string name="baseurl_instance_verified">Екземпляр успішно перевірено</string>
     <string name="baseurl_no_snapdrop_instance">Здається, екземпляр не підтримується</string>
     <string name="baseurl_check_instance_failed">Не вдалося перевірити екземпляр</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_unofficial_instances">Перелік неофіційних і застарілих екземплярів дивіться в розділі <a href="">FAQ</a>. Деякі з них можуть працювати в застосунку некоректно.</string>
+    <string name="important_update_title">Важливе оновлення</string>
+    <string name="important_update_message">Вебсайт snapdrop.net придбала компанія з незрозумілими практиками безпеки та конфіденційності.\n\nЩоб захистити ваші дані, застосунок більше не підтримуватиме snapdrop.net і перейде на ErikrafT Drop™ — безпечнішу альтернативу.\n\nДякуємо за розуміння!</string>
+    <string name="important_update_ok">Зрозуміло</string>
     <string name="save_location">Зберегти розташування</string>
     <!-- File sharing -->
     <string name="intent_file">Файл, обраний для надсилання</string>
