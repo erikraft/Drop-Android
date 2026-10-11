@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Port</string>
     <string name="ftp_username_hint">Felhasználónév</string>
     <string name="ftp_password_hint">Jelszó</string>
+    <string name="transfer_error_directory_path">A kiválasztott mappa nem érhető el.</string>
+    <string name="transfer_error_folder_unsupported">Ezt a mappát a szerver nem tudja közvetlenül használni.</string>
+    <string name="transfer_error_invalid_port">Adj meg érvényes portot.</string>
+    <string name="transfer_error_port_range">A portnak 1025 és 65535 között kell lennie.</string>
+    <string name="transfer_error_credentials_required">A felhasználónév és a jelszó kötelező.</string>
+    <string name="onion_error_tor_timeout">A Tor nem válaszolt időben. Ellenőrizd, hogy futtatható-e a Tor ezen az eszközön.</string>
+    <string name="onion_error_qr">A QR-kód létrehozása nem sikerült.</string>
+    <string name="onion_error_file_open">A kiválasztott fájl nem nyitható meg.</string>
 </resources>
