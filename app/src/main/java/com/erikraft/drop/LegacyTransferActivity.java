@@ -263,7 +263,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
             return;
         }
         try {
-            NdefMessage message = new NdefMessage(new NdefRecord[]{NdefRecord.createTextRecord("en", textInput.getText().toString())});
+            NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(textInput.getText().toString())});
             // Beam APIs were removed from public SDK stubs in Android 10. Reflection keeps
             // the app buildable on current SDKs; the call is made only on Android 9 and older.
             nfcAdapter.getClass().getMethod("setNdefPushMessage", NdefMessage.class, Activity.class, Activity[].class)
@@ -272,6 +272,16 @@ public final class LegacyTransferActivity extends DropPipActivity {
         } catch (Exception e) {
             status.setText(R.string.legacy_beam_unavailable);
         }
+    }
+
+    private NdefRecord createTextRecord(String text) {
+        byte[] language = "en".getBytes(StandardCharsets.US_ASCII);
+        byte[] textBytes = text.getBytes(StandardCharsets.UTF_8);
+        byte[] payload = new byte[1 + language.length + textBytes.length];
+        payload[0] = (byte) language.length;
+        System.arraycopy(language, 0, payload, 1, language.length);
+        System.arraycopy(textBytes, 0, payload, 1 + language.length, textBytes.length);
+        return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload);
     }
 
     private String readTextRecord(NdefMessage message) {
@@ -318,7 +328,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
             } else {
                 String text = textInput.getText().toString();
                 if (!text.isEmpty() && ndef.isWritable()) {
-                    NdefMessage message = new NdefMessage(new NdefRecord[]{NdefRecord.createTextRecord("en", text)});
+                    NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(text)});
                     if (message.toByteArray().length <= ndef.getMaxSize()) {
                         ndef.writeNdefMessage(message);
                         status.setText(R.string.legacy_nfc_tag_written);
