@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor ने समय पर जवाब नहीं दिया। जाँचें कि इस डिवाइस पर Tor चल सकता है या नहीं।</string>
     <string name="onion_error_qr">QR कोड बनाया नहीं जा सका।</string>
     <string name="onion_error_file_open">चुनी गई फ़ाइल खोली नहीं जा सकी।</string>
+    <string name="onion_transfer_clear_files">चुनी गई फ़ाइलें हटाएँ</string>
+    <string name="onion_transfer_clear_text">दर्ज किया गया पाठ साफ़ करें</string>
+    <string name="onion_transfer_ready_to_start">शुरू करने के लिए तैयार।</string>
+    <string name="onion_transfer_qr_content_description">Onion सेवा का QR कोड</string>
+    <string name="onion_transfer_link_copied">लिंक कॉपी किया गया।</string>
+    <string name="onion_transfer_prepare_file_error">फ़ाइल तैयार नहीं हो सकी: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d फ़ाइल(ें) और पाठ साझा करने के लिए तैयार हैं।</string>
+    <string name="onion_transfer_summary_files">%1$d फ़ाइल(ें) साझा करने के लिए तैयार हैं।</string>
+    <string name="onion_transfer_summary_text">पाठ साझा करने के लिए तैयार है।</string>
 </resources>
