@@ -217,4 +217,47 @@
     
     
     
+    <string name="app_language_contribute">Hilf dabei, ErikrafT Drop™ zu übersetzen und die App für mehr Menschen verfügbar zu machen.</string>
+    <string name="app_language_contribute_web">An Web-/Desktop-Übersetzungen mitwirken</string>
+    <string name="app_language_contribute_android">An Android-Übersetzungen mitwirken</string>
+    <string name="legacy_transfer_category">Kompatibilität mit älteren Übertragungsmethoden</string>
+    <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
+    <string name="legacy_wifi_title">Wi-Fi Direct</string>
+    <string name="legacy_transfer_checking">Gerätekompatibilität wird geprüft…</string>
+    <string name="legacy_nfc_no_hardware">Nicht unterstützt: Dieses Gerät verfügt über keinen NFC-Adapter.</string>
+    <string name="legacy_nfc_android_version">Android Beam ist ab Android 10 nicht mehr verfügbar.</string>
+    <string name="legacy_wifi_no_hardware">Nicht unterstützt: Dieses Gerät meldet keine Wi-Fi-Direct-Hardware.</string>
+    <string name="legacy_transfer_transport_pending">Kompatible Hardware erkannt. Die Übertragungsintegration ist noch experimentell und in diesem Build nicht verfügbar.</string>
+    <string name="legacy_transfer_screen_title">Tools für ältere Übertragungsmethoden</string>
+    <string name="legacy_transfer_ready">Wähle eine ältere Übertragungsmethode. Die Verfügbarkeit hängt vom Gerät und der Android-Version ab.</string>
+    <string name="legacy_transfer_text_hint">Text zum Senden oder Schreiben auf einen NFC-Tag</string>
+    <string name="legacy_beam_send_text">Text für Android Beam vorbereiten</string>
+    <string name="legacy_beam_unavailable">Android Beam ist ab Android 10 nicht mehr verfügbar; NFC-Tag-Tools können weiterhin funktionieren.</string>
+    <string name="legacy_beam_ready_to_tap">Text vorbereitet. Halte die Geräte aneinander und folge der Beam-Systemmeldung.</string>
+    <string name="legacy_nfc_write_tag">NFC-Tag lesen/schreiben</string>
+    <string name="legacy_nfc_tap_tag">Halte einen NFC-Tag an das Gerät, um ihn zu lesen, oder schreibe Text auf einen leeren, beschreibbaren NDEF-Tag.</string>
+    <string name="legacy_nfc_tag_not_ndef">Dieser Tag unterstützt keinen NDEF-Text.</string>
+    <string name="legacy_nfc_tag_read">Text vom NFC-Tag gelesen.</string>
+    <string name="legacy_nfc_tag_written">Text auf den NFC-Tag geschrieben.</string>
+    <string name="legacy_nfc_tag_too_small">Dieser NFC-Tag bietet nicht genügend Speicherplatz.</string>
+    <string name="legacy_nfc_tag_error">Dieser NFC-Tag konnte nicht gelesen oder beschrieben werden.</string>
+    <string name="legacy_wifi_discover">Wi-Fi-Direct-Geräte in der Nähe suchen</string>
+    <string name="legacy_wifi_send_text">Text an verbundenes Gerät senden</string>
+    <string name="legacy_wifi_unavailable">Wi-Fi Direct ist auf diesem Gerät nicht verfügbar.</string>
+    <string name="legacy_wifi_permission_denied">Die Berechtigung für Geräte in der Nähe wurde verweigert.</string>
+    <string name="legacy_wifi_disabled">Aktiviere WLAN, um Wi-Fi Direct zu verwenden.</string>
+    <string name="legacy_wifi_discovering">Suche nach Geräten in der Nähe…</string>
+    <string name="legacy_wifi_discovery_failed">Suche fehlgeschlagen (Fehler %1$d).</string>
+    <string name="legacy_wifi_no_peers">Keine Geräte gefunden. Stelle sicher, dass WLAN auf beiden Geräten aktiviert ist, und versuche es erneut.</string>
+    <string name="legacy_wifi_connecting">Verbindung zum Gerät wird hergestellt…</string>
+    <string name="legacy_wifi_connect_failed">Verbindung fehlgeschlagen (Fehler %1$d).</string>
+    <string name="legacy_wifi_connected">Verbunden. Textnachrichten können zwischen kompatiblen ErikrafT-Drop-Sitzungen gesendet werden.</string>
+    <string name="legacy_wifi_not_connected">Keine Verbindung zu einem Wi-Fi-Direct-Gerät.</string>
+    <string name="legacy_wifi_text_sent">Text gesendet.</string>
+    <string name="legacy_wifi_text_received">Text über Wi-Fi Direct empfangen.</string>
+    <string name="legacy_wifi_transfer_failed">Übertragung fehlgeschlagen: %1$s</string>
+    <string name="legacy_nfc_modern_tag_io">Android Beam ist hier nicht verfügbar, NFC-Tags können jedoch gelesen und beschrieben werden. Tippe, um die Tools zu öffnen.</string>
+    <string name="legacy_transfer_tap_to_open">Tippe, um die verfügbaren Übertragungstools zu öffnen.</string>
+    <string name="legacy_wifi_waiting_for_sender">Als Empfänger verbunden. Das verbundene Gerät kann Text an dieses Gerät senden.</string>
+    <string name="legacy_beam_text_received">Text über Android Beam empfangen.</string>
 </resources>
