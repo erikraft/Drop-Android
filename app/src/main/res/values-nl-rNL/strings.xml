@@ -188,4 +188,11 @@
     <string name="diagnostics_save_failed">Diagnostiek opslaan mislukt: %1$s</string>
     <string name="app_language_search">Talen zoeken</string>
     <string name="app_language_search_no_results">Geen talen gevonden</string>
+    <string name="diagnostics_sources_title">Broncoderepositories</string>
+    <string name="diagnostics_web_repository">Web-/desktoprepository</string>
+    <string name="diagnostics_android_repository">Android-repository</string>
+    <string name="diagnostics_issues">Issues</string>
+    <string name="diagnostics_pull_requests">Pull requests</string>
+    <string name="diagnostics_contribute">Open een pull request in de juiste repository om bij te dragen.</string>
+    <string name="diagnostics_link_failed">De link kon niet worden geopend.</string>
 </resources>
