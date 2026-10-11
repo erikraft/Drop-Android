@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Допрете за да ги отворите достапните алатки за пренос.</string>
     <string name="legacy_wifi_waiting_for_sender">Поврзано како примач. Поврзаниот уред може да испрати текст до овој уред.</string>
     <string name="legacy_beam_text_received">Текстот е примен преку Android Beam.</string>
+    <string name="server_status_running">Серверот работи</string>
+    <string name="server_status_stopped">Серверот е запрен</string>
+    <string name="server_status_error">Грешка: %1$s</string>
+    <string name="onion_transfer_content_title">Содржина за споделување</string>
+    <string name="ftp_port_hint">Порта</string>
+    <string name="ftp_username_hint">Корисничко име</string>
+    <string name="ftp_password_hint">Лозинка</string>
 </resources>
