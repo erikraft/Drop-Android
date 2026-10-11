@@ -267,7 +267,7 @@
     <string name="ftp_password_hint">Wagwoord</string>
     <string name="transfer_error_directory_path">Kon nie die gekose vouer oopmaak nie.</string>
     <string name="transfer_error_folder_unsupported">Hierdie vouer kan nie direk deur hierdie bediener gebruik word nie.</string>
-    <string name="transfer_error_invalid_port">Voer 'n geldige poort in.</string>
+    <string name="transfer_error_invalid_port">Voer ’n geldige poort in.</string>
     <string name="transfer_error_port_range">Poort moet tussen 1025 en 65535 wees.</string>
     <string name="transfer_error_credentials_required">Gebruikersnaam en wagwoord is verpligtend.</string>
     <string name="onion_error_tor_timeout">Tor het nie betyds gereageer nie. Kontroleer of Tor op hierdie toestel kan loop.</string>
