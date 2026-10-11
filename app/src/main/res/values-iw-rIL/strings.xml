@@ -195,8 +195,6 @@
     <string name="diagnostics_pull_requests">בקשות משיכה</string>
     <string name="diagnostics_contribute">כדי לתרום, יש לפתוח בקשת משיכה במאגר המתאים.</string>
     <string name="diagnostics_link_failed">לא ניתן לפתוח את הקישור.</string>
-    <string name="picture_in_picture_title">תמונה בתוך תמונה (PiP)</string>
-    <string name="picture_in_picture_summary">השאירו את ErikrafT Drop גלוי בחלון צף במהלך העברת קבצים לאחר מזעור האפליקציה.</string>
     <string name="about_credits_title">מידע על האפליקציה</string>
     <string name="about_version_format">גרסה %1$s (%2$d)</string>
     <string name="about_description">ErikrafT Drop™ היא אפליקציית קוד פתוח להעברת קבצים וטקסט. בדף זה מופיעות התלויות הישירות העיקריות וההפניות הטכניות של מערכות Web ו-Android.</string>
