@@ -195,4 +195,6 @@
     <string name="diagnostics_pull_requests">בקשות משיכה</string>
     <string name="diagnostics_contribute">כדי לתרום, יש לפתוח בקשת משיכה במאגר המתאים.</string>
     <string name="diagnostics_link_failed">לא ניתן לפתוח את הקישור.</string>
+    <string name="picture_in_picture_title">תמונה בתוך תמונה (PiP)</string>
+    <string name="picture_in_picture_summary">השאירו את ErikrafT Drop גלוי בחלון צף במהלך העברת קבצים לאחר מזעור האפליקציה.</string>
 </resources>
