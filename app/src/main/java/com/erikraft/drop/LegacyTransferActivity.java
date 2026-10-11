@@ -123,7 +123,9 @@ public final class LegacyTransferActivity extends DropPipActivity {
 
     private void initWifiDirect() {
         wifiManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
-        if (wifiManager == null) {
+        final boolean hasWifiDirect = getPackageManager()
+                .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
+        if (wifiManager == null || !hasWifiDirect) {
             status.setText(R.string.legacy_wifi_unavailable);
             discoverButton.setText(R.string.legacy_wifi_unavailable);
             discoverButton.setEnabled(false);
