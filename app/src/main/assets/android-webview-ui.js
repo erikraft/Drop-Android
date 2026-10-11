@@ -14,7 +14,6 @@
             '#theme-auto',
             '#animated-qr-screen-awake-btn'
         ].join(',\n') + ' { display: none !important; }';
-        style.textContent += '\n#android-ftp-shortcut, #android-sftp-shortcut { display: block !important; width: 100%; }';
         (document.head || document.documentElement).appendChild(style);
     }
 
