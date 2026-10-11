@@ -6,14 +6,14 @@
     <string name="err_no_app">Nincs megfelelő alkalmazás a fájl megnyitásához</string>
     <string name="open_url">URL megnyitása</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">folytatás</string>
+    <string name="onboarding_button_grant">engedély megadása</string>
+    <string name="onboarding_button_finish">befejezés</string>
+    <string name="onboarding_choose_server">Szervercím kiválasztása</string>
+    <string name="onboarding_choose_server_short">szerver kiválasztása</string>
+    <string name="onboarding_choose_server_description">Ez az alkalmazás az ErikrafT Drop és a PairDrop webalkalmazások optimalizált kliense.\nVálasszon az alábbi példányok közül, vagy adjon meg egy egyéni URL-címet a csatlakozáshoz.\n\nMegjegyzés: minden eszközön ugyanazt az URL-címet kell kiválasztania.</string>
+    <string name="onboarding_storage_permission">Tárhelyengedély</string>
+    <string name="onboarding_storage_permission_description">Ez az alkalmazás fájlmegosztó eszköz, ezért a használatához tárhelyengedély szükséges.</string>
     <string name="onboarding_server_primary_summary">(1) Elsődleges — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Másodlagos — ErikrafT Drop™ tartalék</string>
     <string name="onboarding_server_tertiary_summary">(3) Harmadlagos — ErikrafT Drop™ tartalék</string>
@@ -26,9 +26,9 @@
     <string name="onboarding_server_custom">Egyéni URL</string>
     <string name="onboarding_server_custom_summary">A tapasztalt felhasználók saját szervereket is üzemeltethetnek.</string>
     <string name="onboarding_server_custom_add">Szerver hozzáadása</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
-    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
+    <string name="onboarding_howto">Használat</string>
+    <string name="onboarding_howto_summary">1. Nyissa meg ezt az alkalmazást vagy a(z) %s címet bármely másik, helyi Wi-Fi-hálózathoz csatlakozó eszközön.\n\n2. Koppintson az eszközre, és válassza ki az elküldeni kívánt fájlokat.\n\n3. Kész! A fájlok elküldése megtörténik…</string>
+    <string name="onboarding_howto_troubleshoot">Tipp: az eszközöknek ugyanahhoz a Wi-Fi-hálózathoz kell csatlakozniuk. VPN használata esetén előfordulhat, hogy nem működik.</string>
     <!-- Download -->
     <string name="download_save_pending">Fájl tárolása. Egy kis türelmet…</string>
     <string name="download_successful">Sikeresen letöltve</string>
@@ -86,15 +86,15 @@
         <item>Világos</item>
         <item>Sötét</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
-    <string name="important_update_ok">OK</string>
+    <string name="baseurl_title">Kiszolgáló címének módosítása</string>
+    <string name="baseurl_not_set">Nincs beállítva</string>
+    <string name="baseurl_instance_verified">A példány ellenőrzése sikeres</string>
+    <string name="baseurl_no_snapdrop_instance">Úgy tűnik, hogy a példány nem támogatott</string>
+    <string name="baseurl_check_instance_failed">A példány ellenőrzése nem sikerült</string>
+    <string name="baseurl_unofficial_instances">A nem hivatalos és régi példányok listájáért tekintse meg a <a href="">GYIK</a> oldalt. Előfordulhat, hogy egyes példányok nem működnek megfelelően az alkalmazásban.</string>
+    <string name="important_update_title">Fontos frissítés</string>
+    <string name="important_update_message">A snapdrop.net webhelyet egy olyan vállalat vásárolta meg, amelynek biztonsági és adatvédelmi gyakorlata nem egyértelmű.\n\nAdatainak védelme érdekében az alkalmazás a továbbiakban nem támogatja a snapdrop.net webhelyet, hanem áttér az ErikrafT Drop™ használatára, amely biztonságosabb alternatíva.\n\nKöszönjük a megértését!</string>
+    <string name="important_update_ok">Értem</string>
     <string name="save_location">Mentés helye</string>
     <!-- File sharing -->
     <string name="intent_file">Egy megosztandó fájl kiválasztva</string>
