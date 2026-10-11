@@ -21,14 +21,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -139,8 +137,10 @@ public final class LegacyTransferActivity extends DropPipActivity {
                     if (hasWifiPermission()) wifiManager.requestConnectionInfo(wifiChannel, info -> {
                         connectionInfo = info;
                         boolean connected = info != null && info.groupFormed;
-                        sendButton.setEnabled(connected);
-                        status.setText(connected ? R.string.legacy_wifi_connected : R.string.legacy_wifi_not_connected);
+                        sendButton.setEnabled(connected && !info.isGroupOwner);
+                        status.setText(connected
+                                ? (info.isGroupOwner ? R.string.legacy_wifi_waiting_for_sender : R.string.legacy_wifi_connected)
+                                : R.string.legacy_wifi_not_connected);
                         if (connected && info.isGroupOwner) startReceiverSocket();
                     });
                 } else if (WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION.equals(action)) {
