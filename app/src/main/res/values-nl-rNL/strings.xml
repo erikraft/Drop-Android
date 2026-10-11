@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor reageerde niet op tijd. Controleer of Tor op dit apparaat kan draaien.</string>
     <string name="onion_error_qr">De QR-code kon niet worden gemaakt.</string>
     <string name="onion_error_file_open">Het geselecteerde bestand kon niet worden geopend.</string>
+    <string name="onion_transfer_clear_files">Geselecteerde bestanden verwijderen</string>
+    <string name="onion_transfer_clear_text">Ingevoerde tekst wissen</string>
+    <string name="onion_transfer_ready_to_start">Klaar om te starten.</string>
+    <string name="onion_transfer_qr_content_description">QR-code van de Onion-service</string>
+    <string name="onion_transfer_link_copied">Link gekopieerd.</string>
+    <string name="onion_transfer_prepare_file_error">Bestand voorbereiden mislukt: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d bestand(en) en tekst klaar om te delen.</string>
+    <string name="onion_transfer_summary_files">%1$d bestand(en) klaar om te delen.</string>
+    <string name="onion_transfer_summary_text">Tekst klaar om te delen.</string>
 </resources>
