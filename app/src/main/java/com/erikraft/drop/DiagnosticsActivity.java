@@ -83,6 +83,7 @@ public class DiagnosticsActivity extends DropPipActivity {
         addActionButton(actions, iconButton(R.string.diagnostics_clear, R.drawable.ic_delete), v -> clearLogs());
         addActionButton(actions, iconButton(R.string.diagnostics_share, R.drawable.ic_share), v -> shareLogs());
         root.addView(actions, new LinearLayout.LayoutParams(-1, -2));
+        addRepositoryLinks(root);
 
         ScrollView scroll = new ScrollView(this);
         logs = new TextView(this);
@@ -134,6 +135,69 @@ public class DiagnosticsActivity extends DropPipActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, dp(48), 1f);
         params.setMargins(dp(3), dp(2), dp(3), dp(2));
         parent.addView(button, params);
+    }
+
+
+    private void addRepositoryLinks(LinearLayout root) {
+        LinearLayout section = new LinearLayout(this);
+        section.setOrientation(LinearLayout.VERTICAL);
+        int padding = dp(8);
+        section.setPadding(padding, padding, padding, padding);
+
+        TextView title = new TextView(this);
+        title.setText(R.string.diagnostics_sources_title);
+        title.setTextSize(14);
+        title.setTypeface(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
+        section.addView(title);
+
+        addRepositoryLinkGroup(section, R.string.diagnostics_web_repository,
+                "https://github.com/erikraft/Drop");
+        addRepositoryLinkGroup(section, R.string.diagnostics_android_repository,
+                "https://github.com/erikraft/Drop-Android");
+
+        TextView contribution = new TextView(this);
+        contribution.setText(R.string.diagnostics_contribute);
+        contribution.setTextSize(12);
+        contribution.setPadding(0, dp(5), 0, 0);
+        section.addView(contribution);
+
+        root.addView(section, new LinearLayout.LayoutParams(-1, -2));
+    }
+
+    private void addRepositoryLinkGroup(LinearLayout parent, int repositoryLabel, String repositoryUrl) {
+        TextView repository = linkText(repositoryLabel, repositoryUrl);
+        repository.setTypeface(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
+        parent.addView(repository);
+
+        LinearLayout links = new LinearLayout(this);
+        links.setOrientation(LinearLayout.HORIZONTAL);
+        links.setGravity(Gravity.CENTER_VERTICAL);
+        links.addView(linkText(R.string.diagnostics_issues, repositoryUrl + "/issues"));
+
+        TextView separator = new TextView(this);
+        separator.setText(" · ");
+        links.addView(separator);
+        links.addView(linkText(R.string.diagnostics_pull_requests, repositoryUrl + "/pulls"));
+        parent.addView(links);
+    }
+
+    private TextView linkText(int label, String url) {
+        TextView link = new TextView(this);
+        link.setText(label);
+        link.setTextSize(13);
+        link.setTextColor(Color.rgb(33, 150, 243));
+        link.setPaintFlags(link.getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
+        link.setFocusable(true);
+        link.setClickable(true);
+        link.setPadding(0, dp(3), dp(10), dp(3));
+        link.setOnClickListener(view -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.diagnostics_link_failed, Toast.LENGTH_SHORT).show();
+            }
+        });
+        return link;
     }
 
     private void refreshLogs() {
