@@ -206,4 +206,11 @@
     <string name="diagnostics_save_failed">No s’han pogut desar els diagnòstics: %1$s</string>
     <string name="app_language_search">Cerca idiomes</string>
     <string name="app_language_search_no_results">No s\'han trobat idiomes</string>
+    <string name="diagnostics_sources_title">Repositoris del codi font</string>
+    <string name="diagnostics_web_repository">Repositori web / d'escriptori</string>
+    <string name="diagnostics_android_repository">Repositori Android</string>
+    <string name="diagnostics_issues">Incidències</string>
+    <string name="diagnostics_pull_requests">Sol·licituds d'extracció</string>
+    <string name="diagnostics_contribute">Per col·laborar, obre una sol·licitud d'extracció al repositori corresponent.</string>
+    <string name="diagnostics_link_failed">No s'ha pogut obrir l'enllaç.</string>
 </resources>
