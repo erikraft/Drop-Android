@@ -273,4 +273,13 @@
     <string name="onion_error_tor_timeout">Το Tor δεν ανταποκρίθηκε εγκαίρως. Ελέγξτε αν μπορεί να εκτελεστεί σε αυτήν τη συσκευή.</string>
     <string name="onion_error_qr">Δεν ήταν δυνατή η δημιουργία κωδικού QR.</string>
     <string name="onion_error_file_open">Δεν ήταν δυνατό το άνοιγμα του επιλεγμένου αρχείου.</string>
+    <string name="onion_transfer_clear_files">Αφαίρεση επιλεγμένων αρχείων</string>
+    <string name="onion_transfer_clear_text">Εκκαθάριση κειμένου</string>
+    <string name="onion_transfer_ready_to_start">Έτοιμο για έναρξη.</string>
+    <string name="onion_transfer_qr_content_description">Κωδικός QR της υπηρεσίας Onion</string>
+    <string name="onion_transfer_link_copied">Ο σύνδεσμος αντιγράφηκε.</string>
+    <string name="onion_transfer_prepare_file_error">Αποτυχία προετοιμασίας αρχείου: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d αρχείο(α) και κείμενο έτοιμα για κοινή χρήση.</string>
+    <string name="onion_transfer_summary_files">%1$d αρχείο(α) έτοιμα για κοινή χρήση.</string>
+    <string name="onion_transfer_summary_text">Το κείμενο είναι έτοιμο για κοινή χρήση.</string>
 </resources>
