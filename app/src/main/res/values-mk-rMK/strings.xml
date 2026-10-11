@@ -264,4 +264,13 @@
     <string name="onion_error_tor_timeout">Tor не одговори навреме. Проверете дали Tor може да работи на овој уред.</string>
     <string name="onion_error_qr">Не може да се создаде QR-код.</string>
     <string name="onion_error_file_open">Не може да се отвори избраната датотека.</string>
+    <string name="onion_transfer_clear_files">Отстрани избрани датотеки</string>
+    <string name="onion_transfer_clear_text">Исчисти внесен текст</string>
+    <string name="onion_transfer_ready_to_start">Подготвено за започнување.</string>
+    <string name="onion_transfer_qr_content_description">QR-код на Onion услугата</string>
+    <string name="onion_transfer_link_copied">Врската е копирана.</string>
+    <string name="onion_transfer_prepare_file_error">Неуспешна подготовка на датотеката: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d датотеки и текст се подготвени за споделување.</string>
+    <string name="onion_transfer_summary_files">%1$d датотеки се подготвени за споделување.</string>
+    <string name="onion_transfer_summary_text">Текстот е подготвен за споделување.</string>
 </resources>
