@@ -249,4 +249,11 @@
     <string name="legacy_transfer_tap_to_open">Nhấn để mở các công cụ truyền dữ liệu hiện có.</string>
     <string name="legacy_wifi_waiting_for_sender">Đã kết nối với vai trò người nhận. Thiết bị được kết nối có thể gửi văn bản đến thiết bị này.</string>
     <string name="legacy_beam_text_received">Đã nhận văn bản qua Android Beam.</string>
+    <string name="server_status_running">Máy chủ đang chạy</string>
+    <string name="server_status_stopped">Máy chủ đã dừng</string>
+    <string name="server_status_error">Lỗi: %1$s</string>
+    <string name="onion_transfer_content_title">Nội dung để chia sẻ</string>
+    <string name="ftp_port_hint">Cổng</string>
+    <string name="ftp_username_hint">Tên người dùng</string>
+    <string name="ftp_password_hint">Mật khẩu</string>
 </resources>
