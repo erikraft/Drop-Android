@@ -213,6 +213,4 @@
     <string name="diagnostics_pull_requests">Trekversoeke</string>
     <string name="diagnostics_contribute">Om by te dra, open ’n Trekversoek in die toepaslike bewaarplek.</string>
     <string name="diagnostics_link_failed">Kon nie die skakel oopmaak nie.</string>
-    <string name="picture_in_picture_title">Prent-in-prent (PiP)</string>
-    <string name="picture_in_picture_summary">Hou ErikrafT Drop in ’n drywende venster sigbaar terwyl lêers oorgedra word nadat jy die app geminimaliseer het.</string>
 </resources>
