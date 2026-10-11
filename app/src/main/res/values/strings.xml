@@ -269,4 +269,5 @@
     <string name="legacy_nfc_modern_tag_io">Android Beam is unavailable here, but NFC tag reading/writing is available. Tap to open tools.</string>
     <string name="legacy_transfer_tap_to_open">Tap to open the available transfer tools.</string>
     <string name="legacy_wifi_waiting_for_sender">Connected as receiver. The connected peer can send text to this device.</string>
+    <string name="legacy_beam_text_received">Text received through Android Beam.</string>
 </resources>
