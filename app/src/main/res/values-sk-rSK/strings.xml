@@ -204,4 +204,6 @@
     <string name="diagnostics_pull_requests">Pull requesty</string>
     <string name="diagnostics_contribute">Ak chcete prispieť, vytvorte pull request v príslušnom úložisku.</string>
     <string name="diagnostics_link_failed">Odkaz sa nepodarilo otvoriť.</string>
+    <string name="picture_in_picture_title">Obraz v obraze (PiP)</string>
+    <string name="picture_in_picture_summary">Po minimalizácii aplikácie zostane ErikrafT Drop počas prenosu súborov viditeľný v plávajúcom okne.</string>
 </resources>
