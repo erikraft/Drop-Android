@@ -265,4 +265,12 @@
     <string name="ftp_port_hint">Порт</string>
     <string name="ftp_username_hint">Потребителско име</string>
     <string name="ftp_password_hint">Парола</string>
+    <string name="transfer_error_directory_path">Неуспешен достъп до избраната папка.</string>
+    <string name="transfer_error_folder_unsupported">Тази папка не може да се използва директно от този сървър.</string>
+    <string name="transfer_error_invalid_port">Въведете валиден порт.</string>
+    <string name="transfer_error_port_range">Портът трябва да е между 1025 и 65535.</string>
+    <string name="transfer_error_credentials_required">Потребителското име и паролата са задължителни.</string>
+    <string name="onion_error_tor_timeout">Tor не отговори навреме. Проверете дали Tor може да работи на това устройство.</string>
+    <string name="onion_error_qr">Неуспешно генериране на QR код.</string>
+    <string name="onion_error_file_open">Избраният файл не може да бъде отворен.</string>
 </resources>
