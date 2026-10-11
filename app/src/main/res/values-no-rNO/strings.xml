@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_long">ErikrafT Drop</string>
-    <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
+    <string name="app_name_slogan">Overfør filer enkelt mellom alle enhetene dine.</string>
     <string name="err_no_browser">Kan ikke åpne nettleseren</string>
     <string name="err_no_app">Ingen apper installert for å åpne denne filen</string>
     <string name="open_url">Åpne URL</string>
     <!-- Onboarding -->
-    <string name="onboarding_button_continue">continue</string>
-    <string name="onboarding_button_grant">grant permission</string>
-    <string name="onboarding_button_finish">finish</string>
-    <string name="onboarding_choose_server">Choose a server address</string>
-    <string name="onboarding_choose_server_short">choose server</string>
-    <string name="onboarding_choose_server_description">This app is an optimized client for the ErikrafT Drop and PairDrop web apps.\nChoose one of the following instances or specify a custom URL to connect to.\n\nNote: You have to choose the same URL on all devices.</string>
-    <string name="onboarding_storage_permission">Storage permission</string>
-    <string name="onboarding_storage_permission_description">This app is a file sharing utility. Therefore, storage permission is required order to use it.</string>
+    <string name="onboarding_button_continue">fortsett</string>
+    <string name="onboarding_button_grant">gi tillatelse</string>
+    <string name="onboarding_button_finish">fullfør</string>
+    <string name="onboarding_choose_server">Velg en serveradresse</string>
+    <string name="onboarding_choose_server_short">velg server</string>
+    <string name="onboarding_choose_server_description">Denne appen er en optimalisert klient for nettappene ErikrafT Drop og PairDrop.\nVelg en av serverne nedenfor, eller angi en egendefinert URL for å koble til.\n\nMerk: Du må velge samme URL på alle enhetene.</string>
+    <string name="onboarding_storage_permission">Lagringstillatelse</string>
+    <string name="onboarding_storage_permission_description">Denne appen brukes til fildeling og trenger derfor lagringstillatelse.</string>
     <string name="onboarding_server_primary_summary">(1) Primær — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Sekundær — ErikrafT Drop™ reserve</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiær — ErikrafT Drop™ reserve</string>
@@ -26,32 +26,32 @@
     <string name="onboarding_server_custom">Egendefinert URL</string>
     <string name="onboarding_server_custom_summary">Erfarne brukere kan også være vert for egne servere.</string>
     <string name="onboarding_server_custom_add">Legg til server</string>
-    <string name="onboarding_howto">How to use</string>
-    <string name="onboarding_howto_summary">1. Open this app or %s on any other device in your local WiFi network.\n\n2. Tap on the device and select the files you want to send.\n\n3. Done! The files will be sent…</string>
-    <string name="onboarding_howto_troubleshoot">Hint: Devices need to be connected with the same WiFi network. It may not work if a VPN is enabled.</string>
+    <string name="onboarding_howto">Slik bruker du appen</string>
+    <string name="onboarding_howto_summary">1. Åpne denne appen eller %s på en annen enhet på det samme lokale Wi-Fi-nettverket.\n\n2. Trykk på enheten og velg filene du vil sende.\n\n3. Ferdig! Filene sendes…</string>
+    <string name="onboarding_howto_troubleshoot">Tips: Enhetene må være koblet til det samme Wi-Fi-nettverket. Det kan hende at det ikke fungerer hvis VPN er aktivert.</string>
     <!-- Download -->
     <string name="download_save_pending">Lagrer filen. Vennligst ha litt tålmodighet…</string>
     <string name="download_successful">Nedlasting vellykket</string>
     <string name="notification_channel_name">Nedlastingen er fullført</string>
     <!-- Action Buttons -->
     <string name="open">åpne</string>
-    <string name="install">install</string>
+    <string name="install">Installer</string>
     <string name="reset">nullstill</string>
     <string name="copy">kopier</string>
-    <string name="retry">retry</string>
+    <string name="retry">Prøv igjen</string>
     <!-- Settings / About -->
-    <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
-    <string name="pref_about_title">About this app</string>
-    <string name="view_downloads">View downloads</string>
+    <string name="home_as_up_indicator_about">Om</string>
+    <string name="title_activity_about">Om ErikrafT Drop™</string>
+    <string name="pref_about_title">Om denne appen</string>
+    <string name="view_downloads">Vis nedlastinger</string>
     <string name="pref_category_settings">Innstillinger</string>
     <string name="logs">Feilsøk-logger</string>
     <string name="components_summary">Trykk for å vise</string>
-    <string name="support_us">Support us</string>
-    <string name="support_us_summary">See, how you can support this project</string>
-    <string name="support_us_description">Support ErikrafT Drop™ and help keep the project running.</string>
+    <string name="support_us">Støtt oss</string>
+    <string name="support_us_summary">Se hvordan du kan støtte dette prosjektet</string>
+    <string name="support_us_description">Støtt ErikrafT Drop™ og hjelp med å holde prosjektet i gang.</string>
     <string name="support_us_option_kofi">Ko-fi</string>
-    <string name="support_us_option_pix_kofi">PIX &amp; Ko-fi</string>
+    <string name="support_us_option_pix_kofi">PIX og Ko-fi</string>
     <string name="bitcoin_donation_title">Doner med Bitcoin</string>
     <string name="bitcoin_donation_summary">Støtt ErikrafT Drop™ direkte med Bitcoin</string>
     <string name="bitcoin_donation_dialog_title">Doner med Bitcoin</string>
@@ -69,31 +69,31 @@
     <string name="notifications_title">Varsler</string>
     <string name="keep_on_summary">(Anbefalt) Mange enheter har problemer med at overføring blir avbrutt når skjermen slås av</string>
     <string name="keep_on_title">Hold skjermen påslått mens du overfører</string>
-    <string name="floating_text_selection_title">Floating text selection</string>
-    <string name="floating_text_selection_summary">When selecting text in other apps, an option \"Send with ErikrafT Drop\" will be shown</string>
-    <string name="show_connectivity_card_title">Connectivity warning</string>
-    <string name="show_connectivity_card_summary"> Show a warning when you are not connected with a WiFi network</string>
-    <string name="floating_text_selection_activity_label">Send with ErikrafT Drop</string>
-    <string name="permission_not_granted">please grant the necessary permission</string>
-    <string name="permission_not_granted_fallback">please grant the necessary permission manually</string>
-    <string name="open_settings">open settings</string>
-    <string name="retain_location_metadata_title">Retain location metadata</string>
-    <string name="retain_location_metadata_summary_off">Some media files might contain location data that are stripped by default. Grant permission to include full metadata</string>
-    <string name="retain_location_metadata_summary_on">The app has full file access currently</string>
+    <string name="floating_text_selection_title">Flytende tekstmarkering</string>
+    <string name="floating_text_selection_summary">Når du markerer tekst i andre apper, vises alternativet «Send med ErikrafT Drop»</string>
+    <string name="show_connectivity_card_title">Tilkoblingsvarsel</string>
+    <string name="show_connectivity_card_summary">Vis et varsel når du ikke er koblet til et Wi-Fi-nettverk</string>
+    <string name="floating_text_selection_activity_label">Send med ErikrafT Drop</string>
+    <string name="permission_not_granted">Gi nødvendig tillatelse</string>
+    <string name="permission_not_granted_fallback">Gi nødvendig tillatelse manuelt</string>
+    <string name="open_settings">Åpne innstillinger</string>
+    <string name="retain_location_metadata_title">Behold posisjonsmetadata</string>
+    <string name="retain_location_metadata_summary_off">Noen mediefiler kan inneholde posisjonsdata som fjernes som standard. Gi tillatelse for å inkludere alle metadata</string>
+    <string name="retain_location_metadata_summary_on">Appen har for øyeblikket full tilgang til filer</string>
     <string name="settings_theme_title">Tema</string>
     <string-array name="darkmode_entries">
         <item>Systemstandard</item>
         <item>Lys</item>
         <item>Mørk</item>
     </string-array>
-    <string name="baseurl_title">Change server address</string>
-    <string name="baseurl_not_set">Not set</string>
-    <string name="baseurl_instance_verified">Instance was successfully verified</string>
-    <string name="baseurl_no_snapdrop_instance">Instance doesn\'t seem to be supported</string>
-    <string name="baseurl_check_instance_failed">Failed to verify instance</string>
-    <string name="baseurl_unofficial_instances">Check out the <a href="">FAQ</a> for a list of unofficial and legacy instances. Please note that some instances might not work correctly inside the app.</string>
-    <string name="important_update_title">Important Update</string>
-    <string name="important_update_message">The snapdrop.net website has been acquired by a company with unclear security and privacy practices.\n\nTo keep your data safe, this app will no longer support snapdrop.net and will instead switch all users to ErikrafT Drop™, a more secure alternative.\n\nThank you for your understanding!</string>
+    <string name="baseurl_title">Endre serveradresse</string>
+    <string name="baseurl_not_set">Ikke angitt</string>
+    <string name="baseurl_instance_verified">Serveren ble bekreftet</string>
+    <string name="baseurl_no_snapdrop_instance">Serveren ser ikke ut til å støttes</string>
+    <string name="baseurl_check_instance_failed">Kunne ikke bekrefte serveren</string>
+    <string name="baseurl_unofficial_instances">Se &lt;a href=""&gt;FAQ&lt;/a&gt; for en liste over uoffisielle og eldre servere. Noen servere fungerer kanskje ikke riktig i appen.</string>
+    <string name="important_update_title">Viktig oppdatering</string>
+    <string name="important_update_message">Nettstedet snapdrop.net er kjøpt opp av et selskap med uklare sikkerhets- og personvernrutiner.\n\nFor å beskytte dataene dine vil denne appen ikke lenger støtte snapdrop.net, men i stedet flytte alle brukere til det sikrere alternativet ErikrafT Drop™.\n\nTakk for forståelsen!</string>
     <string name="important_update_ok">OK</string>
     <string name="save_location">Lagringssted</string>
     <!-- File sharing -->
@@ -102,13 +102,13 @@
     <string name="intent_content">Innhold er valgt for deling</string>
     <string name="error_filechooser">Kan ikke åpne filvelgeren</string>
     <string name="error_network">Vennligst bekreft at du er tilkoblet et WiFi-nettverk</string>
-    <string name="error_network_no_wifi">Please connect to a WiFi network, or pair devices</string>
-    <string name="error_network_offline">You are offline</string>
+    <string name="error_network_no_wifi">Koble til et Wi-Fi-nettverk eller par enhetene</string>
+    <string name="error_network_offline">Du er frakoblet</string>
     <string name="ignore_error_network">Slipp meg inn likevel</string>
     <string name="error_not_reachable_title">Oops, beklager!</string>
-    <string name="error_server_not_reachable">The Server cannot be reached. \n\nIf your internet connection is working and this does happen anyway, please try to select a different server address.</string>
+    <string name="error_server_not_reachable">Serveren kan ikke nås. \n\nHvis internettforbindelsen fungerer, men problemet fortsetter, kan du prøve å velge en annen serveradresse.</string>
     <!-- Website Localization -->
-    <string name="website_no_peers_info">Open app or website on other devices to send files</string>
+    <string name="website_no_peers_info">Åpne appen eller nettstedet på andre enheter for å sende filer</string>
     <string name="website_instruction">Trykk for å sende filer eller trykk lenge for å sende en melding</string>
     <string name="website_file_received">Fil mottatt</string>
     <string name="website_file_ask_before_download">Spør alltid før lagring av filer</string>
@@ -117,14 +117,14 @@
     <string name="website_footer_known_as">Du er kjent som %s</string>
     <string name="website_about_subheading">Den enkleste måten å overføre filer på tvers av Web, Windows, Linux, Android, utvidelser og mer</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
+    <string name="qr_transfer_title">QR-overføring</string>
+    <string name="qr_transfer_send_title">Send via animert QR-kode</string>
+    <string name="qr_transfer_receive_title">Motta via animert QR-kode</string>
+    <string name="qr_transfer_instruction">Rett kameraet på den andre enheten mot denne QR-koden</string>
+    <string name="qr_transfer_receive_searching">Søker etter QR-kode…</string>
+    <string name="pause">Sett på pause</string>
+    <string name="resume">Fortsett</string>
+    <string name="cancel">Avbryt</string>
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Overfør via Onion (beta)</string>
     <string name="onion_transfer_description">Del filer eller tekst direkte fra enheten via en privat Tor-tilkobling. Innholdet blir på enheten og sendes via en midlertidig Onion-adresse.</string>
