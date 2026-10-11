@@ -256,4 +256,12 @@
     <string name="ftp_port_hint">Vrata</string>
     <string name="ftp_username_hint">Uporabniško ime</string>
     <string name="ftp_password_hint">Geslo</string>
+    <string name="transfer_error_directory_path">Dostop do izbrane mape ni mogoc.</string>
+    <string name="transfer_error_folder_unsupported">Te mape ta streznik ne more uporabljati neposredno.</string>
+    <string name="transfer_error_invalid_port">Vnesite veljavna vrata.</string>
+    <string name="transfer_error_port_range">Vrata morajo biti med 1025 in 65535.</string>
+    <string name="transfer_error_credentials_required">Uporabnisko ime in geslo sta obvezna.</string>
+    <string name="onion_error_tor_timeout">Tor se ni odzval pravočasno. Preverite, ali lahko Tor deluje v tej napravi.</string>
+    <string name="onion_error_qr">Kode QR ni bilo mogoce ustvariti.</string>
+    <string name="onion_error_file_open">Izbrane datoteke ni bilo mogoce odpreti.</string>
 </resources>
