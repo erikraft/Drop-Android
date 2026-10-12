@@ -303,4 +303,6 @@
     <string name="about_dependencies_crypto">Cryptography</string>
     <string name="about_dependencies_infrastructure">Infrastructure</string>
     <string name="about_references_projects">Reference projects</string>
+    <string name="about_references_web_desktop">Web / Desktop</string>
+    <string name="about_references_android">Android / integration</string>
 </resources>
