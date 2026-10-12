@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d file dan teks siap dibagikan.</string>
     <string name="onion_transfer_summary_files">%1$d file siap dibagikan.</string>
     <string name="onion_transfer_summary_text">Teks siap dibagikan.</string>
+    <string name="legacy_transfer_back">Kembali</string>
+    <string name="about_dependencies_ui">AndroidX / antarmuka pengguna</string>
+    <string name="about_dependencies_transfer">Transfer, jaringan, dan file</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kriptografi</string>
+    <string name="about_dependencies_infrastructure">Infrastruktur</string>
+    <string name="about_references_projects">Proyek referensi</string>
 </resources>
