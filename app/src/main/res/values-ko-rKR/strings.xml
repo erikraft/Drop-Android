@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">암호화</string>
     <string name="about_dependencies_infrastructure">인프라</string>
     <string name="about_references_projects">참고 프로젝트</string>
+    <string name="about_references_web_desktop">웹 / 데스크톱</string>
+    <string name="about_references_android">Android / 통합</string>
 </resources>
