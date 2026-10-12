@@ -105,9 +105,9 @@ public class AboutActivity extends DropPipActivity {
     private String buildReferencesHtml() {
         return getString(R.string.about_description) + "<br><br>"
                 + "<b>" + getString(R.string.about_references_web_desktop) + "</b><br>"
-                + "WebRTC, WebSockets, Node.js, Progressive Web App (PWA), IndexedDB, zip.js, cyrb53, NoSleep, heic2any, Crowdin e BrowserStack.<br><br>"
+                + "WebRTC, WebSockets, Node.js, Progressive Web App (PWA), IndexedDB, zip.js, cyrb53, NoSleep, heic2any, Crowdin, BrowserStack.<br><br>"
                 + "<b>" + getString(R.string.about_references_android) + "</b><br>"
-                + "WebView/AndroidX, Tor/Onion, FTP/FTPS, SSH/SFTP, ZXing e as bibliotecas listadas acima.<br><br>"
+                + "WebView/AndroidX, Tor/Onion, FTP/FTPS, SSH/SFTP, ZXing.<br><br>"
                 + "<b>" + getString(R.string.about_references_projects) + "</b><br>"
                 + link("PairDrop", "https://github.com/schlagmichdoch/PairDrop") + "<br>"
                 + link("Snapdrop", "https://github.com/SnapDrop/snapdrop") + "<br>"
