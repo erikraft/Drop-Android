@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d датотеки и текст се подготвени за споделување.</string>
     <string name="onion_transfer_summary_files">%1$d датотеки се подготвени за споделување.</string>
     <string name="onion_transfer_summary_text">Текстот е подготвен за споделување.</string>
+    <string name="legacy_transfer_back">Назад</string>
+    <string name="about_dependencies_ui">AndroidX / кориснички интерфејс</string>
+    <string name="about_dependencies_transfer">Пренос, мрежа и датотеки</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Криптографија</string>
+    <string name="about_dependencies_infrastructure">Инфраструктура</string>
+    <string name="about_references_projects">Референтни проекти</string>
 </resources>
