@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d tệp và văn bản đã sẵn sàng để chia sẻ.</string>
     <string name="onion_transfer_summary_files">%1$d tệp đã sẵn sàng để chia sẻ.</string>
     <string name="onion_transfer_summary_text">Văn bản đã sẵn sàng để chia sẻ.</string>
+    <string name="legacy_transfer_back">Quay lại</string>
+    <string name="about_dependencies_ui">AndroidX / giao diện người dùng</string>
+    <string name="about_dependencies_transfer">Truyền dữ liệu, mạng và tệp</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Mật mã học</string>
+    <string name="about_dependencies_infrastructure">Cơ sở hạ tầng</string>
+    <string name="about_references_projects">Dự án tham khảo</string>
 </resources>
