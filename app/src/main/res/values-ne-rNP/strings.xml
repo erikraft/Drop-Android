@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">क्रिप्टोग्राफी</string>
     <string name="about_dependencies_infrastructure">पूर्वाधार</string>
     <string name="about_references_projects">सन्दर्भ परियोजनाहरू</string>
+    <string name="about_references_web_desktop">वेब / डेस्कटप</string>
+    <string name="about_references_android">Android / एकीकरण</string>
 </resources>
