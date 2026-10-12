@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">About</string>
     <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="about_open_website">Go to website</string>
     <string name="pref_about_title">About this app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Cài đặt</string>
@@ -128,6 +129,7 @@
     <!-- Onion Transfer -->
     <string name="onion_transfer_title">Transfer via Onion (Beta)</string>
     <string name="onion_transfer_description">Share files or text directly from your device through a private Tor connection. Content stays on your device and is delivered through a temporary Onion address.</string>
+    <string name="onion_transfer_content_title">Content to share</string>
     <string name="onion_transfer_select_files">Select files</string>
     <string name="onion_transfer_send_text">Send text</string>
     <string name="onion_transfer_text_hint">Enter the text you want to share</string>
@@ -149,6 +151,9 @@
     <!-- FTP / FTPS -->
     <string name="ftp_settings_title">Transfer via FTP / FTPS</string>
     <string name="ftp_settings_summary">Local FTP server for file transfers over Wi-Fi, without USB cables</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Username</string>
+    <string name="ftp_password_hint">Password</string>
     <string name="ftp_choose_directory">Choose directory</string>
     <string name="ftp_directory_summary">Choose the folder exposed by the FTP/FTPS server.</string>
     <string name="ftp_stop_notification_title">Notification with “Stop server”</string>
@@ -245,4 +250,24 @@
     <string name="legacy_transfer_tap_to_open">Tap to open the available transfer tools.</string>
     <string name="legacy_wifi_waiting_for_sender">Connected as receiver. The connected peer can send text to this device.</string>
     <string name="legacy_beam_text_received">Text received through Android Beam.</string>
+    <string name="server_status_running">Server running</string>
+    <string name="server_status_stopped">Server stopped</string>
+    <string name="server_status_error">Error: %1$s</string>
+    <string name="transfer_error_directory_path">Could not access the selected folder.</string>
+    <string name="transfer_error_folder_unsupported">This folder cannot be used directly by this server.</string>
+    <string name="transfer_error_invalid_port">Enter a valid port.</string>
+    <string name="transfer_error_port_range">Port must be between 1025 and 65535.</string>
+    <string name="transfer_error_credentials_required">Username and password are required.</string>
+    <string name="onion_error_tor_timeout">Tor did not respond in time. Check whether Tor can run on this device.</string>
+    <string name="onion_error_qr">Could not generate the QR code.</string>
+    <string name="onion_error_file_open">Could not open the selected file.</string>
+    <string name="onion_transfer_clear_files">Remove selected files</string>
+    <string name="onion_transfer_clear_text">Clear entered text</string>
+    <string name="onion_transfer_ready_to_start">Ready to start.</string>
+    <string name="onion_transfer_qr_content_description">Onion Service QR code</string>
+    <string name="onion_transfer_link_copied">Link copied.</string>
+    <string name="onion_transfer_prepare_file_error">Failed to prepare file: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d file(s) and text ready to share.</string>
+    <string name="onion_transfer_summary_files">%1$d file(s) ready to share.</string>
+    <string name="onion_transfer_summary_text">Text ready to share.</string>
 </resources>
