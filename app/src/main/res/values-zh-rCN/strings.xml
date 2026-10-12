@@ -290,4 +290,6 @@
     <string name="about_dependencies_crypto">密码学</string>
     <string name="about_dependencies_infrastructure">基础设施</string>
     <string name="about_references_projects">参考项目</string>
+    <string name="about_references_web_desktop">网页 / 桌面端</string>
+    <string name="about_references_android">Android / 集成</string>
 </resources>
