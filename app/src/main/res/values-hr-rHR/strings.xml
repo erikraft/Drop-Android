@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d datoteka i tekst spremni su za dijeljenje.</string>
     <string name="onion_transfer_summary_files">%1$d datoteka spremno je za dijeljenje.</string>
     <string name="onion_transfer_summary_text">Tekst je spreman za dijeljenje.</string>
+    <string name="legacy_transfer_back">Natrag</string>
+    <string name="about_dependencies_ui">AndroidX / sučelje</string>
+    <string name="about_dependencies_transfer">Prijenos, mreža i datoteke</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kriptografija</string>
+    <string name="about_dependencies_infrastructure">Infrastruktura</string>
+    <string name="about_references_projects">Referentni projekti</string>
 </resources>
