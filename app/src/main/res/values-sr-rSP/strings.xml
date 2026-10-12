@@ -41,7 +41,8 @@
     <string name="retry">Покушај поново</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">О апликацији</string>
-    <string name="title_activity_about">О ErikrafT Drop™</string>
+    <string name="title_activity_about">О апликацији ErikrafT Drop™</string>
+    <string name="about_open_website">Иди на веб-сајт</string>
     <string name="pref_about_title">О овој апликацији</string>
     <string name="view_downloads">Прикажи преузимања</string>
     <string name="pref_category_settings">Подешавања</string>
