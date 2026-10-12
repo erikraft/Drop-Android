@@ -611,13 +611,12 @@ public class MainActivity extends DropPipActivity {
                 "if(!b||typeof b.getPreferredWebsiteLocale!=='function'||!L||typeof L.setTranslation!=='function'||typeof L.localeIsSupported!=='function'){" +
                 "if(attempt<40){setTimeout(function(){syncNativeLocale(attempt+1);},100);}return;}" +
                 "var lang=b.getPreferredWebsiteLocale()||'';" +
-                "if(lang&&L.localeIsSupported(lang)){" +
-                "localStorage.setItem('language_code',lang);" +
-                "Promise.resolve(L.setTranslation(lang)).then(function(ok){if(!ok)console.warn('[ErikrafT Drop] WebView locale was not applied:',lang);});" +
-                "}else{" +
-                "localStorage.removeItem('language_code');" +
-                "Promise.resolve(L.setTranslation(L.systemLocale)).catch(function(e){console.warn('[ErikrafT Drop] WebView system locale sync failed',e);});" +
-                "}" +
+                "var target=(lang&&L.localeIsSupported(lang))?lang:L.systemLocale;" +
+                "var stored=localStorage.getItem('language_code')||'';" +
+                "var current=(typeof L.getLocale==='function')?L.getLocale():'';" +
+                "if(target===L.systemLocale&&!lang){localStorage.removeItem('language_code');}else{localStorage.setItem('language_code',target);}" +
+                "if(current===target&&stored===(target===L.systemLocale&&!lang?'':target))return;" +
+                "Promise.resolve(L.setTranslation(target)).then(function(ok){if(!ok)console.warn('[ErikrafT Drop] WebView locale was not applied:',target);});" +
                 "}catch(e){console.warn('[ErikrafT Drop] WebView locale sync failed',e);}" +
                 "})(0);";
         binding.webview.evaluateJavascript(script, null);
