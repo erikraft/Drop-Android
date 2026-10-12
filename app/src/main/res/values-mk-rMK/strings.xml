@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">За апликацијата</string>
     <string name="title_activity_about">За ErikrafT Drop™</string>
+    <string name="about_open_website">Оди на веб-страницата</string>
     <string name="pref_about_title">За оваа апликација</string>
     <string name="view_downloads">Прикажи преземања</string>
     <string name="pref_category_settings">Поставки</string>
