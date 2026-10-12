@@ -291,4 +291,6 @@
     <string name="about_dependencies_crypto">التشفير</string>
     <string name="about_dependencies_infrastructure">البنية التحتية</string>
     <string name="about_references_projects">المشاريع المرجعية</string>
+    <string name="about_references_web_desktop">الويب / سطح المكتب</string>
+    <string name="about_references_android">Android / التكامل</string>
 </resources>
