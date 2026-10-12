@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Tentang</string>
     <string name="title_activity_about">Tentang ErikrafT Drop™</string>
+    <string name="about_open_website">Buka situs web</string>
     <string name="pref_about_title">Tentang aplikasi ini</string>
     <string name="view_downloads">Lihat unduhan</string>
     <string name="pref_category_settings">Pengaturan</string>
