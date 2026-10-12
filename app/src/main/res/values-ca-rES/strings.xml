@@ -41,7 +41,8 @@
     <string name="retry">torna-ho a intentar</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Quant a</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Quant a ErikrafT Drop™</string>
+    <string name="about_open_website">Ves al lloc web</string>
     <string name="pref_about_title">Quant a aquesta aplicació</string>
     <string name="view_downloads">Mostra les baixades</string>
     <string name="pref_category_settings">Configuració</string>
