@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Kriptografi</string>
     <string name="about_dependencies_infrastructure">Altyapı</string>
     <string name="about_references_projects">Referans projeler</string>
+    <string name="about_references_web_desktop">Web / masaüstü</string>
+    <string name="about_references_android">Android / entegrasyon</string>
 </resources>
