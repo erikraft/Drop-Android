@@ -284,4 +284,11 @@
     <string name="onion_transfer_summary_files">%1$d файл(а) са готови за споделяне.</string>
     <string name="onion_transfer_summary_text">Текстът е готов за споделяне.</string>
     <string name="ftp_stopping">Спиране на сървъра…</string>
+    <string name="legacy_transfer_back">Назад</string>
+    <string name="about_dependencies_ui">AndroidX / интерфейс</string>
+    <string name="about_dependencies_transfer">Прехвърляне, мрежи и файлове</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Криптография</string>
+    <string name="about_dependencies_infrastructure">Инфраструктура</string>
+    <string name="about_references_projects">Референтни проекти</string>
 </resources>
