@@ -41,7 +41,8 @@
     <string name="retry">Thử lại</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Giới thiệu</string>
-    <string name="title_activity_about">Giới thiệu ErikrafT Drop™</string>
+    <string name="title_activity_about">Giới thiệu về ErikrafT Drop™</string>
+    <string name="about_open_website">Truy cập trang web</string>
     <string name="pref_about_title">Giới thiệu ứng dụng này</string>
     <string name="view_downloads">Xem nội dung tải xuống</string>
     <string name="pref_category_settings">Cài đặt</string>
