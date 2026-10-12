@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Cryptografie</string>
     <string name="about_dependencies_infrastructure">Infrastructuur</string>
     <string name="about_references_projects">Referentieprojecten</string>
+    <string name="about_references_web_desktop">Web / desktop</string>
+    <string name="about_references_android">Android / integratie</string>
 </resources>
