@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Tietoja</string>
     <string name="title_activity_about">Tietoja ErikrafT Drop™ -sovelluksesta</string>
+    <string name="about_open_website">Siirry verkkosivustolle</string>
     <string name="pref_about_title">Tietoja tästä sovelluksesta</string>
     <string name="view_downloads">Näytä lataukset</string>
     <string name="pref_category_settings">Asetukset</string>
