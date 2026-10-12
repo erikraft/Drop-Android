@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">파일 %1$d개와 텍스트를 공유할 준비가 되었습니다.</string>
     <string name="onion_transfer_summary_files">파일 %1$d개를 공유할 준비가 되었습니다.</string>
     <string name="onion_transfer_summary_text">텍스트를 공유할 준비가 되었습니다.</string>
+    <string name="legacy_transfer_back">뒤로</string>
+    <string name="about_dependencies_ui">AndroidX / 사용자 인터페이스</string>
+    <string name="about_dependencies_transfer">전송, 네트워크 및 파일</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">암호화</string>
+    <string name="about_dependencies_infrastructure">인프라</string>
+    <string name="about_references_projects">참고 프로젝트</string>
 </resources>
