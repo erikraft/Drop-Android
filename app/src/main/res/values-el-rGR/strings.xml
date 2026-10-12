@@ -41,7 +41,8 @@
     <string name="retry">δοκιμάστε ξανά</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Σχετικά με την εφαρμογή</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Σχετικά με το ErikrafT Drop™</string>
+    <string name="about_open_website">Μετάβαση στον ιστότοπο</string>
     <string name="pref_about_title">Σχετικά με την εφαρμογή</string>
     <string name="view_downloads">Προβολή λήψεων</string>
     <string name="pref_category_settings">Ρυθμίσεις</string>
