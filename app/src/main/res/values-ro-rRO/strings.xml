@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Criptografie</string>
     <string name="about_dependencies_infrastructure">Infrastructură</string>
     <string name="about_references_projects">Proiecte de referință</string>
+    <string name="about_references_web_desktop">Web / desktop</string>
+    <string name="about_references_android">Android / integrare</string>
 </resources>
