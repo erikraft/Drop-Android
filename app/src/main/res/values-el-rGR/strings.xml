@@ -284,4 +284,14 @@
     <string name="onion_transfer_summary_files">%1$d αρχείο(α) έτοιμα για κοινή χρήση.</string>
     <string name="onion_transfer_summary_text">Το κείμενο είναι έτοιμο για κοινή χρήση.</string>
     <string name="ftp_stopping">Διακοπή διακομιστή…</string>
+    <string name="legacy_transfer_back">Πίσω</string>
+    <string name="about_dependencies_ui">AndroidX / διεπαφή χρήστη</string>
+    <string name="about_dependencies_transfer">Μεταφορά, δίκτυο και αρχεία</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Κρυπτογραφία</string>
+    <string name="about_dependencies_infrastructure">Υποδομή</string>
+    <string name="about_references_projects">Έργα αναφοράς</string>
+    <string name="about_references_web_desktop">Ιστός / υπολογιστής</string>
+    <string name="about_references_android">Android / ενσωμάτωση</string>
+
 </resources>

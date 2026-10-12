@@ -29,6 +29,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.google.android.material.appbar.MaterialToolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -75,10 +77,13 @@ public final class LegacyTransferActivity extends DropPipActivity {
         root.setOrientation(LinearLayout.VERTICAL);
         int pad = Math.round(16 * getResources().getDisplayMetrics().density);
         root.setPadding(pad, pad, pad, pad);
-        TextView heading = new TextView(this);
-        heading.setText(R.string.legacy_transfer_screen_title);
-        heading.setTextSize(20);
-        root.addView(heading);
+        MaterialToolbar toolbar = new MaterialToolbar(this);
+        toolbar.setTitle(R.string.legacy_transfer_screen_title);
+        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationContentDescription(R.string.legacy_transfer_back);
+        toolbar.setNavigationOnClickListener(v -> finish());
+        root.addView(toolbar, new LinearLayout.LayoutParams(-1,
+                getResources().getDimensionPixelSize(com.google.android.material.R.dimen.mtrl_toolbar_default_height)));
         status = new TextView(this);
         status.setText(R.string.legacy_transfer_ready);
         root.addView(status);

@@ -274,4 +274,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d datotek in besedilo je pripravljenih za skupno rabo.</string>
     <string name="onion_transfer_summary_files">%1$d datotek je pripravljenih za skupno rabo.</string>
     <string name="onion_transfer_summary_text">Besedilo je pripravljeno za skupno rabo.</string>
+    <string name="legacy_transfer_back">Nazaj</string>
+    <string name="about_dependencies_ui">AndroidX / uporabniški vmesnik</string>
+    <string name="about_dependencies_transfer">Prenos, omrežje in datoteke</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kriptografija</string>
+    <string name="about_dependencies_infrastructure">Infrastruktura</string>
+    <string name="about_references_projects">Referenčni projekti</string>
+    <string name="about_references_web_desktop">Splet / namizje</string>
+    <string name="about_references_android">Android / integracija</string>
 </resources>

@@ -274,4 +274,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d файл(ов) и текст готовы к отправке.</string>
     <string name="onion_transfer_summary_files">%1$d файл(ов) готовы к отправке.</string>
     <string name="onion_transfer_summary_text">Текст готов к отправке.</string>
+    <string name="legacy_transfer_back">Назад</string>
+    <string name="about_dependencies_ui">AndroidX / интерфейс</string>
+    <string name="about_dependencies_transfer">Передача, сеть и файлы</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Криптография</string>
+    <string name="about_dependencies_infrastructure">Инфраструктура</string>
+    <string name="about_references_projects">Проекты-источники</string>
+    <string name="about_references_web_desktop">Веб / настольная версия</string>
+    <string name="about_references_android">Android / интеграция</string>
 </resources>

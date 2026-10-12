@@ -611,15 +611,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
      * These rows deliberately do not claim that transfer transport is implemented.
      */
     private void updateLegacyTransferCompatibility() {
-        final Preference nfcPreference = findPreference("legacy_nfc_beam");
-        final Preference wifiPreference = findPreference("legacy_wifi_direct");
+        final CompatibilityPreference nfcPreference = findPreference("legacy_nfc_beam");
+        final CompatibilityPreference wifiPreference = findPreference("legacy_wifi_direct");
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             final boolean hasNfc = adapter != null;
             // NFC tag I/O remains available on modern Android even though Beam was removed.
-            nfcPreference.setSelectable(true);
-            nfcPreference.setEnabled(hasNfc);
+            nfcPreference.setCompatible(hasNfc);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
                     : !beamApiAvailable
@@ -629,8 +628,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
                     .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
-            wifiPreference.setSelectable(true);
-            wifiPreference.setEnabled(hasWifiDirect);
+            wifiPreference.setCompatible(hasWifiDirect);
             wifiPreference.setSummary(hasWifiDirect
                     ? R.string.legacy_transfer_tap_to_open
                     : R.string.legacy_wifi_no_hardware);

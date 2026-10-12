@@ -283,4 +283,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d 个文件和文本已准备好分享。</string>
     <string name="onion_transfer_summary_files">%1$d 个文件已准备好分享。</string>
     <string name="onion_transfer_summary_text">文本已准备好分享。</string>
+    <string name="legacy_transfer_back">返回</string>
+    <string name="about_dependencies_ui">AndroidX / 用户界面</string>
+    <string name="about_dependencies_transfer">传输、网络和文件</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">密码学</string>
+    <string name="about_dependencies_infrastructure">基础设施</string>
+    <string name="about_references_projects">参考项目</string>
+    <string name="about_references_web_desktop">网页 / 桌面端</string>
+    <string name="about_references_android">Android / 集成</string>
 </resources>

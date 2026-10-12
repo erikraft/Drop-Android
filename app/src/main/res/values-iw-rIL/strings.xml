@@ -274,4 +274,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d קבצים וטקסט מוכנים לשיתוף.</string>
     <string name="onion_transfer_summary_files">%1$d קבצים מוכנים לשיתוף.</string>
     <string name="onion_transfer_summary_text">הטקסט מוכן לשיתוף.</string>
+    <string name="legacy_transfer_back">חזרה</string>
+    <string name="about_dependencies_ui">AndroidX / ממשק משתמש</string>
+    <string name="about_dependencies_transfer">העברה, רשת וקבצים</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">הצפנה</string>
+    <string name="about_dependencies_infrastructure">תשתית</string>
+    <string name="about_references_projects">פרויקטים לדוגמה</string>
+    <string name="about_references_web_desktop">אינטרנט / מחשב</string>
+    <string name="about_references_android">Android / שילוב</string>
 </resources>

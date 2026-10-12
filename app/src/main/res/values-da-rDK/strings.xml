@@ -283,4 +283,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d fil(er) og tekst er klar til deling.</string>
     <string name="onion_transfer_summary_files">%1$d fil(er) er klar til deling.</string>
     <string name="onion_transfer_summary_text">Tekst klar til deling.</string>
+    <string name="legacy_transfer_back">Tilbage</string>
+    <string name="about_dependencies_ui">AndroidX / brugerflade</string>
+    <string name="about_dependencies_transfer">Overførsel, netværk og filer</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kryptografi</string>
+    <string name="about_dependencies_infrastructure">Infrastruktur</string>
+    <string name="about_references_projects">Referenc projekter</string>
+    <string name="about_references_web_desktop">Web / computer</string>
+    <string name="about_references_android">Android / integration</string>
 </resources>

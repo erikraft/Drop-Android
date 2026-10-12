@@ -284,4 +284,13 @@
     <string name="onion_transfer_summary_files">%1$d soubor(y) jsou připraveny ke sdílení.</string>
     <string name="onion_transfer_summary_text">Text je připraven ke sdílení.</string>
     <string name="ftp_stopping">Zastavování serveru…</string>
+    <string name="legacy_transfer_back">Zpět</string>
+    <string name="about_dependencies_ui">AndroidX / uživatelské rozhraní</string>
+    <string name="about_dependencies_transfer">Přenos, síť a soubory</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kryptografie</string>
+    <string name="about_dependencies_infrastructure">Infrastruktura</string>
+    <string name="about_references_projects">Referenční projekty</string>
+    <string name="about_references_web_desktop">Web / desktop</string>
+    <string name="about_references_android">Android / integrace</string>
 </resources>

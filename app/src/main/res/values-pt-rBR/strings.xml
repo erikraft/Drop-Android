@@ -285,4 +285,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d arquivo(s) e texto prontos para compartilhar.</string>
     <string name="onion_transfer_summary_files">%1$d arquivo(s) prontos para compartilhar.</string>
     <string name="onion_transfer_summary_text">Texto pronto para compartilhar.</string>
+    <string name="legacy_transfer_back">Voltar</string>
+    <string name="about_dependencies_ui">AndroidX / Interface</string>
+    <string name="about_dependencies_transfer">Transferência, rede e arquivos</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Criptografia</string>
+    <string name="about_dependencies_infrastructure">Infraestrutura</string>
+    <string name="about_references_projects">Projetos de referência</string>
+    <string name="about_references_web_desktop">Web / Desktop</string>
+    <string name="about_references_android">Android / integração</string>
 </resources>

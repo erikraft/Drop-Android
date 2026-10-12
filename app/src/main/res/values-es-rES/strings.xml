@@ -286,4 +286,13 @@
     <string name="onion_transfer_summary_files">%1$d archivo(s) listos para compartir.</string>
     <string name="onion_transfer_summary_text">Texto listo para compartir.</string>
     <string name="ftp_stopping">Deteniendo servidor…</string>
+    <string name="legacy_transfer_back">Volver</string>
+    <string name="about_dependencies_ui">AndroidX / interfaz</string>
+    <string name="about_dependencies_transfer">Transferencia, red y archivos</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Criptografía</string>
+    <string name="about_dependencies_infrastructure">Infraestructura</string>
+    <string name="about_references_projects">Proyectos de referencia</string>
+    <string name="about_references_web_desktop">Web / escritorio</string>
+    <string name="about_references_android">Android / integración</string>
 </resources>

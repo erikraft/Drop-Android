@@ -83,9 +83,9 @@
     <string name="retain_location_metadata_summary_on">يمتلك التطبيق حاليًا صلاحية الوصول الكامل إلى الملفات</string>
     <string name="settings_theme_title">المظهر</string>
     <string-array name="darkmode_entries">
-        <item>System Default</item>
-        <item>Light</item>
-        <item>Dark</item>
+        <item>افتراضي النظام</item>
+        <item>فاتح</item>
+        <item>داكن</item>
     </string-array>
     <string name="baseurl_title">تغيير عنوان الخادم</string>
     <string name="baseurl_not_set">غير محدد</string>
@@ -284,4 +284,13 @@
     <string name="onion_transfer_summary_files">%1$d ملف(ات) جاهز للمشاركة.</string>
     <string name="onion_transfer_summary_text">النص جاهز للمشاركة.</string>
     <string name="ftp_stopping">جارٍ إيقاف الخادم…</string>
+    <string name="legacy_transfer_back">رجوع</string>
+    <string name="about_dependencies_ui">AndroidX / واجهة المستخدم</string>
+    <string name="about_dependencies_transfer">النقل والشبكات والملفات</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">التشفير</string>
+    <string name="about_dependencies_infrastructure">البنية التحتية</string>
+    <string name="about_references_projects">المشاريع المرجعية</string>
+    <string name="about_references_web_desktop">الويب / سطح المكتب</string>
+    <string name="about_references_android">Android / التكامل</string>
 </resources>

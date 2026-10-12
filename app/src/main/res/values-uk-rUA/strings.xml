@@ -274,4 +274,13 @@
     <string name="onion_transfer_summary_files_and_text">%1$d файл(и) та текст готові до поширення.</string>
     <string name="onion_transfer_summary_files">%1$d файл(и) готові до поширення.</string>
     <string name="onion_transfer_summary_text">Текст готовий до поширення.</string>
+    <string name="legacy_transfer_back">Назад</string>
+    <string name="about_dependencies_ui">AndroidX / інтерфейс</string>
+    <string name="about_dependencies_transfer">Передавання, мережа й файли</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Криптографія</string>
+    <string name="about_dependencies_infrastructure">Інфраструктура</string>
+    <string name="about_references_projects">Довідкові проєкти</string>
+    <string name="about_references_web_desktop">Веб / комп’ютер</string>
+    <string name="about_references_android">Android / інтеграція</string>
 </resources>

@@ -69,7 +69,7 @@ public class AboutActivity extends DropPipActivity {
     }
 
     private String buildAndroidDependenciesHtml() {
-        return "<b>AndroidX / UI</b><br>"
+        return "<b>" + getString(R.string.about_dependencies_ui) + "</b><br>"
                 + "AndroidX AppCompat 1.7.1<br>"
                 + "AndroidX CoordinatorLayout 1.3.0<br>"
                 + "AndroidX Core SplashScreen 1.2.0<br>"
@@ -79,7 +79,7 @@ public class AboutActivity extends DropPipActivity {
                 + "AndroidX SwipeRefreshLayout 1.1.0<br>"
                 + "AndroidX WebKit 1.14.0<br>"
                 + "Google Material Components 1.13.0<br><br>"
-                + "<b>Transferência, rede e arquivos</b><br>"
+                + "<b>" + getString(R.string.about_dependencies_transfer) + "</b><br>"
                 + "Apache FtpServer 1.2.1 (FTP/FTPS)<br>"
                 + "Apache MINA SSHD 2.20.0 (SSH/SFTP)<br>"
                 + "NanoHTTPD 2.3.1<br>"
@@ -88,28 +88,27 @@ public class AboutActivity extends DropPipActivity {
                 + "ZXing Core 3.5.3<br>"
                 + "Anggrayudi Storage 1.5.6<br>"
                 + "SLF4J Android 1.7.36<br><br>"
-                + "<b>Tor / Onion</b><br>"
+                + "<b>" + getString(R.string.about_dependencies_tor) + "</b><br>"
                 + "Tor Android 0.4.9.6<br>"
                 + "jtorctl 0.4.5.7<br>"
                 + "Onionwrapper Android 0.1.4<br>"
                 + "Lyrebird Android 0.6.2<br>"
                 + "dont-kill-me-lib 0.2.8<br><br>"
-                + "<b>Criptografia</b><br>"
+                + "<b>" + getString(R.string.about_dependencies_crypto) + "</b><br>"
                 + "Bouncy Castle bcprov-jdk18on 1.86<br>"
                 + "Bouncy Castle bcpkix-jdk18on 1.86<br><br>"
-                + "<b>Infraestrutura</b><br>"
+                + "<b>" + getString(R.string.about_dependencies_infrastructure) + "</b><br>"
                 + "AboutLibraries 11.2.3<br>"
-                + "desugar_jdk_libs 2.1.5<br>"
-                + "fileTree de bibliotecas locais do projeto.";
+                + "desugar_jdk_libs 2.1.5<br>";
     }
 
     private String buildReferencesHtml() {
-        return "ErikrafT Drop™ é um fork/ecossistema baseado no PairDrop, que por sua vez deriva do Snapdrop.<br><br>"
-                + "<b>Web / Desktop</b><br>"
-                + "WebRTC, WebSockets, Node.js, Progressive Web App (PWA), IndexedDB, zip.js, cyrb53, NoSleep, heic2any, Crowdin e BrowserStack.<br><br>"
-                + "<b>Android / integração</b><br>"
-                + "WebView/AndroidX, Tor/Onion, FTP/FTPS, SSH/SFTP, ZXing e as bibliotecas listadas acima.<br><br>"
-                + "<b>Projetos de referência</b><br>"
+        return getString(R.string.about_description) + "<br><br>"
+                + "<b>" + getString(R.string.about_references_web_desktop) + "</b><br>"
+                + "WebRTC, WebSockets, Node.js, Progressive Web App (PWA), IndexedDB, zip.js, cyrb53, NoSleep, heic2any, Crowdin, BrowserStack.<br><br>"
+                + "<b>" + getString(R.string.about_references_android) + "</b><br>"
+                + "WebView/AndroidX, Tor/Onion, FTP/FTPS, SSH/SFTP, ZXing.<br><br>"
+                + "<b>" + getString(R.string.about_references_projects) + "</b><br>"
                 + link("PairDrop", "https://github.com/schlagmichdoch/PairDrop") + "<br>"
                 + link("Snapdrop", "https://github.com/SnapDrop/snapdrop") + "<br>"
                 + link("PairDrop Android", "https://github.com/fm-sys/pairdrop-android") + "<br>"

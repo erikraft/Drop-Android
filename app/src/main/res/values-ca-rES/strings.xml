@@ -284,4 +284,13 @@
     <string name="onion_transfer_summary_files">%1$d fitxer(s) a punt per compartir.</string>
     <string name="onion_transfer_summary_text">Text a punt per compartir.</string>
     <string name="ftp_stopping">S’està aturant el servidor…</string>
+    <string name="legacy_transfer_back">Enrere</string>
+    <string name="about_dependencies_ui">AndroidX / interfície</string>
+    <string name="about_dependencies_transfer">Transferència, xarxa i fitxers</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Criptografia</string>
+    <string name="about_dependencies_infrastructure">Infraestructura</string>
+    <string name="about_references_projects">Projectes de referència</string>
+    <string name="about_references_web_desktop">Web / escriptori</string>
+    <string name="about_references_android">Android / integració</string>
 </resources>

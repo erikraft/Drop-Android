@@ -121,12 +121,12 @@
     <PreferenceCategory
         android:title="@string/legacy_transfer_category"
         app:iconSpaceReserved="false">
-        <Preference
+        <com.erikraft.drop.CompatibilityPreference
             android:key="legacy_nfc_beam"
             android:icon="@drawable/ic_android_beam"
             android:title="@string/legacy_nfc_title"
             android:summary="@string/legacy_transfer_checking" />
-        <Preference
+        <com.erikraft.drop.CompatibilityPreference
             android:key="legacy_wifi_direct"
             android:icon="@drawable/ic_wifi_direct"
             android:title="@string/legacy_wifi_title"
