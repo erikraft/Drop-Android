@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Криптография</string>
     <string name="about_dependencies_infrastructure">Инфраструктура</string>
     <string name="about_references_projects">Проекты-источники</string>
+    <string name="about_references_web_desktop">Веб / настольная версия</string>
+    <string name="about_references_android">Android / интеграция</string>
 </resources>
