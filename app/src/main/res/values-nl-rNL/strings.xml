@@ -41,7 +41,8 @@
     <string name="retry">opnieuw proberen</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Over</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Over ErikrafT Drop™</string>
+    <string name="about_open_website">Ga naar de website</string>
     <string name="pref_about_title">Over deze app</string>
     <string name="view_downloads">Bekijk downloads</string>
     <string name="pref_category_settings">Instellingen</string>
