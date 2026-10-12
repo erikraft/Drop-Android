@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">このアプリについて</string>
     <string name="title_activity_about">ErikrafT Drop™について</string>
+    <string name="about_open_website">ウェブサイトへ</string>
     <string name="pref_about_title">このアプリについて</string>
     <string name="view_downloads">ダウンロードを表示</string>
     <string name="pref_category_settings">設定</string>
