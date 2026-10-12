@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Kriptografija</string>
     <string name="about_dependencies_infrastructure">Infrastruktura</string>
     <string name="about_references_projects">Referenčni projekti</string>
+    <string name="about_references_web_desktop">Splet / namizje</string>
+    <string name="about_references_android">Android / integracija</string>
 </resources>
