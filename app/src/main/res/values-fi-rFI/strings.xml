@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Tietoja</string>
     <string name="title_activity_about">Tietoja ErikrafT Drop™ -sovelluksesta</string>
+    <string name="about_open_website">Siirry verkkosivustolle</string>
     <string name="pref_about_title">Tietoja tästä sovelluksesta</string>
     <string name="view_downloads">Näytä lataukset</string>
     <string name="pref_category_settings">Asetukset</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Avaa käytettävissä olevat siirtotyökalut napauttamalla.</string>
     <string name="legacy_wifi_waiting_for_sender">Yhdistetty vastaanottajana. Yhdistetty laite voi lähettää tekstiä tähän laitteeseen.</string>
     <string name="legacy_beam_text_received">Teksti vastaanotettu Android Beamin kautta.</string>
+    <string name="server_status_running">Palvelin käynnissä</string>
+    <string name="server_status_stopped">Palvelin pysäytetty</string>
+    <string name="server_status_error">Virhe: %1$s</string>
+    <string name="onion_transfer_content_title">Jaettava sisältö</string>
+    <string name="ftp_port_hint">Portti</string>
+    <string name="ftp_username_hint">Käyttäjänimi</string>
+    <string name="ftp_password_hint">Salasana</string>
+    <string name="transfer_error_directory_path">Valittuun kansioon ei päästy käsiksi.</string>
+    <string name="transfer_error_folder_unsupported">Tätä kansiota ei voi käyttää suoraan tällä palvelimella.</string>
+    <string name="transfer_error_invalid_port">Anna kelvollinen portti.</string>
+    <string name="transfer_error_port_range">Portin on oltava välillä 1025–65535.</string>
+    <string name="transfer_error_credentials_required">Käyttäjänimi ja salasana ovat pakollisia.</string>
+    <string name="onion_error_tor_timeout">Tor ei vastannut ajoissa. Tarkista, voiko Tor toimia tällä laitteella.</string>
+    <string name="onion_error_qr">QR-koodin luominen epäonnistui.</string>
+    <string name="onion_error_file_open">Valitun tiedoston avaaminen epäonnistui.</string>
+    <string name="onion_transfer_clear_files">Poista valitut tiedostot</string>
+    <string name="onion_transfer_clear_text">Tyhjennä kirjoitettu teksti</string>
+    <string name="onion_transfer_ready_to_start">Valmis käynnistettäväksi.</string>
+    <string name="onion_transfer_qr_content_description">Onion-palvelun QR-koodi</string>
+    <string name="onion_transfer_link_copied">Linkki kopioitu.</string>
+    <string name="onion_transfer_prepare_file_error">Tiedoston valmistelu epäonnistui: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d tiedosto(a) ja teksti valmiina jaettavaksi.</string>
+    <string name="onion_transfer_summary_files">%1$d tiedosto(a) valmiina jaettavaksi.</string>
+    <string name="onion_transfer_summary_text">Teksti valmiina jaettavaksi.</string>
 </resources>

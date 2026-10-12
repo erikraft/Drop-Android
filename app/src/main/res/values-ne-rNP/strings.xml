@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">बारेमा</string>
     <string name="title_activity_about">ErikrafT Drop™ बारेमा</string>
+    <string name="about_open_website">वेबसाइटमा जानुहोस्</string>
     <string name="pref_about_title">यो एपबारे</string>
     <string name="view_downloads">डाउनलोडहरू हेर्नुहोस्</string>
     <string name="pref_category_settings">सेटिङहरू</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">उपलब्ध स्थानान्तरण उपकरणहरू खोल्न ट्याप गर्नुहोस्।</string>
     <string name="legacy_wifi_waiting_for_sender">प्राप्तकर्ताको रूपमा जडान भयो। जडान भएको उपकरणले यस उपकरणमा पाठ पठाउन सक्छ।</string>
     <string name="legacy_beam_text_received">Android Beam मार्फत पाठ प्राप्त भयो।</string>
+    <string name="server_status_running">सर्भर चलिरहेको छ</string>
+    <string name="server_status_stopped">सर्भर रोकिएको छ</string>
+    <string name="server_status_error">त्रुटि: %1$s</string>
+    <string name="onion_transfer_content_title">साझा गर्न सामग्री</string>
+    <string name="ftp_port_hint">पोर्ट</string>
+    <string name="ftp_username_hint">प्रयोगकर्ता नाम</string>
+    <string name="ftp_password_hint">पासवर्ड</string>
+    <string name="transfer_error_directory_path">छानिएको फोल्डरमा पहुँच गर्न सकिएन।</string>
+    <string name="transfer_error_folder_unsupported">यो फोल्डर यस सर्भरबाट सिधै प्रयोग गर्न सकिँदैन।</string>
+    <string name="transfer_error_invalid_port">मान्य पोर्ट प्रविष्ट गर्नुहोस्।</string>
+    <string name="transfer_error_port_range">पोर्ट 1025 र 65535 बीच हुनुपर्छ।</string>
+    <string name="transfer_error_credentials_required">प्रयोगकर्ता नाम र पासवर्ड आवश्यक छन्।</string>
+    <string name="onion_error_tor_timeout">Tor ले समयमै जवाफ दिएन। यो उपकरणमा Tor चल्न सक्छ कि जाँच गर्नुहोस्।</string>
+    <string name="onion_error_qr">QR कोड बनाउन सकिएन।</string>
+    <string name="onion_error_file_open">छानिएको फाइल खोल्न सकिएन।</string>
+    <string name="onion_transfer_clear_files">छानिएका फाइलहरू हटाउनुहोस्</string>
+    <string name="onion_transfer_clear_text">टाइप गरिएको पाठ मेटाउनुहोस्</string>
+    <string name="onion_transfer_ready_to_start">सुरु गर्न तयार।</string>
+    <string name="onion_transfer_qr_content_description">Onion सेवाको QR कोड</string>
+    <string name="onion_transfer_link_copied">लिङ्क प्रतिलिपि गरियो।</string>
+    <string name="onion_transfer_prepare_file_error">फाइल तयार गर्न सकिएन: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d फाइल र पाठ साझा गर्न तयार छन्।</string>
+    <string name="onion_transfer_summary_files">%1$d फाइल साझा गर्न तयार छन्।</string>
+    <string name="onion_transfer_summary_text">पाठ साझा गर्न तयार छ।</string>
 </resources>

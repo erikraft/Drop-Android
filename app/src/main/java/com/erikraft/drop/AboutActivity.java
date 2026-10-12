@@ -60,7 +60,7 @@ public class AboutActivity extends DropPipActivity {
         addHeading(content, getString(R.string.support_us));
         addButton(content, "GitHub — ErikrafT Drop™", "https://github.com/erikraft/Drop");
         addButton(content, "GitHub — Android", "https://github.com/erikraft/Drop-Android");
-        addButton(content, "Site oficial", "https://drop.erikraft.com/");
+        addButton(content, getString(R.string.about_open_website), "https://drop.erikraft.com/");
         addButton(content, getString(R.string.support_us), "https://biodrop.erikraft.com/donation.html");
 
         scroll.addView(content);

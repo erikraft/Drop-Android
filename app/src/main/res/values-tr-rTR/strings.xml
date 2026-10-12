@@ -41,7 +41,8 @@
     <string name="retry">tekrar deneyiniz</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Hakkında</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">ErikrafT Drop™ hakkında</string>
+    <string name="about_open_website">Web sitesine git</string>
     <string name="pref_about_title">Uygulama hakkında</string>
     <string name="view_downloads">İndirilenleri göster</string>
     <string name="pref_category_settings">Ayarlar</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Kullanılabilir aktarım araçlarını açmak için dokunun.</string>
     <string name="legacy_wifi_waiting_for_sender">Alıcı olarak bağlandı. Bağlı cihaz bu cihaza metin gönderebilir.</string>
     <string name="legacy_beam_text_received">Android Beam üzerinden metin alındı.</string>
+    <string name="server_status_running">Sunucu çalışıyor</string>
+    <string name="server_status_stopped">Sunucu durduruldu</string>
+    <string name="server_status_error">Hata: %1$s</string>
+    <string name="onion_transfer_content_title">Paylaşılacak içerik</string>
+    <string name="ftp_port_hint">Bağlantı noktası</string>
+    <string name="ftp_username_hint">Kullanıcı adı</string>
+    <string name="ftp_password_hint">Şifre</string>
+    <string name="transfer_error_directory_path">Seçilen klasöre erişilemedi.</string>
+    <string name="transfer_error_folder_unsupported">Bu klasör bu sunucu tarafından doğrudan kullanılamaz.</string>
+    <string name="transfer_error_invalid_port">Geçerli bir bağlantı noktası girin.</string>
+    <string name="transfer_error_port_range">Bağlantı noktası 1025 ile 65535 arasında olmalıdır.</string>
+    <string name="transfer_error_credentials_required">Kullanıcı adı ve şifre gereklidir.</string>
+    <string name="onion_error_tor_timeout">Tor zamanında yanıt vermedi. Bu cihazda Tor çalıştırılabildiğini kontrol edin.</string>
+    <string name="onion_error_qr">QR kodu oluşturulamadı.</string>
+    <string name="onion_error_file_open">Seçilen dosya açılamadı.</string>
+    <string name="onion_transfer_clear_files">Seçilen dosyaları kaldır</string>
+    <string name="onion_transfer_clear_text">Girilen metni temizle</string>
+    <string name="onion_transfer_ready_to_start">Başlatılmaya hazır.</string>
+    <string name="onion_transfer_qr_content_description">Onion hizmeti QR kodu</string>
+    <string name="onion_transfer_link_copied">Bağlantı kopyalandı.</string>
+    <string name="onion_transfer_prepare_file_error">Dosya hazırlanamadı: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d dosya ve metin paylaşılmaya hazır.</string>
+    <string name="onion_transfer_summary_files">%1$d dosya paylaşılmaya hazır.</string>
+    <string name="onion_transfer_summary_text">Metin paylaşılmaya hazır.</string>
 </resources>

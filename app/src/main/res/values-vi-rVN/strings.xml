@@ -41,7 +41,8 @@
     <string name="retry">Thử lại</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Giới thiệu</string>
-    <string name="title_activity_about">Giới thiệu ErikrafT Drop™</string>
+    <string name="title_activity_about">Giới thiệu về ErikrafT Drop™</string>
+    <string name="about_open_website">Truy cập trang web</string>
     <string name="pref_about_title">Giới thiệu ứng dụng này</string>
     <string name="view_downloads">Xem nội dung tải xuống</string>
     <string name="pref_category_settings">Cài đặt</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Nhấn để mở các công cụ truyền dữ liệu hiện có.</string>
     <string name="legacy_wifi_waiting_for_sender">Đã kết nối với vai trò người nhận. Thiết bị được kết nối có thể gửi văn bản đến thiết bị này.</string>
     <string name="legacy_beam_text_received">Đã nhận văn bản qua Android Beam.</string>
+    <string name="server_status_running">Máy chủ đang chạy</string>
+    <string name="server_status_stopped">Máy chủ đã dừng</string>
+    <string name="server_status_error">Lỗi: %1$s</string>
+    <string name="onion_transfer_content_title">Nội dung để chia sẻ</string>
+    <string name="ftp_port_hint">Cổng</string>
+    <string name="ftp_username_hint">Tên người dùng</string>
+    <string name="ftp_password_hint">Mật khẩu</string>
+    <string name="transfer_error_directory_path">Không thể truy cập thư mục đã chọn.</string>
+    <string name="transfer_error_folder_unsupported">Máy chủ này không thể sử dụng trực tiếp thư mục này.</string>
+    <string name="transfer_error_invalid_port">Nhập cổng hợp lệ.</string>
+    <string name="transfer_error_port_range">Cổng phải nằm trong khoảng 1025 đến 65535.</string>
+    <string name="transfer_error_credentials_required">Cần có tên người dùng và mật khẩu.</string>
+    <string name="onion_error_tor_timeout">Tor không phản hồi kịp thời. Hãy kiểm tra xem Tor có thể chạy trên thiết bị này không.</string>
+    <string name="onion_error_qr">Không thể tạo mã QR.</string>
+    <string name="onion_error_file_open">Không thể mở tệp đã chọn.</string>
+    <string name="onion_transfer_clear_files">Xóa các tệp đã chọn</string>
+    <string name="onion_transfer_clear_text">Xóa văn bản đã nhập</string>
+    <string name="onion_transfer_ready_to_start">Sẵn sàng khởi động.</string>
+    <string name="onion_transfer_qr_content_description">Mã QR của dịch vụ Onion</string>
+    <string name="onion_transfer_link_copied">Đã sao chép liên kết.</string>
+    <string name="onion_transfer_prepare_file_error">Không thể chuẩn bị tệp: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d tệp và văn bản đã sẵn sàng để chia sẻ.</string>
+    <string name="onion_transfer_summary_files">%1$d tệp đã sẵn sàng để chia sẻ.</string>
+    <string name="onion_transfer_summary_text">Văn bản đã sẵn sàng để chia sẻ.</string>
 </resources>

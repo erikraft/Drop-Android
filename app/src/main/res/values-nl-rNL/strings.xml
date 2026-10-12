@@ -41,7 +41,8 @@
     <string name="retry">opnieuw proberen</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Over</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Over ErikrafT Drop™</string>
+    <string name="about_open_website">Ga naar de website</string>
     <string name="pref_about_title">Over deze app</string>
     <string name="view_downloads">Bekijk downloads</string>
     <string name="pref_category_settings">Instellingen</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Tik om de beschikbare overdrachtshulpmiddelen te openen.</string>
     <string name="legacy_wifi_waiting_for_sender">Verbonden als ontvanger. Het verbonden apparaat kan tekst naar dit apparaat sturen.</string>
     <string name="legacy_beam_text_received">Tekst ontvangen via Android Beam.</string>
+    <string name="server_status_running">Server actief</string>
+    <string name="server_status_stopped">Server gestopt</string>
+    <string name="server_status_error">Fout: %1$s</string>
+    <string name="onion_transfer_content_title">Inhoud om te delen</string>
+    <string name="ftp_port_hint">Poort</string>
+    <string name="ftp_username_hint">Gebruikersnaam</string>
+    <string name="ftp_password_hint">Wachtwoord</string>
+    <string name="transfer_error_directory_path">Kan de geselecteerde map niet openen.</string>
+    <string name="transfer_error_folder_unsupported">Deze map kan niet rechtstreeks door deze server worden gebruikt.</string>
+    <string name="transfer_error_invalid_port">Voer een geldige poort in.</string>
+    <string name="transfer_error_port_range">De poort moet tussen 1025 en 65535 liggen.</string>
+    <string name="transfer_error_credentials_required">Gebruikersnaam en wachtwoord zijn verplicht.</string>
+    <string name="onion_error_tor_timeout">Tor reageerde niet op tijd. Controleer of Tor op dit apparaat kan draaien.</string>
+    <string name="onion_error_qr">De QR-code kon niet worden gemaakt.</string>
+    <string name="onion_error_file_open">Het geselecteerde bestand kon niet worden geopend.</string>
+    <string name="onion_transfer_clear_files">Geselecteerde bestanden verwijderen</string>
+    <string name="onion_transfer_clear_text">Ingevoerde tekst wissen</string>
+    <string name="onion_transfer_ready_to_start">Klaar om te starten.</string>
+    <string name="onion_transfer_qr_content_description">QR-code van de Onion-service</string>
+    <string name="onion_transfer_link_copied">Link gekopieerd.</string>
+    <string name="onion_transfer_prepare_file_error">Bestand voorbereiden mislukt: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d bestand(en) en tekst klaar om te delen.</string>
+    <string name="onion_transfer_summary_files">%1$d bestand(en) klaar om te delen.</string>
+    <string name="onion_transfer_summary_text">Tekst klaar om te delen.</string>
 </resources>

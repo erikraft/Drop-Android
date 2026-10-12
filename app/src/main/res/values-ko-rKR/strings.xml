@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">정보</string>
     <string name="title_activity_about">ErikrafT Drop™ 정보</string>
+    <string name="about_open_website">웹사이트로 이동</string>
     <string name="pref_about_title">앱 소개</string>
     <string name="view_downloads">다운로드 보기</string>
     <string name="pref_category_settings">설정</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">사용 가능한 전송 도구를 열려면 탭하세요.</string>
     <string name="legacy_wifi_waiting_for_sender">수신자로 연결되었습니다. 연결된 기기에서 이 기기로 텍스트를 보낼 수 있습니다.</string>
     <string name="legacy_beam_text_received">Android Beam을 통해 텍스트를 받았습니다.</string>
+    <string name="server_status_running">서버 실행 중</string>
+    <string name="server_status_stopped">서버 중지됨</string>
+    <string name="server_status_error">오류: %1$s</string>
+    <string name="onion_transfer_content_title">공유할 콘텐츠</string>
+    <string name="ftp_port_hint">포트</string>
+    <string name="ftp_username_hint">사용자 이름</string>
+    <string name="ftp_password_hint">비밀번호</string>
+    <string name="transfer_error_directory_path">선택한 폴더에 접근할 수 없습니다.</string>
+    <string name="transfer_error_folder_unsupported">이 서버에서 이 폴더를 직접 사용할 수 없습니다.</string>
+    <string name="transfer_error_invalid_port">유효한 포트를 입력하세요.</string>
+    <string name="transfer_error_port_range">포트는 1025~65535 사이여야 합니다.</string>
+    <string name="transfer_error_credentials_required">사용자 이름과 비밀번호가 필요합니다.</string>
+    <string name="onion_error_tor_timeout">Tor가 제시간에 응답하지 않았습니다. 이 기기에서 Tor를 실행할 수 있는지 확인하세요.</string>
+    <string name="onion_error_qr">QR 코드를 생성할 수 없습니다.</string>
+    <string name="onion_error_file_open">선택한 파일을 열 수 없습니다.</string>
+    <string name="onion_transfer_clear_files">선택한 파일 제거</string>
+    <string name="onion_transfer_clear_text">입력한 텍스트 지우기</string>
+    <string name="onion_transfer_ready_to_start">시작할 준비가 되었습니다.</string>
+    <string name="onion_transfer_qr_content_description">Onion 서비스 QR 코드</string>
+    <string name="onion_transfer_link_copied">링크가 복사되었습니다.</string>
+    <string name="onion_transfer_prepare_file_error">파일을 준비하지 못했습니다: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">파일 %1$d개와 텍스트를 공유할 준비가 되었습니다.</string>
+    <string name="onion_transfer_summary_files">파일 %1$d개를 공유할 준비가 되었습니다.</string>
+    <string name="onion_transfer_summary_text">텍스트를 공유할 준비가 되었습니다.</string>
 </resources>

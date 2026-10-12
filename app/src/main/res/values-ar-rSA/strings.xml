@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">حول</string>
     <string name="title_activity_about">حول ErikrafT Drop™</string>
+    <string name="about_open_website">الانتقال إلى الموقع</string>
     <string name="pref_about_title">حول هذا التطبيق</string>
     <string name="view_downloads">عرض التنزيلات</string>
     <string name="pref_category_settings">الإعدادات</string>
@@ -258,4 +259,29 @@
     <string name="legacy_transfer_tap_to_open">اضغط لفتح أدوات النقل المتاحة.</string>
     <string name="legacy_wifi_waiting_for_sender">متصل بوصفك مستقبِلًا. يمكن للجهاز المتصل إرسال نص إلى هذا الجهاز.</string>
     <string name="legacy_beam_text_received">تم استلام النص عبر Android Beam.</string>
+    <string name="server_status_running">الخادم قيد التشغيل</string>
+    <string name="server_status_stopped">الخادم متوقف</string>
+    <string name="server_status_error">خطأ: %1$s</string>
+    <string name="onion_transfer_content_title">محتوى للمشاركة</string>
+    <string name="ftp_port_hint">المنفذ</string>
+    <string name="ftp_username_hint">اسم المستخدم</string>
+    <string name="ftp_password_hint">كلمة المرور</string>
+    <string name="transfer_error_directory_path">تعذر الوصول إلى المجلد المحدد.</string>
+    <string name="transfer_error_folder_unsupported">لا يمكن استخدام هذا المجلد مباشرةً بواسطة هذا الخادم.</string>
+    <string name="transfer_error_invalid_port">أدخل منفذًا صالحًا.</string>
+    <string name="transfer_error_port_range">يجب أن يكون المنفذ بين 1025 و65535.</string>
+    <string name="transfer_error_credentials_required">اسم المستخدم وكلمة المرور مطلوبان.</string>
+    <string name="onion_error_tor_timeout">لم يستجب Tor في الوقت المحدد. تحقق من إمكانية تشغيل Tor على هذا الجهاز.</string>
+    <string name="onion_error_qr">تعذر إنشاء رمز QR.</string>
+    <string name="onion_error_file_open">تعذر فتح الملف المحدد.</string>
+    <string name="onion_transfer_clear_files">إزالة الملفات المحددة</string>
+    <string name="onion_transfer_clear_text">مسح النص المُدخل</string>
+    <string name="onion_transfer_ready_to_start">جاهز للبدء.</string>
+    <string name="onion_transfer_qr_content_description">رمز QR لخدمة Onion</string>
+    <string name="onion_transfer_link_copied">تم نسخ الرابط.</string>
+    <string name="onion_transfer_prepare_file_error">تعذر تجهيز الملف: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d ملف(ات) ونص جاهز للمشاركة.</string>
+    <string name="onion_transfer_summary_files">%1$d ملف(ات) جاهز للمشاركة.</string>
+    <string name="onion_transfer_summary_text">النص جاهز للمشاركة.</string>
+    <string name="ftp_stopping">جارٍ إيقاف الخادم…</string>
 </resources>

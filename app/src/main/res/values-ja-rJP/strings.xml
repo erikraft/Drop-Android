@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">このアプリについて</string>
     <string name="title_activity_about">ErikrafT Drop™について</string>
+    <string name="about_open_website">ウェブサイトへ</string>
     <string name="pref_about_title">このアプリについて</string>
     <string name="view_downloads">ダウンロードを表示</string>
     <string name="pref_category_settings">設定</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">タップして利用可能な転送ツールを開きます。</string>
     <string name="legacy_wifi_waiting_for_sender">受信側として接続しました。接続中の相手デバイスからこのデバイスへテキストを送信できます。</string>
     <string name="legacy_beam_text_received">Android Beam 経由でテキストを受信しました。</string>
+    <string name="server_status_running">サーバー実行中</string>
+    <string name="server_status_stopped">サーバー停止中</string>
+    <string name="server_status_error">エラー: %1$s</string>
+    <string name="onion_transfer_content_title">共有するコンテンツ</string>
+    <string name="ftp_port_hint">ポート</string>
+    <string name="ftp_username_hint">ユーザー名</string>
+    <string name="ftp_password_hint">パスワード</string>
+    <string name="transfer_error_directory_path">選択したフォルダーにアクセスできません。</string>
+    <string name="transfer_error_folder_unsupported">このフォルダーはこのサーバーから直接使用できません。</string>
+    <string name="transfer_error_invalid_port">有効なポートを入力してください。</string>
+    <string name="transfer_error_port_range">ポートは1025～65535の範囲で指定してください。</string>
+    <string name="transfer_error_credentials_required">ユーザー名とパスワードは必須です。</string>
+    <string name="onion_error_tor_timeout">Torが時間内に応答しませんでした。この端末でTorを実行できるか確認してください。</string>
+    <string name="onion_error_qr">QRコードを生成できませんでした。</string>
+    <string name="onion_error_file_open">選択したファイルを開けませんでした。</string>
+    <string name="onion_transfer_clear_files">選択したファイルを削除</string>
+    <string name="onion_transfer_clear_text">入力したテキストを消去</string>
+    <string name="onion_transfer_ready_to_start">開始する準備ができました。</string>
+    <string name="onion_transfer_qr_content_description">OnionサービスのQRコード</string>
+    <string name="onion_transfer_link_copied">リンクをコピーしました。</string>
+    <string name="onion_transfer_prepare_file_error">ファイルを準備できませんでした: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d個のファイルとテキストを共有できます。</string>
+    <string name="onion_transfer_summary_files">%1$d個のファイルを共有できます。</string>
+    <string name="onion_transfer_summary_text">テキストを共有できます。</string>
 </resources>

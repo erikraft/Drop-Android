@@ -123,7 +123,7 @@
         app:iconSpaceReserved="false">
         <Preference
             android:key="legacy_nfc_beam"
-            android:icon="@drawable/ic_nfc"
+            android:icon="@drawable/ic_android_beam"
             android:title="@string/legacy_nfc_title"
             android:summary="@string/legacy_transfer_checking" />
         <Preference

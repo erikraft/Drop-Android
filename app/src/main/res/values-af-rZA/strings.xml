@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Oor</string>
     <string name="title_activity_about">Oor ErikrafT Drop™</string>
+    <string name="about_open_website">Gaan na webwerf</string>
     <string name="pref_about_title">Oor hierdie toepassing</string>
     <string name="view_downloads">Bekyk aflaaie</string>
     <string name="pref_category_settings">Instellings</string>
@@ -258,4 +259,29 @@
     <string name="legacy_transfer_tap_to_open">Tik om die beskikbare oordragnutsgoed oop te maak.</string>
     <string name="legacy_wifi_waiting_for_sender">Gekoppel as ontvanger. Die gekoppelde toestel kan teks na hierdie toestel stuur.</string>
     <string name="legacy_beam_text_received">Teks via Android Beam ontvang.</string>
+    <string name="server_status_running">Bediener loop</string>
+    <string name="server_status_stopped">Bediener gestop</string>
+    <string name="server_status_error">Fout: %1$s</string>
+    <string name="onion_transfer_content_title">Inhoud om te deel</string>
+    <string name="ftp_port_hint">Poort</string>
+    <string name="ftp_username_hint">Gebruikersnaam</string>
+    <string name="ftp_password_hint">Wagwoord</string>
+    <string name="transfer_error_directory_path">Kon nie die gekose vouer oopmaak nie.</string>
+    <string name="transfer_error_folder_unsupported">Hierdie vouer kan nie direk deur hierdie bediener gebruik word nie.</string>
+    <string name="transfer_error_invalid_port">Voer ’n geldige poort in.</string>
+    <string name="transfer_error_port_range">Poort moet tussen 1025 en 65535 wees.</string>
+    <string name="transfer_error_credentials_required">Gebruikersnaam en wagwoord is verpligtend.</string>
+    <string name="onion_error_tor_timeout">Tor het nie betyds gereageer nie. Kontroleer of Tor op hierdie toestel kan loop.</string>
+    <string name="onion_error_qr">Kon nie die QR-kode genereer nie.</string>
+    <string name="onion_error_file_open">Kon nie die gekose lêer oopmaak nie.</string>
+    <string name="onion_transfer_clear_files">Verwyder geselekteerde lêers</string>
+    <string name="onion_transfer_clear_text">Maak ingevoerde teks skoon</string>
+    <string name="onion_transfer_ready_to_start">Gereed om te begin.</string>
+    <string name="onion_transfer_qr_content_description">Onion-diens QR-kode</string>
+    <string name="onion_transfer_link_copied">Skakel gekopieer.</string>
+    <string name="onion_transfer_prepare_file_error">Kon nie lêer voorberei nie: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d lêer(s) en teks gereed om te deel.</string>
+    <string name="onion_transfer_summary_files">%1$d lêer(s) gereed om te deel.</string>
+    <string name="onion_transfer_summary_text">Teks gereed om te deel.</string>
+    <string name="ftp_stopping">Bediener word gestop…</string>
 </resources>

@@ -41,7 +41,8 @@
     <string name="retry">Покушај поново</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">О апликацији</string>
-    <string name="title_activity_about">О ErikrafT Drop™</string>
+    <string name="title_activity_about">О апликацији ErikrafT Drop™</string>
+    <string name="about_open_website">Иди на веб-сајт</string>
     <string name="pref_about_title">О овој апликацији</string>
     <string name="view_downloads">Прикажи преузимања</string>
     <string name="pref_category_settings">Подешавања</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Dodirnite da otvorite dostupne alate za prenos.</string>
     <string name="legacy_wifi_waiting_for_sender">Povezano kao primalac. Povezani uređaj može da pošalje tekst ovom uređaju.</string>
     <string name="legacy_beam_text_received">Tekst je primljen putem Android Beam-a.</string>
+    <string name="server_status_running">Сервер ради</string>
+    <string name="server_status_stopped">Сервер је заустављен</string>
+    <string name="server_status_error">Грешка: %1$s</string>
+    <string name="onion_transfer_content_title">Садржај за дељење</string>
+    <string name="ftp_port_hint">Порт</string>
+    <string name="ftp_username_hint">Корисничко име</string>
+    <string name="ftp_password_hint">Лозинка</string>
+    <string name="transfer_error_directory_path">Није могуће приступити изабраној фасцикли.</string>
+    <string name="transfer_error_folder_unsupported">Овај сервер не може директно да користи ову фасциклу.</string>
+    <string name="transfer_error_invalid_port">Унесите исправан порт.</string>
+    <string name="transfer_error_port_range">Порт мора бити између 1025 и 65535.</string>
+    <string name="transfer_error_credentials_required">Корисничко име и лозинка су обавезни.</string>
+    <string name="onion_error_tor_timeout">Tor није одговорио на време. Проверите да ли Tor може да ради на овом уређају.</string>
+    <string name="onion_error_qr">Није могуће направити QR код.</string>
+    <string name="onion_error_file_open">Није могуће отворити изабрану датотеку.</string>
+    <string name="onion_transfer_clear_files">Уклони изабране датотеке</string>
+    <string name="onion_transfer_clear_text">Обриши унети текст</string>
+    <string name="onion_transfer_ready_to_start">Спремно за покретање.</string>
+    <string name="onion_transfer_qr_content_description">QR код Onion услуге</string>
+    <string name="onion_transfer_link_copied">Веза је копирана.</string>
+    <string name="onion_transfer_prepare_file_error">Припрема датотеке није успела: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d датотека и текст су спремни за дељење.</string>
+    <string name="onion_transfer_summary_files">%1$d датотека је спремно за дељење.</string>
+    <string name="onion_transfer_summary_text">Текст је спреман за дељење.</string>
 </resources>

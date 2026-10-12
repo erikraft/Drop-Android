@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Informações sobre o \'app\'</string>
     <string name="title_activity_about">Sobre o ErikrafT Drop™</string>
+    <string name="about_open_website">Ir para o site</string>
     <string name="pref_about_title">Sobre este \'app\'</string>
     <string name="view_downloads">Ver downloads</string>
     <string name="pref_category_settings">Configurações</string>
@@ -260,4 +261,28 @@
     
     
     
+    <string name="server_status_running">Servidor ativo</string>
+    <string name="server_status_stopped">Servidor parado</string>
+    <string name="server_status_error">Falha: %1$s</string>
+    <string name="onion_transfer_content_title">Conteúdo para compartilhar</string>
+    <string name="ftp_port_hint">Porta</string>
+    <string name="ftp_username_hint">Nome de usuário</string>
+    <string name="ftp_password_hint">Senha</string>
+    <string name="transfer_error_directory_path">Não foi possível acessar a pasta selecionada.</string>
+    <string name="transfer_error_folder_unsupported">Esta pasta não pode ser usada diretamente por este servidor.</string>
+    <string name="transfer_error_invalid_port">Informe uma porta válida.</string>
+    <string name="transfer_error_port_range">A porta deve estar entre 1025 e 65535.</string>
+    <string name="transfer_error_credentials_required">Nome de usuário e senha são obrigatórios.</string>
+    <string name="onion_error_tor_timeout">O Tor não respondeu a tempo. Verifique se o Tor pode ser executado neste dispositivo.</string>
+    <string name="onion_error_qr">Não foi possível gerar o código QR.</string>
+    <string name="onion_error_file_open">Não foi possível abrir o arquivo selecionado.</string>
+    <string name="onion_transfer_clear_files">Remover arquivos selecionados</string>
+    <string name="onion_transfer_clear_text">Limpar texto digitado</string>
+    <string name="onion_transfer_ready_to_start">Pronto para iniciar.</string>
+    <string name="onion_transfer_qr_content_description">Código QR do serviço Onion</string>
+    <string name="onion_transfer_link_copied">Link copiado.</string>
+    <string name="onion_transfer_prepare_file_error">Falha ao preparar arquivo: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d arquivo(s) e texto prontos para compartilhar.</string>
+    <string name="onion_transfer_summary_files">%1$d arquivo(s) prontos para compartilhar.</string>
+    <string name="onion_transfer_summary_text">Texto pronto para compartilhar.</string>
 </resources>

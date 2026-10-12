@@ -41,7 +41,8 @@
     <string name="retry">Опитай отново</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Информация</string>
-    <string name="title_activity_about">Информация за ErikrafT Drop™</string>
+    <string name="title_activity_about">За ErikrafT Drop™</string>
+    <string name="about_open_website">Към уебсайта</string>
     <string name="pref_about_title">За приложението</string>
     <string name="view_downloads">Преглед на изтеглянията</string>
     <string name="pref_category_settings">Настройки</string>
@@ -258,4 +259,29 @@
     <string name="legacy_transfer_tap_to_open">Докоснете, за да отворите наличните инструменти за прехвърляне.</string>
     <string name="legacy_wifi_waiting_for_sender">Свързано като получател. Свързаното устройство може да изпрати текст до това устройство.</string>
     <string name="legacy_beam_text_received">Получен е текст чрез Android Beam.</string>
+    <string name="server_status_running">Сървърът работи</string>
+    <string name="server_status_stopped">Сървърът е спрян</string>
+    <string name="server_status_error">Грешка: %1$s</string>
+    <string name="onion_transfer_content_title">Съдържание за споделяне</string>
+    <string name="ftp_port_hint">Порт</string>
+    <string name="ftp_username_hint">Потребителско име</string>
+    <string name="ftp_password_hint">Парола</string>
+    <string name="transfer_error_directory_path">Неуспешен достъп до избраната папка.</string>
+    <string name="transfer_error_folder_unsupported">Тази папка не може да се използва директно от този сървър.</string>
+    <string name="transfer_error_invalid_port">Въведете валиден порт.</string>
+    <string name="transfer_error_port_range">Портът трябва да е между 1025 и 65535.</string>
+    <string name="transfer_error_credentials_required">Потребителското име и паролата са задължителни.</string>
+    <string name="onion_error_tor_timeout">Tor не отговори навреме. Проверете дали Tor може да работи на това устройство.</string>
+    <string name="onion_error_qr">Неуспешно генериране на QR код.</string>
+    <string name="onion_error_file_open">Избраният файл не може да бъде отворен.</string>
+    <string name="onion_transfer_clear_files">Премахване на избраните файлове</string>
+    <string name="onion_transfer_clear_text">Изчистване на въведения текст</string>
+    <string name="onion_transfer_ready_to_start">Готово за стартиране.</string>
+    <string name="onion_transfer_qr_content_description">QR код на Onion услугата</string>
+    <string name="onion_transfer_link_copied">Връзката е копирана.</string>
+    <string name="onion_transfer_prepare_file_error">Неуспешна подготовка на файла: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d файл(а) и текст са готови за споделяне.</string>
+    <string name="onion_transfer_summary_files">%1$d файл(а) са готови за споделяне.</string>
+    <string name="onion_transfer_summary_text">Текстът е готов за споделяне.</string>
+    <string name="ftp_stopping">Спиране на сървъра…</string>
 </resources>

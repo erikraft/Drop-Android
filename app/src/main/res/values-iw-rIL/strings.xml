@@ -41,7 +41,8 @@
     <string name="retry">ניסיון חוזר</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">מידע</string>
-    <string name="title_activity_about">מידע על ErikrafT Drop™</string>
+    <string name="title_activity_about">אודות ErikrafT Drop™</string>
+    <string name="about_open_website">מעבר לאתר</string>
     <string name="pref_about_title">מידע על האפליקציה</string>
     <string name="view_downloads">הצגת הורדות</string>
     <string name="pref_category_settings">הגדרות</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">הקישו לפתיחת כלי ההעברה הזמינים.</string>
     <string name="legacy_wifi_waiting_for_sender">מחובר כמקבל. המכשיר המחובר יכול לשלוח טקסט למכשיר זה.</string>
     <string name="legacy_beam_text_received">התקבל טקסט דרך Android Beam.</string>
+    <string name="server_status_running">השרת פועל</string>
+    <string name="server_status_stopped">השרת נעצר</string>
+    <string name="server_status_error">שגיאה: %1$s</string>
+    <string name="onion_transfer_content_title">תוכן לשיתוף</string>
+    <string name="ftp_port_hint">יציאה</string>
+    <string name="ftp_username_hint">שם משתמש</string>
+    <string name="ftp_password_hint">סיסמה</string>
+    <string name="transfer_error_directory_path">לא ניתן לגשת לתיקייה שנבחרה.</string>
+    <string name="transfer_error_folder_unsupported">לא ניתן להשתמש בתיקייה זו ישירות עם השרת הזה.</string>
+    <string name="transfer_error_invalid_port">יש להזין יציאה תקינה.</string>
+    <string name="transfer_error_port_range">היציאה חייבת להיות בין 1025 ל־65535.</string>
+    <string name="transfer_error_credentials_required">שם משתמש וסיסמה הם חובה.</string>
+    <string name="onion_error_tor_timeout">Tor לא הגיב בזמן. יש לבדוק אם ניתן להפעיל את Tor במכשיר הזה.</string>
+    <string name="onion_error_qr">לא ניתן ליצור קוד QR.</string>
+    <string name="onion_error_file_open">לא ניתן לפתוח את הקובץ שנבחר.</string>
+    <string name="onion_transfer_clear_files">הסרת קבצים שנבחרו</string>
+    <string name="onion_transfer_clear_text">ניקוי הטקסט שהוזן</string>
+    <string name="onion_transfer_ready_to_start">מוכן להתחלה.</string>
+    <string name="onion_transfer_qr_content_description">קוד QR של שירות Onion</string>
+    <string name="onion_transfer_link_copied">הקישור הועתק.</string>
+    <string name="onion_transfer_prepare_file_error">הכנת הקובץ נכשלה: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d קבצים וטקסט מוכנים לשיתוף.</string>
+    <string name="onion_transfer_summary_files">%1$d קבצים מוכנים לשיתוף.</string>
+    <string name="onion_transfer_summary_text">הטקסט מוכן לשיתוף.</string>
 </resources>

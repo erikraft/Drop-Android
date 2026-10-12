@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">O aplikaciji</string>
     <string name="title_activity_about">O aplikaciji ErikrafT Drop™</string>
+    <string name="about_open_website">Pojdi na spletno mesto</string>
     <string name="pref_about_title">O tej aplikaciji</string>
     <string name="view_downloads">Prikaži prenose</string>
     <string name="pref_category_settings">Nastavitve</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Tapnite, da odprete razpoložljiva orodja za prenos.</string>
     <string name="legacy_wifi_waiting_for_sender">Povezano kot prejemnik. Povezana naprava lahko pošlje besedilo tej napravi.</string>
     <string name="legacy_beam_text_received">Besedilo prejeto prek Android Beam.</string>
+    <string name="server_status_running">Strežnik deluje</string>
+    <string name="server_status_stopped">Strežnik ustavljen</string>
+    <string name="server_status_error">Napaka: %1$s</string>
+    <string name="onion_transfer_content_title">Vsebina za skupno rabo</string>
+    <string name="ftp_port_hint">Vrata</string>
+    <string name="ftp_username_hint">Uporabniško ime</string>
+    <string name="ftp_password_hint">Geslo</string>
+    <string name="transfer_error_directory_path">Dostop do izbrane mape ni mogoc.</string>
+    <string name="transfer_error_folder_unsupported">Te mape ta streznik ne more uporabljati neposredno.</string>
+    <string name="transfer_error_invalid_port">Vnesite veljavna vrata.</string>
+    <string name="transfer_error_port_range">Vrata morajo biti med 1025 in 65535.</string>
+    <string name="transfer_error_credentials_required">Uporabnisko ime in geslo sta obvezna.</string>
+    <string name="onion_error_tor_timeout">Tor se ni odzval pravočasno. Preverite, ali lahko Tor deluje v tej napravi.</string>
+    <string name="onion_error_qr">Kode QR ni bilo mogoce ustvariti.</string>
+    <string name="onion_error_file_open">Izbrane datoteke ni bilo mogoce odpreti.</string>
+    <string name="onion_transfer_clear_files">Odstrani izbrane datoteke</string>
+    <string name="onion_transfer_clear_text">Počisti vneseno besedilo</string>
+    <string name="onion_transfer_ready_to_start">Pripravljeno za zagon.</string>
+    <string name="onion_transfer_qr_content_description">QR-koda storitve Onion</string>
+    <string name="onion_transfer_link_copied">Povezava je kopirana.</string>
+    <string name="onion_transfer_prepare_file_error">Datoteke ni bilo mogoče pripraviti: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d datotek in besedilo je pripravljenih za skupno rabo.</string>
+    <string name="onion_transfer_summary_files">%1$d datotek je pripravljenih za skupno rabo.</string>
+    <string name="onion_transfer_summary_text">Besedilo je pripravljeno za skupno rabo.</string>
 </resources>

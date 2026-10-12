@@ -41,7 +41,8 @@
     <string name="retry">Повторить попытку</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">О сервисе</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">О приложении ErikrafT Drop™</string>
+    <string name="about_open_website">Перейти на сайт</string>
     <string name="pref_about_title">Об этом приложении</string>
     <string name="view_downloads">Просмотреть загрузки</string>
     <string name="pref_category_settings">Настройки</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Нажмите, чтобы открыть доступные инструменты передачи.</string>
     <string name="legacy_wifi_waiting_for_sender">Подключено в качестве получателя. Подключённое устройство может отправлять текст на это устройство.</string>
     <string name="legacy_beam_text_received">Текст получен через Android Beam.</string>
+    <string name="server_status_running">Сервер работает</string>
+    <string name="server_status_stopped">Сервер остановлен</string>
+    <string name="server_status_error">Ошибка: %1$s</string>
+    <string name="onion_transfer_content_title">Содержимое для отправки</string>
+    <string name="ftp_port_hint">Порт</string>
+    <string name="ftp_username_hint">Имя пользователя</string>
+    <string name="ftp_password_hint">Пароль</string>
+    <string name="transfer_error_directory_path">Не удалось получить доступ к выбранной папке.</string>
+    <string name="transfer_error_folder_unsupported">Этот сервер не может напрямую использовать эту папку.</string>
+    <string name="transfer_error_invalid_port">Введите допустимый порт.</string>
+    <string name="transfer_error_port_range">Порт должен быть от 1025 до 65535.</string>
+    <string name="transfer_error_credentials_required">Имя пользователя и пароль обязательны.</string>
+    <string name="onion_error_tor_timeout">Tor не ответил вовремя. Проверьте, можно ли запустить Tor на этом устройстве.</string>
+    <string name="onion_error_qr">Не удалось создать QR-код.</string>
+    <string name="onion_error_file_open">Не удалось открыть выбранный файл.</string>
+    <string name="onion_transfer_clear_files">Удалить выбранные файлы</string>
+    <string name="onion_transfer_clear_text">Очистить введённый текст</string>
+    <string name="onion_transfer_ready_to_start">Готово к запуску.</string>
+    <string name="onion_transfer_qr_content_description">QR-код Onion-сервиса</string>
+    <string name="onion_transfer_link_copied">Ссылка скопирована.</string>
+    <string name="onion_transfer_prepare_file_error">Не удалось подготовить файл: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d файл(ов) и текст готовы к отправке.</string>
+    <string name="onion_transfer_summary_files">%1$d файл(ов) готовы к отправке.</string>
+    <string name="onion_transfer_summary_text">Текст готов к отправке.</string>
 </resources>

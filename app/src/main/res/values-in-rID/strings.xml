@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Tentang</string>
     <string name="title_activity_about">Tentang ErikrafT Drop™</string>
+    <string name="about_open_website">Buka situs web</string>
     <string name="pref_about_title">Tentang aplikasi ini</string>
     <string name="view_downloads">Lihat unduhan</string>
     <string name="pref_category_settings">Pengaturan</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Ketuk untuk membuka alat transfer yang tersedia.</string>
     <string name="legacy_wifi_waiting_for_sender">Terhubung sebagai penerima. Perangkat yang terhubung dapat mengirim teks ke perangkat ini.</string>
     <string name="legacy_beam_text_received">Teks diterima melalui Android Beam.</string>
+    <string name="server_status_running">Server berjalan</string>
+    <string name="server_status_stopped">Server berhenti</string>
+    <string name="server_status_error">Kesalahan: %1$s</string>
+    <string name="onion_transfer_content_title">Konten untuk dibagikan</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Nama pengguna</string>
+    <string name="ftp_password_hint">Kata sandi</string>
+    <string name="transfer_error_directory_path">Folder yang dipilih tidak dapat diakses.</string>
+    <string name="transfer_error_folder_unsupported">Folder ini tidak dapat digunakan langsung oleh server ini.</string>
+    <string name="transfer_error_invalid_port">Masukkan port yang valid.</string>
+    <string name="transfer_error_port_range">Port harus antara 1025 dan 65535.</string>
+    <string name="transfer_error_credentials_required">Nama pengguna dan kata sandi wajib diisi.</string>
+    <string name="onion_error_tor_timeout">Tor tidak merespons tepat waktu. Periksa apakah Tor dapat berjalan di perangkat ini.</string>
+    <string name="onion_error_qr">Kode QR tidak dapat dibuat.</string>
+    <string name="onion_error_file_open">File yang dipilih tidak dapat dibuka.</string>
+    <string name="onion_transfer_clear_files">Hapus file yang dipilih</string>
+    <string name="onion_transfer_clear_text">Hapus teks yang dimasukkan</string>
+    <string name="onion_transfer_ready_to_start">Siap dimulai.</string>
+    <string name="onion_transfer_qr_content_description">Kode QR layanan Onion</string>
+    <string name="onion_transfer_link_copied">Tautan disalin.</string>
+    <string name="onion_transfer_prepare_file_error">Gagal menyiapkan file: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d file dan teks siap dibagikan.</string>
+    <string name="onion_transfer_summary_files">%1$d file siap dibagikan.</string>
+    <string name="onion_transfer_summary_text">Teks siap dibagikan.</string>
 </resources>

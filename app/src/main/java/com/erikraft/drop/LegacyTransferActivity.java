@@ -109,6 +109,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         final boolean beamAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && nfcAdapter != null;
         beamButton.setEnabled(beamAvailable);
+        beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
         if (!beamAvailable) beamButton.setText(R.string.legacy_beam_unavailable);
         beamButton.setOnClickListener(v -> shareWithBeam());
         writeTag.setOnClickListener(v -> status.setText(R.string.legacy_nfc_tap_tag));
@@ -122,9 +123,13 @@ public final class LegacyTransferActivity extends DropPipActivity {
 
     private void initWifiDirect() {
         wifiManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
-        if (wifiManager == null) {
+        final boolean hasWifiDirect = getPackageManager()
+                .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
+        if (wifiManager == null || !hasWifiDirect) {
             status.setText(R.string.legacy_wifi_unavailable);
+            discoverButton.setText(R.string.legacy_wifi_unavailable);
             discoverButton.setEnabled(false);
+            discoverButton.setAlpha(0.55f);
             return;
         }
         wifiChannel = wifiManager.initialize(this, getMainLooper(), null);

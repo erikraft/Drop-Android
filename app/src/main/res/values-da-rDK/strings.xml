@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Om</string>
     <string name="title_activity_about">Om ErikrafT Drop™</string>
+    <string name="about_open_website">Gå til webstedet</string>
     <string name="pref_about_title">Om denne app</string>
     <string name="view_downloads">Vis downloads</string>
     <string name="pref_category_settings">Indstillinger</string>
@@ -258,4 +259,28 @@
     <string name="legacy_transfer_tap_to_open">Tryk for at åbne de tilgængelige overførselsværktøjer.</string>
     <string name="legacy_wifi_waiting_for_sender">Forbundet som modtager. Den tilsluttede enhed kan sende tekst til denne enhed.</string>
     <string name="legacy_beam_text_received">Tekst modtaget via Android Beam.</string>
+    <string name="server_status_running">Serveren kører</string>
+    <string name="server_status_stopped">Server stoppet</string>
+    <string name="server_status_error">Fejl: %1$s</string>
+    <string name="onion_transfer_content_title">Indhold til deling</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Brugernavn</string>
+    <string name="ftp_password_hint">Adgangskode</string>
+    <string name="transfer_error_directory_path">Kunne ikke få adgang til den valgte mappe.</string>
+    <string name="transfer_error_folder_unsupported">Denne mappe kan ikke bruges direkte af denne server.</string>
+    <string name="transfer_error_invalid_port">Angiv en gyldig port.</string>
+    <string name="transfer_error_port_range">Porten skal være mellem 1025 og 65535.</string>
+    <string name="transfer_error_credentials_required">Brugernavn og adgangskode er påkrævet.</string>
+    <string name="onion_error_tor_timeout">Tor svarede ikke i tide. Kontrollér, om Tor kan køre på denne enhed.</string>
+    <string name="onion_error_qr">Kunne ikke generere QR-koden.</string>
+    <string name="onion_error_file_open">Kunne ikke åbne den valgte fil.</string>
+    <string name="onion_transfer_clear_files">Fjern valgte filer</string>
+    <string name="onion_transfer_clear_text">Ryd indtastet tekst</string>
+    <string name="onion_transfer_ready_to_start">Klar til at starte.</string>
+    <string name="onion_transfer_qr_content_description">QR-kode til Onion-tjenesten</string>
+    <string name="onion_transfer_link_copied">Link kopieret.</string>
+    <string name="onion_transfer_prepare_file_error">Kunne ikke klargøre filen: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fil(er) og tekst er klar til deling.</string>
+    <string name="onion_transfer_summary_files">%1$d fil(er) er klar til deling.</string>
+    <string name="onion_transfer_summary_text">Tekst klar til deling.</string>
 </resources>

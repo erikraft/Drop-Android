@@ -41,7 +41,8 @@
     <string name="retry">retry</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Om</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Om ErikrafT Drop™</string>
+    <string name="about_open_website">Gå till webbplatsen</string>
     <string name="pref_about_title">Om denna app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Inställningar</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Tryck för att öppna tillgängliga överföringsverktyg.</string>
     <string name="legacy_wifi_waiting_for_sender">Ansluten som mottagare. Den anslutna enheten kan skicka text till den här enheten.</string>
     <string name="legacy_beam_text_received">Text mottagen via Android Beam.</string>
+    <string name="server_status_running">Servern körs</string>
+    <string name="server_status_stopped">Servern är stoppad</string>
+    <string name="server_status_error">Fel: %1$s</string>
+    <string name="onion_transfer_content_title">Innehåll att dela</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Användarnamn</string>
+    <string name="ftp_password_hint">Lösenord</string>
+    <string name="transfer_error_directory_path">Det gick inte att komma åt den valda mappen.</string>
+    <string name="transfer_error_folder_unsupported">Den här mappen kan inte användas direkt av den här servern.</string>
+    <string name="transfer_error_invalid_port">Ange en giltig port.</string>
+    <string name="transfer_error_port_range">Porten måste vara mellan 1025 och 65535.</string>
+    <string name="transfer_error_credentials_required">Användarnamn och lösenord krävs.</string>
+    <string name="onion_error_tor_timeout">Tor svarade inte i tid. Kontrollera om Tor kan köras på den här enheten.</string>
+    <string name="onion_error_qr">Det gick inte att skapa QR-koden.</string>
+    <string name="onion_error_file_open">Det gick inte att öppna den valda filen.</string>
+    <string name="onion_transfer_clear_files">Ta bort valda filer</string>
+    <string name="onion_transfer_clear_text">Rensa inmatad text</string>
+    <string name="onion_transfer_ready_to_start">Klar att starta.</string>
+    <string name="onion_transfer_qr_content_description">QR-kod för Onion-tjänsten</string>
+    <string name="onion_transfer_link_copied">Länk kopierad.</string>
+    <string name="onion_transfer_prepare_file_error">Det gick inte att förbereda filen: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fil(er) och text är redo att delas.</string>
+    <string name="onion_transfer_summary_files">%1$d fil(er) är redo att delas.</string>
+    <string name="onion_transfer_summary_text">Texten är redo att delas.</string>
 </resources>

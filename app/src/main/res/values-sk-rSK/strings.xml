@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Informácie</string>
     <string name="title_activity_about">O aplikácii ErikrafT Drop™</string>
+    <string name="about_open_website">Prejsť na web</string>
     <string name="pref_about_title">O tejto aplikácii</string>
     <string name="view_downloads">Zobraziť stiahnuté súbory</string>
     <string name="pref_category_settings">Nastavenia</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Klepnutím otvorte dostupné nástroje prenosu.</string>
     <string name="legacy_wifi_waiting_for_sender">Pripojené ako prijímač. Pripojené zariadenie môže odoslať text do tohto zariadenia.</string>
     <string name="legacy_beam_text_received">Text bol prijatý cez Android Beam.</string>
+    <string name="server_status_running">Server beží</string>
+    <string name="server_status_stopped">Server zastavený</string>
+    <string name="server_status_error">Chyba: %1$s</string>
+    <string name="onion_transfer_content_title">Obsah na zdieľanie</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Používateľské meno</string>
+    <string name="ftp_password_hint">Heslo</string>
+    <string name="transfer_error_directory_path">Nepodarilo sa ziskat pristup k vybranemu priecinku.</string>
+    <string name="transfer_error_folder_unsupported">Tento server nemoze tento priecinok pouzivat priamo.</string>
+    <string name="transfer_error_invalid_port">Zadajte platny port.</string>
+    <string name="transfer_error_port_range">Port musi byt v rozsahu 1025 az 65535.</string>
+    <string name="transfer_error_credentials_required">Pouzivatelske meno a heslo su povinne.</string>
+    <string name="onion_error_tor_timeout">Tor neodpovedal nacas. Overte, ci mozno Tor spustit na tomto zariadeni.</string>
+    <string name="onion_error_qr">QR kod sa nepodarilo vytvorit.</string>
+    <string name="onion_error_file_open">Vybrany subor sa nepodarilo otvorit.</string>
+    <string name="onion_transfer_clear_files">Odstrániť vybraté súbory</string>
+    <string name="onion_transfer_clear_text">Vymazať zadaný text</string>
+    <string name="onion_transfer_ready_to_start">Pripravené na spustenie.</string>
+    <string name="onion_transfer_qr_content_description">QR kód služby Onion</string>
+    <string name="onion_transfer_link_copied">Odkaz bol skopírovaný.</string>
+    <string name="onion_transfer_prepare_file_error">Súbor sa nepodarilo pripraviť: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d súbor(y) a text sú pripravené na zdieľanie.</string>
+    <string name="onion_transfer_summary_files">%1$d súbor(y) sú pripravené na zdieľanie.</string>
+    <string name="onion_transfer_summary_text">Text je pripravený na zdieľanie.</string>
 </resources>

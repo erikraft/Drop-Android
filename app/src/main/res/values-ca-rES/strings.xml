@@ -41,7 +41,8 @@
     <string name="retry">torna-ho a intentar</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Quant a</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Quant a ErikrafT Drop™</string>
+    <string name="about_open_website">Ves al lloc web</string>
     <string name="pref_about_title">Quant a aquesta aplicació</string>
     <string name="view_downloads">Mostra les baixades</string>
     <string name="pref_category_settings">Configuració</string>
@@ -258,4 +259,29 @@
     <string name="legacy_transfer_tap_to_open">Toca per obrir les eines de transferència disponibles.</string>
     <string name="legacy_wifi_waiting_for_sender">Connectat com a receptor. El dispositiu connectat pot enviar text a aquest dispositiu.</string>
     <string name="legacy_beam_text_received">Text rebut mitjançant Android Beam.</string>
+    <string name="server_status_running">Servidor en funcionament</string>
+    <string name="server_status_stopped">Servidor aturat</string>
+    <string name="server_status_error">Error: %1$s</string>
+    <string name="onion_transfer_content_title">Contingut per compartir</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Nom d’usuari</string>
+    <string name="ftp_password_hint">Contrasenya</string>
+    <string name="transfer_error_directory_path">No s’ha pogut accedir a la carpeta seleccionada.</string>
+    <string name="transfer_error_folder_unsupported">Aquesta carpeta no es pot utilitzar directament amb aquest servidor.</string>
+    <string name="transfer_error_invalid_port">Introdueix un port vàlid.</string>
+    <string name="transfer_error_port_range">El port ha d’estar entre 1025 i 65535.</string>
+    <string name="transfer_error_credentials_required">El nom d’usuari i la contrasenya són obligatoris.</string>
+    <string name="onion_error_tor_timeout">Tor no ha respost a temps. Comprova si Tor es pot executar en aquest dispositiu.</string>
+    <string name="onion_error_qr">No s’ha pogut generar el codi QR.</string>
+    <string name="onion_error_file_open">No s’ha pogut obrir el fitxer seleccionat.</string>
+    <string name="onion_transfer_clear_files">Suprimeix els fitxers seleccionats</string>
+    <string name="onion_transfer_clear_text">Esborra el text introduït</string>
+    <string name="onion_transfer_ready_to_start">A punt per començar.</string>
+    <string name="onion_transfer_qr_content_description">Codi QR del servei Onion</string>
+    <string name="onion_transfer_link_copied">Enllaç copiat.</string>
+    <string name="onion_transfer_prepare_file_error">No s’ha pogut preparar el fitxer: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fitxer(s) i text a punt per compartir.</string>
+    <string name="onion_transfer_summary_files">%1$d fitxer(s) a punt per compartir.</string>
+    <string name="onion_transfer_summary_text">Text a punt per compartir.</string>
+    <string name="ftp_stopping">S’està aturant el servidor…</string>
 </resources>

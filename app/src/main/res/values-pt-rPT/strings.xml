@@ -41,7 +41,8 @@
     <string name="retry">retry</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Acerca do ErikrafT Drop™</string>
+    <string name="about_open_website">Ir para o site</string>
     <string name="pref_about_title">About this app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Configurações</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Toque para abrir as ferramentas de transferência disponíveis.</string>
     <string name="legacy_wifi_waiting_for_sender">Ligado como recetor. O dispositivo ligado pode enviar texto para este dispositivo.</string>
     <string name="legacy_beam_text_received">Texto recebido através de Android Beam.</string>
+    <string name="server_status_running">Servidor em execução</string>
+    <string name="server_status_stopped">Servidor parado</string>
+    <string name="server_status_error">Erro: %1$s</string>
+    <string name="onion_transfer_content_title">Conteúdo para partilhar</string>
+    <string name="ftp_port_hint">Porto</string>
+    <string name="ftp_username_hint">Nome de utilizador</string>
+    <string name="ftp_password_hint">Palavra-passe</string>
+    <string name="transfer_error_directory_path">Nao foi possivel aceder a pasta selecionada.</string>
+    <string name="transfer_error_folder_unsupported">Esta pasta nao pode ser utilizada diretamente por este servidor.</string>
+    <string name="transfer_error_invalid_port">Introduza uma porta valida.</string>
+    <string name="transfer_error_port_range">A porta tem de estar entre 1025 e 65535.</string>
+    <string name="transfer_error_credentials_required">Nome de utilizador e palavra-passe sao obrigatorios.</string>
+    <string name="onion_error_tor_timeout">Tor nao respondeu a tempo. Verifique se Tor pode ser executado neste dispositivo.</string>
+    <string name="onion_error_qr">Nao foi possivel gerar o codigo QR.</string>
+    <string name="onion_error_file_open">Nao foi possivel abrir o ficheiro selecionado.</string>
+    <string name="onion_transfer_clear_files">Remover ficheiros selecionados</string>
+    <string name="onion_transfer_clear_text">Limpar texto introduzido</string>
+    <string name="onion_transfer_ready_to_start">Pronto para iniciar.</string>
+    <string name="onion_transfer_qr_content_description">Código QR do serviço Onion</string>
+    <string name="onion_transfer_link_copied">Ligação copiada.</string>
+    <string name="onion_transfer_prepare_file_error">Falha ao preparar o ficheiro: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d ficheiro(s) e texto prontos para partilhar.</string>
+    <string name="onion_transfer_summary_files">%1$d ficheiro(s) prontos para partilhar.</string>
+    <string name="onion_transfer_summary_text">Texto pronto para partilhar.</string>
 </resources>

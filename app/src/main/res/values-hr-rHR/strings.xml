@@ -41,7 +41,8 @@
     <string name="retry">Pokušaj ponovno</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">O aplikaciji</string>
-    <string name="title_activity_about">O ErikrafT Drop™</string>
+    <string name="title_activity_about">O aplikaciji ErikrafT Drop™</string>
+    <string name="about_open_website">Idi na web-stranicu</string>
     <string name="pref_about_title">O ovoj aplikaciji</string>
     <string name="view_downloads">Prikaži preuzimanja</string>
     <string name="pref_category_settings">Postavke</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Dodirnite za otvaranje dostupnih alata za prijenos.</string>
     <string name="legacy_wifi_waiting_for_sender">Povezano kao primatelj. Povezani uređaj može slati tekst na ovaj uređaj.</string>
     <string name="legacy_beam_text_received">Tekst je primljen putem Android Beama.</string>
+    <string name="server_status_running">Poslužitelj radi</string>
+    <string name="server_status_stopped">Poslužitelj zaustavljen</string>
+    <string name="server_status_error">Pogreška: %1$s</string>
+    <string name="onion_transfer_content_title">Sadržaj za dijeljenje</string>
+    <string name="ftp_port_hint">Priključak</string>
+    <string name="ftp_username_hint">Korisničko ime</string>
+    <string name="ftp_password_hint">Lozinka</string>
+    <string name="transfer_error_directory_path">Nije moguće pristupiti odabranoj mapi.</string>
+    <string name="transfer_error_folder_unsupported">Ovaj poslužitelj ne može izravno koristiti ovu mapu.</string>
+    <string name="transfer_error_invalid_port">Unesite valjani port.</string>
+    <string name="transfer_error_port_range">Port mora biti između 1025 i 65535.</string>
+    <string name="transfer_error_credentials_required">Korisničko ime i lozinka su obavezni.</string>
+    <string name="onion_error_tor_timeout">Tor nije odgovorio na vrijeme. Provjerite može li se Tor pokrenuti na ovom uređaju.</string>
+    <string name="onion_error_qr">Nije moguće generirati QR kod.</string>
+    <string name="onion_error_file_open">Nije moguće otvoriti odabranu datoteku.</string>
+    <string name="onion_transfer_clear_files">Ukloni odabrane datoteke</string>
+    <string name="onion_transfer_clear_text">Izbriši uneseni tekst</string>
+    <string name="onion_transfer_ready_to_start">Spremno za pokretanje.</string>
+    <string name="onion_transfer_qr_content_description">QR kod Onion usluge</string>
+    <string name="onion_transfer_link_copied">Poveznica je kopirana.</string>
+    <string name="onion_transfer_prepare_file_error">Priprema datoteke nije uspjela: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d datoteka i tekst spremni su za dijeljenje.</string>
+    <string name="onion_transfer_summary_files">%1$d datoteka spremno je za dijeljenje.</string>
+    <string name="onion_transfer_summary_text">Tekst je spreman za dijeljenje.</string>
 </resources>

@@ -41,7 +41,8 @@
     <string name="retry">retry</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">About</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">Az ErikrafT Drop™ névjegye</string>
+    <string name="about_open_website">Ugrás a webhelyre</string>
     <string name="pref_about_title">About this app</string>
     <string name="view_downloads">View downloads</string>
     <string name="pref_category_settings">Beállítások</string>
@@ -249,4 +250,28 @@
     <string name="legacy_transfer_tap_to_open">Koppintson az elérhető átviteli eszközök megnyitásához.</string>
     <string name="legacy_wifi_waiting_for_sender">Fogadóként csatlakoztatva. A csatlakoztatott eszköz szöveget küldhet erre az eszközre.</string>
     <string name="legacy_beam_text_received">Szöveg érkezett Android Beamen keresztül.</string>
+    <string name="server_status_running">A szerver fut</string>
+    <string name="server_status_stopped">A szerver leállítva</string>
+    <string name="server_status_error">Hiba: %1$s</string>
+    <string name="onion_transfer_content_title">Megosztandó tartalom</string>
+    <string name="ftp_port_hint">Port</string>
+    <string name="ftp_username_hint">Felhasználónév</string>
+    <string name="ftp_password_hint">Jelszó</string>
+    <string name="transfer_error_directory_path">A kiválasztott mappa nem érhető el.</string>
+    <string name="transfer_error_folder_unsupported">Ezt a mappát a szerver nem tudja közvetlenül használni.</string>
+    <string name="transfer_error_invalid_port">Adj meg érvényes portot.</string>
+    <string name="transfer_error_port_range">A portnak 1025 és 65535 között kell lennie.</string>
+    <string name="transfer_error_credentials_required">A felhasználónév és a jelszó kötelező.</string>
+    <string name="onion_error_tor_timeout">A Tor nem válaszolt időben. Ellenőrizd, hogy futtatható-e a Tor ezen az eszközön.</string>
+    <string name="onion_error_qr">A QR-kód létrehozása nem sikerült.</string>
+    <string name="onion_error_file_open">A kiválasztott fájl nem nyitható meg.</string>
+    <string name="onion_transfer_clear_files">Kijelölt fájlok eltávolítása</string>
+    <string name="onion_transfer_clear_text">Beírt szöveg törlése</string>
+    <string name="onion_transfer_ready_to_start">Indításra kész.</string>
+    <string name="onion_transfer_qr_content_description">Az Onion szolgáltatás QR-kódja</string>
+    <string name="onion_transfer_link_copied">Hivatkozás másolva.</string>
+    <string name="onion_transfer_prepare_file_error">A fájl előkészítése nem sikerült: %1$s</string>
+    <string name="onion_transfer_summary_files_and_text">%1$d fájl és a szöveg megosztásra kész.</string>
+    <string name="onion_transfer_summary_files">%1$d fájl megosztásra kész.</string>
+    <string name="onion_transfer_summary_text">A szöveg megosztásra kész.</string>
 </resources>
