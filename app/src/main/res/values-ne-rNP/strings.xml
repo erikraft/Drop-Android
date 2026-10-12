@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d फाइल र पाठ साझा गर्न तयार छन्।</string>
     <string name="onion_transfer_summary_files">%1$d फाइल साझा गर्न तयार छन्।</string>
     <string name="onion_transfer_summary_text">पाठ साझा गर्न तयार छ।</string>
+    <string name="legacy_transfer_back">पछाडि</string>
+    <string name="about_dependencies_ui">AndroidX / प्रयोगकर्ता इन्टरफेस</string>
+    <string name="about_dependencies_transfer">स्थानान्तरण, नेटवर्क र फाइलहरू</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">क्रिप्टोग्राफी</string>
+    <string name="about_dependencies_infrastructure">पूर्वाधार</string>
+    <string name="about_references_projects">सन्दर्भ परियोजनाहरू</string>
 </resources>
