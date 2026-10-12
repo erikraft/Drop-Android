@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d súbor(y) a text sú pripravené na zdieľanie.</string>
     <string name="onion_transfer_summary_files">%1$d súbor(y) sú pripravené na zdieľanie.</string>
     <string name="onion_transfer_summary_text">Text je pripravený na zdieľanie.</string>
+    <string name="legacy_transfer_back">Späť</string>
+    <string name="about_dependencies_ui">AndroidX / používateľské rozhranie</string>
+    <string name="about_dependencies_transfer">Prenos, sieť a súbory</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kryptografia</string>
+    <string name="about_dependencies_infrastructure">Infraštruktúra</string>
+    <string name="about_references_projects">Referenčné projekty</string>
 </resources>
