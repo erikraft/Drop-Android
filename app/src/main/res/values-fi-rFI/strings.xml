@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Salaus</string>
     <string name="about_dependencies_infrastructure">Infrastruktuuri</string>
     <string name="about_references_projects">Viiteprojektit</string>
+    <string name="about_references_web_desktop">Web / työpöytä</string>
+    <string name="about_references_android">Android / integraatio</string>
 </resources>
