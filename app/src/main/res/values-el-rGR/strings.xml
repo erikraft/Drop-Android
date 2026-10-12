@@ -291,4 +291,6 @@
     <string name="about_dependencies_crypto">Κρυπτογραφία</string>
     <string name="about_dependencies_infrastructure">Υποδομή</string>
     <string name="about_references_projects">Έργα αναφοράς</string>
+    <string name="about_references_web_desktop">Ιστός / υπολογιστής</string>
+    <string name="about_references_android">Android / ενσωμάτωση</string>
 </resources>
