@@ -274,4 +274,11 @@
     <string name="onion_transfer_summary_files_and_text">%1$d fișier(e) și text pregătite pentru partajare.</string>
     <string name="onion_transfer_summary_files">%1$d fișier(e) pregătite pentru partajare.</string>
     <string name="onion_transfer_summary_text">Text pregătit pentru partajare.</string>
+    <string name="legacy_transfer_back">Înapoi</string>
+    <string name="about_dependencies_ui">AndroidX / interfață</string>
+    <string name="about_dependencies_transfer">Transfer, rețea și fișiere</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Criptografie</string>
+    <string name="about_dependencies_infrastructure">Infrastructură</string>
+    <string name="about_references_projects">Proiecte de referință</string>
 </resources>
