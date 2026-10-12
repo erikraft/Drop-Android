@@ -41,7 +41,8 @@
     <string name="retry">重試</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">關於</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">關於 ErikrafT Drop™</string>
+    <string name="about_open_website">前往網站</string>
     <string name="pref_about_title">關於這個應用程式</string>
     <string name="view_downloads">檢視下載</string>
     <string name="pref_category_settings">設定</string>
