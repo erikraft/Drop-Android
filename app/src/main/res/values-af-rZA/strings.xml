@@ -284,4 +284,11 @@
     <string name="onion_transfer_summary_files">%1$d lêer(s) gereed om te deel.</string>
     <string name="onion_transfer_summary_text">Teks gereed om te deel.</string>
     <string name="ftp_stopping">Bediener word gestop…</string>
+    <string name="legacy_transfer_back">Terug</string>
+    <string name="about_dependencies_ui">AndroidX / koppelvlak</string>
+    <string name="about_dependencies_transfer">Oordrag, netwerk en lêers</string>
+    <string name="about_dependencies_tor">Tor / Onion</string>
+    <string name="about_dependencies_crypto">Kriptografie</string>
+    <string name="about_dependencies_infrastructure">Infrastruktuur</string>
+    <string name="about_references_projects">Verwysingsprojekte</string>
 </resources>
