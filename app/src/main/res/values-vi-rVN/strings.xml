@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Mật mã học</string>
     <string name="about_dependencies_infrastructure">Cơ sở hạ tầng</string>
     <string name="about_references_projects">Dự án tham khảo</string>
+    <string name="about_references_web_desktop">Web / máy tính</string>
+    <string name="about_references_android">Android / tích hợp</string>
 </resources>
