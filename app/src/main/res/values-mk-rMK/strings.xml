@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">Криптографија</string>
     <string name="about_dependencies_infrastructure">Инфраструктура</string>
     <string name="about_references_projects">Референтни проекти</string>
+    <string name="about_references_web_desktop">Веб / десктоп</string>
+    <string name="about_references_android">Android / интеграција</string>
 </resources>
