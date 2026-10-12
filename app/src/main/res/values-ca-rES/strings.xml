@@ -291,4 +291,6 @@
     <string name="about_dependencies_crypto">Criptografia</string>
     <string name="about_dependencies_infrastructure">Infraestructura</string>
     <string name="about_references_projects">Projectes de referència</string>
+    <string name="about_references_web_desktop">Web / escriptori</string>
+    <string name="about_references_android">Android / integració</string>
 </resources>
