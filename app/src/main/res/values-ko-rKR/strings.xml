@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">정보</string>
     <string name="title_activity_about">ErikrafT Drop™ 정보</string>
+    <string name="about_open_website">웹사이트로 이동</string>
     <string name="pref_about_title">앱 소개</string>
     <string name="view_downloads">다운로드 보기</string>
     <string name="pref_category_settings">설정</string>
