@@ -41,7 +41,8 @@
     <string name="retry">tekrar deneyiniz</string>
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">Hakkında</string>
-    <string name="title_activity_about">About ErikrafT Drop™</string>
+    <string name="title_activity_about">ErikrafT Drop™ hakkında</string>
+    <string name="about_open_website">Web sitesine git</string>
     <string name="pref_about_title">Uygulama hakkında</string>
     <string name="view_downloads">İndirilenleri göster</string>
     <string name="pref_category_settings">Ayarlar</string>
