@@ -281,4 +281,6 @@
     <string name="about_dependencies_crypto">הצפנה</string>
     <string name="about_dependencies_infrastructure">תשתית</string>
     <string name="about_references_projects">פרויקטים לדוגמה</string>
+    <string name="about_references_web_desktop">אינטרנט / מחשב</string>
+    <string name="about_references_android">Android / שילוב</string>
 </resources>
