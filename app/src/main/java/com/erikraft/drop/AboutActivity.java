@@ -99,8 +99,7 @@ public class AboutActivity extends DropPipActivity {
                 + "Bouncy Castle bcpkix-jdk18on 1.86<br><br>"
                 + "<b>" + getString(R.string.about_dependencies_infrastructure) + "</b><br>"
                 + "AboutLibraries 11.2.3<br>"
-                + "desugar_jdk_libs 2.1.5<br>"
-                + "";
+                + "desugar_jdk_libs 2.1.5<br>";
     }
 
     private String buildReferencesHtml() {
