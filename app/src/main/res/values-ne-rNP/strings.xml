@@ -42,6 +42,7 @@
     <!-- Settings / About -->
     <string name="home_as_up_indicator_about">बारेमा</string>
     <string name="title_activity_about">ErikrafT Drop™ बारेमा</string>
+    <string name="about_open_website">वेबसाइटमा जानुहोस्</string>
     <string name="pref_about_title">यो एपबारे</string>
     <string name="view_downloads">डाउनलोडहरू हेर्नुहोस्</string>
     <string name="pref_category_settings">सेटिङहरू</string>
