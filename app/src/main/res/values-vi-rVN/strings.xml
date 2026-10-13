@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transfer via Onion (Beta)</string>
+    <string name="onion_transfer_title">Transfer via Onion</string>
     <string name="onion_transfer_description">Share files or text directly from your device through a private Tor connection. Content stays on your device and is delivered through a temporary Onion address.</string>
     <string name="onion_transfer_content_title">Content to share</string>
     <string name="onion_transfer_select_files">Select files</string>
@@ -279,4 +279,8 @@
     <string name="about_references_projects">Reference projects</string>
     <string name="about_references_web_desktop">Web / Desktop</string>
     <string name="about_references_android">Android / integration</string>
+    <string name="legacy_beam_legacy_compatible">Older Android: Android Beam may be available when the device and manufacturer implementation support it. NFC alone does not confirm compatibility; a real transfer test is needed.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam is not guaranteed. Some manufacturer builds may retain legacy support, but NFC presence and Android version alone cannot confirm it.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 and later: Android Beam is unavailable in ErikrafT Drop™ because the system APIs were removed. The app does not attempt to restore them.</string>
+    <string name="about_highlight">&lt;b&gt;Built for file transfer and privacy&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help improve ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribute a Pull Request to fix a problem or add a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
 </resources>
