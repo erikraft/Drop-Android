@@ -606,9 +606,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 
     /**
-     * Reports platform capability only. Android Beam is deprecated on Android 10+;
-     * NFC tag support is a separate capability and is not implied by this row.
-     * These rows deliberately do not claim that transfer transport is implemented.
+     * Detects whether the platform can expose the original Android Beam API.
+     * NFC hardware alone does not prove that Android Beam is implemented.
+     * Newer Android versions are marked incompatible without dimming the icon.
      */
     private void updateLegacyTransferCompatibility() {
         final CompatibilityPreference nfcPreference = findPreference("legacy_nfc_beam");
@@ -616,15 +616,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
-            final boolean beamVersionSupported = Build.VERSION.SDK_INT < 34;
-            nfcPreference.setCompatible(hasNfc && beamVersionSupported);
+            final boolean legacyOs = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
+            final boolean officialBeamApi = hasNfc && legacyOs && hasOfficialBeamApi(adapter);
+            nfcPreference.setCompatible(officialBeamApi);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
-                    : Build.VERSION.SDK_INT >= 34
-                        ? R.string.legacy_beam_android_14_plus
+                    : officialBeamApi
+                        ? R.string.legacy_beam_legacy_compatible
                         : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
                             ? R.string.legacy_beam_android_10_13
-                            : R.string.legacy_beam_legacy_compatible);
+                            : R.string.legacy_beam_api_unavailable);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
@@ -633,6 +634,21 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             wifiPreference.setSummary(hasWifiDirect
                     ? R.string.legacy_transfer_tap_to_open
                     : R.string.legacy_wifi_no_hardware);
+        }
+    }
+
+    /**
+     * Checks for the legacy public NfcAdapter Beam methods without invoking them.
+     * Reflection avoids linking removed APIs on modern Android versions.
+     */
+    private boolean hasOfficialBeamApi(@NonNull final NfcAdapter adapter) {
+        try {
+            adapter.getClass().getMethod("setNdefPushMessage",
+                    android.nfc.NdefMessage.class, Activity.class, Activity[].class);
+            adapter.getClass().getMethod("invokeBeam", Activity.class);
+            return true;
+        } catch (NoSuchMethodException | SecurityException exception) {
+            return false;
         }
     }
 
