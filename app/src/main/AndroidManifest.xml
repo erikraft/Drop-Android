@@ -239,7 +239,6 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:label="@string/legacy_transfer_screen_title"
-            android:supportsPictureInPicture="true"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
