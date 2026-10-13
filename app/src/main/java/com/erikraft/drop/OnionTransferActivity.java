@@ -173,6 +173,18 @@ public class OnionTransferActivity extends DropPipActivity {
         textLayout.addView(textInput, new LinearLayout.LayoutParams(-1, -2));
         shareContent.addView(textLayout, lpTop(dp(14)));
 
+        TextView textPreview = text("", 15);
+        textPreview.setTextIsSelectable(true);
+        textPreview.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
+        textPreview.setPadding(dp(12), dp(12), dp(12), dp(12));
+        GradientDrawable previewBackground = new GradientDrawable();
+        previewBackground.setColor(android.graphics.Color.TRANSPARENT);
+        previewBackground.setCornerRadius(dp(10));
+        previewBackground.setStroke(dp(1), 0xFF888888);
+        textPreview.setBackground(previewBackground);
+        textPreview.setVisibility(View.GONE);
+        shareContent.addView(textPreview, lpTop(dp(14)));
+
         textToggleButton = button(getString(R.string.onion_transfer_send_text));
         textToggleButton.setOnClickListener(v -> {
             if (textIncluded) {
@@ -180,6 +192,9 @@ public class OnionTransferActivity extends DropPipActivity {
                 textToShare = "";
                 textInput.setText("");
                 textInput.setError(null);
+                textPreview.setText("");
+                textPreview.setVisibility(View.GONE);
+                textLayout.setVisibility(View.VISIBLE);
             } else {
                 String enteredText = textInput.getText() == null ? "" : textInput.getText().toString();
                 if (enteredText.trim().isEmpty()) {
@@ -189,6 +204,9 @@ public class OnionTransferActivity extends DropPipActivity {
                 textIncluded = true;
                 textToShare = enteredText;
                 textInput.setError(null);
+                textPreview.setText(enteredText);
+                textLayout.setVisibility(View.GONE);
+                textPreview.setVisibility(View.VISIBLE);
             }
             updateActionLabels();
             updateSelectionSummary();
