@@ -9,6 +9,12 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.TypedValue;
 import android.net.Uri;
@@ -173,6 +179,14 @@ public class OnionTransferActivity extends DropPipActivity {
         textLayout.addView(textInput, new LinearLayout.LayoutParams(-1, -2));
         shareContent.addView(textLayout, lpTop(dp(14)));
 
+        TextView textPreview = text("", 15);
+        textPreview.setTextIsSelectable(true);
+        textPreview.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
+        textPreview.setPadding(dp(12), dp(12), dp(12), dp(12));
+        textPreview.setBackground(new DiagonalPreviewDrawable(dp(10), getResources().getDisplayMetrics().density));
+        textPreview.setVisibility(View.GONE);
+        shareContent.addView(textPreview, lpTop(dp(14)));
+
         textToggleButton = button(getString(R.string.onion_transfer_send_text));
         textToggleButton.setOnClickListener(v -> {
             if (textIncluded) {
@@ -180,6 +194,9 @@ public class OnionTransferActivity extends DropPipActivity {
                 textToShare = "";
                 textInput.setText("");
                 textInput.setError(null);
+                textPreview.setText("");
+                textPreview.setVisibility(View.GONE);
+                textLayout.setVisibility(View.VISIBLE);
             } else {
                 String enteredText = textInput.getText() == null ? "" : textInput.getText().toString();
                 if (enteredText.trim().isEmpty()) {
@@ -189,6 +206,9 @@ public class OnionTransferActivity extends DropPipActivity {
                 textIncluded = true;
                 textToShare = enteredText;
                 textInput.setError(null);
+                textPreview.setText(enteredText);
+                textLayout.setVisibility(View.GONE);
+                textPreview.setVisibility(View.VISIBLE);
             }
             updateActionLabels();
             updateSelectionSummary();
@@ -513,6 +533,55 @@ public class OnionTransferActivity extends DropPipActivity {
         if (server != null) server.stop();
         TorController.shutdown(this);
         super.onDestroy();
+    }
+
+    private static final class DiagonalPreviewDrawable extends Drawable {
+        private final float cornerRadius;
+        private final float density;
+        private final Paint stripePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        DiagonalPreviewDrawable(float cornerRadius, float density) {
+            this.cornerRadius = cornerRadius;
+            this.density = density;
+            stripePaint.setColor(0x26888888);
+            stripePaint.setStyle(Paint.Style.STROKE);
+            stripePaint.setStrokeWidth(Math.max(1f, density));
+            borderPaint.setColor(0xFF888888);
+            borderPaint.setStyle(Paint.Style.STROKE);
+            borderPaint.setStrokeWidth(Math.max(1f, density));
+        }
+
+        @Override
+        public void draw(Canvas canvas) {
+            RectF bounds = new RectF(getBounds());
+            Path clip = new Path();
+            clip.addRoundRect(bounds, cornerRadius, cornerRadius, Path.Direction.CW);
+            int save = canvas.save();
+            canvas.clipPath(clip);
+            float spacing = 12f * density;
+            for (float x = bounds.left - bounds.height(); x < bounds.right + bounds.height(); x += spacing) {
+                canvas.drawLine(x, bounds.bottom, x + bounds.height(), bounds.top, stripePaint);
+            }
+            canvas.restoreToCount(save);
+            canvas.drawRoundRect(bounds, cornerRadius, cornerRadius, borderPaint);
+        }
+
+        @Override public void setAlpha(int alpha) {
+            stripePaint.setAlpha(Math.round(0x26 * alpha / 255f));
+            borderPaint.setAlpha(alpha);
+            invalidateSelf();
+        }
+
+        @Override public void setColorFilter(android.graphics.ColorFilter colorFilter) {
+            stripePaint.setColorFilter(colorFilter);
+            borderPaint.setColorFilter(colorFilter);
+            invalidateSelf();
+        }
+
+        @Override public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
     }
 
     private MaterialCardView card() {
