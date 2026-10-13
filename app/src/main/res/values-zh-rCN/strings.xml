@@ -292,4 +292,8 @@
     <string name="about_references_projects">参考项目</string>
     <string name="about_references_web_desktop">网页 / 桌面端</string>
     <string name="about_references_android">Android / 集成</string>
+    <string name="about_highlight">&lt;b&gt;专注于文件传输与隐私保护&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ 专注于文件传输和隐私保护，并尽可能适配旧设备与现代设备。可用性取决于设备、操作系统和受支持的技术。&lt;br/&gt;&lt;br/&gt;&lt;b&gt;帮助改进 ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;可以提交 Pull Request 来修复问题或添加功能，也可以创建 Issue 并附上诊断信息和复现步骤。清晰的问题报告和贡献有助于提高应用的可靠性。</string>
+    <string name="legacy_beam_legacy_compatible">较旧的 Android：如果设备和厂商实现支持，Android Beam 可能可用。仅有 NFC 并不能证明兼容；需要进行真实传输测试。</string>
+    <string name="legacy_beam_android_10_13">Android 10–13：不保证 Android Beam 可用。部分厂商版本可能保留旧支持，但仅凭 Android 版本和 NFC 无法确认功能正常。</string>
+    <string name="legacy_beam_android_14_plus">Android 14 及更高版本：由于系统 API 已被移除，ErikrafT Drop™ 不提供 Android Beam。应用不会尝试恢复这些 API。</string>
 </resources>
