@@ -617,13 +617,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             final boolean hasNfc = adapter != null;
-            // NFC tag I/O remains available on modern Android even though Beam was removed.
-            nfcPreference.setCompatible(hasNfc);
+            final boolean beamVersionSupported = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
+            nfcPreference.setCompatible(hasNfc && beamVersionSupported);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
-                    : !beamApiAvailable
-                        ? R.string.legacy_nfc_modern_tag_io
-                        : R.string.legacy_transfer_tap_to_open);
+                    : Build.VERSION.SDK_INT >= 34
+                        ? R.string.legacy_beam_android_14_plus
+                        : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                            ? R.string.legacy_beam_android_10_13
+                            : R.string.legacy_beam_legacy_compatible);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
