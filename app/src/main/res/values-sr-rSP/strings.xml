@@ -127,7 +127,7 @@
     <string name="resume">Настави</string>
     <string name="cancel">Откажи</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Пренос преко Onion-а (бета)</string>
+    <string name="onion_transfer_title">Пренос преко Onion-а</string>
     <string name="onion_transfer_description">Делите датотеке или текст директно са уређаја преко приватне Tor везе. Садржај остаје на уређају и шаље се преко привремене Onion адресе.</string>
     <string name="onion_transfer_select_files">Изабери датотеке</string>
     <string name="onion_transfer_send_text">Пошаљи текст</string>
