@@ -9,6 +9,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.GradientDrawable;
+import android.util.TypedValue;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -59,13 +61,14 @@ public class OnionTransferActivity extends DropPipActivity {
     private ImageView qr;
     private TextInputEditText textInput;
     private MaterialButton startButton;
-    private MaterialButton stopButton;
+    private MaterialButton textToggleButton;
+    private TextView fileToggle;
     private MaterialButton copyButton;
     private MaterialButton shareButton;
-    private MaterialButton clearFilesButton;
     private androidx.appcompat.widget.SwitchCompat stopNotificationSwitch;
     private ActivityResultLauncher<String> notificationPermissionLauncher;
     private String textToShare = "";
+    private boolean textIncluded;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable startupTimeout;
 
@@ -127,16 +130,26 @@ public class OnionTransferActivity extends DropPipActivity {
         TextView shareTitle = text(getString(R.string.onion_transfer_content_title), 18);
         shareContent.addView(shareTitle);
 
-        MaterialButton pick = button(getString(R.string.onion_transfer_select_files));
-        shareContent.addView(pick);
-        clearFilesButton = button(getString(R.string.onion_transfer_clear_files));
-        clearFilesButton.setEnabled(false);
-        shareContent.addView(clearFilesButton, lpTop(dp(6)));
-        selectionSummary = text(getString(R.string.onion_transfer_no_files), 14);
-        shareContent.addView(selectionSummary);
+        fileToggle = text(getString(R.string.onion_transfer_select_files), 15);
+        fileToggle.setGravity(android.view.Gravity.CENTER);
+        fileToggle.setMinHeight(dp(52));
+        fileToggle.setPadding(dp(12), dp(10), dp(12), dp(10));
+        fileToggle.setFocusable(true);
+        fileToggle.setClickable(true);
+        fileToggle.setBackground(createDashedSelectorBackground());
+        fileToggle.setOnClickListener(v -> {
+            if (files.isEmpty()) {
+                launchPicker();
+            } else {
+                files.clear();
+                updateSelectionSummary();
+                updateActionLabels();
+            }
+        });
+        shareContent.addView(fileToggle, lpTop(dp(10)));
 
-        TextView sendTextLabel = text(getString(R.string.onion_transfer_send_text), 14);
-        shareContent.addView(sendTextLabel, lpTop(dp(14)));
+        selectionSummary = text(getString(R.string.onion_transfer_no_files), 14);
+        shareContent.addView(selectionSummary, lpTop(dp(6)));
 
         TextInputLayout textLayout = new TextInputLayout(this);
         textLayout.setHintEnabled(false);
@@ -146,26 +159,29 @@ public class OnionTransferActivity extends DropPipActivity {
         textInput.setMinLines(4);
         textInput.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
         textLayout.addView(textInput, new LinearLayout.LayoutParams(-1, -2));
-        shareContent.addView(textLayout);
+        shareContent.addView(textLayout, lpTop(dp(14)));
 
-        MaterialButton useText = button(getString(R.string.onion_transfer_send_text));
-        useText.setOnClickListener(v -> {
-            textToShare = textInput.getText() == null ? "" : textInput.getText().toString();
+        textToggleButton = button(getString(R.string.onion_transfer_send_text));
+        textToggleButton.setOnClickListener(v -> {
+            if (textIncluded) {
+                textIncluded = false;
+                textToShare = "";
+                textInput.setText("");
+                textInput.setError(null);
+            } else {
+                String enteredText = textInput.getText() == null ? "" : textInput.getText().toString();
+                if (enteredText.trim().isEmpty()) {
+                    textInput.setError(getString(R.string.onion_transfer_text_hint));
+                    return;
+                }
+                textIncluded = true;
+                textToShare = enteredText;
+                textInput.setError(null);
+            }
+            updateActionLabels();
             updateSelectionSummary();
         });
-        shareContent.addView(useText, lpTop(dp(8)));
-        MaterialButton clearText = button(getString(R.string.onion_transfer_clear_text));
-        clearText.setOnClickListener(v -> {
-            textInput.setText("");
-            textToShare = "";
-            updateSelectionSummary();
-        });
-        shareContent.addView(clearText, lpTop(dp(6)));
-        clearFilesButton.setOnClickListener(v -> {
-            files.clear();
-            updateSelectionSummary();
-            clearFilesButton.setEnabled(false);
-        });
+        shareContent.addView(textToggleButton, lpTop(dp(8)));
         content.addView(shareCard);
 
         MaterialCardView statusCard = card();
@@ -179,17 +195,8 @@ public class OnionTransferActivity extends DropPipActivity {
         statusContent.addView(progress, lpTop(dp(12)));
         content.addView(statusCard, lpTop(dp(12)));
 
-        LinearLayout actions = new LinearLayout(this);
-        actions.setOrientation(LinearLayout.HORIZONTAL);
-        actions.setWeightSum(2);
         startButton = button(getString(R.string.onion_transfer_start));
-        stopButton = button(getString(R.string.onion_transfer_stop));
-        stopButton.setEnabled(false);
-        actions.addView(startButton, new LinearLayout.LayoutParams(0, -2, 1));
-        LinearLayout.LayoutParams stopParams = new LinearLayout.LayoutParams(0, -2, 1);
-        stopParams.setMargins(dp(8), 0, 0, 0);
-        actions.addView(stopButton, stopParams);
-        content.addView(actions, lpTop(dp(14)));
+        content.addView(startButton, lpTop(dp(14)));
 
         address = text("", 15);
         address.setTextIsSelectable(true);
@@ -215,9 +222,11 @@ public class OnionTransferActivity extends DropPipActivity {
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         setContentView(root);
 
-        pick.setOnClickListener(v -> launchPicker());
-        startButton.setOnClickListener(v -> startOnion());
-        stopButton.setOnClickListener(v -> stopOnion());
+        startButton.setOnClickListener(v -> {
+            if (server != null) stopOnion();
+            else startOnion();
+        });
+        updateActionLabels();
         copyButton.setOnClickListener(v -> copyLink());
         shareButton.setOnClickListener(v -> shareLink());
     }
@@ -305,7 +314,7 @@ public class OnionTransferActivity extends DropPipActivity {
                 Toast.makeText(this, getString(R.string.onion_transfer_prepare_file_error, e.getMessage()), Toast.LENGTH_LONG).show();
             } finally {
                 updateSelectionSummary();
-                if (clearFilesButton != null) clearFilesButton.setEnabled(!files.isEmpty());
+                updateActionLabels();
             }
         });
     }
@@ -336,6 +345,38 @@ public class OnionTransferActivity extends DropPipActivity {
         return out;
     }
 
+    private void updateActionLabels() {
+        if (fileToggle != null) {
+            fileToggle.setText(files.isEmpty()
+                    ? getString(R.string.onion_transfer_select_files)
+                    : getString(R.string.onion_transfer_clear_files));
+        }
+        if (textToggleButton != null) {
+            textToggleButton.setText(textIncluded
+                    ? getString(R.string.onion_transfer_clear_text)
+                    : getString(R.string.onion_transfer_send_text));
+        }
+        if (startButton != null) {
+            startButton.setText(server != null
+                    ? getString(R.string.onion_transfer_stop)
+                    : getString(R.string.onion_transfer_start));
+        }
+    }
+
+    private GradientDrawable createDashedSelectorBackground() {
+        TypedValue value = new TypedValue();
+        getTheme().resolveAttribute(android.R.attr.textColorSecondary, value, true);
+        int strokeColor = value.resourceId != 0
+                ? ContextCompat.getColor(this, value.resourceId)
+                : value.data;
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(android.graphics.Color.TRANSPARENT);
+        background.setCornerRadius(dp(10));
+        background.setStroke(dp(1), strokeColor, dp(5), dp(4));
+        fileToggle.setTextColor(strokeColor);
+        return background;
+    }
+
     private void updateSelectionSummary() {
         if (files.isEmpty() && textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_no_files));
         else if (!files.isEmpty() && !textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_summary_files_and_text, files.size()));
@@ -344,7 +385,8 @@ public class OnionTransferActivity extends DropPipActivity {
     }
 
     private void startOnion() {
-        textToShare = textInput.getText() == null ? "" : textInput.getText().toString();
+        textToShare = textIncluded && textInput.getText() != null
+                ? textInput.getText().toString() : "";
         if (files.isEmpty() && textToShare.trim().isEmpty()) {
             Toast.makeText(this, getString(R.string.onion_transfer_no_files), Toast.LENGTH_LONG).show();
             return;
@@ -353,8 +395,7 @@ public class OnionTransferActivity extends DropPipActivity {
             if (server != null) server.stop();
             server = new OnionHttpServer(0, files, textToShare);
             server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
-            startButton.setEnabled(false);
-            stopButton.setEnabled(true);
+            updateActionLabels();
             copyButton.setEnabled(false);
             shareButton.setEnabled(false);
             address.setText("");
@@ -398,6 +439,8 @@ public class OnionTransferActivity extends DropPipActivity {
                 }
             });
         } catch (IOException e) {
+            server = null;
+            updateActionLabels();
             status.setText(getString(R.string.onion_transfer_error) + " " + e.getMessage());
         }
     }
@@ -413,8 +456,7 @@ public class OnionTransferActivity extends DropPipActivity {
             server = null;
         }
         TorController.shutdown(this);
-        startButton.setEnabled(true);
-        stopButton.setEnabled(false);
+        updateActionLabels();
         copyButton.setEnabled(false);
         shareButton.setEnabled(false);
         progress.setVisibility(View.GONE);
