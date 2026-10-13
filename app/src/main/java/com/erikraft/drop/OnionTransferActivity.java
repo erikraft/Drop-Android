@@ -54,11 +54,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /** Android-only Onion Service sharing mode. Files and text are served from the device through Tor. */
 public class OnionTransferActivity extends DropPipActivity {
     private final List<File> files = new ArrayList<>();
+    private final Map<File, String> originalFileNames = new HashMap<>();
     private ActivityResultLauncher<Intent> picker;
     private OnionHttpServer server;
     private TextView status;
@@ -149,6 +152,7 @@ public class OnionTransferActivity extends DropPipActivity {
                 launchPicker();
             } else {
                 files.clear();
+                originalFileNames.clear();
                 updateSelectionSummary();
                 updateActionLabels();
             }
@@ -334,6 +338,7 @@ public class OnionTransferActivity extends DropPipActivity {
         picker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
             files.clear();
+            originalFileNames.clear();
             Intent data = result.getData();
             ClipData clip = data.getClipData();
             try {
@@ -368,6 +373,7 @@ public class OnionTransferActivity extends DropPipActivity {
             c.close();
         }
         File out = new File(getCacheDir(), name.replaceAll("[^a-zA-Z0-9._-]", "_"));
+        originalFileNames.put(out, name);
         try (InputStream in = getContentResolver().openInputStream(uri); java.io.FileOutputStream fos = new java.io.FileOutputStream(out)) {
             if (in == null) throw new IOException(getString(R.string.onion_error_file_open));
             byte[] buf = new byte[64 * 1024];
