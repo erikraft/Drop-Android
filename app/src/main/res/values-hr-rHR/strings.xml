@@ -127,7 +127,7 @@
     <string name="resume">Nastavi</string>
     <string name="cancel">Odustani</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Prijenos putem Oniona (beta)</string>
+    <string name="onion_transfer_title">Prijenos putem Oniona</string>
     <string name="onion_transfer_description">Dijelite datoteke ili tekst izravno s uređaja putem privatne Tor veze. Sadržaj ostaje na uređaju i šalje se privremenom Onion adresom.</string>
     <string name="onion_transfer_select_files">Odaberi datoteke</string>
     <string name="onion_transfer_send_text">Pošalji tekst</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">Referentni projekti</string>
     <string name="about_references_web_desktop">Web / računalo</string>
     <string name="about_references_android">Android / integracija</string>
+    <string name="about_highlight">&lt;b&gt;Stvoreno za prijenos datoteka i privatnost&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ usredotočen je na prijenos datoteka i privatnost te se nastoji prilagoditi starijim i modernim uređajima kad god je moguće. Dostupnost ovisi o uređaju, operacijskom sustavu i podržanim tehnologijama.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Pomozite poboljšati ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Pošaljite Pull Request za ispravak problema ili dodavanje značajke ili otvorite Issue s dijagnostičkim podacima i koracima za ponavljanje problema. Jasne prijave i doprinosi čine aplikaciju pouzdanijom.</string>
+    <string name="legacy_beam_legacy_compatible">Stariji Android: Android Beam može biti dostupan ako ga podržavaju uređaj i implementacija proizvođača. Sam NFC ne potvrđuje kompatibilnost; potrebno je testirati stvarni prijenos.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam nije zajamčen. Neke verzije proizvođača možda zadržavaju staru podršku, ali verzija Androida i NFC sami ne dokazuju da radi.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 i noviji: Android Beam nije dostupan u ErikrafT Drop™ jer su sistemski API-ji uklonjeni. Aplikacija ih ne pokušava vratiti.</string>
 </resources>

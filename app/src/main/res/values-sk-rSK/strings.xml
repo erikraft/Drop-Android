@@ -127,7 +127,7 @@
     <string name="resume">Pokračovať</string>
     <string name="cancel">Zrušiť</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Prenos cez Onion (beta)</string>
+    <string name="onion_transfer_title">Prenos cez Onion</string>
     <string name="onion_transfer_description">Zdieľajte súbory alebo text priamo zo zariadenia cez súkromné pripojenie Tor. Obsah zostáva v zariadení a odošle sa cez dočasnú Onion adresu.</string>
     <string name="onion_transfer_select_files">Vybrať súbory</string>
     <string name="onion_transfer_send_text">Odoslať text</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">Referenčné projekty</string>
     <string name="about_references_web_desktop">Web / desktop</string>
     <string name="about_references_android">Android / integrácia</string>
+    <string name="about_highlight">&lt;b&gt;Navrhnuté na prenos súborov a ochranu súkromia&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ sa zameriava na prenos súborov a súkromie a snaží sa prispôsobiť starším aj moderným zariadeniam, ak je to možné. Dostupnosť závisí od zariadenia, systému a podporovaných technológií.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Pomôžte zlepšiť ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Prispejte Pull Requestom na opravu problému alebo pridanie funkcie, prípadne otvorte Issue s diagnostikou a krokmi na zopakovanie problému. Jasné hlásenia a príspevky zvyšujú spoľahlivosť aplikácie.</string>
+    <string name="legacy_beam_legacy_compatible">Starší Android: Android Beam môže byť dostupný, ak ho podporuje zariadenie a implementácia výrobcu. Samotné NFC nepotvrdzuje kompatibilitu; treba otestovať skutočný prenos.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam nie je zaručený. Niektoré verzie výrobcov môžu zachovať starú podporu, ale verzia Androidu a NFC samy nepotvrdzujú funkčnosť.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 a novší: Android Beam nie je v ErikrafT Drop™ dostupný, pretože systémové API boli odstránené. Aplikácia sa ich nepokúša obnoviť.</string>
 </resources>

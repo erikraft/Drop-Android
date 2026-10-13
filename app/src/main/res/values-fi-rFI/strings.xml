@@ -127,7 +127,7 @@
     <string name="resume">Jatka</string>
     <string name="cancel">Peruuta</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Siirrä Onionin kautta (beta)</string>
+    <string name="onion_transfer_title">Siirrä Onionin kautta</string>
     <string name="onion_transfer_description">Jaa tiedostoja tai tekstiä suoraan laitteeltasi yksityisen Tor-yhteyden kautta. Sisältö pysyy laitteessasi ja toimitetaan väliaikaisen Onion-osoitteen kautta.</string>
     <string name="onion_transfer_select_files">Valitse tiedostot</string>
     <string name="onion_transfer_send_text">Lähetä tekstiä</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">Viiteprojektit</string>
     <string name="about_references_web_desktop">Web / työpöytä</string>
     <string name="about_references_android">Android / integraatio</string>
+    <string name="about_highlight">&lt;b&gt;Suunniteltu tiedostojen siirtoon ja yksityisyyteen&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ keskittyy tiedostojen siirtoon ja yksityisyyteen. Se pyrkii toimimaan mahdollisuuksien mukaan sekä vanhoilla että uusilla laitteilla. Saatavuus riippuu laitteesta, käyttöjärjestelmästä ja tuetuista tekniikoista.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Auta parantamaan ErikrafT Drop™ -sovellusta&lt;/b&gt;&lt;br/&gt;Lähetä Pull Request ongelman korjaamiseksi tai ominaisuuden lisäämiseksi, tai avaa Issue ja lisää diagnostiikkatiedot sekä vaiheet ongelman toistamiseen. Selkeät ilmoitukset ja osallistuminen parantavat sovelluksen luotettavuutta.</string>
+    <string name="legacy_beam_legacy_compatible">Vanha Android: Android Beam voi olla käytettävissä, jos laite ja valmistajan toteutus tukevat sitä. NFC yksin ei vahvista yhteensopivuutta; testaa oikea siirto.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam ei ole taattu. Jotkin valmistajaversiot voivat säilyttää vanhan tuen, mutta Android-versio ja NFC eivät yksin todista toimivuutta.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 ja uudemmat: Android Beam ei ole käytettävissä ErikrafT Drop™ -sovelluksessa, koska järjestelmän API:t poistettiin. Sovellus ei yritä palauttaa niitä.</string>
 </resources>

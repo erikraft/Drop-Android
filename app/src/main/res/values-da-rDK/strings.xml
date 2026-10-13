@@ -127,7 +127,7 @@
     <string name="resume">Fortsæt</string>
     <string name="cancel">Annuller</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Overfør via Onion (beta)</string>
+    <string name="onion_transfer_title">Overfør via Onion</string>
     <string name="onion_transfer_description">Del filer eller tekst direkte fra din enhed via en privat Tor-forbindelse. Indholdet bliver på din enhed og leveres via en midlertidig Onion-adresse.</string>
     <string name="onion_transfer_select_files">Vælg filer</string>
     <string name="onion_transfer_send_text">Send tekst</string>
@@ -292,4 +292,8 @@
     <string name="about_references_projects">Referenc projekter</string>
     <string name="about_references_web_desktop">Web / computer</string>
     <string name="about_references_android">Android / integration</string>
+    <string name="about_highlight">&lt;b&gt;Skabt til filoverførsel og privatliv&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ fokuserer på filoverførsel og privatliv og forsøger at fungere på både ældre og moderne enheder, hvor det er muligt. Tilgængeligheden afhænger af enheden, operativsystemet og understøttede teknologier.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hjælp med at forbedre ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Bidrag med en Pull Request, der retter et problem eller tilføjer en funktion, eller opret en Issue med diagnostik og trin til at genskabe problemet. Tydelige fejlrapporter og bidrag gør appen mere pålidelig.</string>
+    <string name="legacy_beam_legacy_compatible">Ældre Android: Android Beam kan være tilgængelig, hvis enheden og producentens implementering understøtter det. NFC alene bekræfter ikke kompatibilitet; en reel overførsel skal testes.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam er ikke garanteret. Nogle producentversioner kan bevare ældre understøttelse, men Android-versionen og NFC alene beviser ikke, at det virker.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 og nyere: Android Beam er ikke tilgængelig i ErikrafT Drop™, fordi systemets API\'er er fjernet. Appen forsøger ikke at gendanne dem.</string>
 </resources>

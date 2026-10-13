@@ -127,7 +127,7 @@
     <string name="resume">Настави</string>
     <string name="cancel">Откажи</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Пренос преко Onion-а (бета)</string>
+    <string name="onion_transfer_title">Пренос преко Onion-а</string>
     <string name="onion_transfer_description">Делите датотеке или текст директно са уређаја преко приватне Tor везе. Садржај остаје на уређају и шаље се преко привремене Onion адресе.</string>
     <string name="onion_transfer_select_files">Изабери датотеке</string>
     <string name="onion_transfer_send_text">Пошаљи текст</string>
@@ -274,4 +274,8 @@
     <string name="onion_transfer_summary_files_and_text">%1$d датотека и текст су спремни за дељење.</string>
     <string name="onion_transfer_summary_files">%1$d датотека је спремно за дељење.</string>
     <string name="onion_transfer_summary_text">Текст је спреман за дељење.</string>
+    <string name="about_highlight">&lt;b&gt;Направљено за пренос датотека и приватност&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ је усмерен на пренос датотека и приватност и настоји да се прилагоди старијим и модерним уређајима када је то могуће. Доступност зависи од уређаја, система и подржаних технологија.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Помозите да побољшате ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Пошаљите Pull Request за исправку проблема или додавање функције, или отворите Issue са дијагностиком и корацима за понављање проблема. Јасне пријаве и доприноси чине апликацију поузданијом.</string>
+    <string name="legacy_beam_legacy_compatible">Старији Android: Android Beam може бити доступан ако га подржавају уређај и имплементација произвођача. NFC сам по себи не потврђује компатибилност; тестирајте стварни пренос.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam није загарантован. Неке верзије произвођача можда задржавају стару подршку, али верзија Android-а и NFC сами не доказују да ради.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 и новији: Android Beam није доступан у ErikrafT Drop™ јер су системски API-ји уклоњени. Апликација не покушава да их врати.</string>
 </resources>

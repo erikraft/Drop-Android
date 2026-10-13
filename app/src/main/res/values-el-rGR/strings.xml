@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Μεταφορά μέσω Onion (beta)</string>
+    <string name="onion_transfer_title">Μεταφορά μέσω Onion</string>
     <string name="onion_transfer_description">Μοιραστείτε αρχεία ή κείμενο απευθείας από τη συσκευή σας μέσω ιδιωτικής σύνδεσης Tor. Το περιεχόμενο παραμένει στη συσκευή και αποστέλλεται μέσω προσωρινής διεύθυνσης Onion.</string>
     <string name="onion_transfer_select_files">Επιλογή αρχείων</string>
     <string name="onion_transfer_send_text">Αποστολή κειμένου</string>
@@ -294,4 +294,8 @@
     <string name="about_references_web_desktop">Ιστός / υπολογιστής</string>
     <string name="about_references_android">Android / ενσωμάτωση</string>
 
+    <string name="about_highlight">&lt;b&gt;Σχεδιασμένο για μεταφορά αρχείων και ιδιωτικότητα&lt;/b&gt;&lt;br/&gt;Το ErikrafT Drop™ εστιάζει στη μεταφορά αρχείων και την ιδιωτικότητα και προσπαθεί να προσαρμόζεται σε παλαιότερες και σύγχρονες συσκευές όπου είναι δυνατό. Η διαθεσιμότητα εξαρτάται από τη συσκευή, το λειτουργικό σύστημα και τις υποστηριζόμενες τεχνολογίες.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Βοηθήστε να βελτιωθεί το ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Συνεισφέρετε με Pull Request για διόρθωση προβλήματος ή προσθήκη λειτουργίας ή ανοίξτε Issue με διαγνωστικά στοιχεία και βήματα αναπαραγωγής. Οι σαφείς αναφορές και οι συνεισφορές κάνουν την εφαρμογή πιο αξιόπιστη.</string>
+    <string name="legacy_beam_legacy_compatible">Παλαιότερο Android: Το Android Beam μπορεί να είναι διαθέσιμο αν το υποστηρίζουν η συσκευή και η υλοποίηση του κατασκευαστή. Το NFC από μόνο του δεν επιβεβαιώνει συμβατότητα· απαιτείται πραγματική δοκιμή μεταφοράς.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Η διαθεσιμότητα του Android Beam δεν είναι εγγυημένη. Ορισμένες εκδόσεις κατασκευαστών μπορεί να διατηρούν την παλιά υποστήριξη, αλλά η έκδοση Android και το NFC δεν αρκούν για επιβεβαίωση.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 και νεότερο: Το Android Beam δεν είναι διαθέσιμο στο ErikrafT Drop™ επειδή αφαιρέθηκαν τα API του συστήματος. Η εφαρμογή δεν επιχειρεί να τα επαναφέρει.</string>
 </resources>

@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">透過 Onion 傳輸（測試版）</string>
+    <string name="onion_transfer_title">透過 Onion 傳輸</string>
     <string name="onion_transfer_description">透過私密 Tor 連線，直接從裝置分享檔案或文字。內容會保留在裝置上，並透過暫時的 Onion 地址傳送。</string>
     <string name="onion_transfer_select_files">選取檔案</string>
     <string name="onion_transfer_send_text">傳送文字</string>
@@ -292,4 +292,8 @@
     <string name="about_references_projects">參考專案</string>
     <string name="about_references_web_desktop">網頁 / 桌面版</string>
     <string name="about_references_android">Android / 整合</string>
+    <string name="about_highlight">&lt;b&gt;專注於檔案傳輸與隱私保護&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ 專注於檔案傳輸和隱私保護，並盡可能適配舊裝置與現代裝置。可用性取決於裝置、作業系統和支援的技術。&lt;br/&gt;&lt;br/&gt;&lt;b&gt;協助改進 ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;可以提交 Pull Request 來修正問題或新增功能，也可以建立 Issue 並附上診斷資訊和重現步驟。清楚的問題回報和貢獻有助於提高應用程式的可靠性。</string>
+    <string name="legacy_beam_legacy_compatible">較舊的 Android：如果裝置和製造商實作支援，Android Beam 可能可用。只有 NFC 並不能證明相容；需要進行實際傳輸測試。</string>
+    <string name="legacy_beam_android_10_13">Android 10–13：不保證 Android Beam 可用。部分製造商版本可能保留舊支援，但僅憑 Android 版本和 NFC 無法確認功能正常。</string>
+    <string name="legacy_beam_android_14_plus">Android 14 及更新版本：由於系統 API 已移除，ErikrafT Drop™ 不提供 Android Beam。應用程式不會嘗試還原這些 API。</string>
 </resources>

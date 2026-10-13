@@ -15,8 +15,6 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.Tag;
-import android.nfc.tech.Ndef;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,8 +44,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Optional legacy transports. This screen is deliberately available on modern Android too:
- * Beam is reported unavailable there, while NFC tag I/O and Wi-Fi Direct are independent.
+ * Optional legacy transfer compatibility diagnostics and Wi-Fi Direct text-transfer foundation.
+ * NFC tag reading/writing is intentionally not part of this file-transfer-focused app.
  */
 public final class LegacyTransferActivity extends DropPipActivity {
     private static final int PERMISSION_REQUEST = 7108;
@@ -95,9 +93,6 @@ public final class LegacyTransferActivity extends DropPipActivity {
         beamButton = new Button(this);
         beamButton.setText(R.string.legacy_beam_send_text);
         root.addView(beamButton);
-        Button writeTag = new Button(this);
-        writeTag.setText(R.string.legacy_nfc_write_tag);
-        root.addView(writeTag);
         discoverButton = new Button(this);
         discoverButton.setText(R.string.legacy_wifi_discover);
         root.addView(discoverButton);
@@ -112,12 +107,15 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean beamAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && nfcAdapter != null;
+        final boolean beamAvailable = Build.VERSION.SDK_INT < 34 && nfcAdapter != null;
         beamButton.setEnabled(beamAvailable);
         beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
-        if (!beamAvailable) beamButton.setText(R.string.legacy_beam_unavailable);
+        if (!beamAvailable) {
+            beamButton.setText(nfcAdapter == null
+                    ? R.string.legacy_nfc_no_hardware
+                    : R.string.legacy_beam_android_14_plus);
+        }
         beamButton.setOnClickListener(v -> shareWithBeam());
-        writeTag.setOnClickListener(v -> status.setText(R.string.legacy_nfc_tap_tag));
         discoverButton.setOnClickListener(v -> discoverPeers());
         peerList.setOnItemClickListener((parent, view, position, id) -> connectToPeer(position));
         sendButton.setOnClickListener(v -> sendWifiText());
@@ -268,19 +266,22 @@ public final class LegacyTransferActivity extends DropPipActivity {
     }
 
     private void shareWithBeam() {
-        if (nfcAdapter == null || Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (nfcAdapter == null || Build.VERSION.SDK_INT >= 34) {
             status.setText(R.string.legacy_beam_unavailable);
             return;
         }
         try {
             NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(textInput.getText().toString())});
-            // Beam APIs were removed from public SDK stubs in Android 10. Reflection keeps
-            // the app buildable on current SDKs; the call is made only on Android 9 and older.
+            // Beam APIs are deprecated/hidden on newer Android releases. Reflection is only
+            // attempted before Android 14; manufacturer support is not guaranteed and failures
+            // are reported rather than treated as a successful transfer.
             nfcAdapter.getClass().getMethod("setNdefPushMessage", NdefMessage.class, Activity.class, Activity[].class)
                     .invoke(nfcAdapter, message, this, new Activity[0]);
             status.setText(R.string.legacy_beam_ready_to_tap);
         } catch (Exception e) {
-            status.setText(R.string.legacy_beam_unavailable);
+            status.setText(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                    ? R.string.legacy_beam_android_10_13
+                    : R.string.legacy_beam_unavailable);
         }
     }
 
@@ -307,48 +308,14 @@ public final class LegacyTransferActivity extends DropPipActivity {
     private void handleNfcIntent(Intent intent) {
         if (intent == null) return;
         String action = intent.getAction();
-        if (!NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
-                && !NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)
-                && !NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) return;
+        if (!NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) return;
         android.os.Parcelable[] incoming = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
         if (incoming != null && incoming.length > 0 && incoming[0] instanceof NdefMessage) {
             String received = readTextRecord((NdefMessage) incoming[0]);
             if (received != null) {
                 textInput.setText(received);
                 status.setText(R.string.legacy_beam_text_received);
-                return;
             }
-        }
-        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        if (tag == null) return;
-        Ndef ndef = Ndef.get(tag);
-        if (ndef == null) {
-            status.setText(R.string.legacy_nfc_tag_not_ndef);
-            return;
-        }
-        try {
-            ndef.connect();
-            NdefMessage[] messages = ndef.getNdefMessage() == null ? new NdefMessage[0] : new NdefMessage[]{ndef.getNdefMessage()};
-            if (messages.length > 0 && messages[0].getRecords().length > 0) {
-                String readText = readTextRecord(messages[0]);
-                if (readText != null) {
-                    textInput.setText(readText);
-                    status.setText(R.string.legacy_nfc_tag_read);
-                }
-            } else {
-                String text = textInput.getText().toString();
-                if (!text.isEmpty() && ndef.isWritable()) {
-                    NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(text)});
-                    if (message.toByteArray().length <= ndef.getMaxSize()) {
-                        ndef.writeNdefMessage(message);
-                        status.setText(R.string.legacy_nfc_tag_written);
-                    } else status.setText(R.string.legacy_nfc_tag_too_small);
-                } else status.setText(R.string.legacy_nfc_tap_tag);
-            }
-        } catch (Exception e) {
-            status.setText(R.string.legacy_nfc_tag_error);
-        } finally {
-            try { ndef.close(); } catch (Exception ignored) { }
         }
     }
 
@@ -360,21 +327,10 @@ public final class LegacyTransferActivity extends DropPipActivity {
 
     @Override protected void onResume() {
         super.onResume();
-        if (nfcAdapter != null && nfcAdapter.isEnabled()) {
-            try {
-                android.app.PendingIntent pending = android.app.PendingIntent.getActivity(this, 0,
-                        new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-                        Build.VERSION.SDK_INT >= 23 ? android.app.PendingIntent.FLAG_MUTABLE : 0);
-                nfcAdapter.enableForegroundDispatch(this, pending, null, null);
-            } catch (Exception ignored) { }
-        }
         registerWifiReceiver();
     }
 
     @Override protected void onPause() {
-        if (nfcAdapter != null) {
-            try { nfcAdapter.disableForegroundDispatch(this); } catch (Exception ignored) { }
-        }
         super.onPause();
     }
 

@@ -78,8 +78,8 @@ public abstract class DropPipActivity extends AppCompatActivity {
         try {
             setPictureInPictureParams(builder.build());
         } catch (IllegalStateException ignored) {
-            // Some ROMs can report PiP support inconsistently. PiP is optional;
-            // never let a parameter update crash the screen.
+            // Some devices report PiP support inconsistently. PiP is optional;
+            // do not crash screen creation or a preference update.
         }
     }
 
@@ -99,7 +99,7 @@ public abstract class DropPipActivity extends AppCompatActivity {
                         .setAspectRatio(new Rational(16, 9))
                         .build());
             } catch (IllegalStateException ignored) {
-                // Keep navigation safe on ROMs with incomplete PiP implementations.
+                // Keep navigation safe on devices with incomplete PiP support.
             }
         }
     }

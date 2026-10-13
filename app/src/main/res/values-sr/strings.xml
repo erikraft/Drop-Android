@@ -9,4 +9,8 @@
     <string name="about_references_projects">Референтни пројекти</string>
     <string name="about_references_web_desktop">Веб / рачунар</string>
     <string name="about_references_android">Android / интеграција</string>
+    <string name="about_highlight">&lt;b&gt;Направљено за пренос датотека и приватност&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ је усмерен на пренос датотека и приватност и настоји да се прилагоди старијим и модерним уређајима када је то могуће. Доступност зависи од уређаја, система и подржаних технологија.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Помозите да побољшате ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Пошаљите Pull Request за исправку проблема или додавање функције, или отворите Issue са дијагностиком и корацима за понављање проблема. Јасне пријаве и доприноси чине апликацију поузданијом.</string>
+    <string name="legacy_beam_legacy_compatible">Старији Android: Android Beam може бити доступан ако га подржавају уређај и имплементација произвођача. NFC сам по себи не потврђује компатибилност; тестирајте стварни пренос.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam није загарантован. Неке верзије произвођача можда задржавају стару подршку, али верзија Android-а и NFC сами не доказују да ради.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 и новији: Android Beam није доступан у ErikrafT Drop™ јер су системски API-ји уклоњени. Апликација не покушава да их врати.</string>
 </resources>

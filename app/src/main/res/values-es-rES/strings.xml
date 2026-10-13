@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transferir mediante Onion (beta)</string>
+    <string name="onion_transfer_title">Transferir mediante Onion</string>
     <string name="onion_transfer_description">Comparte archivos o texto directamente desde tu dispositivo mediante una conexión privada de Tor. El contenido permanece en tu dispositivo y se entrega mediante una dirección Onion temporal.</string>
     <string name="onion_transfer_select_files">Seleccionar archivos</string>
     <string name="onion_transfer_send_text">Enviar texto</string>
@@ -295,4 +295,8 @@
     <string name="about_references_projects">Proyectos de referencia</string>
     <string name="about_references_web_desktop">Web / escritorio</string>
     <string name="about_references_android">Android / integración</string>
+    <string name="about_highlight">&lt;b&gt;Diseñado para transferir archivos y proteger la privacidad&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ se centra en la transferencia de archivos y la privacidad. Intenta adaptarse a dispositivos antiguos y modernos siempre que sea posible. La disponibilidad depende del dispositivo, el sistema operativo y las tecnologías compatibles.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Ayuda a mejorar ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribuye con una Pull Request para corregir un problema o añadir una función, o abre una Issue con datos de diagnóstico y pasos para reproducir el problema. Los informes claros y las contribuciones hacen que la aplicación sea más fiable.</string>
+    <string name="legacy_beam_legacy_compatible">Android antiguo: Android Beam puede estar disponible si el dispositivo y la implementación del fabricante lo admiten. Tener NFC no confirma la compatibilidad; prueba una transferencia real.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam no está garantizado. Algunos fabricantes pueden conservar el soporte antiguo, pero la versión de Android y NFC por sí solas no demuestran que funcione.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 o posterior: Android Beam no está disponible en ErikrafT Drop™ porque se eliminaron las API del sistema. La aplicación no intenta restaurarlas.</string>
 </resources>

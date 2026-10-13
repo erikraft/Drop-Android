@@ -127,7 +127,7 @@
     <string name="resume">Продолжи</string>
     <string name="cancel">Откажи</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Пренос преку Onion (бета)</string>
+    <string name="onion_transfer_title">Пренос преку Onion</string>
     <string name="onion_transfer_description">Споделувајте датотеки или текст директно од уредот преку приватна Tor врска. Содржината останува на уредот и се испраќа преку привремена Onion адреса.</string>
     <string name="onion_transfer_select_files">Избери датотеки</string>
     <string name="onion_transfer_send_text">Испрати текст</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">Референтни проекти</string>
     <string name="about_references_web_desktop">Веб / десктоп</string>
     <string name="about_references_android">Android / интеграција</string>
+    <string name="about_highlight">&lt;b&gt;Создадено за пренос на датотеки и приватност&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ се фокусира на пренос на датотеки и приватност и се обидува да се приспособи на стари и современи уреди кога е можно. Достапноста зависи од уредот, оперативниот систем и поддржаните технологии.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Помогнете да се подобри ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Испратете Pull Request за поправка или нова функција, или отворете Issue со дијагностички детали и чекори за повторување на проблемот. Јасните пријави и придонеси ја подобруваат сигурноста на апликацијата.</string>
+    <string name="legacy_beam_legacy_compatible">Постар Android: Android Beam може да биде достапен ако уредот и имплементацијата на производителот го поддржуваат. Самото NFC не ја потврдува компатибилноста; тестирајте вистински пренос.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam не е загарантиран. Некои верзии од производителите можеби ја задржуваат старата поддршка, но верзијата на Android и NFC сами не докажуваат дека работи.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 и понови: Android Beam не е достапен во ErikrafT Drop™ бидејќи системските API се отстранети. Апликацијата не се обидува да ги врати.</string>
 </resources>

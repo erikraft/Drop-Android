@@ -127,7 +127,7 @@
     <string name="resume">Hervat</string>
     <string name="cancel">Kanselleer</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Dra oor via Onion (beta)</string>
+    <string name="onion_transfer_title">Dra oor via Onion</string>
     <string name="onion_transfer_description">Deel lêers of teks direk vanaf jou toestel via ’n private Tor-verbinding. Die inhoud bly op jou toestel en word via ’n tydelike Onion-adres gestuur.</string>
     <string name="onion_transfer_select_files">Kies lêers</string>
     <string name="onion_transfer_send_text">Stuur teks</string>
@@ -293,4 +293,8 @@
     <string name="about_references_projects">Verwysingsprojekte</string>
     <string name="about_references_web_desktop">Web / Desktop</string>
     <string name="about_references_android">Android / integrasie</string>
+    <string name="about_highlight">&lt;b&gt;Gebou vir lêeroordrag en privaatheid&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ fokus op lêeroordrag en privaatheid. Dit probeer op ouer, verouderde en moderne toestelle werk waar moontlik. Beskikbaarheid hang af van die toestel, bedryfstelsel en ondersteunde tegnologieë.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help om ErikrafT Drop™ te verbeter&lt;/b&gt;&lt;br/&gt;Dra by met ’n Pull Request om ’n probleem reg te stel of ’n funksie by te voeg, of open ’n Issue met diagnostiese besonderhede en stappe om die probleem te herhaal.</string>
+    <string name="legacy_beam_legacy_compatible">Ouer Android: Android Beam kan beskikbaar wees as die toestel en vervaardiger dit ondersteun. NFC alleen bevestig nie versoenbaarheid nie; toets ’n werklike oordrag.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam word nie gewaarborg nie. Sommige vervaardigerweergawes behou dalk ondersteuning, maar NFC en Android-weergawe alleen bewys dit nie.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 en later: Android Beam is nie beskikbaar in ErikrafT Drop™ nie omdat die stelsel-API’s verwyder is. Die toepassing probeer dit nie herstel nie.</string>
 </resources>

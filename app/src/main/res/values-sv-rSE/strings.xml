@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Överför via Onion (beta)</string>
+    <string name="onion_transfer_title">Överför via Onion</string>
     <string name="onion_transfer_description">Dela filer eller text direkt från enheten via en privat Tor-anslutning. Innehållet stannar på enheten och skickas via en tillfällig Onion-adress.</string>
     <string name="onion_transfer_select_files">Välj filer</string>
     <string name="onion_transfer_send_text">Skicka text</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">Referensprojekt</string>
     <string name="about_references_web_desktop">Webb / dator</string>
     <string name="about_references_android">Android / integration</string>
+    <string name="about_highlight">&lt;b&gt;Skapad för filöverföring och integritet&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ fokuserar på filöverföring och integritet och försöker anpassa sig till både äldre och moderna enheter där det är möjligt. Tillgängligheten beror på enheten, operativsystemet och tekniker som stöds.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hjälp till att förbättra ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Bidra med en Pull Request som rättar ett problem eller lägger till en funktion, eller öppna en Issue med diagnostik och steg för att återskapa problemet. Tydliga rapporter och bidrag gör appen mer tillförlitlig.</string>
+    <string name="legacy_beam_legacy_compatible">Äldre Android: Android Beam kan vara tillgängligt om enheten och tillverkarens implementation stöder det. NFC i sig bekräftar inte kompatibilitet; testa en faktisk överföring.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam garanteras inte. Vissa tillverkarversioner kan behålla äldre stöd, men Android-versionen och NFC ensamma bevisar inte att det fungerar.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 och senare: Android Beam är inte tillgängligt i ErikrafT Drop™ eftersom system-API:erna har tagits bort. Appen försöker inte återställa dem.</string>
 </resources>

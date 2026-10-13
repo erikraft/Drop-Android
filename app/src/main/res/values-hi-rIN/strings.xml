@@ -127,7 +127,7 @@
     <string name="resume">फिर शुरू करें</string>
     <string name="cancel">रद्द करें</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion से ट्रांसफ़र (बीटा)</string>
+    <string name="onion_transfer_title">Onion से ट्रांसफ़र</string>
     <string name="onion_transfer_description">निजी Tor कनेक्शन के ज़रिए अपने डिवाइस से सीधे फ़ाइलें या टेक्स्ट साझा करें। सामग्री डिवाइस पर रहती है और अस्थायी Onion पते से भेजी जाती है।</string>
     <string name="onion_transfer_select_files">फ़ाइलें चुनें</string>
     <string name="onion_transfer_send_text">टेक्स्ट भेजें</string>
@@ -283,4 +283,8 @@
     <string name="about_references_projects">संदर्भ परियोजनाएँ</string>
     <string name="about_references_web_desktop">वेब / डेस्कटॉप</string>
     <string name="about_references_android">Android / एकीकरण</string>
+    <string name="about_highlight">&lt;b&gt;फ़ाइल ट्रांसफ़र और गोपनीयता के लिए बनाया गया&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ फ़ाइल ट्रांसफ़र और गोपनीयता पर केंद्रित है। यह जहाँ संभव हो, पुराने और आधुनिक उपकरणों के अनुकूल होने का प्रयास करता है। उपलब्धता डिवाइस, ऑपरेटिंग सिस्टम और समर्थित तकनीकों पर निर्भर करती है।&lt;br/&gt;&lt;br/&gt;&lt;b&gt;ErikrafT Drop™ को बेहतर बनाने में मदद करें&lt;/b&gt;&lt;br/&gt;समस्या ठीक करने या सुविधा जोड़ने के लिए Pull Request दें, या समस्या को दोहराने के चरणों और निदान विवरण के साथ Issue खोलें। स्पष्ट रिपोर्ट और योगदान ऐप को सभी के लिए अधिक विश्वसनीय बनाते हैं।</string>
+    <string name="legacy_beam_legacy_compatible">पुराना Android: डिवाइस और निर्माता का कार्यान्वयन समर्थन करते हों तो Android Beam उपलब्ध हो सकता है। केवल NFC होने से अनुकूलता सिद्ध नहीं होती; वास्तविक ट्रांसफ़र जाँचें।</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam की उपलब्धता सुनिश्चित नहीं है। कुछ निर्माता संस्करण पुराना समर्थन रख सकते हैं, लेकिन Android संस्करण और NFC अकेले काम करने की पुष्टि नहीं करते।</string>
+    <string name="legacy_beam_android_14_plus">Android 14 या बाद में: सिस्टम API हटाए जाने के कारण ErikrafT Drop™ में Android Beam उपलब्ध नहीं है। ऐप उन्हें वापस लाने का प्रयास नहीं करता।</string>
 </resources>
