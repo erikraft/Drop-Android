@@ -127,7 +127,7 @@
     <string name="resume">המשך</string>
     <string name="cancel">ביטול</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">העברה באמצעות Onion (בטא)</string>
+    <string name="onion_transfer_title">העברה באמצעות Onion</string>
     <string name="onion_transfer_description">שתפו קבצים או טקסט ישירות מהמכשיר באמצעות חיבור Tor פרטי. התוכן נשאר במכשיר ונשלח באמצעות כתובת Onion זמנית.</string>
     <string name="onion_transfer_select_files">בחירת קבצים</string>
     <string name="onion_transfer_send_text">שליחת טקסט</string>
