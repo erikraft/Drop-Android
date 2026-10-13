@@ -288,4 +288,5 @@
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam garanti edilmez. Bazı üretici sürümleri eski desteği koruyabilir ancak Android sürümü ve NFC tek başına çalıştığını kanıtlamaz.</string>
     <string name="legacy_beam_android_14_plus">Android 14 ve sonrası: Sistem API\'leri kaldırıldığı için ErikrafT Drop™ içinde Android Beam kullanılamaz. Uygulama bu API\'leri geri getirmeye çalışmaz.</string>
     <string name="legacy_beam_modern_share_started">Android Beam, Android 10 ve sonraki sürümlerde kullanılamaz. Bunun yerine sistemin paylaşım menüsü açıldı; bu yöntem cihazlar arasında doğrudan NFC kullanmaz.</string>
+    <string name="transfer_feature_unavailable">Kullanılamıyor: bu cihazda gerekli çalışma zamanı desteği yok.</string>
 </resources>
