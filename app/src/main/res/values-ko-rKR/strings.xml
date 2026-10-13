@@ -127,7 +127,7 @@
     <string name="resume">계속</string>
     <string name="cancel">취소</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion으로 전송(베타)</string>
+    <string name="onion_transfer_title">Onion으로 전송</string>
     <string name="onion_transfer_description">비공개 Tor 연결을 통해 기기에서 파일 또는 텍스트를 바로 공유하세요. 콘텐츠는 기기에 남고 임시 Onion 주소를 통해 전송됩니다.</string>
     <string name="onion_transfer_select_files">파일 선택</string>
     <string name="onion_transfer_send_text">텍스트 보내기</string>
