@@ -127,7 +127,7 @@
     <string name="resume">Fortsæt</string>
     <string name="cancel">Annuller</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Overfør via Onion (beta)</string>
+    <string name="onion_transfer_title">Overfør via Onion</string>
     <string name="onion_transfer_description">Del filer eller tekst direkte fra din enhed via en privat Tor-forbindelse. Indholdet bliver på din enhed og leveres via en midlertidig Onion-adresse.</string>
     <string name="onion_transfer_select_files">Vælg filer</string>
     <string name="onion_transfer_send_text">Send tekst</string>
