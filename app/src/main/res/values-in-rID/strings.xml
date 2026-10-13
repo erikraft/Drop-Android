@@ -283,4 +283,8 @@
     <string name="about_references_projects">Proyek referensi</string>
     <string name="about_references_web_desktop">Web / desktop</string>
     <string name="about_references_android">Android / integrasi</string>
+    <string name="about_highlight">&lt;b&gt;Dirancang untuk transfer berkas dan privasi&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ berfokus pada transfer berkas dan privasi serta berupaya menyesuaikan diri dengan perangkat lama maupun modern jika memungkinkan. Ketersediaan bergantung pada perangkat, sistem operasi, dan teknologi yang didukung.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Bantu tingkatkan ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Kirim Pull Request untuk memperbaiki masalah atau menambahkan fitur, atau buka Issue dengan detail diagnosis dan langkah untuk mereproduksi masalah. Laporan yang jelas dan kontribusi membantu meningkatkan keandalan aplikasi.</string>
+    <string name="legacy_beam_legacy_compatible">Android lama: Android Beam mungkin tersedia jika perangkat dan implementasi produsen mendukungnya. NFC saja tidak memastikan kompatibilitas; uji transfer nyata.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam tidak dijamin tersedia. Beberapa versi dari produsen mungkin mempertahankan dukungan lama, tetapi versi Android dan NFC saja tidak membuktikan bahwa fitur berfungsi.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 dan lebih baru: Android Beam tidak tersedia di ErikrafT Drop™ karena API sistem telah dihapus. Aplikasi tidak mencoba memulihkannya.</string>
 </resources>
