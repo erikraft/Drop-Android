@@ -113,14 +113,10 @@ public final class LegacyTransferActivity extends DropPipActivity {
         if (!beamAvailable) {
             beamButton.setText(nfcAdapter == null
                     ? R.string.legacy_nfc_no_hardware
-                    : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                        ? R.string.legacy_beam_unavailable
-                        : R.string.legacy_beam_api_unavailable);
+                    : R.string.transfer_feature_unavailable);
             status.setText(nfcAdapter == null
                     ? R.string.legacy_nfc_no_hardware
-                    : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                        ? R.string.legacy_beam_unavailable
-                        : R.string.legacy_beam_api_unavailable);
+                    : R.string.transfer_feature_unavailable);
         }
         beamButton.setOnClickListener(v -> shareWithBeam());
         discoverButton.setOnClickListener(v -> discoverPeers());
@@ -278,7 +274,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
             return;
         }
         if (!hasOfficialBeamApi(nfcAdapter)) {
-            status.setText(R.string.legacy_beam_api_unavailable);
+            status.setText(R.string.transfer_feature_unavailable);
             beamButton.setEnabled(false);
             beamButton.setAlpha(0.55f);
             return;
