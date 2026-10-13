@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">حول ErikrafT Drop™ لنظام Android</string>
     <string name="app_name_slogan">انقل الملفات بسهولة بين جميع أجهزتك.</string>
     <string name="err_no_browser">تعذّر فتح المتصفح</string>
     <string name="err_no_app">لا يوجد تطبيق مثبت لفتح هذا الملف</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">إنهاء</string>
     <string name="onboarding_choose_server">اختر عنوان خادم</string>
     <string name="onboarding_choose_server_short">اختر خادمًا</string>
-    <string name="onboarding_choose_server_description">هذا التطبيق عميل مُحسّن لتطبيقَي الويب ErikrafT Drop وPairDrop.\nاختر إحدى النسخ التالية أو أدخل عنوان URL مخصصًا للاتصال.\n\nملاحظة: يجب اختيار عنوان URL نفسه على جميع الأجهزة.</string>
+    <string name="onboarding_choose_server_description">اختر خادم ErikrafT Drop أو أدخل عنوان URL مخصصًا. PairDrop توصية اختيارية لخدمة تابعة لجهة خارجية، وليست جزءًا من منظومة ErikrafT Drop.\n\nملاحظة: يجب اختيار عنوان URL نفسه على جميع الأجهزة.</string>
     <string name="onboarding_storage_permission">إذن التخزين</string>
     <string name="onboarding_storage_permission_description">هذا التطبيق مخصص لمشاركة الملفات، ولذلك يلزم إذن التخزين لاستخدامه.</string>
     <string name="onboarding_server_primary_summary">(1) الأساسي — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) الثانوي — خادم ErikrafT Drop™ الاحتياطي</string>
     <string name="onboarding_server_tertiary_summary">(3) الثالث — خادم ErikrafT Drop™ الاحتياطي</string>
-    <string name="onboarding_server_quaternary_summary">(4) الرابع — خدمة Onion في ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) الرابع — PairDrop (توصية اختيارية من جهة خارجية)</string>
     <string name="onboarding_server_quinary_summary">(5) الخامس — PairDrop</string>
     <string name="onboarding_server_onion_warning">يلزم Tor. يمكن الوصول إلى خدمة Onion مباشرةً عبر Tor على هذا الجهاز.</string>
-    <string name="onboarding_server_pairdrop_summary">خادم ErikrafT Drop™ الرئيسي.</string>
+    <string name="onboarding_server_pairdrop_summary">توصية اختيارية من جهة خارجية؛ ليست جزءًا من منظومة ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Snapdrop الكلاسيكي؛ بسيط ونظيف.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">خادم PairDrop الاحتياطي.</string>
     <string name="onboarding_server_custom">عنوان URL مخصص</string>
