@@ -309,10 +309,6 @@
     <string name="legacy_beam_legacy_compatible">Older Android: Android Beam may be available when the device and manufacturer implementation support it. NFC alone does not confirm compatibility; a real transfer test is needed.</string>
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam is not guaranteed. Some manufacturer builds may retain legacy support, but NFC presence and Android version alone cannot confirm it.</string>
     <string name="legacy_beam_android_14_plus">Android 14 and later: Android Beam is unavailable in ErikrafT Drop™ because the system APIs were removed. The app does not attempt to restore them.</string>
-    <string name="about_mission_title">Built for file transfer and privacy</string>
-    <string name="about_mission_description">ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.</string>
-    <string name="about_contribute_title">Help improve ErikrafT Drop™</string>
-    <string name="about_contribute_description">If you can, contribute a Pull Request that fixes a problem or adds a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
 
     <string name="about_highlight">&lt;b&gt;Built for file transfer and privacy&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help improve ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribute a Pull Request to fix a problem or add a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
 </resources>
