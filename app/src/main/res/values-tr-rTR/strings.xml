@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Android için Snapdrop &amp; PairDrop</string>
+    <string name="app_name_long">Android için ErikrafT Drop™ hakkında</string>
     <string name="app_name_slogan">Dosyaları tüm cihazlarınız arasında sorunsuz bir şekilde aktarın.</string>
     <string name="err_no_browser">Tarayıcı açılamıyor</string>
     <string name="err_no_app">Bu dosyayı açmak için yüklü bir uygulama yok</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">bitir</string>
     <string name="onboarding_choose_server">Server adresi seçin</string>
     <string name="onboarding_choose_server_short">sunucu seçin</string>
-    <string name="onboarding_choose_server_description">Bu uygulama ErikrafT Drop ve PairDrop web uygulamaları için optimize edilmiş bir istemcidir.\nAşağıdaki örneklerden birini seçin veya bağlanılacak özel bir URL belirtin.\n\nNot: Tüm cihazlarda aynı URL\'yi seçmelisiniz.</string>
+    <string name="onboarding_choose_server_description">Bir ErikrafT Drop sunucusu seçin veya özel bir URL girin. PairDrop, isteğe bağlı bir üçüncü taraf önerisidir ve ErikrafT Drop ekosisteminin parçası değildir.\n\nNot: Tüm cihazlarda aynı URL seçilmelidir.</string>
     <string name="onboarding_storage_permission">Depolama izni</string>
     <string name="onboarding_storage_permission_description">Bu uygulama bir dosya aktarım aracıdır. Uygulamayı kullanabilmek için depolama izni gerekir.</string>
     <string name="onboarding_server_primary_summary">(1) Birincil — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) İkincil — ErikrafT Drop™ yedeği</string>
     <string name="onboarding_server_tertiary_summary">(3) Üçüncül — ErikrafT Drop™ yedeği</string>
-    <string name="onboarding_server_quaternary_summary">(4) Dördüncü — ErikrafT Drop™ Onion hizmeti</string>
+    <string name="onboarding_server_quaternary_summary">(4) Dördüncü — PairDrop (isteğe bağlı üçüncü taraf önerisi)</string>
     <string name="onboarding_server_quinary_summary">(5) Beşinci — PairDrop</string>
     <string name="onboarding_server_onion_warning">Tor gereklidir. Onion hizmetine bu cihazda doğrudan Tor üzerinden erişilir.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ birincil sunucusu.</string>
+    <string name="onboarding_server_pairdrop_summary">İsteğe bağlı üçüncü taraf önerisi; ErikrafT Drop ekosisteminin parçası değildir.</string>
     <string name="onboarding_server_snapdrop_summary">Klasik Snapdrop. Sade ve temiz.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop yedeği.</string>
     <string name="onboarding_server_custom">Özel URL</string>
