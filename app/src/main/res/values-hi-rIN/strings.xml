@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Android के लिए ErikrafT Drop™ के बारे में</string>
     <string name="app_name_slogan">अपने सभी डिवाइसों के बीच आसानी से फ़ाइलें ट्रांसफ़र करें।</string>
     <string name="err_no_browser">ब्राउज़र नहीं खुल सका</string>
     <string name="err_no_app">इस फ़ाइल को खोलने के लिए कोई ऐप इंस्टॉल नहीं है</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">समाप्त करें</string>
     <string name="onboarding_choose_server">सर्वर का पता चुनें</string>
     <string name="onboarding_choose_server_short">सर्वर चुनें</string>
-    <string name="onboarding_choose_server_description">यह ऐप ErikrafT Drop और PairDrop वेब ऐप्स के लिए अनुकूलित क्लाइंट है।\nकनेक्ट करने के लिए नीचे दिए गए सर्वरों में से एक चुनें या कस्टम URL दर्ज करें।\n\nध्यान दें: सभी डिवाइसों पर एक ही URL चुनना ज़रूरी है।</string>
+    <string name="onboarding_choose_server_description">ErikrafT Drop सर्वर चुनें या कस्टम URL दर्ज करें। PairDrop एक वैकल्पिक तृतीय-पक्ष सुझाव है और ErikrafT Drop इकोसिस्टम का हिस्सा नहीं है।\n\nध्यान दें: सभी डिवाइस पर एक ही URL चुनें।</string>
     <string name="onboarding_storage_permission">स्टोरेज की अनुमति</string>
     <string name="onboarding_storage_permission_description">यह ऐप फ़ाइलें साझा करने के लिए है, इसलिए इसका उपयोग करने के लिए स्टोरेज की अनुमति ज़रूरी है।</string>
     <string name="onboarding_server_primary_summary">(1) प्राथमिक — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) द्वितीयक — ErikrafT Drop™ फ़ॉलबैक</string>
     <string name="onboarding_server_tertiary_summary">(3) तृतीयक — ErikrafT Drop™ फ़ॉलबैक</string>
-    <string name="onboarding_server_quaternary_summary">(4) चौथा — ErikrafT Drop™ Onion सेवा</string>
+    <string name="onboarding_server_quaternary_summary">(4) चौथा — PairDrop (वैकल्पिक तृतीय-पक्ष सुझाव)</string>
     <string name="onboarding_server_quinary_summary">(5) पाँचवाँ — PairDrop</string>
     <string name="onboarding_server_onion_warning">Tor आवश्यक है। इस डिवाइस पर Onion सेवा सीधे Tor के माध्यम से खुलती है।</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ का प्राथमिक सर्वर।</string>
+    <string name="onboarding_server_pairdrop_summary">वैकल्पिक तृतीय-पक्ष सुझाव; ErikrafT Drop इकोसिस्टम का हिस्सा नहीं है.</string>
     <string name="onboarding_server_snapdrop_summary">क्लासिक Snapdrop। सरल और साफ़।</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop फ़ॉलबैक।</string>
     <string name="onboarding_server_custom">कस्टम URL</string>
