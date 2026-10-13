@@ -15,4 +15,5 @@
     <string name="legacy_beam_android_14_plus">Android 14 и новији: Android Beam није доступан у ErikrafT Drop™ јер су системски API-ји уклоњени. Апликација не покушава да их врати.</string>
     <string name="legacy_beam_modern_share_started">Android Beam није доступан на Android-у 10 и новијим верзијама. Уместо њега отворен је системски мени за дељење; он не користи директну NFC везу између уређаја.</string>
     <string name="transfer_feature_unavailable">Није доступно: на овом уређају недостаје потребна подршка током рада.</string>
+    <string name="ftp_stopping">Заустављање сервера…</string>
 </resources>

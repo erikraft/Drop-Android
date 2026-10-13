@@ -298,4 +298,5 @@
     <string name="legacy_beam_android_14_plus">Android 14 及更高版本：由于系统 API 已被移除，ErikrafT Drop™ 不提供 Android Beam。应用不会尝试恢复这些 API。</string>
     <string name="legacy_beam_modern_share_started">Android 10 及更高版本不再提供 Android Beam。系统已改为打开分享菜单；此方式不会使用设备间的 NFC 点对点连接。</string>
     <string name="transfer_feature_unavailable">不可用：此设备缺少所需的运行时支持。</string>
+    <string name="ftp_stopping">正在停止服务器…</string>
 </resources>
