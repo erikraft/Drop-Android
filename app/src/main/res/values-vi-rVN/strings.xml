@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Giới thiệu ErikrafT Drop™ cho Android</string>
     <string name="app_name_slogan">Chuyển tệp dễ dàng giữa tất cả thiết bị của bạn.</string>
     <string name="err_no_browser">Không thể mở trình duyệt</string>
     <string name="err_no_app">Không có ứng dụng nào có thể mở tập tin này</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">hoàn tất</string>
     <string name="onboarding_choose_server">Chọn địa chỉ máy chủ</string>
     <string name="onboarding_choose_server_short">chọn máy chủ</string>
-    <string name="onboarding_choose_server_description">Ứng dụng này là trình khách được tối ưu cho các ứng dụng web ErikrafT Drop và PairDrop.\nChọn một máy chủ bên dưới hoặc nhập URL tùy chỉnh để kết nối.\n\nLưu ý: Bạn phải chọn cùng một URL trên tất cả thiết bị.</string>
+    <string name="onboarding_choose_server_description">Chọn máy chủ ErikrafT Drop hoặc nhập URL tùy chỉnh. PairDrop là dịch vụ bên thứ ba được đề xuất tùy chọn và không thuộc hệ sinh thái ErikrafT Drop.\n\nLưu ý: hãy chọn cùng một URL trên tất cả thiết bị.</string>
     <string name="onboarding_storage_permission">Quyền truy cập bộ nhớ</string>
     <string name="onboarding_storage_permission_description">Ứng dụng này dùng để chia sẻ tệp nên cần quyền truy cập bộ nhớ để hoạt động.</string>
     <string name="onboarding_server_primary_summary">(1) Chính — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Phụ — máy chủ dự phòng ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Thứ ba — máy chủ dự phòng ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Thứ tư — Dịch vụ Onion của ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Thứ tư — PairDrop (đề xuất tùy chọn từ bên thứ ba)</string>
     <string name="onboarding_server_quinary_summary">(5) Thứ năm — PairDrop</string>
     <string name="onboarding_server_onion_warning">Cần có Tor. Dịch vụ Onion được truy cập trực tiếp qua Tor trên thiết bị này.</string>
-    <string name="onboarding_server_pairdrop_summary">Máy chủ chính của ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Đề xuất tùy chọn từ bên thứ ba; không thuộc hệ sinh thái ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Snapdrop cổ điển. Đơn giản và gọn gàng.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Máy chủ dự phòng PairDrop.</string>
     <string name="onboarding_server_custom">URL tùy chỉnh</string>

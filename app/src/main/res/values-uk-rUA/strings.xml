@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Snapdrop &amp; PairDrop для Android</string>
+    <string name="app_name_long">Про ErikrafT Drop™ для Android</string>
     <string name="app_name_slogan">Легко передавайте файли між усіма своїми пристроями.</string>
     <string name="err_no_browser">Не вдається відкрити браузер</string>
     <string name="err_no_app">Немає встановлених програм, щоб відкрити цей файл</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">завершити</string>
     <string name="onboarding_choose_server">Виберіть адресу сервера</string>
     <string name="onboarding_choose_server_short">вибрати сервер</string>
-    <string name="onboarding_choose_server_description">Цей застосунок є оптимізованим клієнтом для вебзастосунків ErikrafT Drop і PairDrop.\nВиберіть один із наведених нижче екземплярів або вкажіть спеціальну URL-адресу для підключення.\n\nПримітка: Вам потрібно вибрати однакову URL-адресу на всіх пристроях.</string>
+    <string name="onboarding_choose_server_description">Виберіть сервер ErikrafT Drop або введіть власну URL-адресу. PairDrop — це необов’язкова рекомендація стороннього сервісу, який не входить до екосистеми ErikrafT Drop.\n\nПримітка: на всіх пристроях потрібно вибрати однакову URL-адресу.</string>
     <string name="onboarding_storage_permission">Дозвіл на зберігання</string>
     <string name="onboarding_storage_permission_description">Цей застосунок є засобом для обміну файлами. Тому для його використання потрібен дозвіл на зберігання.</string>
     <string name="onboarding_server_primary_summary">(1) Основний — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Другорядний — резервний ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Третій — резервний ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Четвертий — Onion Service ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Четвертий — PairDrop (необов’язкова рекомендація стороннього сервісу)</string>
     <string name="onboarding_server_quinary_summary">(5) П’ятий — PairDrop</string>
     <string name="onboarding_server_onion_warning">Потрібен Tor. На цьому пристрої доступ до Onion Service здійснюється безпосередньо через Tor.</string>
-    <string name="onboarding_server_pairdrop_summary">Основний сервер ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Необов’язкова рекомендація стороннього сервісу; не входить до екосистеми ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Класичний Snapdrop. Простий і зрозумілий.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Резервний сервер PairDrop.</string>
     <string name="onboarding_server_custom">Власна URL-адреса</string>

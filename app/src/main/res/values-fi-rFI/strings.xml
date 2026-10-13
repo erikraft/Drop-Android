@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Tietoja ErikrafT Drop™ -sovelluksesta Androidille</string>
     <string name="app_name_slogan">Siirrä tiedostoja vaivattomasti kaikkien laitteidesi välillä.</string>
     <string name="err_no_browser">Selainta ei voi avata</string>
     <string name="err_no_app">Tiedoston avaamiseen ei ole asennettu sovellusta</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">valmis</string>
     <string name="onboarding_choose_server">Valitse palvelimen osoite</string>
     <string name="onboarding_choose_server_short">valitse palvelin</string>
-    <string name="onboarding_choose_server_description">Tämä sovellus on optimoitu asiakasohjelma ErikrafT Drop- ja PairDrop-verkkosovelluksille.\nValitse jokin seuraavista palvelimista tai anna mukautettu URL-osoite yhteyden muodostamista varten.\n\nHuomautus: Sama URL-osoite on valittava kaikissa laitteissa.</string>
+    <string name="onboarding_choose_server_description">Valitse ErikrafT Drop -palvelin tai anna mukautettu URL-osoite. PairDrop on valinnainen kolmannen osapuolen suositus eikä kuulu ErikrafT Drop -ekosysteemiin.\n\nHuomautus: Valitse sama URL kaikissa laitteissa.</string>
     <string name="onboarding_storage_permission">Tallennustilan käyttöoikeus</string>
     <string name="onboarding_storage_permission_description">Tämä sovellus jakaa tiedostoja, joten sen käyttö edellyttää tallennustilan käyttöoikeutta.</string>
     <string name="onboarding_server_primary_summary">(1) Ensisijainen — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Toissijainen — ErikrafT Drop™ -varapalvelin</string>
     <string name="onboarding_server_tertiary_summary">(3) Kolmas — ErikrafT Drop™ -varapalvelin</string>
-    <string name="onboarding_server_quaternary_summary">(4) Neljäs — ErikrafT Drop™ Onion -palvelu</string>
+    <string name="onboarding_server_quaternary_summary">(4) Neljäs — PairDrop (valinnainen kolmannen osapuolen suositus)</string>
     <string name="onboarding_server_quinary_summary">(5) Viides — PairDrop</string>
     <string name="onboarding_server_onion_warning">Tor tarvitaan. Onion-palvelua käytetään suoraan Torin kautta tällä laitteella.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ -ensisijainen palvelin.</string>
+    <string name="onboarding_server_pairdrop_summary">Valinnainen kolmannen osapuolen suositus; ei kuulu ErikrafT Drop -ekosysteemiin.</string>
     <string name="onboarding_server_snapdrop_summary">Perinteinen Snapdrop. Yksinkertainen ja selkeä.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop-varapalvelin.</string>
     <string name="onboarding_server_custom">Mukautettu URL-osoite</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">O aplikácii ErikrafT Drop™ pre Android</string>
     <string name="app_name_slogan">Prenášajte súbory jednoducho medzi všetkými svojimi zariadeniami.</string>
     <string name="err_no_browser">Nedá sa otvoriť prehliadač</string>
     <string name="err_no_app">Nie je nainštalovaná aplikácia na otvorenie tohto súboru</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">dokončiť</string>
     <string name="onboarding_choose_server">Vyberte adresu servera</string>
     <string name="onboarding_choose_server_short">vybrať server</string>
-    <string name="onboarding_choose_server_description">Táto aplikácia je optimalizovaný klient pre webové aplikácie ErikrafT Drop a PairDrop.\nVyberte jeden z nasledujúcich serverov alebo zadajte vlastnú URL adresu na pripojenie.\n\nPoznámka: Na všetkých zariadeniach musíte vybrať rovnakú URL adresu.</string>
+    <string name="onboarding_choose_server_description">Vyberte server ErikrafT Drop alebo zadajte vlastnú URL adresu. PairDrop je voliteľné odporúčanie služby tretej strany a nie je súčasťou ekosystému ErikrafT Drop.\n\nPoznámka: na všetkých zariadeniach vyberte rovnakú URL adresu.</string>
     <string name="onboarding_storage_permission">Povolenie úložiska</string>
     <string name="onboarding_storage_permission_description">Táto aplikácia slúži na zdieľanie súborov, preto na jej používanie potrebuje povolenie na úložisko.</string>
     <string name="onboarding_server_primary_summary">(1) Primárny — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Sekundárny — záložný server ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Terciárny — záložný server ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Štvrtý — Onion služba ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Štvrtý — PairDrop (voliteľné odporúčanie tretej strany)</string>
     <string name="onboarding_server_quinary_summary">(5) Piaty — PairDrop</string>
     <string name="onboarding_server_onion_warning">Vyžaduje sa Tor. K Onion službe sa na tomto zariadení pristupuje priamo cez Tor.</string>
-    <string name="onboarding_server_pairdrop_summary">Primárny server ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Voliteľné odporúčanie tretej strany; nie je súčasťou ekosystému ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Klasický Snapdrop. Jednoduchý a prehľadný.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Záložný server PairDrop.</string>
     <string name="onboarding_server_custom">Vlastná URL adresa</string>

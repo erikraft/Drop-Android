@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Az ErikrafT Drop™ Android-verziójáról</string>
     <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
     <string name="err_no_browser">A böngésző nem nyitható meg</string>
     <string name="err_no_app">Nincs megfelelő alkalmazás a fájl megnyitásához</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">befejezés</string>
     <string name="onboarding_choose_server">Szervercím kiválasztása</string>
     <string name="onboarding_choose_server_short">szerver kiválasztása</string>
-    <string name="onboarding_choose_server_description">Ez az alkalmazás az ErikrafT Drop és a PairDrop webalkalmazások optimalizált kliense.\nVálasszon az alábbi példányok közül, vagy adjon meg egy egyéni URL-címet a csatlakozáshoz.\n\nMegjegyzés: minden eszközön ugyanazt az URL-címet kell kiválasztania.</string>
+    <string name="onboarding_choose_server_description">Válasszon ErikrafT Drop-kiszolgálót, vagy adjon meg egyéni URL-címet. A PairDrop egy opcionális, harmadik féltől származó ajánlás, és nem része az ErikrafT Drop ökoszisztémájának.\n\nMegjegyzés: minden eszközön ugyanazt az URL-címet kell választani.</string>
     <string name="onboarding_storage_permission">Tárhelyengedély</string>
     <string name="onboarding_storage_permission_description">Ez az alkalmazás fájlmegosztó eszköz, ezért a használatához tárhelyengedély szükséges.</string>
     <string name="onboarding_server_primary_summary">(1) Elsődleges — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Másodlagos — ErikrafT Drop™ tartalék</string>
     <string name="onboarding_server_tertiary_summary">(3) Harmadlagos — ErikrafT Drop™ tartalék</string>
-    <string name="onboarding_server_quaternary_summary">(4) Negyedik — ErikrafT Drop™ Onion szolgáltatás</string>
+    <string name="onboarding_server_quaternary_summary">(4) Negyedik — PairDrop (opcionális, harmadik féltől származó ajánlás)</string>
     <string name="onboarding_server_quinary_summary">(5) Ötödik — PairDrop</string>
     <string name="onboarding_server_onion_warning">A Tor használata szükséges. Az Onion szolgáltatás ezen az eszközön közvetlenül a Toron keresztül érhető el.</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ elsődleges kiszolgáló.</string>
+    <string name="onboarding_server_pairdrop_summary">Opcionális, harmadik féltől származó ajánlás; nem része az ErikrafT Drop ökoszisztémájának.</string>
     <string name="onboarding_server_snapdrop_summary">A klasszikus Snapdrop. Egyszerű és letisztult.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop tartalék.</string>
     <string name="onboarding_server_custom">Egyéni URL</string>

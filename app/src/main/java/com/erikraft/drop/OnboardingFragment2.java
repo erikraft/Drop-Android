@@ -220,9 +220,8 @@ public class OnboardingFragment2 extends Fragment {
         servers.add(new ServerItem("https://drop.erikraft.com/", getString(R.string.onboarding_server_primary_summary), null));
         servers.add(new ServerItem("https://drop-fallback.erikraft.com/", getString(R.string.onboarding_server_secondary_summary), null));
         servers.add(new ServerItem("https://dropfallback.erikraft.com/", getString(R.string.onboarding_server_tertiary_summary), null));
-        servers.add(new ServerItem("http://nozudb2e4jy4betognmnwoxvdu44wvjoqvmwios5ql7mxagqqpnn64ad.onion/",
-                getString(R.string.onboarding_server_quaternary_summary), getString(R.string.onboarding_server_onion_warning)));
-        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quinary_summary), null));
+        // PairDrop is an optional third-party recommendation, not part of this app's ecosystem.
+        servers.add(new ServerItem("https://pairdrop.net/", getString(R.string.onboarding_server_quaternary_summary), null));
 
         for (String url : serverUrls) {
             if (!url.equals("https://drop.erikraft.com/")

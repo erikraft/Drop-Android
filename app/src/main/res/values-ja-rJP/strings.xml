@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">ErikrafT Drop™ for Android について</string>
     <string name="app_name_slogan">あらゆるデバイス間で手軽なファイル共有を実現します。</string>
     <string name="err_no_browser">ブラウザを開くことができません</string>
     <string name="err_no_app">このファイルを開くアプリがインストールされていません</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">完了</string>
     <string name="onboarding_choose_server">サーバー選択</string>
     <string name="onboarding_choose_server_short">サーバー選択</string>
-    <string name="onboarding_choose_server_description">このアプリはウェブアプリのErikrafT DropとPairDropに対応しています。\n以下のサーバーを選択するか、カスタムサーバーのURLを入力してください。\n\n注意: すべてのデバイスで同じサーバーに接続する必要があります。</string>
+    <string name="onboarding_choose_server_description">ErikrafT Drop のサーバーを選択するか、カスタム URL を入力してください。PairDrop は任意のサードパーティ製サービスの推奨であり、ErikrafT Drop のエコシステムには含まれません。\n\n注意：すべての端末で同じ URL を選択してください。</string>
     <string name="onboarding_storage_permission">ストレージ権限</string>
     <string name="onboarding_storage_permission_description">このアプリはファイル共有ツールです。そのため、ストレージへのアクセス許可が必要です。</string>
     <string name="onboarding_server_primary_summary">(1) プライマリ — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) セカンダリ — ErikrafT Drop™のフォールバック</string>
     <string name="onboarding_server_tertiary_summary">(3) ターシャリ — ErikrafT Drop™のフォールバック</string>
-    <string name="onboarding_server_quaternary_summary">(4) 4番目 — ErikrafT Drop™ Onionサービス</string>
+    <string name="onboarding_server_quaternary_summary">(4) 4番目 — PairDrop（任意のサードパーティ製サービスの推奨）</string>
     <string name="onboarding_server_quinary_summary">(5) 5番目 — PairDrop</string>
     <string name="onboarding_server_onion_warning">Torが必要です。このデバイスではTorを通じてOnionサービスに直接アクセスします。</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™のプライマリサーバー。</string>
+    <string name="onboarding_server_pairdrop_summary">任意のサードパーティ製サービスの推奨です。ErikrafT Drop のエコシステムには含まれません。</string>
     <string name="onboarding_server_snapdrop_summary">従来のSnapdrop。シンプルで使いやすい。</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDropのフォールバック。</string>
     <string name="onboarding_server_custom">カスタムURL</string>

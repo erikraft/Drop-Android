@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">O aplikaciji ErikrafT Drop™ za Android</string>
     <string name="app_name_slogan">Jednostavno prenesite datoteke između svih svojih uređaja.</string>
     <string name="err_no_browser">Nije moguće otvoriti preglednik</string>
     <string name="err_no_app">Nema instalirane aplikacije za otvaranje ove datoteke</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">završi</string>
     <string name="onboarding_choose_server">Odaberite adresu poslužitelja</string>
     <string name="onboarding_choose_server_short">odaberi poslužitelj</string>
-    <string name="onboarding_choose_server_description">Ova je aplikacija optimizirani klijent za web-aplikacije ErikrafT Drop i PairDrop.\nOdaberite jedan od sljedećih poslužitelja ili unesite prilagođeni URL za povezivanje.\n\nNapomena: Na svim uređajima morate odabrati isti URL.</string>
+    <string name="onboarding_choose_server_description">Odaberite poslužitelj ErikrafT Drop ili unesite prilagođeni URL. PairDrop je neobavezna preporuka usluge treće strane i nije dio ekosustava ErikrafT Drop.\n\nNapomena: odaberite isti URL na svim uređajima.</string>
     <string name="onboarding_storage_permission">Dopuštenje za pohranu</string>
     <string name="onboarding_storage_permission_description">Ova aplikacija služi za dijeljenje datoteka, pa je za njezinu upotrebu potrebno dopuštenje za pohranu.</string>
     <string name="onboarding_server_primary_summary">(1) Primarni — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Sekundarni — pričuvni ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Tercijarni — pričuvni ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Četvrti — Onion usluga ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Četvrti — PairDrop (neobavezna preporuka treće strane)</string>
     <string name="onboarding_server_quinary_summary">(5) Peti — PairDrop</string>
     <string name="onboarding_server_onion_warning">Potreban je Tor. Onion usluzi pristupa se izravno putem Tora na ovom uređaju.</string>
-    <string name="onboarding_server_pairdrop_summary">Primarni poslužitelj ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Neobavezna preporuka treće strane; nije dio ekosustava ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Klasični Snapdrop. Jednostavan i pregledan.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Pričuvni PairDrop.</string>
     <string name="onboarding_server_custom">Prilagođeni URL</string>

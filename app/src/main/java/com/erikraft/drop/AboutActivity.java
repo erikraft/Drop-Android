@@ -127,8 +127,7 @@ public class AboutActivity extends DropPipActivity {
                 + link("PairDrop", "https://github.com/schlagmichdoch/PairDrop") + "<br>"
                 + link("Snapdrop", "https://github.com/SnapDrop/snapdrop") + "<br>"
                 + link("PairDrop Android", "https://github.com/fm-sys/pairdrop-android") + "<br>"
-                + link("ErikrafT Drop Web", "https://github.com/erikraft/Drop") + "<br>"
-                + link("ErikrafT Drop Android", "https://github.com/erikraft/Drop-Android") + "<br><br>"
+                + "<br>"
                 + getString(R.string.about_references_disclaimer);
     }
 

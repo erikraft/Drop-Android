@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Snapdrop &amp; PairDrop για Android</string>
+    <string name="app_name_long">Σχετικά με το ErikrafT Drop™ για Android</string>
     <string name="app_name_slogan">Μεταφέρετε αρχεία με αξιοπιστία μεταξύ όλων των συσκευών σας.</string>
     <string name="err_no_browser">Αδυναμία ανοίγματος του προγράμματος περιήγησης</string>
     <string name="err_no_app">Δε βρέθηκε εφαρμογή για το άνοιγμα αυτού του αρχείου</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">ολοκλήρωση</string>
     <string name="onboarding_choose_server">Επιλέξτε διεύθυνση διακομιστή</string>
     <string name="onboarding_choose_server_short">επιλέξτε διακομιστή</string>
-    <string name="onboarding_choose_server_description">Αυτή η εφαρμογή είναι ένας βελτιστοποιημένος client για τις web εφαρμογές ErikrafT Drop και PairDrop.\nΕπιλέξτε μία από τις ακόλουθες επιλογές ή καθορίστε μια προσαρμοσμένη διεύθυνση URL για να συνδεθίιτε.\n\nΣημείωση: Πρέπει να επιλέξετε το ίδιο URL σε όλες τις συσκευές.</string>
+    <string name="onboarding_choose_server_description">Επιλέξτε έναν διακομιστή ErikrafT Drop ή εισαγάγετε προσαρμοσμένο URL. Το PairDrop είναι προαιρετική σύσταση υπηρεσίας τρίτου μέρους και δεν αποτελεί μέρος του οικοσυστήματος ErikrafT Drop.\n\nΣημείωση: Επιλέξτε το ίδιο URL σε όλες τις συσκευές.</string>
     <string name="onboarding_storage_permission">Άδεια αποθήκευσης</string>
     <string name="onboarding_storage_permission_description">Αυτή η εφαρμογή είναι ένα πρόγραμμα κοινής χρήσης αρχείων. Ως εκ τούτου, απαιτείται άδεια αποθήκευσης για να μπορεί να χρησιμοποιηθεί.</string>
     <string name="onboarding_server_primary_summary">(1) Κύριος — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Δευτερεύων — εφεδρικός ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Τριτεύων — εφεδρικός ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Τέταρτο — υπηρεσία Onion του ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Τέταρτο — PairDrop (προαιρετική σύσταση τρίτου μέρους)</string>
     <string name="onboarding_server_quinary_summary">(5) Πέμπτο — PairDrop</string>
     <string name="onboarding_server_onion_warning">Απαιτείται το Tor. Η υπηρεσία Onion είναι προσβάσιμη απευθείας μέσω Tor σε αυτήν τη συσκευή.</string>
-    <string name="onboarding_server_pairdrop_summary">Κύριος διακομιστής ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Προαιρετική σύσταση τρίτου μέρους· δεν αποτελεί μέρος του οικοσυστήματος ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Το κλασικό Snapdrop. Απλό και καθαρό.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Εφεδρικός διακομιστής PairDrop.</string>
     <string name="onboarding_server_custom">Προσαρμοσμένο URL</string>

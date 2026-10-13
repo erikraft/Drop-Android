@@ -16,7 +16,6 @@ import android.graphics.RectF;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.util.TypedValue;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,11 +54,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /** Android-only Onion Service sharing mode. Files and text are served from the device through Tor. */
 public class OnionTransferActivity extends DropPipActivity {
     private final List<File> files = new ArrayList<>();
+    private final Map<File, String> originalFileNames = new HashMap<>();
     private ActivityResultLauncher<Intent> picker;
     private OnionHttpServer server;
     private TextView status;
@@ -150,6 +152,7 @@ public class OnionTransferActivity extends DropPipActivity {
                 launchPicker();
             } else {
                 files.clear();
+                originalFileNames.clear();
                 updateSelectionSummary();
                 updateActionLabels();
             }
@@ -335,6 +338,7 @@ public class OnionTransferActivity extends DropPipActivity {
         picker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
             files.clear();
+            originalFileNames.clear();
             Intent data = result.getData();
             ClipData clip = data.getClipData();
             try {
@@ -369,6 +373,7 @@ public class OnionTransferActivity extends DropPipActivity {
             c.close();
         }
         File out = new File(getCacheDir(), name.replaceAll("[^a-zA-Z0-9._-]", "_"));
+        originalFileNames.put(out, name);
         try (InputStream in = getContentResolver().openInputStream(uri); java.io.FileOutputStream fos = new java.io.FileOutputStream(out)) {
             if (in == null) throw new IOException(getString(R.string.onion_error_file_open));
             byte[] buf = new byte[64 * 1024];
@@ -380,6 +385,7 @@ public class OnionTransferActivity extends DropPipActivity {
 
     private void updateActionLabels() {
         if (fileToggle != null) {
+            fileToggle.setBackground(createDashedSelectorBackground());
             fileToggle.setText(files.isEmpty()
                     ? getString(R.string.onion_transfer_select_files)
                     : getString(R.string.onion_transfer_clear_files));
@@ -397,11 +403,10 @@ public class OnionTransferActivity extends DropPipActivity {
     }
 
     private GradientDrawable createDashedSelectorBackground() {
-        TypedValue value = new TypedValue();
-        getTheme().resolveAttribute(android.R.attr.textColorSecondary, value, true);
-        int strokeColor = value.resourceId != 0
-                ? getResources().getColorStateList(value.resourceId, getTheme()).getDefaultColor()
-                : value.data;
+        // Fixed brand colors keep the selector consistent across light and dark themes.
+        int strokeColor = files.isEmpty()
+                ? android.graphics.Color.parseColor("#4285F4")
+                : android.graphics.Color.parseColor("#FF2200");
         GradientDrawable background = new GradientDrawable();
         background.setColor(android.graphics.Color.TRANSPARENT);
         background.setCornerRadius(dp(10));
@@ -411,10 +416,29 @@ public class OnionTransferActivity extends DropPipActivity {
     }
 
     private void updateSelectionSummary() {
-        if (files.isEmpty() && textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_no_files));
-        else if (!files.isEmpty() && !textToShare.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_summary_files_and_text, files.size()));
-        else if (!files.isEmpty()) selectionSummary.setText(getString(R.string.onion_transfer_summary_files, files.size()));
-        else selectionSummary.setText(getString(R.string.onion_transfer_summary_text));
+        if (files.isEmpty() && textToShare.isEmpty()) {
+            selectionSummary.setText(getString(R.string.onion_transfer_no_files));
+            return;
+        }
+
+        String summary;
+        if (!files.isEmpty() && !textToShare.isEmpty()) {
+            summary = getString(R.string.onion_transfer_summary_files_and_text, files.size());
+        } else if (!files.isEmpty()) {
+            summary = getString(R.string.onion_transfer_summary_files, files.size());
+        } else {
+            summary = getString(R.string.onion_transfer_summary_text);
+        }
+
+        if (!files.isEmpty()) {
+            StringBuilder fileNames = new StringBuilder(summary);
+            for (File file : files) {
+                fileNames.append("\n").append(file.getName());
+            }
+            selectionSummary.setText(fileNames);
+        } else {
+            selectionSummary.setText(summary);
+        }
     }
 
     private void startOnion() {

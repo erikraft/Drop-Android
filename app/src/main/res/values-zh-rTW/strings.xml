@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">關於 ErikrafT Drop™ for Android</string>
     <string name="app_name_slogan">在您的裝置間無縫傳輸檔案。</string>
     <string name="err_no_browser">無法開啟瀏覽器</string>
     <string name="err_no_app">找不到可開啟此檔案的應用程式</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">完成</string>
     <string name="onboarding_choose_server">選擇一個伺服器位址</string>
     <string name="onboarding_choose_server_short">選擇伺服器</string>
-    <string name="onboarding_choose_server_description">這個應用程式是專為 Web 應用程式 ErikrafT Drop 和 PairDrop 最佳化的用戶端。\n選擇以下執行個體或指定一個自訂 URL 以進行連線。\n\n注意：您必須在所有裝置上選擇相同的 URL。</string>
+    <string name="onboarding_choose_server_description">選擇 ErikrafT Drop 伺服器，或輸入自訂 URL。PairDrop 是可選的第三方推薦服務，不屬於 ErikrafT Drop 生態系統。\n\n注意：所有裝置都必須選擇相同的 URL。</string>
     <string name="onboarding_storage_permission">儲存空間權限</string>
     <string name="onboarding_storage_permission_description">這是一個用於檔案分享的公用程式，因此，若要使用它，需要授予儲存空間權限。</string>
     <string name="onboarding_server_primary_summary">(1) 主要 — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) 次要 — ErikrafT Drop™ 備援</string>
     <string name="onboarding_server_tertiary_summary">(3) 第三備援 — ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) 第四 — ErikrafT Drop™ Onion 服務</string>
+    <string name="onboarding_server_quaternary_summary">(4) 第四項 — PairDrop（可選的第三方推薦服務）</string>
     <string name="onboarding_server_quinary_summary">(5) 第五 — PairDrop</string>
     <string name="onboarding_server_onion_warning">需要 Tor。此裝置會透過 Tor 直接存取 Onion 服務。</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ 主要伺服器。</string>
+    <string name="onboarding_server_pairdrop_summary">可選的第三方推薦服務；不屬於 ErikrafT Drop 生態系統。</string>
     <string name="onboarding_server_snapdrop_summary">經典的 Snapdrop。簡單俐落。</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop 備援伺服器。</string>
     <string name="onboarding_server_custom">自訂 URL</string>
