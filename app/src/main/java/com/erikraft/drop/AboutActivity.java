@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 /** Stable, self-contained About screen with transparent dependency and attribution information. */
 public class AboutActivity extends DropPipActivity {
@@ -44,6 +45,31 @@ public class AboutActivity extends DropPipActivity {
         content.addView(version);
 
         addHtml(content, getString(R.string.about_description), 16);
+
+        MaterialCardView missionCard = new MaterialCardView(this);
+        missionCard.setRadius(dp(14));
+        missionCard.setCardElevation(dp(2));
+        missionCard.setStrokeWidth(dp(1));
+        missionCard.setUseCompatPadding(true);
+        LinearLayout missionContent = new LinearLayout(this);
+        missionContent.setOrientation(LinearLayout.VERTICAL);
+        missionContent.setPadding(dp(16), dp(14), dp(16), dp(16));
+        TextView missionTitle = text(getString(R.string.about_mission_title), 18);
+        missionTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+        missionContent.addView(missionTitle);
+        TextView missionDescription = text(getString(R.string.about_mission_description), 15);
+        missionDescription.setPadding(0, dp(8), 0, dp(14));
+        missionContent.addView(missionDescription);
+        TextView contributeTitle = text(getString(R.string.about_contribute_title), 16);
+        contributeTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+        missionContent.addView(contributeTitle);
+        TextView contributeDescription = text(getString(R.string.about_contribute_description), 15);
+        contributeDescription.setPadding(0, dp(6), 0, 0);
+        missionContent.addView(contributeDescription);
+        missionCard.addView(missionContent);
+        LinearLayout.LayoutParams missionParams = new LinearLayout.LayoutParams(-1, -2);
+        missionParams.setMargins(0, dp(18), 0, dp(8));
+        content.addView(missionCard, missionParams);
 
         addHeading(content, getString(R.string.about_dependencies_title));
         addHtml(content, getString(R.string.about_dependencies_summary), 15);
