@@ -119,7 +119,9 @@
             app:singleLineTitle="false" />
     </PreferenceCategory>
     <PreferenceCategory
+        android:key="legacy_transfer_category"
         android:title="@string/legacy_transfer_category"
+        app:layout="@layout/preference_category_beta"
         app:iconSpaceReserved="false">
         <com.erikraft.drop.CompatibilityPreference
             android:key="legacy_nfc_beam"
