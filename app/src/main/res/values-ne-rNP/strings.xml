@@ -127,7 +127,7 @@
     <string name="resume">जारी राख्नुहोस्</string>
     <string name="cancel">रद्द गर्नुहोस्</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion मार्फत स्थानान्तरण (बेटा)</string>
+    <string name="onion_transfer_title">Onion मार्फत स्थानान्तरण</string>
     <string name="onion_transfer_description">निजी Tor जडानमार्फत आफ्नो उपकरणबाट सिधै फाइल वा पाठ साझा गर्नुहोस्। सामग्री उपकरणमै रहन्छ र अस्थायी Onion ठेगानामार्फत पठाइन्छ।</string>
     <string name="onion_transfer_select_files">फाइल छान्नुहोस्</string>
     <string name="onion_transfer_send_text">पाठ पठाउनुहोस्</string>
