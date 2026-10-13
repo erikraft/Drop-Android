@@ -14,10 +14,9 @@ import androidx.preference.PreferenceManager;
 /**
  * Shared PiP lifecycle for ErikrafT Drop activities.
  *
- * PiP is opt-in per Activity in AndroidManifest.xml. Check the actual Activity
- * declaration before calling the framework APIs: older or device-specific
- * merged manifests may omit supportsPictureInPicture even when the device
- * itself supports PiP.
+ * PiP is opt-in per Activity in AndroidManifest.xml. Utility screens that the
+ * platform rejects for PiP can opt out explicitly; framework calls remain guarded
+ * because some device builds report PiP support inconsistently.
  */
 public abstract class DropPipActivity extends AppCompatActivity {
     private final SharedPreferences.OnSharedPreferenceChangeListener pipPreferenceListener =
@@ -46,8 +45,11 @@ public abstract class DropPipActivity extends AppCompatActivity {
     }
 
     private boolean isPictureInPictureAvailable() {
-        // ActivityInfo.supportsPictureInPicture is not part of the public Android SDK.
-        // Check the public system feature API instead; PiP calls are guarded separately.
+        // LegacyTransferActivity is a diagnostics/utility screen, not a PiP screen.
+        // Some Android 13 builds reject PiP calls for it despite device-level PiP support.
+        if (this instanceof LegacyTransferActivity) {
+            return false;
+        }
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                 && getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE);
     }

@@ -287,4 +287,5 @@
     <string name="legacy_beam_legacy_compatible">Starší Android: Android Beam môže byť dostupný, ak ho podporuje zariadenie a implementácia výrobcu. Samotné NFC nepotvrdzuje kompatibilitu; treba otestovať skutočný prenos.</string>
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam nie je zaručený. Niektoré verzie výrobcov môžu zachovať starú podporu, ale verzia Androidu a NFC samy nepotvrdzujú funkčnosť.</string>
     <string name="legacy_beam_android_14_plus">Android 14 a novší: Android Beam nie je v ErikrafT Drop™ dostupný, pretože systémové API boli odstránené. Aplikácia sa ich nepokúša obnoviť.</string>
+    <string name="legacy_beam_modern_share_started">Android Beam nie je v systéme Android 10 a novšom dostupný. Namiesto neho sa otvorila systémová ponuka zdieľania; nepoužíva priame NFC spojenie medzi zariadeniami.</string>
 </resources>
