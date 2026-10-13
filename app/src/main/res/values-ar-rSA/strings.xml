@@ -127,7 +127,7 @@
     <string name="resume">استئناف</string>
     <string name="cancel">إلغاء</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">النقل عبر Onion (تجريبي)</string>
+    <string name="onion_transfer_title">النقل عبر Onion</string>
     <string name="onion_transfer_description">شارك الملفات أو النص مباشرةً من جهازك عبر اتصال Tor خاص. تبقى المحتويات على جهازك وتُرسل عبر عنوان Onion مؤقت.</string>
     <string name="onion_transfer_select_files">اختيار الملفات</string>
     <string name="onion_transfer_send_text">إرسال نص</string>
