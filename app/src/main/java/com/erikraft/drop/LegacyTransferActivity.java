@@ -107,15 +107,21 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean modernAndroid = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q;
-        final boolean actionAvailable = modernAndroid || nfcAdapter != null;
-        beamButton.setEnabled(actionAvailable);
-        beamButton.setAlpha(actionAvailable ? 1f : 0.55f);
-        if (modernAndroid) {
-            // The Sharesheet fallback does not require NFC hardware.
-            beamButton.setText(R.string.legacy_beam_modern_share);
-        } else if (nfcAdapter == null) {
-            beamButton.setText(R.string.legacy_nfc_no_hardware);
+        final boolean beamAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
+                && nfcAdapter != null && hasOfficialBeamApi();
+        beamButton.setEnabled(beamAvailable);
+        beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
+        if (!beamAvailable) {
+            beamButton.setText(nfcAdapter == null
+                    ? R.string.legacy_nfc_no_hardware
+                    : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                        ? R.string.legacy_beam_unavailable
+                        : R.string.legacy_beam_api_unavailable);
+            status.setText(nfcAdapter == null
+                    ? R.string.legacy_nfc_no_hardware
+                    : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                        ? R.string.legacy_beam_unavailable
+                        : R.string.legacy_beam_api_unavailable);
         }
         beamButton.setOnClickListener(v -> shareWithBeam());
         discoverButton.setOnClickListener(v -> discoverPeers());
@@ -269,35 +275,53 @@ public final class LegacyTransferActivity extends DropPipActivity {
 
     private void shareWithBeam() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            String text = textInput.getText().toString();
-            if (text.trim().isEmpty()) {
-                textInput.setError(getString(R.string.legacy_transfer_text_required));
-                textInput.requestFocus();
-                return;
-            }
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.legacy_beam_modern_share_title)));
-            status.setText(R.string.legacy_beam_modern_share_started);
-            return;
-        }
-        if (nfcAdapter == null) {
             status.setText(R.string.legacy_beam_unavailable);
             return;
         }
+        if (nfcAdapter == null) {
+            status.setText(R.string.legacy_nfc_no_hardware);
+            return;
+        }
+        if (!hasOfficialBeamApi()) {
+            status.setText(R.string.legacy_beam_api_unavailable);
+            beamButton.setEnabled(false);
+            beamButton.setAlpha(0.55f);
+            return;
+        }
+        final String text = textInput.getText().toString();
+        if (text.trim().isEmpty()) {
+            textInput.setError(getString(R.string.legacy_transfer_text_required));
+            textInput.requestFocus();
+            return;
+        }
         try {
-            NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(textInput.getText().toString())});
-            // Beam APIs are deprecated/hidden on newer Android releases. Reflection is only
-            // attempted before Android 14; manufacturer support is not guaranteed and failures
-            // are reported rather than treated as a successful transfer.
-            nfcAdapter.getClass().getMethod("setNdefPushMessage", NdefMessage.class, Activity.class, Activity[].class)
+            final NdefMessage message = new NdefMessage(
+                    new NdefRecord[]{createTextRecord(text)});
+            NfcAdapter.class.getMethod("setNdefPushMessage",
+                    NdefMessage.class, Activity.class, Activity[].class)
                     .invoke(nfcAdapter, message, this, new Activity[0]);
+            // invokeBeam launches the platform's official Beam handoff UI on Android versions
+            // that still expose it. Do not replace it with the Android Sharesheet on newer OSes.
+            NfcAdapter.class.getMethod("invokeBeam", Activity.class).invoke(nfcAdapter, this);
             status.setText(R.string.legacy_beam_ready_to_tap);
-        } catch (Exception e) {
-            status.setText(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                    ? R.string.legacy_beam_android_10_13
-                    : R.string.legacy_beam_unavailable);
+        } catch (ReflectiveOperationException | SecurityException exception) {
+            status.setText(R.string.legacy_beam_api_unavailable);
+            beamButton.setEnabled(false);
+            beamButton.setAlpha(0.55f);
+        }
+    }
+
+    private boolean hasOfficialBeamApi() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q || nfcAdapter == null) {
+            return false;
+        }
+        try {
+            NfcAdapter.class.getMethod("setNdefPushMessage",
+                    NdefMessage.class, Activity.class, Activity[].class);
+            NfcAdapter.class.getMethod("invokeBeam", Activity.class);
+            return true;
+        } catch (NoSuchMethodException | SecurityException exception) {
+            return false;
         }
     }
 
