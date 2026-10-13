@@ -615,7 +615,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         final CompatibilityPreference wifiPreference = findPreference("legacy_wifi_direct");
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
-            final boolean beamApiAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             final boolean hasNfc = adapter != null;
             final boolean beamVersionSupported = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
             nfcPreference.setCompatible(hasNfc && beamVersionSupported);
