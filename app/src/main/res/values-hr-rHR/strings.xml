@@ -127,7 +127,7 @@
     <string name="resume">Nastavi</string>
     <string name="cancel">Odustani</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Prijenos putem Oniona (beta)</string>
+    <string name="onion_transfer_title">Prijenos putem Oniona</string>
     <string name="onion_transfer_description">Dijelite datoteke ili tekst izravno s uređaja putem privatne Tor veze. Sadržaj ostaje na uređaju i šalje se privremenom Onion adresom.</string>
     <string name="onion_transfer_select_files">Odaberi datoteke</string>
     <string name="onion_transfer_send_text">Pošalji tekst</string>
