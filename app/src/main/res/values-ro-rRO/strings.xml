@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transfer prin Onion (beta)</string>
+    <string name="onion_transfer_title">Transfer prin Onion</string>
     <string name="onion_transfer_description">Partajează fișiere sau text direct de pe dispozitiv printr-o conexiune Tor privată. Conținutul rămâne pe dispozitiv și este trimis printr-o adresă Onion temporară.</string>
     <string name="onion_transfer_select_files">Selectează fișiere</string>
     <string name="onion_transfer_send_text">Trimite text</string>
