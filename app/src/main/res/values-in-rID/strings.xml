@@ -127,7 +127,7 @@
     <string name="resume">Lanjutkan</string>
     <string name="cancel">Batalkan</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transfer melalui Onion (beta)</string>
+    <string name="onion_transfer_title">Transfer melalui Onion</string>
     <string name="onion_transfer_description">Bagikan file atau teks langsung dari perangkat Anda melalui koneksi Tor pribadi. Konten tetap berada di perangkat dan dikirim melalui alamat Onion sementara.</string>
     <string name="onion_transfer_select_files">Pilih file</string>
     <string name="onion_transfer_send_text">Kirim teks</string>
