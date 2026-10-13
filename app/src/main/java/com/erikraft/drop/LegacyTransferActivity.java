@@ -304,15 +304,25 @@ public final class LegacyTransferActivity extends DropPipActivity {
 
     private boolean hasOfficialBeamApi(NfcAdapter adapter) {
         if (adapter == null) return false;
+        final PackageManager packageManager = getPackageManager();
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
                     NdefMessage.class, Activity.class, Activity[].class);
             NfcAdapter.class.getMethod("invokeBeam", Activity.class);
-            // NFC hardware and API signatures alone are insufficient: ask Android whether
-            // its original Beam handoff is actually enabled on this device/build.
-            return adapter.isNdefPushEnabled();
-        } catch (NoSuchMethodException | SecurityException | UnsupportedOperationException exception) {
+        } catch (NoSuchMethodException | SecurityException exception) {
             return false;
+        }
+
+        try {
+            // This legacy method is not present in current public SDK stubs.
+            final java.lang.reflect.Method beamEnabled =
+                    NfcAdapter.class.getMethod("isNdefPushEnabled");
+            return Boolean.TRUE.equals(beamEnabled.invoke(adapter));
+        } catch (NoSuchMethodException exception) {
+            // Fall back to Android's explicit Beam feature declaration, never NFC alone.
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
+        } catch (ReflectiveOperationException | SecurityException | UnsupportedOperationException exception) {
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
         }
     }
 
