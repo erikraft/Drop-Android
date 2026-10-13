@@ -127,7 +127,7 @@
     <string name="resume">Hervat</string>
     <string name="cancel">Kanselleer</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Dra oor via Onion (beta)</string>
+    <string name="onion_transfer_title">Dra oor via Onion</string>
     <string name="onion_transfer_description">Deel lêers of teks direk vanaf jou toestel via ’n private Tor-verbinding. Die inhoud bly op jou toestel en word via ’n tydelike Onion-adres gestuur.</string>
     <string name="onion_transfer_select_files">Kies lêers</string>
     <string name="onion_transfer_send_text">Stuur teks</string>
