@@ -51,7 +51,11 @@ public class AboutActivity extends DropPipActivity {
         missionCard.setCardElevation(dp(2));
         missionCard.setStrokeWidth(dp(1));
         missionCard.setUseCompatPadding(true);
-        addHtml(missionCard, getString(R.string.about_highlight), 15);
+        LinearLayout missionContent = new LinearLayout(this);
+        missionContent.setOrientation(LinearLayout.VERTICAL);
+        missionContent.setPadding(dp(16), dp(14), dp(16), dp(16));
+        addHtml(missionContent, getString(R.string.about_highlight), 15);
+        missionCard.addView(missionContent);
         LinearLayout.LayoutParams missionParams = new LinearLayout.LayoutParams(-1, -2);
         missionParams.setMargins(0, dp(18), 0, dp(8));
         content.addView(missionCard, missionParams);
