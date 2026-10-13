@@ -637,11 +637,46 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     ? R.string.legacy_transfer_tap_to_open
                     : R.string.legacy_wifi_no_hardware);
         }
+
+        final CompatibilityPreference ftpPreference = findPreference("ftp_settings");
+        if (ftpPreference != null) {
+            final boolean supported = isClassAvailable("org.apache.ftpserver.FtpServerFactory");
+            ftpPreference.setCompatible(supported);
+            ftpPreference.setSummary(supported
+                    ? R.string.ftp_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+        final CompatibilityPreference sftpPreference = findPreference("sftp_settings");
+        if (sftpPreference != null) {
+            final boolean supported = isClassAvailable("org.apache.sshd.server.SshServer")
+                    && isClassAvailable("org.apache.sshd.sftp.server.SftpSubsystemFactory");
+            sftpPreference.setCompatible(supported);
+            sftpPreference.setSummary(supported
+                    ? R.string.sftp_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+        final CompatibilityPreference onionPreference =
+                findPreference(getString(R.string.pref_onion_transfer));
+        if (onionPreference != null) {
+            final boolean supported = TorController.isRuntimeSupported(requireContext());
+            onionPreference.setCompatible(supported);
+            onionPreference.setSummary(supported
+                    ? R.string.onion_transfer_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+    }
+
+    private boolean isClassAvailable(@NonNull final String className) {
+        try {
+            Class.forName(className, false, requireContext().getClassLoader());
+            return true;
+        } catch (ClassNotFoundException | LinkageError exception) {
+            return false;
+        }
     }
 
     /**
-     * Checks for the legacy public NfcAdapter Beam methods without invoking them.
-     * Reflection avoids linking removed APIs on modern Android versions.
+     * Checks the public NfcAdapter API, not the concrete framework implementation class.
      */
     private boolean hasOfficialBeamApi(@NonNull final NfcAdapter adapter) {
         try {
