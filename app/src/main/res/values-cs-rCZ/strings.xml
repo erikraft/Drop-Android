@@ -293,4 +293,8 @@
     <string name="about_references_projects">Referenční projekty</string>
     <string name="about_references_web_desktop">Web / desktop</string>
     <string name="about_references_android">Android / integrace</string>
+    <string name="about_highlight">&lt;b&gt;Navrženo pro přenos souborů a soukromí&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ se zaměřuje na přenos souborů a soukromí. Snaží se přizpůsobit starším i moderním zařízením, kdykoli je to možné. Dostupnost závisí na zařízení, systému a podporovaných technologiích.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Pomozte vylepšit ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Přispějte Pull Requestem, který opraví problém nebo přidá funkci, případně otevřete Issue s diagnostikou a kroky k reprodukci problému. Jasná hlášení a příspěvky pomáhají aplikaci zvyšovat spolehlivost.</string>
+    <string name="legacy_beam_legacy_compatible">Starší Android: Android Beam může být dostupný, pokud jej podporuje zařízení a implementace výrobce. Samotné NFC kompatibilitu nepotvrzuje; je nutný skutečný test přenosu.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam není zaručen. Některé verze od výrobců mohou starou podporu zachovat, ale samotná verze Androidu a NFC její funkčnost nepotvrzují.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 a novější: Android Beam není v ErikrafT Drop™ dostupný, protože systémová API byla odstraněna. Aplikace se je nepokouší obnovit.</string>
 </resources>
