@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.InputType;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -158,6 +160,16 @@ public class OnionTransferActivity extends DropPipActivity {
         textInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         textInput.setMinLines(4);
         textInput.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
+        textInput.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence value, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence value, int start, int before, int count) {
+                if (textIncluded) {
+                    textToShare = value.toString();
+                    updateSelectionSummary();
+                }
+            }
+            @Override public void afterTextChanged(Editable value) { }
+        });
         textLayout.addView(textInput, new LinearLayout.LayoutParams(-1, -2));
         shareContent.addView(textLayout, lpTop(dp(14)));
 
@@ -367,7 +379,7 @@ public class OnionTransferActivity extends DropPipActivity {
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.textColorSecondary, value, true);
         int strokeColor = value.resourceId != 0
-                ? ContextCompat.getColor(this, value.resourceId)
+                ? getResources().getColorStateList(value.resourceId, getTheme()).getDefaultColor()
                 : value.data;
         GradientDrawable background = new GradientDrawable();
         background.setColor(android.graphics.Color.TRANSPARENT);
