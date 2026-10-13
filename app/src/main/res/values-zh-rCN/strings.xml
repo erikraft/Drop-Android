@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">通过 Onion 传输（测试版）</string>
+    <string name="onion_transfer_title">通过 Onion 传输</string>
     <string name="onion_transfer_description">通过私密 Tor 连接直接从设备分享文件或文本。内容保留在设备上，并通过临时 Onion 地址传送。</string>
     <string name="onion_transfer_select_files">选择文件</string>
     <string name="onion_transfer_send_text">发送文本</string>
