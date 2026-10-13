@@ -623,9 +623,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     ? R.string.legacy_nfc_no_hardware
                     : officialBeamApi
                         ? R.string.legacy_beam_legacy_compatible
-                        : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                            ? R.string.legacy_beam_android_10_13
-                            : R.string.legacy_beam_api_unavailable);
+                        : Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                            ? R.string.legacy_beam_android_14_plus
+                            : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                                ? R.string.legacy_beam_android_10_13
+                                : R.string.legacy_beam_api_unavailable);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
@@ -643,9 +645,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
      */
     private boolean hasOfficialBeamApi(@NonNull final NfcAdapter adapter) {
         try {
-            adapter.getClass().getMethod("setNdefPushMessage",
+            NfcAdapter.class.getMethod("setNdefPushMessage",
                     android.nfc.NdefMessage.class, Activity.class, Activity[].class);
-            adapter.getClass().getMethod("invokeBeam", Activity.class);
+            NfcAdapter.class.getMethod("invokeBeam", Activity.class);
             return true;
         } catch (NoSuchMethodException | SecurityException exception) {
             return false;
