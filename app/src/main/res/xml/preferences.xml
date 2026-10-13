@@ -130,7 +130,7 @@
             android:summary="@string/legacy_transfer_checking" />
         <com.erikraft.drop.CompatibilityPreference
             android:key="legacy_wifi_direct"
-            android:icon="@android:drawable/ic_lock_idle_wifi"
+            android:icon="@drawable/wifi_24"
             android:title="@string/legacy_wifi_title"
             android:summary="@string/legacy_transfer_checking" />
     </PreferenceCategory>
