@@ -127,7 +127,7 @@
     <string name="resume">Jatka</string>
     <string name="cancel">Peruuta</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Siirrä Onionin kautta (beta)</string>
+    <string name="onion_transfer_title">Siirrä Onionin kautta</string>
     <string name="onion_transfer_description">Jaa tiedostoja tai tekstiä suoraan laitteeltasi yksityisen Tor-yhteyden kautta. Sisältö pysyy laitteessasi ja toimitetaan väliaikaisen Onion-osoitteen kautta.</string>
     <string name="onion_transfer_select_files">Valitse tiedostot</string>
     <string name="onion_transfer_send_text">Lähetä tekstiä</string>
