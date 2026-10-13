@@ -1,9 +1,7 @@
 package com.erikraft.drop;
 
 import android.app.PictureInPictureParams;
-import android.content.ComponentName;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,19 +46,10 @@ public abstract class DropPipActivity extends AppCompatActivity {
     }
 
     private boolean isPictureInPictureAvailable() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-                || !getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
-            return false;
-        }
-
-        try {
-            final ActivityInfo activityInfo = getPackageManager().getActivityInfo(
-                    new ComponentName(this, getClass()), 0);
-            return activityInfo.supportsPictureInPicture;
-        } catch (PackageManager.NameNotFoundException | RuntimeException ignored) {
-            // Fail closed rather than crashing an Activity that is not PiP-enabled.
-            return false;
-        }
+        // ActivityInfo.supportsPictureInPicture is not part of the public Android SDK.
+        // Check the public system feature API instead; PiP calls are guarded separately.
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE);
     }
 
     private void updatePictureInPictureParams() {
