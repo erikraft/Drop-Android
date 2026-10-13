@@ -790,12 +790,14 @@ public class MainActivity extends DropPipActivity {
 
         @Override
         public boolean onConsoleMessage(final ConsoleMessage consoleMessage) {
+            final String message = consoleMessage.sourceId() + ":"
+                    + consoleMessage.lineNumber() + " — " + consoleMessage.message();
             if (consoleMessage.messageLevel().equals(ConsoleMessage.MessageLevel.ERROR)) {
-                Log.e("WebViewConsole", consoleMessage.message());
+                Log.e("WebViewConsole", message);
             } else if (consoleMessage.messageLevel().equals(ConsoleMessage.MessageLevel.WARNING)) {
-                Log.w("WebViewConsole", consoleMessage.message());
+                Log.w("WebViewConsole", message);
             } else {
-                Log.d("WebViewConsole", consoleMessage.message());
+                Log.d("WebViewConsole", message);
             }
             return true;
         }

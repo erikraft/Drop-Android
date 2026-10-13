@@ -39,6 +39,7 @@ public class DiagnosticsActivity extends DropPipActivity {
     private ActivityResultLauncher<String> saver;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private int logRequestGeneration;
 
     @Override
     protected void onCreate(Bundle state) {
@@ -210,10 +211,11 @@ public class DiagnosticsActivity extends DropPipActivity {
         }
 
         logs.setText(getString(R.string.diagnostics_loading));
+        final int requestGeneration = ++logRequestGeneration;
         executor.execute(() -> {
             String result = LogUtils.getLogs(PreferenceManager.getDefaultSharedPreferences(this), true);
             mainHandler.post(() -> {
-                if (isFinishing() || isDestroyed()) return;
+                if (isFinishing() || isDestroyed() || requestGeneration != logRequestGeneration) return;
                 currentLogs = result == null ? "" : result;
                 logs.setText(currentLogs);
             });
@@ -246,6 +248,12 @@ public class DiagnosticsActivity extends DropPipActivity {
     }
 
     private void clearLogs() {
+        // The crash summary is persisted separately from logcat. Clear it too so
+        // Refresh does not reinsert the same historical crash after the user clears logs.
+        logRequestGeneration++;
+        PreferenceManager.getDefaultSharedPreferences(this).edit()
+                .remove(getString(R.string.pref_last_crash))
+                .apply();
         currentLogs = LogUtils.getEmptyLogHeader();
         logs.setText(currentLogs);
         logs.scrollTo(0, 0);

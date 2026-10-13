@@ -301,4 +301,6 @@
 
     <string name="about_highlight">&lt;b&gt;Feito para transferência de arquivos e privacidade&lt;/b&gt;&lt;br/&gt;O ErikrafT Drop™ tem foco em transferência de arquivos e privacidade. Ele busca se adaptar a uma ampla variedade de dispositivos, desde sistemas antigos e legados até aparelhos modernos, oferecendo opções compatíveis sempre que possível. A disponibilidade depende do dispositivo, do sistema operacional e das tecnologias suportadas.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Ajude a melhorar o ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribua com uma Pull Request para corrigir um problema ou adicionar um recurso, ou abra uma Issue com detalhes do diagnóstico e etapas para reproduzir o ocorrido. Relatos claros e contribuições ajudam a tornar o aplicativo mais confiável para todos.</string>
     <string name="legacy_beam_modern_share_started">O Android Beam não está disponível no Android 10 ou superior. O menu de compartilhamento do sistema foi aberto no lugar dele; esse recurso não usa NFC diretamente entre dispositivos.</string>
+    <string name="transfer_feature_unavailable">Indisponível: falta neste dispositivo o suporte necessário para executar este recurso.</string>
+    <string name="ftp_stopping">Parando o servidor…</string>
 </resources>

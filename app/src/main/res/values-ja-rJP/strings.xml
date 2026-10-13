@@ -288,4 +288,6 @@
     <string name="legacy_beam_android_10_13">Android 10～13：Android Beam の動作は保証されません。一部メーカーのビルドでは旧機能が残る場合がありますが、Android のバージョンと NFC だけでは動作を確認できません。</string>
     <string name="legacy_beam_android_14_plus">Android 14 以降：システム API が削除されたため、ErikrafT Drop™ では Android Beam を利用できません。アプリが API を復元しようとすることはありません。</string>
     <string name="legacy_beam_modern_share_started">Android 10 以降では Android Beam を利用できません。代わりにシステムの共有メニューを開きました。この方法では端末間の NFC 通信は使用しません。</string>
+    <string name="transfer_feature_unavailable">利用不可: この端末には必要な実行時サポートがありません。</string>
+    <string name="ftp_stopping">サーバーを停止しています…</string>
 </resources>

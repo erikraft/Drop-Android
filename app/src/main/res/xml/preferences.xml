@@ -89,7 +89,7 @@
         android:title="@string/ftp_settings_title"
         android:summary="@string/ftp_settings_summary"
         app:iconSpaceReserved="false">
-        <Preference
+        <com.erikraft.drop.CompatibilityPreference
             android:key="ftp_settings"
             android:icon="@drawable/pref_savelocation"
             android:summary="@string/ftp_settings_summary"
@@ -100,7 +100,7 @@
         android:title="@string/sftp_settings_title"
         android:summary="@string/sftp_settings_summary"
         app:iconSpaceReserved="false">
-        <Preference
+        <com.erikraft.drop.CompatibilityPreference
             android:key="sftp_settings"
             android:icon="@drawable/pref_savelocation"
             android:summary="@string/sftp_settings_summary"
@@ -111,7 +111,7 @@
         android:title="@string/onion_transfer_title"
         android:summary="@string/onion_transfer_settings_summary"
         app:iconSpaceReserved="false">
-        <Preference
+        <com.erikraft.drop.CompatibilityPreference
             android:key="@string/pref_onion_transfer"
             android:summary="@string/onion_transfer_settings_summary"
             android:title="@string/onion_transfer_title"

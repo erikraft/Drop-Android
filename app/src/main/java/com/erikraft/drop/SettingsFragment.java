@@ -616,16 +616,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
-            final boolean legacyOs = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
-            final boolean officialBeamApi = hasNfc && legacyOs && hasOfficialBeamApi(adapter);
+            final boolean officialBeamApi = hasOfficialBeamApi(adapter);
             nfcPreference.setCompatible(officialBeamApi);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
                     : officialBeamApi
                         ? R.string.legacy_beam_legacy_compatible
-                        : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                            ? R.string.legacy_beam_android_10_13
-                            : R.string.legacy_beam_api_unavailable);
+                        : R.string.transfer_feature_unavailable);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
@@ -635,20 +632,70 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     ? R.string.legacy_transfer_tap_to_open
                     : R.string.legacy_wifi_no_hardware);
         }
+
+        final CompatibilityPreference ftpPreference = findPreference("ftp_settings");
+        if (ftpPreference != null) {
+            final boolean supported = isClassAvailable("org.apache.ftpserver.FtpServerFactory");
+            ftpPreference.setCompatible(supported);
+            ftpPreference.setSummary(supported
+                    ? R.string.ftp_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+        final CompatibilityPreference sftpPreference = findPreference("sftp_settings");
+        if (sftpPreference != null) {
+            final boolean supported = isClassAvailable("org.apache.sshd.server.SshServer")
+                    && isClassAvailable("org.apache.sshd.sftp.server.SftpSubsystemFactory");
+            sftpPreference.setCompatible(supported);
+            sftpPreference.setSummary(supported
+                    ? R.string.sftp_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+        final CompatibilityPreference onionPreference =
+                findPreference(getString(R.string.pref_onion_transfer));
+        if (onionPreference != null) {
+            final boolean supported = TorController.isRuntimeSupported(requireContext());
+            onionPreference.setCompatible(supported);
+            onionPreference.setSummary(supported
+                    ? R.string.onion_transfer_settings_summary
+                    : R.string.transfer_feature_unavailable);
+        }
+    }
+
+    private boolean isClassAvailable(@NonNull final String className) {
+        try {
+            Class.forName(className, false, requireContext().getClassLoader());
+            return true;
+        } catch (ClassNotFoundException | LinkageError exception) {
+            return false;
+        }
     }
 
     /**
-     * Checks for the legacy public NfcAdapter Beam methods without invoking them.
-     * Reflection avoids linking removed APIs on modern Android versions.
+     * Requires the original Beam methods and platform-declared Beam support.
+     * isNdefPushEnabled() is hidden in current SDK stubs, so query it reflectively
+     * when an older compatible Android release exposes it.
      */
-    private boolean hasOfficialBeamApi(@NonNull final NfcAdapter adapter) {
+    private boolean hasOfficialBeamApi(final NfcAdapter adapter) {
+        if (adapter == null) return false;
+        final PackageManager packageManager = requireContext().getPackageManager();
         try {
-            adapter.getClass().getMethod("setNdefPushMessage",
+            NfcAdapter.class.getMethod("setNdefPushMessage",
                     android.nfc.NdefMessage.class, Activity.class, Activity[].class);
-            adapter.getClass().getMethod("invokeBeam", Activity.class);
-            return true;
+            NfcAdapter.class.getMethod("invokeBeam", Activity.class);
         } catch (NoSuchMethodException | SecurityException exception) {
             return false;
+        }
+
+        try {
+            final java.lang.reflect.Method beamEnabled =
+                    NfcAdapter.class.getMethod("isNdefPushEnabled");
+            return Boolean.TRUE.equals(beamEnabled.invoke(adapter));
+        } catch (NoSuchMethodException exception) {
+            // This method is hidden or absent in newer SDK/runtime combinations.
+            // The platform feature is stronger evidence than NFC hardware alone.
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
+        } catch (ReflectiveOperationException | SecurityException | UnsupportedOperationException exception) {
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
         }
     }
 

@@ -297,4 +297,6 @@
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam er ikke garanteret. Nogle producentversioner kan bevare ældre understøttelse, men Android-versionen og NFC alene beviser ikke, at det virker.</string>
     <string name="legacy_beam_android_14_plus">Android 14 og nyere: Android Beam er ikke tilgængelig i ErikrafT Drop™, fordi systemets API\'er er fjernet. Appen forsøger ikke at gendanne dem.</string>
     <string name="legacy_beam_modern_share_started">Android Beam er ikke tilgængelig på Android 10 og nyere. I stedet blev systemets delingsmenu åbnet; den bruger ikke NFC direkte mellem enheder.</string>
+    <string name="transfer_feature_unavailable">Ikke tilgængelig: Denne enhed mangler den nødvendige runtime-understøttelse.</string>
+    <string name="ftp_stopping">Stopper serveren…</string>
 </resources>

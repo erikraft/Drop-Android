@@ -172,6 +172,7 @@
     <string name="ftp_start">Start server</string>
     <string name="ftp_stop">Stop server</string>
     <string name="ftp_starting">Starting server…</string>
+    <string name="ftp_stopping">Stopping server…</string>
     <string name="ftp_copy_address">Copy address</string>
     <string name="ftp_address_copied">FTP address copied.</string>
         <string name="diagnostics_title">Diagnostics</string>
@@ -317,4 +318,5 @@
 
     <string name="about_highlight">&lt;b&gt;Built for file transfer and privacy&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help improve ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribute a Pull Request to fix a problem or add a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
     <string name="beta_badge_label" translatable="false">BETA</string>
+    <string name="transfer_feature_unavailable">Unavailable: required runtime support is missing on this device.</string>
 </resources>
