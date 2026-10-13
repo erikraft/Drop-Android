@@ -622,9 +622,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     ? R.string.legacy_nfc_no_hardware
                     : officialBeamApi
                         ? R.string.legacy_beam_legacy_compatible
-                        : Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-                        ? R.string.legacy_beam_unavailable
-                        : R.string.legacy_beam_api_unavailable);
+                        : R.string.transfer_feature_unavailable);
         }
         if (wifiPreference != null) {
             final boolean hasWifiDirect = requireContext().getPackageManager()
@@ -675,7 +673,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     /**
      * Checks the public NfcAdapter API, not the concrete framework implementation class.
      */
-    private boolean hasOfficialBeamApi(@Nullable final NfcAdapter adapter) {
+    private boolean hasOfficialBeamApi(final NfcAdapter adapter) {
         if (adapter == null) return false;
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
