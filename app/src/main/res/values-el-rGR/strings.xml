@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Μεταφορά μέσω Onion (beta)</string>
+    <string name="onion_transfer_title">Μεταφορά μέσω Onion</string>
     <string name="onion_transfer_description">Μοιραστείτε αρχεία ή κείμενο απευθείας από τη συσκευή σας μέσω ιδιωτικής σύνδεσης Tor. Το περιεχόμενο παραμένει στη συσκευή και αποστέλλεται μέσω προσωρινής διεύθυνσης Onion.</string>
     <string name="onion_transfer_select_files">Επιλογή αρχείων</string>
     <string name="onion_transfer_send_text">Αποστολή κειμένου</string>
