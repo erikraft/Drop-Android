@@ -279,7 +279,9 @@ public final class LegacyTransferActivity extends DropPipActivity {
                     .invoke(nfcAdapter, message, this, new Activity[0]);
             status.setText(R.string.legacy_beam_ready_to_tap);
         } catch (Exception e) {
-            status.setText(R.string.legacy_beam_unavailable);
+            status.setText(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                    ? R.string.legacy_beam_android_10_13
+                    : R.string.legacy_beam_unavailable);
         }
     }
 
