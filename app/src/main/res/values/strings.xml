@@ -311,6 +311,7 @@
     <string name="about_references_android">Android / integration</string>
 
     <string name="legacy_beam_legacy_compatible">Older Android: Android Beam may be available when the device and manufacturer implementation support it. NFC alone does not confirm compatibility; a real transfer test is needed.</string>
+    <string name="legacy_beam_api_unavailable">Incompatible: this Android version does not expose the official Android Beam API.</string>
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam is not guaranteed. Some manufacturer builds may retain legacy support, but NFC presence and Android version alone cannot confirm it.</string>
     <string name="legacy_beam_android_14_plus">Android 14 and later: Android Beam is unavailable in ErikrafT Drop™ because the system APIs were removed. The app does not attempt to restore them.</string>
 
