@@ -107,10 +107,14 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean beamAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && nfcAdapter != null;
+        final boolean beamAvailable = Build.VERSION.SDK_INT < 34 && nfcAdapter != null;
         beamButton.setEnabled(beamAvailable);
         beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
-        if (!beamAvailable) beamButton.setText(R.string.legacy_beam_unavailable);
+        if (!beamAvailable) {
+            beamButton.setText(nfcAdapter == null
+                    ? R.string.legacy_nfc_no_hardware
+                    : R.string.legacy_beam_android_14_plus);
+        }
         beamButton.setOnClickListener(v -> shareWithBeam());
         discoverButton.setOnClickListener(v -> discoverPeers());
         peerList.setOnItemClickListener((parent, view, position, id) -> connectToPeer(position));
@@ -262,14 +266,15 @@ public final class LegacyTransferActivity extends DropPipActivity {
     }
 
     private void shareWithBeam() {
-        if (nfcAdapter == null || Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (nfcAdapter == null || Build.VERSION.SDK_INT >= 34) {
             status.setText(R.string.legacy_beam_unavailable);
             return;
         }
         try {
             NdefMessage message = new NdefMessage(new NdefRecord[]{createTextRecord(textInput.getText().toString())});
-            // Beam APIs were removed from public SDK stubs in Android 10. Reflection keeps
-            // the app buildable on current SDKs; the call is made only on Android 9 and older.
+            // Beam APIs are deprecated/hidden on newer Android releases. Reflection is only
+            // attempted before Android 14; manufacturer support is not guaranteed and failures
+            // are reported rather than treated as a successful transfer.
             nfcAdapter.getClass().getMethod("setNdefPushMessage", NdefMessage.class, Activity.class, Activity[].class)
                     .invoke(nfcAdapter, message, this, new Activity[0]);
             status.setText(R.string.legacy_beam_ready_to_tap);
