@@ -616,7 +616,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
-            final boolean beamVersionSupported = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
+            final boolean beamVersionSupported = Build.VERSION.SDK_INT < 34;
             nfcPreference.setCompatible(hasNfc && beamVersionSupported);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
