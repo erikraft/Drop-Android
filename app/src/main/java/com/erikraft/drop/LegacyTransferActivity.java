@@ -301,8 +301,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
     private void handleNfcIntent(Intent intent) {
         if (intent == null) return;
         String action = intent.getAction();
-        if (!NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)
-                && !NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) return;
+        if (!NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) return;
         android.os.Parcelable[] incoming = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
         if (incoming != null && incoming.length > 0 && incoming[0] instanceof NdefMessage) {
             String received = readTextRecord((NdefMessage) incoming[0]);
