@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Om ErikrafT Drop™ för Android</string>
     <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
     <string name="err_no_browser">Kan inte öppna webbläsare</string>
     <string name="err_no_app">Ingen applikation hittades som kan öppna denna fil</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">slutför</string>
     <string name="onboarding_choose_server">Välj serveradress</string>
     <string name="onboarding_choose_server_short">välj server</string>
-    <string name="onboarding_choose_server_description">Den här appen är en optimerad klient för ErikrafT Drop- och PairDrop-webbapparna.\nVälj en av följande instanser eller ange en anpassad URL för att ansluta.\n\nObs! Du måste välja samma URL på alla enheter.</string>
+    <string name="onboarding_choose_server_description">Välj en ErikrafT Drop-server eller ange en anpassad URL. PairDrop är en valfri rekommendation från tredje part och ingår inte i ErikrafT Drops ekosystem.\n\nObs! Välj samma URL på alla enheter.</string>
     <string name="onboarding_storage_permission">Lagringsbehörighet</string>
     <string name="onboarding_storage_permission_description">Den här appen används för fildelning. Därför krävs lagringsbehörighet för att använda den.</string>
     <string name="onboarding_server_primary_summary">(1) Primär — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Sekundär — ErikrafT Drop™-reserv</string>
     <string name="onboarding_server_tertiary_summary">(3) Tertiär — ErikrafT Drop™-reserv</string>
-    <string name="onboarding_server_quaternary_summary">(4) Fjärde — ErikrafT Drop™ Onion-tjänst</string>
+    <string name="onboarding_server_quaternary_summary">(4) Fjärde — PairDrop (valfri rekommendation från tredje part)</string>
     <string name="onboarding_server_quinary_summary">(5) Femte — PairDrop</string>
     <string name="onboarding_server_onion_warning">Tor krävs. Onion-tjänsten nås direkt via Tor på den här enheten.</string>
-    <string name="onboarding_server_pairdrop_summary">Primär ErikrafT Drop™-server.</string>
+    <string name="onboarding_server_pairdrop_summary">Valfri rekommendation från tredje part; ingår inte i ErikrafT Drops ekosystem.</string>
     <string name="onboarding_server_snapdrop_summary">Klassiska Snapdrop. Enkelt och rent.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop-reserv.</string>
     <string name="onboarding_server_custom">Anpassad URL</string>
