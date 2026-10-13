@@ -283,4 +283,8 @@
     <string name="about_references_projects">सन्दर्भ परियोजनाहरू</string>
     <string name="about_references_web_desktop">वेब / डेस्कटप</string>
     <string name="about_references_android">Android / एकीकरण</string>
+    <string name="about_highlight">&lt;b&gt;फाइल स्थानान्तरण र गोपनीयताका लागि बनाइएको&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ फाइल स्थानान्तरण र गोपनीयतामा केन्द्रित छ। सम्भव भएसम्म पुराना र आधुनिक उपकरणमा अनुकूल हुने प्रयास गर्छ। उपलब्धता उपकरण, अपरेटिङ सिस्टम र समर्थित प्रविधिमा निर्भर हुन्छ।&lt;br/&gt;&lt;br/&gt;&lt;b&gt;ErikrafT Drop™ सुधार्न सहयोग गर्नुहोस्&lt;/b&gt;&lt;br/&gt;समस्या समाधान वा सुविधा थप्न Pull Request दिनुहोस्, वा समस्या दोहोर्‍याउने चरण र निदान विवरणसहित Issue खोल्नुहोस्। स्पष्ट रिपोर्ट र योगदानले एपलाई अझ भरपर्दो बनाउँछ।</string>
+    <string name="legacy_beam_legacy_compatible">पुरानो Android: उपकरण र निर्माताको कार्यान्वयनले समर्थन गरेमा Android Beam उपलब्ध हुन सक्छ। NFC मात्रले अनुकूलता पुष्टि गर्दैन; वास्तविक स्थानान्तरण परीक्षण गर्नुहोस्।</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: Android Beam उपलब्ध हुने ग्यारेन्टी छैन। केही निर्माता संस्करणमा पुरानो समर्थन रहन सक्छ, तर Android संस्करण र NFC मात्रले काम गर्छ भन्ने प्रमाणित गर्दैन।</string>
+    <string name="legacy_beam_android_14_plus">Android 14 वा पछिल्लो: प्रणाली API हटाइएकाले ErikrafT Drop™ मा Android Beam उपलब्ध छैन। एपले ती API पुनःस्थापना गर्ने प्रयास गर्दैन।</string>
 </resources>
