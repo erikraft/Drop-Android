@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Despre ErikrafT Drop™ pentru Android</string>
     <string name="app_name_slogan">Transferă fișiere între dispozitive, fără efort.</string>
     <string name="err_no_browser">Nu se poate deschide browser-ul</string>
     <string name="err_no_app">Nicio aplicație instalată pentru a deschide acest fișier</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">Finalizare</string>
     <string name="onboarding_choose_server">Alege o adresă de server</string>
     <string name="onboarding_choose_server_short">alege serverul</string>
-    <string name="onboarding_choose_server_description">Această aplicație este un client optimizat pentru aplicația web ErikrafT Drop și PairDrop.\nAlege una dintre următoarele instanțe sau specifică un URL personalizat la care să te conectezi.\n\nNotă: Trebuie să alegeți același URL pe toate dispozitivele.</string>
+    <string name="onboarding_choose_server_description">Alegeți un server ErikrafT Drop sau introduceți un URL personalizat. PairDrop este o recomandare opțională a unui serviciu terț și nu face parte din ecosistemul ErikrafT Drop.\n\nNotă: selectați același URL pe toate dispozitivele.</string>
     <string name="onboarding_storage_permission">Permisiuni pentru stocare</string>
     <string name="onboarding_storage_permission_description">Această aplicație este pentru partajări. De aceea sunt necesare permisiuni pentru stocare.</string>
     <string name="onboarding_server_primary_summary">(1) Principal — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secundar — server de rezervă ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Terțiar — server de rezervă ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Al patrulea — serviciul Onion ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Al patrulea — PairDrop (recomandare opțională de la terți)</string>
     <string name="onboarding_server_quinary_summary">(5) Al cincilea — PairDrop</string>
     <string name="onboarding_server_onion_warning">Este necesar Tor. Serviciul Onion este accesat direct prin Tor pe acest dispozitiv.</string>
-    <string name="onboarding_server_pairdrop_summary">Server principal ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Recomandare opțională de la terți; nu face parte din ecosistemul ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">Snapdrop clasic. Simplu și curat.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Server de rezervă PairDrop.</string>
     <string name="onboarding_server_custom">URL personalizat</string>
