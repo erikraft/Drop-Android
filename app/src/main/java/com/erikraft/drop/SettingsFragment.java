@@ -616,8 +616,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
-            final boolean legacyOs = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
-            final boolean officialBeamApi = hasNfc && legacyOs && hasOfficialBeamApi();
+            final boolean officialBeamApi = hasOfficialBeamApi(adapter);
             nfcPreference.setCompatible(officialBeamApi);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
@@ -676,13 +675,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     /**
      * Checks the public NfcAdapter API, not the concrete framework implementation class.
      */
-    private boolean hasOfficialBeamApi() {
+    private boolean hasOfficialBeamApi(@Nullable final NfcAdapter adapter) {
+        if (adapter == null) return false;
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
                     android.nfc.NdefMessage.class, Activity.class, Activity[].class);
             NfcAdapter.class.getMethod("invokeBeam", Activity.class);
-            return true;
-        } catch (NoSuchMethodException | SecurityException exception) {
+            // Check the actual platform Beam state, not just the presence of NFC hardware.
+            return adapter.isNdefPushEnabled();
+        } catch (NoSuchMethodException | SecurityException | UnsupportedOperationException exception) {
             return false;
         }
     }
