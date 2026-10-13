@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">透過 Onion 傳輸（測試版）</string>
+    <string name="onion_transfer_title">透過 Onion 傳輸</string>
     <string name="onion_transfer_description">透過私密 Tor 連線，直接從裝置分享檔案或文字。內容會保留在裝置上，並透過暫時的 Onion 地址傳送。</string>
     <string name="onion_transfer_select_files">選取檔案</string>
     <string name="onion_transfer_send_text">傳送文字</string>
