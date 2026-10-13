@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">ErikrafT Drop</string>
+    <string name="app_name_long">Sobre o ErikrafT Drop™ para Android</string>
     <string name="app_name_slogan">Transfer files seamlessly between all your devices.</string>
     <string name="err_no_browser">Não é possível abrir o browser [navegador]</string>
     <string name="err_no_app">Nenhuma aplicação instalada para abrir este ficheiro</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">concluir</string>
     <string name="onboarding_choose_server">Escolher endereço do servidor</string>
     <string name="onboarding_choose_server_short">escolher servidor</string>
-    <string name="onboarding_choose_server_description">Esta aplicação é um cliente otimizado para as aplicações Web ErikrafT Drop e PairDrop.\nEscolha uma das seguintes instâncias ou indique um URL personalizado para estabelecer ligação.\n\nNota: tem de escolher o mesmo URL em todos os dispositivos.</string>
+    <string name="onboarding_choose_server_description">Escolha um servidor ErikrafT Drop ou indique um URL personalizado. O PairDrop é uma recomendação opcional de terceiros e não faz parte do ecossistema ErikrafT Drop.\n\nNota: tem de escolher o mesmo URL em todos os dispositivos.</string>
     <string name="onboarding_storage_permission">Permissão de armazenamento</string>
     <string name="onboarding_storage_permission_description">Esta aplicação permite partilhar ficheiros. Por isso, é necessária a permissão de armazenamento para a utilizar.</string>
     <string name="onboarding_server_primary_summary">(1) Principal — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) Secundário — servidor alternativo do ErikrafT Drop™</string>
     <string name="onboarding_server_tertiary_summary">(3) Terciário — servidor alternativo do ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) Quarto — serviço Onion do ErikrafT Drop™</string>
+    <string name="onboarding_server_quaternary_summary">(4) Quarto — PairDrop (recomendação opcional de terceiros)</string>
     <string name="onboarding_server_quinary_summary">(5) Quinto — PairDrop</string>
     <string name="onboarding_server_onion_warning">É necessário Tor. O serviço Onion é acedido diretamente através do Tor neste dispositivo.</string>
-    <string name="onboarding_server_pairdrop_summary">Servidor principal do ErikrafT Drop™.</string>
+    <string name="onboarding_server_pairdrop_summary">Recomendação opcional de terceiros; não faz parte do ecossistema ErikrafT Drop.</string>
     <string name="onboarding_server_snapdrop_summary">O Snapdrop clássico. Simples e limpo.</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">Servidor alternativo do PairDrop.</string>
     <string name="onboarding_server_custom">URL personalizada</string>
