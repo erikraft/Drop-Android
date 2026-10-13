@@ -124,6 +124,28 @@ public final class TorController {
         throw new IllegalStateException("Tor is not supported on this CPU architecture");
     }
 
+    /**
+     * Checks prerequisites that can be verified before opening Onion mode.
+     * This does not guarantee Tor bootstrap or relay publication will succeed.
+     */
+    public static boolean isRuntimeSupported(@NonNull Context context) {
+        boolean supportedAbi = false;
+        for (String abi : Build.SUPPORTED_ABIS) {
+            if (abi.startsWith("arm64") || abi.startsWith("armeabi")
+                    || abi.startsWith("x86_64") || abi.startsWith("x86")) {
+                supportedAbi = true;
+                break;
+            }
+        }
+        if (!supportedAbi) return false;
+        File libraryDir = new File(context.getApplicationInfo().nativeLibraryDir);
+        File torLibrary = new File(libraryDir, "libtor.so");
+        File lyrebirdLibrary = new File(libraryDir, "liblyrebird.so");
+        return torLibrary.isFile() && torLibrary.canRead()
+                && lyrebirdLibrary.isFile() && lyrebirdLibrary.canRead()
+                && lyrebirdLibrary.canExecute();
+    }
+
     public static boolean isOnionUrl(String url) {
         if (url == null) return false;
         try {
