@@ -127,7 +127,7 @@
     <string name="resume">फिर शुरू करें</string>
     <string name="cancel">रद्द करें</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion से ट्रांसफ़र (बीटा)</string>
+    <string name="onion_transfer_title">Onion से ट्रांसफ़र</string>
     <string name="onion_transfer_description">निजी Tor कनेक्शन के ज़रिए अपने डिवाइस से सीधे फ़ाइलें या टेक्स्ट साझा करें। सामग्री डिवाइस पर रहती है और अस्थायी Onion पते से भेजी जाती है।</string>
     <string name="onion_transfer_select_files">फ़ाइलें चुनें</string>
     <string name="onion_transfer_send_text">टेक्स्ट भेजें</string>
