@@ -107,13 +107,15 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean beamAvailable = Build.VERSION.SDK_INT < 34 && nfcAdapter != null;
-        beamButton.setEnabled(beamAvailable);
-        beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
-        if (!beamAvailable) {
-            beamButton.setText(nfcAdapter == null
-                    ? R.string.legacy_nfc_no_hardware
-                    : R.string.legacy_beam_android_14_plus);
+        final boolean modernAndroid = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q;
+        final boolean actionAvailable = modernAndroid || nfcAdapter != null;
+        beamButton.setEnabled(actionAvailable);
+        beamButton.setAlpha(actionAvailable ? 1f : 0.55f);
+        if (modernAndroid) {
+            // The Sharesheet fallback does not require NFC hardware.
+            beamButton.setText(R.string.legacy_beam_modern_share);
+        } else if (nfcAdapter == null) {
+            beamButton.setText(R.string.legacy_nfc_no_hardware);
         }
         beamButton.setOnClickListener(v -> shareWithBeam());
         discoverButton.setOnClickListener(v -> discoverPeers());
@@ -266,7 +268,21 @@ public final class LegacyTransferActivity extends DropPipActivity {
     }
 
     private void shareWithBeam() {
-        if (nfcAdapter == null || Build.VERSION.SDK_INT >= 34) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            String text = textInput.getText().toString();
+            if (text.trim().isEmpty()) {
+                textInput.setError(getString(R.string.legacy_transfer_text_required));
+                textInput.requestFocus();
+                return;
+            }
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.legacy_beam_modern_share_title)));
+            status.setText(R.string.legacy_beam_modern_share_started);
+            return;
+        }
+        if (nfcAdapter == null) {
             status.setText(R.string.legacy_beam_unavailable);
             return;
         }
