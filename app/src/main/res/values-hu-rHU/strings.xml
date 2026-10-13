@@ -222,6 +222,10 @@
     <string name="legacy_transfer_ready">Choose a legacy transport. Availability depends on your device and Android version.</string>
     <string name="legacy_transfer_text_hint">Text to send or write to an NFC tag</string>
     <string name="legacy_beam_send_text">Prepare Android Beam text</string>
+    <string name="legacy_beam_modern_share">Share text (Android Beam alternative)</string>
+    <string name="legacy_beam_modern_share_title">Share text from ErikrafT Drop</string>
+    <string name="legacy_beam_modern_share_started">Android Beam is not available on Android 10+. The system share menu was opened instead; this does not use NFC peer-to-peer.</string>
+    <string name="legacy_transfer_text_required">Enter text to share first.</string>
     <string name="legacy_beam_unavailable">Android Beam is unavailable on Android 10 and later; NFC tag tools may still work.</string>
     <string name="legacy_beam_ready_to_tap">Text prepared. Bring the devices together and follow the system Beam prompt.</string>
     <string name="legacy_nfc_write_tag">Read/write NFC tag</string>
@@ -280,6 +284,7 @@
     <string name="about_references_web_desktop">Web / Desktop</string>
     <string name="about_references_android">Android / integration</string>
     <string name="legacy_beam_legacy_compatible">Older Android: Android Beam may be available when the device and manufacturer implementation support it. NFC alone does not confirm compatibility; a real transfer test is needed.</string>
+    <string name="legacy_beam_api_unavailable">Incompatible: this Android version does not expose the official Android Beam API.</string>
     <string name="legacy_beam_android_10_13">Android 10–13: Android Beam is not guaranteed. Some manufacturer builds may retain legacy support, but NFC presence and Android version alone cannot confirm it.</string>
     <string name="legacy_beam_android_14_plus">Android 14 and later: Android Beam is unavailable in ErikrafT Drop™ because the system APIs were removed. The app does not attempt to restore them.</string>
     <string name="about_highlight">&lt;b&gt;Built for file transfer and privacy&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help improve ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribute a Pull Request to fix a problem or add a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
