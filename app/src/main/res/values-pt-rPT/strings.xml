@@ -283,4 +283,8 @@
     <string name="about_references_projects">Projetos de referência</string>
     <string name="about_references_web_desktop">Web / computador</string>
     <string name="about_references_android">Android / integração</string>
+    <string name="about_highlight">&lt;b&gt;Criado para transferência de ficheiros e privacidade&lt;/b&gt;&lt;br/&gt;O ErikrafT Drop™ centra-se na transferência de ficheiros e na privacidade. Procura adaptar-se a dispositivos antigos e modernos sempre que possível. A disponibilidade depende do dispositivo, do sistema operativo e das tecnologias suportadas.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Ajude a melhorar o ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribua com uma Pull Request para corrigir um problema ou adicionar uma funcionalidade, ou abra uma Issue com detalhes de diagnóstico e passos para reproduzir o problema. Relatos claros e contribuições tornam a aplicação mais fiável.</string>
+    <string name="legacy_beam_legacy_compatible">Android antigo: o Android Beam pode estar disponível se o dispositivo e a implementação do fabricante o suportarem. Ter NFC não confirma a compatibilidade; é necessário testar uma transferência real.</string>
+    <string name="legacy_beam_android_10_13">Android 10–13: o Android Beam não é garantido. Algumas versões dos fabricantes podem manter o suporte antigo, mas a versão do Android e a presença de NFC não provam que funciona.</string>
+    <string name="legacy_beam_android_14_plus">Android 14 ou posterior: o Android Beam não está disponível no ErikrafT Drop™ porque as APIs do sistema foram removidas. A aplicação não tenta restaurá-las.</string>
 </resources>
