@@ -107,8 +107,7 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean beamAvailable = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
-                && nfcAdapter != null && hasOfficialBeamApi();
+        final boolean beamAvailable = hasOfficialBeamApi(nfcAdapter);
         beamButton.setEnabled(beamAvailable);
         beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
         if (!beamAvailable) {
@@ -274,15 +273,11 @@ public final class LegacyTransferActivity extends DropPipActivity {
     }
 
     private void shareWithBeam() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            status.setText(R.string.legacy_beam_unavailable);
-            return;
-        }
         if (nfcAdapter == null) {
             status.setText(R.string.legacy_nfc_no_hardware);
             return;
         }
-        if (!hasOfficialBeamApi()) {
+        if (!hasOfficialBeamApi(nfcAdapter)) {
             status.setText(R.string.legacy_beam_api_unavailable);
             beamButton.setEnabled(false);
             beamButton.setAlpha(0.55f);
@@ -311,16 +306,16 @@ public final class LegacyTransferActivity extends DropPipActivity {
         }
     }
 
-    private boolean hasOfficialBeamApi() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q || nfcAdapter == null) {
-            return false;
-        }
+    private boolean hasOfficialBeamApi(NfcAdapter adapter) {
+        if (adapter == null) return false;
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
                     NdefMessage.class, Activity.class, Activity[].class);
             NfcAdapter.class.getMethod("invokeBeam", Activity.class);
-            return true;
-        } catch (NoSuchMethodException | SecurityException exception) {
+            // NFC hardware and API signatures alone are insufficient: ask Android whether
+            // its original Beam handoff is actually enabled on this device/build.
+            return adapter.isNdefPushEnabled();
+        } catch (NoSuchMethodException | SecurityException | UnsupportedOperationException exception) {
             return false;
         }
     }
