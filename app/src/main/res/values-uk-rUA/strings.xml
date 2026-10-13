@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Передавання через Onion (бета)</string>
+    <string name="onion_transfer_title">Передавання через Onion</string>
     <string name="onion_transfer_description">Діліться файлами або текстом безпосередньо з пристрою через приватне з’єднання Tor. Вміст залишається на пристрої та надсилається через тимчасову Onion-адресу.</string>
     <string name="onion_transfer_select_files">Вибрати файли</string>
     <string name="onion_transfer_send_text">Надіслати текст</string>
