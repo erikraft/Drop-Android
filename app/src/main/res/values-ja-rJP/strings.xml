@@ -127,7 +127,7 @@
     <string name="resume">再開</string>
     <string name="cancel">キャンセル</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion経由で転送（ベータ）</string>
+    <string name="onion_transfer_title">Onion経由で転送</string>
     <string name="onion_transfer_description">プライベートなTor接続を使って、デバイスからファイルやテキストを直接共有します。コンテンツはデバイス上に保持され、一時的なOnionアドレスを通じて送信されます。</string>
     <string name="onion_transfer_select_files">ファイルを選択</string>
     <string name="onion_transfer_send_text">テキストを送信</string>
