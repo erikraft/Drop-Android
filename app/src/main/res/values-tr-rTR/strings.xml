@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Onion üzerinden aktar (beta)</string>
+    <string name="onion_transfer_title">Onion üzerinden aktar</string>
     <string name="onion_transfer_description">Özel bir Tor bağlantısıyla dosyaları veya metni doğrudan cihazınızdan paylaşın. İçerik cihazınızda kalır ve geçici bir Onion adresi üzerinden gönderilir.</string>
     <string name="onion_transfer_select_files">Dosyaları seç</string>
     <string name="onion_transfer_send_text">Metin gönder</string>
