@@ -127,7 +127,7 @@
     <string name="resume">Nadaljuj</string>
     <string name="cancel">Prekliči</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Prenos prek Onion (beta)</string>
+    <string name="onion_transfer_title">Prenos prek Onion</string>
     <string name="onion_transfer_description">Datoteke ali besedilo delite neposredno iz naprave prek zasebne povezave Tor. Vsebina ostane v napravi in se pošlje prek začasnega naslova Onion.</string>
     <string name="onion_transfer_select_files">Izberi datoteke</string>
     <string name="onion_transfer_send_text">Pošlji besedilo</string>
