@@ -671,18 +671,31 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     /**
-     * Checks the public NfcAdapter API, not the concrete framework implementation class.
+     * Requires the original Beam methods and platform-declared Beam support.
+     * isNdefPushEnabled() is hidden in current SDK stubs, so query it reflectively
+     * when an older compatible Android release exposes it.
      */
     private boolean hasOfficialBeamApi(final NfcAdapter adapter) {
         if (adapter == null) return false;
+        final PackageManager packageManager = requireContext().getPackageManager();
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
                     android.nfc.NdefMessage.class, Activity.class, Activity[].class);
             NfcAdapter.class.getMethod("invokeBeam", Activity.class);
-            // Check the actual platform Beam state, not just the presence of NFC hardware.
-            return adapter.isNdefPushEnabled();
-        } catch (NoSuchMethodException | SecurityException | UnsupportedOperationException exception) {
+        } catch (NoSuchMethodException | SecurityException exception) {
             return false;
+        }
+
+        try {
+            final java.lang.reflect.Method beamEnabled =
+                    NfcAdapter.class.getMethod("isNdefPushEnabled");
+            return Boolean.TRUE.equals(beamEnabled.invoke(adapter));
+        } catch (NoSuchMethodException exception) {
+            // This method is hidden or absent in newer SDK/runtime combinations.
+            // The platform feature is stronger evidence than NFC hardware alone.
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
+        } catch (ReflectiveOperationException | SecurityException | UnsupportedOperationException exception) {
+            return packageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM);
         }
     }
 
