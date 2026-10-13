@@ -115,7 +115,7 @@ public class OnboardingFragment2 extends Fragment {
         tempUrl.setValue(pref.getString(getString(R.string.pref_baseurl), "https://drop.erikraft.com/"));
         reloadServerList();
 
-        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, "Custom URL", null, null,
+        binding.add.setOnClickListener(v -> ViewUtils.showEditTextWithResetPossibility(this, getString(R.string.onboarding_server_custom), null, null,
                 Link.bind("https://github.com/erikraft/Drop/blob/master/docs/FAQ.md", R.string.baseurl_unofficial_instances), url -> {
                     if (url == null) return;
                     if (isSnapdropNet(url)) {

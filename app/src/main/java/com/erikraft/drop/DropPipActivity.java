@@ -1,7 +1,9 @@
 package com.erikraft.drop;
 
 import android.app.PictureInPictureParams;
+import android.content.ComponentName;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,9 +16,10 @@ import androidx.preference.PreferenceManager;
 /**
  * Shared PiP lifecycle for ErikrafT Drop activities.
  *
- * The existing PiP behavior lived only in MainActivity. Keeping the lifecycle
- * here lets every real app screen use the same persisted preference without
- * duplicating the enter/exit logic.
+ * PiP is opt-in per Activity in AndroidManifest.xml. Check the actual Activity
+ * declaration before calling the framework APIs: older or device-specific
+ * merged manifests may omit supportsPictureInPicture even when the device
+ * itself supports PiP.
  */
 public abstract class DropPipActivity extends AppCompatActivity {
     private final SharedPreferences.OnSharedPreferenceChangeListener pipPreferenceListener =
@@ -45,13 +48,23 @@ public abstract class DropPipActivity extends AppCompatActivity {
     }
 
     private boolean isPictureInPictureAvailable() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-                && getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
+                || !getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
+            return false;
+        }
+
+        try {
+            final ActivityInfo activityInfo = getPackageManager().getActivityInfo(
+                    new ComponentName(this, getClass()), 0);
+            return activityInfo.supportsPictureInPicture;
+        } catch (PackageManager.NameNotFoundException | RuntimeException ignored) {
+            // Fail closed rather than crashing an Activity that is not PiP-enabled.
+            return false;
+        }
     }
 
     private void updatePictureInPictureParams() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-                || !getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
+        if (!isPictureInPictureAvailable()) {
             return;
         }
 
@@ -62,7 +75,12 @@ public abstract class DropPipActivity extends AppCompatActivity {
             builder.setAutoEnterEnabled(isPictureInPictureEnabled());
         }
 
-        setPictureInPictureParams(builder.build());
+        try {
+            setPictureInPictureParams(builder.build());
+        } catch (IllegalStateException ignored) {
+            // Some ROMs can report PiP support inconsistently. PiP is optional;
+            // never let a parameter update crash the screen.
+        }
     }
 
     @Override
@@ -76,9 +94,13 @@ public abstract class DropPipActivity extends AppCompatActivity {
                 && isPictureInPictureEnabled()
                 && !isFinishing()
                 && !isInPictureInPictureMode()) {
-            enterPictureInPictureMode(new PictureInPictureParams.Builder()
-                    .setAspectRatio(new Rational(16, 9))
-                    .build());
+            try {
+                enterPictureInPictureMode(new PictureInPictureParams.Builder()
+                        .setAspectRatio(new Rational(16, 9))
+                        .build());
+            } catch (IllegalStateException ignored) {
+                // Keep navigation safe on ROMs with incomplete PiP implementations.
+            }
         }
     }
 
