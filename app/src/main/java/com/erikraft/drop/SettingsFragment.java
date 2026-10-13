@@ -617,7 +617,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
             final boolean legacyOs = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
-            final boolean officialBeamApi = hasNfc && legacyOs && hasOfficialBeamApi(adapter);
+            final boolean officialBeamApi = hasNfc && legacyOs && hasOfficialBeamApi();
             nfcPreference.setCompatible(officialBeamApi);
             nfcPreference.setSummary(!hasNfc
                     ? R.string.legacy_nfc_no_hardware
@@ -678,7 +678,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     /**
      * Checks the public NfcAdapter API, not the concrete framework implementation class.
      */
-    private boolean hasOfficialBeamApi(@NonNull final NfcAdapter adapter) {
+    private boolean hasOfficialBeamApi() {
         try {
             NfcAdapter.class.getMethod("setNdefPushMessage",
                     android.nfc.NdefMessage.class, Activity.class, Activity[].class);
