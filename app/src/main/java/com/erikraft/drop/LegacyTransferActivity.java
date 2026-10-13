@@ -107,13 +107,15 @@ public final class LegacyTransferActivity extends DropPipActivity {
         setContentView(root);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        final boolean beamAvailable = Build.VERSION.SDK_INT < 34 && nfcAdapter != null;
-        beamButton.setEnabled(beamAvailable);
-        beamButton.setAlpha(beamAvailable ? 1f : 0.55f);
-        if (!beamAvailable) {
-            beamButton.setText(nfcAdapter == null
-                    ? R.string.legacy_nfc_no_hardware
-                    : R.string.legacy_beam_android_14_plus);
+        final boolean nfcAvailable = nfcAdapter != null;
+        beamButton.setEnabled(nfcAvailable);
+        beamButton.setAlpha(nfcAvailable ? 1f : 0.55f);
+        if (!nfcAvailable) {
+            beamButton.setText(R.string.legacy_nfc_no_hardware);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Android Beam was removed in Android 10. Offer the platform Sharesheet
+            // instead of calling removed APIs or implying that NFC peer-to-peer still works.
+            beamButton.setText(R.string.legacy_beam_modern_share);
         }
         beamButton.setOnClickListener(v -> shareWithBeam());
         discoverButton.setOnClickListener(v -> discoverPeers());
@@ -266,8 +268,22 @@ public final class LegacyTransferActivity extends DropPipActivity {
     }
 
     private void shareWithBeam() {
-        if (nfcAdapter == null || Build.VERSION.SDK_INT >= 34) {
+        if (nfcAdapter == null) {
             status.setText(R.string.legacy_beam_unavailable);
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            String text = textInput.getText().toString();
+            if (text.trim().isEmpty()) {
+                textInput.setError(getString(R.string.legacy_transfer_text_required));
+                textInput.requestFocus();
+                return;
+            }
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.legacy_beam_modern_share_title)));
+            status.setText(R.string.legacy_beam_modern_share_started);
             return;
         }
         try {
