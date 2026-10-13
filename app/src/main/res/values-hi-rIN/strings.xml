@@ -20,7 +20,7 @@
     <string name="onboarding_server_quaternary_summary">(4) चौथा — PairDrop (वैकल्पिक तृतीय-पक्ष सुझाव)</string>
     <string name="onboarding_server_quinary_summary">(5) पाँचवाँ — PairDrop</string>
     <string name="onboarding_server_onion_warning">Tor आवश्यक है। इस डिवाइस पर Onion सेवा सीधे Tor के माध्यम से खुलती है।</string>
-    <string name="onboarding_server_pairdrop_summary">वैकल्पिक तृतीय-पक्ष सुझाव; ErikrafT Drop इकोसिस्टम का हिस्सा नहीं है.</string>
+    <string name="onboarding_server_pairdrop_summary">वैकल्पिक तृतीय-पक्ष सुझाव; ErikrafT Drop इकोसिस्टम का हिस्सा नहीं है।</string>
     <string name="onboarding_server_snapdrop_summary">क्लासिक Snapdrop। सरल और साफ़।</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop फ़ॉलबैक।</string>
     <string name="onboarding_server_custom">कस्टम URL</string>
