@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Przesyłanie przez Onion (beta)</string>
+    <string name="onion_transfer_title">Przesyłanie przez Onion</string>
     <string name="onion_transfer_description">Udostępniaj pliki lub tekst bezpośrednio z urządzenia przez prywatne połączenie Tor. Treść pozostaje na urządzeniu i jest wysyłana przez tymczasowy adres Onion.</string>
     <string name="onion_transfer_select_files">Wybierz pliki</string>
     <string name="onion_transfer_send_text">Wyślij tekst</string>
