@@ -50,8 +50,7 @@ public abstract class DropPipActivity extends AppCompatActivity {
     }
 
     private void updatePictureInPictureParams() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-                || !getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) {
+        if (!isPictureInPictureAvailable()) {
             return;
         }
 
@@ -62,7 +61,12 @@ public abstract class DropPipActivity extends AppCompatActivity {
             builder.setAutoEnterEnabled(isPictureInPictureEnabled());
         }
 
-        setPictureInPictureParams(builder.build());
+        try {
+            setPictureInPictureParams(builder.build());
+        } catch (IllegalStateException ignored) {
+            // Some devices report PiP support inconsistently. PiP is optional;
+            // do not crash screen creation or a preference update.
+        }
     }
 
     @Override
@@ -76,9 +80,13 @@ public abstract class DropPipActivity extends AppCompatActivity {
                 && isPictureInPictureEnabled()
                 && !isFinishing()
                 && !isInPictureInPictureMode()) {
-            enterPictureInPictureMode(new PictureInPictureParams.Builder()
-                    .setAspectRatio(new Rational(16, 9))
-                    .build());
+            try {
+                enterPictureInPictureMode(new PictureInPictureParams.Builder()
+                        .setAspectRatio(new Rational(16, 9))
+                        .build());
+            } catch (IllegalStateException ignored) {
+                // Keep navigation safe on devices with incomplete PiP support.
+            }
         }
     }
 
