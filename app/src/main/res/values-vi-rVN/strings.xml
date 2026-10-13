@@ -127,7 +127,7 @@
     <string name="resume">Tiếp tục</string>
     <string name="cancel">Hủy</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Truyền qua Onion (beta)</string>
+    <string name="onion_transfer_title">Truyền qua Onion</string>
     <string name="onion_transfer_description">Chia sẻ tệp hoặc văn bản trực tiếp từ thiết bị qua kết nối Tor riêng tư. Nội dung vẫn trên thiết bị và được gửi qua địa chỉ Onion tạm thời.</string>
     <string name="onion_transfer_select_files">Chọn tệp</string>
     <string name="onion_transfer_send_text">Gửi văn bản</string>
