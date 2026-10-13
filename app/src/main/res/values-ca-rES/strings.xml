@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Transferència mitjançant Onion (beta)</string>
+    <string name="onion_transfer_title">Transferència mitjançant Onion</string>
     <string name="onion_transfer_description">Comparteix fitxers o text directament des del dispositiu amb una connexió privada de Tor. El contingut es queda al dispositiu i s’envia mitjançant una adreça Onion temporal.</string>
     <string name="onion_transfer_select_files">Selecciona fitxers</string>
     <string name="onion_transfer_send_text">Envia text</string>
