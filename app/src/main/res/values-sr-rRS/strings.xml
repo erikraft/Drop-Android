@@ -14,4 +14,9 @@
     <string name="legacy_beam_modern_share_started">Android Beam nije dostupan na Androidu 10 i novijim verzijama. Umesto njega otvoren je sistemski meni za deljenje; on ne koristi direktnu NFC vezu između uređaja.</string>
     <string name="transfer_feature_unavailable">Није доступно: на овом уређају недостаје потребна подршка током рада.</string>
     <string name="ftp_stopping">Заустављање сервера…</string>
+    <string name="app_name_long">O aplikaciji ErikrafT Drop™ za Android</string>
+    <string name="title_activity_about">O aplikaciji ErikrafT Drop™</string>
+    <string name="onboarding_choose_server_description">Izaberite ErikrafT Drop server ili unesite prilagođeni URL. PairDrop je opciona preporuka usluge treće strane i nije deo ErikrafT Drop ekosistema.\n\nNapomena: izaberite isti URL na svim uređajima.</string>
+    <string name="onboarding_server_quaternary_summary">(4) Četvrti — PairDrop (opciona preporuka treće strane)</string>
+    <string name="onboarding_server_pairdrop_summary">Opciona preporuka treće strane; nije deo ErikrafT Drop ekosistema.</string>
 </resources>
