@@ -127,7 +127,7 @@
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>
     <!-- Onion Transfer -->
-    <string name="onion_transfer_title">Átvitel Onionon keresztül (béta)</string>
+    <string name="onion_transfer_title">Átvitel Onionon keresztül</string>
     <string name="onion_transfer_description">Osszon meg fájlokat vagy szöveget közvetlenül az eszközéről privát Tor-kapcsolaton keresztül. A tartalom az eszközön marad, és ideiglenes Onion-címen keresztül jut el a címzetthez.</string>
     <string name="onion_transfer_select_files">Fájlok kiválasztása</string>
     <string name="onion_transfer_send_text">Szöveg küldése</string>
