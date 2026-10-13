@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long">Snapdrop &amp; PairDrop 安卓版</string>
+    <string name="app_name_long">关于 ErikrafT Drop™ for Android</string>
     <string name="app_name_slogan">在您所有设备间无缝传输文件。</string>
     <string name="err_no_browser">无法打开浏览器</string>
     <string name="err_no_app">未找到用于打开此文件的应用</string>
@@ -11,16 +11,16 @@
     <string name="onboarding_button_finish">完成</string>
     <string name="onboarding_choose_server">选择一个服务器地址</string>
     <string name="onboarding_choose_server_short">选择服务器</string>
-    <string name="onboarding_choose_server_description">这个应用程序是适用于 ErikrafT Drop 和 PairDrop 的 Web 应用程序的优化客户端。\n选择以下实例之一或指定要连接的自定义URL。\n\n注意：您必须在所有设备上选择相同的 URL。</string>
+    <string name="onboarding_choose_server_description">选择 ErikrafT Drop 服务器，或输入自定义 URL。PairDrop 是可选的第三方推荐服务，不属于 ErikrafT Drop 生态系统。\n\n注意：所有设备必须选择相同的 URL。</string>
     <string name="onboarding_storage_permission">存储权限</string>
     <string name="onboarding_storage_permission_description">此应用是一个共享文件的工具。因此，需要存储权限才能使用。</string>
     <string name="onboarding_server_primary_summary">(1) 主服务器 — ErikrafT Drop™</string>
     <string name="onboarding_server_secondary_summary">(2) 次服务器 — ErikrafT Drop™ 备用</string>
     <string name="onboarding_server_tertiary_summary">(3) 第三备用服务器 — ErikrafT Drop™</string>
-    <string name="onboarding_server_quaternary_summary">(4) 第四 — ErikrafT Drop™ Onion 服务</string>
+    <string name="onboarding_server_quaternary_summary">(4) 第四项 — PairDrop（可选的第三方推荐服务）</string>
     <string name="onboarding_server_quinary_summary">(5) 第五 — PairDrop</string>
     <string name="onboarding_server_onion_warning">需要 Tor。此设备通过 Tor 直接访问 Onion 服务。</string>
-    <string name="onboarding_server_pairdrop_summary">ErikrafT Drop™ 主服务器。</string>
+    <string name="onboarding_server_pairdrop_summary">可选的第三方推荐服务；不属于 ErikrafT Drop 生态系统。</string>
     <string name="onboarding_server_snapdrop_summary">经典的 Snapdrop。简单、清爽。</string>
     <string name="onboarding_server_snapdrop_summary_server_warning">PairDrop 备用服务器。</string>
     <string name="onboarding_server_custom">自定义 URL</string>
