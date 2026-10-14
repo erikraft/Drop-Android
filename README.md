@@ -59,6 +59,8 @@ If you want to help with development, this would be more than welcome! I am very
 
 See [`DEVELOPMENT_RULES.md`](DEVELOPMENT_RULES.md) for the repository's full development, testing, compatibility, documentation, observability and incremental-maintenance rules. **Agents and contributors must audit and reuse existing implementations before creating new functionality.**
 
+For the planned public API and native SDK boundary, see [docs/API_INTEGRATION.md](docs/API_INTEGRATION.md).
+
 ### 🤖｜Release and Play Store automation
 This repository includes a manual GitHub Actions release pipeline at `.github/workflows/release.yml` that builds and signs the mobile APK and AAB. It can also run automatically for version tags (`v*`).
 
