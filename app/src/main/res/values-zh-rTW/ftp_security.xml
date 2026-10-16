@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">為確保安全，請在 FTP/FTPS/SFTP 設定中使用至少 12 個字元的專用密碼。</string>
+</resources>

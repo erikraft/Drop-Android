@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">В целях безопасности используйте в настройках FTP/FTPS/SFTP уникальный пароль длиной не менее 12 символов.</string>
+</resources>

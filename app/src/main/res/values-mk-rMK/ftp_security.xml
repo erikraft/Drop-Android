@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">За безбедност, користете единствена лозинка со најмалку 12 знаци во поставките за FTP/FTPS/SFTP.</string>
+</resources>

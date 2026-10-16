@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Por seguridad, utiliza una contraseña única de al menos 12 caracteres en los ajustes de FTP/FTPS/SFTP.</string>
+</resources>

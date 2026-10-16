@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Ze względów bezpieczeństwa użyj unikalnego hasła o długości co najmniej 12 znaków w ustawieniach FTP/FTPS/SFTP.</string>
+</resources>

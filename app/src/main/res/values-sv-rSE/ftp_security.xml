@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Använd av säkerhetsskäl ett unikt lösenord på minst 12 tecken i FTP/FTPS/SFTP-inställningarna.</string>
+</resources>

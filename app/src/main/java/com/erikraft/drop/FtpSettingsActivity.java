@@ -78,6 +78,7 @@ public class FtpSettingsActivity extends DropPipActivity {
         super.onCreate(savedInstanceState);
         SnapdropApplication.setAppTheme(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        FtpSecurityDefaults.ensureSecureDefaults(this);
         notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
             if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);
             prefs.edit().putBoolean(getString(R.string.pref_ftp_stop_notification), granted).apply();
@@ -157,11 +158,11 @@ public class FtpSettingsActivity extends DropPipActivity {
         content.addView((TextInputLayout) passwordInput.getTag(), lpTop(dp(8)));
         anonymousSwitch = new SwitchCompat(this);
         anonymousSwitch.setText(R.string.ftp_anonymous_title);
-        anonymousSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true));
+        anonymousSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false));
         content.addView(anonymousSwitch, lpTop(dp(8)));
         ftpsSwitch = new SwitchCompat(this);
         ftpsSwitch.setText(R.string.ftp_ftps_title);
-        ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), false));
+        ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), true));
         content.addView(ftpsSwitch, lpTop(dp(4)));
         ftpsModeButton = new MaterialButton(this);
         content.addView(ftpsModeButton, lpTop(dp(4)));
@@ -289,7 +290,7 @@ public class FtpSettingsActivity extends DropPipActivity {
 
     private String buildAddress() {
         String port = prefs.getString(getString(R.string.pref_ftp_port), "2221");
-        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false) ? "ftps" : "ftp";
+        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true) ? "ftps" : "ftp";
         return scheme + "://" + getWifiAddress() + ":" + port;
     }
 

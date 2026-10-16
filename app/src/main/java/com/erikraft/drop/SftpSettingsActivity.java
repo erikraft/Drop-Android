@@ -46,6 +46,7 @@ public class SftpSettingsActivity extends DropPipActivity {
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
+        FtpSecurityDefaults.ensureSecureDefaults(this);
         notificationPermissionLauncher = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(), granted -> {
                     if (stopNotificationSwitch != null) stopNotificationSwitch.setChecked(granted);

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">セキュリティのため、FTP/FTPS/SFTP の設定では 12 文字以上の固有のパスワードを使用してください。</string>
+</resources>

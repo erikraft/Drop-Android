@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">لأسباب أمنية، استخدم كلمة مرور فريدة من 12 حرفًا على الأقل في إعدادات FTP/FTPS/SFTP.</string>
+</resources>

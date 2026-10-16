@@ -97,13 +97,17 @@ public class FtpServerService extends Service {
 
     private void startServer(long generation) {
         try {
+            FtpSecurityDefaults.ensureSecureDefaults(this);
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
             String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "android");
             String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "android");
-            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true);
-            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false);
+            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false);
+            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true);
             boolean implicitFtps = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);
+            if (!FtpSecurityDefaults.hasStrongCredentials(username, password)) {
+                throw new IllegalStateException(getString(R.string.ftp_sftp_weak_credentials_error));
+            }
             boolean readOnly = prefs.getBoolean(getString(R.string.pref_ftp_read_only), false);
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);

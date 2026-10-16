@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">सुरक्षाका लागि FTP/FTPS/SFTP सेटिङमा कम्तीमा १२ वर्णको अद्वितीय पासवर्ड प्रयोग गर्नुहोस्।</string>
+</resources>
