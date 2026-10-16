@@ -108,7 +108,11 @@ public class SftpSettingsActivity extends DropPipActivity {
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
         port=field(getString(R.string.ftp_port_hint),p.getString(getString(R.string.pref_sftp_port),"2222"));user=field(getString(R.string.ftp_username_hint),p.getString(getString(R.string.pref_sftp_username),"android"));password=field(getString(R.string.ftp_password_hint),p.getString(getString(R.string.pref_sftp_password),"android"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
-        readOnlySwitch = new SwitchCompat(this);\n        readOnlySwitch.setText(R.string.ftp_read_only_title);\n        readOnlySwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_read_only), false));\n        c.addView(readOnlySwitch,top(8));\n        stopNotificationSwitch = new SwitchCompat(this);
+        readOnlySwitch = new SwitchCompat(this);
+        readOnlySwitch.setText(R.string.ftp_read_only_title);
+        readOnlySwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_read_only), false));
+        c.addView(readOnlySwitch,top(8));
+        stopNotificationSwitch = new SwitchCompat(this);
         stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
         stopNotificationSwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_stop_notification), false));
         c.addView(stopNotificationSwitch,top(10));
