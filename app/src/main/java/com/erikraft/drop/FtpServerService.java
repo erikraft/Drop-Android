@@ -25,7 +25,6 @@ import org.apache.ftpserver.ssl.SslConfigurationFactory;
 import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
 import org.apache.ftpserver.usermanager.SaltedPasswordEncryptor;
 import org.apache.ftpserver.usermanager.impl.BaseUser;
-import org.apache.ftpserver.usermanager.impl.ReadPermission;
 import org.apache.ftpserver.usermanager.impl.WritePermission;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509CertificateHolder;
@@ -123,8 +122,10 @@ public class FtpServerService extends Service {
             user.setPassword(password);
             user.setHomeDirectory(home.getAbsolutePath());
             List<org.apache.ftpserver.ftplet.Authority> authorities = new ArrayList<>();
-            if (readOnly) authorities.add(new ReadPermission());
-            else authorities.add(new WritePermission());
+            // Apache FtpServer 1.2.1 has no ReadPermission authority. An empty
+            // authority list grants no write operations; add WritePermission only
+            // when the user explicitly enables write access.
+            if (!readOnly) authorities.add(new WritePermission());
             user.setAuthorities(authorities);
             userManager.save(user);
 
