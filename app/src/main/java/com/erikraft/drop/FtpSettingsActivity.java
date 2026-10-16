@@ -100,7 +100,7 @@ public class FtpSettingsActivity extends DropPipActivity {
                 }
             } catch (SecurityException ignored) { }
             DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
-            if (folder == null) return;
+            if (folder == null || !folder.isDirectory() || !folder.canRead() || !folder.canWrite()) {\n                Toast.makeText(this, getString(R.string.transfer_error_folder_unsupported), Toast.LENGTH_LONG).show();\n                return;\n            }
             String path = DocumentFileUtils.getAbsolutePath(folder, this);
             if (path == null || path.trim().isEmpty()) {
                 Toast.makeText(this, getString(R.string.transfer_error_directory_path), Toast.LENGTH_LONG).show();
