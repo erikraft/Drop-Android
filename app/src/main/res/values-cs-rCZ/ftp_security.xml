@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Z bezpečnostních důvodů použijte v nastavení FTP/FTPS/SFTP jedinečné heslo o délce alespoň 12 znaků.</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Käytä turvallisuussyistä FTP/FTPS/SFTP-asetuksissa yksilöllistä salasanaa, jossa on vähintään 12 merkkiä.</string>
+</resources>

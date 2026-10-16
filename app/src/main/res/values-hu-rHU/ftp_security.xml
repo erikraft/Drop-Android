@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Biztonsági okokból használjon legalább 12 karakteres, egyedi jelszót az FTP/FTPS/SFTP beállításaiban.</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Pentru securitate, folosiți o parolă unică de cel puțin 12 caractere în setările FTP/FTPS/SFTP.</string>
+</resources>

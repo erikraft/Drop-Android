@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Để bảo mật, hãy dùng mật khẩu riêng biệt dài ít nhất 12 ký tự trong cài đặt FTP/FTPS/SFTP.</string>
+</resources>

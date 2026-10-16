@@ -99,6 +99,7 @@ public class SftpServerService extends Service {
 
             // Android provides its own crypto primitives; avoid SSHD's optional BC registrar.
             System.setProperty("org.apache.sshd.security.provider.BC.enabled", "false");
+            FtpSecurityDefaults.ensureSecureDefaults(this);
             android.content.SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_sftp_port), "" + DEFAULT_PORT));
@@ -106,6 +107,9 @@ public class SftpServerService extends Service {
                     prefs.getString(getString(R.string.pref_sftp_username), ""), "android");
             String password = valueOrDefault(
                     prefs.getString(getString(R.string.pref_sftp_password), ""), "android");
+            if (!FtpSecurityDefaults.hasStrongCredentials(username, password)) {
+                throw new IllegalStateException(getString(R.string.ftp_sftp_weak_credentials_error));
+            }
             String configuredHome = prefs.getString(getString(R.string.pref_sftp_save_location), "");
             boolean readOnly = prefs.getBoolean(getString(R.string.pref_sftp_read_only), false);
             File home = new File(configuredHome);

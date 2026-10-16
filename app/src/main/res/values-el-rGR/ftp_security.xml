@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">Για λόγους ασφαλείας, χρησιμοποιήστε μοναδικό κωδικό πρόσβασης τουλάχιστον 12 χαρακτήρων στις ρυθμίσεις FTP/FTPS/SFTP.</string>
+</resources>

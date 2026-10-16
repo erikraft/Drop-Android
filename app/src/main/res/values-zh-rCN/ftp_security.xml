@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">为确保安全，请在 FTP/FTPS/SFTP 设置中使用至少 12 个字符的唯一密码。</string>
+</resources>

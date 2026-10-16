@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">보안을 위해 FTP/FTPS/SFTP 설정에서 12자 이상의 고유한 비밀번호를 사용하세요.</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">За сигурност използвайте уникална парола с поне 12 знака в настройките за FTP/FTPS/SFTP.</string>
+</resources>

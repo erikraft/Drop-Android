@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ftp_sftp_weak_credentials_error">למען האבטחה, יש להשתמש בהגדרות FTP/FTPS/SFTP בסיסמה ייחודית בת 12 תווים לפחות.</string>
+</resources>
