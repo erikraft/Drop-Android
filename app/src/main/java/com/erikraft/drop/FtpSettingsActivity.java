@@ -50,6 +50,9 @@ public class FtpSettingsActivity extends DropPipActivity {
     private TextInputEditText passwordInput;
     private SwitchCompat anonymousSwitch;
     private SwitchCompat ftpsSwitch;
+    private SwitchCompat readOnlySwitch;
+    private MaterialButton ftpsModeButton;
+    private TextView networkState;
     private SwitchCompat stopNotificationSwitch;
     private TextView directorySummary;
     private TextView status;
@@ -157,6 +160,23 @@ public class FtpSettingsActivity extends DropPipActivity {
         ftpsSwitch.setText(R.string.ftp_ftps_title);
         ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), false));
         content.addView(ftpsSwitch, lpTop(dp(4)));
+        ftpsModeButton = new MaterialButton(this);
+        content.addView(ftpsModeButton, lpTop(dp(4)));
+        updateFtpsModeLabel();
+        ftpsModeButton.setOnClickListener(v -> {
+            final String[] modes = {getString(R.string.ftp_ftps_explicit), getString(R.string.ftp_ftps_implicit)};
+            new AlertDialog.Builder(this).setTitle(R.string.ftp_ftps_mode_title)
+                    .setSingleChoiceItems(modes, prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false) ? 1 : 0,
+                            (dialog, which) -> {
+                                prefs.edit().putBoolean(getString(R.string.pref_ftp_ftps_implicit), which == 1).apply();
+                                updateFtpsModeLabel();
+                                dialog.dismiss();
+                            }).setNegativeButton(android.R.string.cancel, null).show();
+        });
+        readOnlySwitch = new SwitchCompat(this);
+        readOnlySwitch.setText(R.string.ftp_read_only_title);
+        readOnlySwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_read_only), false));
+        content.addView(readOnlySwitch, lpTop(dp(8)));
         stopNotificationSwitch = new SwitchCompat(this);
         stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
         stopNotificationSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_stop_notification), false));
@@ -266,11 +286,11 @@ public class FtpSettingsActivity extends DropPipActivity {
 
     private String buildAddress() {
         String port = prefs.getString(getString(R.string.pref_ftp_port), "2221");
-        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true) ? "ftps" : "ftp";
+        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false) ? "ftps" : "ftp";
         return scheme + "://" + getWifiAddress() + ":" + port;
     }
 
-    private String getWifiAddress() {
+    private void updateFtpsModeLabel() {\n        if (ftpsModeButton == null) return;\n        boolean implicit = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);\n        ftpsModeButton.setText(getString(R.string.ftp_ftps_mode_label, getString(implicit ? R.string.ftp_ftps_implicit : R.string.ftp_ftps_explicit)));\n        ftpsModeButton.setEnabled(ftpsSwitch != null && ftpsSwitch.isChecked());\n        if (ftpsSwitch != null) ftpsSwitch.setOnCheckedChangeListener((button, checked) -> { if (ftpsModeButton != null) ftpsModeButton.setEnabled(checked); });\n    }\n\n    private String buildNetworkStatus() {\n        android.net.ConnectivityManager cm = (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);\n        android.net.NetworkInfo info = cm == null ? null : cm.getActiveNetworkInfo();\n        boolean wifiConnected = info != null && info.isConnected() && info.getType() == android.net.ConnectivityManager.TYPE_WIFI;\n        return getString(wifiConnected ? R.string.ftp_wifi_connected : R.string.ftp_wifi_disconnected) + "\\n" + getString(R.string.ftp_ip_address, com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));\n    }\n\n    private String getWifiAddress() {
         try {
             for (NetworkInterface network : Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 for (java.net.InetAddress address : Collections.list(network.getInetAddresses())) {
