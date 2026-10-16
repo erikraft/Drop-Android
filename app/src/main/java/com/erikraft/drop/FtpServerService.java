@@ -99,10 +99,12 @@ public class FtpServerService extends Service {
         try {
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
-            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
-            String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "erikraft");
-            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false);
-            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true);
+            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "android");
+            String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "android");
+            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true);
+            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false);
+            boolean implicitFtps = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);
+            boolean readOnly = prefs.getBoolean(getString(R.string.pref_ftp_read_only), false);
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);
 
@@ -120,7 +122,10 @@ public class FtpServerService extends Service {
             user.setPassword(password);
             user.setHomeDirectory(home.getAbsolutePath());
             List<org.apache.ftpserver.ftplet.Authority> authorities = new ArrayList<>();
-            authorities.add(new WritePermission());
+            // Apache FtpServer 1.2.1 has no ReadPermission authority. An empty
+            // authority list grants no write operations; add WritePermission only
+            // when the user explicitly enables write access.
+            if (!readOnly) authorities.add(new WritePermission());
             user.setAuthorities(authorities);
             userManager.save(user);
 
@@ -151,9 +156,9 @@ public class FtpServerService extends Service {
                 sslFactory.setSslProtocol("TLS");
                 SslConfiguration ssl = sslFactory.createSslConfiguration();
                 listener.setSslConfiguration(ssl);
-                listener.setImplicitSsl(false);
+                listener.setImplicitSsl(implicitFtps);
                 data.setSslConfiguration(ssl);
-                data.setImplicitSsl(false);
+                data.setImplicitSsl(implicitFtps);
             }
 
             listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());

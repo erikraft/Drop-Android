@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS 安全模式</string>
+    <string name="ftp_ftps_explicit">显式 FTPS（推荐）</string>
+    <string name="ftp_ftps_implicit">隐式 FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS 模式：%1$s</string>
+    <string name="ftp_read_only_title">只读访问</string>
+    <string name="ftp_wifi_connected">Wi‑Fi：已连接</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi：未连接（其他网络或离线）</string>
+    <string name="ftp_ip_address">本地 IP 地址：%1$s</string>
+</resources>

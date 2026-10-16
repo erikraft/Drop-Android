@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS 보안 모드</string>
+    <string name="ftp_ftps_explicit">명시적 FTPS(권장)</string>
+    <string name="ftp_ftps_implicit">암시적 FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS 모드: %1$s</string>
+    <string name="ftp_read_only_title">읽기 전용 액세스</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: 연결됨</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: 연결되지 않음(다른 네트워크 또는 오프라인)</string>
+    <string name="ftp_ip_address">로컬 IP 주소: %1$s</string>
+</resources>

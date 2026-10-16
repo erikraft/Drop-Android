@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Ein Open-Source-Projekt für Wi-Fi, Wi-Fi Direct und Mesh-Netzwerke zur Offline-Kommunikation und zum Internetzugang über kompatible Gateways.</string>
+    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ entdecken</string>
+</resources>

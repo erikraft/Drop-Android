@@ -2,6 +2,13 @@ package com.erikraft.drop;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.widget.ImageView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.qrcode.QRCodeWriter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +50,9 @@ public class FtpSettingsActivity extends DropPipActivity {
     private TextInputEditText passwordInput;
     private SwitchCompat anonymousSwitch;
     private SwitchCompat ftpsSwitch;
+    private SwitchCompat readOnlySwitch;
+    private MaterialButton ftpsModeButton;
+    private TextView networkState;
     private SwitchCompat stopNotificationSwitch;
     private TextView directorySummary;
     private TextView status;
@@ -90,7 +100,10 @@ public class FtpSettingsActivity extends DropPipActivity {
                 }
             } catch (SecurityException ignored) { }
             DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
-            if (folder == null) return;
+            if (folder == null || !folder.isDirectory() || !folder.canRead() || !folder.canWrite()) {
+                Toast.makeText(this, getString(R.string.transfer_error_folder_unsupported), Toast.LENGTH_LONG).show();
+                return;
+            }
             String path = DocumentFileUtils.getAbsolutePath(folder, this);
             if (path == null || path.trim().isEmpty()) {
                 Toast.makeText(this, getString(R.string.transfer_error_directory_path), Toast.LENGTH_LONG).show();
@@ -138,18 +151,35 @@ public class FtpSettingsActivity extends DropPipActivity {
         });
         portInput = field(getString(R.string.ftp_port_hint), prefs.getString(getString(R.string.pref_ftp_port), "2221"), InputType.TYPE_CLASS_NUMBER);
         content.addView((TextInputLayout) portInput.getTag(), lpTop(dp(12)));
-        usernameInput = field(getString(R.string.ftp_username_hint), prefs.getString(getString(R.string.pref_ftp_username), "admin"), InputType.TYPE_CLASS_TEXT);
+        usernameInput = field(getString(R.string.ftp_username_hint), prefs.getString(getString(R.string.pref_ftp_username), "android"), InputType.TYPE_CLASS_TEXT);
         content.addView((TextInputLayout) usernameInput.getTag(), lpTop(dp(8)));
-        passwordInput = field(getString(R.string.ftp_password_hint), prefs.getString(getString(R.string.pref_ftp_password), "admin"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passwordInput = field(getString(R.string.ftp_password_hint), prefs.getString(getString(R.string.pref_ftp_password), "android"), InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         content.addView((TextInputLayout) passwordInput.getTag(), lpTop(dp(8)));
         anonymousSwitch = new SwitchCompat(this);
         anonymousSwitch.setText(R.string.ftp_anonymous_title);
-        anonymousSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false));
+        anonymousSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true));
         content.addView(anonymousSwitch, lpTop(dp(8)));
         ftpsSwitch = new SwitchCompat(this);
         ftpsSwitch.setText(R.string.ftp_ftps_title);
-        ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), true));
+        ftpsSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_ftps), false));
         content.addView(ftpsSwitch, lpTop(dp(4)));
+        ftpsModeButton = new MaterialButton(this);
+        content.addView(ftpsModeButton, lpTop(dp(4)));
+        updateFtpsModeLabel();
+        ftpsModeButton.setOnClickListener(v -> {
+            final String[] modes = {getString(R.string.ftp_ftps_explicit), getString(R.string.ftp_ftps_implicit)};
+            new AlertDialog.Builder(this).setTitle(R.string.ftp_ftps_mode_title)
+                    .setSingleChoiceItems(modes, prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false) ? 1 : 0,
+                            (dialog, which) -> {
+                                prefs.edit().putBoolean(getString(R.string.pref_ftp_ftps_implicit), which == 1).apply();
+                                updateFtpsModeLabel();
+                                dialog.dismiss();
+                            }).setNegativeButton(android.R.string.cancel, null).show();
+        });
+        readOnlySwitch = new SwitchCompat(this);
+        readOnlySwitch.setText(R.string.ftp_read_only_title);
+        readOnlySwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_read_only), false));
+        content.addView(readOnlySwitch, lpTop(dp(8)));
         stopNotificationSwitch = new SwitchCompat(this);
         stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
         stopNotificationSwitch.setChecked(prefs.getBoolean(getString(R.string.pref_ftp_stop_notification), false));
@@ -241,6 +271,7 @@ public class FtpSettingsActivity extends DropPipActivity {
                 .apply();
         ContextCompat.startForegroundService(this, FtpServerService.startIntent(this));
         status.setText(R.string.ftp_starting);
+        showConnectionQr(buildAddress());
     }
 
     private void stopServer() {
@@ -258,8 +289,23 @@ public class FtpSettingsActivity extends DropPipActivity {
 
     private String buildAddress() {
         String port = prefs.getString(getString(R.string.pref_ftp_port), "2221");
-        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true) ? "ftps" : "ftp";
+        String scheme = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false) ? "ftps" : "ftp";
         return scheme + "://" + getWifiAddress() + ":" + port;
+    }
+
+    private void updateFtpsModeLabel() {
+        if (ftpsModeButton == null) return;
+        boolean implicit = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);
+        ftpsModeButton.setText(getString(R.string.ftp_ftps_mode_label, getString(implicit ? R.string.ftp_ftps_implicit : R.string.ftp_ftps_explicit)));
+        ftpsModeButton.setEnabled(ftpsSwitch != null && ftpsSwitch.isChecked());
+        if (ftpsSwitch != null) ftpsSwitch.setOnCheckedChangeListener((button, checked) -> { if (ftpsModeButton != null) ftpsModeButton.setEnabled(checked); });
+    }
+
+    private String buildNetworkStatus() {
+        android.net.ConnectivityManager cm = (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo info = cm == null ? null : cm.getActiveNetworkInfo();
+        boolean wifiConnected = info != null && info.isConnected() && info.getType() == android.net.ConnectivityManager.TYPE_WIFI;
+        return getString(wifiConnected ? R.string.ftp_wifi_connected : R.string.ftp_wifi_disconnected) + "\n" + getString(R.string.ftp_ip_address, com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));
     }
 
     private String getWifiAddress() {
@@ -283,6 +329,28 @@ public class FtpSettingsActivity extends DropPipActivity {
         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         if (clipboard != null) clipboard.setPrimaryClip(android.content.ClipData.newPlainText("ErikrafT Drop FTP", address.getText()));
         Toast.makeText(this, R.string.ftp_address_copied, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showConnectionQr(String connectionAddress) {
+        try {
+            com.google.zxing.common.BitMatrix matrix = new QRCodeWriter().encode(connectionAddress, BarcodeFormat.QR_CODE, 480, 480);
+            Bitmap bitmap = Bitmap.createBitmap(480, 480, Bitmap.Config.RGB_565);
+            for (int y = 0; y < 480; y++) {
+                for (int x = 0; x < 480; x++) bitmap.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            }
+            ImageView image = new ImageView(this);
+            image.setImageBitmap(bitmap);
+            image.setAdjustViewBounds(true);
+            image.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            int padding = dp(12);
+            image.setPadding(padding, padding, padding, padding);
+            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(dp(240), dp(240)));
+            new AlertDialog.Builder(this).setTitle(R.string.ftp_settings_title)
+                    .setMessage(connectionAddress).setView(image)
+                    .setPositiveButton(android.R.string.ok, null).show();
+        } catch (WriterException e) {
+            Toast.makeText(this, connectionAddress, Toast.LENGTH_LONG).show();
+        }
     }
 
     private TextView text(String value, float size) {

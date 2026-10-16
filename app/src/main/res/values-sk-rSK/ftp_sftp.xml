@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Režim zabezpečenia FTPS</string>
+    <string name="ftp_ftps_explicit">Explicitné FTPS (odporúčané)</string>
+    <string name="ftp_ftps_implicit">Implicitné FTPS</string>
+    <string name="ftp_ftps_mode_label">Režim FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Prístup iba na čítanie</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: pripojené</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: nepripojené (iná sieť alebo offline)</string>
+    <string name="ftp_ip_address">Lokálna IP adresa: %1$s</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Режим безпеки FTPS</string>
+    <string name="ftp_ftps_explicit">Явний FTPS (рекомендовано)</string>
+    <string name="ftp_ftps_implicit">Неявний FTPS</string>
+    <string name="ftp_ftps_mode_label">Режим FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Доступ лише для читання</string>
+    <string name="ftp_wifi_connected">Wi-Fi: підключено</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: не підключено (інша мережа або офлайн)</string>
+    <string name="ftp_ip_address">Локальна IP-адреса: %1$s</string>
+</resources>

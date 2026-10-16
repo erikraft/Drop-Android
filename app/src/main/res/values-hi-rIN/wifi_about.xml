@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Wi-Fi, Wi-Fi Direct और mesh नेटवर्क के लिए एक ओपन-सोर्स प्रोजेक्ट, जो ऑफ़लाइन संचार और संगत गेटवे के माध्यम से इंटरनेट एक्सेस प्रदान करता है।</string>
+    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ देखें</string>
+</resources>

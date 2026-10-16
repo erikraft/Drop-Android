@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">وضع أمان FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS صريح (موصى به)</string>
+    <string name="ftp_ftps_implicit">FTPS ضمني</string>
+    <string name="ftp_ftps_mode_label">وضع FTPS: %1$s</string>
+    <string name="ftp_read_only_title">وصول للقراءة فقط</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: متصل</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: غير متصل (شبكة أخرى أو دون اتصال)</string>
+    <string name="ftp_ip_address">عنوان IP المحلي: %1$s</string>
+</resources>

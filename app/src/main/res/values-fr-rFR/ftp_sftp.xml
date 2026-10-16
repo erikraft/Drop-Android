@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Mode de sécurité FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS explicite (recommandé)</string>
+    <string name="ftp_ftps_implicit">FTPS implicite</string>
+    <string name="ftp_ftps_mode_label">Mode FTPS : %1$s</string>
+    <string name="ftp_read_only_title">Accès en lecture seule</string>
+    <string name="ftp_wifi_connected">Wi-Fi : connecté</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi : non connecté (autre réseau ou hors ligne)</string>
+    <string name="ftp_ip_address">Adresse IP locale : %1$s</string>
+</resources>

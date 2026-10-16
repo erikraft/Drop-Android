@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Dự án mã nguồn mở dành cho Wi-Fi, Wi-Fi Direct và mạng mesh, hỗ trợ liên lạc ngoại tuyến và truy cập Internet qua cổng kết nối tương thích.</string>
+    <string name="about_wifi_open_repository">Khám phá ErikrafT Wi-Fi™</string>
+</resources>

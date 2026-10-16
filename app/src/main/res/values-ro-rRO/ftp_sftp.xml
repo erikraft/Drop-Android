@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Mod de securitate FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS explicit (recomandat)</string>
+    <string name="ftp_ftps_implicit">FTPS implicit</string>
+    <string name="ftp_ftps_mode_label">Mod FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Acces doar pentru citire</string>
+    <string name="ftp_wifi_connected">Wi-Fi: conectat</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: neconectat (altă rețea sau offline)</string>
+    <string name="ftp_ip_address">Adresă IP locală: %1$s</string>
+</resources>

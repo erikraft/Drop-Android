@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Wi-Fi, Wi-Fi Direct 및 메시 네트워크를 활용해 오프라인 통신과 호환 게이트웨이를 통한 인터넷 접속을 지원하는 오픈 소스 프로젝트입니다.</string>
+    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ 살펴보기</string>
+</resources>

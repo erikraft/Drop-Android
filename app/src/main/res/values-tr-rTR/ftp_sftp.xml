@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS güvenlik modu</string>
+    <string name="ftp_ftps_explicit">Açık FTPS (önerilen)</string>
+    <string name="ftp_ftps_implicit">Örtük FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS modu: %1$s</string>
+    <string name="ftp_read_only_title">Salt okunur erişim</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: bağlı</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: bağlı değil (başka ağ veya çevrimdışı)</string>
+    <string name="ftp_ip_address">Yerel IP adresi: %1$s</string>
+</resources>

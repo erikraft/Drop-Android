@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS-sikkerhedstilstand</string>
+    <string name="ftp_ftps_explicit">Eksplicit FTPS (anbefalet)</string>
+    <string name="ftp_ftps_implicit">Implicit FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS-tilstand: %1$s</string>
+    <string name="ftp_read_only_title">Skrivebeskyttet adgang</string>
+    <string name="ftp_wifi_connected">Wi-Fi: tilsluttet</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: ikke tilsluttet (andet netværk eller offline)</string>
+    <string name="ftp_ip_address">Lokal IP-adresse: %1$s</string>
+</resources>

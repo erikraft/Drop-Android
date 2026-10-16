@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS-suojaustila</string>
+    <string name="ftp_ftps_explicit">Eksplisiittinen FTPS (suositus)</string>
+    <string name="ftp_ftps_implicit">Implisiittinen FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS-tila: %1$s</string>
+    <string name="ftp_read_only_title">Vain luku -käyttöoikeus</string>
+    <string name="ftp_wifi_connected">Wi-Fi: yhdistetty</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: ei yhteyttä (toinen verkko tai offline)</string>
+    <string name="ftp_ip_address">Paikallinen IP-osoite: %1$s</string>
+</resources>
