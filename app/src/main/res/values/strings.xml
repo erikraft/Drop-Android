@@ -319,4 +319,18 @@
     <string name="about_highlight">&lt;b&gt;Built for file transfer and privacy&lt;/b&gt;&lt;br/&gt;ErikrafT Drop™ focuses on file transfer and privacy. It aims to adapt to a wide range of devices, from older and legacy systems to modern hardware, offering compatible options where possible. Availability depends on the device, operating system, and supported technologies.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Help improve ErikrafT Drop™&lt;/b&gt;&lt;br/&gt;Contribute a Pull Request to fix a problem or add a feature, or open an Issue with diagnostic details and steps to reproduce what happened. Clear reports and contributions help make the app more reliable for everyone.</string>
     <string name="beta_badge_label" translatable="false">BETA</string>
     <string name="transfer_feature_unavailable">Unavailable: required runtime support is missing on this device.</string>
+
+    <!-- FTP/FTPS/SFTP configuration -->
+    <string name="ftp_ftps_mode_title">FTPS security mode</string>
+    <string name="ftp_ftps_explicit">Explicit FTPS (recommended)</string>
+    <string name="ftp_ftps_implicit">Implicit FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS mode: %1$s</string>
+    <string name="ftp_read_only_title">Read-only access</string>
+    <string name="ftp_wifi_connected">Wi-Fi: connected</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: not connected (other network or offline)</string>
+    <string name="ftp_ip_address">Local IP address: %1$s</string>
+    <string name="pref_ftp_ftps_implicit" translatable="false">ftp_ftps_implicit</string>
+    <string name="pref_ftp_read_only" translatable="false">ftp_read_only</string>
+    <string name="pref_sftp_read_only" translatable="false">sftp_read_only</string>
+
 </resources>
