@@ -2,6 +2,13 @@ package com.erikraft.drop;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.widget.ImageView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.qrcode.QRCodeWriter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -241,6 +248,7 @@ public class FtpSettingsActivity extends DropPipActivity {
                 .apply();
         ContextCompat.startForegroundService(this, FtpServerService.startIntent(this));
         status.setText(R.string.ftp_starting);
+        showConnectionQr(buildAddress());
     }
 
     private void stopServer() {
@@ -283,6 +291,26 @@ public class FtpSettingsActivity extends DropPipActivity {
         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         if (clipboard != null) clipboard.setPrimaryClip(android.content.ClipData.newPlainText("ErikrafT Drop FTP", address.getText()));
         Toast.makeText(this, R.string.ftp_address_copied, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showConnectionQr(String connectionAddress) {
+        try {
+            com.google.zxing.common.BitMatrix matrix = new QRCodeWriter().encode(connectionAddress, BarcodeFormat.QR_CODE, 480, 480);
+            Bitmap bitmap = Bitmap.createBitmap(480, 480, Bitmap.Config.RGB_565);
+            for (int y = 0; y < 480; y++) {
+                for (int x = 0; x < 480; x++) bitmap.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            }
+            ImageView image = new ImageView(this);
+            image.setImageBitmap(bitmap);
+            image.setAdjustViewBounds(true);
+            int padding = dp(16);
+            image.setPadding(padding, padding, padding, padding);
+            new AlertDialog.Builder(this).setTitle(R.string.ftp_settings_title)
+                    .setMessage(connectionAddress).setView(image)
+                    .setPositiveButton(android.R.string.ok, null).show();
+        } catch (WriterException e) {
+            Toast.makeText(this, connectionAddress, Toast.LENGTH_LONG).show();
+        }
     }
 
     private TextView text(String value, float size) {
