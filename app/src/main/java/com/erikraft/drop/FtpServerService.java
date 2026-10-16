@@ -25,6 +25,7 @@ import org.apache.ftpserver.ssl.SslConfigurationFactory;
 import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
 import org.apache.ftpserver.usermanager.SaltedPasswordEncryptor;
 import org.apache.ftpserver.usermanager.impl.BaseUser;
+import org.apache.ftpserver.usermanager.impl.ReadPermission;
 import org.apache.ftpserver.usermanager.impl.WritePermission;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509CertificateHolder;
@@ -103,6 +104,8 @@ public class FtpServerService extends Service {
             String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "android");
             boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true);
             boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false);
+            boolean implicitFtps = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);
+            boolean readOnly = prefs.getBoolean(getString(R.string.pref_ftp_read_only), false);
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);
 
@@ -120,7 +123,8 @@ public class FtpServerService extends Service {
             user.setPassword(password);
             user.setHomeDirectory(home.getAbsolutePath());
             List<org.apache.ftpserver.ftplet.Authority> authorities = new ArrayList<>();
-            authorities.add(new WritePermission());
+            if (readOnly) authorities.add(new ReadPermission());
+            else authorities.add(new WritePermission());
             user.setAuthorities(authorities);
             userManager.save(user);
 
@@ -151,9 +155,9 @@ public class FtpServerService extends Service {
                 sslFactory.setSslProtocol("TLS");
                 SslConfiguration ssl = sslFactory.createSslConfiguration();
                 listener.setSslConfiguration(ssl);
-                listener.setImplicitSsl(false);
+                listener.setImplicitSsl(implicitFtps);
                 data.setSslConfiguration(ssl);
-                data.setImplicitSsl(false);
+                data.setImplicitSsl(implicitFtps);
             }
 
             listener.setDataConnectionConfiguration(data.createDataConnectionConfiguration());
