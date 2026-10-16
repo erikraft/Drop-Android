@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Проект со отворен код за Wi-Fi, Wi-Fi Direct и mesh мрежи за офлајн комуникација и пристап до интернет преку компатибилни порти.</string>
+    <string name="about_wifi_open_repository">Истражи ErikrafT Wi-Fi™</string>
+</resources>
