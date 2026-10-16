@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">פרויקט קוד פתוח ל-Wi-Fi, ‏Wi-Fi Direct ורשתות Mesh לתקשורת לא מקוונת ולגישה לאינטרנט דרך שערים תואמים.</string>
+    <string name="about_wifi_open_repository">לגלות את ErikrafT Wi-Fi™</string>
+</resources>
