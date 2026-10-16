@@ -100,7 +100,10 @@ public class FtpSettingsActivity extends DropPipActivity {
                 }
             } catch (SecurityException ignored) { }
             DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
-            if (folder == null || !folder.isDirectory() || !folder.canRead() || !folder.canWrite()) {\n                Toast.makeText(this, getString(R.string.transfer_error_folder_unsupported), Toast.LENGTH_LONG).show();\n                return;\n            }
+            if (folder == null || !folder.isDirectory() || !folder.canRead() || !folder.canWrite()) {
+                Toast.makeText(this, getString(R.string.transfer_error_folder_unsupported), Toast.LENGTH_LONG).show();
+                return;
+            }
             String path = DocumentFileUtils.getAbsolutePath(folder, this);
             if (path == null || path.trim().isEmpty()) {
                 Toast.makeText(this, getString(R.string.transfer_error_directory_path), Toast.LENGTH_LONG).show();
@@ -290,7 +293,22 @@ public class FtpSettingsActivity extends DropPipActivity {
         return scheme + "://" + getWifiAddress() + ":" + port;
     }
 
-    private void updateFtpsModeLabel() {\n        if (ftpsModeButton == null) return;\n        boolean implicit = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);\n        ftpsModeButton.setText(getString(R.string.ftp_ftps_mode_label, getString(implicit ? R.string.ftp_ftps_implicit : R.string.ftp_ftps_explicit)));\n        ftpsModeButton.setEnabled(ftpsSwitch != null && ftpsSwitch.isChecked());\n        if (ftpsSwitch != null) ftpsSwitch.setOnCheckedChangeListener((button, checked) -> { if (ftpsModeButton != null) ftpsModeButton.setEnabled(checked); });\n    }\n\n    private String buildNetworkStatus() {\n        android.net.ConnectivityManager cm = (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);\n        android.net.NetworkInfo info = cm == null ? null : cm.getActiveNetworkInfo();\n        boolean wifiConnected = info != null && info.isConnected() && info.getType() == android.net.ConnectivityManager.TYPE_WIFI;\n        return getString(wifiConnected ? R.string.ftp_wifi_connected : R.string.ftp_wifi_disconnected) + "\\n" + getString(R.string.ftp_ip_address, com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));\n    }\n\n    private String getWifiAddress() {
+    private void updateFtpsModeLabel() {
+        if (ftpsModeButton == null) return;
+        boolean implicit = prefs.getBoolean(getString(R.string.pref_ftp_ftps_implicit), false);
+        ftpsModeButton.setText(getString(R.string.ftp_ftps_mode_label, getString(implicit ? R.string.ftp_ftps_implicit : R.string.ftp_ftps_explicit)));
+        ftpsModeButton.setEnabled(ftpsSwitch != null && ftpsSwitch.isChecked());
+        if (ftpsSwitch != null) ftpsSwitch.setOnCheckedChangeListener((button, checked) -> { if (ftpsModeButton != null) ftpsModeButton.setEnabled(checked); });
+    }
+
+    private String buildNetworkStatus() {
+        android.net.ConnectivityManager cm = (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo info = cm == null ? null : cm.getActiveNetworkInfo();
+        boolean wifiConnected = info != null && info.isConnected() && info.getType() == android.net.ConnectivityManager.TYPE_WIFI;
+        return getString(wifiConnected ? R.string.ftp_wifi_connected : R.string.ftp_wifi_disconnected) + "\n" + getString(R.string.ftp_ip_address, com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));
+    }
+
+    private String getWifiAddress() {
         try {
             for (NetworkInterface network : Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 for (java.net.InetAddress address : Collections.list(network.getInetAddresses())) {
