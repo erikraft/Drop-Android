@@ -164,8 +164,10 @@ public class SftpSettingsActivity extends DropPipActivity {
             ImageView image = new ImageView(this);
             image.setImageBitmap(bitmap);
             image.setAdjustViewBounds(true);
-            int padding = dp(16);
+            image.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            int padding = dp(12);
             image.setPadding(padding, padding, padding, padding);
+            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(dp(240), dp(240)));
             new AlertDialog.Builder(this).setTitle(R.string.sftp_settings_title)
                     .setMessage(connectionAddress).setView(image)
                     .setPositiveButton(android.R.string.ok, null).show();
