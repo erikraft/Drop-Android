@@ -97,7 +97,7 @@ public class SftpSettingsActivity extends DropPipActivity {
         MaterialButton choose=new MaterialButton(this);choose.setText(R.string.ftp_choose_directory);c.addView(choose,top(12));
         folder=text(p.getString(getString(R.string.pref_sftp_save_location),Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()),13);folder.setTextIsSelectable(true);c.addView(folder,top(4));
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
-        port=field(getString(R.string.ftp_port_hint),p.getString(getString(R.string.pref_sftp_port),"2222"));user=field(getString(R.string.ftp_username_hint),p.getString(getString(R.string.pref_sftp_username),"admin"));password=field(getString(R.string.ftp_password_hint),p.getString(getString(R.string.pref_sftp_password),"admin"));
+        port=field(getString(R.string.ftp_port_hint),p.getString(getString(R.string.pref_sftp_port),"2222"));user=field(getString(R.string.ftp_username_hint),p.getString(getString(R.string.pref_sftp_username),"android"));password=field(getString(R.string.ftp_password_hint),p.getString(getString(R.string.pref_sftp_password),"android"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
         stopNotificationSwitch = new SwitchCompat(this);
         stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
