@@ -2,6 +2,13 @@ package com.erikraft.drop;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.widget.ImageView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.qrcode.QRCodeWriter;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -143,10 +150,30 @@ public class SftpSettingsActivity extends DropPipActivity {
         if(po<1025||po>65535){Toast.makeText(this,getString(R.string.transfer_error_port_range),Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,getString(R.string.transfer_error_credentials_required),Toast.LENGTH_SHORT).show();return;}
         p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
-        androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText(R.string.ftp_starting);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);
+        androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText(R.string.ftp_starting);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);showConnectionQr(address.getText().toString());
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));}
     private void updateServerToggle(boolean running){if(serverToggleButton!=null)serverToggleButton.setText(running?R.string.sftp_stop:R.string.sftp_start);}
+    private void showConnectionQr(String connectionAddress) {
+        try {
+            com.google.zxing.common.BitMatrix matrix = new QRCodeWriter().encode(connectionAddress, BarcodeFormat.QR_CODE, 480, 480);
+            Bitmap bitmap = Bitmap.createBitmap(480, 480, Bitmap.Config.RGB_565);
+            for (int y = 0; y < 480; y++) {
+                for (int x = 0; x < 480; x++) bitmap.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            }
+            ImageView image = new ImageView(this);
+            image.setImageBitmap(bitmap);
+            image.setAdjustViewBounds(true);
+            int padding = dp(16);
+            image.setPadding(padding, padding, padding, padding);
+            new AlertDialog.Builder(this).setTitle(R.string.sftp_settings_title)
+                    .setMessage(connectionAddress).setView(image)
+                    .setPositiveButton(android.R.string.ok, null).show();
+        } catch (WriterException e) {
+            Toast.makeText(this, connectionAddress, Toast.LENGTH_LONG).show();
+        }
+    }
+
     @Override protected void onDestroy(){ if(statusReceiver!=null) unregisterReceiver(statusReceiver); super.onDestroy(); }
     private TextInputEditText field(String h,String v){TextInputLayout l=new TextInputLayout(this);l.setHint(h);if(getString(R.string.ftp_password_hint).equals(h))l.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);TextInputEditText e=new TextInputEditText(this);e.setSingleLine(true);e.setText(v);l.addView(e,new LinearLayout.LayoutParams(-1,-2));e.setTag(l);return e;}
     private MaterialButton button(String label){MaterialButton b=new MaterialButton(this);b.setText(label);return b;}
