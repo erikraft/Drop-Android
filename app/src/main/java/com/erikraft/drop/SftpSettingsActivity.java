@@ -163,7 +163,7 @@ public class SftpSettingsActivity extends DropPipActivity {
         android.net.ConnectivityManager cm=(android.net.ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
         android.net.NetworkInfo info=cm==null?null:cm.getActiveNetworkInfo();
         boolean wifiConnected=info!=null&&info.isConnected()&&info.getType()==android.net.ConnectivityManager.TYPE_WIFI;
-        return getString(wifiConnected?R.string.ftp_wifi_connected:R.string.ftp_wifi_disconnected)+"\\n"+getString(R.string.ftp_ip_address,com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));
+        return getString(wifiConnected?R.string.ftp_wifi_connected:R.string.ftp_wifi_disconnected)+"\n"+getString(R.string.ftp_ip_address,com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));}
     private void updateServerToggle(boolean running){if(serverToggleButton!=null)serverToggleButton.setText(running?R.string.sftp_stop:R.string.sftp_start);}
