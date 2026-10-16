@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">مشروع مفتوح المصدر لشبكات Wi-Fi وWi-Fi Direct والشبكات المتداخلة للاتصال دون اتصال بالإنترنت والوصول إليه عبر البوابات المتوافقة.</string>
+    <string name="about_wifi_open_repository">استكشف ErikrafT Wi-Fi™</string>
+</resources>
