@@ -40,6 +40,8 @@ public class SftpSettingsActivity extends DropPipActivity {
     private ActivityResultLauncher<Intent> picker;
     private ActivityResultLauncher<String> notificationPermissionLauncher;
     private SwitchCompat stopNotificationSwitch;
+    private SwitchCompat readOnlySwitch;
+    private TextView networkState;
     private BroadcastReceiver statusReceiver;
 
     @Override protected void onCreate(Bundle state) {
@@ -106,10 +108,11 @@ public class SftpSettingsActivity extends DropPipActivity {
         choose.setOnClickListener(v->{Intent i=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION|Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);picker.launch(i);});
         port=field(getString(R.string.ftp_port_hint),p.getString(getString(R.string.pref_sftp_port),"2222"));user=field(getString(R.string.ftp_username_hint),p.getString(getString(R.string.pref_sftp_username),"android"));password=field(getString(R.string.ftp_password_hint),p.getString(getString(R.string.pref_sftp_password),"android"));
         c.addView((TextInputLayout)port.getTag(),top(12));c.addView((TextInputLayout)user.getTag(),top(8));c.addView((TextInputLayout)password.getTag(),top(8));
-        stopNotificationSwitch = new SwitchCompat(this);
+        readOnlySwitch = new SwitchCompat(this);\n        readOnlySwitch.setText(R.string.ftp_read_only_title);\n        readOnlySwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_read_only), false));\n        c.addView(readOnlySwitch,top(8));\n        stopNotificationSwitch = new SwitchCompat(this);
         stopNotificationSwitch.setText(R.string.ftp_stop_notification_title);
         stopNotificationSwitch.setChecked(p.getBoolean(getString(R.string.pref_sftp_stop_notification), false));
         c.addView(stopNotificationSwitch,top(10));
+        networkState=text(buildNetworkStatus(),13);c.addView(networkState,top(12));
         status=text(initialStatus == null ? getString(R.string.server_status_stopped) : initialStatus,15);c.addView(status,top(18));address=text("",14);address.setTextIsSelectable(true);c.addView(address,top(4));
         serverToggleButton=button(getString(R.string.sftp_start));c.addView(serverToggleButton,top(14));
         MaterialButton copy=button(getString(R.string.ftp_copy_address));c.addView(copy,top(8));
@@ -149,8 +152,14 @@ public class SftpSettingsActivity extends DropPipActivity {
         int po;try{po=Integer.parseInt(port.getText().toString());}catch(Exception e){Toast.makeText(this,getString(R.string.transfer_error_invalid_port),Toast.LENGTH_SHORT).show();return;}
         if(po<1025||po>65535){Toast.makeText(this,getString(R.string.transfer_error_port_range),Toast.LENGTH_SHORT).show();return;}
         String u=user.getText().toString().trim(),pw=password.getText().toString();if(u.isEmpty()||pw.isEmpty()){Toast.makeText(this,getString(R.string.transfer_error_credentials_required),Toast.LENGTH_SHORT).show();return;}
-        p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
+        p.edit().putString(getString(R.string.pref_sftp_save_location),f.getAbsolutePath()).putString(getString(R.string.pref_sftp_port),String.valueOf(po)).putString(getString(R.string.pref_sftp_username),u).putString(getString(R.string.pref_sftp_password),pw).putBoolean(getString(R.string.pref_sftp_read_only), readOnlySwitch.isChecked()).putBoolean(getString(R.string.pref_sftp_stop_notification), stopNotificationSwitch.isChecked()).apply();
         androidx.core.content.ContextCompat.startForegroundService(this, SftpServerService.startIntent(this));status.setText(R.string.ftp_starting);address.setText("sftp://"+com.erikraft.drop.utils.NetworkUtils.getIpAddress(this)+":"+po);showConnectionQr(address.getText().toString());
+    }
+    private String buildNetworkStatus() {
+        android.net.ConnectivityManager cm=(android.net.ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo info=cm==null?null:cm.getActiveNetworkInfo();
+        boolean wifiConnected=info!=null&&info.isConnected()&&info.getType()==android.net.ConnectivityManager.TYPE_WIFI;
+        return getString(wifiConnected?R.string.ftp_wifi_connected:R.string.ftp_wifi_disconnected)+"\\n"+getString(R.string.ftp_ip_address,com.erikraft.drop.utils.NetworkUtils.getIpAddress(this));
     }
     private void stopServer(){startService(SftpServerService.stopIntent(this));}
     private void updateServerToggle(boolean running){if(serverToggleButton!=null)serverToggleButton.setText(running?R.string.sftp_stop:R.string.sftp_start);}
