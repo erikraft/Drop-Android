@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">מצב אבטחת FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS מפורש (מומלץ)</string>
+    <string name="ftp_ftps_implicit">FTPS משתמע</string>
+    <string name="ftp_ftps_mode_label">מצב FTPS: %1$s</string>
+    <string name="ftp_read_only_title">גישה לקריאה בלבד</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: מחובר</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: לא מחובר (רשת אחרת או לא מקוון)</string>
+    <string name="ftp_ip_address">כתובת IP מקומית: %1$s</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS-beveiligingsmodus</string>
+    <string name="ftp_ftps_explicit">Expliciete FTPS (aanbevolen)</string>
+    <string name="ftp_ftps_implicit">Impliciete FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS-modus: %1$s</string>
+    <string name="ftp_read_only_title">Alleen-lezen toegang</string>
+    <string name="ftp_wifi_connected">Wifi: verbonden</string>
+    <string name="ftp_wifi_disconnected">Wifi: niet verbonden (ander netwerk of offline)</string>
+    <string name="ftp_ip_address">Lokaal IP-adres: %1$s</string>
+</resources>

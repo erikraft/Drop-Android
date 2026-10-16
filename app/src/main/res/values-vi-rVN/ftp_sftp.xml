@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Chế độ bảo mật FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS tường minh (khuyên dùng)</string>
+    <string name="ftp_ftps_implicit">FTPS ngầm định</string>
+    <string name="ftp_ftps_mode_label">Chế độ FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Quyền chỉ đọc</string>
+    <string name="ftp_wifi_connected">Wi-Fi: đã kết nối</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: chưa kết nối (mạng khác hoặc ngoại tuyến)</string>
+    <string name="ftp_ip_address">Địa chỉ IP cục bộ: %1$s</string>
+</resources>

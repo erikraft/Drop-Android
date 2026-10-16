@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Безбедносен режим на FTPS</string>
+    <string name="ftp_ftps_explicit">Експлицитен FTPS (препорачано)</string>
+    <string name="ftp_ftps_implicit">Имплицитен FTPS</string>
+    <string name="ftp_ftps_mode_label">Режим на FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Пристап само за читање</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: поврзано</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: не е поврзано (друга мрежа или офлајн)</string>
+    <string name="ftp_ip_address">Локална IP-адреса: %1$s</string>
+</resources>

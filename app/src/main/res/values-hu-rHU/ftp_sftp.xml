@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS biztonsági mód</string>
+    <string name="ftp_ftps_explicit">Explicit FTPS (ajánlott)</string>
+    <string name="ftp_ftps_implicit">Implicit FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS mód: %1$s</string>
+    <string name="ftp_read_only_title">Csak olvasási hozzáférés</string>
+    <string name="ftp_wifi_connected">Wi-Fi: csatlakoztatva</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: nincs csatlakoztatva (másik hálózat vagy offline)</string>
+    <string name="ftp_ip_address">Helyi IP-cím: %1$s</string>
+</resources>

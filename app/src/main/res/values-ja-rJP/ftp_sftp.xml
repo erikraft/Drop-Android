@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS セキュリティモード</string>
+    <string name="ftp_ftps_explicit">明示的 FTPS（推奨）</string>
+    <string name="ftp_ftps_implicit">暗黙的 FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS モード: %1$s</string>
+    <string name="ftp_read_only_title">読み取り専用アクセス</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: 接続済み</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: 未接続（別のネットワークまたはオフライン）</string>
+    <string name="ftp_ip_address">ローカル IP アドレス: %1$s</string>
+</resources>

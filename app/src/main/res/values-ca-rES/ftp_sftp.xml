@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Mode de seguretat FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS explícit (recomanat)</string>
+    <string name="ftp_ftps_implicit">FTPS implícit</string>
+    <string name="ftp_ftps_mode_label">Mode FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Accés només de lectura</string>
+    <string name="ftp_wifi_connected">Wi-Fi: connectat</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: no connectat (una altra xarxa o sense connexió)</string>
+    <string name="ftp_ip_address">Adreça IP local: %1$s</string>
+</resources>

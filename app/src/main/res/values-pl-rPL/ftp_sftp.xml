@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Tryb zabezpieczeń FTPS</string>
+    <string name="ftp_ftps_explicit">Jawny FTPS (zalecany)</string>
+    <string name="ftp_ftps_implicit">Niejawny FTPS</string>
+    <string name="ftp_ftps_mode_label">Tryb FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Dostęp tylko do odczytu</string>
+    <string name="ftp_wifi_connected">Wi-Fi: połączono</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: brak połączenia (inna sieć lub offline)</string>
+    <string name="ftp_ip_address">Lokalny adres IP: %1$s</string>
+</resources>

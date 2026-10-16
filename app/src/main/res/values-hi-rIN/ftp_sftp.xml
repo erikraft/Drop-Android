@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">FTPS सुरक्षा मोड</string>
+    <string name="ftp_ftps_explicit">एक्सप्लिसिट FTPS (अनुशंसित)</string>
+    <string name="ftp_ftps_implicit">इम्प्लिसिट FTPS</string>
+    <string name="ftp_ftps_mode_label">FTPS मोड: %1$s</string>
+    <string name="ftp_read_only_title">केवल-पढ़ने की पहुँच</string>
+    <string name="ftp_wifi_connected">Wi‑Fi: कनेक्ट है</string>
+    <string name="ftp_wifi_disconnected">Wi‑Fi: कनेक्ट नहीं है (दूसरा नेटवर्क या ऑफ़लाइन)</string>
+    <string name="ftp_ip_address">स्थानीय IP पता: %1$s</string>
+</resources>

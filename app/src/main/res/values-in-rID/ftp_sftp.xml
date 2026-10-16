@@ -1,0 +1,10 @@
+<resources>
+    <string name="ftp_ftps_mode_title">Mode keamanan FTPS</string>
+    <string name="ftp_ftps_explicit">FTPS eksplisit (disarankan)</string>
+    <string name="ftp_ftps_implicit">FTPS implisit</string>
+    <string name="ftp_ftps_mode_label">Mode FTPS: %1$s</string>
+    <string name="ftp_read_only_title">Akses hanya-baca</string>
+    <string name="ftp_wifi_connected">Wi-Fi: terhubung</string>
+    <string name="ftp_wifi_disconnected">Wi-Fi: tidak terhubung (jaringan lain atau offline)</string>
+    <string name="ftp_ip_address">Alamat IP lokal: %1$s</string>
+</resources>
