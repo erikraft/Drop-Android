@@ -21,6 +21,23 @@ import org.apache.sshd.server.auth.password.PasswordAuthenticator;
 import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
 import org.apache.sshd.server.session.ServerSession;
 import org.apache.sshd.sftp.server.SftpSubsystemFactory;
+import org.apache.sshd.sftp.server.SftpFileSystemAccessor;
+import org.apache.sshd.sftp.server.SftpSubsystemProxy;
+import org.apache.sshd.sftp.server.FileHandle;
+import java.io.IOException;
+import java.nio.channels.SeekableByteChannel;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.LinkOption;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.UserPrincipal;
+import java.nio.file.attribute.GroupPrincipal;
+import java.nio.file.attribute.AclEntry;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 import java.io.File;
 import java.util.Collections;
@@ -90,6 +107,7 @@ public class SftpServerService extends Service {
             String password = valueOrDefault(
                     prefs.getString(getString(R.string.pref_sftp_password), ""), "android");
             String configuredHome = prefs.getString(getString(R.string.pref_sftp_save_location), "");
+            boolean readOnly = prefs.getBoolean(getString(R.string.pref_sftp_read_only), false);
             File home = new File(configuredHome);
             if (!home.isDirectory() || !home.canRead() || !home.canWrite()) {
                 throw new IllegalStateException("A pasta SFTP selecionada não pode ser acessada diretamente.");
@@ -110,7 +128,9 @@ public class SftpServerService extends Service {
             });
             candidate.setFileSystemFactory(new VirtualFileSystemFactory(home.toPath()));
             candidate.setSubsystemFactories(Collections.singletonList(
-                    new SftpSubsystemFactory.Builder().build()));
+                    new SftpSubsystemFactory.Builder()
+                            .withFileSystemAccessor(readOnly ? new ReadOnlySftpFileSystemAccessor() : SftpFileSystemAccessor.DEFAULT)
+                            .build()));
 
             synchronized (LOCK) {
                 if (server != null) {
@@ -140,6 +160,44 @@ public class SftpServerService extends Service {
         }
     }
 
+
+
+    /**
+     * Enforces read-only access at the SFTP filesystem boundary, including metadata and
+     * directory mutations, rather than relying on the settings UI or client behavior.
+     */
+    private static final class ReadOnlySftpFileSystemAccessor implements SftpFileSystemAccessor {
+        private IOException readOnly() {
+            return new IOException("SFTP is configured as read-only.");
+        }
+
+        @Override
+        public SeekableByteChannel openFile(SftpSubsystemProxy subsystem, FileHandle fileHandle,
+                Path file, String handle, Set<? extends OpenOption> options, FileAttribute<?>... attrs)
+                throws IOException {
+            for (OpenOption option : options) {
+                String name = option.toString();
+                if ("WRITE".equals(name) || "APPEND".equals(name) || "CREATE".equals(name)
+                        || "CREATE_NEW".equals(name) || "TRUNCATE_EXISTING".equals(name)
+                        || "DELETE_ON_CLOSE".equals(name)) {
+                    throw readOnly();
+                }
+            }
+            return SftpFileSystemAccessor.DEFAULT.openFile(
+                    subsystem, fileHandle, file, handle, options, attrs);
+        }
+
+        @Override public void createDirectory(SftpSubsystemProxy subsystem, Path path) throws IOException { throw readOnly(); }
+        @Override public void createLink(SftpSubsystemProxy subsystem, Path link, Path existing, boolean symLink) throws IOException { throw readOnly(); }
+        @Override public void removeFile(SftpSubsystemProxy subsystem, Path path, boolean isDirectory) throws IOException { throw readOnly(); }
+        @Override public void renameFile(SftpSubsystemProxy subsystem, Path oldPath, Path newPath, Collection<java.nio.file.CopyOption> opts) throws IOException { throw readOnly(); }
+        @Override public void copyFile(SftpSubsystemProxy subsystem, Path src, Path dst, Collection<java.nio.file.CopyOption> opts) throws IOException { throw readOnly(); }
+        @Override public void setFileAttribute(SftpSubsystemProxy subsystem, Path file, String view, String attribute, Object value, LinkOption... options) throws IOException { throw readOnly(); }
+        @Override public void setFileOwner(SftpSubsystemProxy subsystem, Path file, Principal value, LinkOption... options) throws IOException { throw readOnly(); }
+        @Override public void setGroupOwner(SftpSubsystemProxy subsystem, Path file, Principal value, LinkOption... options) throws IOException { throw readOnly(); }
+        @Override public void setFilePermissions(SftpSubsystemProxy subsystem, Path file, Set<PosixFilePermission> perms, LinkOption... options) throws IOException { throw readOnly(); }
+        @Override public void setFileAccessControl(SftpSubsystemProxy subsystem, Path file, java.util.List<AclEntry> acl, LinkOption... options) throws IOException { throw readOnly(); }
+    }
 
     private int parsePort(String value) {
         try {
