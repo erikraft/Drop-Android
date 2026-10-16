@@ -67,7 +67,7 @@ public class SftpSettingsActivity extends DropPipActivity {
                 else if((flags&Intent.FLAG_GRANT_WRITE_URI_PERMISSION)!=0)
                     getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_WRITE_URI_PERMISSION);}catch(SecurityException ignored){}
             DocumentFile df=DocumentFile.fromTreeUri(this,uri);
-            if(df==null)return;
+            if(df==null||!df.isDirectory()||!df.canRead()||!df.canWrite()){Toast.makeText(this,getString(R.string.transfer_error_folder_unsupported),Toast.LENGTH_LONG).show();return;}
             String p=com.anggrayudi.storage.file.DocumentFileUtils.getAbsolutePath(df,this);
             File f=p==null?null:new File(p);
             if(f==null||!f.isDirectory()||!f.canRead()||!f.canWrite()){
