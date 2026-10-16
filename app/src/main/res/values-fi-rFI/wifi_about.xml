@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Avoimen lähdekoodin projekti Wi-Fi-, Wi-Fi Direct- ja mesh-verkoille offline-viestintään ja internetyhteyteen yhteensopivien yhdyskäytävien kautta.</string>
+    <string name="about_wifi_open_repository">Tutustu ErikrafT Wi-Fi™ -projektiin</string>
+</resources>
