@@ -99,10 +99,10 @@ public class FtpServerService extends Service {
         try {
             android.content.SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_ftp_port), "" + DEFAULT_PORT));
-            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "admin");
-            String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "erikraft");
-            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), false);
-            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), true);
+            String username = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_username), ""), "android");
+            String password = valueOrDefault(prefs.getString(getString(R.string.pref_ftp_password), ""), "android");
+            boolean anonymous = prefs.getBoolean(getString(R.string.pref_ftp_anonymous), true);
+            boolean ftps = prefs.getBoolean(getString(R.string.pref_ftp_ftps), false);
             File home = resolveHome(prefs.getString(getString(R.string.pref_save_location), ""));
             if (!home.exists() && !home.mkdirs()) throw new IllegalStateException("Não foi possível criar a pasta base: " + home);
 
