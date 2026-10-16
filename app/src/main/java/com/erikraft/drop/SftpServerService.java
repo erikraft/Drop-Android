@@ -86,9 +86,9 @@ public class SftpServerService extends Service {
                     PreferenceManager.getDefaultSharedPreferences(this);
             int port = parsePort(prefs.getString(getString(R.string.pref_sftp_port), "" + DEFAULT_PORT));
             String username = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_sftp_username), ""), "admin");
+                    prefs.getString(getString(R.string.pref_sftp_username), ""), "android");
             String password = valueOrDefault(
-                    prefs.getString(getString(R.string.pref_sftp_password), ""), "admin");
+                    prefs.getString(getString(R.string.pref_sftp_password), ""), "android");
             String configuredHome = prefs.getString(getString(R.string.pref_sftp_save_location), "");
             File home = new File(configuredHome);
             if (!home.isDirectory() || !home.canRead() || !home.canWrite()) {
