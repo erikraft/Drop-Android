@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
+    <string name="about_wifi_description">Projecte de codi obert per a Wi-Fi, Wi-Fi Direct i xarxes mesh per a la comunicació sense connexió i l’accés a Internet mitjançant passarel·les compatibles.</string>
+    <string name="about_wifi_open_repository">Explora ErikrafT Wi-Fi™</string>
+</resources>
