@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.chip.Chip;
 
 /** Stable, self-contained About screen with transparent dependency and attribution information. */
 public class AboutActivity extends DropPipActivity {
@@ -37,20 +36,8 @@ public class AboutActivity extends DropPipActivity {
         int pad = dp(20);
         content.setPadding(pad, dp(18), pad, dp(32));
 
-        LinearLayout appTitleRow = new LinearLayout(this);
-        appTitleRow.setOrientation(LinearLayout.HORIZONTAL);
-        appTitleRow.setGravity(Gravity.CENTER_VERTICAL);
         TextView appName = text(getString(R.string.app_name_long), 28);
-        appTitleRow.addView(appName, new LinearLayout.LayoutParams(0, -2, 1f));
-
-        Chip betaBadge = new Chip(this);
-        betaBadge.setText(R.string.beta_badge_label);
-        betaBadge.setCheckable(false);
-        betaBadge.setClickable(false);
-        betaBadge.setFocusable(false);
-        betaBadge.setEnsureMinTouchTargetSize(false);
-        appTitleRow.addView(betaBadge, new LinearLayout.LayoutParams(-2, -2));
-        content.addView(appTitleRow);
+        content.addView(appName);
 
         TextView version = text(
                 getString(R.string.about_version_format, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
@@ -123,7 +110,8 @@ public class AboutActivity extends DropPipActivity {
         LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(0, -2, 1f);
         titleParams.setMargins(dp(12), 0, 0, 0);
         headingRow.addView(title, titleParams);
-        section.addView(headingRow);
+        headingRow.addView(getLayoutInflater().inflate(R.layout.beta_badge, headingRow, false));
+        section.addView(headingRow, new LinearLayout.LayoutParams(-1, -2));
 
         TextView description = text(getString(R.string.about_wifi_description), 15);
         description.setPadding(0, dp(10), 0, dp(8));
