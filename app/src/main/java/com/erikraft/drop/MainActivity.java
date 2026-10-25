@@ -827,6 +827,9 @@ public class MainActivity extends DropPipActivity {
             }
 
             super.onPageFinished(view, url);
+            if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
+                view.loadUrl(JavaScriptInterface.getAssetsJS(MainActivity.this, "rgbTextSelection.js"));
+            }
         }
 
         private void initSnapdrop() {
