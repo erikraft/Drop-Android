@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Un proiect open-source pentru Wi-Fi, Wi-Fi Direct și rețele mesh, destinat comunicării offline și accesului la internet prin gateway-uri compatibile.</string>
-    <string name="about_wifi_open_repository">Descoperă ErikrafT Wi-Fi™</string>
-</resources>

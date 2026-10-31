@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Projekt otvorenog koda za Wi-Fi, Wi-Fi Direct i mesh mreže za komunikaciju izvan mreže i pristup internetu putem kompatibilnih pristupnika.</string>
-    <string name="about_wifi_open_repository">Istraži ErikrafT Wi-Fi™</string>
-</resources>

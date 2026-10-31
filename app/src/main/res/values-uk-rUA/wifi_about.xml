@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Проєкт із відкритим кодом для Wi-Fi, Wi-Fi Direct і mesh-мереж для офлайн-зв’язку та доступу до інтернету через сумісні шлюзи.</string>
-    <string name="about_wifi_open_repository">Дізнатися про ErikrafT Wi-Fi™</string>
-</resources>

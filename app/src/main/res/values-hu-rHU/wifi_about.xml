@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Nyílt forráskódú projekt Wi-Fi-, Wi-Fi Direct- és mesh-hálózatokhoz, offline kommunikációhoz és kompatibilis átjárókon keresztüli interneteléréshez.</string>
-    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ felfedezése</string>
-</resources>

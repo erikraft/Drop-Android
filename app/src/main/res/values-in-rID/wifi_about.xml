@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Proyek sumber terbuka untuk Wi-Fi, Wi-Fi Direct, dan jaringan mesh untuk komunikasi offline serta akses internet melalui gateway yang kompatibel.</string>
-    <string name="about_wifi_open_repository">Jelajahi ErikrafT Wi-Fi™</string>
-</resources>

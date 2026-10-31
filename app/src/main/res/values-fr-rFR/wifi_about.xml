@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Un projet open source pour le Wi-Fi, Wi-Fi Direct et les réseaux maillés, destiné aux communications hors ligne et à l’accès à Internet via des passerelles compatibles.</string>
-    <string name="about_wifi_open_repository">Découvrir ErikrafT Wi-Fi™</string>
-</resources>
