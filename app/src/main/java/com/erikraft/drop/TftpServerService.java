@@ -112,9 +112,10 @@ public class TftpServerService extends Service {
             }
         } catch (Exception e) {
             Log.e("TftpServerService", "TFTP server failed to start", e);
-            broadcastStatus(false, e.getMessage() == null
-                    ? e.getClass().getSimpleName() : e.getMessage());
+            String error = e.getMessage() == null
+                    ? e.getClass().getSimpleName() : e.getMessage();
             stopServer();
+            broadcastStatus(false, error);
             stopSelf();
         }
     }
