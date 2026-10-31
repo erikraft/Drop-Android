@@ -108,6 +108,17 @@
             app:singleLineTitle="false" />
     </PreferenceCategory>
     <PreferenceCategory
+        android:title="@string/tftp_settings_title"
+        android:summary="@string/tftp_settings_summary"
+        app:iconSpaceReserved="false">
+        <com.erikraft.drop.CompatibilityPreference
+            android:key="tftp_settings"
+            android:icon="@drawable/pref_savelocation"
+            android:summary="@string/tftp_settings_summary"
+            android:title="@string/tftp_settings_title"
+            app:singleLineTitle="false" />
+    </PreferenceCategory>
+    <PreferenceCategory
         android:title="@string/onion_transfer_title"
         android:summary="@string/onion_transfer_settings_summary"
         app:iconSpaceReserved="false">

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tftp_settings_title">TFTP</string>
+    <string name="tftp_settings_summary">Start a read-only TFTP server on your local network.</string>
+    <string name="tftp_security_warning">TFTP has no authentication or encryption. Anyone who can reach this device on the network may download readable files from the selected folder. Uploads are disabled. Use only on a trusted local network.</string>
+    <string name="tftp_folder">Shared folder: %1$s</string>
+    <string name="tftp_port_label">UDP port</string>
+    <string name="tftp_start">Start TFTP server</string>
+    <string name="tftp_stop">Stop TFTP server</string>
+    <string name="tftp_copy_address">Copy TFTP address</string>
+    <string name="tftp_starting">Starting TFTP server…</string>
+    <string name="tftp_running">TFTP read-only server active on UDP port %1$d</string>
+    <string name="tftp_error_port">Choose a UDP port between 1025 and 65535.</string>
+    <string name="tftp_error_folder">The shared folder is unavailable or cannot be read.</string>
+</resources>
