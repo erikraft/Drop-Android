@@ -219,6 +219,20 @@
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
+        <activity
+            android:name=".TftpSettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".SettingsActivity"
+            android:label="@string/tftp_settings_title"
+            android:theme="@style/AppTheme"
+            android:supportsPictureInPicture="true"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
+
+        <service
+            android:name=".TftpServerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

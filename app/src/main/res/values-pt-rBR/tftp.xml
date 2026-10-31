@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tftp_settings_title">TFTP</string>
+    <string name="tftp_settings_summary">Inicie um servidor TFTP somente leitura na sua rede local.</string>
+    <string name="tftp_security_warning">O TFTP não oferece autenticação nem criptografia. Qualquer pessoa que consiga acessar este dispositivo pela rede poderá baixar arquivos legíveis da pasta selecionada. Uploads estão desativados. Use somente em uma rede local confiável.</string>
+    <string name="tftp_folder">Pasta compartilhada: %1$s</string>
+    <string name="tftp_port_label">Porta UDP</string>
+    <string name="tftp_start">Iniciar servidor TFTP</string>
+    <string name="tftp_stop">Parar servidor TFTP</string>
+    <string name="tftp_copy_address">Copiar endereço TFTP</string>
+    <string name="tftp_starting">Iniciando servidor TFTP…</string>
+    <string name="tftp_running">Servidor TFTP somente leitura ativo na porta UDP %1$d</string>
+    <string name="tftp_error_port">Escolha uma porta UDP entre 1025 e 65535.</string>
+    <string name="tftp_error_folder">A pasta compartilhada está indisponível ou não pode ser lida.</string>
+</resources>

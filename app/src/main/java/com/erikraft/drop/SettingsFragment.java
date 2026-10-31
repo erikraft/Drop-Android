@@ -166,6 +166,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
+        final Preference tftpPreference = findPreference("tftp_settings");
+        if (tftpPreference != null) {
+            tftpPreference.setOnPreferenceClickListener(pref -> {
+                startActivity(new Intent(requireContext(), TftpSettingsActivity.class));
+                return true;
+            });
+        }
 
         final Preference openSourceComponents = findPreference(getString(R.string.pref_about));
         if (openSourceComponents != null) {
