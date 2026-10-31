@@ -38,6 +38,7 @@ public class TftpServerService extends Service {
 
     private volatile DatagramSocket listener;
     private volatile boolean running;
+    private volatile boolean startRequested;
     private volatile int runningPort;
 
     public static Intent startIntent(android.content.Context context) {
@@ -60,7 +61,8 @@ public class TftpServerService extends Service {
             return START_NOT_STICKY;
         }
         synchronized (this) {
-            if (running || listener != null) return START_NOT_STICKY;
+            if (running || startRequested || listener != null) return START_NOT_STICKY;
+            startRequested = true;
             startForeground(NOTIFICATION_ID, notification(getString(R.string.tftp_starting)));
             new Thread(this::startServer, "ErikrafT-Drop-TFTP").start();
         }
@@ -85,6 +87,10 @@ public class TftpServerService extends Service {
             socket.setReuseAddress(false);
             socket.setSoTimeout(1000);
             socket.bind(new InetSocketAddress(port));
+            if (!startRequested) {
+                socket.close();
+                return;
+            }
             listener = socket;
             runningPort = port;
             running = true;
@@ -187,7 +193,8 @@ public class TftpServerService extends Service {
                             byte[] ackBytes = new byte[4];
                             DatagramPacket ack = new DatagramPacket(ackBytes, ackBytes.length);
                             transfer.receive(ack);
-                            if (!client.equals(ack.getAddress()) || ack.getLength() < 4
+                            if (!client.equals(ack.getAddress()) || ack.getPort() != clientPort
+                                    || ack.getLength() != 4
                                     || unsignedShort(ack.getData(), ack.getOffset()) != 4) {
                                 continue;
                             }
@@ -201,7 +208,6 @@ public class TftpServerService extends Service {
                     if (!acknowledged) return;
                     if (count < 512) return;
                     block = (block + 1) & 0xffff;
-                    if (block == 0) block = 1;
                 }
             }
         } catch (Exception e) {
@@ -304,6 +310,7 @@ public class TftpServerService extends Service {
     }
 
     private void stopServer() {
+        startRequested = false;
         running = false;
         DatagramSocket socket = listener;
         listener = null;
