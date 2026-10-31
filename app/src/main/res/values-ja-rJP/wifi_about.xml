@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Wi-Fi、Wi-Fi Direct、メッシュネットワークを活用し、オフライン通信や対応ゲートウェイ経由のインターネット接続を実現するオープンソースプロジェクトです。</string>
-    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ を見る</string>
-</resources>

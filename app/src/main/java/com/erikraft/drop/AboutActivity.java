@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.Gravity;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -61,8 +59,6 @@ public class AboutActivity extends DropPipActivity {
         missionParams.setMargins(0, dp(18), 0, dp(8));
         content.addView(missionCard, missionParams);
 
-        addWifiProjectSection(content);
-
         addHeading(content, getString(R.string.about_dependencies_title));
         addHtml(content, getString(R.string.about_dependencies_summary), 15);
         addHtml(content, buildAndroidDependenciesHtml(), 14);
@@ -83,46 +79,6 @@ public class AboutActivity extends DropPipActivity {
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         setContentView(root);
-    }
-
-    private void addWifiProjectSection(LinearLayout parent) {
-        MaterialCardView card = new MaterialCardView(this);
-        card.setRadius(dp(14));
-        card.setCardElevation(dp(1));
-        card.setStrokeWidth(dp(1));
-        card.setUseCompatPadding(true);
-
-        LinearLayout section = new LinearLayout(this);
-        section.setOrientation(LinearLayout.VERTICAL);
-        section.setPadding(dp(16), dp(14), dp(16), dp(16));
-
-        LinearLayout headingRow = new LinearLayout(this);
-        headingRow.setOrientation(LinearLayout.HORIZONTAL);
-        headingRow.setGravity(Gravity.CENTER_VERTICAL);
-
-        ImageView icon = new ImageView(this);
-        icon.setImageResource(R.drawable.ic_erikraft_wifi);
-        icon.setContentDescription(getString(R.string.about_wifi_title));
-        icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        headingRow.addView(icon, new LinearLayout.LayoutParams(dp(54), dp(58)));
-
-        TextView title = text(getString(R.string.about_wifi_title), 20);
-        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(0, -2, 1f);
-        titleParams.setMargins(dp(12), 0, 0, 0);
-        headingRow.addView(title, titleParams);
-        headingRow.addView(getLayoutInflater().inflate(R.layout.beta_badge, headingRow, false));
-        section.addView(headingRow, new LinearLayout.LayoutParams(-1, -2));
-
-        TextView description = text(getString(R.string.about_wifi_description), 15);
-        description.setPadding(0, dp(10), 0, dp(8));
-        section.addView(description);
-        addButton(section, getString(R.string.about_wifi_open_repository),
-                "https://github.com/erikraft/WiFi");
-
-        card.addView(section);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
-        params.setMargins(0, dp(12), 0, dp(8));
-        parent.addView(card, params);
     }
 
     private String buildAndroidDependenciesHtml() {

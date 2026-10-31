@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Een opensourceproject voor Wi-Fi, Wi-Fi Direct en meshnetwerken voor offline communicatie en internettoegang via compatibele gateways.</string>
-    <string name="about_wifi_open_repository">Ontdek ErikrafT Wi-Fi™</string>
-</resources>

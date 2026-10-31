@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Ένα έργο ανοιχτού κώδικα για Wi-Fi, Wi-Fi Direct και δικτυώσεις mesh για επικοινωνία εκτός σύνδεσης και πρόσβαση στο διαδίκτυο μέσω συμβατών πυλών.</string>
-    <string name="about_wifi_open_repository">Εξερευνήστε το ErikrafT Wi-Fi™</string>
-</resources>

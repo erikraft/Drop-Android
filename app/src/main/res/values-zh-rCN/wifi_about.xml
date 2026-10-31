@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">一个面向 Wi-Fi、Wi-Fi Direct 和网状网络的开源项目，支持离线通信，并可通过兼容网关访问互联网。</string>
-    <string name="about_wifi_open_repository">了解 ErikrafT Wi-Fi™</string>
-</resources>

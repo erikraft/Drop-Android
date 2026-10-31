@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="about_wifi_title" translatable="false">ErikrafT Wi-Fi™</string>
-    <string name="about_wifi_description">Çevrimdışı iletişim ve uyumlu ağ geçitleri üzerinden internet erişimi için Wi-Fi, Wi-Fi Direct ve mesh ağlarına yönelik açık kaynaklı proje.</string>
-    <string name="about_wifi_open_repository">ErikrafT Wi-Fi™ projesini keşfet</string>
-</resources>
