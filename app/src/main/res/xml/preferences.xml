@@ -139,11 +139,6 @@
             android:icon="@drawable/ic_android_beam"
             android:title="@string/legacy_nfc_title"
             android:summary="@string/legacy_transfer_checking" />
-        <com.erikraft.drop.CompatibilityPreference
-            android:key="legacy_wifi_direct"
-            android:icon="@drawable/wifi_24"
-            android:title="@string/legacy_wifi_title"
-            android:summary="@string/legacy_transfer_checking" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_activity_about"

@@ -113,13 +113,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
-        final Preference legacyWifiPreference = findPreference("legacy_wifi_direct");
-        if (legacyWifiPreference != null) {
-            legacyWifiPreference.setOnPreferenceClickListener(preference -> {
-                startActivity(new Intent(requireContext(), LegacyTransferActivity.class));
-                return true;
-            });
-        }
 
         final Preference diagnosticsEnabled = findPreference(getString(R.string.pref_diagnostics_enabled));
         final Preference diagnosticsOpen = findPreference(getString(R.string.pref_diagnostics_open));
@@ -619,7 +612,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
      */
     private void updateLegacyTransferCompatibility() {
         final CompatibilityPreference nfcPreference = findPreference("legacy_nfc_beam");
-        final CompatibilityPreference wifiPreference = findPreference("legacy_wifi_direct");
         if (nfcPreference != null) {
             final NfcAdapter adapter = NfcAdapter.getDefaultAdapter(requireContext());
             final boolean hasNfc = adapter != null;
@@ -631,15 +623,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         ? R.string.legacy_beam_legacy_compatible
                         : R.string.transfer_feature_unavailable);
         }
-        if (wifiPreference != null) {
-            final boolean hasWifiDirect = requireContext().getPackageManager()
-                    .hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
-            wifiPreference.setCompatible(hasWifiDirect);
-            wifiPreference.setSummary(hasWifiDirect
-                    ? R.string.legacy_transfer_tap_to_open
-                    : R.string.legacy_wifi_no_hardware);
-        }
-
         final CompatibilityPreference ftpPreference = findPreference("ftp_settings");
         if (ftpPreference != null) {
             final boolean supported = isClassAvailable("org.apache.ftpserver.FtpServerFactory");
