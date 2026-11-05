@@ -206,17 +206,15 @@
     <string name="about_licenses_title">Лиценци</string>
     <string name="about_licenses_summary">Информациите за лиценци за отворен код и трети страни се достапни во изворниот код и датотеките со лиценци на проектот.</string>
 
-    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <!-- Language contribution and legacy NFC -->
     <string name="app_language_contribute">Помогнете во преводот на ErikrafT Drop™ за апликацијата да биде достапна за повеќе луѓе.</string>
     <string name="app_language_contribute_web">Придонесете кон преводите за веб и десктоп</string>
     <string name="app_language_contribute_android">Придонесете кон преводите за Android</string>
     <string name="legacy_transfer_category">Компатибилност со постари начини на пренос</string>
     <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
-    <string name="legacy_wifi_title">Wi-Fi Direct</string>
     <string name="legacy_transfer_checking">Се проверува компатибилноста на уредот…</string>
     <string name="legacy_nfc_no_hardware">Не е поддржано: овој уред нема NFC-адаптер.</string>
     <string name="legacy_nfc_android_version">Android Beam не е достапен на Android 10 и понови верзии.</string>
-    <string name="legacy_wifi_no_hardware">Не е поддржано: уредот не пријавува хардвер за Wi-Fi Direct.</string>
     <string name="legacy_transfer_transport_pending">Откриен е компатибилен хардвер. Интеграцијата за пренос сè уште е експериментална и не е достапна во оваа верзија.</string>
     <string name="legacy_transfer_screen_title">Алатки за постари преноси</string>
     <string name="legacy_transfer_ready">Изберете постар начин на пренос. Достапноста зависи од уредот и верзијата на Android.</string>
@@ -231,24 +229,8 @@
     <string name="legacy_nfc_tag_written">Текстот е запишан на NFC-ознаката.</string>
     <string name="legacy_nfc_tag_too_small">Нема доволно простор на оваа NFC-ознака.</string>
     <string name="legacy_nfc_tag_error">Оваа NFC-ознака не може да се прочита или запише.</string>
-    <string name="legacy_wifi_discover">Откриј блиски уреди со Wi-Fi Direct</string>
-    <string name="legacy_wifi_send_text">Испрати текст до поврзаниот уред</string>
-    <string name="legacy_wifi_unavailable">Wi-Fi Direct не е достапен на овој уред.</string>
-    <string name="legacy_wifi_permission_denied">Дозволата за блиски уреди е одбиена.</string>
-    <string name="legacy_wifi_disabled">Вклучете Wi-Fi за да користите Wi-Fi Direct.</string>
-    <string name="legacy_wifi_discovering">Се бараат блиски уреди…</string>
-    <string name="legacy_wifi_discovery_failed">Откривањето не успеа (грешка %1$d).</string>
-    <string name="legacy_wifi_no_peers">Не се пронајдени уреди. Проверете дали Wi-Fi е вклучен на двата уреда и обидете се повторно.</string>
-    <string name="legacy_wifi_connecting">Се поврзува со уредот…</string>
-    <string name="legacy_wifi_connect_failed">Поврзувањето не успеа (грешка %1$d).</string>
-    <string name="legacy_wifi_connected">Поврзано. Може да се испраќаат текстуални пораки меѓу компатибилни сесии на ErikrafT Drop.</string>
-    <string name="legacy_wifi_not_connected">Не е поврзано со уред преку Wi-Fi Direct.</string>
-    <string name="legacy_wifi_text_sent">Текстот е испратен.</string>
-    <string name="legacy_wifi_text_received">Текстот е примен преку Wi-Fi Direct.</string>
-    <string name="legacy_wifi_transfer_failed">Преносот не успеа: %1$s</string>
     <string name="legacy_nfc_modern_tag_io">Android Beam не е достапен тука, но NFC-ознаките може да се читаат и запишуваат. Допрете за да ги отворите алатките.</string>
     <string name="legacy_transfer_tap_to_open">Допрете за да ги отворите достапните алатки за пренос.</string>
-    <string name="legacy_wifi_waiting_for_sender">Поврзано како примач. Поврзаниот уред може да испрати текст до овој уред.</string>
     <string name="legacy_beam_text_received">Текстот е примен преку Android Beam.</string>
     <string name="server_status_running">Серверот работи</string>
     <string name="server_status_stopped">Серверот е запрен</string>

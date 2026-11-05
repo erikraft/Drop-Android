@@ -206,17 +206,15 @@
     <string name="about_licenses_title">רישיונות</string>
     <string name="about_licenses_summary">מידע על רישיונות קוד פתוח וצד שלישי זמין בקוד המקור ובקובצי הרישיון של הפרויקט.</string>
 
-    <!-- Language contribution and legacy NFC / Wi-Fi Direct -->
+    <!-- Language contribution and legacy NFC -->
     <string name="app_language_contribute">עזרו לתרגם את ErikrafT Drop™ ולהנגיש את האפליקציה לאנשים נוספים.</string>
     <string name="app_language_contribute_web">תרומה לתרגומי האינטרנט והמחשב</string>
     <string name="app_language_contribute_android">תרומה לתרגומי Android</string>
     <string name="legacy_transfer_category">תאימות להעברות מדור קודם</string>
     <string name="legacy_nfc_title">Android Beam (NFC P2P)</string>
-    <string name="legacy_wifi_title">Wi-Fi Direct</string>
     <string name="legacy_transfer_checking">בודק את תאימות המכשיר…</string>
     <string name="legacy_nfc_no_hardware">לא נתמך: במכשיר זה אין מתאם NFC.</string>
     <string name="legacy_nfc_android_version">Android Beam אינו זמין ב-Android 10 ובגרסאות חדשות יותר.</string>
-    <string name="legacy_wifi_no_hardware">לא נתמך: המכשיר אינו מדווח על חומרת Wi-Fi Direct.</string>
     <string name="legacy_transfer_transport_pending">זוהתה חומרה תואמת. שילוב ההעברה עדיין ניסיוני ואינו זמין בגרסה זו.</string>
     <string name="legacy_transfer_screen_title">כלי העברה מדור קודם</string>
     <string name="legacy_transfer_ready">בחרו אמצעי העברה מדור קודם. הזמינות תלויה במכשיר ובגרסת Android.</string>
@@ -231,24 +229,8 @@
     <string name="legacy_nfc_tag_written">הטקסט נכתב לתג NFC.</string>
     <string name="legacy_nfc_tag_too_small">אין מספיק מקום בתג NFC הזה.</string>
     <string name="legacy_nfc_tag_error">לא ניתן לקרוא או לכתוב את תג ה-NFC הזה.</string>
-    <string name="legacy_wifi_discover">איתור מכשירי Wi-Fi Direct בקרבת מקום</string>
-    <string name="legacy_wifi_send_text">שליחת טקסט למכשיר המחובר</string>
-    <string name="legacy_wifi_unavailable">Wi-Fi Direct אינו זמין במכשיר זה.</string>
-    <string name="legacy_wifi_permission_denied">ההרשאה למכשירים בקרבת מקום נדחתה.</string>
-    <string name="legacy_wifi_disabled">הפעילו Wi-Fi כדי להשתמש ב-Wi-Fi Direct.</string>
-    <string name="legacy_wifi_discovering">מחפש מכשירים בקרבת מקום…</string>
-    <string name="legacy_wifi_discovery_failed">האיתור נכשל (שגיאה %1$d).</string>
-    <string name="legacy_wifi_no_peers">לא נמצאו מכשירים. ודאו ש-Wi-Fi מופעל בשני המכשירים ונסו שוב.</string>
-    <string name="legacy_wifi_connecting">מתחבר למכשיר…</string>
-    <string name="legacy_wifi_connect_failed">החיבור נכשל (שגיאה %1$d).</string>
-    <string name="legacy_wifi_connected">מחובר. ניתן לשלוח הודעות טקסט בין הפעלות תואמות של ErikrafT Drop.</string>
-    <string name="legacy_wifi_not_connected">אין חיבור למכשיר Wi-Fi Direct.</string>
-    <string name="legacy_wifi_text_sent">הטקסט נשלח.</string>
-    <string name="legacy_wifi_text_received">התקבל טקסט דרך Wi-Fi Direct.</string>
-    <string name="legacy_wifi_transfer_failed">ההעברה נכשלה: %1$s</string>
     <string name="legacy_nfc_modern_tag_io">Android Beam אינו זמין כאן, אך ניתן לקרוא ולכתוב תגי NFC. הקישו לפתיחת הכלים.</string>
     <string name="legacy_transfer_tap_to_open">הקישו לפתיחת כלי ההעברה הזמינים.</string>
-    <string name="legacy_wifi_waiting_for_sender">מחובר כמקבל. המכשיר המחובר יכול לשלוח טקסט למכשיר זה.</string>
     <string name="legacy_beam_text_received">התקבל טקסט דרך Android Beam.</string>
     <string name="server_status_running">השרת פועל</string>
     <string name="server_status_stopped">השרת נעצר</string>
