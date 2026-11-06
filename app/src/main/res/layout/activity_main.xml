@@ -8,13 +8,15 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBackground"
+            android:background="@drawable/liquid_glass_toolbar_background"
+            app:popupTheme="@style/ThemeOverlay.App.PopupMenu"
             app:subtitleCentered="true"
             app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
