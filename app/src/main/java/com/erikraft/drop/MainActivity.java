@@ -382,6 +382,12 @@ public class MainActivity extends DropPipActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    /**
+     * Routes toolbar actions to their corresponding screens and website features.
+     *
+     * @param item selected toolbar menu item
+     * @return true when the selected item was handled
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -419,12 +425,12 @@ public class MainActivity extends DropPipActivity {
         final String script = "(function(){"
                 + "var app=window.erikrafTdrop;"
                 + "if(app&&app.qrScannerDialog&&typeof app.qrScannerDialog.openScanner==='function'){"
-                + "app.qrScannerDialog.openScanner();return true;}"
-                + "return false;"
+                + "app.qrScannerDialog.openScanner();return 'opened';}"
+                + "return 'unavailable';"
                 + "})()";
 
         binding.webview.evaluateJavascript(script, result -> {
-            if (!"true".equals(result)) {
+            if (!"\"opened\"".equals(result)) {
                 Snackbar.make(binding.getRoot(), R.string.qr_scan_not_ready, Snackbar.LENGTH_SHORT).show();
             }
         });
