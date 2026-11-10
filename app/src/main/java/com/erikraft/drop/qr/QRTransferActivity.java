@@ -77,6 +77,8 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
     private QRDecoder qrDecoder = new QRDecoder();
     private MultiFormatReader multiFormatReader = new MultiFormatReader();
     private boolean isReceiving = false;
+    private boolean isActivityResumed = false;
+    private boolean isSurfaceReady = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -215,9 +217,9 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        if (isReceiving) {
-            startCameraPreview();
-        }
+        surfaceHolder = holder;
+        isSurfaceReady = true;
+        startCameraPreviewIfReady();
     }
 
     @Override
@@ -225,20 +227,64 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        isSurfaceReady = false;
+        surfaceHolder = null;
         stopCamera();
     }
 
-    private void startCameraPreview() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+    /**
+     * Starts camera setup only while receiving, resumed, permissioned and backed by a live surface.
+     */
+    private void startCameraPreviewIfReady() {
+        if (!isCameraReady()) {
             return;
         }
+        startCameraPreview();
+    }
+
+    /**
+     * Checks every prerequisite required before opening the receiving camera.
+     *
+     * @return true when the camera can be opened without racing the Activity or surface lifecycle
+     */
+    private boolean isCameraReady() {
+        return isReceiving
+                && isActivityResumed
+                && isSurfaceReady
+                && surfaceHolder != null
+                && camera == null
+                && !isCancelled
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    /**
+     * Opens and starts the preview after readiness has been verified, releasing partial setup on failure.
+     */
+    private void startCameraPreview() {
+        Camera openedCamera = null;
         try {
-            camera = Camera.open();
-            camera.setDisplayOrientation(90);
-            camera.setPreviewDisplay(surfaceHolder);
-            camera.startPreview();
+            openedCamera = Camera.open();
+            if (openedCamera == null) {
+                throw new IllegalStateException("Camera could not be opened");
+            }
+            openedCamera.setDisplayOrientation(90);
+            openedCamera.setPreviewDisplay(surfaceHolder);
+            openedCamera.startPreview();
+            camera = openedCamera;
             startFrameScanning();
         } catch (Exception e) {
+            camera = null;
+            if (openedCamera != null) {
+                try {
+                    openedCamera.setPreviewCallback(null);
+                } catch (Exception ignored) {}
+                try {
+                    openedCamera.stopPreview();
+                } catch (Exception ignored) {}
+                try {
+                    openedCamera.release();
+                } catch (Exception ignored) {}
+            }
             statusTextView.setText("Erro ao iniciar câmera");
         }
     }
@@ -356,24 +402,38 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
         }
     }
 
+    /**
+     * Stops preview callbacks and releases the camera even if one cleanup operation fails.
+     */
     private void stopCamera() {
-        if (camera != null) {
-            try {
-                camera.stopPreview();
-                camera.setPreviewCallback(null);
-                camera.release();
-            } catch (Exception ignored) {}
-            camera = null;
+        final Camera cameraToRelease = camera;
+        camera = null;
+        if (cameraToRelease == null) {
+            return;
         }
+        try {
+            cameraToRelease.setPreviewCallback(null);
+        } catch (Exception ignored) {}
+        try {
+            cameraToRelease.stopPreview();
+        } catch (Exception ignored) {}
+        try {
+            cameraToRelease.release();
+        } catch (Exception ignored) {}
     }
 
+    /**
+     * Resumes camera setup after Android grants the requested camera permission.
+     *
+     * @param requestCode permission request identifier
+     * @param permissions permissions included in the callback
+     * @param grantResults corresponding permission grant results
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_CAMERA && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (isReceiving && surfaceHolder != null) {
-                startCameraPreview();
-            }
+            startCameraPreviewIfReady();
         }
     }
 
@@ -398,23 +458,25 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
 
     @Override
     protected void onPause() {
+        isActivityResumed = false;
         super.onPause();
         // Do not retain the camera or keep decoding while this Activity is backgrounded.
-        if (isReceiving) stopCamera();
+        stopCamera();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        isActivityResumed = true;
         // Surface callbacks are not guaranteed when returning from the background.
-        if (isReceiving && !isCancelled && surfaceHolder != null && camera == null) {
-            startCameraPreview();
-        }
+        startCameraPreviewIfReady();
     }
 
     @Override
     protected void onDestroy() {
         isCancelled = true;
+        isActivityResumed = false;
+        isSurfaceReady = false;
         stopCamera();
 
         if (handler != null && animationRunnable != null) {
