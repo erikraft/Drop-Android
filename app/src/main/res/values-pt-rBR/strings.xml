@@ -118,11 +118,13 @@
     <string name="website_footer_known_as">Você é identificado como %s</string>
     <string name="website_about_subheading">A maneira mais fácil de transferir arquivos pela Web, Windows, Linux, Android, extensões e muito mais</string>
     <!-- QR Transfer -->
-    <string name="qr_transfer_title">QR Transfer</string>
-    <string name="qr_transfer_send_title">Send via Animated QR</string>
-    <string name="qr_transfer_receive_title">Receive via Animated QR</string>
-    <string name="qr_transfer_instruction">Keep the other device pointed at this QR Code</string>
-    <string name="qr_transfer_receive_searching">Looking for QR Code…</string>
+    <string name="qr_scan_menu_title">Escanear código QR</string>
+    <string name="qr_scan_not_ready">O leitor de QR Code não está disponível no servidor selecionado.</string>
+    <string name="qr_transfer_title">Transferência por QR Code</string>
+    <string name="qr_transfer_send_title">Enviar via QR Code animado</string>
+    <string name="qr_transfer_receive_title">Receber via QR Code animado</string>
+    <string name="qr_transfer_instruction">Mantenha a câmera do outro dispositivo apontada para este QR Code</string>
+    <string name="qr_transfer_receive_searching">Procurando QR Code…</string>
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="cancel">Cancel</string>

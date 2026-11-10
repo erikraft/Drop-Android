@@ -77,6 +77,7 @@ import com.anggrayudi.storage.file.DocumentFileUtils;
 import com.anggrayudi.storage.media.FileDescription;
 import com.anggrayudi.storage.media.MediaFile;
 import com.erikraft.drop.databinding.ActivityMainBinding;
+import com.erikraft.drop.qr.QRTransferActivity;
 import com.erikraft.drop.utils.DeviceUtils;
 import com.erikraft.drop.utils.NetworkUtils;
 import com.erikraft.drop.utils.Nullable;
@@ -381,6 +382,12 @@ public class MainActivity extends DropPipActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    /**
+     * Routes toolbar actions to their corresponding screens and website features.
+     *
+     * @param item selected toolbar menu item
+     * @return true when the selected item was handled
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -388,6 +395,14 @@ public class MainActivity extends DropPipActivity {
             return true;
         } else if (item.getItemId() == R.id.menu_onion_transfer) {
             startActivity(new Intent(this, OnionTransferActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.menu_scan_qr) {
+            openWebsiteQrScanner();
+            return true;
+        } else if (item.getItemId() == R.id.menu_receive_animated_qr) {
+            final Intent intent = new Intent(this, QRTransferActivity.class);
+            intent.putExtra(QRTransferActivity.EXTRA_MODE, "receive");
+            startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.menu_settings) {
             final Intent browserIntent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -398,6 +413,27 @@ public class MainActivity extends DropPipActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Opens the pairing QR scanner already implemented by the ErikrafT Drop website.
+     * Camera access is granted by MyWebChromeClient through the existing Android permission flow.
+     */
+    private void openWebsiteQrScanner() {
+        if (binding == null || binding.webview == null) return;
+
+        final String script = "(function(){"
+                + "var app=window.erikrafTdrop;"
+                + "if(app&&app.qrScannerDialog&&typeof app.qrScannerDialog.openScanner==='function'){"
+                + "app.qrScannerDialog.openScanner();return 'opened';}"
+                + "return 'unavailable';"
+                + "})()";
+
+        binding.webview.evaluateJavascript(script, result -> {
+            if (!"\"opened\"".equals(result)) {
+                Snackbar.make(binding.getRoot(), R.string.qr_scan_not_ready, Snackbar.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void toggleAbout() {
