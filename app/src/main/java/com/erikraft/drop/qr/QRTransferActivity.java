@@ -475,6 +475,9 @@ public class QRTransferActivity extends DropPipActivity implements SurfaceHolder
     /**
      * Releases camera and transfer resources when the receiving screen is destroyed.
      */
+    /**
+     * Releases camera and transfer resources when the receiving screen is destroyed.
+     */
     @Override
     protected void onDestroy() {
         isCancelled = true;
