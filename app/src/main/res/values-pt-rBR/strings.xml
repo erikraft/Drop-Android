@@ -119,7 +119,7 @@
     <string name="website_about_subheading">A maneira mais fácil de transferir arquivos pela Web, Windows, Linux, Android, extensões e muito mais</string>
     <!-- QR Transfer -->
     <string name="qr_scan_menu_title">Escanear código QR</string>
-    <string name="qr_scan_not_ready">O leitor de QR Code ainda não está pronto. Aguarde o carregamento da página e tente novamente.</string>
+    <string name="qr_scan_not_ready">O leitor de QR Code não está disponível no servidor selecionado.</string>
     <string name="qr_transfer_title">Transferência por QR Code</string>
     <string name="qr_transfer_send_title">Enviar via QR Code animado</string>
     <string name="qr_transfer_receive_title">Receber via QR Code animado</string>
