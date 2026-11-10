@@ -118,6 +118,8 @@
     <string name="website_footer_known_as">אתה ידוע בתור %s</string>
     <string name="website_about_subheading">The easiest way to transfer files across the Web, Windows, Linux, Android, extensions, and more</string>
     <!-- QR Transfer -->
+    <string name="qr_scan_menu_title">Scan QR Code</string>
+    <string name="qr_scan_not_ready">The QR scanner is not available on the selected server.</string>
     <string name="qr_transfer_title">QR Transfer</string>
     <string name="qr_transfer_send_title">Send via Animated QR</string>
     <string name="qr_transfer_receive_title">Receive via Animated QR</string>
