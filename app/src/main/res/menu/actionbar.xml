@@ -9,6 +9,14 @@
         android:visible="false"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_scan_qr"
+        android:title="@string/qr_scan_menu_title"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_receive_animated_qr"
+        android:title="@string/qr_transfer_receive_title"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_view_downloads"
         android:icon="@drawable/ic_download"
         android:title="@string/view_downloads"
