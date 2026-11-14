@@ -126,6 +126,28 @@ public class WebViewBridgeIsolationTest {
         }
     }
 
+    @Test
+    public void nativeDispatcherRejectsMissingOrMalformedCapabilities() {
+        final OriginScopedJavaScriptInterface bridge =
+                new OriginScopedJavaScriptInterface(new TestDelegate(), TOKEN);
+
+        assertEquals("null", bridge.invoke("attacker-token", "getVersionId", "[]"));
+        assertEquals("null", bridge.invoke(TOKEN, "getVersionId", "[1]"));
+        assertEquals("null", bridge.invoke(TOKEN, "unknownMethod", "[]"));
+        assertEquals("42", bridge.invoke(TOKEN, "getVersionId", "[]"));
+    }
+
+    private static final class TestDelegate extends JavaScriptInterface {
+        TestDelegate() {
+            super(null);
+        }
+
+        @Override
+        public int getVersionId() {
+            return 42;
+        }
+    }
+
     private static void serveOne(
             final ServerSocket server,
             final String html,
