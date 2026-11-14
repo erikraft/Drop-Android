@@ -24,6 +24,11 @@
     @android.webkit.JavascriptInterface <methods>;
 }
 
+# Keep the token-gated WebView entry point callable by WebView reflection.
+-keepclassmembers class com.erikraft.drop.OriginScopedJavaScriptInterface {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
