@@ -68,6 +68,7 @@ import androidx.preference.PreferenceManager;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewCompat;
 import androidx.webkit.WebViewFeature;
 
 import com.anggrayudi.storage.callback.FileCallback;
@@ -87,6 +88,8 @@ import com.erikraft.drop.utils.ZipUtils;
 import com.google.android.material.internal.ToolbarUtils;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -97,6 +100,7 @@ import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -261,7 +265,7 @@ public class MainActivity extends DropPipActivity {
             // Fake to user argent to be able to inject a custom string into the Snapdrop device name
             webSettings.setUserAgentString("Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + "; Build/HUAWEI" + prefs.getString(getString(R.string.pref_device_name), getString(R.string.app_name)) + ") Version/" + BuildConfig.VERSION_NAME + (isTablet(this) ? " Tablet " : " Mobile ") + "Safari/537.36");
         }
-        binding.webview.addJavascriptInterface(new JavaScriptInterface(MainActivity.this), "ErikrafTdropAndroid");
+        configureNativeBridge();
         binding.webview.setWebChromeClient(new MyWebChromeClient());
         binding.webview.setWebViewClient(new CustomWebViewClient());
 
@@ -322,6 +326,38 @@ public class MainActivity extends DropPipActivity {
         });
         loadAnimationDrawable.start();
 
+    }
+
+    private void configureNativeBridge() {
+        final String originRule = WebViewOriginPolicy.getOriginRule(baseURL);
+        if (originRule == null || !WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+            Log.e("WebView", "Origin-scoped native bridge is unavailable; native WebView integration disabled");
+            return;
+        }
+
+        final String token = UUID.randomUUID().toString();
+        final String bootstrap = JavaScriptInterface.getAssetsJS(this, "bridge-bootstrap.js");
+        if (bootstrap == null || !bootstrap.startsWith("javascript:")) {
+            Log.e("WebView", "Unable to load the origin-scoped native bridge bootstrap");
+            return;
+        }
+
+        final String script = bootstrap.substring("javascript:".length())
+                .replace("__ERIKRAFT_BRIDGE_TOKEN__", JSONObject.quote(token));
+        binding.webview.addJavascriptInterface(
+                new OriginScopedJavaScriptInterface(new JavaScriptInterface(this), token),
+                "__ErikrafTdropAndroidNative"
+        );
+        try {
+            WebViewCompat.addDocumentStartJavaScript(
+                    binding.webview,
+                    script,
+                    Collections.singleton(originRule)
+            );
+        } catch (RuntimeException e) {
+            binding.webview.removeJavascriptInterface("__ErikrafTdropAndroidNative");
+            Log.e("WebView", "Unable to register the origin-scoped native bridge", e);
+        }
     }
 
     private void configureForLargeScreensIfNecessary() {
@@ -610,9 +646,13 @@ public class MainActivity extends DropPipActivity {
             }
 
         } else if (Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData() != null
-                && baseURL != null && intent.getData().getHost() != null
-                && intent.getData().getHost().equals(Uri.parse(baseURL).getHost())) {
-            binding.webview.loadUrl(intent.getDataString(), getWebViewRequestHeaders()); // e.g. pairing URL
+                && baseURL != null) {
+            final String targetUrl = intent.getDataString();
+            if (WebViewOriginPolicy.isAllowed(baseURL, targetUrl)) {
+                binding.webview.loadUrl(targetUrl, getWebViewRequestHeaders()); // e.g. pairing URL
+            } else {
+                openExternalUrl(targetUrl);
+            }
         } else {
             super.onNewIntent(intent);
         }
@@ -845,7 +885,42 @@ public class MainActivity extends DropPipActivity {
         }
     }
 
+    private void openExternalUrl(final String targetUrl) {
+        final Uri uri = Uri.parse(targetUrl);
+        final String scheme = uri.getScheme();
+        if (!"http".equalsIgnoreCase(scheme) && !"https".equalsIgnoreCase(scheme)) {
+            Log.w("WebView", "Blocked unsupported external URL scheme");
+            return;
+        }
+
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        } catch (ActivityNotFoundException e) {
+            Log.w("WebView", "No browser available for external URL", e);
+        }
+    }
+
     private class CustomWebViewClient extends WebViewClient {
+
+        @Override
+        public boolean shouldOverrideUrlLoading(final WebView view, final WebResourceRequest request) {
+            final String targetUrl = request.getUrl().toString();
+            if (WebViewOriginPolicy.isAllowed(baseURL, targetUrl)) return false;
+
+            // External links opened by an explicit user gesture stay outside the
+            // WebView, where the native JavaScript bridge is not exposed.
+            if (request.isForMainFrame() && request.hasGesture()) {
+                openExternalUrl(targetUrl);
+            } else {
+                Log.w("WebView", "Blocked cross-origin WebView navigation");
+            }
+            return true;
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+            return !WebViewOriginPolicy.isAllowed(baseURL, url);
+        }
 
         @Override
         public void onPageFinished(final WebView view, final String url) {
@@ -853,7 +928,7 @@ public class MainActivity extends DropPipActivity {
             state.setCurrentlyLoading(false);
             binding.pullToRefresh.setRefreshing(false);
 
-            if (url.startsWith(baseURL)) {
+            if (WebViewOriginPolicy.isAllowed(baseURL, url)) {
                 Log.w("WebView", "refresh finished, init snapdrop...");
                 state.setCurrentlyOffline(false);
                 initSnapdrop();
