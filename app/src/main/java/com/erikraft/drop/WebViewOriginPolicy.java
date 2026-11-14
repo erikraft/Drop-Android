@@ -31,6 +31,24 @@ final class WebViewOriginPolicy {
         }
     }
 
+    static String getOriginRule(String url) {
+        try {
+            URI uri = new URI(url);
+            String scheme = normalizeScheme(uri.getScheme());
+            String host = normalizeHost(uri.getHost());
+            if (scheme == null || host == null || uri.getUserInfo() != null) return null;
+
+            int port = uri.getPort();
+            int defaultPort = "https".equals(scheme) ? 443 : 80;
+            String formattedHost = host.indexOf(':') >= 0 && !host.startsWith("[")
+                    ? "[" + host + "]" : host;
+            return scheme + "://" + formattedHost
+                    + (port >= 0 && port != defaultPort ? ":" + port : "");
+        } catch (URISyntaxException | IllegalArgumentException e) {
+            return null;
+        }
+    }
+
     private static String normalizeScheme(String scheme) {
         if (scheme == null) return null;
         String normalized = scheme.toLowerCase(Locale.ROOT);
