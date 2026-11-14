@@ -348,11 +348,16 @@ public class MainActivity extends DropPipActivity {
                 new OriginScopedJavaScriptInterface(new JavaScriptInterface(this), token),
                 "__ErikrafTdropAndroidNative"
         );
-        WebViewCompat.addDocumentStartJavaScript(
-                binding.webview,
-                script,
-                Collections.singleton(originRule)
-        );
+        try {
+            WebViewCompat.addDocumentStartJavaScript(
+                    binding.webview,
+                    script,
+                    Collections.singleton(originRule)
+            );
+        } catch (RuntimeException e) {
+            binding.webview.removeJavascriptInterface("__ErikrafTdropAndroidNative");
+            Log.e("WebView", "Unable to register the origin-scoped native bridge", e);
+        }
     }
 
     private void configureForLargeScreensIfNecessary() {
