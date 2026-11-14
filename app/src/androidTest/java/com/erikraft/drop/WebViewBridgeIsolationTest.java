@@ -139,10 +139,10 @@ public class WebViewBridgeIsolationTest {
 
             final byte[] responseBody = html.getBytes(StandardCharsets.UTF_8);
             final OutputStream output = socket.getOutputStream();
-            final String responseHeaders = "HTTP/1.1 200 OK\\r\\n"
-                    + "Content-Type: text/html; charset=utf-8\\r\\n"
-                    + "Content-Length: " + responseBody.length + "\\r\\n"
-                    + "Connection: close\\r\\n\\r\\n";
+            final String responseHeaders = "HTTP/1.1 200 OK\r\n"
+                    + "Content-Type: text/html; charset=utf-8\r\n"
+                    + "Content-Length: " + responseBody.length + "\r\n"
+                    + "Connection: close\r\n\r\n";
             output.write(responseHeaders.getBytes(StandardCharsets.US_ASCII));
             output.write(responseBody);
             output.flush();
@@ -157,10 +157,10 @@ public class WebViewBridgeIsolationTest {
         int current;
         while ((current = input.read()) != -1) {
             output.write(current);
-            if (previous == '\\r' && current == '\\n') {
+            if (previous == '\r' && current == '\n') {
                 final byte[] bytes = output.toByteArray();
                 final int length = bytes.length;
-                if (length >= 4 && bytes[length - 4] == '\\r' && bytes[length - 3] == '\\n') {
+                if (length >= 4 && bytes[length - 4] == '\r' && bytes[length - 3] == '\n') {
                     return new String(bytes, StandardCharsets.US_ASCII);
                 }
             }
@@ -170,7 +170,7 @@ public class WebViewBridgeIsolationTest {
     }
 
     private static int parseContentLength(final String headers) {
-        for (String line : headers.split("\\r\\n")) {
+        for (String line : headers.split("\r\n")) {
             if (line.toLowerCase(java.util.Locale.ROOT).startsWith("content-length:")) {
                 return Integer.parseInt(line.substring(line.indexOf(':') + 1).trim());
             }
