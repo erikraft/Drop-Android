@@ -848,6 +848,31 @@ public class MainActivity extends DropPipActivity {
     private class CustomWebViewClient extends WebViewClient {
 
         @Override
+        public boolean shouldOverrideUrlLoading(final WebView view, final WebResourceRequest request) {
+            final String targetUrl = request.getUrl().toString();
+            if (WebViewOriginPolicy.isAllowed(baseURL, targetUrl)) return false;
+
+            // External links opened by an explicit user gesture stay outside the
+            // WebView, where the native JavaScript bridge is not exposed.
+            if (request.isForMainFrame() && request.hasGesture()
+                    && (targetUrl.startsWith("https://") || targetUrl.startsWith("http://"))) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(targetUrl)));
+                } catch (ActivityNotFoundException e) {
+                    Log.w("WebView", "No browser available for external URL", e);
+                }
+            } else {
+                Log.w("WebView", "Blocked cross-origin WebView navigation");
+            }
+            return true;
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+            return !WebViewOriginPolicy.isAllowed(baseURL, url);
+        }
+
+        @Override
         public void onPageFinished(final WebView view, final String url) {
 
             state.setCurrentlyLoading(false);
