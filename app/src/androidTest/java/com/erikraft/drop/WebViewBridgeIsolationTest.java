@@ -11,8 +11,10 @@ import android.webkit.WebViewClient;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
 
 import org.json.JSONObject;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,6 +40,8 @@ public class WebViewBridgeIsolationTest {
 
     @Test
     public void externalPostDocumentCannotAccessNativeBridge() throws Exception {
+        Assume.assumeTrue("WebView does not support document-start scripts",
+                WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT));
         final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         final ServerSocket trustedServer = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"));
         final ServerSocket externalServer = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"));
