@@ -132,7 +132,7 @@ public class WebViewBridgeIsolationTest {
                 new OriginScopedJavaScriptInterface(new TestDelegate(), TOKEN);
 
         assertEquals("null", bridge.invoke("attacker-token", "getVersionId", "[]"));
-        assertEquals("null", bridge.invoke(TOKEN, "getVersionId", "[1]"));
+        assertEquals("{\"__bridgeError\":true}", bridge.invoke(TOKEN, "getVersionId", "[1]"));
         assertEquals("null", bridge.invoke(TOKEN, "unknownMethod", "[]"));
         assertEquals("42", bridge.invoke(TOKEN, "getVersionId", "[]"));
     }
