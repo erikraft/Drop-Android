@@ -189,7 +189,7 @@ public class WebViewBridgeIsolationTest {
         return body;
     }
 
-    private static final class ProbeBridge {
+    public static final class ProbeBridge {
         @JavascriptInterface
         public String invoke(final String token, final String method, final String argsJson) {
             return TOKEN.equals(token) && "probe".equals(method) ? "\"granted\"" : "\"denied\"";
