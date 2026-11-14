@@ -166,10 +166,10 @@ public final class OriginScopedJavaScriptInterface {
             return encodeResult(result);
         } catch (JSONException | IOException | IllegalArgumentException e) {
             Log.w(TAG, "Rejected invalid native bridge call: " + method, e);
-            return "null";
+            return encodeError();
         } catch (RuntimeException e) {
             Log.w(TAG, "Native bridge call failed: " + method, e);
-            return "null";
+            return encodeError();
         }
     }
 
@@ -215,6 +215,10 @@ public final class OriginScopedJavaScriptInterface {
             throw new JSONException("Expected finite numeric argument");
         }
         return number;
+    }
+
+    private static String encodeError() {
+        return "{\"__bridgeError\":true}";
     }
 
     private static String encodeResult(final Object result) {
