@@ -36,6 +36,8 @@ public class WebViewOriginPolicyTest {
         assertNull(WebViewOriginPolicy.getOriginRule("file:///tmp/drop"));
         assertNull(WebViewOriginPolicy.getOriginRule("https://user:pass@drop.example/"));
         assertNull(WebViewOriginPolicy.getOriginRule("not a url"));
+        assertNull(WebViewOriginPolicy.getOriginRule(null));
+        assertFalse(WebViewOriginPolicy.isAllowed(null, "https://drop.example/"));
     }
 
     @Test
