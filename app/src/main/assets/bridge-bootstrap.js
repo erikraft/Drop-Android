@@ -41,8 +41,13 @@
                 const args = Array.prototype.slice.call(arguments);
                 const result = nativeBridge.invoke(token, property, JSON.stringify(args));
                 try {
-                    return JSON.parse(result);
-                } catch (_error) {
+                    const value = JSON.parse(result);
+                    if (value && value.__bridgeError === true) {
+                        throw new Error('Native Android bridge call failed');
+                    }
+                    return value;
+                } catch (error) {
+                    if (error && error.message === 'Native Android bridge call failed') throw error;
                     return null;
                 }
             };
