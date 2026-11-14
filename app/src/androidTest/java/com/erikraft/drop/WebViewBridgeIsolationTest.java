@@ -84,7 +84,7 @@ public class WebViewBridgeIsolationTest {
             WebViewCompat.addDocumentStartJavaScript(
                     view,
                     bootstrap,
-                    Collections.singleton(trustedOrigin)
+                    Collections.singleton(WebViewOriginPolicy.getOriginRule(trustedOrigin))
             );
             view.setWebViewClient(new WebViewClient() {
                 @Override
