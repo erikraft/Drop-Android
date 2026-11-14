@@ -189,8 +189,10 @@ final class OriginScopedJavaScriptInterface {
     private static String stringArg(final JSONArray args, final int index) throws JSONException {
         final Object value = args.get(index);
         if (value == JSONObject.NULL) return null;
-        if (!(value instanceof String)) throw new JSONException("Expected string argument");
-        return (String) value;
+        if (value instanceof String) return (String) value;
+        // Preserve the legacy JavascriptInterface coercion used by file-size values.
+        if (value instanceof Number) return value.toString();
+        throw new JSONException("Expected string-compatible argument");
     }
 
     private static String requiredStringArg(final JSONArray args, final int index) throws JSONException {
