@@ -9,6 +9,7 @@ final class WebViewOriginPolicy {
     private WebViewOriginPolicy() { }
 
     static boolean isAllowed(String baseUrl, String targetUrl) {
+        if (baseUrl == null || targetUrl == null) return false;
         try {
             URI base = new URI(baseUrl);
             URI target = new URI(targetUrl);
@@ -32,6 +33,7 @@ final class WebViewOriginPolicy {
     }
 
     static String getOriginRule(String url) {
+        if (url == null) return null;
         try {
             URI uri = new URI(url);
             String scheme = normalizeScheme(uri.getScheme());
