@@ -16,7 +16,7 @@ import java.security.MessageDigest;
  * The raw JavaScript interface is injected into all frames by WebView, so
  * every call must carry a token only provided to the configured origin.
  */
-final class OriginScopedJavaScriptInterface {
+public final class OriginScopedJavaScriptInterface {
     private static final String TAG = "DropAndroidBridge";
     private static final int MAX_ARGUMENT_JSON_CHARS = 1024 * 1024;
 
