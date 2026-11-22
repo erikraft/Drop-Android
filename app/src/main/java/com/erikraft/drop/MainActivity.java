@@ -829,6 +829,15 @@ public class MainActivity extends DropPipActivity {
                     }
                     return;
                 }
+                if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                        request.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});
+                    } else {
+                        pendingPermissionRequest = request;
+                        microphonePermissionLauncher.launch(Manifest.permission.RECORD_AUDIO);
+                    }
+                    return;
+                }
             }
             request.deny();
         }
