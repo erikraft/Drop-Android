@@ -178,7 +178,7 @@ public class MainActivity extends DropPipActivity {
     private final ActivityResultLauncher<String> cameraPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
         if (pendingPermissionRequest != null) {
             if (result) {
-                pendingPermissionRequest.grant(pendingPermissionRequest.getResources());
+                pendingPermissionRequest.grant(new String[]{PermissionRequest.RESOURCE_VIDEO_CAPTURE});
             } else {
                 pendingPermissionRequest.deny();
             }
