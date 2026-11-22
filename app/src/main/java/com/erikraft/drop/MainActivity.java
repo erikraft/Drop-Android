@@ -186,6 +186,17 @@ public class MainActivity extends DropPipActivity {
         }
     });
 
+    private final ActivityResultLauncher<String> microphonePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+        if (pendingPermissionRequest != null) {
+            if (result) {
+                pendingPermissionRequest.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});
+            } else {
+                pendingPermissionRequest.deny();
+            }
+            pendingPermissionRequest = null;
+        }
+    });
+
     private final OnBackPressedCallback onBackpressedCallback = new OnBackPressedCallback(false) {
         @Override
         public void handleOnBackPressed() {
