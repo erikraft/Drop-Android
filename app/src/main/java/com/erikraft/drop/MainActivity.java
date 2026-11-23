@@ -178,7 +178,18 @@ public class MainActivity extends DropPipActivity {
     private final ActivityResultLauncher<String> cameraPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
         if (pendingPermissionRequest != null) {
             if (result) {
-                pendingPermissionRequest.grant(pendingPermissionRequest.getResources());
+                pendingPermissionRequest.grant(new String[]{PermissionRequest.RESOURCE_VIDEO_CAPTURE});
+            } else {
+                pendingPermissionRequest.deny();
+            }
+            pendingPermissionRequest = null;
+        }
+    });
+
+    private final ActivityResultLauncher<String> microphonePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+        if (pendingPermissionRequest != null) {
+            if (result) {
+                pendingPermissionRequest.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});
             } else {
                 pendingPermissionRequest.deny();
             }
@@ -815,6 +826,15 @@ public class MainActivity extends DropPipActivity {
                     } else {
                         pendingPermissionRequest = request;
                         cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+                    }
+                    return;
+                }
+                if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                        request.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});
+                    } else {
+                        pendingPermissionRequest = request;
+                        microphonePermissionLauncher.launch(Manifest.permission.RECORD_AUDIO);
                     }
                     return;
                 }
