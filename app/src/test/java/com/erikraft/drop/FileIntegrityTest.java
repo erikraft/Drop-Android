@@ -10,6 +10,15 @@ import java.util.Random;
 
 public class FileIntegrityTest {
 
+    @Test
+    public void transferChunksRespectDeclaredSizeAndGlobalLimit() {
+        Assert.assertTrue(JavaScriptInterface.isTransferChunkAllowed(512, 0, 1024));
+        Assert.assertFalse(JavaScriptInterface.isTransferChunkAllowed(1025, 0, 1024));
+        Assert.assertFalse(JavaScriptInterface.isTransferChunkAllowed(100, 1000, 1024));
+        Assert.assertTrue(JavaScriptInterface.isTransferChunkAllowed(24, 1000, -1));
+        Assert.assertFalse(JavaScriptInterface.isTransferChunkAllowed(-1, 0, 1024));
+    }
+
     private String calculateSHA256(byte[] data) throws Exception {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(data);
