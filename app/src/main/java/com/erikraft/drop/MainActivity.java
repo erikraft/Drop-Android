@@ -270,7 +270,7 @@ public class MainActivity extends DropPipActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setAllowContentAccess(true);
-        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowFileAccess(false);
         webSettings.setSupportMultipleWindows(true);
         if (prefs.contains(getString(R.string.pref_device_name))) {
             // Fake to user argent to be able to inject a custom string into the Snapdrop device name
@@ -289,7 +289,7 @@ public class MainActivity extends DropPipActivity {
             WebSettingsCompat.setForceDark(binding.webview.getSettings(), SnapdropApplication.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
         }
 
-        CookieManager.getInstance().setAcceptThirdPartyCookies(binding.webview, true);
+        CookieManager.getInstance().setAcceptThirdPartyCookies(binding.webview, false);
 
         binding.webview.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
             Log.d("download listener", "search file of size " + contentLength);
