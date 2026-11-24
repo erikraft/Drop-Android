@@ -819,6 +819,13 @@ public class MainActivity extends DropPipActivity {
 
         @Override
         public void onPermissionRequest(final PermissionRequest request) {
+            if (request == null || request.getOrigin() == null
+                    || !WebViewOriginPolicy.isAllowed(baseURL, request.getOrigin().toString())) {
+                Log.w("WebView", "Blocked media permission request from an untrusted origin.");
+                if (request != null) request.deny();
+                return;
+            }
+
             for (String resource : request.getResources()) {
                 if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
                     if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
