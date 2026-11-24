@@ -48,6 +48,7 @@ public class JavaScriptInterface {
     private long totalBytesReceived = 0;
     private long expectedBytes = -1;
     private boolean transferActive = false;
+    private static final long MAX_TRANSFER_BYTES = 10L * 1024L * 1024L * 1024L;
 
     public JavaScriptInterface(final MainActivity context) {
         this.context = context;
@@ -82,7 +83,9 @@ public class JavaScriptInterface {
     private long parseExpectedBytes(final String fileSize) {
         if (TextUtils.isEmpty(fileSize)) return -1;
         try {
-            return Long.parseLong(fileSize.trim());
+            long parsed = Long.parseLong(fileSize.trim());
+            if (parsed < 0 || parsed > MAX_TRANSFER_BYTES) return -1;
+            return parsed;
         } catch (NumberFormatException e) {
             Log.w("DropAndroidJS", "Unable to parse expected file size: " + fileSize);
             return -1;
@@ -142,6 +145,9 @@ public class JavaScriptInterface {
         if (fileOutputStream == null || fileHeader == null || !transferActive && totalBytesReceived > 0) return;
         try {
             final byte[] bytes = Base64.decode(dec, Base64.NO_WRAP);
+            if (!isTransferChunkAllowed(bytes.length, totalBytesReceived, expectedBytes)) {
+                throw new IOException("Transfer size exceeds the allowed limit");
+            }
             fileOutputStream.write(bytes);
             if (messageDigest != null) messageDigest.update(bytes);
             totalBytesReceived += bytes.length;
@@ -149,6 +155,14 @@ public class JavaScriptInterface {
         } catch (Exception e) {
             throw new IOException("Failed to process bytes", e);
         }
+    }
+
+    static boolean isTransferChunkAllowed(final int chunkBytes, final long totalBytes,
+                                          final long expectedBytes) {
+        if (chunkBytes < 0 || totalBytes < 0) return false;
+        if ((long) chunkBytes > MAX_TRANSFER_BYTES) return false;
+        if (totalBytes > MAX_TRANSFER_BYTES - chunkBytes) return false;
+        return expectedBytes < 0 || (long) chunkBytes <= expectedBytes - totalBytes;
     }
 
     @JavascriptInterface
