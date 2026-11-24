@@ -41,6 +41,16 @@ public class WebViewOriginPolicyTest {
     }
 
     @Test
+    public void allowsMediaCaptureOnlyFromTheConfiguredDropOrigin() {
+        assertTrue(WebViewOriginPolicy.isAllowed(
+                "https://drop.example/", "https://drop.example/"));
+        assertFalse(WebViewOriginPolicy.isAllowed(
+                "https://drop.example/", "https://untrusted.example/"));
+        assertFalse(WebViewOriginPolicy.isAllowed(
+                "https://drop.example/", "http://drop.example/"));
+    }
+
+    @Test
     public void rejectsNonWebAndMalformedUrls() {
         assertFalse(WebViewOriginPolicy.isAllowed("https://drop.example/", "javascript:alert(1)"));
         assertFalse(WebViewOriginPolicy.isAllowed("https://drop.example/", "file:///etc/passwd"));
