@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Deep translucent material base with a cool tint. -->
     <item>
         <shape android:shape="rectangle">
+            <corners android:radius="16dp" />
             <gradient
                 android:angle="270"
-                android:startColor="#E61A2638"
-                android:centerColor="#D51B2535"
-                android:endColor="#ED0F1724" />
-            <stroke android:width="1dp" android:color="#44FFFFFF" />
+                android:startColor="#C91A2638"
+                android:centerColor="#B51B2535"
+                android:endColor="#D90F1724" />
+            <stroke android:width="1dp" android:color="#66FFFFFF" />
         </shape>
     </item>
-    <item android:left="1dp" android:top="1dp" android:right="1dp">
+
+    <!-- Broad reflected light across the upper glass surface. -->
+    <item android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp">
         <shape android:shape="rectangle">
+            <corners android:radius="15dp" />
             <gradient
-                android:angle="270"
-                android:startColor="#20FFFFFF"
-                android:centerColor="#08FFFFFF"
+                android:angle="315"
+                android:startColor="#30FFFFFF"
+                android:centerColor="#0EFFFFFF"
                 android:endColor="#00FFFFFF" />
         </shape>
     </item>
-    <item android:gravity="top" android:left="2dp" android:right="2dp">
+
+    <!-- Fine specular highlight along the top edge. -->
+    <item android:gravity="top" android:left="3dp" android:right="3dp">
         <shape android:shape="rectangle">
             <size android:height="1dp" />
-            <solid android:color="#33FFFFFF" />
+            <solid android:color="#55FFFFFF" />
+        </shape>
+    </item>
+
+    <!-- Subtle dark lower rim adds thickness without a heavy shadow. -->
+    <item android:gravity="bottom" android:left="3dp" android:right="3dp">
+        <shape android:shape="rectangle">
+            <size android:height="1dp" />
+            <solid android:color="#33000000" />
         </shape>
     </item>
 </layer-list>
